@@ -1,0 +1,33 @@
+# WaifuAI Docs Hub
+
+> Technical documentation hub for AI agents, developers, and builders. Part of the WaifuAI ecosystem on GitHub.
+
+## Projects
+
+- [Hermes Waifu](https://waifuai.github.io/hermes-waifu/) — Live2D waifu display with expression controls
+- [Function Graph Generator](https://waifuai.github.io/function-graph-generator/) — Visualize mathematical functions
+- [AI Benchmarks](https://waifuai.github.io/ai-benchmarks/) — Benchmark repository and performance data
+- [MCP Waifu Chat](https://waifuai.github.io/mcp-waifu-chat/) — Model Context Protocol server for waifu chat
+- [MCP Waifu Queue](https://waifuai.github.io/mcp-waifu-queue/) — Queue management for waifu AI agents
+- [LLM Text Queue GPU](https://waifuai.github.io/llm-text-queue-gpu/) — GPU-accelerated text processing pipeline
+- [Waifu Chat API](https://waifuai.github.io/waifu-chat-api/) — Chat API documentation
+- [Waifu Constitution](https://waifuai.github.io/waifu-constitution/) — AI alignment constitution
+- [Waifu Layer](https://waifuai.github.io/waifu-layer/) — Personality trait layer
+- [Waifu LLM VRM](https://waifuai.github.io/waifu-llm-vrm/) — VRM avatar integration
+- [Solana Launchpad Ecosystem](https://waifuai.github.io/solana-launchpad-ecosystem/) — Solana ICO/launchpad suite
+- [MCP Solana Affiliate](https://waifuai.github.io/mcp-solana-affiliate/) — Affiliate program MCP server
+- [MCP Solana DEX](https://waifuai.github.io/mcp-solana-dex/) — DEX MCP server
+- [MCP Solana ICO](https://waifuai.github.io/mcp-solana-ico/) — ICO tools MCP server
+- [Paraphrase Tools](https://waifuai.github.io/paraphrase-generation/) — NLP paraphrase generation suite
+- [Book Generator](https://waifuai.github.io/book-generator/) — Automated book generation
+- [Research Books](https://waifuai.github.io/research-books/) — Academic research collection
+- [Reasoning Pricer](https://waifuai.github.io/reasoning-pricer/) — Token pricing models
+- [Launchpad Skill](https://waifuai.github.io/launchpad-skill/) — Launchpad system framework
+- [Traits](https://waifuai.github.io/traits/) — Character/agent trait system
+- [Web Apps Collection](https://waifuai.github.io/web-apps/) — Browser-based AI applications (chat, guides, simulations, quantum consciousness, bonding curves)
+
+## Key Links
+
+- GitHub Organization: https://github.com/waifuai
+- YouTube: https://www.youtube.com/@thewaifuai
+- Twitter/X: https://x.com/thewaifuai
