@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Suite for Book Generation (`test_main.py`)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
+  pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
+  code { background: #161b22; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+  pre code { background: none; padding: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid #30363d; padding: 8px; text-align: left; }
+  th { background: #161b22; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3 { border-bottom: 1px solid #30363d; padding-bottom: 0.3em; }
+  blockquote { border-left: 4px solid #30363d; padding-left: 1rem; color: #8b949e; }
+  .back-link { display: inline-block; margin-bottom: 1rem; color: #8b949e; font-size: 0.9rem; }
+</style>
+
+</head>
+<body>
+<a class="back-link" href="../../index.html">&larr; Back to index</a>
+<h1>Test Suite for Book Generation (<code>test_main.py</code>)</h1>
+<p>This document provides an overview of the test suite (<code>test_main.py</code>) for the book generation project.  It covers the tests for the core components, including API configuration, content generation, table of contents management, book writing, and the overall book generation process.  The tests heavily utilize mocking to isolate units of code and ensure reliable testing.</p>
+<h2>Overview</h2>
+<p>The <code>test_main.py</code> file contains unit tests for the following classes and their methods:</p>
+<ul>
+<li><strong><code>APIConfig</code></strong>:  Handles loading and configuring the Google Generative AI API key.</li>
+<li><strong><code>ContentGenerator</code></strong>:  Responsible for generating text content using the Google Generative AI API.</li>
+<li><strong><code>TableOfContents</code></strong>:  Manages the structure and representation of the book's table of contents.</li>
+<li><strong><code>BookWriter</code></strong>:  Handles writing the generated content to a Markdown file.</li>
+<li><strong><code>BookGenerator</code></strong>:  Orchestrates the entire book generation process, from creating the table of contents to writing the final book.</li>
+</ul>
+<p>The tests are designed to verify:</p>
+<ul>
+<li>Successful execution of each component's core functionality.</li>
+<li>Proper error handling for various scenarios (e.g., missing files, invalid JSON, API errors).</li>
+<li>Correct interaction between different components.</li>
+<li>Adherence to expected output formats (Markdown, JSON).</li>
+<li>Correct usage of the <code>retry</code> decorator for handling API errors.</li>
+</ul>
+<h2>Test Cases and Descriptions</h2>
+<h3><code>TestAPIConfig</code></h3>
+<table>
+<thead>
+<tr>
+<th>Test Case</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>test_api_config_init_success</code></td>
+<td>Verifies that the API key is loaded correctly from a file and that <code>genai.configure</code> is called.</td>
+</tr>
+<tr>
+<td><code>test_api_config_file_not_found</code></td>
+<td>Checks for correct error handling (raising <code>BookGenerationError</code>) when the API key file is missing.</td>
+</tr>
+</tbody>
+</table>
+<h3><code>TestContentGenerator</code></h3>
+<table>
+<thead>
+<tr>
+<th>Test Case</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>test_generate_content_success</code></td>
+<td>Verifies that <code>generate_content</code> successfully returns generated text from a mocked <code>GenerativeModel</code>.</td>
+</tr>
+<tr>
+<td><code>test_generate_content_retry</code></td>
+<td>Checks that the <code>retry</code> decorator is correctly applied to <code>generate_content</code> and that a <code>BookGenerationError</code> is raised upon failure.</td>
+</tr>
+</tbody>
+</table>
+<h3><code>TestTableOfContents</code></h3>
+<table>
+<thead>
+<tr>
+<th>Test Case</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>test_parse_toc</code></td>
+<td>Verifies the correct parsing of a valid JSON string into <code>Chapter</code> objects.</td>
+</tr>
+<tr>
+<td><code>test_parse_toc_invalid_json</code></td>
+<td>Checks for correct error handling (raising <code>BookGenerationError</code>) when parsing invalid JSON.</td>
+</tr>
+<tr>
+<td><code>test_clean_response</code></td>
+<td>Tests the <code>_clean_response</code> method, ensuring correct removal of Markdown code block delimiters.</td>
+</tr>
+<tr>
+<td><code>test_assign_numbers</code></td>
+<td>Verifies that chapter numbers are assigned correctly.</td>
+</tr>
+<tr>
+<td><code>test_to_markdown</code></td>
+<td>Checks the correct generation of the table of contents in Markdown format.</td>
+</tr>
+<tr>
+<td><code>test_chapter_toc</code></td>
+<td>Tests the generation of a chapter-specific table of contents in Markdown format.</td>
+</tr>
+<tr>
+<td><code>test_to_json</code></td>
+<td>Verifies the correct conversion of the table of contents to a JSON string.</td>
+</tr>
+<tr>
+<td><code>test_update_from_json</code></td>
+<td>Checks the updating of the <code>TableOfContents</code> object from a JSON string.</td>
+</tr>
+<tr>
+<td><code>test_update_from_json_invalid_json</code></td>
+<td>Checks error handling (raising <code>BookGenerationError</code>) when updating from invalid JSON.</td>
+</tr>
+</tbody>
+</table>
+<h3><code>TestBookWriter</code></h3>
+<table>
+<thead>
+<tr>
+<th>Test Case</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>test_get_filepath</code></td>
+<td>Verifies the correct generation of the output file path based on the book title.</td>
+</tr>
+<tr>
+<td><code>test_write_chapter</code></td>
+<td>Tests writing a chapter to the Markdown file, including chapter title, content, and chapter-specific table of contents.</td>
+</tr>
+<tr>
+<td><code>test_write_subchapter</code></td>
+<td>Tests writing a subchapter to the Markdown file, including subchapter title, content, and links back to the chapter contents.</td>
+</tr>
+<tr>
+<td><code>test_write_toc</code></td>
+<td>Tests writing the main table of contents to the Markdown file.</td>
+</tr>
+</tbody>
+</table>
+<h3><code>TestBookGenerator</code></h3>
+<table>
+<thead>
+<tr>
+<th>Test Case</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>test_generate_toc</code></td>
+<td>Tests the successful generation of the table of contents, including writing the TOC to the file.</td>
+</tr>
+<tr>
+<td><code>test_save_toc</code></td>
+<td>Verifies saving the table of contents to a JSON file.</td>
+</tr>
+<tr>
+<td><code>test_load_toc</code></td>
+<td>Tests loading the table of contents from a JSON file and updating the Markdown file.</td>
+</tr>
+<tr>
+<td><code>test_pause_and_modify_toc</code></td>
+<td>Checks the functionality for pausing execution, allowing manual TOC modification, and then reloading the modified TOC.</td>
+</tr>
+<tr>
+<td><code>test_generate_book_success</code></td>
+<td>Tests the successful generation of the entire book, including generating all chapters and subchapters.</td>
+</tr>
+<tr>
+<td><code>test_generate_book_no_toc</code></td>
+<td>Checks for correct error handling (raising <code>BookGenerationError</code>) when attempting to generate a book without a table of contents.</td>
+</tr>
+<tr>
+<td><code>test_generate_chapter</code></td>
+<td>Verifies the generation of a single chapter, including its introduction and all subchapters, and writing the content to the file.</td>
+</tr>
+<tr>
+<td><code>test_browse_book_success</code></td>
+<td>Tests the successful browsing of the generated book content (reading from the Markdown file).</td>
+</tr>
+<tr>
+<td><code>test_browse_book_file_not_found</code></td>
+<td>Checks for the correct handling of the case where the book file does not exist (displaying an appropriate message to the user).</td>
+</tr>
+</tbody>
+</table>
+<h2>Dependencies</h2>
+<p>The tests rely on the following:</p>
+<ul>
+<li><code>unittest</code>: Python's built-in unit testing framework.</li>
+<li><code>unittest.mock</code>:  For creating mock objects and patching dependencies (e.g., <code>genai</code>, file I/O).</li>
+<li><code>pathlib</code>:  For working with file paths in a more object-oriented way.</li>
+<li><code>json</code>: For handling JSON data.</li>
+<li><code>google.generativeai</code>:  The Google Generative AI library (though it's heavily mocked in the tests).</li>
+<li>The project's own modules: <code>book_generator</code>, <code>book_writer</code>, <code>table_of_contents</code>, <code>content_generation</code>, and <code>config</code>.</li>
+</ul>
+<h2>Running the Tests</h2>
+<p>To run the tests, navigate to the <code>src/tests</code> directory in your terminal and execute:</p>
+<pre><code class="language-bash">python -m unittest test_main.py
+</code></pre>
+<p>This will run all the test cases defined in <code>test_main.py</code> and report the results.</p>
+</body>
+</html>

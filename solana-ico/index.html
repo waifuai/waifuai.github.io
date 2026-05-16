@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ContextCoin (CTX) Solana ICO & Resource Management CLI</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card-bg: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --accent2: #7ee787;
+  --accent3: #d2a8ff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+header { text-align: center; margin-bottom: 3rem; padding: 2rem 0; border-bottom: 1px solid var(--border); }
+header h1 { font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+header p { color: var(--text-muted); font-size: 1.1rem; }
+section { margin-bottom: 2.5rem; }
+h2 { font-size: 1.4rem; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 0.5rem; }
+.count { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
+.section-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.link-list { display: flex; flex-direction: column; gap: 0.25rem; }
+.link-list a { color: var(--accent); text-decoration: none; padding: 0.4rem 0.75rem; border-radius: 6px; transition: background 0.15s; font-size: 0.95rem; }
+.link-list a:hover { background: var(--card-bg); text-decoration: underline; }
+footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding-top: 2rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>ContextCoin (CTX) Solana ICO & Resource Management CLI</h1>
+<p></p>
+</header>
+<h1>ContextCoin (CTX) Solana ICO &amp; Resource Management CLI</h1>
+<p>A comprehensive CLI tool built with Python and Typer for interacting with a Solana program that manages an Initial Coin Offering (ICO) using an on-chain linear bonding curve and controls access to off-chain resources through pay-to-access functionality.</p>
+<h2>✨ Features</h2>
+<ul>
+<li><strong>🔗 Solana Integration</strong>: Seamless interaction with Solana blockchain programs</li>
+<li><strong>💰 ICO Management</strong>: Initialize, buy, sell tokens with linear bonding curve</li>
+<li><strong>🔐 Resource Access</strong>: Pay-to-access system for premium content/resources</li>
+<li><strong>⚙️ Configuration</strong>: Robust environment variable management with validation</li>
+<li><strong>🛡️ Error Handling</strong>: Comprehensive error handling with helpful messages</li>
+<li><strong>📊 Balance Checking</strong>: Query SOL balances for any account</li>
+<li><strong>💸 SOL Transfers</strong>: Send SOL between accounts</li>
+<li><strong>🔍 Validation</strong>: Input validation and configuration verification</li>
+</ul>
+<p><strong>Note:</strong> This project has undergone significant refactoring. The core logic is now split into modules within the <code>src/</code> directory (<code>solana_client.py</code>, <code>ico_manager.py</code>, <code>resource_manager.py</code>, <code>pda_utils.py</code>, <code>config.py</code>, etc.) and the CLI uses <code>typer</code> instead of <code>argparse</code>.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Python 3.8+</li>
+<li><code>pip</code> package manager</li>
+<li>A running Solana cluster (e.g., local <code>solana-test-validator</code> or a devnet/testnet endpoint)</li>
+<li>The corresponding Solana program deployed to the target cluster</li>
+</ul>
+<h2>📦 Recent Improvements</h2>
+<p>The codebase has undergone significant refactoring and quality improvements:</p>
+<ul>
+<li><strong>🏗️ Modular Architecture</strong>: Functions broken down into smaller, maintainable components</li>
+<li><strong>🔧 Type Hints</strong>: Comprehensive type annotations throughout the codebase</li>
+<li><strong>⚙️ Constants</strong>: Magic numbers replaced with named constants</li>
+<li><strong>🛡️ Input Validation</strong>: Robust validation for all configuration values and user inputs</li>
+<li><strong>📚 Documentation</strong>: Enhanced docstrings and CLI help text with examples</li>
+<li><strong>🎯 Error Handling</strong>: Improved error messages with actionable troubleshooting tips</li>
+<li><strong>🧹 Code Quality</strong>: Consistent formatting, imports organization, and naming conventions</li>
+</ul>
+<h2>🚀 Quick Start</h2>
+<ol>
+<li>
+<p><strong>Clone and setup:</strong>
+    <code>bash
+    git clone &lt;repository_url&gt;
+    cd solana-ico
+    python -m venv .venv
+    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+    pip install -r requirements.txt</code></p>
+</li>
+<li>
+<p><strong>Configure environment:</strong>
+    <code>bash
+    export SOLANA_CLUSTER_URL="http://localhost:8899"
+    export SOLANA_PROGRAM_ID="YourProgramIdHere"</code></p>
+</li>
+<li>
+<p><strong>Verify setup:</strong>
+    <code>bash
+    python -m src.main config verify</code></p>
+</li>
+<li>
+<p><strong>Check token info:</strong>
+    <code>bash
+    python -m src.main info</code></p>
+</li>
+</ol>
+<h2>📦 Installation</h2>
+<ol>
+<li>
+<p><strong>Clone the repository:</strong>
+    <code>bash
+    git clone &lt;repository_url&gt;
+    cd solana-ico</code></p>
+</li>
+<li>
+<p><strong>Install dependencies:</strong>
+    <code>bash
+    pip install -r requirements.txt --user</code></p>
+</li>
+<li>
+<p><strong>Set up environment variables:</strong>
+    ```bash
+    # For local development
+    export SOLANA_CLUSTER_URL="http://localhost:8899"
+    export SOLANA_PROGRAM_ID="YourDeployedProgramIdHere"</p>
+<h1>Or create a .env file</h1>
+<p>echo "SOLANA_CLUSTER_URL=http://localhost:8899" &gt; .env
+echo "SOLANA_PROGRAM_ID=YourDeployedProgramIdHere" &gt;&gt; .env
+```</p>
+</li>
+</ol>
+<h2>License</h2>
+<p>This project is licensed under the MIT-0 License. See the <a href="LICENSE">LICENSE</a> file for details.</p>
+<h2>Configuration</h2>
+<p>The CLI requires two environment variables to be set:</p>
+<ol>
+<li><code>SOLANA_CLUSTER_URL</code>: The HTTP URL of the Solana cluster RPC endpoint.<ul>
+<li>Defaults to <code>http://localhost:8899</code> if not set.</li>
+<li>Example: <code>export SOLANA_CLUSTER_URL="https://api.devnet.solana.com"</code></li>
+</ul>
+</li>
+<li><code>SOLANA_PROGRAM_ID</code>: The public key (as a base58 string) of the deployed Solana program.<ul>
+<li><strong>This must be set.</strong> There is no default.</li>
+<li>Example: <code>export SOLANA_PROGRAM_ID="YourProgramIdGoesHere..."</code></li>
+</ul>
+</li>
+</ol>
+<p>You can set these variables directly in your shell or place them in a <code>.env</code> file in the project root directory (the CLI uses <code>python-dotenv</code> to load it automatically).</p>
+<pre><code class="language-env">SOLANA_CLUSTER_URL=http://localhost:8899
+SOLANA_PROGRAM_ID=YourProgramIdGoesHere...
+</code></pre>
+<p>You can verify the configuration and connection using the <code>config verify</code> command.</p>
+<h2>🖥️ Usage</h2>
+<p>The main entry point is <code>src/main.py</code>. You can run commands using <code>python -m src.main &lt;command&gt; [subcommand] [arguments]</code>.</p>
+<h3>📋 Available Commands</h3>
+<p>Get help for any command using <code>--help</code>:</p>
+<pre><code class="language-bash">python -m src.main --help          # Show all commands
+python -m src.main info --help     # Show help for specific command
+python -m src.main ico --help      # Show ICO subcommands
+</code></pre>
+<p><strong>General Commands:</strong></p>
+<ul>
+<li><code>info</code>: Display ContextCoin token information.
+    <code>bash
+    python -m src.main info</code></li>
+<li><code>balance &lt;public_key&gt;</code>: Get the SOL balance of an account.
+    <code>bash
+    python -m src.main balance &lt;account_pubkey&gt;</code></li>
+<li><code>send &lt;keypair_path&gt; &lt;to_public_key&gt; &lt;amount_lamports&gt;</code>: Send SOL.
+    <code>bash
+    python -m src.main send /path/to/sender_keypair.json &lt;recipient_pubkey&gt; 100000000</code></li>
+</ul>
+<p><strong>Configuration Commands:</strong></p>
+<ul>
+<li><code>config show</code>: Display the currently loaded configuration.
+    <code>bash
+    python -m src.main config show</code></li>
+<li><code>config verify</code>: Check configuration and connection to the cluster.
+    <code>bash
+    python -m src.main config verify</code></li>
+</ul>
+<p><strong>ICO Commands (<code>ico</code>):</strong></p>
+<ul>
+<li><code>ico init &lt;keypair_path&gt; &lt;token_mint&gt; &lt;total_supply&gt; &lt;base_price&gt; &lt;scaling_factor&gt;</code>: Initialize the ICO (owner only).
+    <code>bash
+    python -m src.main ico init /path/to/owner_keypair.json &lt;token_mint_pubkey&gt; 1000000000 1000 100000</code></li>
+<li><code>ico buy &lt;keypair_path&gt; &lt;amount_lamports&gt; &lt;ico_owner_pubkey&gt; &lt;token_mint&gt;</code>: Buy tokens from the ICO.
+    <code>bash
+    python -m src.main ico buy /path/to/buyer_keypair.json 50000000 &lt;ico_owner_pubkey&gt; &lt;token_mint_pubkey&gt;</code></li>
+<li><code>ico sell &lt;keypair_path&gt; &lt;amount_tokens&gt; &lt;ico_owner_pubkey&gt; &lt;token_mint&gt;</code>: Sell tokens back to the ICO.
+    <code>bash
+    python -m src.main ico sell /path/to/seller_keypair.json 100 &lt;ico_owner_pubkey&gt; &lt;token_mint_pubkey&gt;</code></li>
+<li><code>ico withdraw &lt;keypair_path&gt; &lt;amount_lamports&gt;</code>: Withdraw SOL from escrow (owner only).
+    <code>bash
+    python -m src.main ico withdraw /path/to/owner_keypair.json 100000000</code></li>
+</ul>
+<p><strong>Resource Commands (<code>resource</code>):</strong></p>
+<ul>
+<li><code>resource create &lt;keypair_path&gt; &lt;resource_id&gt; &lt;access_fee&gt;</code>: Create/update resource access info (server only).
+    <code>bash
+    python -m src.main resource create /path/to/server_keypair.json "my_premium_api" 50000</code></li>
+<li><code>resource access &lt;keypair_path&gt; &lt;resource_id&gt; &lt;server_pubkey&gt; &lt;amount_lamports&gt;</code>: Pay to access a resource.
+    <code>bash
+    python -m src.main resource access /path/to/user_keypair.json "my_premium_api" &lt;server_pubkey&gt; 50000</code></li>
+</ul>
+<h2>Bonding Curve Mechanism</h2>
+<p>The ICO utilizes a linear bonding curve implemented directly within the deployed Solana program. This means the actual token price calculation, minting, and burning during <code>ico buy</code> and <code>ico sell</code> operations happen on-chain according to the parameters set during <code>ico init</code> (<code>base_price</code>, <code>scaling_factor</code>).</p>
+<p>The <code>src/curve_estimator.py</code> module in this CLI provides a <em>client-side function</em> (<code>calculate_price</code>) to <em>estimate</em> the current token price based on the known <code>tokenomics</code> constants. This estimation is for informational purposes and may differ slightly from the exact price calculated by the on-chain program at the moment of a transaction due to potential state changes between estimation and execution.</p>
+<h2>Testing</h2>
+<p>The project uses <code>unittest</code> and <code>unittest.mock</code>. Tests are located in the <code>src/tests/</code> directory.</p>
+<p>To run the tests, ensure you have <code>pytest</code> installed (<code>pip install pytest --user</code>) and run it from the project root directory:</p>
+<pre><code class="language-bash">pytest
+</code></pre>
+<p>The <code>pytest.ini</code> file configures <code>pytest</code> to find modules within the <code>src</code> directory correctly.</p>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong><code>SolanaConnectionError</code>:</strong> This usually means the CLI cannot connect to the Solana cluster specified by <code>SOLANA_CLUSTER_URL</code>.<ul>
+<li><strong>Verify URL:</strong> Run <code>python -m src.main config show</code> and check if the displayed 'Cluster URL' is correct.</li>
+<li><strong>Check Environment:</strong> Ensure <code>SOLANA_CLUSTER_URL</code> is set correctly in your environment or <code>.env</code> file.</li>
+<li><strong>Run Local Validator:</strong> If using a local cluster (like the default <code>http://localhost:8899</code>), make sure <code>solana-test-validator</code> is running in a separate terminal.</li>
+<li><strong>Verify Connection:</strong> Use <code>python -m src.main config verify</code> to test the connection directly.</li>
+</ul>
+</li>
+<li><strong><code>ConfigurationError: SOLANA_PROGRAM_ID environment variable is not set</code>:</strong> You must set the <code>SOLANA_PROGRAM_ID</code> environment variable or add it to your <code>.env</code> file, pointing to the deployed program's public key.</li>
+<li><strong><code>KeypairError</code>:</strong> Check that the path provided to a keypair file is correct and that the file contains a valid secret key (usually a JSON array or comma-separated list of numbers).</li>
+</ul>
+<section>
+  <h2>Source Code</h2>
+  <p class="section-desc">Browse the source repository</p>
+  <div class="link-list">
+    <a href="https://github.com/waifuai/solana-ico">GitHub Repository</a>
+  </div>
+</section>
+</div>
+</body>
+</html>

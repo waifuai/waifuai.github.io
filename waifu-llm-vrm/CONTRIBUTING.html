@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contributing to pywaifu</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
+  pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
+  code { background: #161b22; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+  pre code { background: none; padding: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid #30363d; padding: 8px; text-align: left; }
+  th { background: #161b22; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1, h2, h3 { border-bottom: 1px solid #30363d; padding-bottom: 0.3em; }
+  blockquote { border-left: 4px solid #30363d; padding-left: 1rem; color: #8b949e; }
+  .back-link { display: inline-block; margin-bottom: 1rem; color: #8b949e; font-size: 0.9rem; }
+  img { max-width: 100%; }
+</style>
+
+</head>
+<body>
+<a class="back-link" href="index.html">&larr; Back to index</a>
+<h1>Contributing to pywaifu</h1>
+<p>Thank you for your interest in contributing to pywaifu! This document provides guidelines for contributing to the project.</p>
+<h2>Development Setup</h2>
+<ol>
+<li>
+<p><strong>Fork and Clone the Repository</strong>
+   <code>bash
+   git clone https://github.com/waifuai/waifu-llm-vrm.git
+   cd pywaifu</code></p>
+</li>
+<li>
+<p><strong>Set Up Development Environment</strong>
+   ```bash
+   # Create virtual environment
+   python -m uv venv .venv</p>
+</li>
+</ol>
+<p># Activate environment
+   source .venv/Scripts/activate  # On Windows: .venv\Scripts\activate</p>
+<p># Install development dependencies
+   python -m uv pip install -r requirements-dev.txt
+   ```</p>
+<ol>
+<li><strong>Set Up Pre-commit Hooks</strong>
+   ```bash
+   # Install pre-commit
+   python -m uv pip install pre-commit</li>
+</ol>
+<p># Install hooks
+   pre-commit install
+   ```</p>
+<h2>Development Workflow</h2>
+<ol>
+<li>
+<p><strong>Create a Feature Branch</strong>
+   <code>bash
+   git checkout -b feature/your-feature-name</code></p>
+</li>
+<li>
+<p><strong>Make Your Changes</strong></p>
+</li>
+<li>Follow PEP 8 style guidelines</li>
+<li>Add tests for new functionality</li>
+<li>Update documentation as needed</li>
+<li>
+<p>Ensure all tests pass</p>
+</li>
+<li>
+<p><strong>Run Tests</strong>
+   ```bash
+   # Run all tests
+   python -m pytest</p>
+</li>
+</ol>
+<p># Run with coverage
+   python -m pytest --cov=src/pywaifu</p>
+<p># Run specific tests
+   python -m pytest src/pywaifu/tests/test_character.py
+   ```</p>
+<ol>
+<li><strong>Code Quality Checks</strong>
+   ```bash
+   # Format code
+   python -m black src/ examples/</li>
+</ol>
+<p># Lint code
+   python -m flake8 src/ examples/</p>
+<p># Type checking
+   python -m mypy src/
+   ```</p>
+<ol>
+<li>
+<p><strong>Commit Your Changes</strong>
+   <code>bash
+   git add .
+   git commit -m "feat: add your feature description"</code></p>
+</li>
+<li>
+<p><strong>Push and Create Pull Request</strong>
+   <code>bash
+   git push origin feature/your-feature-name</code></p>
+</li>
+</ol>
+<h2>Code Style Guidelines</h2>
+<h3>Python Style</h3>
+<ul>
+<li>Follow PEP 8</li>
+<li>Use 4 spaces for indentation</li>
+<li>Maximum line length: 88 characters (Black default)</li>
+<li>Use type hints for function parameters and return types</li>
+</ul>
+<h3>Documentation</h3>
+<ul>
+<li>Use docstrings for all public functions, classes, and methods</li>
+<li>Follow Google docstring format</li>
+<li>Document complex logic with inline comments</li>
+</ul>
+<h3>Naming Conventions</h3>
+<ul>
+<li>Classes: PascalCase</li>
+<li>Functions and variables: snake_case</li>
+<li>Constants: UPPER_SNAKE_CASE</li>
+<li>Private methods: _prefixed</li>
+</ul>
+<h3>Error Handling</h3>
+<ul>
+<li>Use custom exceptions where appropriate</li>
+<li>Provide meaningful error messages</li>
+<li>Log errors appropriately</li>
+<li>Don't expose internal implementation details in error messages</li>
+</ul>
+<h2>Testing</h2>
+<h3>Unit Tests</h3>
+<ul>
+<li>Write tests for all new functionality</li>
+<li>Use pytest framework</li>
+<li>Mock external dependencies</li>
+<li>Test edge cases and error conditions</li>
+<li>Aim for high test coverage</li>
+</ul>
+<h3>Test Structure</h3>
+<pre><code>src/pywaifu/tests/
+├── __init__.py
+├── test_character.py     # Character class tests
+├── test_vrm.py          # VRMCharacter class tests
+├── test_godot.py        # GodotConnector tests
+└── test_utils.py        # Utility function tests
+</code></pre>
+<h3>Running Tests</h3>
+<pre><code class="language-bash"># All tests
+pytest
+
+# With coverage
+pytest --cov=src/pywaifu --cov-report=html
+
+# Specific test file
+pytest src/pywaifu/tests/test_character.py
+
+# Verbose output
+pytest -v
+</code></pre>
+<h2>Pull Request Process</h2>
+<ol>
+<li><strong>Title</strong>: Use conventional commit format</li>
+<li><code>feat:</code> new feature</li>
+<li><code>fix:</code> bug fix</li>
+<li><code>docs:</code> documentation changes</li>
+<li><code>style:</code> code style changes</li>
+<li><code>refactor:</code> code refactoring</li>
+<li><code>test:</code> test additions/modifications</li>
+<li>
+<p><code>chore:</code> maintenance tasks</p>
+</li>
+<li>
+<p><strong>Description</strong>: Provide clear description of changes</p>
+</li>
+<li>What problem does this solve?</li>
+<li>How does the solution work?</li>
+<li>Any breaking changes?</li>
+<li>
+<p>Screenshots or examples if applicable</p>
+</li>
+<li>
+<p><strong>Checklist</strong>:</p>
+</li>
+<li>[ ] Code follows project style guidelines</li>
+<li>[ ] Tests added/updated for new functionality</li>
+<li>[ ] Documentation updated</li>
+<li>[ ] All tests pass</li>
+<li>[ ] Code reviewed by at least one other contributor</li>
+</ol>
+<h2>Documentation</h2>
+<h3>Updating Documentation</h3>
+<ul>
+<li>Update README.md for significant changes</li>
+<li>Add examples for new features</li>
+<li>Update docstrings for API changes</li>
+<li>Update type hints if needed</li>
+</ul>
+<h3>Building Documentation</h3>
+<pre><code class="language-bash"># Generate Sphinx documentation
+cd docs/
+make html
+</code></pre>
+<h2>Release Process</h2>
+<h3>Versioning</h3>
+<ul>
+<li>Follow semantic versioning (MAJOR.MINOR.PATCH)</li>
+<li>Update version in <code>pyproject.toml</code> or <code>__init__.py</code></li>
+<li>Update CHANGELOG.md</li>
+</ul>
+<h3>Release Steps</h3>
+<ol>
+<li>Create release branch</li>
+<li>Update version numbers</li>
+<li>Update changelog</li>
+<li>Run full test suite</li>
+<li>Create pull request</li>
+<li>Merge to main</li>
+<li>Create GitHub release</li>
+<li>Publish to PyPI</li>
+</ol>
+<h2>Community</h2>
+<h3>Getting Help</h3>
+<ul>
+<li>Check existing issues and documentation first</li>
+<li>Use clear, descriptive issue titles</li>
+<li>Provide minimal reproducible examples</li>
+<li>Include relevant error messages and stack traces</li>
+</ul>
+<h3>Code of Conduct</h3>
+<ul>
+<li>Be respectful and inclusive</li>
+<li>Focus on constructive feedback</li>
+<li>Help maintain a positive community environment</li>
+</ul>
+<h2>License</h2>
+<p>By contributing to pywaifu, you agree that your contributions will be licensed under the same license as the project (MIT-0 License).</p>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Token Economy Simulation with Bonding Curves and Affiliate Dynamics</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card-bg: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --accent2: #7ee787;
+  --accent3: #d2a8ff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+header { text-align: center; margin-bottom: 3rem; padding: 2rem 0; border-bottom: 1px solid var(--border); }
+header h1 { font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+header p { color: var(--text-muted); font-size: 1.1rem; }
+section { margin-bottom: 2.5rem; }
+h2 { font-size: 1.4rem; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 0.5rem; }
+.count { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
+.section-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.link-list { display: flex; flex-direction: column; gap: 0.25rem; }
+.link-list a { color: var(--accent); text-decoration: none; padding: 0.4rem 0.75rem; border-radius: 6px; transition: background 0.15s; font-size: 0.95rem; }
+.link-list a:hover { background: var(--card-bg); text-decoration: underline; }
+footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding-top: 2rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>Token Economy Simulation with Bonding Curves and Affiliate Dynamics</h1>
+<p></p>
+</header>
+<h1>Token Economy Simulation with Bonding Curves and Affiliate Dynamics</h1>
+<h2>Overview</h2>
+<p>This project simulates a dynamic token economy with multiple cryptocurrencies, bonding curve mechanisms, and affiliate marketing dynamics. It demonstrates how token prices evolve based on supply/demand through different bonding curves, while affiliates earn commissions and adapt their strategies in real-time.</p>
+<h2>Key Features</h2>
+<ul>
+<li><strong>5 Bonding Curve Types</strong></li>
+<li>Linear, Exponential, Sigmoid, Root, and Inverse curves</li>
+<li>Automatic curve switching and parameter randomization</li>
+<li><strong>Dynamic Affiliate System</strong></li>
+<li>Adaptive commission rates (0-20% range)</li>
+<li>Whale affiliates with large investment capacity</li>
+<li>Portfolio tracking and automated trading strategies</li>
+<li><strong>Economic Mechanics</strong></li>
+<li>Transaction fees (0.25%) and token burns (0.02%)</li>
+<li>Supply-dependent price calculations</li>
+<li>Configurable simulation parameters</li>
+<li><strong>Simulation Analytics</strong></li>
+<li>Step-by-step price/supply tracking</li>
+<li>Affiliate earnings history</li>
+<li>Comprehensive end-of-run summary reports</li>
+</ul>
+<h2>Installation</h2>
+<ol>
+<li><strong>Requirements</strong></li>
+<li>Python 3.8+</li>
+<li>
+<p>NumPy</p>
+</li>
+<li>
+<p><strong>Setup</strong>
+   <code>bash
+   pip install numpy</code></p>
+</li>
+</ol>
+<h2>Usage</h2>
+<p>Run the simulation with default parameters:</p>
+<pre><code class="language-bash">python main.py
+</code></pre>
+<p>Customize the simulation:</p>
+<pre><code class="language-bash">python main.py \
+  --num_simulation_steps 500 \
+  --num_tokens 8 \
+  --num_affiliates 10 \
+  --initial_price 2.0 \
+  --initial_commission_rate 0.15
+</code></pre>
+<h2>Configuration Options</h2>
+<h3>Command Line Arguments</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--num_simulation_steps</code></td>
+<td>Total steps to simulate</td>
+<td>100</td>
+</tr>
+<tr>
+<td><code>--num_tokens</code></td>
+<td>Number of distinct tokens</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>--num_affiliates</code></td>
+<td>Number of affiliates</td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>--initial_price</code></td>
+<td>Starting price for all tokens</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td><code>--initial_commission_rate</code></td>
+<td>Base affiliate commission rate</td>
+<td>0.10</td>
+</tr>
+</tbody>
+</table>
+<h3>Key Constants (constants.py)</h3>
+<pre><code class="language-python">INITIAL_SUPPLY = 10000        # Starting token supply
+TRANSACTION_FEE_RATE = 0.0025 # 0.25% per trade
+BURN_RATE = 0.0002            # 0.02% token burn
+COMMISSION_DYNAMICS_STEP = 10 # Commission adjustment interval
+WHALE_INVESTMENT_RANGE = (5000, 10000) # Whale capacity bounds
+</code></pre>
+<h2>Simulation Mechanics</h2>
+<h3>Token Dynamics</h3>
+<ol>
+<li><strong>Price Calculation</strong>
+   <code>python
+   # Example exponential curve
+   price = a * e^(k * supply)</code></li>
+<li><strong>Supply Changes</strong></li>
+<li>Buys increase supply, sells decrease supply</li>
+<li>
+<p>Automatic fee deduction and token burns</p>
+</li>
+<li>
+<p><strong>Bonding Curve Evolution</strong></p>
+</li>
+<li>Random curve selection every 500-1000 steps</li>
+<li>Parameter adjustments every 20 steps</li>
+</ol>
+<h3>Affiliate Behavior</h3>
+<ol>
+<li><strong>Commission Adjustments</strong></li>
+<li>Rates adjusted every 10 steps based on:
+   <code>python
+   avg_investment &gt; 50 ? rate += 0.0005 : rate -= 0.0005</code></li>
+<li><strong>Trading Strategies</strong></li>
+<li>Regular affiliates: 1-2 trades/step</li>
+<li>Whale affiliates: Large bulk trades (5,000-10,000 base currency)</li>
+<li>
+<p>Automatic portfolio rebalancing (5% sell probability/step)</p>
+</li>
+<li>
+<p><strong>Wallet Management</strong></p>
+</li>
+<li>Track multiple token balances</li>
+<li>Base currency accounting</li>
+<li>Historical earnings tracking</li>
+</ol>
+<h2>Output Example</h2>
+<pre><code class="language-text">--- Token Summary ---
+
+Token: Token_3
+  Final Price: 4.72
+  Final Supply: 14256.32
+  Final Bonding Curve: exponential_bonding_curve
+
+--- Affiliate Summary ---
+
+Affiliate: 4
+  Final Base Currency: 3842.15
+  Final Commission Rate: 0.1125
+  Total Earned: 642.78
+</code></pre>
+
+
+<section>
+  <h2>Source Code</h2>
+  <p class="section-desc">Browse the source repository</p>
+  <div class="link-list">
+    <a href="https://github.com/waifuai/sim-affiliate">GitHub Repository</a>
+  </div>
+</section>
+
+</div>
+</body>
+</html>

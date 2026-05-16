@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>waifu-llm-vrm</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card-bg: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --accent2: #7ee787;
+  --accent3: #d2a8ff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+header { text-align: center; margin-bottom: 3rem; padding: 2rem 0; border-bottom: 1px solid var(--border); }
+header h1 { font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+header p { color: var(--text-muted); font-size: 1.1rem; }
+section { margin-bottom: 2.5rem; }
+h2 { font-size: 1.4rem; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 0.5rem; }
+.count { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
+.section-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.link-list { display: flex; flex-direction: column; gap: 0.25rem; }
+.link-list a { color: var(--accent); text-decoration: none; padding: 0.4rem 0.75rem; border-radius: 6px; transition: background 0.15s; font-size: 0.95rem; }
+.link-list a:hover { background: var(--card-bg); text-decoration: underline; }
+.readme-content { margin-top: 2rem; padding: 1.5rem; background: var(--card-bg); border-radius: 8px; border: 1px solid var(--border); }
+.readme-content h1 { font-size: 1.8rem; margin-bottom: 1rem; }
+.readme-content h2 { font-size: 1.3rem; }
+.readme-content pre { background: var(--bg); padding: 1rem; border-radius: 6px; overflow-x: auto; }
+.readme-content code { background: var(--bg); padding: 0.2em 0.4em; border-radius: 3px; }
+.readme-content pre code { background: none; }
+footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding-top: 2rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+img { max-width: 100%; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>waifu-llm-vrm</h1>
+    <p>A Python library for creating AI waifus in Godot, powered by the OpenRouter API and optionally using VRM models.</p>
+  </header>
+    <section>
+    <h2>Documentation <span class="count">(3)</span></h2>
+    <p class="section-desc">Project documentation and guides</p>
+    <div class="link-list">
+      <a href="README.html">pywaifu</a>
+      <a href="CHANGELOG.html">Changelog</a>
+      <a href="CONTRIBUTING.html">Contributing to pywaifu</a>
+    </div>
+  </section>
+  <section>
+    <h2>Project Overview</h2>
+    <div class="readme-content">
+<h1>pywaifu</h1>
+<p>A Python library for creating AI waifus in Godot, powered by the OpenRouter API and optionally using VRM models.</p>
+<h2>Features</h2>
+<ul>
+<li><strong>AI Conversation:</strong> Uses the OpenRouter API for natural language generation. Requires an OpenRouter API key.</li>
+<li><strong>Godot Integration:</strong> Connects to a running Godot instance for communication (using <code>godot-rl</code> if available, otherwise sockets).</li>
+<li><strong>Character Representation:</strong> <code>Character</code> class manages personality, state, and interaction logic, including initializing the chat session.</li>
+<li><strong>VRM Support (Optional):</strong> <code>VRMCharacter</code> subclass adds methods for controlling VRM animations and expressions via Godot.</li>
+<li><strong>Context Management:</strong> Conversation history is automatically managed by the chat session.</li>
+</ul>
+<h2>Installation</h2>
+<ol>
+<li>
+<p><strong>Clone the repository:</strong>
+    <code>bash
+    git clone https://github.com/waifuai/waifu-llm-vrm
+    cd waifu-llm-vrm</code></p>
+</li>
+<li>
+<p><strong>Create a virtual environment (recommended):</strong>
+    This project uses <code>uv</code> for environment management. Ensure <code>uv</code> is installed (<code>pip install uv</code> or <code>python -m pip install uv</code>).
+    <code>bash
+    # Create the venv
+    python -m uv venv .venv
+    # Activate (Bash/Git Bash)
+    source .venv/Scripts/activate
+    # Or (CMD on Windows)
+    # .venv\Scripts\activate.bat
+    # Or (PowerShell on Windows)
+    # .venv\Scripts\Activate.ps1</code>
+    <em>Note: You might need to install <code>uv</code> inside the venv as well if you encounter issues: <code>.venv/Scripts/python.exe -m pip install uv</code></em></p>
+</li>
+<li>
+<p><strong>Set up OpenRouter API Key:</strong>
+    This library requires an OpenRouter API key.</p>
+<ul>
+<li>Obtain an API key from OpenRouter (https://openrouter.ai/).</li>
+<li>Create a file named <code>.api-openrouter</code> in your home directory (<code>~/.api-openrouter</code>).</li>
+<li>Paste your API key into this file and save it. The file should contain only the key.</li>
+</ul>
+</li>
+<li>
+<p><strong>Install dependencies:</strong>
+    Make sure your virtual environment is activated.
+    <code>bash
+    # Install requirements using uv
+    python -m uv pip install -r requirements.txt</code></p>
+</li>
+</ol>
+<h2>Usage</h2>
+<p>The following example demonstrates basic usage. You can find this script in <code>examples/basic_usage.py</code>.</p>
+<pre><code class="language-python"># examples/basic_usage.py
+import time
+from pywaifu.godot import GodotConnector, GodotError
+from pywaifu.character import Character, LLMError # Import LLMError from character module now
+# from pywaifu.vrm import VRMCharacter # Uncomment if using VRM
+
+# --- Configuration ---
+# IMPORTANT: Replace with the actual path to your Godot project directory
+GODOT_PROJECT_PATH = &quot;path/to/your/godot_project&quot;
+CHARACTER_NAME = &quot;Yui&quot;
+CHARACTER_PERSONALITY = &quot;Kind, helpful, and a little clumsy. Enjoys talking about technology.&quot;
+# VRM configuration (only needed if USE_VRM is True)
+VRM_NODE_PATH = &quot;/root/Scene/YourVRMNode&quot; # IMPORTANT: Set this path in Godot scene if using VRM
+USE_VRM = False # Set to True to use the VRMCharacter example
+
+def main():
+    connector = None # Initialize connector to None for finally block
+    try:
+        # --- Pre-check ---
+        # The Character class loads the key, but ensure the file exists.
+        print(&quot;Ensure your OpenRouter API key is stored in ~/.api-openrouter&quot;)
+
+        print(&quot;Initializing Godot Connector...&quot;)
+        # Assuming Godot is already running and listening, or godot-rl will launch it
+        connector = GodotConnector(GODOT_PROJECT_PATH)
+        connector.connect()
+        print(&quot;Connector ready.&quot;)
+
+        print(f&quot;Creating character: {CHARACTER_NAME}...&quot;)
+        # The Character class now automatically uses the OpenRouter API key
+        # loaded from ~/.api-openrouter and the 'openrouter/free' model.
+        if USE_VRM:
+            # Import VRMCharacter if needed
+            from pywaifu.vrm import VRMCharacter
+            waifu = VRMCharacter(
+                name=CHARACTER_NAME,
+                personality=CHARACTER_PERSONALITY,
+                godot_connector=connector,
+                vrm_node_path=VRM_NODE_PATH
+            )
+            print(&quot;VRM Character created.&quot;)
+        else:
+            waifu = Character(
+                name=CHARACTER_NAME,
+                personality=CHARACTER_PERSONALITY,
+                godot_connector=connector
+            )
+            print(&quot;Standard Character created.&quot;)
+
+        print(f&quot;\n--- Starting interaction with {waifu.name} ---&quot;)
+        print(&quot;Type 'quit' or 'exit' to end the conversation.&quot;)
+
+        # Simple interactive loop
+        while True:
+            user_input = input(&quot;You: &quot;)
+            if user_input.lower() in [&quot;quit&quot;, &quot;exit&quot;]:
+                break
+
+            print(f&quot;{waifu.name}: ...thinking...&quot;)
+            try:
+                response = waifu.talk(user_input)
+                print(f&quot;{waifu.name}: {response}&quot;)
+
+                # Example VRM action (only if USE_VRM is True)
+                if USE_VRM and isinstance(waifu, VRMCharacter):
+                    if &quot;wave&quot; in user_input.lower():
+                         print(f&quot;[{waifu.name} waves]&quot;)
+                         waifu.play_animation(&quot;Wave&quot;)
+                         waifu.set_expression(&quot;Happy&quot;, 0.8)
+                    else:
+                         waifu.play_animation(&quot;Idle&quot;)
+                         waifu.set_expression(&quot;Neutral&quot;, 1.0)
+
+            except LLMError as e:
+                print(f&quot;LLM Error: {e}&quot;)
+            except GodotError as e:
+                print(f&quot;Godot Connection Error: {e}&quot;)
+                print(&quot;Exiting due to connection error.&quot;)
+                break
+            except Exception as e:
+                 print(f&quot;An unexpected error occurred during talk: {e}&quot;)
+
+    except GodotError as e:
+        print(f&quot;Failed to connect to Godot: {e}&quot;)
+    except LLMError as e:
+        print(f&quot;Failed to initialize Character/LLM: {e}&quot;)
+    except KeyboardInterrupt:
+        print(&quot;\nUser interrupted. Exiting...&quot;)
+    except Exception as e:
+        print(f&quot;\nAn unexpected error occurred during setup: {e}&quot;)
+    finally:
+        if connector:
+            print(&quot;Disconnecting from Godot...&quot;)
+            connector.disconnect()
+        print(&quot;Cleanup complete. Goodbye!&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<h2>Godot Setup</h2>
+<p>To integrate pywaifu with your Godot project:</p>
+<h3>Basic Setup</h3>
+<ol>
+<li>
+<p><strong>Create a Godot Project</strong>: Start a new Godot project or use an existing one.</p>
+</li>
+<li>
+<p><strong>Network Configuration</strong>:</p>
+</li>
+<li>If using <code>godot-rl</code>: Ensure godot-rl is properly configured in your Godot project.</li>
+<li>
+<p>If using sockets: Make sure your Godot project listens on port 9000 (default) or the port specified in your configuration.</p>
+</li>
+<li>
+<p><strong>Communication Scripts</strong>:
+   You'll need to implement Godot scripts to handle RPC calls from Python. Add these methods to your Godot nodes:</p>
+</li>
+<li><code>play_animation(node_path, animation_name, blend_time)</code></li>
+<li><code>set_expression(node_path, expression_name, value)</code></li>
+<li><code>get_animation_list(node_path)</code></li>
+<li><code>get_blendshape_list(node_path)</code></li>
+<li><code>character_spoke(character_name, message)</code></li>
+<li><code>character_error(character_name, error_message)</code></li>
+</ol>
+<h3>VRM Setup (Optional)</h3>
+<p>If you want to use VRM characters with animations and expressions:</p>
+<ol>
+<li>
+<p><strong>Install VRM Addon</strong>: Add a VRM-compatible addon to your Godot project.</p>
+</li>
+<li>
+<p><strong>Model Import</strong>: Import your VRM model into Godot and note the node path.</p>
+</li>
+<li>
+<p><strong>Animation Setup</strong>: Ensure your VRM model has animation player with animations like "Wave", "Idle", etc.</p>
+</li>
+<li>
+<p><strong>Blend Shapes</strong>: Set up blend shapes for expressions like "Happy", "Sad", "Neutral", etc.</p>
+</li>
+</ol>
+<h3>Example Godot Script</h3>
+<pre><code class="language-gdscript">extends Node
+
+func _ready():
+    # Start listening for connections
+    var server = TCP_Server.new()
+    server.listen(9000, &quot;127.0.0.1&quot;)
+
+func play_animation(node_path, animation_name, blend_time):
+    var vrm_node = get_node(node_path)
+    if vrm_node and vrm_node.has_method(&quot;play&quot;):
+        vrm_node.play(animation_name)
+
+func set_expression(node_path, expression_name, value):
+    var vrm_node = get_node(node_path)
+    if vrm_node and vrm_node.has_method(&quot;set_blend_shape&quot;):
+        vrm_node.set_blend_shape(expression_name, value)
+
+func get_animation_list(node_path):
+    var vrm_node = get_node(node_path)
+    if vrm_node and vrm_node.has_method(&quot;get_animation_list&quot;):
+        return vrm_node.get_animation_list()
+    return []
+
+func get_blendshape_list(node_path):
+    var vrm_node = get_node(node_path)
+    if vrm_node and vrm_node.has_method(&quot;get_blendshape_list&quot;):
+        return vrm_node.get_blendshape_list()
+    return []
+</code></pre>
+<h2>API Reference</h2>
+<h3>Character Class</h3>
+<p>The main class for creating AI characters.</p>
+<h4>Constructor</h4>
+<pre><code class="language-python">Character(name: str, personality: str, godot_connector: GodotConnector = None)
+</code></pre>
+<h4>Methods</h4>
+<ul>
+<li><code>talk(input_text: str) -&gt; str</code>: Send user input to the character and get a response</li>
+<li><code>perform_action(action: str, *args) -&gt; None</code>: Send an action command to Godot</li>
+<li><code>update_state(state_updates: dict) -&gt; None</code>: Update the character's internal state</li>
+</ul>
+<h3>VRMCharacter Class</h3>
+<p>Extended character class with VRM animation support.</p>
+<h4>Constructor</h4>
+<pre><code class="language-python">VRMCharacter(name: str, personality: str, godot_connector: GodotConnector = None, vrm_node_path: str = None)
+</code></pre>
+<h4>Additional Methods</h4>
+<ul>
+<li><code>play_animation(animation_name: str, blend_time: float = 0.0) -&gt; None</code>: Play a VRM animation</li>
+<li><code>set_expression(expression_name: str, value: float) -&gt; None</code>: Set a VRM blend shape value</li>
+<li><code>get_animation_list() -&gt; list</code>: Get list of available animations from Godot</li>
+<li><code>get_blendshape_list() -&gt; list</code>: Get list of available blend shapes from Godot</li>
+</ul>
+<h3>GodotConnector Class</h3>
+<p>Handles communication between Python and Godot.</p>
+<h4>Constructor</h4>
+<pre><code class="language-python">GodotConnector(project_path: str, port: int = None, auto_start: bool = True, headless: bool = True)
+</code></pre>
+<h4>Methods</h4>
+<ul>
+<li><code>connect() -&gt; None</code>: Establish connection to Godot</li>
+<li><code>disconnect() -&gt; None</code>: Close the connection</li>
+<li><code>rpc(func_name: str, *args) -&gt; any</code>: Call a function in Godot</li>
+<li><code>register_callback(event: str, callback: callable) -&gt; None</code>: Register a callback for Godot events</li>
+</ul>
+<h2>Troubleshooting</h2>
+<h3>Common Issues</h3>
+<ol>
+<li><strong>"Could not connect to Godot" Error</strong></li>
+<li>Ensure Godot is running and listening on the correct port</li>
+<li>Check that your Godot project has the necessary network scripts</li>
+<li>
+<p>Verify the project path is correct</p>
+</li>
+<li>
+<p><strong>"API key file not found" Error</strong></p>
+</li>
+<li>Create the <code>~/.api-openrouter</code> file</li>
+<li>Ensure the file contains only your OpenRouter API key</li>
+<li>
+<p>Check file permissions</p>
+</li>
+<li>
+<p><strong>VRM animations not working</strong></p>
+</li>
+<li>Verify the VRM node path is correct</li>
+<li>Ensure the VRM model has the required animations</li>
+<li>
+<p>Check that blend shapes are properly set up</p>
+</li>
+<li>
+<p><strong>Poor performance</strong></p>
+</li>
+<li>Reduce conversation history by implementing context limits</li>
+<li>Use shorter personality descriptions</li>
+<li>Consider using a different OpenRouter model if available</li>
+</ol>
+<h3>Debug Mode</h3>
+<p>Enable debug logging by setting the logging level:</p>
+<pre><code class="language-python">import logging
+logging.basicConfig(level=logging.DEBUG)
+</code></pre>
+<h2>Examples</h2>
+<h3>Advanced Character with Custom Behavior</h3>
+<pre><code class="language-python">from pywaifu import Character, GodotConnector
+import time
+
+class CustomCharacter(Character):
+    def __init__(self, name, personality, **kwargs):
+        super().__init__(name, personality, **kwargs)
+        self.interaction_count = 0
+
+    def talk(self, input_text):
+        self.interaction_count += 1
+        response = super().talk(input_text)
+
+        # Add custom behavior based on interaction count
+        if self.interaction_count % 5 == 0:
+            response += &quot; (This is our 5th conversation! How can I assist you better?)&quot;
+
+        return response
+
+# Usage
+connector = GodotConnector(&quot;path/to/godot/project&quot;)
+character = CustomCharacter(
+    name=&quot;Assistant&quot;,
+    personality=&quot;Helpful and knowledgeable AI assistant&quot;,
+    godot_connector=connector
+)
+
+connector.connect()
+print(&quot;Character ready! Type 'quit' to exit.&quot;)
+
+while True:
+    user_input = input(&quot;You: &quot;)
+    if user_input.lower() == 'quit':
+        break
+
+    response = character.talk(user_input)
+    print(f&quot;{character.name}: {response}&quot;)
+
+connector.disconnect()
+</code></pre>
+<h2>Development</h2>
+<h3>Running Tests</h3>
+<pre><code class="language-bash"># Run all tests
+python -m pytest
+
+# Run with coverage
+python -m pytest --cov=src/pywaifu
+
+# Run specific test file
+python -m pytest src/pywaifu/tests/test_character.py
+</code></pre>
+<h3>Project Structure</h3>
+<pre><code>pywaifu/
+├── src/
+│   └── pywaifu/
+│       ├── __init__.py          # Package initialization
+│       ├── character.py         # Main Character class
+│       ├── vrm.py              # VRMCharacter class
+│       ├── godot.py            # GodotConnector class
+│       ├── utils.py            # Utility functions
+│       └── tests/              # Test files
+│           ├── __init__.py
+│           ├── test_character.py
+│           ├── test_vrm.py
+│           └── test_godot.py
+├── examples/                   # Usage examples
+│   └── basic_usage.py
+├── README.md                   # Project documentation
+├── requirements.txt           # Python dependencies
+├── pytest.ini                # Test configuration
+└── .gitignore                # Git ignore patterns
+</code></pre>
+<h2>Contributing</h2>
+<p>Contributions are welcome! Please follow these steps:</p>
+<ol>
+<li>Fork the repository</li>
+<li>Create a feature branch (<code>git checkout -b feature/amazing-feature</code>)</li>
+<li>Commit your changes (<code>git commit -m 'Add amazing feature'</code>)</li>
+<li>Push to the branch (<code>git push origin feature/amazing-feature</code>)</li>
+<li>Open a Pull Request</li>
+</ol>
+<p>Please ensure your code:
+- Follows PEP 8 style guidelines
+- Includes tests for new functionality
+- Updates documentation as needed
+- Passes all existing tests</p>
+<h2>License</h2>
+<p>MIT-0 License</p>
+<h2>Changelog</h2>
+<h3>Version 1.0.0</h3>
+<ul>
+<li>Initial release</li>
+<li>Basic Character class with OpenRouter integration</li>
+<li>VRMCharacter class for VRM model support</li>
+<li>GodotConnector for Godot communication</li>
+<li>Comprehensive test suite</li>
+<li>Documentation and examples</li>
+</ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Source Code</h2>
+    <p class="section-desc">View the full repository on GitHub</p>
+    <div class="link-list">
+      <a href="https://github.com/waifuai/waifu-llm-vrm" target="_blank">github.com/waifuai/waifu-llm-vrm</a>
+    </div>
+  </section>
+  <footer>
+    <p>Generated for AI agent crawlability</p>
+  </footer>
+</div>
+</body>
+</html>

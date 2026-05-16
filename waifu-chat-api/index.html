@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>waifu-chat-api</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --card-bg: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --accent2: #7ee787;
+  --accent3: #d2a8ff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+header { text-align: center; margin-bottom: 3rem; padding: 2rem 0; border-bottom: 1px solid var(--border); }
+header h1 { font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+header p { color: var(--text-muted); font-size: 1.1rem; }
+section { margin-bottom: 2.5rem; }
+h2 { font-size: 1.4rem; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 0.5rem; }
+.count { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
+.section-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.link-list { display: flex; flex-direction: column; gap: 0.25rem; }
+.link-list a { color: var(--accent); text-decoration: none; padding: 0.4rem 0.75rem; border-radius: 6px; transition: background 0.15s; font-size: 0.95rem; }
+.link-list a:hover { background: var(--card-bg); text-decoration: underline; }
+.readme-content { margin-top: 2rem; padding: 1.5rem; background: var(--card-bg); border-radius: 8px; border: 1px solid var(--border); }
+.readme-content h1 { font-size: 1.8rem; margin-bottom: 1rem; }
+.readme-content h2 { font-size: 1.3rem; }
+.readme-content pre { background: var(--bg); padding: 1rem; border-radius: 6px; overflow-x: auto; }
+.readme-content code { background: var(--bg); padding: 0.2em 0.4em; border-radius: 3px; }
+.readme-content pre code { background: none; }
+footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding-top: 2rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+img { max-width: 100%; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>waifu-chat-api</h1>
+    <h2>Table of Contents</h2>
+  </header>
+    <section>
+    <h2>Documentation <span class="count">(2)</span></h2>
+    <p class="section-desc">Project documentation and guides</p>
+    <div class="link-list">
+      <a href="README.html">waifu chat api</a>
+    </div>
+  </section>
+  <section>
+    <h2>Project Overview</h2>
+    <div class="readme-content">
+<h1>waifu chat api</h1>
+<h2>Table of Contents</h2>
+<ol>
+<ul><li><a href="#project-description-and-purpose">Project Description and Purpose</a></li>
+<li><a href="#installation-and-setup-instructions">Installation and Setup Instructions</a></li>
+</ul><li><a href="#api-documentation">API Documentation</a><ul>
+<ul><li><a href="#user-management">User Management</a></li>
+<li><a href="#dialog-management">Dialog Management</a></li>
+<li><a href="#server-status">Server Status</a></li>
+</ul></ul>
+</li>
+<ul><li><a href="#configuration">Configuration</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ul></ol>
+<h2>Project Description and Purpose</h2>
+<p>This project is a Flask-based API for interacting with a conversational AI waifu character. It provides endpoints for user management, dialog management, and server status checks.</p>
+<p>This project provides a backend API for a conversational AI. It allows users to interact with the AI, manage their dialog history, and check the server status. The API is designed to be flexible and extensible, allowing for future integration with different AI models and front-end applications.</p>
+<h2>Installation and Setup Instructions</h2>
+<ol>
+<li>
+<p><strong>Clone the repository:</strong></p>
+<p><code>bash
+git clone &lt;repository_url&gt;
+cd waifu-chat-api</code>
+2.  <strong>Install dependencies:</strong>
+<code>bash
+pip install -r requirements.txt --user</code>
+You may create a <code>requirements.txt</code> by running:
+<code>bash
+pip freeze &gt; requirements.txt</code></p>
+</li>
+<li>
+<p><strong>Set environment variables:</strong></p>
+<p>The API relies on environment variables for configuration. You can set these variables directly in your terminal or, preferably, using a <code>.env</code> file.</p>
+<ul>
+<ul><li><code>DATABASE_FILE</code>: Path to the SQLite database file (default: <code>dialogs.db</code>). This file stores user dialog history.</li>
+<li><code>MODEL_URL</code>: URL of the AI model endpoint (default: <code>http://localhost:80/path/</code>). This is the address where the API sends requests to generate responses.</li>
+<li><code>DEFAULT_RESPONSE</code>: The default response message when the AI model is unavailable or returns an error (default: "The AI model is currently unavailable. Please try again later.").</li>
+<li><code>DEFAULT_GENRE</code>: The default genre for the conversation (default: "Romance").</li>
+</ul></ul>
+<p><strong>Example using a <code>.env</code> file (recommended):</strong></p>
+<ol>
+<li>
+<p>Create a <code>.env</code> file in the project root:</p>
+<p><code>DATABASE_FILE=dialogs.db
+MODEL_URL=http://localhost:80/path/
+DEFAULT_RESPONSE="I'm sorry, I'm having trouble connecting to the AI model."
+DEFAULT_GENRE="Fantasy"</code>
+    2.  Install <code>python-dotenv</code>:
+<code>bash
+pip install python-dotenv --user</code>
+    3.  Add the following lines to the top of <code>src/waifuapi.py</code> to load the environment variables:
+<code>python
+from dotenv import load_dotenv
+load_dotenv()</code></p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Run the application:</strong></p>
+<p><code>bash
+python src/waifuapi.py</code>
+The default port is 5000. You can specify a different port by setting the <code>PORT</code> environment variable.</p>
+<p>To run the application in different environments:</p>
+<ul>
+<ul><li><strong>Development:</strong> Run the application as shown above.</li>
+<li><strong>Testing:</strong> Use a testing framework like <code>pytest</code> (see the Testing section below).</li>
+<li><strong>Production:</strong> Use a production-ready WSGI server like Gunicorn or uWSGI.</li>
+</ul></ul>
+<p><strong>Note:</strong> The API uses the <code>current-user</code> header to identify the user making the request. This header is used to distinguish between different WaifuAPI users, allowing each user to have their own set of users and dialog history. If this header is not provided, the API defaults to a generic user ID.</p>
+</li>
+</ol>
+<h2>API Documentation</h2>
+<p>The API provides the following endpoints:</p>
+<h3>User Management</h3>
+<ul>
+<li><code>/v1/user/id/&lt;user_id&gt;</code> (PUT): Create a user.<ul>
+<ul><li>Description: Creates a new user with the given user ID.</li>
+</ul><li>Request Parameters:<ul>
+<ul><li><code>user_id</code> (string, required): The ID of the user to create.</li>
+</ul></ul>
+</li>
+<ul><li>Example Request: <code>PUT /v1/user/id/test_user</code></li>
+</ul><li>Example Response:
+    <code>json
+    {"user_id": "test_user"}</code></li>
+</ul>
+</li>
+<li><code>/v1/user/id/&lt;user_id&gt;</code> (GET): Check if a user exists.<ul>
+<ul><li>Description: Checks if a user with the given user ID exists.</li>
+</ul><li>Request Parameters:<ul>
+<ul><li><code>user_id</code> (string, required): The ID of the user to check.</li>
+</ul></ul>
+</li>
+<ul><li>Example Request: <code>GET /v1/user/id/test_user</code></li>
+</ul><li>Example Response (User exists):
+    <code>json
+    {"user_id": "test_user", "exists": true}</code></li>
+<li>Example Response (User does not exist):
+    <code>json
+    {"user_id": "test_user", "exists": false}</code></li>
+</ul>
+</li>
+<li><code>/v1/user/metadata/&lt;user_id&gt;</code> (GET): Get user metadata (last modified datetime and timestamp).<ul>
+<ul><li>Description: Retrieves metadata for a user, including the last modified datetime and timestamp.</li>
+</ul><li>Request Parameters:<ul>
+<ul><li><code>user_id</code> (string, required): The ID of the user.</li>
+</ul></ul>
+</li>
+<ul><li>Example Request: <code>GET /v1/user/metadata/test_user</code></li>
+</ul><li>Example Response:
+    <code>json
+    {"user_id": "test_user", "last_modified_datetime": "2025-03-01 11:22:33", "last_modified_timestamp": 1740828153}</code></li>
+</ul>
+</li>
+<li><code>/v1/user/id/&lt;user_id&gt;</code> (DELETE): Delete a user.<ul>
+<ul><li>Description: Deletes a user with the given user ID.</li>
+</ul><li>Request Parameters:<ul>
+<ul><li><code>user_id</code> (string, required): The ID of the user to delete.</li>
+</ul></ul>
+</li>
+<ul><li>Example Request: <code>DELETE /v1/user/id/test_user</code></li>
+</ul><li>Example Response:
+    <code>json
+    {"user_id": "test_user"}</code></li>
+</ul>
+</li>
+<li><code>/v1/user/all/count</code> (GET): Get the total number of users.<ul>
+<ul><li>Description: Retrieves the total number of users.</li>
+<li>Example Request: <code>GET /v1/user/all/count</code></li>
+</ul><li>Example Response:
+    <code>json
+    {"user_count": 5}</code></li>
+</ul>
+</li>
+<li><code>/v1/user/all/id/&lt;int:page&gt;</code> (GET): Get all users, paged by hundreds.<ul>
+<ul><li>Description: Retrieves a page of user IDs, with each page containing up to 100 users.</li>
+</ul><li>Request Parameters:<ul>
+<ul><li><code>page</code> (integer, required): The page number to retrieve (0-indexed).</li>
+</ul></ul>
+</li>
+<ul><li>Example Request: <code>GET /v1/user/all/id/0</code></li>
+</ul><li>Example Response:
+    <code>json
+    {"page": 0, "users": ["user1", "user2", "user3"]}</code></li>
+</ul>
+</li>
+</ul>
+<h3>Dialog Management</h3>
+<ul>
+<li><code>/v1/user/dialog/&lt;user_id&gt;</code> (DELETE): Reset user dialog.<ul>
+<ul><li>Description: Resets the dialog history for a given user.</li>
+</ul><li>Request Parameters:<ul>
+<ul><li><code>user_id</code> (string, required): The ID of the user.</li>
+</ul></ul>
+</li>
+<ul><li>Example Request: <code>DELETE /v1/user/dialog/test_user</code></li>
+</ul><li>Example Response:
+    <code>json
+    {"user_id": "test_user"}</code></li>
+</ul>
+</li>
+<li><code>/v1/user/dialog/json/&lt;user_id&gt;</code> (GET): Get user dialog in JSON format.<ul>
+<ul><li>Description: Retrieves the dialog history for a user in JSON format.</li>
+</ul><li>Request Parameters:<ul>
+<ul><li><code>user_id</code> (string, required): The ID of the user.</li>
+</ul></ul>
+</li>
+<ul><li>Example Request: <code>GET /v1/user/dialog/json/test_user</code></li>
+</ul><li>Example Response:
+    <code>json
+    {"user_id": "test_user", "dialog": [{"index": 0, "name": "User", "message": "Hello"}, {"index": 1, "name": "Waifu", "message": "Hi"}]}</code></li>
+</ul>
+</li>
+<li><code>/v1/user/dialog/json/&lt;user_id&gt;</code> (PUT): Set user dialog in JSON format.<ul>
+<ul><li>Description: Sets the dialog history for a user using a JSON object.</li>
+</ul><li>Request Parameters:<ul>
+<ul><li><code>user_id</code> (string, required): The ID of the user.</li>
+</ul></ul>
+</li>
+<li>Request Body:
+    <code>json
+    {"dialog": [{"index": 0, "name": "User", "message": "Hello"}, {"index": 1, "name": "Waifu", "message": "Hi"}]}</code></li>
+<ul><li>Example Request: <code>PUT /v1/user/dialog/json/test_user</code></li>
+</ul><li>Example Request Body:
+    <code>json
+    {"dialog": [{"index": 0, "name": "User", "message": "Hello"}, {"index": 1, "name": "Waifu", "message": "Hi"}]}</code></li>
+<li>Example Response:
+    <code>json
+    {"user_id": "test_user"}</code></li>
+</ul>
+</li>
+<li><code>/v1/user/dialog/str/&lt;user_id&gt;</code> (GET): Get user dialog as a string.<ul>
+<ul><li>Description: Retrieves the dialog history for a user as a string.</li>
+</ul><li>Request Parameters:<ul>
+<ul><li><code>user_id</code> (string, required): The ID of the user.</li>
+</ul></ul>
+</li>
+<ul><li>Example Request: <code>GET /v1/user/dialog/str/test_user</code></li>
+</ul><li>Example Response:
+    <code>json
+    {"user_id": "test_user", "dialog": "User said: \"Hello\" Waifu said: \"Hi\""}</code></li>
+</ul>
+</li>
+<li><code>/path</code> (POST): Send a chat message (using form data).<ul>
+<ul><li>Description: Sends a chat message to the AI using form data.</li>
+</ul><li>Request Parameters:<ul>
+<ul><li><code>message</code> (string, required): The chat message to send.</li>
+<li><code>user_id</code> (string, required): The ID of the user sending the message.</li>
+</ul></ul>
+</li>
+<ul><li>Example Request: <code>POST /path message=Hello&amp;user_id=test_user</code></li>
+<li>Example Response: <code>Hi</code></li>
+</ul></ul>
+</li>
+<li><code>/v1/waifu</code> (POST): Send a chat message (using JSON data).<ul>
+<ul><li>Description: Sends a chat message to the AI using JSON data.</li>
+</ul><li>Request Parameters:<ul>
+<ul><li><code>user_id</code> (string, required): The ID of the user sending the message.</li>
+<li><code>message</code> (string, required): The chat message to send.</li>
+</ul></ul>
+</li>
+<ul><li>Example Request: <code>POST /v1/waifu</code></li>
+</ul><li>Example Request Body:
+    <code>json
+    {"user_id": "test_user", "message": "Hello"}</code></li>
+<li>Example Response:
+    <code>json
+    {"user_id": "test_user", "response": "Hi"}</code></li>
+</ul>
+</li>
+</ul>
+<h3>Server Status</h3>
+<ul>
+<li><code>/v1/server/status</code> (GET): Check server status.<ul>
+<ul><li>Description: Checks the status of the server.</li>
+<li>Example Request: <code>GET /v1/server/status</code></li>
+</ul><li>Example Response:
+    <code>json
+    {"status": "ok"}</code></li>
+</ul>
+</li>
+</ul>
+<h3>HTTP Methods</h3>
+<p>The API uses the following HTTP methods:</p>
+<ul>
+<ul><li><code>GET</code>: Used to retrieve data from the server.</li>
+<li><code>PUT</code>: Used to create or update data on the server.</li>
+<li><code>POST</code>: Used to send data to the server to create or update a resource.</li>
+<li><code>DELETE</code>: Used to delete data from the server.</li>
+</ul></ul>
+<h2>Configuration</h2>
+<p>The API can be configured using environment variables. The following environment variables are supported:</p>
+<ul>
+<ul><li><code>DATABASE_FILE</code>: Path to the SQLite database file (default: <code>dialogs.db</code>).</li>
+<li><code>MODEL_URL</code>: URL of the AI model endpoint (default: <code>http://localhost:80/path/</code>).</li>
+<li><code>DEFAULT_RESPONSE</code>: The default response message when the AI model is unavailable or returns an error (default: "The AI model is currently unavailable. Please try again later.").</li>
+<li><code>DEFAULT_GENRE</code>: The default genre for the conversation (default: "Romance").</li>
+</ul></ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li>
+<p><strong>"ModuleNotFoundError: No module named 'google.cloud'":</strong></p>
+<ul>
+<li>Make sure you have installed the Google Cloud Translate library:
+    <code>bash
+    pip install google-cloud-translate --user</code></li>
+<ul><li>Ensure that you have set up your Google Cloud credentials correctly.</li>
+</ul></ul>
+</li>
+<li>
+<p><strong>API returns "The AI model is currently unavailable. Please try again later." unexpectedly:</strong></p>
+<ul>
+<ul><li>This is a default response when the AI model is unavailable or returns an error. Check the <code>MODEL_URL</code> environment variable and make sure the AI model is running correctly. Also check the <code>DEFAULT_RESPONSE</code> environment variable.</li>
+</ul></ul>
+</li>
+<li>
+<p><strong>The conversation genre is not what I expected:</strong></p>
+<ul>
+<ul><li>Check the <code>DEFAULT_GENRE</code> environment variable.</li>
+</ul></ul>
+</li>
+</ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Source Code</h2>
+    <p class="section-desc">View the full repository on GitHub</p>
+    <div class="link-list">
+      <a href="https://github.com/waifuai/waifu-chat-api" target="_blank">github.com/waifuai/waifu-chat-api</a>
+    </div>
+  </section>
+  <footer>
+    <p>Generated for AI agent crawlability</p>
+  </footer>
+</div>
+</body>
+</html>

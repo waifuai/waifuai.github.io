@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mcp-solana-affiliate Documentation</title>
+<style>
+
+:root {
+  --bg: #0d1117;
+  --card-bg: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --accent2: #7ee787;
+  --accent3: #d2a8ff;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+header { text-align: center; margin-bottom: 3rem; padding: 2rem 0; border-bottom: 1px solid var(--border); }
+header h1 { font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+header p { color: var(--text-muted); font-size: 1.1rem; }
+section { margin-bottom: 2.5rem; }
+h2 { font-size: 1.4rem; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 0.5rem; }
+.count { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
+.section-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.link-list { display: flex; flex-direction: column; gap: 0.25rem; }
+.link-list a { color: var(--accent); text-decoration: none; padding: 0.4rem 0.75rem; border-radius: 6px; transition: background 0.15s; font-size: 0.95rem; }
+.link-list a:hover { background: var(--card-bg); text-decoration: underline; }
+footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding-top: 2rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+
+</style>
+
+</head>
+<body>
+<div class="container">
+
+<header>
+<h1>mcp-solana-affiliate</h1>
+<p>GitHub Pages documentation</p>
+</header>
+
+<section>
+<h2>Project Description</h2>
+<h1>MCP Solana Affiliate Server</h1>
+<p>This project provides a separate MCP (Model Context Protocol) server for managing the affiliate program associated with the <code>mcp_solana_ico</code> project.  It is designed to be completely independent of the main ICO server, handling all aspects of affiliate registration and commission tracking.</p>
+<h2>Key Features</h2>
+<ul>
+<li><strong>Affiliate Registration:</strong>  Provides an <code>affiliate://register</code> resource that generates unique affiliate IDs and Solana Blink URLs.</li>
+<li><strong>Blink URL Handling:</strong>  The generated Blink URLs point to an endpoint (<code>/affiliate_buy_tokens</code>) <em>within this server</em>.</li>
+<li><strong>Proxy Functionality:</strong> The <code>/affiliate_buy_tokens</code> endpoint acts as a proxy. It receives requests from Blinks, forwards the purchase request to the main ICO server's Action API, and then records the commission.</li>
+<li><strong>Persistent Storage:</strong> Affiliate data and commissions are stored persistently in a JSON file (<code>affiliate_data.json</code>).</li>
+<li><strong>Complete Separation:</strong> This server has <em>no</em> dependencies on the main <code>mcp_solana_ico</code> server, other than using its Action API URL for constructing purchase transactions. The main ICO server has no knowledge of the affiliate program.</li>
+<li><strong>Health Monitoring:</strong> Built-in health check and metrics endpoints for monitoring service status.</li>
+<li><strong>Type Safety:</strong> Full type hints and Pydantic models for robust data validation.</li>
+<li><strong>Comprehensive Logging:</strong> Structured logging with configurable levels and file output.</li>
+<li><strong>Security:</strong> Input validation and security measures throughout the application.</li>
+</ul>
+<h2>Requirements</h2>
+<ul>
+<li>Python 3.11+</li>
+<li>Poetry</li>
+<li>Flask</li>
+</ul>
+<h2>Installation</h2>
+<ol>
+<li>
+<p><strong>Clone the repository:</strong></p>
+<p><code>bash
+git clone &lt;repository_url&gt;
+cd mcp_solana_affiliate</code></p>
+</li>
+<li>
+<p><strong>Install dependencies:</strong></p>
+<p><code>bash
+poetry install</code></p>
+</li>
+</ol>
+<h2>Configuration</h2>
+<h3><code>.env</code> file</h3>
+<p>Create a <code>.env</code> file in the root directory with the following content:</p>
+<pre><code>MAIN_SERVER_URL=&quot;http://localhost:5000&quot;  # URL of the main mcp_solana_ico server's Action API
+</code></pre>
+<p><strong>Important:</strong>  <code>MAIN_SERVER_URL</code> must point to the correct location of the main ICO server's Action API.</p>
+<h2>Usage</h2>
+<ol>
+<li>
+<p><strong>Start the server:</strong></p>
+<p><code>bash
+poetry run python mcp_solana_affiliate/server.py</code>
+   This will start both the FastMCP server (for <code>affiliate://register</code>) on port 5001 and the Flask app (for handling Blink requests and commission recording) on port 5002.</p>
+</li>
+<li>
+<p><strong>Register Affiliates:</strong> Use an MCP client to call the <code>affiliate://register</code> resource. This will return a Solana Blink URL.</p>
+</li>
+<li>
+<p><strong>Token Purchases via Blinks:</strong> When a user clicks the Blink URL, it will send a request to the <code>/affiliate_buy_tokens</code> endpoint on this server.  This endpoint will:</p>
+<ul>
+<li>Extract the <code>amount</code> from the request.</li>
+<li>Forward the purchase request (without any affiliate information) to the main ICO server's Action API (<code>/buy_tokens_action</code>).</li>
+<li>Receive the serialized Solana transaction from the main server.</li>
+<li>Record the commission in <code>affiliate_data.json</code>.</li>
+<li>Return the serialized transaction to the Blink client.</li>
+</ul>
+</li>
+</ol>
+<h2>API Documentation</h2>
+<h3>MCP Resources</h3>
+<h4><code>affiliate://register</code></h4>
+<p>Registers a new affiliate and returns a Solana Blink URL.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="language-json">&quot;Affiliate registered successfully! Your Solana Blink URL is: solana-action:http://localhost:5000/affiliate_buy_tokens?affiliate_id=123e4567-e89b-12d3-a456-426614174000&quot;
+</code></pre>
+<h3>REST Endpoints</h3>
+<h4>POST <code>/affiliate_buy_tokens</code></h4>
+<p>Processes token purchases through affiliate links.</p>
+<p><strong>Request:</strong></p>
+<pre><code class="language-json">{
+  &quot;amount&quot;: 1000.0,
+  &quot;affiliate_id&quot;: &quot;123e4567-e89b-12d3-a456-426614174000&quot;
+}
+</code></pre>
+<p><strong>Response (Success):</strong></p>
+<pre><code class="language-json">{
+  &quot;transaction&quot;: &quot;base64-encoded-transaction&quot;
+}
+</code></pre>
+<p><strong>Response (Error):</strong></p>
+<pre><code class="language-json">{
+  &quot;error&quot;: &quot;Error message&quot;
+}
+</code></pre>
+<p><strong>Status Codes:</strong>
+- <code>200</code> - Success
+- <code>400</code> - Bad Request (validation error)
+- <code>500</code> - Internal Server Error
+- <code>502</code> - Bad Gateway (main server error)
+- <code>503</code> - Service Unavailable (timeout)</p>
+<h4>POST <code>/record_commission</code></h4>
+<p>Manually records a commission for an affiliate.</p>
+<p><strong>Request:</strong></p>
+<pre><code class="language-json">{
+  &quot;affiliate_id&quot;: &quot;123e4567-e89b-12d3-a456-426614174000&quot;,
+  &quot;ico_id&quot;: &quot;main_ico&quot;,
+  &quot;amount&quot;: 1000.0,
+  &quot;commission&quot;: 50.0,
+  &quot;client_ip&quot;: &quot;127.0.0.1&quot;
+}
+</code></pre>
+<p><strong>Response (Success):</strong></p>
+<pre><code class="language-json">{
+  &quot;message&quot;: &quot;Commission recorded successfully&quot;
+}
+</code></pre>
+<p><strong>Response (Error):</strong></p>
+<pre><code class="language-json">{
+  &quot;error&quot;: &quot;Error message&quot;
+}
+</code></pre>
+<h4>GET <code>/health</code></h4>
+<p>Health check endpoint for monitoring.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="language-json">{
+  &quot;status&quot;: &quot;healthy&quot;,
+  &quot;timestamp&quot;: 1234567890,
+  &quot;service&quot;: &quot;mcp-solana-affiliate&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;checks&quot;: {
+    &quot;affiliate_data&quot;: &quot;healthy&quot;,
+    &quot;main_server&quot;: &quot;healthy&quot;,
+    &quot;database&quot;: &quot;healthy&quot;
+  }
+}
+</code></pre>
+<h4>GET <code>/metrics</code></h4>
+<p>Metrics endpoint for monitoring service statistics.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="language-json">{
+  &quot;total_affiliates&quot;: 10,
+  &quot;total_commissions&quot;: 25,
+  &quot;total_commission_amount&quot;: 1250.0,
+  &quot;timestamp&quot;: 1234567890
+}
+</code></pre>
+<h4>GET <code>/cache/stats</code></h4>
+<p>Cache statistics endpoint for monitoring cache performance.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="language-json">{
+  &quot;affiliate_cache&quot;: {
+    &quot;total_items&quot;: 5,
+    &quot;expired_items&quot;: 1,
+    &quot;active_items&quot;: 4,
+    &quot;hit_count&quot;: 150,
+    &quot;miss_count&quot;: 25
+  },
+  &quot;metrics_cache&quot;: { ... },
+  &quot;health_cache&quot;: { ... }
+}
+</code></pre>
+<h4>POST <code>/cache/clear</code></h4>
+<p>Clear all cache data.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="language-json">{
+  &quot;message&quot;: &quot;All caches cleared successfully&quot;
+}
+</code></pre>
+<h4>POST <code>/cache/cleanup</code></h4>
+<p>Remove expired items from cache.</p>
+<p><strong>Response:</strong></p>
+<pre><code class="language-json">{
+  &quot;message&quot;: &quot;Cache cleanup completed&quot;,
+  &quot;items_removed&quot;: 3
+}
+</code></pre>
+<h3>Configuration</h3>
+<p>The application uses Pydantic models for configuration management. Configuration can be set via environment variables:</p>
+<h4>Environment Variables</h4>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MAIN_SERVER_URL</code></td>
+<td>None</td>
+<td>URL of the main ICO server (required)</td>
+</tr>
+<tr>
+<td><code>MCP_PORT</code></td>
+<td><code>5001</code></td>
+<td>Port for MCP server</td>
+</tr>
+<tr>
+<td><code>FLASK_PORT</code></td>
+<td><code>5002</code></td>
+<td>Port for Flask server</td>
+</tr>
+<tr>
+<td><code>DEBUG</code></td>
+<td><code>false</code></td>
+<td>Enable debug mode</td>
+</tr>
+<tr>
+<td><code>COMMISSION_RATE</code></td>
+<td><code>0.01</code></td>
+<td>Default commission rate (1%)</td>
+</tr>
+<tr>
+<td><code>DEFAULT_ICO_ID</code></td>
+<td><code>main_ico</code></td>
+<td>Default ICO identifier</td>
+</tr>
+<tr>
+<td><code>AFFILIATE_DATA_FILE</code></td>
+<td><code>affiliate_data.json</code></td>
+<td>Path to affiliate data file</td>
+</tr>
+<tr>
+<td><code>MAX_REQUESTS_PER_MINUTE</code></td>
+<td><code>60</code></td>
+<td>Rate limiting: max requests per minute</td>
+</tr>
+<tr>
+<td><code>MAX_AFFILIATES_PER_IP</code></td>
+<td><code>10</code></td>
+<td>Rate limiting: max affiliates per IP</td>
+</tr>
+<tr>
+<td><code>REQUEST_TIMEOUT</code></td>
+<td><code>10.0</code></td>
+<td>HTTP request timeout in seconds</td>
+</tr>
+<tr>
+<td><code>MAX_RETRIES</code></td>
+<td><code>3</code></td>
+<td>Maximum retry attempts</td>
+</tr>
+<tr>
+<td><code>RETRY_DELAY</code></td>
+<td><code>1.0</code></td>
+<td>Delay between retries</td>
+</tr>
+<tr>
+<td><code>LOG_LEVEL</code></td>
+<td><code>INFO</code></td>
+<td>Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)</td>
+</tr>
+<tr>
+<td><code>LOG_FILE</code></td>
+<td>None</td>
+<td>Optional log file path</td>
+</tr>
+</tbody>
+</table>
+<h3>Data Models</h3>
+<p>The application uses the following data models:</p>
+<h4>CommissionRecord</h4>
+<pre><code class="language-python">{
+  &quot;ico_id&quot;: &quot;main_ico&quot;,
+  &quot;amount&quot;: 1000.0,
+  &quot;commission&quot;: 50.0,
+  &quot;client_ip&quot;: &quot;192.168.1.1&quot;,
+  &quot;timestamp&quot;: 1234567890
+}
+</code></pre>
+<h4>AffiliateData</h4>
+<pre><code class="language-python">{
+  &quot;affiliate_id&quot;: &quot;123e4567-e89b-12d3-a456-426614174000&quot;,
+  &quot;commissions&quot;: [CommissionRecord],
+  &quot;created_at&quot;: 1234567890,
+  &quot;last_updated&quot;: 1234567890
+}
+</code></pre>
+<h2>Project Structure</h2>
+<pre><code>mcp_solana_affiliate/
+├── affiliates.py      # Core affiliate logic (generation, storage, commission recording)
+├── server.py           # Main server code (FastMCP resource and Flask app)
+├── config.py           # Configuration management with Pydantic models
+├── models.py           # Data models using Pydantic
+├── services.py         # Service layer for business logic
+├── __init__.py
+.env                    # Environment variables
+.gitignore
+pyproject.toml          # Poetry configuration
+README.md               # This file
+</code></pre>
+<h2>Architecture</h2>
+<p>The application follows a layered architecture:</p>
+<ul>
+<li><strong>Presentation Layer:</strong> Flask endpoints handling HTTP requests/responses</li>
+<li><strong>Service Layer:</strong> Business logic in <code>services.py</code> (AffiliateService, TransactionService, etc.)</li>
+<li><strong>Data Layer:</strong> Data access and persistence in <code>affiliates.py</code></li>
+<li><strong>Configuration Layer:</strong> Centralized configuration management in <code>config.py</code></li>
+<li><strong>Model Layer:</strong> Data validation and serialization in <code>models.py</code></li>
+</ul>
+<h3>Key Components</h3>
+<ul>
+<li><strong>AffiliateService:</strong> Handles affiliate registration and data retrieval</li>
+<li><strong>TransactionService:</strong> Processes token purchases and commission recording</li>
+<li><strong>HealthService:</strong> Provides health check and monitoring functionality</li>
+<li><strong>MetricsService:</strong> Collects and exposes service metrics</li>
+<li><strong>Configuration Management:</strong> Environment-based configuration with Pydantic validation</li>
+<li><strong>Error Handling:</strong> Comprehensive error handling with appropriate HTTP status codes</li>
+<li><strong>Logging:</strong> Structured logging with configurable levels and outputs</li>
+</ul>
+<h2>Development</h2>
+<h3>Setup</h3>
+<ol>
+<li>
+<p><strong>Clone the repository:</strong>
+   <code>bash
+   git clone &lt;repository_url&gt;
+   cd mcp_solana_affiliate</code></p>
+</li>
+<li>
+<p><strong>Install dependencies:</strong>
+   <code>bash
+   poetry install</code></p>
+</li>
+<li>
+<p><strong>Set up environment:</strong>
+   <code>bash
+   cp .env.example .env
+   # Edit .env with your configuration</code></p>
+</li>
+</ol>
+<h3>Running Tests</h3>
+<pre><code class="language-bash"># Run all tests
+poetry run pytest
+
+# Run with coverage
+poetry run pytest --cov=mcp_solana_affiliate
+
+# Run specific test file
+poetry run pytest tests/test_server.py
+</code></pre>
+<h3>Running the Application</h3>
+<pre><code class="language-bash"># Development mode
+poetry run python -m mcp_solana_affiliate.server
+
+# Production mode (with gunicorn)
+poetry run gunicorn -w 4 -b 0.0.0.0:5002 mcp_solana_affiliate.server:app
+</code></pre>
+<h3>Code Quality</h3>
+<pre><code class="language-bash"># Format code
+poetry run black mcp_solana_affiliate tests
+
+# Lint code
+poetry run ruff check mcp_solana_affiliate tests
+
+# Type checking
+poetry run mypy mcp_solana_affiliate
+</code></pre>
+<h2>Monitoring</h2>
+<h3>Health Checks</h3>
+<p>The service provides health check endpoints:</p>
+<ul>
+<li><code>GET /health</code> - Overall health status</li>
+<li><code>GET /metrics</code> - Service metrics and statistics</li>
+</ul>
+<h3>Logging</h3>
+<p>Logs are output to:
+- Console (INFO level by default)
+- Optional log file (if LOG_FILE environment variable is set)</p>
+<p>Log levels can be configured via the LOG_LEVEL environment variable.</p>
+<h2>Security</h2>
+<ul>
+<li>Input validation using Pydantic models</li>
+<li>CORS configuration for cross-origin requests</li>
+<li>Environment variable validation</li>
+<li>Rate limiting support (configurable)</li>
+<li>IP-based affiliate limits (configurable)</li>
+</ul>
+<h2>Performance</h2>
+<h3>Caching Strategy</h3>
+<p>The application implements a multi-tier caching strategy:</p>
+<ul>
+<li><strong>Affiliate Cache</strong>: 5-minute TTL for affiliate data to reduce database reads</li>
+<li><strong>Metrics Cache</strong>: 1-minute TTL for metrics data</li>
+<li><strong>Health Cache</strong>: 30-second TTL for health check data</li>
+</ul>
+<h3>Performance Optimizations</h3>
+<ul>
+<li>Efficient JSON file storage with in-memory caching</li>
+<li>Configurable HTTP timeouts and retry logic</li>
+<li>Connection pooling for external requests</li>
+<li>Thread-safe caching with automatic cleanup</li>
+<li>Metrics collection for monitoring bottlenecks</li>
+<li>Lazy loading of configuration</li>
+</ul>
+<h3>Cache Management</h3>
+<p>Cache can be managed via API endpoints:
+- Monitor cache performance: <code>GET /cache/stats</code>
+- Clear all caches: <code>POST /cache/clear</code>
+- Cleanup expired items: <code>POST /cache/cleanup</code></p>
+<h3>Monitoring</h3>
+<p>Performance metrics are exposed via:
+- <code>GET /metrics</code> - Service usage statistics
+- <code>GET /health</code> - Health status with dependency checks
+- <code>GET /cache/stats</code> - Cache performance metrics</p>
+<h2>Future Considerations</h2>
+<ul>
+<li><strong>Database Storage:</strong> Replace JSON file storage with a more robust database (PostgreSQL, MongoDB)</li>
+<li><strong>Caching:</strong> Implement Redis caching for frequently accessed data</li>
+<li><strong>Authentication:</strong> Add API key authentication for endpoints</li>
+<li><strong>Rate Limiting:</strong> Implement more sophisticated rate limiting</li>
+<li><strong>Monitoring:</strong> Integrate with Prometheus/Grafana for advanced monitoring</li>
+<li><strong>Scaling:</strong> Add support for horizontal scaling with load balancing</li>
+</ul>
+<h2>Key Files</h2>
+<ul>
+<li>
+<p><strong><code>affiliates.py</code>:</strong></p>
+<ul>
+<li><code>generate_affiliate_id()</code>: Generates a unique affiliate ID using <code>uuid.uuid4()</code>.</li>
+<li><code>load_affiliate_data()</code>: Loads affiliate data from <code>affiliate_data.json</code>.</li>
+<li><code>save_affiliate_data()</code>: Saves affiliate data to <code>affiliate_data.json</code>.</li>
+<li><code>store_affiliate_data()</code>: Stores affiliate data.</li>
+<li><code>get_affiliate_data()</code>: Retrieves affiliate data.</li>
+<li><code>record_commission()</code>: Records a commission for an affiliate.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>server.py</code>:</strong></p>
+<ul>
+<li><code>mcp = FastMCP(name="Solana Affiliate Server")</code>: Initializes the FastMCP server.</li>
+<li><code>@mcp.resource("affiliate://register")</code>: The FastMCP resource for registering affiliates.</li>
+<li><code>app = Flask(__name__)</code>: Initializes the Flask application.</li>
+<li><code>@app.route('/affiliate_buy_tokens', methods=['POST', 'OPTIONS'])</code>: The Flask endpoint that handles Blink requests, forwards them to the main server, and records commissions.</li>
+<li><code>@app.route('/record_commission', methods=['POST'])</code>: A Flask endpoint for manually recording commissions (not strictly required, but potentially useful).</li>
+</ul>
+</li>
+</ul>
+<h2>Future Considerations</h2>
+<ul>
+<li><strong>Database Storage:</strong> Replace the JSON file storage with a more robust database (e.g., PostgreSQL, SQLite).</li>
+<li><strong>Error Handling:</strong> Implement more comprehensive error handling and logging.</li>
+<li><strong>Security:</strong>  Implement security measures, such as authentication and authorization, especially for the <code>/record_commission</code> endpoint.</li>
+<li><strong>Scalability:</strong> Consider using a message queue (e.g., RabbitMQ, Kafka) for handling commission recording asynchronously, improving scalability.</li>
+<li><strong>Testing:</strong> Add unit and integration tests.</li>
+</ul>
+</section>
+
+<section>
+<h2>Source Code</h2>
+<p class="section-desc">View the repository on GitHub.</p>
+<div class="link-list">
+<a href="https://github.com/waifuai/mcp-solana-affiliate">GitHub Repository</a>
+</div>
+</section>
+
+
+<footer>
+<p>Generated GitHub Pages for AI agent crawlability.</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 7 Subsection 2</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false}
+    ]
+  });"></script>
+<style>
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.7;
+    color: #e0e0e0;
+    background: #1a1a2e;
+  }
+  h1 { color: #e94560; border-bottom: 2px solid #e94560; padding-bottom: 0.3em; }
+  h2 { color: #0f3460; border-bottom: 1px solid #533483; padding-bottom: 0.2em; }
+  h3 { color: #533483; }
+  a { color: #4fc3f7; }
+  code { background: #16213e; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+  pre { background: #16213e; padding: 1em; border-radius: 6px; overflow-x: auto; }
+  pre code { padding: 0; }
+  blockquote { border-left: 3px solid #533483; margin-left: 0; padding-left: 1em; color: #aaa; }
+  .katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.5em 0; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #333; padding: 0.5em; text-align: left; }
+  th { background: #16213e; }
+  .nav { margin-bottom: 2rem; padding: 1rem; background: #16213e; border-radius: 6px; }
+  .nav a { margin-right: 1em; }
+</style>
+</head>
+<body>
+<div class="nav"><a href="08-multimodal_quantum_llm_for_vision+audio+text_in_qiskit_python.html">08-multimodal_quantum_llm_for_vision+audio+text_in_qiskit_python</a> | <a href="chapter_6_sub_section_0.html">chapter_6_sub_section_0</a> | <a href="index.html">README</a> | <a href="chapter_1_subsection_0.html">1.0 Introduction to Quantum Machine Learning with Q...</a> | <a href="chapter_1_subsection_1.html">1.1 What is Quantum Machine Learning?</a> | <a href="chapter_1_subsection_2.html">1.2 Why Use Qiskit for Quantum Machine Learning?</a> | <a href="chapter_1_subsection_3.html">1.3 Introduction to Quantum Computing Fundamentals</a> | <a href="chapter_1_subsection_4.html">1.4 Qiskit Overview and Installation</a> | <a href="chapter_1_subsection_5.html">1.5 Basic Quantum Circuit Building with Qiskit</a> | <a href="chapter_1_subsection_6.html">1.6 Introduction to Supervised Learning</a> | <a href="chapter_1_subsection_7.html">1.7 Introduction to Multimodal Data Fusion</a> | <a href="chapter_1_subsection_8.html">1.8 Motivation for Vision-Audio-Text Fusion</a> | <a href="chapter_2_subsection_0.html">2.0 Understanding Vision, Audio, and Text Data</a> | <a href="chapter_2_subsection_1.html">2.1 Image Representation and Feature Extraction</a> | <a href="chapter_2_subsection_2.html">2.2 Audio Signal Processing Techniques</a> | <a href="chapter_2_subsection_3.html">2.3 Natural Language Processing Techniques</a> | <a href="chapter_2_subsection_4.html">2.4 Data Preprocessing and Cleaning</a> | <a href="chapter_2_subsection_5.html">2.5 Feature Engineering for Vision, Audio, and Text</a> | <a href="chapter_2_subsection_6.html">2.6 Common Data Formats for Vision, Audio, and Text</a> | <a href="chapter_3_subsection_0.html">3.0 Building a Multimodal Quantum Neural Network</a> | <a href="chapter_3_subsection_1.html">3.1 Quantum Feature Encoding for Vision, Audio, and...</a> | <a href="chapter_3_subsection_2.html">3.2 Designing a Quantum Architecture for Multimodal...</a> | <a href="chapter_3_subsection_3.html">3.3 Implementing a Quantum Layer for each modality</a> | <a href="chapter_3_subsection_4.html">3.4 Creating Entanglement for Multimodal Data Fusion</a> | <a href="chapter_3_subsection_5.html">3.5 Hybrid Quantum-Classical Approach for Vision-Au...</a> | <a href="chapter_3_subsection_6.html">3.6 Quantum Circuit Design considerations for scala...</a> | <a href="chapter_4_subsection_0.html">4.0 Developing the Quantum LLMs</a> | <a href="chapter_4_subsection_1.html">4.1 Designing the Quantum Language Model Architecture</a> | <a href="chapter_4_subsection_2.html">4.2 Integrating Quantum Layers into the Multimodal ...</a> | <a href="chapter_4_subsection_3.html">4.3 Training the Multimodal Quantum Language Model ...</a> | <a href="chapter_4_subsection_4.html">4.4 Understanding Quantum Training Dynamics</a> | <a href="chapter_4_subsection_5.html">4.5 Quantum Optimizer Selection</a> | <a href="chapter_4_subsection_6.html">4.6 Quantum Gradient Estimation Techniques</a> | <a href="chapter_4_subsection_7.html">4.7 Evaluating Quantum Model Performance</a> | <a href="chapter_4_subsection_8.html">4.8 Strategies to address Quantum Noise and Errors</a> | <a href="chapter_4_subsection_9.html">4.9 Strategies for managing Qiskit execution resources</a> | <a href="chapter_4_subsection_10.html">4.10 Hybrid Quantum-Classical Approach for Vision-Au...</a> | <a href="chapter_4_subsection_11.html">4.11 Quantum Circuit Design considerations for scala...</a> | <a href="chapter_5_subsection_0.html">5.0 Multimodal Vision-Audio-Text Tasks</a> | <a href="chapter_5_subsection_1.html">5.1 Image Captioning with Vision-Audio-Text Data</a> | <a href="chapter_5_subsection_2.html">5.2 Audio-Visual Event Recognition with Quantum LLMs</a> | <a href="chapter_5_subsection_3.html">5.3 Cross-Modal Similarity Search</a> | <a href="chapter_5_subsection_4.html">5.4 Sentiment Analysis on Multimodal Data</a> | <a href="chapter_5_subsection_5.html">5.5 Question Answering across Vision-Audio-Text Data</a> | <a href="chapter_5_subsection_6.html">5.6 Case Study: Multimodal Image Classification</a> | <a href="chapter_6_subsection_1.html">6.1 Limitations of Current Quantum Hardware</a> | <a href="chapter_6_subsection_2.html">6.2 Overcoming Noise and Error in Quantum LLMs</a> | <a href="chapter_6_subsection_3.html">6.3 Quantum Algorithm Design Considerations</a> | <a href="chapter_6_subsection_4.html">6.4 Scalability of Quantum LLMs</a> | <a href="chapter_6_subsection_5.html">6.5 Future Research Directions for Multimodal Quant...</a> | <a href="chapter_7_subsection_0.html">7.0 Appendix</a> | <a href="chapter_7_subsection_1.html">7.1 Qiskit Libraries and Functions Reference</a> | <a href="chapter_7_subsection_2.html" style="font-weight:bold">7.2 List of Useful Datasets</a> | <a href="chapter_7_subsection_3.html">7.3 Experimental Data and Results</a> | <a href="chapter_7_subsection_6.html">7.6 Exploring Quantum Embeddings for Multimodal Data</a> | <a href="chapter_7_subsection_7.html">7.7 Integration with Classical NLP and Computer Vis...</a></div>
+<h2 id="list-of-useful-datasets">List of Useful Datasets</h2>
+<p><a href="#table-of-contents">Table of Contents</a></p>
+<h2 id="appendix-multimodal-quantum-llm-for-visionaudiotext-in-qiskit-python">Appendix: Multimodal Quantum LLM for Vision+Audio+Text in Qiskit Python</h2>
+<h2 id="subchapter-list-of-useful-datasets">Subchapter: List of Useful Datasets</h2>
+<p>This section provides a curated list of datasets suitable for developing and evaluating multimodal quantum language models (QLLMs) focusing on vision, audio, and text in Qiskit Python. These datasets are categorized by modality to facilitate selection based on specific research needs.  Each dataset entry includes a brief description, relevant format information, potential use cases for multimodal QLLMs, and potential Qiskit libraries or tools that might be applicable.</p>
+<p><strong>A. Vision Datasets:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Dataset Name</th>
+<th>Description</th>
+<th>Format</th>
+<th>Potential Use Cases</th>
+<th>Relevant Qiskit Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ImageNet</strong></td>
+<td>A large-scale dataset of over 14 million images labeled across 1000 different object categories.</td>
+<td>Images with associated labels.  Various sub-datasets are available.</td>
+<td>Multimodal learning to cross-correlate image and text features. Training QLLMs to understand visual concepts and describe images.</td>
+<td><code>qiskit.aqua.algorithms.VQC</code> (for potential feature extraction), <code>qiskit.circuit.library</code> (for building quantum circuits using image representations)</td>
+</tr>
+<tr>
+<td><strong>CIFAR-10/100</strong></td>
+<td>Smaller datasets of 60,000 images across 10/100 different classes.</td>
+<td>Images with labels.</td>
+<td>Initial testing of QLLM architectures.  Fine-tuning existing models on limited data.</td>
+<td><code>qiskit.circuit.library</code> (for building quantum circuits using image representations).</td>
+</tr>
+<tr>
+<td><strong>MNIST</strong></td>
+<td>A dataset of handwritten digits (0-9).</td>
+<td>Images with labels.</td>
+<td>Initial exploration of QLLM capabilities on simple visual data. Potential for Qiskit circuit optimization tasks.</td>
+<td><code>qiskit.circuit.library</code>, <code>qiskit.aqua.algorithms.VQC</code></td>
+</tr>
+<tr>
+<td><strong>Pascal VOC 2012</strong></td>
+<td>Dataset of images with object detection labels.</td>
+<td>Images and annotations.  Offers training and validation sets.</td>
+<td>Fine-tuning QLLMs to extract visual features and generate descriptions for object detection tasks.</td>
+<td><code>qiskit.circuit.library</code> (for image feature extraction).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>B. Audio Datasets:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Dataset Name</th>
+<th>Description</th>
+<th>Format</th>
+<th>Potential Use Cases</th>
+<th>Relevant Qiskit Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LibriSpeech</strong></td>
+<td>A large dataset of speech audio for speech recognition tasks.</td>
+<td>Audio files with transcripts.</td>
+<td>Multimodal learning to correlate audio content with other modalities. Potential for audio-to-text generation using QLLMs.</td>
+<td><code>qiskit.circuit.library</code> (for potential embedding of audio features), <code>qiskit.aqua.algorithms.QAOA</code> (for optimization tasks).</td>
+</tr>
+<tr>
+<td><strong>AudioSet</strong></td>
+<td>Large dataset of audio clips labeled by the presence of more than 527 different sounds.</td>
+<td>Audio files with labels.</td>
+<td>Training of QLLMs to extract and classify different sound cues.  Learning to associate sound features with other modalities.</td>
+<td><code>qiskit.circuit.library</code> (for potential embedding of audio features).</td>
+</tr>
+<tr>
+<td><strong>VCTK Corpus</strong></td>
+<td>Speech database of 109 speakers.</td>
+<td>Audio files and textual transcriptions.</td>
+<td>Multimodal training on speech and text to generate descriptive sentences.</td>
+<td><code>qiskit.circuit.library</code> (for potential embedding of audio features).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>C. Text Datasets:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Dataset Name</th>
+<th>Description</th>
+<th>Format</th>
+<th>Potential Use Cases</th>
+<th>Relevant Qiskit Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>WikiText-103</strong></td>
+<td>Large text dataset focusing on English language.</td>
+<td>Text files.</td>
+<td>Initial exploration of QLLM capabilities. Fine-tuning multimodal models for textual tasks.</td>
+<td><code>qiskit.circuit.library</code> (potential embedding of text features), <code>qiskit.aqua</code> (for quantum algorithms that deal with text).</td>
+</tr>
+<tr>
+<td><strong>Common Crawl</strong></td>
+<td>Large corpus of text data crawled from the web.</td>
+<td>Text files.</td>
+<td>Training large QLLMs to understand real-world web content.</td>
+<td><code>qiskit.circuit.library</code> (for potential embedding of text features).</td>
+</tr>
+<tr>
+<td><strong>IMDB Dataset</strong></td>
+<td>Sentiment analysis dataset for movie reviews.</td>
+<td>Textual reviews with associated sentiment labels.</td>
+<td>Multimodal training to combine text information with other modalities (e.g., visual reviews or audio commentary).</td>
+<td><code>qiskit.circuit.library</code> (potential embedding of text features).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>D. Multimodal Datasets:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Dataset Name</th>
+<th>Description</th>
+<th>Format</th>
+<th>Potential Use Cases</th>
+<th>Relevant Qiskit Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MSCOCO</strong></td>
+<td>Multimodal dataset including images with captions.</td>
+<td>Images with associated text descriptions.</td>
+<td>Multimodal QLLM training to generate descriptions for visual data.</td>
+<td><code>qiskit.circuit.library</code> (image and text embeddings).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Important Considerations:</strong></p>
+<ul>
+<li>The suitability of a dataset depends on the specific application of the multimodal QLLM.</li>
+<li>Preprocessing steps might be required to transform the data into a format compatible with the proposed Qiskit quantum algorithms.</li>
+<li>The feasibility of applying Qiskit libraries directly to the raw data will depend on its size and complexity.  Quantum circuits will likely need to represent features extracted from the modalities.</li>
+</ul>
+<p>This list is not exhaustive and other datasets may be relevant based on the specific research focus. Further exploration and adaptation of existing datasets may be needed for use in Qiskit Python QLLMs.</p>
+<p><a id='chapter-7-subchapter-3'></a></p>
+</body>
+</html>
