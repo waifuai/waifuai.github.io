@@ -1,0 +1,103 @@
+<p>Okay, let&#39;s break down the derivation of the parking rectangle algorithm in an intuitive, step-by-step manner. We&#39;ll focus on the core logic and avoid getting bogged down in heavy matrix notation.</p>
+<p><strong>The Goal:</strong></p>
+<p>Imagine you have a street segment defined by its center point and direction. You want to draw two parking rectangles, one on each side of the street, with a specified width, height, and offset from the street&#39;s center.</p>
+<p><strong>The Challenge:</strong></p>
+<p>The world isn&#39;t flat! We&#39;re dealing with latitude and longitude on a (roughly) spherical Earth. So, simply adding distances in meters to coordinates won&#39;t work accurately, especially as we move further away from the equator.</p>
+<p><strong>The Solution: A Series of Transformations</strong></p>
+<p>We&#39;ll achieve our goal by performing a sequence of transformations, essentially moving between a simplified &quot;flat-Earth&quot; model for calculations and the real-world geographic coordinates.</p>
+<p><strong>1. The &quot;Flat-Earth&quot; Playground: Local Cartesian Coordinates</strong></p>
+<ul>
+<li><strong>Imagine a flat plane:</strong>  We start by pretending the small area around our street segment is perfectly flat. This is our local Cartesian coordinate system (East-North-Up or ENU).</li>
+<li><strong>Origin at the street center:</strong> The center point of the street segment is the origin (0, 0) of this plane.</li>
+<li><strong>North and East axes:</strong> The Y-axis points North, and the X-axis points East.</li>
+<li><strong>Distances in meters:</strong> We can now comfortably work with distances in meters within this flat world.</li>
+</ul>
+<p><strong>2. Building the Template Rectangle (Before Scaling and Rotation)</strong></p>
+<ul>
+<li><strong>Unit rectangle centered at origin:</strong> We start with a simple rectangle with a width of <code>W</code> and height of <code>H</code> centered at the origin of our flat plane. The vertices of the rectangle are given by the matrix <code>V_base</code>.</li>
+<li><strong>Offsetting the rectangle:</strong>  We want to place the rectangle adjacent to the street center line, not directly on it. The <code>K</code> parameter is the distance from the street center line to the nearer edge of the rectangle.<pre><code>V_base = [[-W/2, K],
+          [-W/2, K+H],
+          [W/2, K+H],
+          [W/2, K]]
+</code></pre>
+<ul>
+<li>Each row in this matrix is a vertex (x, y).</li>
+<li><code>-W/2</code> and <code>W/2</code> define the left and right edges of the rectangle respectively.</li>
+<li><code>K</code> shifts the rectangle upwards (northwards) by <code>K</code> meters.</li>
+<li><code>K + H</code> defines the top edge of the rectangle.</li>
+<li>This ensures that the rectangle is placed adjacent to the street center line, with its bottom edge <code>K</code> meters away from the origin.</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. Rotating the Rectangle to Align with the Street</strong></p>
+<ul>
+<li><p><strong>Street orientation (θ):</strong>  We know the direction the street is pointing, measured as an angle <code>θ</code> clockwise from true north.</p>
+</li>
+<li><p><strong>Rotation matrix (R(θ)):</strong> We use a standard rotation matrix to rotate our template rectangle by this angle <code>θ</code> <em>counter-clockwise</em> in our flat plane:</p>
+<pre><code>R(θ) = [[cos(θ), -sin(θ)],
+       [sin(θ), cos(θ)]]
+</code></pre>
+</li>
+<li><p><strong>Applying the rotation:</strong> Multiply the <code>V_base</code> matrix by the transpose of the rotation matrix (<code>R(θ)^T</code>) to get the rotated vertices (<code>V_rotated</code>). The transpose is necessary due to how matrix multiplication works with row and column vectors. We are essentially rotating each vertex of the rectangle.</p>
+<ul>
+<li><code>V_rotated = V_base * R(θ)^T</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>4. Stepping Back into the Real World: Geographic Normalization</strong></p>
+<ul>
+<li><p><strong>Meters to degrees:</strong> Now we need to convert our rotated rectangle&#39;s coordinates from meters (in our flat plane) to latitude and longitude (degrees).</p>
+</li>
+<li><p><strong>Geographic Normalization Matrix (G):</strong> This matrix handles the conversion. It&#39;s based on the idea that a meter corresponds to a different change in latitude/longitude depending on where you are on Earth.</p>
+<pre><code>G = [[1/g_lat, 0],
+     [0, 1/g_lon]]
+</code></pre>
+<p>where:</p>
+<pre><code>g_lat = R_lat * (π / 180)
+g_lon = R_lon * cos(v_lat * π / 180) * (π / 180)
+</code></pre>
+<ul>
+<li><code>R_lat</code> and <code>R_lon</code> are the Earth&#39;s radii of curvature at the street&#39;s latitude (<code>v_lat</code>). These values are calculated for an accurate ellipsoidal model of the Earth.</li>
+<li><code>g_lat</code> tells you how many meters correspond to one degree of latitude change.</li>
+<li><code>g_lon</code> tells you how many meters correspond to one degree of longitude change. The <code>cos(v_lat)</code> term accounts for the fact that longitude lines converge as you move towards the poles.</li>
+<li><code>(π / 180)</code> converts degrees to radians, as required by the trigonometric functions and the definition of the radius of curvature.</li>
+</ul>
+</li>
+<li><p><strong>Applying the normalization:</strong> Multiply <code>V_rotated</code> by the transpose of the <code>G</code> matrix (<code>G^T</code>) to get the geographically normalized vertices (<code>V_geo</code>). Again, the transpose is needed for correct matrix multiplication.</p>
+<ul>
+<li><code>V_geo = V_rotated * G^T</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>5. Placing the Rectangle on the Map</strong></p>
+<ul>
+<li><strong>Translation to the street center:</strong> We now have the coordinates of the rectangle in degrees, but they&#39;re still relative to our flat plane&#39;s origin. We need to shift them to the actual street center point.</li>
+<li><strong>Adding the street center coordinates (v):</strong> Simply add the latitude and longitude of the street center point <code>v</code> to each vertex in <code>V_geo</code>. This places the rectangle correctly on the map.<ul>
+<li><code>R₁ = V_geo + v</code> (this is element-wise addition).</li>
+</ul>
+</li>
+</ul>
+<p><strong>6. Creating the Symmetric Rectangle on the Other Side of the Street</strong></p>
+<ul>
+<li><strong>Mirroring:</strong> To get the second rectangle on the opposite side of the street, we want to mirror the first one across the street center.</li>
+<li><strong>Rotation by 180 degrees:</strong> In our flat plane, this is equivalent to rotating the <code>V_rotated</code> vertices by 180 degrees <em>before</em> we convert them to geographic coordinates. Rotating by 180 degrees is the same as multiplying by -1.</li>
+<li><strong>Applying the same steps:</strong> We then apply the geographic normalization (<code>G^T</code>) and translation (<code>v</code>) as before.<ul>
+<li><code>R₂ = -V_rotated * G^T + v</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>In a Nutshell</strong></p>
+<ol>
+<li><strong>Build:</strong> Create a template rectangle with the desired dimensions, offset from the origin in a simplified, flat coordinate system.</li>
+<li><strong>Rotate:</strong> Rotate the rectangle to align with the street&#39;s direction.</li>
+<li><strong>Convert:</strong> Transform the rotated coordinates from meters to latitude and longitude.</li>
+<li><strong>Place:</strong> Translate the rectangle to the actual street center location.</li>
+<li><strong>Mirror:</strong> Generate a symmetric rectangle on the other side of the street by rotating the rotated coordinates by 180 degrees before converting and translating.</li>
+</ol>
+<p><strong>Important Notes</strong></p>
+<ul>
+<li><strong>Approximation:</strong> The &quot;flat-Earth&quot; assumption introduces errors, especially for large rectangles or at higher latitudes.</li>
+<li><strong>Radii of Curvature:</strong> Using accurate values for the Earth&#39;s radii of curvature is crucial for minimizing errors.</li>
+<li><strong>Matrix Operations:</strong> The order of matrix multiplication and the use of transposes are essential for the correct geometric transformations.</li>
+</ul>
+<p>This intuitive explanation should give you a good grasp of the underlying logic of the parking rectangle algorithm. By understanding each step, you can better appreciate the algorithm&#39;s strengths, limitations, and how to use it effectively.</p>
