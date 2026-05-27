@@ -2,29 +2,77 @@
 
 > Technical documentation hub for AI agents, developers, and builders. Part of the WaifuAI ecosystem on GitHub.
 
-## Projects
+## Agent Resources
 
-- [Hermes Waifu](https://waifuai.github.io/hermes-waifu/) — Live2D waifu display with expression controls
-- [Function Graph Generator](https://waifuai.github.io/function-graph-generator/) — Visualize mathematical functions
-- [AI Benchmarks](https://waifuai.github.io/ai-benchmarks/) — Benchmark repository and performance data
-- [MCP Waifu Chat](https://waifuai.github.io/mcp-waifu-chat/) — Model Context Protocol server for waifu chat
-- [MCP Waifu Queue](https://waifuai.github.io/mcp-waifu-queue/) — Queue management for waifu AI agents
-- [LLM Text Queue GPU](https://waifuai.github.io/llm-text-queue-gpu/) — GPU-accelerated text processing pipeline
-- [Waifu Chat API](https://waifuai.github.io/waifu-chat-api/) — Chat API documentation
-- [Waifu Constitution](https://waifuai.github.io/waifu-constitution/) — AI alignment constitution
-- [Waifu Layer](https://waifuai.github.io/waifu-layer/) — Personality trait layer
-- [Waifu LLM VRM](https://waifuai.github.io/waifu-llm-vrm/) — VRM avatar integration
-- [Solana Launchpad Ecosystem](https://waifuai.github.io/solana-launchpad-ecosystem/) — Solana ICO/launchpad suite
-- [MCP Solana Affiliate](https://waifuai.github.io/mcp-solana-affiliate/) — Affiliate program MCP server
-- [MCP Solana DEX](https://waifuai.github.io/mcp-solana-dex/) — DEX MCP server
-- [MCP Solana ICO](https://waifuai.github.io/mcp-solana-ico/) — ICO tools MCP server
-- [Paraphrase Tools](https://waifuai.github.io/paraphrase-generation/) — NLP paraphrase generation suite
-- [Book Generator](https://waifuai.github.io/book-generator/) — Automated book generation
-- [Research Books](https://waifuai.github.io/research-books/) — Academic research collection
-- [Reasoning Pricer](https://waifuai.github.io/reasoning-pricer/) — Token pricing models
-- [Launchpad Skill](https://waifuai.github.io/launchpad-skill/) — Launchpad system framework
-- [Traits](https://waifuai.github.io/traits/) — Character/agent trait system
-- [Web Apps Collection](https://waifuai.github.io/web-apps/) — Browser-based AI applications (chat, guides, simulations, quantum consciousness, bonding curves)
+- [LLMS Full HTML](https://waifuai.github.io/llms-full-html/) — Aggregated HTML documentation bundles optimized for LLM ingestion
+- [LLMS Full TXT](https://waifuai.github.io/llms-full-txt/) — Markdown code aggregation with TOC and line counting
+- [Sitemap](https://waifuai.github.io/sitemap.xml) — Complete URL index of all pages
+
+## AI / LLM Infrastructure
+
+- [AI Benchmarks](https://waifuai.github.io/ai-benchmarks/) — LLM spatial reasoning evaluation (Maze Gauntlet) with leaderboard and OpenRouter multi-model testing
+- [LLM Text Queue GPU](https://waifuai.github.io/llm-text-queue-gpu/) — Redis-backed async text generation queue for LLM inference via OpenRouter
+- [Macro Language Model](https://waifuai.github.io/macro-language-model/) — CLI chatbot with modular personality system (tsundere, deredere, etc.)
+- [Book Generator](https://waifuai.github.io/book-generator/) — Full book generator from a title prompt using OpenRouter
+- [Biochem Framework](https://waifuai.github.io/biochem-framework/) — AI conversation benchmark scoring by estimated neurochemical impact
+- [Reasoning Pricer](https://waifuai.github.io/reasoning-pricer/) — Token pricing models with reasoning analysis
+
+## Waifu / AI Companion
+
+- [Hermes Waifu](https://waifuai.github.io/hermes-waifu/) — Live2D animated waifu with expression controls and Hermes Agent integration
+- [Waifu Chat API](https://waifuai.github.io/waifu-chat-api/) — REST API for waifu chatbot conversations with user management
+- [Waifu Constitution](https://waifuai.github.io/waifu-constitution/) — AI alignment constitution and behavioral guidelines for waifu agents
+- [Waifu Layer](https://waifuai.github.io/waifu-layer/) — Personality trait layering system for LLM waifu responses
+- [Waifu LLM VRM](https://waifuai.github.io/waifu-llm-vrm/) — Python library (pywaifu) for Godot engine AI waifus with VRM support
+- [Anime Subtitle Chatbot](https://waifuai.github.io/anime-subtitle-chatbot/) — Few-shot chatbot trained on anime subtitles
+- [MCP Waifu Chat](https://waifuai.github.io/mcp-waifu-chat/) — Conversational AI waifu with SQLite history (FastMCP)
+- [MCP Waifu Queue](https://waifuai.github.io/mcp-waifu-queue/) — Redis-backed async job queue for text generation
+- [MCP Traits Matcher](https://waifuai.github.io/mcp-traits-matcher/) — Personality analysis with Euclidean distance matching
+- [Traits](https://waifuai.github.io/traits/) — Character/agent trait system with Manim animations
+
+## MCP Servers (Model Context Protocol)
+
+- [MCP Solana Affiliate](https://waifuai.github.io/mcp-solana-affiliate/) — Solana ICO affiliate program with Blink URL generation
+- [MCP Solana DEX](https://waifuai.github.io/mcp-solana-dex/) — Basic Solana DEX order book management
+- [MCP Solana ICO](https://waifuai.github.io/mcp-solana-ico/) — Solana ICO with bonding curves, buy/sell, and discounts
+- [MCP Solana Internet](https://waifuai.github.io/mcp-solana-internet/) — Pay-to-access payment system with expiry
+
+## Solana / Blockchain
+
+- [Solana Launchpad Ecosystem](https://waifuai.github.io/solana-launchpad-ecosystem/) — Multi-program Rust ecosystem for AI-driven tokenomics
+- [Solana ICO](https://waifuai.github.io/solana-ico/) — Python CLI for ContextCoin ICO with linear bonding curves
+- [Launchpad Skill](https://waifuai.github.io/launchpad-skill/) — Rust CLI for managing tokenized companies on Solana
+- [Crypto Simulation](https://waifuai.github.io/crypto-simulation/) — Unified mathematical theory of token economy simulations
+- [Sim Affiliate](https://waifuai.github.io/sim-affiliate/) — Token economy simulation with affiliate dynamics
+- [Sim Airdrop](https://waifuai.github.io/sim-airdrop/) — Airdrop strategy simulation with tiered/lottery/uniform distributions
+- [Sim Bonding Curve](https://waifuai.github.io/sim-bonding-curve/) — Agent-based bonding curve token economy simulations
+- [Sim MCP Token](https://waifuai.github.io/sim-mcp-token/) — Multi-agent economic simulation with resource ecosystems
+
+## NLP / Paraphrase
+
+- [Paraphrase Generation](https://waifuai.github.io/paraphrase-generation/) — NLP paraphrase generation suite overview
+- [Paraphrase Back Translate](https://waifuai.github.io/paraphrase-back-translate/) — Back-translation paraphrase generation
+- [Paraphrase GAN](https://waifuai.github.io/paraphrase-gan/) — GAN-style paraphrase refinement loop via OpenRouter
+- [Paraphrase GAN Utils](https://waifuai.github.io/paraphrase-gan-utils/) — Production paraphrase system with caching and REST API
+- [Paraphrase Human Sentence Classifier](https://waifuai.github.io/paraphrase-human-sentence-classifier/) — Human vs. AI sentence classifier
+- [Paraphrase NMT](https://waifuai.github.io/paraphrase-neural-machine-translation/) — TensorFlow 2.x seq2seq NMT with Luong attention
+
+## Research & Theory
+
+- [Research Books](https://waifuai.github.io/research-books/) — Academic research collection on AI, blockchain, and economics
+- [Research Text](https://waifuai.github.io/research-text/) — Research docs on tokenomics, quantum computing, and Solana
+- [Quantum Circuit Optimization](https://waifuai.github.io/quantum-circuit-optimization/) — Quantum circuit optimization library
+- [RANSOC](https://waifuai.github.io/ransoc/) — Real-time curiosity-driven search relevance algorithm
+- [Street Lines](https://waifuai.github.io/street-lines/) — Mathematical proofs and derivations
+
+## Tools & Apps
+
+- [Function Graph Generator](https://waifuai.github.io/function-graph-generator/) — Visualize mathematical functions and graphs
+- [Web Apps](https://waifuai.github.io/web-apps/) — Browser-based AI applications (chat, guides, simulations, quantum consciousness, bonding curves)
+
+## Blog
+
+- [Blog Posts](https://waifuai.github.io/blog-posts/) — Ecosystem blog articles and announcements (14 posts)
 
 ## Key Links
 

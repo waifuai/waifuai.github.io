@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-EP9DHGYS02');
 </script>
 <meta charset="UTF-8">
@@ -57,6 +56,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 header { text-align: center; margin-bottom: 3rem; padding: 2rem 0; border-bottom: 1px solid var(--border); }
 header h1 { font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
 header p { color: var(--text-muted); font-size: 1.1rem; }
+header .links { margin-top: 1rem; }
+header .links a { color: var(--accent3); margin: 0 0.5rem; font-size: 0.9rem; }
 section { margin-bottom: 2.5rem; }
 h2 { font-size: 1.4rem; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
 .link-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem; }
@@ -65,69 +66,123 @@ h2 { font-size: 1.4rem; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-b
 .link-list a h3 { color: var(--text); font-size: 1.1rem; margin-bottom: 0.25rem; }
 .link-list a p { color: var(--text-muted); font-size: 0.85rem; }
 footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding-top: 2rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+footer a { color: var(--accent3); }
 </style>
 </head>
 <body>
 <div class="container">
 <header>
 <h1>WaifuAI Docs</h1>
-<p>Technical documentation for AI agents, developers, and builders</p>
+<p>40+ open-source projects for AI agents, developers, and builders</p>
+<div class="links">
+  <a href="llms.txt">llms.txt</a>
+  <a href="sitemap.xml">sitemap</a>
+  <a href="https://github.com/waifuai">GitHub</a>
+  <a href="https://x.com/thewaifuai">Twitter</a>
+  <a href="https://www.youtube.com/@thewaifuai">YouTube</a>
+</div>
 </header>
 
 <section>
-<h2>Live2D & Visual</h2>
+<h2>Agent Resources</h2>
 <div class="link-list">
-<a href="hermes-waifu/index.html"><h3>Hermes Waifu</h3><p>Live2D waifu display with expression controls for Hermes Agent</p></a>
-<a href="function-graph-generator/index.html"><h3>Function Graph Generator</h3><p>Visualize mathematical functions and graphs</p></a>
-<a href="web-apps/index.html"><h3>Web Apps</h3><p>Browser-based AI applications</p></a>
+<a href="llms-full-html/index.html"><h3>LLMS Full HTML</h3><p>Aggregated HTML documentation bundles optimized for LLM ingestion</p></a>
+<a href="llms-full-txt/index.html"><h3>LLMS Full TXT</h3><p>Markdown code aggregation with TOC and line counting</p></a>
 </div>
 </section>
 
 <section>
-<h2>AI Models & Infrastructure</h2>
+<h2>Waifu / AI Companion</h2>
 <div class="link-list">
-<a href="ai-benchmarks/index.html"><h3>AI Benchmarks</h3><p>Benchmark repository and performance data</p></a>
-<a href="mcp-waifu-chat/index.html"><h3>MCP Waifu Chat</h3><p>Model Context Protocol server for waifu chat</p></a>
-<a href="mcp-waifu-queue/index.html"><h3>MCP Waifu Queue</h3><p>Queue management for waifu AI agents</p></a>
+<a href="hermes-waifu/index.html"><h3>Hermes Waifu</h3><p>Live2D animated waifu with expression controls for Hermes Agent</p></a>
+<a href="waifu-chat-api/index.html"><h3>Waifu Chat API</h3><p>REST API for waifu chatbot conversations with user management</p></a>
+<a href="waifu-constitution/index.html"><h3>Waifu Constitution</h3><p>AI alignment constitution and behavioral guidelines for waifu agents</p></a>
+<a href="waifu-layer/index.html"><h3>Waifu Layer</h3><p>Personality trait layering system for LLM waifu responses</p></a>
+<a href="waifu-llm-vrm/index.html"><h3>Waifu LLM VRM</h3><p>Python library for Godot engine AI waifus with VRM support</p></a>
+<a href="anime-subtitle-chatbot/index.html"><h3>Anime Subtitle Chatbot</h3><p>Few-shot chatbot trained on anime subtitles</p></a>
+<a href="traits/index.html"><h3>Traits</h3><p>Character and agent trait system with Manim animations</p></a>
+</div>
+</section>
+
+<section>
+<h2>AI / LLM Infrastructure</h2>
+<div class="link-list">
+<a href="ai-benchmarks/index.html"><h3>AI Benchmarks</h3><p>LLM spatial reasoning evaluation with leaderboard and multi-model testing</p></a>
 <a href="llm-text-queue-gpu/index.html"><h3>LLM Text Queue GPU</h3><p>GPU-accelerated text processing pipeline</p></a>
+<a href="macro-language-model/index.html"><h3>Macro Language Model</h3><p>CLI chatbot with modular personality system (tsundere, deredere, etc.)</p></a>
+<a href="book-generator/index.html"><h3>Book Generator</h3><p>Full book generator from a title prompt using OpenRouter</p></a>
+<a href="biochem-framework/index.html"><h3>Biochem Framework</h3><p>AI conversation benchmark scoring by neurochemical impact</p></a>
+<a href="reasoning-pricer/index.html"><h3>Reasoning Pricer</h3><p>Token pricing models with reasoning analysis</p></a>
 </div>
 </section>
 
 <section>
-<h2>Blockchain & Solana</h2>
+<h2>MCP Servers</h2>
 <div class="link-list">
-<a href="mcp-solana-affiliate/index.html"><h3>Solana Affiliate</h3><p>MCP server for Solana affiliate programs</p></a>
-<a href="mcp-solana-dex/index.html"><h3>Solana DEX</h3><p>Decentralized exchange MCP server</p></a>
-<a href="mcp-solana-ico/index.html"><h3>Solana ICO</h3><p>Initial coin offering tools</p></a>
-<a href="mcp-solana-internet/index.html"><h3>Solana Internet</h3><p>Internet-scale Solana utilities</p></a>
-<a href="sim-affiliate/index.html"><h3>Sim Affiliate</h3><p>Simulation framework for affiliate systems</p></a>
-<a href="sim-airdrop/index.html"><h3>Sim Airdrop</h3><p>Airdrop simulation and distribution</p></a>
-<a href="solana-ico/index.html"><h3>Solana ICO</h3><p>Token generation and distribution</p></a>
+<a href="mcp-waifu-chat/index.html"><h3>MCP Waifu Chat</h3><p>Conversational AI waifu with SQLite history (FastMCP)</p></a>
+<a href="mcp-waifu-queue/index.html"><h3>MCP Waifu Queue</h3><p>Redis-backed async job queue for text generation</p></a>
+<a href="mcp-traits-matcher/index.html"><h3>MCP Traits Matcher</h3><p>Personality analysis with Euclidean distance matching</p></a>
+<a href="mcp-solana-affiliate/index.html"><h3>MCP Solana Affiliate</h3><p>Solana ICO affiliate program with Blink URL generation</p></a>
+<a href="mcp-solana-dex/index.html"><h3>MCP Solana DEX</h3><p>Basic Solana DEX order book management</p></a>
+<a href="mcp-solana-ico/index.html"><h3>MCP Solana ICO</h3><p>Solana ICO with bonding curves, buy/sell, and discounts</p></a>
+<a href="mcp-solana-internet/index.html"><h3>MCP Solana Internet</h3><p>Pay-to-access payment system with expiry</p></a>
 </div>
 </section>
 
 <section>
-<h2>Content & Data Processing</h2>
+<h2>Solana / Blockchain</h2>
 <div class="link-list">
-<a href="anime-subtitle-chatbot/index.html"><h3>Anime Subtitle Chatbot</h3><p>Subtitle processing for anime chat</p></a>
-<a href="biochem-framework/index.html"><h3>Biochem Framework</h3><p>Biochemical data processing framework</p></a>
-<a href="book-generator/index.html"><h3>Book Generator</h3><p>Automated book and text generation</p></a>
-<a href="paraphrase-back-translate/index.html"><h3>Paraphrase & Back Translate</h3><p>Translation and paraphrasing tools</p></a>
-<a href="research-books/index.html"><h3>Research Books</h3><p>Academic and research book collection</p></a>
+<a href="solana-launchpad-ecosystem/index.html"><h3>Solana Launchpad Ecosystem</h3><p>Multi-program Rust ecosystem for AI-driven tokenomics</p></a>
+<a href="solana-ico/index.html"><h3>Solana ICO</h3><p>Python CLI for ContextCoin ICO with linear bonding curves</p></a>
+<a href="launchpad-skill/index.html"><h3>Launchpad Skill</h3><p>Rust CLI for managing tokenized companies on Solana</p></a>
+<a href="crypto-simulation/index.html"><h3>Crypto Simulation</h3><p>Unified mathematical theory of token economy simulations</p></a>
+<a href="sim-affiliate/index.html"><h3>Sim Affiliate</h3><p>Token economy simulation with affiliate dynamics</p></a>
+<a href="sim-airdrop/index.html"><h3>Sim Airdrop</h3><p>Airdrop strategy simulation with tiered/lottery/uniform distributions</p></a>
+<a href="sim-bonding-curve/index.html"><h3>Sim Bonding Curve</h3><p>Agent-based bonding curve token economy simulations</p></a>
+<a href="sim-mcp-token/index.html"><h3>Sim MCP Token</h3><p>Multi-agent economic simulation with resource ecosystems</p></a>
 </div>
 </section>
 
 <section>
-<h2>Development Tools</h2>
+<h2>NLP / Paraphrase</h2>
 <div class="link-list">
-<a href="launchpad-skill/index.html"><h3>Launchpad Skill</h3><p>Skill framework for launchpad systems</p></a>
-<a href="traits/index.html"><h3>Traits</h3><p>Character and agent trait system</p></a>
-<a href="reasoning-pricer/index.html"><h3>Reasoning Pricer</h3><p>Pricing models with reasoning</p></a>
+<a href="paraphrase-generation/index.html"><h3>Paraphrase Generation</h3><p>NLP paraphrase generation suite overview</p></a>
+<a href="paraphrase-back-translate/index.html"><h3>Paraphrase Back Translate</h3><p>Back-translation paraphrase generation</p></a>
+<a href="paraphrase-gan/index.html"><h3>Paraphrase GAN</h3><p>GAN-style paraphrase refinement loop via OpenRouter</p></a>
+<a href="paraphrase-gan-utils/index.html"><h3>Paraphrase GAN Utils</h3><p>Production paraphrase system with caching and REST API</p></a>
+<a href="paraphrase-human-sentence-classifier/index.html"><h3>Human Sentence Classifier</h3><p>Human vs. AI sentence classifier</p></a>
+<a href="paraphrase-neural-machine-translation/index.html"><h3>Neural Machine Translation</h3><p>TensorFlow 2.x seq2seq NMT with Luong attention</p></a>
+</div>
+</section>
+
+<section>
+<h2>Research & Theory</h2>
+<div class="link-list">
+<a href="research-books/index.html"><h3>Research Books</h3><p>Academic research collection on AI, blockchain, and economics</p></a>
+<a href="research-text/index.html"><h3>Research Text</h3><p>Research docs on tokenomics, quantum computing, and Solana</p></a>
+<a href="quantum-circuit-optimization/index.html"><h3>Quantum Circuit Optimization</h3><p>Quantum circuit optimization library</p></a>
+<a href="ransoc/index.html"><h3>RANSOC</h3><p>Real-time curiosity-driven search relevance algorithm</p></a>
+<a href="street-lines/index.html"><h3>Street Lines</h3><p>Mathematical proofs and derivations</p></a>
+</div>
+</section>
+
+<section>
+<h2>Tools & Apps</h2>
+<div class="link-list">
+<a href="function-graph-generator/index.html"><h3>Function Graph Generator</h3><p>Visualize mathematical functions and graphs</p></a>
+<a href="web-apps/index.html"><h3>Web Apps</h3><p>Browser-based AI applications: chat, guides, simulations, quantum consciousness</p></a>
+</div>
+</section>
+
+<section>
+<h2>Blog</h2>
+<div class="link-list">
+<a href="blog-posts/"><h3>Blog Posts</h3><p>14 articles: ecosystem announcements, Live2D guides, TTS architecture, philosophy</p></a>
 </div>
 </section>
 
 <footer>
-<p>WaifuAI Docs Hub — Built for agents, by builders</p>
+<p>WaifuAI Docs Hub &mdash; Built for agents, by builders &bull; <a href="llms.txt">llms.txt</a> &bull; <a href="https://github.com/waifuai">GitHub</a></p>
 </footer>
 </div>
 </body>
