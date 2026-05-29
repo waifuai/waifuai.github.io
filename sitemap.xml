@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://waifuai.github.io/sitemap-01.xml</loc>
+    <loc>https://waifuai.github.io/sitemap-main.xml</loc>
     <lastmod>2026-05-29</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://waifuai.github.io/sitemap-02.xml</loc>
+    <loc>https://waifuai.github.io/sitemap-research.xml</loc>
     <lastmod>2026-05-29</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://waifuai.github.io/sitemap-03.xml</loc>
+    <loc>https://waifuai.github.io/sitemap-reasoning-pricer.xml</loc>
     <lastmod>2026-05-29</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://waifuai.github.io/sitemap-04.xml</loc>
+    <loc>https://waifuai.github.io/sitemap-web-apps.xml</loc>
+    <lastmod>2026-05-29</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://waifuai.github.io/sitemap-benchmarks.xml</loc>
     <lastmod>2026-05-29</lastmod>
   </sitemap>
 </sitemapindex>
