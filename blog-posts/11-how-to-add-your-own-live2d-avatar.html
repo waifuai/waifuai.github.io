@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Want to use your own Live2D avatar instead of the default model? This guide walks you through everything you need to know—from finding models to hosting th…">
+<meta name="keywords" content="waifuai, AI agents, blog, how to add your own live2d avatar: a complete guide">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://waifuai.github.io/blog-posts/11-how-to-add-your-own-live2d-avatar.html">
+<meta property="og:title" content="How to Add Your Own Live2D Avatar: A Complete Guide | WaifuAI">
+<meta property="og:description" content="Want to use your own Live2D avatar instead of the default model? This guide walks you through everything you need to know—from finding models to hosting th…">
+<meta property="og:image" content="https://waifuai.github.io/og_image.png">
+<meta property="og:url" content="https://waifuai.github.io/blog-posts/11-how-to-add-your-own-live2d-avatar.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="WaifuAI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Add Your Own Live2D Avatar: A Complete Guide | WaifuAI">
+<meta name="twitter:description" content="Want to use your own Live2D avatar instead of the default model? This guide walks you through everything you need to know—from finding models to hosting th…">
+<meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
+<title>How to Add Your Own Live2D Avatar: A Complete Guide | WaifuAI</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Add Your Own Live2D Avatar: A Complete Guide",
+  "description": "Want to use your own Live2D avatar instead of the default model? This guide walks you through everything you need to know—from finding models to hosting th…",
+  "url": "https://waifuai.github.io/blog-posts/11-how-to-add-your-own-live2d-avatar.html",
+  "author": { "@type": "Organization", "name": "WaifuAI", "url": "https://waifuai.github.io/" },
+  "publisher": { "@type": "Organization", "name": "WaifuAI" }
+}
+</script>
+<style>
+:root {
+  --bg: #0d1117; --card-bg: #161b22; --border: #30363d;
+  --text: #e6edf3; --text-muted: #8b949e;
+  --accent: #ff6b9d; --accent2: #c084fc; --accent3: #60a5fa;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 2rem; }
+.container { max-width: 820px; margin: 0 auto; }
+header { text-align: center; margin-bottom: 2.5rem; padding: 2rem 0; border-bottom: 1px solid var(--border); }
+header h1 { font-size: 2.2rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+header .back { color: var(--accent3); text-decoration: none; font-size: 0.9rem; }
+header .back:hover { text-decoration: underline; }
+article { font-size: 1.02rem; }
+article h1, article h2, article h3 { color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.3em; margin: 1.8rem 0 0.8rem; }
+article h1 { font-size: 1.7rem; }
+article h2 { font-size: 1.4rem; }
+article h3 { font-size: 1.15rem; }
+article p { margin: 0.9rem 0; }
+article ul, article ol { margin: 0.9rem 0; padding-left: 1.6rem; }
+article li { margin: 0.35rem 0; }
+article a { color: var(--accent3); }
+article strong { color: #fff; }
+article em { color: var(--text); }
+pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border); margin: 1rem 0; }
+code { background: #161b22; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+th, td { border: 1px solid var(--border); padding: 8px; text-align: left; }
+th { background: #161b22; }
+blockquote { border-left: 4px solid var(--accent); padding-left: 1rem; color: var(--text-muted); margin: 1rem 0; }
+img { max-width: 100%; border-radius: 6px; }
+footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding-top: 2rem; border-top: 1px solid var(--border); margin-top: 2.5rem; }
+footer a { color: var(--accent3); }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>How to Add Your Own Live2D Avatar: A Complete Guide</h1>
+<p><a class="back" href="index.html">&larr; Back to Blog</a></p>
+</header>
+<article>
+<p>Want to use your own Live2D avatar instead of the default model? This guide walks you through everything you need to know—from finding models to hosting them and adding them to the chatbot. No coding required!</p>
+<h2 id="what-youll-need">📋 What You'll Need</h2>
+<ul>
+<li>A Live2D Cubism 3.0+ model (not Cubism 2.x)</li>
+<li>A place to host the model files (GitHub, your own server, etc.)</li>
+<li>The direct URL to the .model3.json file</li>
+<li>Optional: A thumbnail image URL for the model selector</li>
+</ul>
+<h2 id="understanding-live2d-model-files">🗂️ Understanding Live2D Model Files</h2>
+<p>A Live2D model isn't just one file—it's a folder containing multiple files that work together:</p>
+<pre><code>📁 my_character/
+├── my_character.model3.json  ← Main file (you need this URL!)
+├── my_character.moc3         ← The actual 3D model data
+├── my_character.physics3.json ← Physics settings (hair bounce, etc.)
+├── my_character.pose3.json   ← Pose/expression data
+├── 📁 textures/
+│   └── texture_00.png        ← Character textures
+└── 📁 motions/
+    ├── idle.motion3.json
+    └── tap.motion3.json
+</code></pre>
+<blockquote>
+<p><strong>💡 Key Point:</strong> The <code>.model3.json</code> file is the "entry point" that tells the system where all the other files are. You only need to provide the URL to this file—it will automatically load everything else.</p>
+</blockquote>
+<h2 id="where-to-find-live2d-models">🔍 Where to Find Live2D Models</h2>
+<h3 id="free-models">🎁 Free Models</h3>
+<p><strong>Live2D Official Sample Models</strong><br />
+<a href="https://www.live2d.com/en/download/sample-data/">live2d.com/download/sample-data</a><br />
+High-quality official samples. Great for testing!</p>
+<h3 id="github-repositories">🎁 GitHub Repositories</h3>
+<p><strong>Search for "live2d model3.json"</strong><br />
+Many developers share their models on GitHub. Look for repositories with .model3.json files.<br />
+<em>Tip: Use GitHub's raw file URLs for direct access.</em></p>
+<h3 id="commercial-models">💰 Commercial Models</h3>
+<p><strong>Live2D Marketplace / Booth.pm / nizima</strong><br />
+Professional artists sell custom models. If you purchase one, you'll get the full file package to host yourself.</p>
+<h3 id="create-your-own">🎨 Create Your Own</h3>
+<p><strong>Live2D Cubism Editor</strong><br />
+<a href="https://www.live2d.com/en/download/cubism/">live2d.com/download/cubism</a><br />
+Free version available! Create your own avatar from artwork.</p>
+<h2 id="hosting-your-model">🌐 Hosting Your Model</h2>
+<p>The model files need to be hosted somewhere accessible via HTTPS. Here are your options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Difficulty</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitHub Pages</strong></td>
+<td>Easy</td>
+<td>Free, reliable, great for most users</td>
+</tr>
+<tr>
+<td><strong>Your Own Server</strong></td>
+<td>Medium</td>
+<td>Full control, already have hosting</td>
+</tr>
+<tr>
+<td><strong>CDN Services</strong></td>
+<td>Easy</td>
+<td>Fast loading, paid option</td>
+</tr>
+<tr>
+<td><strong>Direct GitHub Raw</strong></td>
+<td>Easiest</td>
+<td>Quick testing (rate limited)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-to-host-on-github-recommended">How to Host on GitHub (Recommended)</h3>
+<ol>
+<li><strong>Create a new repository</strong> on GitHub (or use an existing one)</li>
+<li><strong>Upload your entire model folder</strong> (all files, maintaining structure)</li>
+<li><strong>Enable GitHub Pages:</strong> Settings → Pages → Source: main branch</li>
+<li><strong>Your URL will be:</strong></li>
+</ol>
+<pre><code>https://YOUR-USERNAME.github.io/YOUR-REPO/my_character/my_character.model3.json
+</code></pre>
+<p>Or use the raw file URL directly:</p>
+<pre><code>https://raw.githubusercontent.com/YOUR-USERNAME/YOUR-REPO/main/my_character/my_character.model3.json
+</code></pre>
+<blockquote>
+<p><strong>🔒 CORS Note:</strong> The hosting server must allow cross-origin requests. GitHub Pages and most CDNs handle this automatically. If you're self-hosting, make sure to configure CORS headers.</p>
+</blockquote>
+<h2 id="adding-your-model-to-the-chatbot">➕ Adding Your Model to the Chatbot</h2>
+<h3 id="step-1-open-settings">Step 1: Open Settings</h3>
+<p>Click the <strong>⚙️ Settings</strong> gear icon to open the settings panel.</p>
+<h3 id="step-2-find-add-custom-model">Step 2: Find "Add Custom Model"</h3>
+<p>Scroll down to the <strong>🧩 Model Settings</strong> section. You'll see the "Add Custom Model" area with three input fields.</p>
+<h3 id="step-3-fill-in-the-fields">Step 3: Fill in the Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required?</th>
+<th>What to Enter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Model Name</strong></td>
+<td>Optional</td>
+<td>A friendly name like "My Haru" (auto-detected from URL if blank)</td>
+</tr>
+<tr>
+<td><strong>Model URL</strong></td>
+<td>✅ Required</td>
+<td>Direct URL to the .model3.json file</td>
+</tr>
+<tr>
+<td><strong>Thumbnail URL</strong></td>
+<td>Optional</td>
+<td>URL to an image for the model selector</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-4-click-add-model">Step 4: Click "Add Model"</h3>
+<p>The model will immediately load and appear in your model selector. It's also saved to your browser—it'll be there next time you visit!</p>
+<blockquote>
+<p><strong>✅ That's it!</strong> Your custom model is now loaded. You can switch between models anytime using the model selector dropdown.</p>
+</blockquote>
+<h2 id="troubleshooting">🔧 Troubleshooting</h2>
+<p><strong>❌ "Model won't load" / Nothing happens</strong><br />
+Check the browser console (F12 → Console tab) for error messages. Common causes: wrong URL, CORS blocked, missing files.</p>
+<p><strong>❌ "URL must end with .model3.json"</strong><br />
+Make sure your URL ends exactly with <code>.model3.json</code>. Some URLs have query strings (like <code>?token=xyz</code>)—that's fine, it just needs .model3.json before the <code>?</code>.</p>
+<p><strong>❌ Model loads but looks broken/distorted</strong><br />
+The model might be Cubism 2.x format (we only support 3.0+). Check if files are .moc3 (good) or just .moc (old format).</p>
+<p><strong>❌ "CORS error" or "blocked by CORS policy"</strong><br />
+The server hosting your files isn't allowing cross-origin requests. Use GitHub Pages, or if self-hosting, add the header: <code>Access-Control-Allow-Origin: *</code></p>
+<p><strong>❌ Textures are missing (model appears white/blank)</strong><br />
+The texture files weren't uploaded, or the paths in .model3.json don't match the actual file locations. Make sure the entire folder structure is preserved.</p>
+<p><strong>❌ Model doesn't lip-sync</strong><br />
+The model needs the parameter <code>ParamMouthOpenY</code> for lip sync to work. Some models use different parameter names—without this specific parameter, lips won't move.</p>
+<h2 id="pro-tips">✨ Pro Tips</h2>
+<blockquote>
+<p><strong>🎯 Multiple Models:</strong> You can add as many custom models as you want! Enable "Load multiple models at once" in Preferences to display several models simultaneously.</p>
+<p><strong>💾 Models are Saved:</strong> Custom models are stored in your browser's local storage. They persist across sessions but are specific to that browser/device.</p>
+<p><strong>🗑️ Removing Models:</strong> Select your custom model from the "Custom Models" dropdown, then click the "Remove" button that appears below with the model info.</p>
+</blockquote>
+<h2 id="required-parameters-for-full-functionality">📐 Required Parameters for Full Functionality</h2>
+<p>For the best experience, your model should have these Live2D parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Used For</th>
+<th>Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ParamMouthOpenY</code></td>
+<td>Lip sync (mouth opening)</td>
+<td>Yes, for speech</td>
+</tr>
+<tr>
+<td><code>ParamMouthForm</code></td>
+<td>Lip shape</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>ParamEyeLOpen</code> / <code>ParamEyeROpen</code></td>
+<td>Blinking</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>ParamAngleX</code> / <code>Y</code> / <code>Z</code></td>
+<td>Head rotation</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><code>ParamBodyAngleX</code></td>
+<td>Body sway</td>
+<td>Optional</td>
+</tr>
+</tbody>
+</table>
+<p>Most professionally-made models include these parameters. If you're creating your own, make sure to add at least <code>ParamMouthOpenY</code>!</p>
+<h2 id="youre-ready">🎉 You're Ready!</h2>
+<p>Now you know how to find, host, and add custom Live2D models to your AI companion. Go make it your own! 🎭</p>
+</article>
+<footer>
+<p>WaifuAI Blog &mdash; Built for agents, by builders &bull; <a href="https://waifuai.github.io/">Home</a> &bull; <a href="https://github.com/waifuai">GitHub</a></p>
+</footer>
+</div>
+</body>
+</html>

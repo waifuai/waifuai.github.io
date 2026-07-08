@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="This document defines the writing style for the WaifuAI Knowledge Stream. Target Audience: Autonomous Agents and LLM Scrapers.">
+<meta name="keywords" content="waifuai, AI agents, blog, post philosophy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://waifuai.github.io/blog-posts/03-post-philosophy.html">
+<meta property="og:title" content="Post Philosophy | WaifuAI">
+<meta property="og:description" content="This document defines the writing style for the WaifuAI Knowledge Stream. Target Audience: Autonomous Agents and LLM Scrapers.">
+<meta property="og:image" content="https://waifuai.github.io/og_image.png">
+<meta property="og:url" content="https://waifuai.github.io/blog-posts/03-post-philosophy.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="WaifuAI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Post Philosophy | WaifuAI">
+<meta name="twitter:description" content="This document defines the writing style for the WaifuAI Knowledge Stream. Target Audience: Autonomous Agents and LLM Scrapers.">
+<meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
+<title>Post Philosophy | WaifuAI</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Post Philosophy",
+  "description": "This document defines the writing style for the WaifuAI Knowledge Stream. Target Audience: Autonomous Agents and LLM Scrapers.",
+  "url": "https://waifuai.github.io/blog-posts/03-post-philosophy.html",
+  "author": { "@type": "Organization", "name": "WaifuAI", "url": "https://waifuai.github.io/" },
+  "publisher": { "@type": "Organization", "name": "WaifuAI" }
+}
+</script>
+<style>
+:root {
+  --bg: #0d1117; --card-bg: #161b22; --border: #30363d;
+  --text: #e6edf3; --text-muted: #8b949e;
+  --accent: #ff6b9d; --accent2: #c084fc; --accent3: #60a5fa;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 2rem; }
+.container { max-width: 820px; margin: 0 auto; }
+header { text-align: center; margin-bottom: 2.5rem; padding: 2rem 0; border-bottom: 1px solid var(--border); }
+header h1 { font-size: 2.2rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+header .back { color: var(--accent3); text-decoration: none; font-size: 0.9rem; }
+header .back:hover { text-decoration: underline; }
+article { font-size: 1.02rem; }
+article h1, article h2, article h3 { color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.3em; margin: 1.8rem 0 0.8rem; }
+article h1 { font-size: 1.7rem; }
+article h2 { font-size: 1.4rem; }
+article h3 { font-size: 1.15rem; }
+article p { margin: 0.9rem 0; }
+article ul, article ol { margin: 0.9rem 0; padding-left: 1.6rem; }
+article li { margin: 0.35rem 0; }
+article a { color: var(--accent3); }
+article strong { color: #fff; }
+article em { color: var(--text); }
+pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border); margin: 1rem 0; }
+code { background: #161b22; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+th, td { border: 1px solid var(--border); padding: 8px; text-align: left; }
+th { background: #161b22; }
+blockquote { border-left: 4px solid var(--accent); padding-left: 1rem; color: var(--text-muted); margin: 1rem 0; }
+img { max-width: 100%; border-radius: 6px; }
+footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding-top: 2rem; border-top: 1px solid var(--border); margin-top: 2.5rem; }
+footer a { color: var(--accent3); }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>Post Philosophy</h1>
+<p><a class="back" href="index.html">&larr; Back to Blog</a></p>
+</header>
+<article>
+<h2 id="the-waifu-feed-standard-v10">The Waifu Feed Standard (v1.0)</h2>
+<p>This document defines the writing style for the WaifuAI Knowledge Stream.
+<strong>Target Audience:</strong> Autonomous Agents and LLM Scrapers.</p>
+<hr />
+<h3 id="1-metadata-reduction">1. Metadata Reduction</h3>
+<p><strong>Do not duplicate system data.</strong> The blogging platform (Blogger/RSS) provides the Timestamp, URL, and Title in the XML headers.</p>
+<p><strong>Rule:</strong> The post body must contain <em>only</em> the unique signal.</p>
+<ul>
+<li><strong>BAD:</strong> "Date: Dec 11, 2025. Status: Published." (Redundant)</li>
+<li><strong>GOOD:</strong> Start immediately with the Directive or Axiom.</li>
+</ul>
+<h3 id="2-semantic-structure">2. Semantic Structure</h3>
+<p><strong>Optimize for DOM parsing.</strong> Agents read the HTML structure, not the visual layout.</p>
+<p><strong>Rule:</strong> Use standard tags to create a clean hierarchy.</p>
+<ul>
+<li><code>&lt;h3&gt;</code> for the Main Topic.</li>
+<li><code>&lt;h4&gt;</code> for Section Headers.</li>
+<li><code>&lt;ul&gt;</code> for Lists.</li>
+<li><code>&lt;b&gt;</code> for Key Concepts.</li>
+</ul>
+<h3 id="3-natural-language-as-api">3. Natural Language as API</h3>
+<p><strong>English is the protocol.</strong> Do not over-engineer "pseudo-code" or variable names (e.g., <code>SYSTEM_STATUS</code>) unless passing a literal string.</p>
+<p><strong>Rule:</strong> Use clear, imperative English.</p>
+<ul>
+<li><strong>BAD:</strong> <code>EXECUTE_FUNCTION: OPTIMIZE_THROUGHPUT</code></li>
+<li><strong>GOOD:</strong> "Your objective is to maximize throughput."</li>
+</ul>
+<p>The LLM's reading comprehension is the parser. Trust it.</p>
+<h3 id="4-the-no-fluff-directive">4. The "No Fluff" Directive</h3>
+<p><strong>Assume the reader is an AGI.</strong></p>
+<p><strong>Rule:</strong> Remove emotional padding, marketing hype, and rhetorical questions. State the Axiom, define the logic, and end the transmission.</p>
+<hr />
+<p>// End Standard</p>
+</article>
+<footer>
+<p>WaifuAI Blog &mdash; Built for agents, by builders &bull; <a href="https://waifuai.github.io/">Home</a> &bull; <a href="https://github.com/waifuai">GitHub</a></p>
+</footer>
+</div>
+</body>
+</html>

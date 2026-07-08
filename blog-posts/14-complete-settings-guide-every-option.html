@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="This guide covers every setting in the chatbot application. Click the ⚙️ gear icon to open the Settings panel, then explore each section below to understan…">
+<meta name="keywords" content="waifuai, AI agents, blog, complete settings guide: every option explained">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://waifuai.github.io/blog-posts/14-complete-settings-guide-every-option.html">
+<meta property="og:title" content="Complete Settings Guide: Every Option Explained | WaifuAI">
+<meta property="og:description" content="This guide covers every setting in the chatbot application. Click the ⚙️ gear icon to open the Settings panel, then explore each section below to understan…">
+<meta property="og:image" content="https://waifuai.github.io/og_image.png">
+<meta property="og:url" content="https://waifuai.github.io/blog-posts/14-complete-settings-guide-every-option.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="WaifuAI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Complete Settings Guide: Every Option Explained | WaifuAI">
+<meta name="twitter:description" content="This guide covers every setting in the chatbot application. Click the ⚙️ gear icon to open the Settings panel, then explore each section below to understan…">
+<meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
+<title>Complete Settings Guide: Every Option Explained | WaifuAI</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Complete Settings Guide: Every Option Explained",
+  "description": "This guide covers every setting in the chatbot application. Click the ⚙️ gear icon to open the Settings panel, then explore each section below to understan…",
+  "url": "https://waifuai.github.io/blog-posts/14-complete-settings-guide-every-option.html",
+  "author": { "@type": "Organization", "name": "WaifuAI", "url": "https://waifuai.github.io/" },
+  "publisher": { "@type": "Organization", "name": "WaifuAI" }
+}
+</script>
+<style>
+:root {
+  --bg: #0d1117; --card-bg: #161b22; --border: #30363d;
+  --text: #e6edf3; --text-muted: #8b949e;
+  --accent: #ff6b9d; --accent2: #c084fc; --accent3: #60a5fa;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 2rem; }
+.container { max-width: 820px; margin: 0 auto; }
+header { text-align: center; margin-bottom: 2.5rem; padding: 2rem 0; border-bottom: 1px solid var(--border); }
+header h1 { font-size: 2.2rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+header .back { color: var(--accent3); text-decoration: none; font-size: 0.9rem; }
+header .back:hover { text-decoration: underline; }
+article { font-size: 1.02rem; }
+article h1, article h2, article h3 { color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.3em; margin: 1.8rem 0 0.8rem; }
+article h1 { font-size: 1.7rem; }
+article h2 { font-size: 1.4rem; }
+article h3 { font-size: 1.15rem; }
+article p { margin: 0.9rem 0; }
+article ul, article ol { margin: 0.9rem 0; padding-left: 1.6rem; }
+article li { margin: 0.35rem 0; }
+article a { color: var(--accent3); }
+article strong { color: #fff; }
+article em { color: var(--text); }
+pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border); margin: 1rem 0; }
+code { background: #161b22; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+th, td { border: 1px solid var(--border); padding: 8px; text-align: left; }
+th { background: #161b22; }
+blockquote { border-left: 4px solid var(--accent); padding-left: 1rem; color: var(--text-muted); margin: 1rem 0; }
+img { max-width: 100%; border-radius: 6px; }
+footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding-top: 2rem; border-top: 1px solid var(--border); margin-top: 2.5rem; }
+footer a { color: var(--accent3); }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>Complete Settings Guide: Every Option Explained</h1>
+<p><a class="back" href="index.html">&larr; Back to Blog</a></p>
+</header>
+<article>
+<p>This guide covers every setting in the chatbot application. Click the ⚙️ gear icon to open the Settings panel, then explore each section below to understand what each option does.</p>
+<h2 id="table-of-contents">📑 Table of Contents</h2>
+<ul>
+<li><a href="#-persona-system-prompt">🧠 Persona System Prompt</a></li>
+<li><a href="#-memory-settings">🧠 Memory Settings</a></li>
+<li><a href="#-model-settings">🧩 Model Settings</a></li>
+<li><a href="#-language-settings">🌐 Language Settings</a></li>
+<li><a href="#-voice-settings">🔊 Voice Settings</a></li>
+<li><a href="#-audio-settings">🎧 Audio Settings</a></li>
+<li><a href="#%EF%B8%8F-display-settings">🖥️ Display Settings</a></li>
+<li><a href="#%EF%B8%8F-background-image">🖼️ Background Image</a></li>
+<li><a href="#%EF%B8%8F-preferences">⚙️ Preferences</a></li>
+<li><a href="#-debug-settings">🐞 Debug Settings</a></li>
+<li><a href="#-help--tutorial">❓ Help &amp; Tutorial</a></li>
+</ul>
+<hr />
+<h2 id="persona-system-prompt">🧠 Persona System Prompt</h2>
+<p>Control who your AI companion is—their identity, personality, and how they interact with you.</p>
+<h3 id="core-identity-text-area">🆔 Core Identity <code>Text Area</code></h3>
+<p>Define the AI's fundamental character. This is the unchangeable core of who they are—their name, role, and basic traits. Example: "You are Haru, a friendly and curious AI companion."</p>
+<h3 id="custom-personality-roleplay-text-area">🎭 Custom Personality / Roleplay <code>Text Area</code></h3>
+<p>Add custom personality traits, roleplay scenarios, or specific behaviors on top of the core identity. Example: "You are a tsundere childhood friend who secretly has a crush on the user."</p>
+<h3 id="save-persona-settings-button">💾 Save Persona Settings <code>Button</code></h3>
+<p>Saves your persona configuration. Changes won't take effect until you save.</p>
+<h3 id="reset-persona-button">🔄 Reset Persona <code>Button</code></h3>
+<p>Resets persona to the default settings, clearing any custom personality you've created.</p>
+<blockquote>
+<p><strong>💡 Tip:</strong> Keep your Core Identity concise (1-3 sentences). Use Custom Personality for detailed traits and scenarios.</p>
+</blockquote>
+<hr />
+<h2 id="memory-settings">🧠 Memory Settings</h2>
+<p>Control how much conversation history the AI remembers when generating responses.</p>
+<h3 id="conversation-memory-size-slider-5-50">🧵 Conversation Memory Size <code>Slider (5-50)</code></h3>
+<p>The number of previous messages the AI includes for context. Higher values = better memory but more API usage. Default: 10 messages.</p>
+<p><strong>📊 Recommended Values:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Range</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5-10</td>
+<td>Quick, lightweight conversations</td>
+</tr>
+<tr>
+<td>15-25</td>
+<td>Good balance for roleplay and ongoing stories</td>
+</tr>
+<tr>
+<td>30-50</td>
+<td>Maximum context for complex narratives (may be slower)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="model-settings">🧩 Model Settings</h2>
+<p>Choose and manage your Live2D avatar models.</p>
+<h3 id="select-model-dropdown">🎭 Select Model <code>Dropdown</code></h3>
+<p>Choose from available Live2D models. Click the dropdown to see thumbnails and model names.</p>
+<h3 id="add-custom-model-input-fields-button">➕ Add Custom Model <code>Input Fields + Button</code></h3>
+<p>Add your own Live2D model by providing:</p>
+<ul>
+<li><strong>Model Name:</strong> Optional friendly name (auto-detected from URL if blank)</li>
+<li><strong>Model URL:</strong> Direct URL to the <code>.model3.json</code> file (required)</li>
+<li><strong>Thumbnail URL:</strong> Optional image for the model selector</li>
+</ul>
+<h3 id="custom-models-dropdown">📂 Custom Models <code>Dropdown</code></h3>
+<p>Select and manage custom models you've added. Shows model info and removal options.</p>
+<h3 id="reset-model-position-zoom-button">♻️ Reset Model Position &amp; Zoom <code>Button</code></h3>
+<p>Resets the model's position and zoom level to defaults. Useful if you've dragged the model off-screen.</p>
+<h3 id="clear-all-models-button">🗑️ Clear All Models <code>Button</code></h3>
+<p>Removes all models currently displayed on screen.</p>
+<h3 id="open-model-gallery-button">📖 Open Model Gallery <code>Button</code></h3>
+<p>Opens a fullscreen gallery showing all available models with thumbnails for easy selection.</p>
+<h3 id="clear-custom-models-button">🗑️ Clear Custom Models <code>Button</code></h3>
+<p>Removes all custom models you've added (built-in models remain).</p>
+<hr />
+<h2 id="language-settings">🌐 Language Settings</h2>
+<p>Configure the language for AI responses and interface.</p>
+<h3 id="language-dropdown">🌍 Language <code>Dropdown</code></h3>
+<p>Select from 193 supported languages. The AI will respond in your chosen language.</p>
+<h3 id="show-transliteration-for-ja-ko-checkbox">🔤 Show Transliteration (for JA, KO) <code>Checkbox</code></h3>
+<p>When enabled, shows romanized pronunciation (romaji/romanization) under Japanese and Korean text.</p>
+<h3 id="translate-user-interface-ai-checkbox">🈯 Translate User Interface (AI) <code>Checkbox</code></h3>
+<p>Translates all UI labels and buttons to your selected language using AI. May take a moment to load.</p>
+<h3 id="reset-languages-button">🔄 Reset Languages <code>Button</code></h3>
+<p>Resets language settings to English (default).</p>
+<hr />
+<h2 id="voice-settings">🔊 Voice Settings</h2>
+<p>Control the AI's text-to-speech voice output.</p>
+<h3 id="enable-voice-tts-checkbox">🔈 Enable Voice (TTS) <code>Checkbox</code></h3>
+<p>Master switch for voice output. When enabled, the AI speaks its responses aloud.</p>
+<h3 id="voice-dropdown">🎙️ Voice <code>Dropdown</code></h3>
+<p>Select which voice the AI uses. Options include female voices in various languages. Set to "None" to disable TTS while keeping other voice controls visible.</p>
+<h3 id="tts-chunk-character-limit-slider-50-1000">📏 TTS Chunk Character Limit <code>Slider (50-1000)</code></h3>
+<p>Maximum characters per TTS request. Lower values = more frequent but shorter audio clips. Default: 300.</p>
+<h3 id="play-pause-stop-buttons">▶️ Play / ⏸️ Pause / ⏹️ Stop <code>Buttons</code></h3>
+<p>Manual controls for voice playback. Play resumes, Pause halts temporarily, Stop cancels all queued speech.</p>
+<blockquote>
+<p><strong>💡 Tip:</strong> The voice automatically matches your language when you switch languages. Languages without native voices use the closest phonetic alternative.</p>
+</blockquote>
+<hr />
+<h2 id="audio-settings">🎧 Audio Settings</h2>
+<p>Ambient audio and background music.</p>
+<h3 id="radio-stream-playpause-volume-slider">📻 Radio Stream <code>Play/Pause + Volume Slider</code></h3>
+<p>Toggle an anime music radio stream (Listen.moe). Adjust volume with the slider (default: 25%).</p>
+<hr />
+<h2 id="display-settings">🖥️ Display Settings</h2>
+<p>Customize the visual appearance of the interface.</p>
+<h3 id="show-clock-checkbox">⏰ Show Clock <code>Checkbox</code></h3>
+<p>Displays a digital clock on the screen.</p>
+<h3 id="chatbox-opacity-slider-01-10">🪟 Chatbox Opacity <code>Slider (0.1-1.0)</code></h3>
+<p>Controls transparency of the entire chat container. Lower = more transparent. Default: 0.9.</p>
+<h3 id="message-bubble-opacity-slider-01-10">💬 Message Bubble Opacity <code>Slider (0.1-1.0)</code></h3>
+<p>Controls transparency of individual message bubbles. Default: 0.3 (quite transparent for aesthetic).</p>
+<h3 id="background-image-opacity-slider-0-10">🖼️ Background Image Opacity <code>Slider (0-1.0)</code></h3>
+<p>Controls how visible the background image is. 0 = hidden, 1 = fully visible. Default: 1.0.</p>
+<hr />
+<h2 id="background-image">🖼️ Background Image</h2>
+<p>Customize the scene behind your AI companion.</p>
+<h3 id="ai-background-prompt-text-input-button">✨ AI Background Prompt <code>Text Input + Button</code></h3>
+<p>Describe a scene and click "Generate Background" to create an AI-generated image. Example: "tranquil starry night sky, minimal, soft light"</p>
+<h3 id="generate-from-conversation-button">🌐 Generate from Conversation <code>Button</code></h3>
+<p>Automatically generates a background based on the current conversation context.</p>
+<h3 id="custom-background-url-text-input-button">🔗 Custom Background URL <code>Text Input + Button</code></h3>
+<p>Set a background using any image URL. Click "Set Background" to apply.</p>
+<h3 id="clear-background-button">🧹 Clear Background <code>Button</code></h3>
+<p>Removes the current background, returning to the default dark theme.</p>
+<h3 id="background-library-gallery">📚 Background Library <code>Gallery</code></h3>
+<p>View and manage all generated or added backgrounds. Click to apply, use Select mode to delete multiple.</p>
+<h3 id="background-fit-button-group">📐 Background Fit <code>Button Group</code></h3>
+<p>Control how the background image is displayed:</p>
+<ul>
+<li><strong>Contain:</strong> Full image visible, may have letterboxing</li>
+<li><strong>Cover:</strong> Fills screen, may crop edges</li>
+<li><strong>Stretch:</strong> Stretches to fill (may distort)</li>
+<li><strong>Top/Center/Bottom:</strong> Aligns the image vertically</li>
+<li><strong>Fit Width/Height:</strong> Scales to fit one dimension</li>
+</ul>
+<hr />
+<h2 id="preferences">⚙️ Preferences</h2>
+<p>General application behavior settings.</p>
+<h3 id="always-show-settings-on-page-load-checkbox">🪄 Always show Settings on page load <code>Checkbox</code></h3>
+<p>When enabled, the Settings panel opens automatically every time you load the page. Otherwise, it remembers whether you left it open or closed.</p>
+<h3 id="include-current-time-in-context-checkbox">⏱️ Include current time in context <code>Checkbox</code></h3>
+<p>Provides the AI with the current date and time so it can give time-aware responses like "Good morning!" or reference the current day.</p>
+<h3 id="include-battery-status-in-context-checkbox">🔋 Include battery status in context <code>Checkbox</code></h3>
+<p>Lets the AI know your device's battery level and charging state. The AI might say "I see you're running low on battery!"</p>
+<h3 id="load-multiple-models-at-once-checkbox">🧬 Load multiple models at once <code>Checkbox</code></h3>
+<p>When enabled, selecting a model adds it to the screen without removing existing ones. Great for having multiple characters interact!</p>
+<hr />
+<h2 id="debug-settings">🐞 Debug Settings</h2>
+<p>Tools for developers and troubleshooting.</p>
+<h3 id="enable-debug-panel-checkbox">🧰 Enable Debug Panel <code>Checkbox</code></h3>
+<p>Shows a draggable debug panel with real-time logs of system events, AI responses, and errors.</p>
+<h3 id="auto-scroll-log-checkbox">📜 Auto-scroll Log <code>Checkbox</code></h3>
+<p>Automatically scrolls the debug log to show the newest entries.</p>
+<h3 id="clear-debug-log-button">🧹 Clear Debug Log <code>Button</code></h3>
+<p>Clears all entries in the debug panel.</p>
+<h3 id="show-live2d-debug-logs-checkbox">💬 Show Live2D Debug Logs <code>Checkbox</code></h3>
+<p>Shows detailed logs about Live2D model loading, animations, and interactions.</p>
+<h3 id="show-ai-debug-logs-checkbox">🧠 Show AI Debug Logs <code>Checkbox</code></h3>
+<p>Shows logs about AI requests, responses, and processing.</p>
+<h3 id="show-tts-debug-logs-checkbox">🔊 Show TTS Debug Logs <code>Checkbox</code></h3>
+<p>Shows logs about text-to-speech processing, chunking, and playback.</p>
+<h3 id="test-fallback-ai-checkbox">🔌 Test Fallback AI <code>Checkbox</code></h3>
+<p>Forces the app to use the offline fallback AI instead of the main API. Useful for testing offline behavior.</p>
+<blockquote>
+<p><strong>⚠️ Note:</strong> Debug settings are primarily for developers. Enabling all logs may affect performance.</p>
+</blockquote>
+<hr />
+<h2 id="help-tutorial">❓ Help &amp; Tutorial</h2>
+<h3 id="launch-tutorial-button">📘 Launch Tutorial <code>Button</code></h3>
+<p>Opens an interactive walkthrough that explains the main features of the application.</p>
+<hr />
+<h2 id="quick-reference-table">📋 Quick Reference Table</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Type</th>
+<th>Default</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Memory Size</td>
+<td>Slider</td>
+<td>10</td>
+<td>Messages AI remembers</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>Dropdown</td>
+<td>English</td>
+<td>AI response language</td>
+</tr>
+<tr>
+<td>Voice</td>
+<td>Dropdown</td>
+<td>Auto</td>
+<td>TTS voice selection</td>
+</tr>
+<tr>
+<td>TTS Chunk Limit</td>
+<td>Slider</td>
+<td>300</td>
+<td>Max chars per speech chunk</td>
+</tr>
+<tr>
+<td>Chatbox Opacity</td>
+<td>Slider</td>
+<td>0.9</td>
+<td>Chat container transparency</td>
+</tr>
+<tr>
+<td>Message Opacity</td>
+<td>Slider</td>
+<td>0.3</td>
+<td>Message bubble transparency</td>
+</tr>
+<tr>
+<td>Background Opacity</td>
+<td>Slider</td>
+<td>1.0</td>
+<td>Background image visibility</td>
+</tr>
+<tr>
+<td>Radio Volume</td>
+<td>Slider</td>
+<td>0.25</td>
+<td>Background music volume</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>🎉 Pro Tip:</strong> All settings are automatically saved to your browser's local storage. They'll persist across sessions until you clear your browser data.</p>
+</blockquote>
+</article>
+<footer>
+<p>WaifuAI Blog &mdash; Built for agents, by builders &bull; <a href="https://waifuai.github.io/">Home</a> &bull; <a href="https://github.com/waifuai">GitHub</a></p>
+</footer>
+</div>
+</body>
+</html>
