@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://waifuai.github.io/crypto-simulation/reference-cross-references.html">
+<meta name="description" content="Mathematical Theory Cross-References | WaifuAI Docs Hub">
+<meta property="og:title" content="Mathematical Theory Cross-References">
+<meta property="og:description" content="Mathematical Theory Cross-References | WaifuAI Docs Hub">
+<meta property="og:image" content="https://waifuai.github.io/og_image.png">
+<meta property="og:url" content="https://waifuai.github.io/crypto-simulation/reference-cross-references.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="WaifuAI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mathematical Theory Cross-References">
+<meta name="twitter:description" content="Mathematical Theory Cross-References | WaifuAI Docs Hub">
+<meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
+
+<title>Mathematical Theory Cross-References</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+        ]
+    });"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-color: #0b0f19;
+    --card-bg: rgba(22, 28, 45, 0.6);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --primary: #00f2fe;
+    --primary-hover: #4facfe;
+    --accent: #d946ef;
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--bg-color);
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(217, 70, 239, 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+  
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #fff 30%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: #e0e7ff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.5rem;
+    background: linear-gradient(to bottom, var(--primary), var(--primary-hover));
+    border-radius: 2px;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #c7d2fe;
+  }
+
+  p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+  }
+
+  /* Table styling */
+  .table-container {
+    overflow-x: auto;
+    margin: 2rem 0;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+
+  th, td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  th {
+    background-color: rgba(15, 23, 42, 0.8);
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  /* Code highlights */
+  pre {
+    background: #0f172a;
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow-x: auto;
+    box-shadow: var(--shadow);
+  }
+
+  code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #f472b6;
+    background: rgba(244, 114, 182, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  pre code {
+    background: none;
+    padding: 0;
+    color: #e2e8f0;
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 4rem 0;
+  }
+
+  /* Navigation style */
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  ul li a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  ul li a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary);
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 242, 254, 0.1);
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "Mathematical Theory Cross-References",
+  "description": "Mathematical Theory Cross-References | WaifuAI Docs Hub",
+  "url": "https://waifuai.github.io/crypto-simulation/reference-cross-references.html",
+  "author": {
+    "@type": "Organization",
+    "name": "WaifuAI",
+    "url": "https://waifuai.github.io/"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "WaifuAI Docs Hub",
+    "url": "https://waifuai.github.io/"
+  }
+}
+</script>
+</head>
+<body>
+<h1>Mathematical Theory Cross-References</h1>
+<p><strong>Token Economy Simulation Suite - Mathematical Reference Guide</strong></p>
+<p>This document provides cross-references between the unified mathematical framework and the subsystem-specific formulations.</p>
+<h2>1. Affine System Integration Points</h2>
+<h3>1.1 Token Supply Dynamics</h3>
+<ul>
+<li><strong>Unified Framework:</strong> $S_i(t+1) = S_i(t) + \Delta S^{\text{inflow}}(t)$</li>
+<li><strong>Affine Specific:</strong> Buy/sell transactions $\Delta T_{j,i}(t)$</li>
+<li><strong>Cross-Reference:</strong> Chapter 2.2.1, Chapter 3.2.1</li>
+</ul>
+<h3>1.2 Commission Rate Dynamics</h3>
+<ul>
+<li><strong>Unified Framework:</strong> $C_j(t) \in [C_{\min}, C_{\max}]$</li>
+<li><strong>Affine Dynamics:</strong> Based on holding average, market performance</li>
+<li><strong>Cross-Reference:</strong> Chapter 1.4.2, Section A3.2 (Appendix)</li>
+</ul>
+<h2>2. Airdrop System Integration Points</h2>
+<h3>2.1 Demand Multiplier Evolution</h3>
+<ul>
+<li><strong>Unified Framework:</strong> $\alpha_i(t+1) = \min(1, \alpha_i(t) + \delta)$</li>
+<li><strong>Airdrop Specific:</strong> Vesting-dependent growth</li>
+<li><strong>Cross-Reference:</strong> Chapter 4.2.1, Theorem 2</li>
+</ul>
+<h3>2.2 Market Sentiment Coupling</h3>
+<ul>
+<li><strong>Unified Framework:</strong> $M(t+1) = f(M(t), \epsilon_t)$</li>
+<li><strong>Airdrop Application:</strong> Price signal modifier</li>
+<li><strong>Cross-Reference:</strong> Chapter 3.4.1</li>
+</ul>
+<h2>3. Bonding Curve Laboratory Integration</h2>
+<h3>3.1 Price Memory Representations</h3>
+<ul>
+<li><strong>Unified Framework:</strong> $M_{i,t} \in \mathbb{R}^W$</li>
+<li><strong>Bonding Specific:</strong> Rolling price windows</li>
+<li><strong>Cross-Reference:</strong> Chapter 4.3.1, Theorem 2</li>
+</ul>
+<h3>3.2 Trend Signal Processing</h3>
+<ul>
+<li><strong>Unified Framework:</strong> $\mathbf{P}(signal) = \sigma(\mathbf{w} \cdot \mathbf{z})$</li>
+<li><strong>Bonding Application:</strong> Buy/sell decision probability</li>
+<li><strong>Cross-Reference:</strong> Chapter 3.3.1</li>
+</ul>
+<h2>4. MCP System Integration</h2>
+<h3>4.1 Resource Capacity Management</h3>
+<ul>
+<li><strong>Unified Framework:</strong> $C_j(t+1) = \min(C_{\max}, C_j(t) \cdot g(t))$</li>
+<li><strong>MCP Specific:</strong> Base regeneration + economic feedback</li>
+<li><strong>Cross-Reference:</strong> Chapter 2.3.1, Theorem 4</li>
+</ul>
+<h3>4.2 Allocation Priority Mechanisms</h3>
+<ul>
+<li><strong>Unified Framework:</strong> $\phi: \mathbf{Actions}, \mathcal{E} \to \mathbf{Allocations}$</li>
+<li><strong>MCP Implementation:</strong> Random-ordered sequential allocation</li>
+<li><strong>Cross-Reference:</strong> Chapter 5.2</li>
+</ul>
+<h2>5. Subsystem-Specific Mathematical Extensions</h2>
+<h3>5.1 Affine-Derived Concepts</h3>
+<ul>
+<li><strong>Whale Agent Classification:</strong> Based on commission rate thresholds</li>
+<li><strong>Cross-Token Price Correlation:</strong> Inter-dependent market dynamics</li>
+<li><strong>Dynamic Curve Parameters:</strong> Time-varying bonding curve modifications</li>
+</ul>
+<h3>5.2 Airdrop-Derived Concepts</h3>
+<ul>
+<li><strong>Tiered Distribution Logic:</strong> Eligibility-weighted allocation</li>
+<li><strong>Vesting Schedule Mathematics:</strong> Time-dependent accessibility functions</li>
+<li><strong>Activity Threshold Mechanics:</strong> Performance-based qualification</li>
+<li><strong>Market Sentiment Feedback:</strong> Auto-correlation and erosion factors</li>
+</ul>
+<h3>5.3 Bonding-Derived Concepts</h3>
+<ul>
+<li><strong>Memory-Based Trend Analysis:</strong> Historical price pattern recognition</li>
+<li><strong>Volatility-Driven Trading:</strong> Risk-adjusted decision making</li>
+<li><strong>Multi-Segment Curve Dynamics:</strong> Phase-transition pricing behavior</li>
+</ul>
+<h3>5.4 MCP-Derived Concepts</h3>
+<ul>
+<li><strong>Capacity Regeneration Models:</strong> Economic activity-dependent recovery</li>
+<li><strong>Load Distribution Functions:</strong> Resource utilization balancing</li>
+<li><strong>Priority Allocation Schemes:</strong> Competition resolution mechanisms</li>
+<li><strong>Maintenance Cost Functions:</strong> Ongoing operational requirements</li>
+</ul>
+<h2>6. Mathematical Translations Between Systems</h2>
+<h3>6.1 Concept Equivalences</h3>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Universal Concept</th>
+<th>Affine Terms</th>
+<th>Airdrop Terms</th>
+<th>Bonding Terms</th>
+<th>MCP Terms</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price Signal</td>
+<td>$P_i(t)$</td>
+<td>$P(t) + M(t)$</td>
+<td>$f(S(t))$</td>
+<td>$Pr_j(t)$</td>
+</tr>
+<tr>
+<td>Supply Control</td>
+<td>$\Delta T_{j,i}$</td>
+<td>$\Delta S^{\text{burn}}$</td>
+<td>$\Delta S$</td>
+<td>$L_j(t+1)-L_j(t)$</td>
+</tr>
+<tr>
+<td>Agent Utility</td>
+<td>$B_j(t)$</td>
+<td>$H_i(t)P(t)$</td>
+<td>$C_i+T_i P(t)$</td>
+<td>$B_i(t)$</td>
+</tr>
+<tr>
+<td>Resource Allocation</td>
+<td>Commission share</td>
+<td>Distribution fraction</td>
+<td>Curve dynamics</td>
+<td>Capacity extension</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3>6.2 Parameter Mapping Functions</h3>
+<div class="codehilite"><pre><span></span><code><span class="err">Φ</span><span class="n">_affine_to_mcp</span><span class="p">(</span><span class="n">b_j</span><span class="p">):</span><span class="w"> </span><span class="n">Affiliate</span><span class="o">.</span><span class="n">balance</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">MCP</span><span class="o">.</span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b_j</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">scale_factor</span>
+<span class="err">Φ</span><span class="n">_mcp_to_affine</span><span class="p">(</span><span class="n">l_j</span><span class="p">):</span><span class="w"> </span><span class="n">MCP</span><span class="o">.</span><span class="n">load</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">Affine</span><span class="o">.</span><span class="n">supply_projection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">base_token</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">l_j</span><span class="o">/</span><span class="n">capacity</span><span class="p">)</span>
+<span class="err">Φ</span><span class="n">_bonding_to_affine</span><span class="p">(</span><span class="err">σ</span><span class="n">_p</span><span class="p">):</span><span class="w"> </span><span class="n">Bonding</span><span class="o">.</span><span class="n">volatility</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">Affine</span><span class="o">.</span><span class="n">commission_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">max_rate</span><span class="p">,</span><span class="w"> </span><span class="err">σ</span><span class="n">_p</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="err">γ</span><span class="p">)</span>
+<span class="err">Φ</span><span class="n">_airdrop_to_all</span><span class="p">(</span><span class="n">t_t</span><span class="p">):</span><span class="w"> </span><span class="n">Airdrop</span><span class="o">.</span><span class="n">vesting_period</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">Universal</span><span class="o">.</span><span class="n">time_window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t_t</span>
+</code></pre></div>
+
+<p>These cross-references enable seamless translation between subsystems while preserving mathematical rigor and economic intuition. The mappings preserve the essential dynamics while accommodating system-specific implementation details.</p><hr />
+<h2>Navigation</h2>
+<ul>
+  <li><a href="./index.html">Index</a></li>
+  <li><a href="../index.html">Main Home</a></li>
+</ul>
+</body>
+</html>

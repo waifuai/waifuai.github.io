@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://waifuai.github.io/crypto-simulation/unified-mathematical-theory.html">
+<meta name="description" content="Unified Mathematical Theory of Token Economy Simulations | WaifuAI Docs Hub">
+<meta property="og:title" content="Unified Mathematical Theory of Token Economy Simulations">
+<meta property="og:description" content="Unified Mathematical Theory of Token Economy Simulations | WaifuAI Docs Hub">
+<meta property="og:image" content="https://waifuai.github.io/og_image.png">
+<meta property="og:url" content="https://waifuai.github.io/crypto-simulation/unified-mathematical-theory.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="WaifuAI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Unified Mathematical Theory of Token Economy Simulations">
+<meta name="twitter:description" content="Unified Mathematical Theory of Token Economy Simulations | WaifuAI Docs Hub">
+<meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
+
+<title>Unified Mathematical Theory of Token Economy Simulations</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+        ]
+    });"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-color: #0b0f19;
+    --card-bg: rgba(22, 28, 45, 0.6);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --primary: #00f2fe;
+    --primary-hover: #4facfe;
+    --accent: #d946ef;
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--bg-color);
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(217, 70, 239, 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+  
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #fff 30%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: #e0e7ff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.5rem;
+    background: linear-gradient(to bottom, var(--primary), var(--primary-hover));
+    border-radius: 2px;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #c7d2fe;
+  }
+
+  p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+  }
+
+  /* Table styling */
+  .table-container {
+    overflow-x: auto;
+    margin: 2rem 0;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+
+  th, td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  th {
+    background-color: rgba(15, 23, 42, 0.8);
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  /* Code highlights */
+  pre {
+    background: #0f172a;
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow-x: auto;
+    box-shadow: var(--shadow);
+  }
+
+  code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #f472b6;
+    background: rgba(244, 114, 182, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  pre code {
+    background: none;
+    padding: 0;
+    color: #e2e8f0;
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 4rem 0;
+  }
+
+  /* Navigation style */
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  ul li a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  ul li a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary);
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 242, 254, 0.1);
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "Unified Mathematical Theory of Token Economy Simulations",
+  "description": "Unified Mathematical Theory of Token Economy Simulations | WaifuAI Docs Hub",
+  "url": "https://waifuai.github.io/crypto-simulation/unified-mathematical-theory.html",
+  "author": {
+    "@type": "Organization",
+    "name": "WaifuAI",
+    "url": "https://waifuai.github.io/"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "WaifuAI Docs Hub",
+    "url": "https://waifuai.github.io/"
+  }
+}
+</script>
+</head>
+<body>
+<h1>Unified Mathematical Theory of Token Economy Simulations</h1>
+<p><strong>Token Economy Simulation Suite - Mathematical Foundations</strong></p>
+<p><em>Version 1.0</em></p>
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#chapter-1-foundations--meta-framework">Chapter 1: Foundations &amp; Meta-Framework</a></li>
+<li><a href="#11-universal-notation-standard">1.1 Universal Notation Standard</a></li>
+<li><a href="#12-agent-based-modeling-meta-framework">1.2 Agent-Based Modeling Meta-Framework</a></li>
+<li><a href="#13-common-theoretical-assumptions">1.3 Common Theoretical Assumptions</a></li>
+<li>
+<p><a href="#14-mathematical-equivalence-theorems">1.4 Mathematical Equivalence Theorems</a></p>
+</li>
+<li>
+<p><a href="#chapter-2-core-economic-units--assets">Chapter 2: Core Economic Units &amp; Assets</a></p>
+</li>
+<li><a href="#chapter-3-price--value-dynamics">Chapter 3: Price &amp; Value Dynamics</a></li>
+<li><a href="#chapter-4-agent-behavior--decision-making">Chapter 4: Agent Behavior &amp; Decision Making</a></li>
+<li><a href="#chapter-5-system-dynamics--evolution">Chapter 5: System Dynamics &amp; Evolution</a></li>
+<li><a href="#chapter-6-optimization--analysis-framework">Chapter 6: Optimization &amp; Analysis Framework</a></li>
+<li><a href="#chapter-7-empirical-validation">Chapter 7: Empirical Validation</a></li>
+<li><a href="#chapter-8-advanced-applications">Chapter 8: Advanced Applications</a></li>
+</ul>
+<h2>Chapter 1: Foundations &amp; Meta-Framework</h2>
+<h3>1.1 Universal Notation Standard</h3>
+<h4>1.1.1 Core Notation Convention</h4>
+<p>The unified mathematical framework employs consistent notation to represent economic concepts across all simulation subsystems (Affiliate, Airdrop, Bonding Curve, and MCP). The notation convention follows a hierarchical structure:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">Entity</span><span class="p">.</span><span class="k">Index</span><span class="err">[]</span><span class="p">.</span><span class="nc">Time</span><span class="o">[</span><span class="n">Parameter</span><span class="o">]</span>
+</code></pre></div>
+
+<p><strong>Convention Rules:</strong>
+- <strong>Entity Type</strong>: Capital letters for system-level concepts (Tokens, Resources, Agents)
+- <strong>Individual Elements</strong>: Lower case with subscripts (agent $i$, resource $j$, token $k$)
+- <strong>Time Dimension</strong>: Parenthetical time notation $(\cdot(t))$ for temporal evolution
+- <strong>Parameter Variants</strong>: Bracket notation $(\cdot[param])$ for parameter-dependent variants
+- <strong>Vector/Matrix Quantity</strong>: Bold font $(\mathbf{V})$ for multi-dimensional quantities</p>
+<h4>1.1.2 Universal Notation Glossary</h4>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+<th>Context</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$t$</td>
+<td>Discrete time step</td>
+<td>All systems</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>$i$</td>
+<td>Individual entity index (Agent $i$)</td>
+<td>All systems</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>$j$</td>
+<td>Resource/Asset index</td>
+<td>MCP, Affiliate</td>
+<td>Adapter</td>
+</tr>
+<tr>
+<td>$k$</td>
+<td>Token type index</td>
+<td>Affiliate, Bonding</td>
+<td>Adapter</td>
+</tr>
+<tr>
+<td>$\mathbf{A}$</td>
+<td>Set of agents</td>
+<td>All systems</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>$\mathcal{T}$</td>
+<td>Time horizon</td>
+<td>All systems</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>$\mathbb{I}(\cdot)$</td>
+<td>Indicator function</td>
+<td>All systems</td>
+<td>Universal</td>
+</tr>
+<tr>
+<td>$\mathbf{P}(X; \theta)$</td>
+<td>Probability of event $X$ given parameter $\theta$</td>
+<td>All systems</td>
+<td>Universal</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4>1.1.3 Subsystem-Specific Adaptations</h4>
+<p><strong>Affiliate System Adaptation:</strong></p>
+<div class="codehilite"><pre><span></span><code>S_i(t) → Token i supply at time t
+B_j(t) → Base currency balance of affiliate j
+C_j(t) → Commission rate of affiliate j
+W_{j,k}(t) → Token k holdings of affiliate j
+</code></pre></div>
+
+<p><strong>Airdrop System Adaptation:</strong></p>
+<div class="codehilite"><pre><span></span><code>T_t → Total token supply (scalar)
+H_i(t) → Holdings of agent i
+α_i(t) → Demand multiplier of agent i
+M(t) → Market sentiment factor
+</code></pre></div>
+
+<p><strong>Bonding Curve Laboratory Adaptation:</strong></p>
+<div class="codehilite"><pre><span></span><code>S(t) → System supply (scalar focus)
+C_i(t) → Capital of agent i
+T_i(t) → Token holdings of agent i
+M_i(t) → Price memory array of agent i
+</code></pre></div>
+
+<p><strong>MCP System Adaptation:</strong></p>
+<div class="codehilite"><pre><span></span><code>C_j(t) → Capacity of resource j
+L_j(t) → Load/current usage of resource j
+Pr_j(t) → Price of resource j
+B_i(t) → Balance of agent i
+</code></pre></div>
+
+<h3>1.2 Agent-Based Modeling Meta-Framework</h3>
+<h4>1.2.1 Universal Agent Representation</h4>
+<p>Each simulation subsystem models autonomous agents that interact within an economic environment. The unified framework abstracts these agents into a universal representation characterized by behavioral parameters, decision-making mechanisms, and resource constraints.</p>
+<p><strong>Formal Agent Definition:</strong></p>
+<p>Let $\mathcal{A}$ be the set of all agents in a simulation system. Each agent $a \in \mathcal{A}$ is characterized by a tuple:</p>
+<p>$$a = (\mathbf{State}(t), \mathbf{Params}, \mathbf{Behavior}, \mathbf{Constraints})$$</p>
+<p>Where:</p>
+<ul>
+<li>$\mathbf{State}(t) \in \mathbb{R}^d$: Agent's current economic state (balances, holdings, etc.)</li>
+<li>$\mathbf{Params} \in \mathbb{R}^p$: Static behavioral parameters (risk tolerance, preferences)</li>
+<li>$\mathbf{Behavior}: \mathbb{R}^d \times \mathbb{R}^p \times \mathbb{R}^e \to \mathcal{Actions}$: Decision-making function</li>
+<li>$\mathbf{Constraints} \subset \mathbb{R}^d$: Feasibility set defining resource/capability limits</li>
+</ul>
+<h4>1.2.2 Universal Simulation Loop</h4>
+<p>All subsystems follow a common discrete-time simulation paradigm that can be abstracted as Sequential Decision Process:</p>
+<p><strong>Initialization:</strong> $t = 0,\; \mathbf{State}(0) \sim \mathbf{p}_0$</p>
+<p><strong>For</strong> $t = 0, 1, \dots, T-1$:</p>
+<ol>
+<li><strong>Environmental Update:</strong> Global environment $\mathcal{E}(t)$</li>
+<li><strong>Agent Perception:</strong> Each agent observes relevant information $\mathbf{Obs}_i(t)$</li>
+<li><strong>Decision Making:</strong> Actions $\mathbf{A}_i(t) = \mathbf{Behavior}_i(\mathbf{Obs}_i(t), \mathbf{Params}_i)$</li>
+<li><strong>Resource Allocation:</strong> Conflicts resolved via allocation mechanism</li>
+<li><strong>State Evolution:</strong> $\mathbf{State}_i(t+1) = f(\mathbf{State}_i(t), \mathbf{A}_i(t), \mathcal{E}(t+1))$</li>
+<li><strong>Performance Metrics:</strong> Compute system-level indicators</li>
+</ol>
+<p><strong>Termination Criteria:</strong>
+- Time horizon reached: $t = T$
+- Convergence conditions met
+- Bankruptcy thresholds exceeded</p>
+<h4>1.2.3 Agent Interaction Primitives</h4>
+<p><strong>Communication Layer:</strong> $\gamma: \mathcal{A} \times \mathcal{A} \to {0,1}$ indicating interaction possibility</p>
+<p><strong>Trade Function:</strong> $\tau: \mathbf{State}^2 \to \mathbf{State}^2$ atomic exchange mechanism</p>
+<p><strong>Market Clearing:</strong> $\phi: \mathbf{Actions}, \mathcal{E} \to \mathbf{Allocations}$ resource distribution algorithm</p>
+<h3>1.3 Common Theoretical Assumptions</h3>
+<h4>1.3.1 Economic Theory Foundations</h4>
+<ol>
+<li><strong>Rational Bounded Agency:</strong> Agents act self-interestedly within cognitive and informational constraints</li>
+<li><strong>Perfect Market Access:</strong> Unless explicitly modeled, agents have unlimited access to market information</li>
+<li><strong>Resource Conservation:</strong> Economic resources follow conservation laws (supply/demand balance)</li>
+<li><strong>Time Discretization:</strong> All processes modeled as discrete-time for computational tractability</li>
+<li><strong>Markov Property:</strong> Future states depend only on current state, not historical path (unless explicit memory modeled)</li>
+</ol>
+<h4>1.3.2 Computational Assumptions</h4>
+<ol>
+<li><strong>Numerical Stability:</strong> All operations are implemented in finite-precision arithmetic</li>
+<li><strong>Finite Horizon:</strong> Simulations run for finite time periods $T &lt; \infty$</li>
+<li><strong>Finite Agent Population:</strong> Set of agents $\mathcal{A}$ is countable and finite</li>
+<li><strong>Finite State Spaces:</strong> All economic quantities belong to bounded regions</li>
+<li><strong>Deterministic Dynamics:</strong> Given identical parameters and random seeds, simulations are reproducible</li>
+</ol>
+<h4>1.3.3 Behavioral Assumptions</h4>
+<ol>
+<li><strong>Loss Aversion:</strong> Agents exhibit asymmetric response to gains/losses</li>
+<li><strong>Social Influence:</strong> Agent behavior affected by system-level indicators</li>
+<li><strong>Learning Capacity:</strong> Agents can adjust behavior based on experience/memory</li>
+<li><strong>Satiety Effects:</strong> Marginal utility of resources diminishes with accumulation</li>
+<li><strong>Network Effects:</strong> Agent utility can depend on total system participation</li>
+</ol>
+<h3>1.4 Mathematical Equivalence Theorems</h3>
+<h4>1.4.1 Asset Token Equivalence Theorem</h4>
+<p><strong>Theorem 1 (Asset Equivalence):</strong>
+Token-based economic systems (Affine) and Resource-based systems (MCP) are mathematically isomorphic when considering equivalent economic observables.</p>
+<p><strong>Formal Statement:</strong>
+Let $\mathcal{T} = (T, P)$ be a token system and $\mathcal{R} = (C, Pr)$ be a resource system. Then:</p>
+<p>$$
+\begin{pmatrix} S_i \ P_i \end{pmatrix}
+\cong
+\begin{pmatrix} C_j(1-L_j/C_j) \ Pr_j \end{pmatrix}
+$$</p>
+<p>Under the transformation mapping supply $S_i \mapsto$ available capacity $C_j\,(1-L_j/C_j)$ and price $P_i \mapsto$ resource price $Pr_j$.</p>
+<p><strong>Implications:</strong>
+- Price elasticity relationships equivalent across systems
+- Supply-demand dynamics follow identical mathematical forms
+- Optimization problems can be translated between systems
+- Cross-validation possible between token and resource models</p>
+<h4>1.4.2 Decision Probability Equivalence</h4>
+<p><strong>Theorem 2 (Decision Unification):</strong>
+All agent decision probabilities across subsystems can be expressed in terms of unified sigmoid functions with equivalent parameter mappings.</p>
+<p><strong>Mathematical Form:</strong>
+For any agent decision probability $\mathbf{P}(action|\input)$:</p>
+<p>$$\mathbf{P}(action) = \sigma(\mathbf{w} \cdot \mathbf{z} + b)$$</p>
+<p>Where:
+- $\sigma$ is the logistic function
+- $\mathbf{z}$ is the normalized input vector
+- $\mathbf{w}$ is the influence vector
+- $b$ is the bias term</p>
+<p><strong>Subsystem Mappings:</strong>
+- <strong>Affiliate:</strong> $action \in {buy, sell}$, $input = (price_{\text{target}} - price_{\text{current}})/price_{\text{base}}, agent_{\text{balance}}$
+- <strong>Airdrop:</strong> $action \in {buy, sell}$, $input = price_{\text{variation}}, market_{\text{sentiment}}, holdings$
+- <strong>Bonding:</strong> $action \in {hold, trade}$, $input = price_{\text{trend}}, memory_{\text{analysis}}$
+- <strong>MCP:</strong> $action \in {request, hold}$, $input = demand_{\text{preference}}, resource_{\text{availability}}, balance$</p>
+<h4>1.4.3 Wealth Distribution Universality</h4>
+<p><strong>Theorem 3 (Gini Generalization):</strong>
+All subsystems employ equivalent wealth inequality metrics that can be unified under a generalized Gini coefficient framework.</p>
+<p><strong>Unified Gini Formulation:</strong>
+For any wealth distribution $W = {w_1, \dots, w_n}$, the Gini coefficient can be computed as:</p>
+<p>$$G(W) = \frac{\sum_{i}\sum_{j}|w_i - w_j|}{2n\sum_{i}w_i}$$</p>
+<h2>Where $n = |\mathcal{A}|$ and the wealth variable $w_i$ is mapped appropriately per subsystem:</h2>
+<h2>Chapter 2: Core Economic Units &amp; Assets</h2>
+<h3>2.1 Economic Assets: Universal Representation</h3>
+<p>All simulation subsystems model economic value through assets that can be traded, held, and accumulated. The unified framework represents these assets as stateful objects with supply-demand dynamics.</p>
+<p><strong>Universal Asset Definition:</strong></p>
+<p>An economic asset $\mathcal{A}$ is characterized by the tuple:</p>
+<p>$$\mathcal{A} = (S(t), P(t), \theta, \mathcal{D}(t), \Phi)$$</p>
+<p>Where:
+- $S(t)$: Supply/availability at time $t$
+- $P(t)$: Market price at time $t$
+- $\theta$: Static structural parameters (e.g., curve types, maxima)
+- $\mathcal{D}(t)$: Demand profile at time $t$
+- $\Phi$: Transformation rules (e.g., regeneration, allocation)</p>
+<h3>2.2 Token-Based Assets (Affiliate System Perspective)</h3>
+<h4>2.2.1 Token Family Model</h4>
+<p>The affiliate system employs parallel token economies where each token constitutes an independent but interconnected economic asset.</p>
+<p><strong>Token Definition:</strong>
+For each token $i$ in ${1, \dots, N_T}$:</p>
+<p>$$\mathcal{T}<em>i = (S_i(t), P_i(t), f_i, \mathcal{D}_i(t), \Phi</em>{\text{trading}})$$</p>
+<p><strong>Supply Dynamics:</strong>
+$$S_i(t+1) = S_i(t) + \sum_{j \in \mathcal{F}} \Delta T_{j,i}(t)$$</p>
+<p>Where $\mathcal{F}$ is the set of affiliates actively trading token $i$.</p>
+<p><strong>Price Determination:</strong>
+$$P_i(t) = f_i(S_i(t), \theta_i(t))$$</p>
+<h4>2.2.2 Inter-Token Relationships</h4>
+<p>Tokens interact through correlation of affiliate behavior and economic disturbances.</p>
+<p><strong>Cross-Token Influence:</strong>
+$$\rho_{i,j}(t) = \text{corr}(P_i(t), P_j(t))$$</p>
+<p>Where correlation is measured over a sliding window of historical prices.</p>
+<h3>2.3 Resource-Based Assets (MCP System Perspective)</h3>
+<h4>2.3.1 Resource Capacity Model</h4>
+<p>The MCP system models assets as depletable but regenerable resources with capacity constraints.</p>
+<p><strong>Resource Definition:</strong>
+For each resource $j$ in ${1, \dots, R}$:</p>
+<p>$$\mathcal{R}<em>j = (C_j(t), L_j(t), Pr_j(t), \mathcal{U}_j(t), \Phi</em>{\text{maintenance}})$$</p>
+<p><strong>Capacity Evolution:</strong>
+$$C_j(t+1) = \min(C_{\max}, C_j(t) \cdot (1 + \gamma_j + \eta_j \cdot \bar{B}(t)))$$</p>
+<p><strong>Demand Relationship:</strong>
+$$L_j(t) = \sum_{i \in \mathcal{A}} A_{i,j}(t)$$</p>
+<h4>2.3.2 Resource Utilization Patterns</h4>
+<p><strong>Utilization Ratio:</strong>
+$$u_j(t) = \frac{L_j(t)}{C_j(t)}$$</p>
+<p><strong>Efficiency Metrics:</strong>
+$$\eta_j(t) = \frac{\sum_{i} U_{i,j}(t)}{L_j(t)}$$</p>
+<h3>2.4 Trading-Focused Assets (Bonding Curve Perspective)</h3>
+<h4>2.4.1 Market Asset Dynamics</h4>
+<p>The bonding curve system views assets through the lens of immediate market interactions.</p>
+<p><strong>Asset State Representation:</strong>
+$$\mathcal{B} = (S(t), P(t), \mathbf{f}<em>{\mathcal{C}}, V(t), \Phi</em>{\text{curve}})$$</p>
+<p><strong>Instantaneous Price Response:</strong>
+$$P(t) = \mathbf{f}_{\mathcal{C}}(S(t))$$</p>
+<h4>2.4.2 Asset Volatility Modeling</h4>
+<p><strong>Volatility Measures:</strong>
+$$\sigma_P(t) = \sqrt{\frac{1}{M-1} \sum_{k=1}^{M} (P(t-k+1) - \bar{P}(t))^2}$$</p>
+<p>Where $\bar{P}(t)$ is the mean price over the memory window of size M.</p>
+<h3>2.5 Distribution Pattern Assets (Airdrop System Perspective)</h3>
+<h4>2.5.1 Token Distribution Mechanics</h4>
+<p>The airdrop system integrates asset distribution as a fundamental property.</p>
+<p><strong>Distribution-Enhanced Asset:</strong>
+$$\mathcal{A} = (\mathbf{abundance}, P(t), \mathbf{v}, \mathbf{h}, \Phi_{\text{distribution}})$$</p>
+<p><strong>Vested Asset Accumulation:</strong>
+$$S^v_i(t) = \min(S^{\text{allocated}}_i, \mathbf{v}(t, \text{threshold}))$$</p>
+<h4>2.5.2 Utility-Adjusted Asset Values</h4>
+<p><strong>Perceived Asset Value:</strong>
+$$V_i(t) = P(t) \cdot (1 + \alpha_i(t) \cdot u_i(t))$$</p>
+<p>Where $u_i(t)$ represents utility modifier based on holdings.</p>
+<h3>2.6 Asset Equivalence Transformations</h3>
+<h4>2.6.1 Token ↔ Resource Mapping</h4>
+<p><strong>Theorem 4 (Resource Token Equivalence):</strong>
+Token supply $S_i$ and resource available capacity $C_j(1-L_j/C_j)$ are economically equivalent under proper scaling.</p>
+<p><strong>Transformation Mapping:</strong>
+$$\varphi: S_i \mapsto C_j \cdot (1 - u_j) : \mathbb{R}^+ \to \mathbb{R}^+)$$</p>
+<h4>2.6.2 Valuation Consistency</h4>
+<p><strong>Price Relationship:</strong>
+$$P_i \cong Pr_j \cdot \frac{S_i}{C_j \cdot (1 - u_j)}$$</p>
+<p>For equivalent economic value per unit across systems.</p>
+<h3>2.7 Asset Dynamics Universals</h3>
+<h4>2.7.1 Supply Evolution Master Equation</h4>
+<p><strong>General Supply Dynamics:</strong>
+$$S(t+1) = S(t) + \Delta S^{\text{inflow}}(t) - \Delta S^{\text{outflow}}(t) + \Delta S^{\text{internal}}(t)$$</p>
+<p>Where:
+- $\Delta S^{\text{inflow}}$: External additions (airdrops, regeneration)
+- $\Delta S^{\text{outflow}}$: External removals (burns, depreciation)
+- $\Delta S^{\text{internal}}$: Internal reallocations (trading, redistribution)</p>
+<h4>2.7.2 Cross-System Asset Parameters</h4>
+<p><strong>Universal Asset Parameters Table:</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Affiliate System</th>
+<th>MCP System</th>
+<th>Bonding System</th>
+<th>Airdrop System</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Supply</td>
+<td>$S_i(t)$</td>
+<td>$C_j(t)$</td>
+<td>$S(t)$</td>
+<td>$T(t)$</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>$P_i(t)$</td>
+<td>$Pr_j(t)$</td>
+<td>$P(t)$</td>
+<td>$P(t)$</td>
+</tr>
+<tr>
+<td>Demand</td>
+<td>$\mathcal{D}_i(t)$</td>
+<td>Aggregation</td>
+<td>Instant</td>
+<td>$\mathcal{D}(t)$</td>
+</tr>
+<tr>
+<td>Allocation</td>
+<td>Commissions</td>
+<td>Capacity</td>
+<td>Curve</td>
+<td>Vesting</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This chapter establishes the common ground for understanding how each subsystem represents economic value, enabling cross-system comparisons and theoretical developments in subsequent chapters.</p>
+<hr />
+<h2>Chapter 3: Price &amp; Value Dynamics</h2>
+<h3>3.1 Bonding Curve Functions - Universal Formulation</h3>
+<h4>3.1.1 General Bonding Curve Definition</h4>
+<p><strong>Definition:</strong> A bonding curve is a functional relationship $f: \mathbb{R}^+ \to \mathbb{R}^+$ between asset supply and price:</p>
+<p>$$P(S) = f(S; \theta)$$</p>
+<p>Where $\theta \in \Theta$ is the parameter set characterizing the curve's shape and characteristics.</p>
+<h4>3.1.2 Universal Curve Family</h4>
+<p>The framework supports a generalized bonding curve family that encompasses the specific implementations from all subsystems:</p>
+<p><strong>Linear Curves:</strong>
+$$f_L(S) = m S + b$$</p>
+<p><strong>Exponential Curves:</strong>
+$$f_E(S) = a e^{k S}$$</p>
+<p><strong>Sigmoid Curves:</strong>
+$$f_S(S) = K / (1 + e^{-k(S - S_0)}) + b$$</p>
+<p><strong>Multi-Segment Curves:</strong>
+$$f_M(S) = \begin{cases}
+  m_1 S &amp; \text{if } S \le S_b \
+  m_1 S_b + f_E(S - S_b) &amp; \text{if } S &gt; S_b
+\end{cases}$$</p>
+<p><strong>Root Curves:</strong>
+$$f_R(S) = k \sqrt{S} + b$$</p>
+<p><strong>Inverse Curves:</strong>
+$$f_I(S) = k / (S + \epsilon) + b$$</p>
+<p>Where $\epsilon &gt; 0$ prevents singularity.</p>
+<h4>3.1.3 Curve Characteristics Analysis</h4>
+<p><strong>Elasticity Analysis:</strong>
+$$\varepsilon(S) = \frac{dP/dS}{P/S} = \frac{f'(S) \cdot S}{f(S)}$$</p>
+<p><strong>Inflection Points:</strong>
+Points where curve curvature changes, determining price stability regions:
+$$f''(S) = 0$$</p>
+<p><strong>Asymptotic Behavior:</strong>
+$$\lim_{S \to \infty} P(S) = asymptote$$</p>
+<h3>3.2 Market Clearing Mechanisms</h3>
+<h4>3.2.1 Supply-Demand Equilibrium</h4>
+<p><strong>General Equilibrium Condition:</strong>
+$$\mathcal{S}(t) = \mathcal{D}(t)$$</p>
+<p>Where supply and demand may be implicit functions of price.</p>
+<h4>3.2.2 Price Adjustment Process</h4>
+<p><strong>Multiple System Approaches:</strong></p>
+<ol>
+<li>
+<p><strong>Direct Price Setting (Bonding Curves):</strong>
+   $$P(t+1) = f(S(t+1))$$</p>
+</li>
+<li>
+<p><strong>Market Clearing (Airdrop/MCP):</strong>
+   $$P(t+1) = P_0 \cdot (1 + \alpha \cdot (D(t) - S(t))/V_0 + \noise)$$</p>
+</li>
+<li>
+<p><strong>Agent-Based Equilibrium (Affiliate):</strong>
+   $$P(t+1) = f(S(t+1)) + \beta \cdot \mathcal{M}(t)$$</p>
+</li>
+</ol>
+<p>Where $\mathcal{M}(t)$ represents market sentiment or demand factors.</p>
+<h4>3.2.3 Convergence Properties</h4>
+<p><strong>Fixed Point Analysis:</strong>
+Solutions to $P^<em> = f(S^</em>(P^*))$</p>
+<p><strong>Stability Condition:</strong>
+$$|\partial P/\partial S| &lt; 1$$
+for stable price-supply relationship.</p>
+<h3>3.3 Volatility and Stability Analysis</h3>
+<h4>3.3.1 Price Volatility Measures</h4>
+<p><strong>Standard Volatility:</strong>
+$$\sigma_P = \sqrt{\frac{1}{T-1} \sum_t (P_t - \bar{P})^2}$$</p>
+<p><strong>Logarithmic Volatility:</strong>
+$$\sigma_{\ln P} = \sqrt{\frac{1}{T-1} \sum_t (\ln P_t - \ln P_{t-1})^2}$$</p>
+<h4>3.3.2 System Stability Regions</h4>
+<p><strong>Lyapunov Function for Stability:</strong>
+$$V(S, P) = (P - P^<em>)^2 + \delta (S - S^</em>)^2 + \gamma \dot{P}^2$$</p>
+<p>Stability when $\dot{V} \le 0$.</p>
+<h3>3.4 External Price Influences</h3>
+<h4>3.4.1 Sentiment and Random Factors</h4>
+<p><strong>Market Sentiment Model:</strong>
+$$M(t+1) = \rho M(t) + (1-\rho) \mu + \sigma \epsilon_t$$
+$$\epsilon_t \sim \mathcal{N}(0,1)$$</p>
+<p><strong>Price Impact Integration:</strong>
+$$P(t+1) = f(S(t+1)) \cdot (1 + \eta M(t) + \epsilon_t)$$</p>
+<h4>3.4.2 Cross-Asset Correlation</h4>
+<p><strong>Price Cross-Correlation:</strong>
+$$\rho_{i,j} = \frac{\text{Cov}(P_i, P_j)}{\sqrt{\text{Var}(P_i)\text{Var}(P_j)}}$$</p>
+<p>This completes the foundational chapters establishing the unified theoretical framework. The subsequent chapters will integrate these foundations with specific analytical methods and optimization approaches.</p>
+<hr />
+<p><em>Continued in subsequent sections...</em></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Subsystem</th>
+<th>Wealth Measurement $w_i$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Affiliate</td>
+<td>Base currency balance $B_j$</td>
+</tr>
+<tr>
+<td>Airdrop</td>
+<td>Token holdings $H_i \cdot P(t)$</td>
+</tr>
+<tr>
+<td>Bonding</td>
+<td>Portfolio value $C_i + T_i \cdot P(t)$</td>
+</tr>
+<tr>
+<td>MCP</td>
+<td>Balance $B_i$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Properties:</strong>
+- Scale invariant: $G(cW) = G(W)$ for constant $c &gt; 0$
+- Population invariant: Independent of agent count
+- Lorenz curve representation possible in all systems</p>
+<p>These foundational theorems establish the mathematical basis for cross-subsystem analysis and parameter mapping, enabling unified theoretical treatment of the diverse economic simulation approaches.</p>
+<hr />
+<p><em>This document provides the mathematical foundations for unifying the four simulation subsystems. Subsequent chapters will expand on the specific models while maintaining consistency with these foundational principles.</em></p><hr />
+<h2>Navigation</h2>
+<ul>
+  <li><a href="./index.html">Index</a></li>
+  <li><a href="../index.html">Main Home</a></li>
+</ul>
+</body>
+</html>

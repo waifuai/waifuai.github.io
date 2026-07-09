@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://waifuai.github.io/ransoc/index.html">
+<meta name="description" content="Ransoc Documentation Index | WaifuAI Docs Hub">
+<meta property="og:title" content="Ransoc Documentation Index">
+<meta property="og:description" content="Ransoc Documentation Index | WaifuAI Docs Hub">
+<meta property="og:image" content="https://waifuai.github.io/og_image.png">
+<meta property="og:url" content="https://waifuai.github.io/ransoc/index.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="WaifuAI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ransoc Documentation Index">
+<meta name="twitter:description" content="Ransoc Documentation Index | WaifuAI Docs Hub">
+<meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
+
+<title>Ransoc Documentation Index</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+        ]
+    });"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-color: #0b0f19;
+    --card-bg: rgba(22, 28, 45, 0.6);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --primary: #00f2fe;
+    --primary-hover: #4facfe;
+    --accent: #d946ef;
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--bg-color);
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(217, 70, 239, 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+  
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #fff 30%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: #e0e7ff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.5rem;
+    background: linear-gradient(to bottom, var(--primary), var(--primary-hover));
+    border-radius: 2px;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #c7d2fe;
+  }
+
+  p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+  }
+
+  /* Table styling */
+  .table-container {
+    overflow-x: auto;
+    margin: 2rem 0;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+
+  th, td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  th {
+    background-color: rgba(15, 23, 42, 0.8);
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  /* Code highlights */
+  pre {
+    background: #0f172a;
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow-x: auto;
+    box-shadow: var(--shadow);
+  }
+
+  code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #f472b6;
+    background: rgba(244, 114, 182, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  pre code {
+    background: none;
+    padding: 0;
+    color: #e2e8f0;
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 4rem 0;
+  }
+
+  /* Navigation style */
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  ul li a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  ul li a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary);
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 242, 254, 0.1);
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "Ransoc Documentation Index",
+  "description": "Ransoc Documentation Index | WaifuAI Docs Hub",
+  "url": "https://waifuai.github.io/ransoc/index.html",
+  "author": {
+    "@type": "Organization",
+    "name": "WaifuAI",
+    "url": "https://waifuai.github.io/"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "WaifuAI Docs Hub",
+    "url": "https://waifuai.github.io/"
+  }
+}
+</script>
+</head>
+<body>
+<h1>Ransoc Documentation Index</h1>
+<p>Welcome to the documentation index. Explore the detailed guides below:</p>
+<ul>
+  <li><a href="./1-math.html">RANSOC: Real-time Adaptive Normalization for the Satisfaction of Curiosity</a></li>
+  <li><a href="./2-proof.html">2 Proof</a></li>
+  <li><a href="./3-physics.html">RANSOC: A Gravitational Analogy for Dynamic Search Space Exploration</a></li>
+</ul>
+<hr />
+<h2>Navigation</h2>
+<ul>
+  <li><a href="../index.html">Main Home</a></li>
+</ul>
+</body>
+</html>

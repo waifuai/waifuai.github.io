@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://waifuai.github.io/ransoc/3-physics.html">
+<meta name="description" content="RANSOC: A Gravitational Analogy for Dynamic Search Space Exploration | WaifuAI Docs Hub">
+<meta property="og:title" content="RANSOC: A Gravitational Analogy for Dynamic Search Space Exploration">
+<meta property="og:description" content="RANSOC: A Gravitational Analogy for Dynamic Search Space Exploration | WaifuAI Docs Hub">
+<meta property="og:image" content="https://waifuai.github.io/og_image.png">
+<meta property="og:url" content="https://waifuai.github.io/ransoc/3-physics.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="WaifuAI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RANSOC: A Gravitational Analogy for Dynamic Search Space Exploration">
+<meta name="twitter:description" content="RANSOC: A Gravitational Analogy for Dynamic Search Space Exploration | WaifuAI Docs Hub">
+<meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
+
+<title>RANSOC: A Gravitational Analogy for Dynamic Search Space Exploration</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+        ]
+    });"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-color: #0b0f19;
+    --card-bg: rgba(22, 28, 45, 0.6);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --primary: #00f2fe;
+    --primary-hover: #4facfe;
+    --accent: #d946ef;
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--bg-color);
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(217, 70, 239, 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+  
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #fff 30%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: #e0e7ff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.5rem;
+    background: linear-gradient(to bottom, var(--primary), var(--primary-hover));
+    border-radius: 2px;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #c7d2fe;
+  }
+
+  p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+  }
+
+  /* Table styling */
+  .table-container {
+    overflow-x: auto;
+    margin: 2rem 0;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+
+  th, td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  th {
+    background-color: rgba(15, 23, 42, 0.8);
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  /* Code highlights */
+  pre {
+    background: #0f172a;
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow-x: auto;
+    box-shadow: var(--shadow);
+  }
+
+  code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #f472b6;
+    background: rgba(244, 114, 182, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  pre code {
+    background: none;
+    padding: 0;
+    color: #e2e8f0;
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 4rem 0;
+  }
+
+  /* Navigation style */
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  ul li a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  ul li a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary);
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 242, 254, 0.1);
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "name": "RANSOC: A Gravitational Analogy for Dynamic Search Space Exploration",
+  "description": "RANSOC: A Gravitational Analogy for Dynamic Search Space Exploration | WaifuAI Docs Hub",
+  "url": "https://waifuai.github.io/ransoc/3-physics.html",
+  "author": {
+    "@type": "Organization",
+    "name": "WaifuAI",
+    "url": "https://waifuai.github.io/"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "WaifuAI Docs Hub",
+    "url": "https://waifuai.github.io/"
+  }
+}
+</script>
+</head>
+<body>
+<h1>RANSOC: A Gravitational Analogy for Dynamic Search Space Exploration</h1>
+<h2>Abstract</h2>
+<p>This paper introduces RANSOC (Real-time Adaptive Normalization for the Satisfaction of Curiosity), a novel algorithm for balancing relevance and exploration in search results, and explains it using concepts familiar to physicists. RANSOC dynamically adjusts the "gravitational pull" of search results based on prior interactions, ensuring a broader exploration of the search space while maintaining relevance. The algorithm draws parallels to physical systems, particularly gravitational interactions and thermodynamic concepts like entropy maximization.</p>
+<h2>1. Introduction</h2>
+<p>Physicists often encounter scenarios where a system possesses a vast configuration space, but experimental observations tend to cluster around certain regions of this space. This is analogous to users interacting with a complex system (e.g., a virtual environment, a database). They often explore only a limited subset of possibilities, potentially missing valuable insights. RANSOC, inspired by physical principles, provides a method to dynamically alter the "potential landscape" of a search space, promoting a more thorough exploration while respecting initial relevance criteria.</p>
+<h2>2. RANSOC: A Physical Analogy</h2>
+<p>We can conceptualize the RANSOC algorithm using a gravitational analogy. Imagine a set of $n$ planets, $P = {p_1, p_2, ..., p_n}$, each representing a possible search result, scattered in a $d$-dimensional space. Each planet $p_i$ has a position vector:</p>
+<p>$p_i = {p_{i1}, p_{i2}, ..., p_{id}} \in \mathbb{R}^d$</p>
+<p>A query is represented by a star $s$, also located in this space:</p>
+<p>$s = {s_1, s_2, ..., s_d} \in \mathbb{R}^d$</p>
+<p>Initially, each planet possesses a "mass" $m_i$, set to 1, representing its intrinsic relevance or importance.</p>
+<h3>2.1 Gravitational Potential and Relevance</h3>
+<p>The relevance of a planet $p_i$ to the star $s$ is analogous to the gravitational potential energy between two bodies. We define the "distance" $d(p_i, s)$ using the Euclidean metric:</p>
+<p>$d(p_i, s) = | p_i - s |<em>2 = \sqrt{ \sum</em>{j=1}^{d} (p_{ij} - s_j)^2 }$</p>
+<p>The "gravitational force" or "pull" of a planet, which corresponds to the initial weight in RANSOC, is inversely proportional to the distance, similar to Newton's law of gravitation (simplified for this analogy):</p>
+<p>$w(p_i, s) = \frac{1}{d(p_i, s)}$</p>
+<p>A planet closer to the star (smaller $d$) exerts a stronger pull (higher $w$) and is considered more relevant.</p>
+<h3>2.2 Dynamic Mass Adjustment: Entropy and Exploration</h3>
+<p>The core of RANSOC lies in dynamically adjusting the planet masses. This can be seen as analogous to manipulating the gravitational constant locally for each planet or introducing a form of "dark energy" that modifies the mass distribution.</p>
+<p>Each time a planet is "hit" (selected as the most relevant result), its mass is decreased, while the masses of all other planets are slightly increased. This can be expressed as:</p>
+<ul>
+<li><strong>Hit Planet:</strong> $m_{\text{hit}} = (1 - \alpha) m_{\text{hit}}$, where $\alpha$ is the "decay constant" (analogous to a learning rate in machine learning).</li>
+<li><strong>Other Planets:</strong> $m_i = \left(1 + \frac{\alpha}{n-1}\right) m_i$</li>
+</ul>
+<p>This process is similar to promoting a higher entropy state in a thermodynamic system. Initially, the system favors the most relevant planet (lowest "potential energy" state). By reducing the mass of frequently visited planets, we effectively flatten the potential landscape, allowing for exploration of regions that were initially less favored.</p>
+<h3>2.3 Adaptive Gravitational Field</h3>
+<p>The updated "gravitational pull" (weight) of a planet is now determined by both its distance and its modified mass:</p>
+<p>$w_{\text{new}}(p_i, s) = \frac{m_i}{d(p_i, s)}$</p>
+<p>This dynamic adjustment of weights ensures that planets that were initially distant (less relevant) but have increased in mass (due to not being frequently selected) will eventually exert a stronger pull, promoting their exploration.</p>
+<h2>3. RANSOC Algorithm: A Physical Process</h2>
+<p>The RANSOC algorithm can be summarized as an iterative process of:</p>
+<ol>
+<li><strong>Initialization:</strong> Assign all planets an initial mass $m_i = 1$.</li>
+<li><strong>Gravitational Field Calculation:</strong> Determine the "gravitational pull" of each planet on the star using the current masses and distances.</li>
+<li><strong>Hit Detection:</strong> Identify the planet $p_{\text{hit}}$ with the strongest pull (highest weight). This is the most relevant planet in the current "gravitational field."</li>
+<li><strong>Mass Redistribution:</strong> Update the masses of all planets based on the hit, analogous to an "entropy-increasing" process.</li>
+<li><strong>Iteration:</strong> Repeat steps 2-4.</li>
+</ol>
+<h3>3.1 Pseudocode:</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">RANSOC</span><span class="p">(</span><span class="n">planets</span><span class="p">,</span> <span class="n">star</span><span class="p">,</span> <span class="n">alpha</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Real-time Adaptive Normalization for the Satisfaction of Curiosity.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        planets: A list of planet positions (d-dimensional vectors).</span>
+<span class="sd">        star: The query star position (d-dimensional vector).</span>
+<span class="sd">        alpha: The decay constant (0 &lt; alpha &lt; 1).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The planet with the highest weight (the &quot;hit&quot; planet).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">planets</span><span class="p">)</span>
+    <span class="n">masses</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>  <span class="c1"># Initialize masses</span>
+
+    <span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="n">masses</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">distance</span><span class="p">(</span><span class="n">planets</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">star</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+    <span class="n">hit_index</span> <span class="o">=</span> <span class="n">weights</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">weights</span><span class="p">))</span>
+
+    <span class="n">masses</span><span class="p">[</span><span class="n">hit_index</span><span class="p">]</span> <span class="o">*=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">hit_index</span><span class="p">:</span>
+            <span class="n">masses</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">planets</span><span class="p">[</span><span class="n">hit_index</span><span class="p">]</span>
+
+<span class="c1"># Helper function for Euclidean distance</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">):</span>
+  <span class="k">return</span> <span class="nb">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">))</span><span class="o">**</span><span class="mf">0.5</span>
+</code></pre></div>
+
+<h2>4. Discussion: Connections to Physical Concepts</h2>
+<p>RANSOC exhibits interesting parallels to various physical phenomena:</p>
+<ul>
+<li><strong>Entropy Maximization:</strong> The mass update rule encourages a more uniform exploration of the search space, which is analogous to increasing the entropy of a thermodynamic system.</li>
+<li><strong>Potential Landscape Modification:</strong>  Dynamically altering planet masses is akin to modifying the potential energy landscape of a physical system, influencing the trajectories and probabilities of different states.</li>
+<li><strong>Adaptive Systems:</strong> RANSOC can be viewed as an adaptive system that responds to external stimuli (user queries) by adjusting its internal parameters (planet masses) to optimize a desired outcome (exploration and relevance).</li>
+</ul>
+<h2>5. Conclusion and Future Directions</h2>
+<p>RANSOC presents a novel approach to balancing exploration and exploitation in search systems, drawing inspiration from physical concepts like gravitational interactions and entropy. This framework opens up possibilities for applying RANSOC-like principles in various physics domains, such as:</p>
+<ul>
+<li><strong>Optimizing Simulations:</strong> Dynamically adjusting simulation parameters based on intermediate results to explore a wider range of possible outcomes.</li>
+<li><strong>Adaptive Experimental Design:</strong> Guiding the selection of experimental parameters in real-time to maximize information gain.</li>
+<li><strong>Machine Learning for Physics:</strong>  Integrating RANSOC principles into machine learning algorithms to enhance the exploration of complex, high-dimensional data landscapes in physics research.</li>
+</ul>
+<p>Future work could explore connections to other physical concepts, such as quantum tunneling (to model "jumps" to distant but potentially relevant regions of the search space) or the use of more sophisticated potential functions beyond the simple inverse distance model. Additionally, investigating the convergence properties of RANSOC and its long-term behavior in different scenarios would be valuable.</p><hr />
+<h2>Navigation</h2>
+<ul>
+  <li><a href="./index.html">Index</a></li>
+  <li><a href="../index.html">Main Home</a></li>
+</ul>
+</body>
+</html>
