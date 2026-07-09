@@ -37,15 +37,207 @@
             {left: '$', right: '$', display: false}
         ]
     });"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #333; }
-pre { background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto; }
-code { background: #f0f0f0; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
-pre code { background: none; padding: 0; }
-table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
-th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-th { background: #f5f5f5; }
-a { color: #0066cc; }
+  :root {
+    --bg-color: #0b0f19;
+    --card-bg: rgba(22, 28, 45, 0.6);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --primary: #00f2fe;
+    --primary-hover: #4facfe;
+    --accent: #d946ef;
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background-color: var(--bg-color);
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(217, 70, 239, 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+  
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #fff 30%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    color: #e0e7ff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 1.5rem;
+    background: linear-gradient(to bottom, var(--primary), var(--primary-hover));
+    border-radius: 2px;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #c7d2fe;
+  }
+
+  p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+  }
+
+  /* Table styling */
+  .table-container {
+    overflow-x: auto;
+    margin: 2rem 0;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+
+  th, td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  th {
+    background-color: rgba(15, 23, 42, 0.8);
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  /* Monospace values for numbers & symbols */
+  td:first-child, /* Symbol */
+  td:nth-child(4), /* Multiplier */
+  td:nth-child(5), /* Current Price */
+  td:nth-child(6) /* Predicted Price */ {
+    font-family: 'Space Grotesk', monospace;
+    font-weight: 500;
+  }
+
+  /* Specific column formatting */
+  td:nth-child(4) {
+    color: #34d399; /* Green for multiplier */
+  }
+
+  /* Code highlights */
+  pre {
+    background: #0f172a;
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow-x: auto;
+    box-shadow: var(--shadow);
+  }
+
+  code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #f472b6;
+    background: rgba(244, 114, 182, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  pre code {
+    background: none;
+    padding: 0;
+    color: #e2e8f0;
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 4rem 0;
+  }
+
+  /* Navigation style */
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  ul li a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    color: #fff;
+    font-weight: 500;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  ul li a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary);
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 242, 254, 0.1);
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -73,6 +265,7 @@ a { color: #0066cc; }
 <p>This document provides AI-accelerated predicted prices for all tokens in the Predictive Reasoning Pricer system, showing current market prices and forward-looking valuations based on AI timeline projections. The multiplier represents the real valuation factor, adjusted for risk class, AI category, and evolutionary potential.</p>
 <h3>Pricing Model Timeline</h3>
 <p>The pricing model now incorporates AI acceleration based on the 2027 timeline:</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -115,136 +308,1134 @@ a { color: #0066cc; }
 </tr>
 </tbody>
 </table>
+</div>
 <p>Static assets (BTC, gold) decline as AI progresses, while AI-native/AI-evolving assets appreciate.</p>
 <hr />
 <h2>Complete Predicted Price Table</h2>
 <h3>Tier 1: Premium (0%)</h3>
 <p>The gold standard assets that achieve 10x or higher multipliers. These have no tariff friction.</p>
-<p>| Symbol | Name | Risk Class | Multiplier | Current Price ($) | Predicted Price ($) | Token Type | AI Category |
-|--------|------|------------|------------|-------------------|---------------------|------------|-------------|
-| SOL | Solana | 🏦 Class B (Systemic) | 37.3x | 143.20 | 5348.00 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| RENDER | Render Network | 🛡️ Class A (Real Yield) | 79.7x | 2.43 | 193.66 | ⚙️ Protocol Utility | 🧠 AI-Enabled |
-| HNT | Helium Network | 🛡️ Class A (Real Yield) | 79.8x | 1.39 | 110.92 | ⚙️ Protocol Utility | 🧠 AI-Enabled |
-| GRASS | Grass | 🚀 Class C (Venture Risk) | 76.6x | 0.3468 | 26.57 | ⚙️ Protocol Utility | 🧠 AI-Enabled |
-| W | Wormhole | 🚀 Class C (Venture Risk) | 58.6x | 0.0377 | 2.21 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| PYTH | Pyth Network | 🚀 Class C (Venture Risk) | 56.7x | 0.0687 | 3.90 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| AKT | Akash Network (Wormhole) | 🛡️ Class A (Real Yield) | 53.9x | 0.4996 | 26.91 | ⚙️ Protocol Utility | 🧠 AI-Enabled |
-| RAY | Raydium | 🏦 Class B (Systemic) | 32.3x | 1.19 | 38.46 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| KMNO | Kamino | 🚀 Class C (Venture Risk) | 18.9x | 0.0578 | 1.09 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| 1INCH | 1inch (Wormhole) | 🏦 Class B (Systemic) | 17.8x | 0.1540 | 2.74 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| ORCA | Orca | 🏦 Class B (Systemic) | 73.7x | 1.20 | 88.45 | ⚙️ Protocol Utility | 🧠 AI-Enabled |
-| ACT | Act I: The AI Prophecy | 🧪 Class E (Experimental) | 53.7x | 0.0247 | 1.33 | ⚙️ Protocol Utility | 🤖 AI-Native |
-| HONEY | Hivemapper | 🛡️ Class A (Real Yield) | 48.9x | 0.0078 | 0.3826 | ⚙️ Protocol Utility | 🧠 AI-Enabled |
-| MOBILE | Helium Mobile | 🛡️ Class A (Real Yield) | 48.2x | 0.00019 | 0.0089 | ⚙️ Protocol Utility | 🧠 AI-Enabled |
-| NOS | Nosana | 🛡️ Class A (Real Yield) | 48.1x | 0.2967 | 14.26 | ⚙️ Protocol Utility | 🧠 AI-Enabled |
-| GMT | STEPN | 🚀 Class C (Venture Risk) | 43.5x | 0.0191 | 0.8316 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| DRIFT | Drift Protocol | 🚀 Class C (Venture Risk) | 21.7x | 0.1614 | 3.50 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| SYN | Synesis One | 🛡️ Class A (Real Yield) | 20.7x | 0.0691 | 1.43 | ⚙️ Protocol Utility | 🧠 AI-Enabled |
-| NATIX | Natix Network | 🛡️ Class A (Real Yield) | 20.7x | 0.00029 | 0.0060 | ⚙️ Protocol Utility | 🧠 AI-Enabled |
-| NEON | Neon EVM | 🚀 Class C (Venture Risk) | 20.6x | 0.0583 | 1.20 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| ZETA | Zeta Markets | 🚀 Class C (Venture Risk) | 20.0x | 0.0678 | 1.35 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| DBR | deBridge | 🚀 Class C (Venture Risk) | 18.7x | 0.0190 | 0.3563 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| IOT | Helium IOT | 🛡️ Class A (Real Yield) | 48.2x | 0.00021 | 0.0101 | ⚙️ Protocol Utility | 🧠 AI-Enabled |
-| KOII | Koii Network | 🏦 Class B (Systemic) | 31.0x | 0.00017 | 0.0053 | ⚙️ Protocol Utility | 🧠 AI-Enabled |
-| UPT | UpRock | 🛡️ Class A (Real Yield) | 20.6x | 0.0064 | 0.1332 | ⚙️ Protocol Utility | 🧠 AI-Enabled |
-| LMR | Lumerin | 🛡️ Class A (Real Yield) | 20.4x | 0.00089 | 0.0181 | ⚙️ Protocol Utility | 🧠 AI-Enabled |
-| ATLAS | Star Atlas | 🚀 Class C (Venture Risk) | 15.8x | 0.00030 | 0.0048 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| KIN | Kin | 🏦 Class B (Systemic) | 13.6x | 7.7e-7 | 1.0e-5 | ⚙️ Protocol Utility | 🔋 Passive Utility |</p>
+<div class="table-container">
+<table class="token-table">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Risk Class</th>
+      <th>Multiplier</th>
+      <th>Current Price ($)</th>
+      <th>Predicted Price ($)</th>
+      <th>Token Type</th>
+      <th>AI Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SOL</td>
+      <td>Solana</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>37.3x</td>
+      <td>143.20</td>
+      <td>5348.00</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>RENDER</td>
+      <td>Render Network</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>79.7x</td>
+      <td>2.43</td>
+      <td>193.66</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🧠 AI-Enabled</td>
+    </tr>
+    <tr>
+      <td>HNT</td>
+      <td>Helium Network</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>79.8x</td>
+      <td>1.39</td>
+      <td>110.92</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🧠 AI-Enabled</td>
+    </tr>
+    <tr>
+      <td>GRASS</td>
+      <td>Grass</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>76.6x</td>
+      <td>0.3468</td>
+      <td>26.57</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🧠 AI-Enabled</td>
+    </tr>
+    <tr>
+      <td>W</td>
+      <td>Wormhole</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>58.6x</td>
+      <td>0.0377</td>
+      <td>2.21</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>PYTH</td>
+      <td>Pyth Network</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>56.7x</td>
+      <td>0.0687</td>
+      <td>3.90</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>AKT</td>
+      <td>Akash Network (Wormhole)</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>53.9x</td>
+      <td>0.4996</td>
+      <td>26.91</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🧠 AI-Enabled</td>
+    </tr>
+    <tr>
+      <td>RAY</td>
+      <td>Raydium</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>32.3x</td>
+      <td>1.19</td>
+      <td>38.46</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>KMNO</td>
+      <td>Kamino</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>18.9x</td>
+      <td>0.0578</td>
+      <td>1.09</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>1INCH</td>
+      <td>1inch (Wormhole)</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>17.8x</td>
+      <td>0.1540</td>
+      <td>2.74</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>ORCA</td>
+      <td>Orca</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>73.7x</td>
+      <td>1.20</td>
+      <td>88.45</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🧠 AI-Enabled</td>
+    </tr>
+    <tr>
+      <td>ACT</td>
+      <td>Act I: The AI Prophecy</td>
+      <td>🧪 Class E (Experimental)</td>
+      <td>53.7x</td>
+      <td>0.0247</td>
+      <td>1.33</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🤖 AI-Native</td>
+    </tr>
+    <tr>
+      <td>HONEY</td>
+      <td>Hivemapper</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>48.9x</td>
+      <td>0.0078</td>
+      <td>0.3826</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🧠 AI-Enabled</td>
+    </tr>
+    <tr>
+      <td>MOBILE</td>
+      <td>Helium Mobile</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>48.2x</td>
+      <td>0.00019</td>
+      <td>0.0089</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🧠 AI-Enabled</td>
+    </tr>
+    <tr>
+      <td>NOS</td>
+      <td>Nosana</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>48.1x</td>
+      <td>0.2967</td>
+      <td>14.26</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🧠 AI-Enabled</td>
+    </tr>
+    <tr>
+      <td>GMT</td>
+      <td>STEPN</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>43.5x</td>
+      <td>0.0191</td>
+      <td>0.8316</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>DRIFT</td>
+      <td>Drift Protocol</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>21.7x</td>
+      <td>0.1614</td>
+      <td>3.50</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>SYN</td>
+      <td>Synesis One</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>20.7x</td>
+      <td>0.0691</td>
+      <td>1.43</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🧠 AI-Enabled</td>
+    </tr>
+    <tr>
+      <td>NATIX</td>
+      <td>Natix Network</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>20.7x</td>
+      <td>0.00029</td>
+      <td>0.0060</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🧠 AI-Enabled</td>
+    </tr>
+    <tr>
+      <td>NEON</td>
+      <td>Neon EVM</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>20.6x</td>
+      <td>0.0583</td>
+      <td>1.20</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>ZETA</td>
+      <td>Zeta Markets</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>20.0x</td>
+      <td>0.0678</td>
+      <td>1.35</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>DBR</td>
+      <td>deBridge</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>18.7x</td>
+      <td>0.0190</td>
+      <td>0.3563</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>IOT</td>
+      <td>Helium IOT</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>48.2x</td>
+      <td>0.00021</td>
+      <td>0.0101</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🧠 AI-Enabled</td>
+    </tr>
+    <tr>
+      <td>KOII</td>
+      <td>Koii Network</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>31.0x</td>
+      <td>0.00017</td>
+      <td>0.0053</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🧠 AI-Enabled</td>
+    </tr>
+    <tr>
+      <td>UPT</td>
+      <td>UpRock</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>20.6x</td>
+      <td>0.0064</td>
+      <td>0.1332</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🧠 AI-Enabled</td>
+    </tr>
+    <tr>
+      <td>LMR</td>
+      <td>Lumerin</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>20.4x</td>
+      <td>0.00089</td>
+      <td>0.0181</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🧠 AI-Enabled</td>
+    </tr>
+    <tr>
+      <td>ATLAS</td>
+      <td>Star Atlas</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>15.8x</td>
+      <td>0.00030</td>
+      <td>0.0048</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>KIN</td>
+      <td>Kin</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>13.6x</td>
+      <td>7.7e-7</td>
+      <td>1.0e-5</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 <h3>Tier 2: Good (1% - 100%)</h3>
 <p>Strong assets with 5x-9.99x multipliers. Low friction, good store of value.</p>
-<p>| Symbol | Name | Risk Class | Multiplier | Current Price ($) | Predicted Price ($) | Token Type | AI Category |
-|--------|------|------------|------------|-------------------|---------------------|------------|-------------|
-| WBTC | Wrapped Bitcoin (Portal) | 🛡️ Class A (Real Yield) | 9.5x | 92341.00 | 8.8e5 | 🪙 Hard Money | 🗿 Static |
-| ZEUS | Zeus Network | 🛡️ Class A (Real Yield) | 7.1x | 0.0198 | 0.1414 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| PRCL | Parcl | 🚀 Class C (Venture Risk) | 7.0x | 0.0289 | 0.2032 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| ACS | Access Protocol | 🚀 Class C (Venture Risk) | 7.0x | 0.00030 | 0.0021 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| FIDA | Bonfida | 🛡️ Class A (Real Yield) | 6.8x | 0.0357 | 0.2442 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| FLUXB | FluxBot | 🚀 Class C (Speculative) | 9.4x | 0.0046 | 0.0436 | ⚙️ Protocol Utility | 🧠 AI-Enabled |
-| GUAC | Guacamole | 🛡️ Class A (Real Yield) | 8.1x | 1.2e-8 | 1.0e-7 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| GENE | Genopets | 🛡️ Class A (Real Yield) | 7.9x | 0.0025 | 0.0197 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| HXRO | Hxro Network | 🚀 Class C (Venture Risk) | 7.5x | 0.0049 | 0.0365 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| SLIM | Solanium | 🚀 Class C (Venture Risk) | 7.3x | 0.0247 | 0.1790 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| STEP | Step Finance | 🛡️ Class A (Real Yield) | 7.2x | 0.0233 | 0.1687 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| AURY | Aurory | 🛡️ Class A (Real Yield) | 7.2x | 0.0712 | 0.5150 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| ZIG | Zignaly | 🏦 Class B (Systemic) | 5.1x | 0.0591 | 0.2989 | ⚙️ Protocol Utility | 🔋 Passive Utility |</p>
+<div class="table-container">
+<table class="token-table">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Risk Class</th>
+      <th>Multiplier</th>
+      <th>Current Price ($)</th>
+      <th>Predicted Price ($)</th>
+      <th>Token Type</th>
+      <th>AI Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>WBTC</td>
+      <td>Wrapped Bitcoin (Portal)</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>9.5x</td>
+      <td>92341.00</td>
+      <td>8.8e5</td>
+      <td>🪙 Hard Money</td>
+      <td>🗿 Static</td>
+    </tr>
+    <tr>
+      <td>ZEUS</td>
+      <td>Zeus Network</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>7.1x</td>
+      <td>0.0198</td>
+      <td>0.1414</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>PRCL</td>
+      <td>Parcl</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>7.0x</td>
+      <td>0.0289</td>
+      <td>0.2032</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>ACS</td>
+      <td>Access Protocol</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>7.0x</td>
+      <td>0.00030</td>
+      <td>0.0021</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>FIDA</td>
+      <td>Bonfida</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>6.8x</td>
+      <td>0.0357</td>
+      <td>0.2442</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>FLUXB</td>
+      <td>FluxBot</td>
+      <td>🚀 Class C (Speculative)</td>
+      <td>9.4x</td>
+      <td>0.0046</td>
+      <td>0.0436</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🧠 AI-Enabled</td>
+    </tr>
+    <tr>
+      <td>GUAC</td>
+      <td>Guacamole</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>8.1x</td>
+      <td>1.2e-8</td>
+      <td>1.0e-7</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>GENE</td>
+      <td>Genopets</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>7.9x</td>
+      <td>0.0025</td>
+      <td>0.0197</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>HXRO</td>
+      <td>Hxro Network</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>7.5x</td>
+      <td>0.0049</td>
+      <td>0.0365</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>SLIM</td>
+      <td>Solanium</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>7.3x</td>
+      <td>0.0247</td>
+      <td>0.1790</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>STEP</td>
+      <td>Step Finance</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>7.2x</td>
+      <td>0.0233</td>
+      <td>0.1687</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>AURY</td>
+      <td>Aurory</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>7.2x</td>
+      <td>0.0712</td>
+      <td>0.5150</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>ZIG</td>
+      <td>Zignaly</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>5.1x</td>
+      <td>0.0591</td>
+      <td>0.2989</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 <h3>Tier 3: Neutral (101% - 500%)</h3>
 <p>Assets with 0.20x-4.99x multipliers. Moderate friction, reasonable utility.</p>
-<p>| Symbol | Name | Risk Class | Multiplier | Current Price ($) | Predicted Price ($) | Token Type | AI Category |
-|--------|------|------------|------------|-------------------|---------------------|------------|-------------|
-| ZBCN | Zebec Network | 🏦 Class B (Systemic) | 4.8x | 0.0029 | 0.0140 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| ABR | Allbridge | 🏦 Class B (Systemic) | 4.9x | 0.0699 | 0.3400 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| CHAT | Solchat | 🏦 Class B (Systemic) | 4.9x | 0.0788 | 0.3836 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| AART | ALL.ART | 🏦 Class B (Systemic) | 4.6x | 5.1e-5 | 0.00023 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| LIQ | Liq Protocol | 🏦 Class B (Systemic) | 4.2x | 0.0649 | 0.2729 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| CRP | Cropper | 🚀 Class C (Speculative) | 4.1x | 0.0403 | 0.1664 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| YAKU | Yaku | 🚀 Class C (Speculative) | 4.1x | 0.0011 | 0.0046 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| DIO | Decimated | 🚀 Class C (Speculative) | 3.9x | 0.00085 | 0.0033 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| CYS | Cyclos | 🚀 Class C (Speculative) | 3.2x | 0.4680 | 1.52 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| LIKE | Only1 | 🚀 Class C (Speculative) | 3.8x | 0.0018 | 0.0070 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| HAWK | Hawk Protocol | 🚀 Class C (Speculative) | 3.6x | 3.6e-5 | 0.00013 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| CRWNY | Crowny | 🚀 Class C (Speculative) | 3.6x | 0.0015 | 0.0052 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| SAROS | Saros | 🚀 Class C (Speculative) | 3.5x | 0.0026 | 0.0089 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| JLP | Jupiter Perps LP | 🛡️ Class A (Real Yield) | 2.3x | 4.85 | 10.95 | 💸 Real Yield | 🔋 Passive Utility |
-| REAL | Realy Metaverse | 🚀 Class C (Speculative) | 3.4x | 0.0108 | 0.0367 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| SBR | Saber | 🚀 Class C (Speculative) | 3.3x | 0.00063 | 0.0021 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| OXY | Oxygen | 🚀 Class C (Speculative) | 2.9x | 0.0073 | 0.0210 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| SRM | Serum | 🚀 Class C (Speculative) | 2.8x | 0.0110 | 0.0308 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| XAUT | Tether Gold (Portal) | 🛡️ Class A (Real Yield) | 1.4x | 4608.07 | 6628.99 | 🧈 Commodity Backed | 🗿 Static |
-| PAXG | Paxos Gold (Portal) | 🛡️ Class A (Real Yield) | 1.4x | 4621.66 | 6638.55 | 🧈 Commodity Backed | 🗿 Static |
-| JTO | Jito | 🚀 Class C (Venture Risk) | 1.4x | 0.4498 | 0.6498 | 🗳️ Governance | 🔋 Passive Utility |
-| DFL | DeFi Land | 🧪 Class E (Experimental) | 1.5x | 5.0e-5 | 7.4e-5 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| AI16Z | ai16z | 🧪 Class E (Experimental) | 1.4x | 0.0015 | 0.0021 | 🗳️ Governance | 🤖 AI-Native |
-| MAIL | SolMail | 🧪 Class E (Experimental) | 1.4x | 0.00054 | 0.00077 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| WLKN | Walken | 🧪 Class E (Experimental) | 1.3x | 0.00020 | 0.00026 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| GARI | Gari Network | 🧪 Class E (Experimental) | 1.2x | 0.0012 | 0.0014 | ⚙️ Protocol Utility | 🔋 Passive Utility |
-| USDY | Ondo US Dollar Yield | 🛡️ Class A (Real Yield) | 1.0x | 1.11 | 1.13 | 💸 Real Yield | 🔋 Passive Utility |
-| JUP | Jupiter | 🚀 Class C (Venture Risk) | 0.85x | 0.2164 | 0.1832 | 🗳️ Governance | 🔋 Passive Utility |
-| MNDE | Marinade | 🏦 Class B (Systemic) | 0.53x | 0.0462 | 0.0245 | 🗳️ Governance | 🔋 Passive Utility |
-| MPLX | Metaplex | 🏦 Class B (Systemic) | 0.37x | 0.0545 | 0.0200 | 🗳️ Governance | 🔋 Passive Utility |
-| RAIN | Rain.fi | 🛡️ Class A (Real Yield) | 0.34x | 4.39 | 1.48 | 💸 Real Yield | 🔋 Passive Utility |
-| GOAT | Goatseus Maximus | 🧪 Class E (Experimental) | 0.33x | 0.0388 | 0.0128 | 🤣 Meme | 🤖 AI-Native |
-| HBB | Hubble Protocol | 🛡️ Class A (Real Yield) | 0.33x | 0.0048 | 0.0016 | 💸 Real Yield | 🔋 Passive Utility |
-| TNSR | Tensor | 🏦 Class B (Systemic) | 0.33x | 0.0712 | 0.0233 | 🗳️ Governance | 🔋 Passive Utility |
-| ZEREBRO | Zerebro | 🧪 Class E (Experimental) | 0.31x | 0.0193 | 0.0060 | 🤣 Meme | 🤖 AI-Native |
-| MNGO | Mango Markets | 🚀 Class C (Venture Risk) | 0.23x | 0.0206 | 0.0047 | 🗳️ Governance | 🔋 Passive Utility |
-| POLIS | Star Atlas DAO | 🚀 Class C (Venture Risk) | 0.21x | 0.0270 | 0.0058 | 🗳️ Governance | 🔋 Passive Utility |</p>
+<div class="table-container">
+<table class="token-table">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Risk Class</th>
+      <th>Multiplier</th>
+      <th>Current Price ($)</th>
+      <th>Predicted Price ($)</th>
+      <th>Token Type</th>
+      <th>AI Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ZBCN</td>
+      <td>Zebec Network</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>4.8x</td>
+      <td>0.0029</td>
+      <td>0.0140</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>ABR</td>
+      <td>Allbridge</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>4.9x</td>
+      <td>0.0699</td>
+      <td>0.3400</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>CHAT</td>
+      <td>Solchat</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>4.9x</td>
+      <td>0.0788</td>
+      <td>0.3836</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>AART</td>
+      <td>ALL.ART</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>4.6x</td>
+      <td>5.1e-5</td>
+      <td>0.00023</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>LIQ</td>
+      <td>Liq Protocol</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>4.2x</td>
+      <td>0.0649</td>
+      <td>0.2729</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>CRP</td>
+      <td>Cropper</td>
+      <td>🚀 Class C (Speculative)</td>
+      <td>4.1x</td>
+      <td>0.0403</td>
+      <td>0.1664</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>YAKU</td>
+      <td>Yaku</td>
+      <td>🚀 Class C (Speculative)</td>
+      <td>4.1x</td>
+      <td>0.0011</td>
+      <td>0.0046</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>DIO</td>
+      <td>Decimated</td>
+      <td>🚀 Class C (Speculative)</td>
+      <td>3.9x</td>
+      <td>0.00085</td>
+      <td>0.0033</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>CYS</td>
+      <td>Cyclos</td>
+      <td>🚀 Class C (Speculative)</td>
+      <td>3.2x</td>
+      <td>0.4680</td>
+      <td>1.52</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>LIKE</td>
+      <td>Only1</td>
+      <td>🚀 Class C (Speculative)</td>
+      <td>3.8x</td>
+      <td>0.0018</td>
+      <td>0.0070</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>HAWK</td>
+      <td>Hawk Protocol</td>
+      <td>🚀 Class C (Speculative)</td>
+      <td>3.6x</td>
+      <td>3.6e-5</td>
+      <td>0.00013</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>CRWNY</td>
+      <td>Crowny</td>
+      <td>🚀 Class C (Speculative)</td>
+      <td>3.6x</td>
+      <td>0.0015</td>
+      <td>0.0052</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>SAROS</td>
+      <td>Saros</td>
+      <td>🚀 Class C (Speculative)</td>
+      <td>3.5x</td>
+      <td>0.0026</td>
+      <td>0.0089</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>JLP</td>
+      <td>Jupiter Perps LP</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>2.3x</td>
+      <td>4.85</td>
+      <td>10.95</td>
+      <td>💸 Real Yield</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>REAL</td>
+      <td>Realy Metaverse</td>
+      <td>🚀 Class C (Speculative)</td>
+      <td>3.4x</td>
+      <td>0.0108</td>
+      <td>0.0367</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>SBR</td>
+      <td>Saber</td>
+      <td>🚀 Class C (Speculative)</td>
+      <td>3.3x</td>
+      <td>0.00063</td>
+      <td>0.0021</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>OXY</td>
+      <td>Oxygen</td>
+      <td>🚀 Class C (Speculative)</td>
+      <td>2.9x</td>
+      <td>0.0073</td>
+      <td>0.0210</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>SRM</td>
+      <td>Serum</td>
+      <td>🚀 Class C (Speculative)</td>
+      <td>2.8x</td>
+      <td>0.0110</td>
+      <td>0.0308</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>XAUT</td>
+      <td>Tether Gold (Portal)</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>1.4x</td>
+      <td>4608.07</td>
+      <td>6628.99</td>
+      <td>🧈 Commodity Backed</td>
+      <td>🗿 Static</td>
+    </tr>
+    <tr>
+      <td>PAXG</td>
+      <td>Paxos Gold (Portal)</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>1.4x</td>
+      <td>4621.66</td>
+      <td>6638.55</td>
+      <td>🧈 Commodity Backed</td>
+      <td>🗿 Static</td>
+    </tr>
+    <tr>
+      <td>JTO</td>
+      <td>Jito</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>1.4x</td>
+      <td>0.4498</td>
+      <td>0.6498</td>
+      <td>🗳️ Governance</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>DFL</td>
+      <td>DeFi Land</td>
+      <td>🧪 Class E (Experimental)</td>
+      <td>1.5x</td>
+      <td>5.0e-5</td>
+      <td>7.4e-5</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>AI16Z</td>
+      <td>ai16z</td>
+      <td>🧪 Class E (Experimental)</td>
+      <td>1.4x</td>
+      <td>0.0015</td>
+      <td>0.0021</td>
+      <td>🗳️ Governance</td>
+      <td>🤖 AI-Native</td>
+    </tr>
+    <tr>
+      <td>MAIL</td>
+      <td>SolMail</td>
+      <td>🧪 Class E (Experimental)</td>
+      <td>1.4x</td>
+      <td>0.00054</td>
+      <td>0.00077</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>WLKN</td>
+      <td>Walken</td>
+      <td>🧪 Class E (Experimental)</td>
+      <td>1.3x</td>
+      <td>0.00020</td>
+      <td>0.00026</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>GARI</td>
+      <td>Gari Network</td>
+      <td>🧪 Class E (Experimental)</td>
+      <td>1.2x</td>
+      <td>0.0012</td>
+      <td>0.0014</td>
+      <td>⚙️ Protocol Utility</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>USDY</td>
+      <td>Ondo US Dollar Yield</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>1.0x</td>
+      <td>1.11</td>
+      <td>1.13</td>
+      <td>💸 Real Yield</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>JUP</td>
+      <td>Jupiter</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>0.85x</td>
+      <td>0.2164</td>
+      <td>0.1832</td>
+      <td>🗳️ Governance</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>MNDE</td>
+      <td>Marinade</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>0.53x</td>
+      <td>0.0462</td>
+      <td>0.0245</td>
+      <td>🗳️ Governance</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>MPLX</td>
+      <td>Metaplex</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>0.37x</td>
+      <td>0.0545</td>
+      <td>0.0200</td>
+      <td>🗳️ Governance</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>RAIN</td>
+      <td>Rain.fi</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>0.34x</td>
+      <td>4.39</td>
+      <td>1.48</td>
+      <td>💸 Real Yield</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>GOAT</td>
+      <td>Goatseus Maximus</td>
+      <td>🧪 Class E (Experimental)</td>
+      <td>0.33x</td>
+      <td>0.0388</td>
+      <td>0.0128</td>
+      <td>🤣 Meme</td>
+      <td>🤖 AI-Native</td>
+    </tr>
+    <tr>
+      <td>HBB</td>
+      <td>Hubble Protocol</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>0.33x</td>
+      <td>0.0048</td>
+      <td>0.0016</td>
+      <td>💸 Real Yield</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>TNSR</td>
+      <td>Tensor</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>0.33x</td>
+      <td>0.0712</td>
+      <td>0.0233</td>
+      <td>🗳️ Governance</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>ZEREBRO</td>
+      <td>Zerebro</td>
+      <td>🧪 Class E (Experimental)</td>
+      <td>0.31x</td>
+      <td>0.0193</td>
+      <td>0.0060</td>
+      <td>🤣 Meme</td>
+      <td>🤖 AI-Native</td>
+    </tr>
+    <tr>
+      <td>MNGO</td>
+      <td>Mango Markets</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>0.23x</td>
+      <td>0.0206</td>
+      <td>0.0047</td>
+      <td>🗳️ Governance</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>POLIS</td>
+      <td>Star Atlas DAO</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>0.21x</td>
+      <td>0.0270</td>
+      <td>0.0058</td>
+      <td>🗳️ Governance</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 <h3>Tier 4: Discounted (501% - 1000%)</h3>
 <p>Assets with 0.10x-0.19x multipliers. Significant friction, underperforms baseline.</p>
-<p>| Symbol | Name | Risk Class | Multiplier | Current Price ($) | Predicted Price ($) | Token Type | AI Category |
-|--------|------|------------|------------|-------------------|---------------------|------------|-------------|
-| PRISM | Prism | 🚀 Class C (Speculative) | 0.12x | 0.00063 | 7.4e-5 | 🗳️ Governance | 🔋 Passive Utility |
-| USDH | Hubble USD | 🛡️ Class A (Real Yield) | 0.11x | 1.00 | 0.1102 | 🛡️ Stable Yield | 🔋 Passive Utility |
-| ISC | International Stable Currency | 🛡️ Class A (Real Yield) | 0.11x | 2.19 | 0.2414 | 🛡️ Stable Yield | 🔋 Passive Utility |</p>
+<div class="table-container">
+<table class="token-table">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Risk Class</th>
+      <th>Multiplier</th>
+      <th>Current Price ($)</th>
+      <th>Predicted Price ($)</th>
+      <th>Token Type</th>
+      <th>AI Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PRISM</td>
+      <td>Prism</td>
+      <td>🚀 Class C (Speculative)</td>
+      <td>0.12x</td>
+      <td>0.00063</td>
+      <td>7.4e-5</td>
+      <td>🗳️ Governance</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>USDH</td>
+      <td>Hubble USD</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>0.11x</td>
+      <td>1.00</td>
+      <td>0.1102</td>
+      <td>🛡️ Stable Yield</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>ISC</td>
+      <td>International Stable Currency</td>
+      <td>🛡️ Class A (Real Yield)</td>
+      <td>0.11x</td>
+      <td>2.19</td>
+      <td>0.2414</td>
+      <td>🛡️ Stable Yield</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 <h3>Tier 5: Poor (1001% - 5000%)</h3>
 <p>Assets with 0.02x-0.09x multipliers. High friction, weak utility.</p>
-<p>| Symbol | Name | Risk Class | Multiplier | Current Price ($) | Predicted Price ($) | Token Type | AI Category |
-|--------|------|------------|------------|-------------------|---------------------|------------|-------------|
-| UXD | UXD Stablecoin | 🚀 Class C (Venture Risk) | 0.09x | 1.02 | 0.0951 | 🛡️ Stable Yield | 🔋 Passive Utility |
-| BONK | Bonk | 🤣 Class D (Memetic) | 0.07x | 1.1e-5 | 7.5e-7 | 🤣 Meme | 🔋 Passive Utility |
-| WIF | dogwifhat | 🤣 Class D (Memetic) | 0.06x | 0.3941 | 0.0245 | 🤣 Meme | 🔋 Passive Utility |
-| SAMO | Samoyedcoin | 🤣 Class D (Memetic) | 0.04x | 0.00080 | 3.4e-5 | 🤣 Meme | 🔋 Passive Utility |
-| POPCAT | Popcat | 🤣 Class D (Memetic) | 0.04x | 0.1008 | 0.0040 | 🤣 Meme | 🔋 Passive Utility |
-| PONKE | Ponke | 🤣 Class D (Memetic) | 0.03x | 0.0566 | 0.0019 | 🤣 Meme | 🔋 Passive Utility |
-| MEW | cat in a dogs world | 🤣 Class D (Memetic) | 0.03x | 0.0010 | 3.2e-5 | 🤣 Meme | 🔋 Passive Utility |
-| BOME | BOOK OF MEME | 🤣 Class D (Memetic) | 0.03x | 0.00071 | 2.2e-5 | 🤣 Meme | 🔋 Passive Utility |</p>
+<div class="table-container">
+<table class="token-table">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Risk Class</th>
+      <th>Multiplier</th>
+      <th>Current Price ($)</th>
+      <th>Predicted Price ($)</th>
+      <th>Token Type</th>
+      <th>AI Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UXD</td>
+      <td>UXD Stablecoin</td>
+      <td>🚀 Class C (Venture Risk)</td>
+      <td>0.09x</td>
+      <td>1.02</td>
+      <td>0.0951</td>
+      <td>🛡️ Stable Yield</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>BONK</td>
+      <td>Bonk</td>
+      <td>🤣 Class D (Memetic)</td>
+      <td>0.07x</td>
+      <td>1.1e-5</td>
+      <td>7.5e-7</td>
+      <td>🤣 Meme</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>WIF</td>
+      <td>dogwifhat</td>
+      <td>🤣 Class D (Memetic)</td>
+      <td>0.06x</td>
+      <td>0.3941</td>
+      <td>0.0245</td>
+      <td>🤣 Meme</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>SAMO</td>
+      <td>Samoyedcoin</td>
+      <td>🤣 Class D (Memetic)</td>
+      <td>0.04x</td>
+      <td>0.00080</td>
+      <td>3.4e-5</td>
+      <td>🤣 Meme</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>POPCAT</td>
+      <td>Popcat</td>
+      <td>🤣 Class D (Memetic)</td>
+      <td>0.04x</td>
+      <td>0.1008</td>
+      <td>0.0040</td>
+      <td>🤣 Meme</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>PONKE</td>
+      <td>Ponke</td>
+      <td>🤣 Class D (Memetic)</td>
+      <td>0.03x</td>
+      <td>0.0566</td>
+      <td>0.0019</td>
+      <td>🤣 Meme</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>MEW</td>
+      <td>cat in a dogs world</td>
+      <td>🤣 Class D (Memetic)</td>
+      <td>0.03x</td>
+      <td>0.0010</td>
+      <td>3.2e-5</td>
+      <td>🤣 Meme</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>BOME</td>
+      <td>BOOK OF MEME</td>
+      <td>🤣 Class D (Memetic)</td>
+      <td>0.03x</td>
+      <td>0.00071</td>
+      <td>2.2e-5</td>
+      <td>🤣 Meme</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 <h3>Tier 6: Catastrophic (&gt;5000%)</h3>
 <p>Assets with multipliers below 0.02x. Maximum friction, near-worthless in collapse.</p>
-<p>| Symbol | Name | Risk Class | Multiplier | Current Price ($) | Predicted Price ($) | Token Type | AI Category |
-|--------|------|------------|------------|-------------------|---------------------|------------|-------------|
-| BILLY | Billy | 🤣 Class D (Memetic) | 0.02x | 0.0011 | 1.6e-5 | 🤣 Meme | 🔋 Passive Utility |
-| MUMU | Mumu the Bull | 🤣 Class D (Memetic) | 0.02x | 4.3e-10 | 6.6e-12 | 🤣 Meme | 🔋 Passive Utility |
-| MANEKI | Maneki-neko | 🤣 Class D (Memetic) | 0.01x | 0.00055 | 8.0e-6 | 🤣 Meme | 🔋 Passive Utility |
-| LOCKIN | Lock In | 🤣 Class D (Memetic) | 0.01x | 0.0026 | 3.9e-5 | 🤣 Meme | 🔋 Passive Utility |
-| MYRO | Myro | 🤣 Class D (Memetic) | 0.01x | 0.0060 | 8.4e-5 | 🤣 Meme | 🔋 Passive Utility |
-| USDC | USD Coin | 🏦 Class B (Systemic) | 0.0072x | 0.9997 | 0.0072 | 💵 Fiat Pegged | 🗿 Static |
-| USDT | Tether USD | 🏦 Class B (Systemic) | 0.0068x | 0.9990 | 0.0068 | 💵 Fiat Pegged | 🗿 Static |
-| PYUSD | PayPal USD | 🏦 Class B (Systemic) | 0.0029x | 1.0000 | 0.0029 | 💵 Fiat Pegged | 🗿 Static |
-| EURC | Euro Coin | 🏦 Class B (Systemic) | 0.0028x | 1.17 | 0.0033 | 💵 Fiat Pegged | 🗿 Static |
-| USDS | Sky Dollar (Solana) | 🏦 Class B (Systemic) | 0.0027x | 1.00 | 0.0027 | 💵 Fiat Pegged | 🗿 Static |
-| TRYB | BiLira | 🏦 Class B (Systemic) | 0.0010x | 0.0232 | 2.3e-5 | 💵 Fiat Pegged | 🗿 Static |</p>
+<div class="table-container">
+<table class="token-table">
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+      <th>Risk Class</th>
+      <th>Multiplier</th>
+      <th>Current Price ($)</th>
+      <th>Predicted Price ($)</th>
+      <th>Token Type</th>
+      <th>AI Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BILLY</td>
+      <td>Billy</td>
+      <td>🤣 Class D (Memetic)</td>
+      <td>0.02x</td>
+      <td>0.0011</td>
+      <td>1.6e-5</td>
+      <td>🤣 Meme</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>MUMU</td>
+      <td>Mumu the Bull</td>
+      <td>🤣 Class D (Memetic)</td>
+      <td>0.02x</td>
+      <td>4.3e-10</td>
+      <td>6.6e-12</td>
+      <td>🤣 Meme</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>MANEKI</td>
+      <td>Maneki-neko</td>
+      <td>🤣 Class D (Memetic)</td>
+      <td>0.01x</td>
+      <td>0.00055</td>
+      <td>8.0e-6</td>
+      <td>🤣 Meme</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>LOCKIN</td>
+      <td>Lock In</td>
+      <td>🤣 Class D (Memetic)</td>
+      <td>0.01x</td>
+      <td>0.0026</td>
+      <td>3.9e-5</td>
+      <td>🤣 Meme</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>MYRO</td>
+      <td>Myro</td>
+      <td>🤣 Class D (Memetic)</td>
+      <td>0.01x</td>
+      <td>0.0060</td>
+      <td>8.4e-5</td>
+      <td>🤣 Meme</td>
+      <td>🔋 Passive Utility</td>
+    </tr>
+    <tr>
+      <td>USDC</td>
+      <td>USD Coin</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>0.0072x</td>
+      <td>0.9997</td>
+      <td>0.0072</td>
+      <td>💵 Fiat Pegged</td>
+      <td>🗿 Static</td>
+    </tr>
+    <tr>
+      <td>USDT</td>
+      <td>Tether USD</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>0.0068x</td>
+      <td>0.9990</td>
+      <td>0.0068</td>
+      <td>💵 Fiat Pegged</td>
+      <td>🗿 Static</td>
+    </tr>
+    <tr>
+      <td>PYUSD</td>
+      <td>PayPal USD</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>0.0029x</td>
+      <td>1.0000</td>
+      <td>0.0029</td>
+      <td>💵 Fiat Pegged</td>
+      <td>🗿 Static</td>
+    </tr>
+    <tr>
+      <td>EURC</td>
+      <td>Euro Coin</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>0.0028x</td>
+      <td>1.17</td>
+      <td>0.0033</td>
+      <td>💵 Fiat Pegged</td>
+      <td>🗿 Static</td>
+    </tr>
+    <tr>
+      <td>USDS</td>
+      <td>Sky Dollar (Solana)</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>0.0027x</td>
+      <td>1.00</td>
+      <td>0.0027</td>
+      <td>💵 Fiat Pegged</td>
+      <td>🗿 Static</td>
+    </tr>
+    <tr>
+      <td>TRYB</td>
+      <td>BiLira</td>
+      <td>🏦 Class B (Systemic)</td>
+      <td>0.0010x</td>
+      <td>0.0232</td>
+      <td>2.3e-5</td>
+      <td>💵 Fiat Pegged</td>
+      <td>🗿 Static</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 <hr />
 <h2>Summary Statistics</h2>
 <h3>Tariff Distribution by Tier</h3>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -286,7 +1477,9 @@ a { color: #0066cc; }
 </tr>
 </tbody>
 </table>
+</div>
 <h3>Overall Statistics</h3>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -317,7 +1510,9 @@ a { color: #0066cc; }
 </tr>
 </tbody>
 </table>
+</div>
 <h3>AI Timeline Impact Summary</h3>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -344,6 +1539,7 @@ a { color: #0066cc; }
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 <h2>Exchange Rate Calculation</h2>
 <p>To calculate the post-fiat collapse exchange rate between any two tokens:</p>
