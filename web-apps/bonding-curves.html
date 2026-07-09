@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
@@ -10,13 +10,13 @@
 
   gtag('config', 'G-EP9DHGYS02');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/web-apps/bonding-curves.html">
-<meta name="description" content="Bonding Curves | WaifuAI">
+<meta name="description" content="Collection of interactive Bonding Curves web apps and utilities.">
 <meta property="og:title" content="Bonding Curves">
-<meta property="og:description" content="Bonding Curves | WaifuAI">
+<meta property="og:description" content="Collection of interactive Bonding Curves web apps and utilities.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/web-apps/bonding-curves.html">
 <meta property="og:type" content="website">
@@ -24,61 +24,498 @@
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bonding Curves">
-<meta name="twitter:description" content="Bonding Curves | WaifuAI">
+<meta name="twitter:description" content="Collection of interactive Bonding Curves web apps and utilities.">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>Bonding Curves</title>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Bonding Curves",
-  "description": "Bonding Curves | WaifuAI",
-  "url": "https://waifuai.github.io/web-apps/bonding-curves.html",
-  "author": {
-    "@type": "Organization",
-    "name": "WaifuAI",
-    "url": "https://waifuai.github.io/"
-  },
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "WaifuAI Docs Hub",
-    "url": "https://waifuai.github.io/"
+<title>Bonding Curves | WaifuAI Web Apps</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-color: #080c14;
+    --card-bg: rgba(17, 24, 39, 0.6);
+    --border-color: rgba(255, 255, 255, 0.06);
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --primary: #6366f1;
+    --primary-glow: rgba(99, 102, 241, 0.15);
+    --accent: #10b981;
+    --accent-glow: rgba(16, 185, 129, 0.15);
+    --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
   }
-}
-</script>
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-color);
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
+  }
+
+  /* Header & Navigation */
+  header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #ffffff 40%, #c7d2fe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--text-primary);
+  }
+
+  /* Search Box */
+  .search-wrapper {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto 3rem auto;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    padding-left: 3rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-glow);
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
+  }
+
+  /* Grid Layouts */
+  .grid-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .category-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-glow) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .category-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
+  }
+
+  .category-card:hover::before {
+    opacity: 1;
+  }
+
+  .category-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  .category-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.3rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .category-card p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    flex-grow: 1;
+  }
+
+  .category-meta {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .view-btn {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  /* App List Layout */
+  .app-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .app-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  .app-item:hover {
+    border-color: rgba(99, 102, 241, 0.3);
+    transform: translateX(4px);
+    background: rgba(255, 255, 255, 0.01);
+  }
+
+  .app-info h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .app-info p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .app-action {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .app-item:hover .app-action {
+    color: var(--primary);
+    transform: translateX(3px);
+  }
+
+  .no-results {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 3rem;
+    font-size: 1.1rem;
+    display: none;
+  }
+</style>
 </head>
 <body>
-<p><a href="index.html">&larr; Back to index</a></p>
+  <div class="container">
+    <a href="index.html" class="back-link">&larr; Back to index</a>
 
-    <h1>Bonding Curves</h1>
-    <ul>
-        <li><a href="src/webapps/bonding-curves/001-uniswap-curve-simulator.html">bonding-curves/001-uniswap-curve-simulator.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/003-solanaai-token-bonding-curve-exchange.html">bonding-curves/003-solanaai-token-bonding-curve-exchange.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/004-interactive-bonding-curve-builder.html">bonding-curves/004-interactive-bonding-curve-builder.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/005-bonding-curve-quiz-generator.html">bonding-curves/005-bonding-curve-quiz-generator.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/007-solana-5-token-interchange-pair-analytics.html">bonding-curves/007-solana-5-token-interchange-pair-analytics.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/008-solana-ecosystem-productive-utility-tokens-speculative-assets.html">bonding-curves/008-solana-ecosystem-productive-utility-tokens-speculative-assets.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/009-solana-ecosystem-asset-speculation-currency-debasement.html">bonding-curves/009-solana-ecosystem-asset-speculation-currency-debasement.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/020-solana-ico-tutorial-for-digital-product-companies-cryptolaunchpad.html">bonding-curves/020-solana-ico-tutorial-for-digital-product-companies-cryptolaunchpad.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/021-ico-on-solana-technical-guide-for-digital-product-companies.html">bonding-curves/021-ico-on-solana-technical-guide-for-digital-product-companies.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/022-advanced-tokenomics-utility-token-with-bonding-curve-and-profit-margin-on-solana.html">bonding-curves/022-advanced-tokenomics-utility-token-with-bonding-curve-and-profit-margin-on-solana.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/023-solana-bonding-curve-token-in-python.html">bonding-curves/023-solana-bonding-curve-token-in-python.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/024-bancor-bonding-curve-explorer.html">bonding-curves/024-bancor-bonding-curve-explorer.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/025-next-gen-ico-guide-solana-based-bonding-curve-with-commission.html">bonding-curves/025-next-gen-ico-guide-solana-based-bonding-curve-with-commission.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/026-advanced-solana-ico-tutorial-bonding-curve-with-commission-python-version.html">bonding-curves/026-advanced-solana-ico-tutorial-bonding-curve-with-commission-python-version.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/027-innovative-solana-ico-system-bancor-bonding-curve-affiliate-commission.html">bonding-curves/027-innovative-solana-ico-system-bancor-bonding-curve-affiliate-commission.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/028-utility-token-interswap-a-tokenized-barter-system-for-speculative-holdings.html">bonding-curves/028-utility-token-interswap-a-tokenized-barter-system-for-speculative-holdings.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/029-how-utility-token-interswap-counters-fiat-money-printing-and-debt-creation.html">bonding-curves/029-how-utility-token-interswap-counters-fiat-money-printing-and-debt-creation.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/030-advanced-utility-token-speculation-aiming-for-99-profit-margins-and-1m-mrr.html">bonding-curves/030-advanced-utility-token-speculation-aiming-for-99-profit-margins-and-1m-mrr.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/031-hyper-optimized-token-speculation-in-the-ai-agent-supereconomy.html">bonding-curves/031-hyper-optimized-token-speculation-in-the-ai-agent-supereconomy.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/036-bondingcurve-architect-high-profit-token-design.html">bonding-curves/036-bondingcurve-architect-high-profit-token-design.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/037-tokenaffiliates-commission-sales-dashboard.html">bonding-curves/037-tokenaffiliates-commission-sales-dashboard.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/038-join-tokenaffiliates-skyrocket-your-earnings-with-high-profit-token-sales.html">bonding-curves/038-join-tokenaffiliates-skyrocket-your-earnings-with-high-profit-token-sales.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/047-solana-blink-ico.html">bonding-curves/047-solana-blink-ico.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/392-solana-tokenomics-on-a-bonding-curve/index.html">bonding-curves/392-solana-tokenomics-on-a-bonding-curve/index.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/447-tokenaffiliates---dynamic-commission-rate-optimizations/index.html">bonding-curves/447-tokenaffiliates---dynamic-commission-rate-optimizations/index.html</a> (bonding-curves)</li>
-        <li><a href="src/webapps/bonding-curves/448-tokenaffiliates-dynamic-commission-dashboard/index.html">bonding-curves/448-tokenaffiliates-dynamic-commission-dashboard/index.html</a> (bonding-curves)</li>
-    </ul>
+    <header>
+      <h1>📈 Bonding Curves</h1>
+      <p>Bonding curve simulations, parameter optimizers, and automated pricing model visualizers.</p>
+    </header>
+
+    <div class="search-wrapper">
+      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="search" class="search-input" placeholder="Search 26 apps...">
+    </div>
+
+    <div class="app-list">
+      <a href="src/webapps/bonding-curves/001-uniswap-curve-simulator.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Uniswap Curve Simulator</h3>
+          <p>src/webapps/bonding-curves/001-uniswap-curve-simulator.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/003-solanaai-token-bonding-curve-exchange.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Solanaai Token Bonding Curve Exchange</h3>
+          <p>src/webapps/bonding-curves/003-solanaai-token-bonding-curve-exchange.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/004-interactive-bonding-curve-builder.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Interactive Bonding Curve Builder</h3>
+          <p>src/webapps/bonding-curves/004-interactive-bonding-curve-builder.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/005-bonding-curve-quiz-generator.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Bonding Curve Quiz Generator</h3>
+          <p>src/webapps/bonding-curves/005-bonding-curve-quiz-generator.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/007-solana-5-token-interchange-pair-analytics.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Solana 5 Token Interchange Pair Analytics</h3>
+          <p>src/webapps/bonding-curves/007-solana-5-token-interchange-pair-analytics.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/008-solana-ecosystem-productive-utility-tokens-speculative-assets.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Solana Ecosystem Productive Utility Tokens Speculative Assets</h3>
+          <p>src/webapps/bonding-curves/008-solana-ecosystem-productive-utility-tokens-speculative-assets.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/009-solana-ecosystem-asset-speculation-currency-debasement.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Solana Ecosystem Asset Speculation Currency Debasement</h3>
+          <p>src/webapps/bonding-curves/009-solana-ecosystem-asset-speculation-currency-debasement.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/020-solana-ico-tutorial-for-digital-product-companies-cryptolaunchpad.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Solana Ico Tutorial For Digital Product Companies Cryptolaunchpad</h3>
+          <p>src/webapps/bonding-curves/020-solana-ico-tutorial-for-digital-product-companies-cryptolaunchpad.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/021-ico-on-solana-technical-guide-for-digital-product-companies.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ico On Solana Technical Guide For Digital Product Companies</h3>
+          <p>src/webapps/bonding-curves/021-ico-on-solana-technical-guide-for-digital-product-companies.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/022-advanced-tokenomics-utility-token-with-bonding-curve-and-profit-margin-on-solana.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Advanced Tokenomics Utility Token With Bonding Curve And Profit Margin On Solana</h3>
+          <p>src/webapps/bonding-curves/022-advanced-tokenomics-utility-token-with-bonding-curve-and-profit-margin-on-solana.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/023-solana-bonding-curve-token-in-python.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Solana Bonding Curve Token In Python</h3>
+          <p>src/webapps/bonding-curves/023-solana-bonding-curve-token-in-python.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/024-bancor-bonding-curve-explorer.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Bancor Bonding Curve Explorer</h3>
+          <p>src/webapps/bonding-curves/024-bancor-bonding-curve-explorer.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/025-next-gen-ico-guide-solana-based-bonding-curve-with-commission.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Next Gen Ico Guide Solana Based Bonding Curve With Commission</h3>
+          <p>src/webapps/bonding-curves/025-next-gen-ico-guide-solana-based-bonding-curve-with-commission.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/026-advanced-solana-ico-tutorial-bonding-curve-with-commission-python-version.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Advanced Solana Ico Tutorial Bonding Curve With Commission Python Version</h3>
+          <p>src/webapps/bonding-curves/026-advanced-solana-ico-tutorial-bonding-curve-with-commission-python-version.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/027-innovative-solana-ico-system-bancor-bonding-curve-affiliate-commission.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Innovative Solana Ico System Bancor Bonding Curve Affiliate Commission</h3>
+          <p>src/webapps/bonding-curves/027-innovative-solana-ico-system-bancor-bonding-curve-affiliate-commission.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/028-utility-token-interswap-a-tokenized-barter-system-for-speculative-holdings.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Utility Token Interswap A Tokenized Barter System For Speculative Holdings</h3>
+          <p>src/webapps/bonding-curves/028-utility-token-interswap-a-tokenized-barter-system-for-speculative-holdings.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/029-how-utility-token-interswap-counters-fiat-money-printing-and-debt-creation.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>How Utility Token Interswap Counters Fiat Money Printing And Debt Creation</h3>
+          <p>src/webapps/bonding-curves/029-how-utility-token-interswap-counters-fiat-money-printing-and-debt-creation.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/030-advanced-utility-token-speculation-aiming-for-99-profit-margins-and-1m-mrr.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Advanced Utility Token Speculation Aiming For 99 Profit Margins And 1M Mrr</h3>
+          <p>src/webapps/bonding-curves/030-advanced-utility-token-speculation-aiming-for-99-profit-margins-and-1m-mrr.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/031-hyper-optimized-token-speculation-in-the-ai-agent-supereconomy.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Hyper Optimized Token Speculation In The Ai Agent Supereconomy</h3>
+          <p>src/webapps/bonding-curves/031-hyper-optimized-token-speculation-in-the-ai-agent-supereconomy.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/036-bondingcurve-architect-high-profit-token-design.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Bondingcurve Architect High Profit Token Design</h3>
+          <p>src/webapps/bonding-curves/036-bondingcurve-architect-high-profit-token-design.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/037-tokenaffiliates-commission-sales-dashboard.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Tokenaffiliates Commission Sales Dashboard</h3>
+          <p>src/webapps/bonding-curves/037-tokenaffiliates-commission-sales-dashboard.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/038-join-tokenaffiliates-skyrocket-your-earnings-with-high-profit-token-sales.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Join Tokenaffiliates Skyrocket Your Earnings With High Profit Token Sales</h3>
+          <p>src/webapps/bonding-curves/038-join-tokenaffiliates-skyrocket-your-earnings-with-high-profit-token-sales.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/047-solana-blink-ico.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Solana Blink Ico</h3>
+          <p>src/webapps/bonding-curves/047-solana-blink-ico.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/392-solana-tokenomics-on-a-bonding-curve/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Solana Tokenomics On A Bonding Curve</h3>
+          <p>src/webapps/bonding-curves/392-solana-tokenomics-on-a-bonding-curve/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/447-tokenaffiliates---dynamic-commission-rate-optimizations/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Tokenaffiliates Dynamic Commission Rate Optimizations</h3>
+          <p>src/webapps/bonding-curves/447-tokenaffiliates---dynamic-commission-rate-optimizations/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/bonding-curves/448-tokenaffiliates-dynamic-commission-dashboard/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Tokenaffiliates Dynamic Commission Dashboard</h3>
+          <p>src/webapps/bonding-curves/448-tokenaffiliates-dynamic-commission-dashboard/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+    </div>
+    <div id="no-results" class="no-results">No applications match your search.</div>
+    
+  </div>
+  
+  <script>
+    const searchInput = document.getElementById('search');
+    const items = document.querySelectorAll('.searchable-item');
+    const noResults = document.getElementById('no-results');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        items.forEach(item => {
+          const text = item.textContent.toLowerCase();
+          if (text.includes(query)) {
+            item.style.display = '';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        if (noResults) {
+          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+      });
+    }
+  </script>
 </body>
 </html>

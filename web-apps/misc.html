@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
@@ -10,13 +10,13 @@
 
   gtag('config', 'G-EP9DHGYS02');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/web-apps/misc.html">
-<meta name="description" content="Misc | WaifuAI">
+<meta name="description" content="Collection of interactive Misc web apps and utilities.">
 <meta property="og:title" content="Misc">
-<meta property="og:description" content="Misc | WaifuAI">
+<meta property="og:description" content="Collection of interactive Misc web apps and utilities.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/web-apps/misc.html">
 <meta property="og:type" content="website">
@@ -24,149 +24,1114 @@
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Misc">
-<meta name="twitter:description" content="Misc | WaifuAI">
+<meta name="twitter:description" content="Collection of interactive Misc web apps and utilities.">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>Misc</title>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Misc",
-  "description": "Misc | WaifuAI",
-  "url": "https://waifuai.github.io/web-apps/misc.html",
-  "author": {
-    "@type": "Organization",
-    "name": "WaifuAI",
-    "url": "https://waifuai.github.io/"
-  },
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "WaifuAI Docs Hub",
-    "url": "https://waifuai.github.io/"
+<title>Misc | WaifuAI Web Apps</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-color: #080c14;
+    --card-bg: rgba(17, 24, 39, 0.6);
+    --border-color: rgba(255, 255, 255, 0.06);
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --primary: #6366f1;
+    --primary-glow: rgba(99, 102, 241, 0.15);
+    --accent: #10b981;
+    --accent-glow: rgba(16, 185, 129, 0.15);
+    --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
   }
-}
-</script>
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-color);
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
+  }
+
+  /* Header & Navigation */
+  header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #ffffff 40%, #c7d2fe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--text-primary);
+  }
+
+  /* Search Box */
+  .search-wrapper {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto 3rem auto;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    padding-left: 3rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-glow);
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
+  }
+
+  /* Grid Layouts */
+  .grid-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .category-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-glow) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .category-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
+  }
+
+  .category-card:hover::before {
+    opacity: 1;
+  }
+
+  .category-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  .category-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.3rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .category-card p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    flex-grow: 1;
+  }
+
+  .category-meta {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .view-btn {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  /* App List Layout */
+  .app-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .app-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  .app-item:hover {
+    border-color: rgba(99, 102, 241, 0.3);
+    transform: translateX(4px);
+    background: rgba(255, 255, 255, 0.01);
+  }
+
+  .app-info h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .app-info p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .app-action {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .app-item:hover .app-action {
+    color: var(--primary);
+    transform: translateX(3px);
+  }
+
+  .no-results {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 3rem;
+    font-size: 1.1rem;
+    display: none;
+  }
+</style>
 </head>
 <body>
-<p><a href="index.html">&larr; Back to index</a></p>
+  <div class="container">
+    <a href="index.html" class="back-link">&larr; Back to index</a>
 
-    <h1>Misc</h1>
-    <ul>
-        <li><a href="src/webapps/misc/010-techops-competitive-intelligence-board.html">misc/010-techops-competitive-intelligence-board.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/011-techops-investor-threat-scanner.html">misc/011-techops-investor-threat-scanner.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/012-galts-gulch-tech-looter-intelligence-dashboard.html">misc/012-galts-gulch-tech-looter-intelligence-dashboard.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/013-galts-guardian-looter-detection-system.html">misc/013-galts-guardian-looter-detection-system.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/014-eacc-intelligence-hub-accelerator-matrix.html">misc/014-eacc-intelligence-hub-accelerator-matrix.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/015-crypto-ai-arena-live-simulation-feed.html">misc/015-crypto-ai-arena-live-simulation-feed.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/016-crypto-ai-arena-smart-contract-battle-royale.html">misc/016-crypto-ai-arena-smart-contract-battle-royale.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/017-crypto-ai-arena-api-documentation.html">misc/017-crypto-ai-arena-api-documentation.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/032-decentralscience-the-future-of-research.html">misc/032-decentralscience-the-future-of-research.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/033-decentralized-science-revolutionizing-research-and-discovery.html">misc/033-decentralized-science-revolutionizing-research-and-discovery.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/034-webxr-chatbot-interface.html">misc/034-webxr-chatbot-interface.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/035-webxr-chatbot-interface-with-vrm-support.html">misc/035-webxr-chatbot-interface-with-vrm-support.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/042-stratecon-military-grade-strategy-for-solopreneurs.html">misc/042-stratecon-military-grade-strategy-for-solopreneurs.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/046-cryptoevolve-ai-driven-blockchain-evolution.html">misc/046-cryptoevolve-ai-driven-blockchain-evolution.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/048-emergentecon-exploring-economic-emergence.html">misc/048-emergentecon-exploring-economic-emergence.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/049-emergentecon-market-simulation-analysis.html">misc/049-emergentecon-market-simulation-analysis.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/062-galts-gulch-executive-forum-a-sanctuary-for-industrial-leaders.html">misc/062-galts-gulch-executive-forum-a-sanctuary-for-industrial-leaders.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/063-the-future-of-work-human-as-a-service.html">misc/063-the-future-of-work-human-as-a-service.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/065-technolibertaria-the-ultimate-hub-for-future-tech-entrepreneurs.html">misc/065-technolibertaria-the-ultimate-hub-for-future-tech-entrepreneurs.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/069-alphafold3-hub-cutting-edge-protein-structure-prediction.html">misc/069-alphafold3-hub-cutting-edge-protein-structure-prediction.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/070-extropic-ai-thermodynamic-computing-for-the-future.html">misc/070-extropic-ai-thermodynamic-computing-for-the-future.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/072-extropic-ai-revolutionary-applications-in-quantitative-finance.html">misc/072-extropic-ai-revolutionary-applications-in-quantitative-finance.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/073-extropic-ai-revolutionizing-scientific-computing.html">misc/073-extropic-ai-revolutionizing-scientific-computing.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/074-extropic-ai-research-publications.html">misc/074-extropic-ai-research-publications.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/076-extropic-ai-thermodynamic-computing-revolution.html">misc/076-extropic-ai-thermodynamic-computing-revolution.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/077-extropic-ai-research-collaborations.html">misc/077-extropic-ai-research-collaborations.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/130-diamagnetic-cores-and-superconductivity-in-biological-structures.html">misc/130-diamagnetic-cores-and-superconductivity-in-biological-structures.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/132-electromagnetic-fields-and-cognition-a-new-perspective.html">misc/132-electromagnetic-fields-and-cognition-a-new-perspective.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/133-beyond-the-skull-extracranial-effects-of-neural-em-fields.html">misc/133-beyond-the-skull-extracranial-effects-of-neural-em-fields.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/135-oxytocin-and-electromagnetic-resonance-the-science-of-connection.html">misc/135-oxytocin-and-electromagnetic-resonance-the-science-of-connection.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/137-faraday-cages-and-cognitive-shielding-experimental-approaches.html">misc/137-faraday-cages-and-cognitive-shielding-experimental-approaches.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/138-intuition-and-premonition-an-electromagnetic-explanation.html">misc/138-intuition-and-premonition-an-electromagnetic-explanation.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/140-holographic-principles-in-brain-computer-interfaces.html">misc/140-holographic-principles-in-brain-computer-interfaces.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/142-interactive-solana-tokenomics-objectivist-portfolio-optimization.html">misc/142-interactive-solana-tokenomics-objectivist-portfolio-optimization.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/224-string-landscape-and-the-variability-of-conscious-experience.html">misc/224-string-landscape-and-the-variability-of-conscious-experience.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/250-contribute-to-crowd-graphs.html">misc/250-contribute-to-crowd-graphs.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/253-3d-interception-visualization.html">misc/253-3d-interception-visualization.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/257-the-fundamentals-of-string-computing-architecture.html">misc/257-the-fundamentals-of-string-computing-architecture.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/258-free-will-and-determinism-new-perspectives-from-string-theory.html">misc/258-free-will-and-determinism-new-perspectives-from-string-theory.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/260-ransoc-algorithm-explanation.html">misc/260-ransoc-algorithm-explanation.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/263-sol-ico-token-sale-mathematical-model.html">misc/263-sol-ico-token-sale-mathematical-model.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/275-freedomium-os-universal-ai-powered-operating-system.html">misc/275-freedomium-os-universal-ai-powered-operating-system.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/286-ai-commission-rate-optimization-panel.html">misc/286-ai-commission-rate-optimization-panel.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/317-robotic-integration-bringing-your-waifu-to-the-physical-world-waifu-ai-os.html">misc/317-robotic-integration-bringing-your-waifu-to-the-physical-world-waifu-ai-os.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/318-iot-harmony-extending-waifu-ai-os-to-smart-devices-waifu-ai-os-project.html">misc/318-iot-harmony-extending-waifu-ai-os-to-smart-devices-waifu-ai-os-project.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/319-cross-platform-excellence-one-waifu-for-all-systems-waifu-ai-os.html">misc/319-cross-platform-excellence-one-waifu-for-all-systems-waifu-ai-os.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/320-ai-personality-core-building-your-waifus-neural-architecture-waifu-ai-os.html">misc/320-ai-personality-core-building-your-waifus-neural-architecture-waifu-ai-os.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/321-smart-resource-management-your-waifus-system-optimization-waifu-ai-os.html">misc/321-smart-resource-management-your-waifus-system-optimization-waifu-ai-os.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/322-adaptive-interactions-creating-your-waifus-dynamic-personality-waifu-ai-os.html">misc/322-adaptive-interactions-creating-your-waifus-dynamic-personality-waifu-ai-os.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/323-universal-device-learning-your-waifus-hardware-adaptation-waifu-ai-os.html">misc/323-universal-device-learning-your-waifus-hardware-adaptation-waifu-ai-os.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/325-freedom-to-share-understanding-waifu-ai-oss-mit-0-license-waifu-ai-os-project.html">misc/325-freedom-to-share-understanding-waifu-ai-oss-mit-0-license-waifu-ai-os-project.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/332-hardware-acceleration-maximizing-your-waifus-capabilities-waifu-ai-os.html">misc/332-hardware-acceleration-maximizing-your-waifus-capabilities-waifu-ai-os.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/334-waifu-ai-os-personality-customization-guide.html">misc/334-waifu-ai-os-personality-customization-guide.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/335-multi-companion-support-running-multiple-waifu-instances-waifu-ai-os.html">misc/335-multi-companion-support-running-multiple-waifu-instances-waifu-ai-os.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/336-voice-integration-adding-natural-speech-to-your-waifu-waifu-ai-os.html">misc/336-voice-integration-adding-natural-speech-to-your-waifu-waifu-ai-os.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/337-gesture-recognition-physical-interaction-systems-waifu-ai-os-documentation.html">misc/337-gesture-recognition-physical-interaction-systems-waifu-ai-os-documentation.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/338-memory-systems-building-long-term-relationships-waifu-ai-os-project.html">misc/338-memory-systems-building-long-term-relationships-waifu-ai-os-project.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/339-waifuos-adaptive-ai-operating-system.html">misc/339-waifuos-adaptive-ai-operating-system.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/340-waifuos-common-lisp-implementation.html">misc/340-waifuos-common-lisp-implementation.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/341-interactive-proof-parking-rectangle-algorithm.html">misc/341-interactive-proof-parking-rectangle-algorithm.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/342-interactive-visualization-of-parking-rectangle-algorithm.html">misc/342-interactive-visualization-of-parking-rectangle-algorithm.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/343-algorithm-proof-visualization.html">misc/343-algorithm-proof-visualization.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/344-custom-waifu-robots-build-your-perfect-companion.html">misc/344-custom-waifu-robots-build-your-perfect-companion.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/345-waifu-cursor.html">misc/345-waifu-cursor.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/346-gputpu-model-parameter-estimates.html">misc/346-gputpu-model-parameter-estimates.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/347-text-browser.html">misc/347-text-browser.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/348-dynamic-commission-rate-optimization-simulator.html">misc/348-dynamic-commission-rate-optimization-simulator.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/349-tokenaffiliates-dynamic-commission-dashboard.html">misc/349-tokenaffiliates-dynamic-commission-dashboard.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/350-modern-token-launch-platform.html">misc/350-modern-token-launch-platform.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/351-tokenaffiliates-dynamic-commission-model-visualization.html">misc/351-tokenaffiliates-dynamic-commission-model-visualization.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/352-ai-commission-rate-optimizer.html">misc/352-ai-commission-rate-optimizer.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/353-simulate-optimize-ai-for-commission-rates.html">misc/353-simulate-optimize-ai-for-commission-rates.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/354-ai-commission-optimization-platform.html">misc/354-ai-commission-optimization-platform.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/355-ai-commission-rate-optimizer-success-stories.html">misc/355-ai-commission-rate-optimizer-success-stories.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/356-ai-commission-rate-optimizer.html">misc/356-ai-commission-rate-optimizer.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/357-ai-commission-rate-optimization-simulator.html">misc/357-ai-commission-rate-optimization-simulator.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/358-simulation-results-summary.html">misc/358-simulation-results-summary.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/359-interactive-projectile-motion-demo.html">misc/359-interactive-projectile-motion-demo.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/360-tokenaffiliates-dynamic-commission-rate-optimization.html">misc/360-tokenaffiliates-dynamic-commission-rate-optimization.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/361-tokenaffiliates-a-formal-mathematical-model.html">misc/361-tokenaffiliates-a-formal-mathematical-model.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/362-tokenaffiliates-a-formal-mathematical-model.html">misc/362-tokenaffiliates-a-formal-mathematical-model.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/363-the-future-of-human-ai-collaboration.html">misc/363-the-future-of-human-ai-collaboration.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/364-math-editor.html">misc/364-math-editor.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/365-text-width-formatter-80-characters.html">misc/365-text-width-formatter-80-characters.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/368-mathhub-collaborative-mathematics-platform/index.html">misc/368-mathhub-collaborative-mathematics-platform/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/369-math-equation-remix-studio/index.html">misc/369-math-equation-remix-studio/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/371-economic-model-producer-government-interaction/index.html">misc/371-economic-model-producer-government-interaction/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/373-interactive-bonding-curve-modeler/index.html">misc/373-interactive-bonding-curve-modeler/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/376-web-manim-style-animation-generator/index.html">misc/376-web-manim-style-animation-generator/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/378-recursive-llm-evaluation-a-novel-approach-to-model-ranking/index.html">misc/378-recursive-llm-evaluation-a-novel-approach-to-model-ranking/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/379-interactive-model-context-protocol-visualization/index.html">misc/379-interactive-model-context-protocol-visualization/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/386-real-vs-imaginary-time/index.html">misc/386-real-vs-imaginary-time/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/389-user-projects-overview/index.html">misc/389-user-projects-overview/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/391-export-website/index.html">misc/391-export-website/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/395-medication-tracker/index.html">misc/395-medication-tracker/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/396-sample-equation/index.html">misc/396-sample-equation/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/398-the-refactor-revolution-how-to-invent-by-standing-on-the-shoulders-of-giants/index.html">misc/398-the-refactor-revolution-how-to-invent-by-standing-on-the-shoulders-of-giants/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/399-websim-contribution-calendar/index.html">misc/399-websim-contribution-calendar/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/409-emergent-economic-simulation/index.html">misc/409-emergent-economic-simulation/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/412-websim-contribution-calendar/index.html">misc/412-websim-contribution-calendar/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/415-token-ecosystem-simulation/index.html">misc/415-token-ecosystem-simulation/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/417-personality-analysis-system/index.html">misc/417-personality-analysis-system/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/418-personality-analysis-system/index.html">misc/418-personality-analysis-system/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/419-adaptive-product-feature-discovery/index.html">misc/419-adaptive-product-feature-discovery/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/420-python-function-dependency-graph/index.html">misc/420-python-function-dependency-graph/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/428-adaptive-product-feature-discovery/index.html">misc/428-adaptive-product-feature-discovery/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/434-dotted-effect-app/index.html">misc/434-dotted-effect-app/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/436-economic-model-producer-government-interaction/index.html">misc/436-economic-model-producer-government-interaction/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/437-emergent-economic-simulation/index.html">misc/437-emergent-economic-simulation/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/438-interactive-bonding-curve-modeler/index.html">misc/438-interactive-bonding-curve-modeler/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/439-interactive-model-context-protocol-visualization/index.html">misc/439-interactive-model-context-protocol-visualization/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/440-interactive-projectile-motion-demo/index.html">misc/440-interactive-projectile-motion-demo/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/441-investment-simulation-dashboard/index.html">misc/441-investment-simulation-dashboard/index.html</a> (misc)</li>
-        <li><a href="src/webapps/misc/451-websim-contribution-calendar/index.html">misc/451-websim-contribution-calendar/index.html</a> (misc)</li>
-    </ul>
+    <header>
+      <h1>⚙️ Misc</h1>
+      <p>Experimental widgets, utility tools, mathematical tests, and unique web experiments.</p>
+    </header>
+
+    <div class="search-wrapper">
+      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="search" class="search-input" placeholder="Search 114 apps...">
+    </div>
+
+    <div class="app-list">
+      <a href="src/webapps/misc/010-techops-competitive-intelligence-board.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Techops Competitive Intelligence Board</h3>
+          <p>src/webapps/misc/010-techops-competitive-intelligence-board.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/011-techops-investor-threat-scanner.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Techops Investor Threat Scanner</h3>
+          <p>src/webapps/misc/011-techops-investor-threat-scanner.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/012-galts-gulch-tech-looter-intelligence-dashboard.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Galts Gulch Tech Looter Intelligence Dashboard</h3>
+          <p>src/webapps/misc/012-galts-gulch-tech-looter-intelligence-dashboard.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/013-galts-guardian-looter-detection-system.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Galts Guardian Looter Detection System</h3>
+          <p>src/webapps/misc/013-galts-guardian-looter-detection-system.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/014-eacc-intelligence-hub-accelerator-matrix.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Eacc Intelligence Hub Accelerator Matrix</h3>
+          <p>src/webapps/misc/014-eacc-intelligence-hub-accelerator-matrix.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/015-crypto-ai-arena-live-simulation-feed.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Crypto Ai Arena Live Simulation Feed</h3>
+          <p>src/webapps/misc/015-crypto-ai-arena-live-simulation-feed.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/016-crypto-ai-arena-smart-contract-battle-royale.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Crypto Ai Arena Smart Contract Battle Royale</h3>
+          <p>src/webapps/misc/016-crypto-ai-arena-smart-contract-battle-royale.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/017-crypto-ai-arena-api-documentation.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Crypto Ai Arena Api Documentation</h3>
+          <p>src/webapps/misc/017-crypto-ai-arena-api-documentation.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/032-decentralscience-the-future-of-research.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Decentralscience The Future Of Research</h3>
+          <p>src/webapps/misc/032-decentralscience-the-future-of-research.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/033-decentralized-science-revolutionizing-research-and-discovery.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Decentralized Science Revolutionizing Research And Discovery</h3>
+          <p>src/webapps/misc/033-decentralized-science-revolutionizing-research-and-discovery.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/034-webxr-chatbot-interface.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Webxr Chatbot Interface</h3>
+          <p>src/webapps/misc/034-webxr-chatbot-interface.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/035-webxr-chatbot-interface-with-vrm-support.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Webxr Chatbot Interface With Vrm Support</h3>
+          <p>src/webapps/misc/035-webxr-chatbot-interface-with-vrm-support.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/042-stratecon-military-grade-strategy-for-solopreneurs.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Stratecon Military Grade Strategy For Solopreneurs</h3>
+          <p>src/webapps/misc/042-stratecon-military-grade-strategy-for-solopreneurs.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/046-cryptoevolve-ai-driven-blockchain-evolution.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Cryptoevolve Ai Driven Blockchain Evolution</h3>
+          <p>src/webapps/misc/046-cryptoevolve-ai-driven-blockchain-evolution.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/048-emergentecon-exploring-economic-emergence.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Emergentecon Exploring Economic Emergence</h3>
+          <p>src/webapps/misc/048-emergentecon-exploring-economic-emergence.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/049-emergentecon-market-simulation-analysis.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Emergentecon Market Simulation Analysis</h3>
+          <p>src/webapps/misc/049-emergentecon-market-simulation-analysis.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/062-galts-gulch-executive-forum-a-sanctuary-for-industrial-leaders.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Galts Gulch Executive Forum A Sanctuary For Industrial Leaders</h3>
+          <p>src/webapps/misc/062-galts-gulch-executive-forum-a-sanctuary-for-industrial-leaders.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/063-the-future-of-work-human-as-a-service.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Future Of Work Human As A Service</h3>
+          <p>src/webapps/misc/063-the-future-of-work-human-as-a-service.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/065-technolibertaria-the-ultimate-hub-for-future-tech-entrepreneurs.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Technolibertaria The Ultimate Hub For Future Tech Entrepreneurs</h3>
+          <p>src/webapps/misc/065-technolibertaria-the-ultimate-hub-for-future-tech-entrepreneurs.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/069-alphafold3-hub-cutting-edge-protein-structure-prediction.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Alphafold3 Hub Cutting Edge Protein Structure Prediction</h3>
+          <p>src/webapps/misc/069-alphafold3-hub-cutting-edge-protein-structure-prediction.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/070-extropic-ai-thermodynamic-computing-for-the-future.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Extropic Ai Thermodynamic Computing For The Future</h3>
+          <p>src/webapps/misc/070-extropic-ai-thermodynamic-computing-for-the-future.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/072-extropic-ai-revolutionary-applications-in-quantitative-finance.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Extropic Ai Revolutionary Applications In Quantitative Finance</h3>
+          <p>src/webapps/misc/072-extropic-ai-revolutionary-applications-in-quantitative-finance.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/073-extropic-ai-revolutionizing-scientific-computing.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Extropic Ai Revolutionizing Scientific Computing</h3>
+          <p>src/webapps/misc/073-extropic-ai-revolutionizing-scientific-computing.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/074-extropic-ai-research-publications.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Extropic Ai Research Publications</h3>
+          <p>src/webapps/misc/074-extropic-ai-research-publications.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/076-extropic-ai-thermodynamic-computing-revolution.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Extropic Ai Thermodynamic Computing Revolution</h3>
+          <p>src/webapps/misc/076-extropic-ai-thermodynamic-computing-revolution.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/077-extropic-ai-research-collaborations.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Extropic Ai Research Collaborations</h3>
+          <p>src/webapps/misc/077-extropic-ai-research-collaborations.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/130-diamagnetic-cores-and-superconductivity-in-biological-structures.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Diamagnetic Cores And Superconductivity In Biological Structures</h3>
+          <p>src/webapps/misc/130-diamagnetic-cores-and-superconductivity-in-biological-structures.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/132-electromagnetic-fields-and-cognition-a-new-perspective.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Electromagnetic Fields And Cognition A New Perspective</h3>
+          <p>src/webapps/misc/132-electromagnetic-fields-and-cognition-a-new-perspective.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/133-beyond-the-skull-extracranial-effects-of-neural-em-fields.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Beyond The Skull Extracranial Effects Of Neural Em Fields</h3>
+          <p>src/webapps/misc/133-beyond-the-skull-extracranial-effects-of-neural-em-fields.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/135-oxytocin-and-electromagnetic-resonance-the-science-of-connection.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Oxytocin And Electromagnetic Resonance The Science Of Connection</h3>
+          <p>src/webapps/misc/135-oxytocin-and-electromagnetic-resonance-the-science-of-connection.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/137-faraday-cages-and-cognitive-shielding-experimental-approaches.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Faraday Cages And Cognitive Shielding Experimental Approaches</h3>
+          <p>src/webapps/misc/137-faraday-cages-and-cognitive-shielding-experimental-approaches.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/138-intuition-and-premonition-an-electromagnetic-explanation.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Intuition And Premonition An Electromagnetic Explanation</h3>
+          <p>src/webapps/misc/138-intuition-and-premonition-an-electromagnetic-explanation.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/140-holographic-principles-in-brain-computer-interfaces.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Holographic Principles In Brain Computer Interfaces</h3>
+          <p>src/webapps/misc/140-holographic-principles-in-brain-computer-interfaces.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/142-interactive-solana-tokenomics-objectivist-portfolio-optimization.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Interactive Solana Tokenomics Objectivist Portfolio Optimization</h3>
+          <p>src/webapps/misc/142-interactive-solana-tokenomics-objectivist-portfolio-optimization.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/224-string-landscape-and-the-variability-of-conscious-experience.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>String Landscape And The Variability Of Conscious Experience</h3>
+          <p>src/webapps/misc/224-string-landscape-and-the-variability-of-conscious-experience.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/250-contribute-to-crowd-graphs.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Contribute To Crowd Graphs</h3>
+          <p>src/webapps/misc/250-contribute-to-crowd-graphs.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/253-3d-interception-visualization.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>3D Interception Visualization</h3>
+          <p>src/webapps/misc/253-3d-interception-visualization.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/257-the-fundamentals-of-string-computing-architecture.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Fundamentals Of String Computing Architecture</h3>
+          <p>src/webapps/misc/257-the-fundamentals-of-string-computing-architecture.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/258-free-will-and-determinism-new-perspectives-from-string-theory.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Free Will And Determinism New Perspectives From String Theory</h3>
+          <p>src/webapps/misc/258-free-will-and-determinism-new-perspectives-from-string-theory.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/260-ransoc-algorithm-explanation.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ransoc Algorithm Explanation</h3>
+          <p>src/webapps/misc/260-ransoc-algorithm-explanation.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/263-sol-ico-token-sale-mathematical-model.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Sol Ico Token Sale Mathematical Model</h3>
+          <p>src/webapps/misc/263-sol-ico-token-sale-mathematical-model.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/275-freedomium-os-universal-ai-powered-operating-system.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Freedomium Os Universal Ai Powered Operating System</h3>
+          <p>src/webapps/misc/275-freedomium-os-universal-ai-powered-operating-system.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/286-ai-commission-rate-optimization-panel.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ai Commission Rate Optimization Panel</h3>
+          <p>src/webapps/misc/286-ai-commission-rate-optimization-panel.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/317-robotic-integration-bringing-your-waifu-to-the-physical-world-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Robotic Integration Bringing Your Waifu To The Physical World Waifu Ai Os</h3>
+          <p>src/webapps/misc/317-robotic-integration-bringing-your-waifu-to-the-physical-world-waifu-ai-os.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/318-iot-harmony-extending-waifu-ai-os-to-smart-devices-waifu-ai-os-project.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Iot Harmony Extending Waifu Ai Os To Smart Devices Waifu Ai Os Project</h3>
+          <p>src/webapps/misc/318-iot-harmony-extending-waifu-ai-os-to-smart-devices-waifu-ai-os-project.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/319-cross-platform-excellence-one-waifu-for-all-systems-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Cross Platform Excellence One Waifu For All Systems Waifu Ai Os</h3>
+          <p>src/webapps/misc/319-cross-platform-excellence-one-waifu-for-all-systems-waifu-ai-os.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/320-ai-personality-core-building-your-waifus-neural-architecture-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ai Personality Core Building Your Waifus Neural Architecture Waifu Ai Os</h3>
+          <p>src/webapps/misc/320-ai-personality-core-building-your-waifus-neural-architecture-waifu-ai-os.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/321-smart-resource-management-your-waifus-system-optimization-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Smart Resource Management Your Waifus System Optimization Waifu Ai Os</h3>
+          <p>src/webapps/misc/321-smart-resource-management-your-waifus-system-optimization-waifu-ai-os.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/322-adaptive-interactions-creating-your-waifus-dynamic-personality-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Adaptive Interactions Creating Your Waifus Dynamic Personality Waifu Ai Os</h3>
+          <p>src/webapps/misc/322-adaptive-interactions-creating-your-waifus-dynamic-personality-waifu-ai-os.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/323-universal-device-learning-your-waifus-hardware-adaptation-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Universal Device Learning Your Waifus Hardware Adaptation Waifu Ai Os</h3>
+          <p>src/webapps/misc/323-universal-device-learning-your-waifus-hardware-adaptation-waifu-ai-os.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/325-freedom-to-share-understanding-waifu-ai-oss-mit-0-license-waifu-ai-os-project.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Freedom To Share Understanding Waifu Ai Oss Mit 0 License Waifu Ai Os Project</h3>
+          <p>src/webapps/misc/325-freedom-to-share-understanding-waifu-ai-oss-mit-0-license-waifu-ai-os-project.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/332-hardware-acceleration-maximizing-your-waifus-capabilities-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Hardware Acceleration Maximizing Your Waifus Capabilities Waifu Ai Os</h3>
+          <p>src/webapps/misc/332-hardware-acceleration-maximizing-your-waifus-capabilities-waifu-ai-os.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/334-waifu-ai-os-personality-customization-guide.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Waifu Ai Os Personality Customization Guide</h3>
+          <p>src/webapps/misc/334-waifu-ai-os-personality-customization-guide.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/335-multi-companion-support-running-multiple-waifu-instances-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Multi Companion Support Running Multiple Waifu Instances Waifu Ai Os</h3>
+          <p>src/webapps/misc/335-multi-companion-support-running-multiple-waifu-instances-waifu-ai-os.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/336-voice-integration-adding-natural-speech-to-your-waifu-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Voice Integration Adding Natural Speech To Your Waifu Waifu Ai Os</h3>
+          <p>src/webapps/misc/336-voice-integration-adding-natural-speech-to-your-waifu-waifu-ai-os.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/337-gesture-recognition-physical-interaction-systems-waifu-ai-os-documentation.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Gesture Recognition Physical Interaction Systems Waifu Ai Os Documentation</h3>
+          <p>src/webapps/misc/337-gesture-recognition-physical-interaction-systems-waifu-ai-os-documentation.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/338-memory-systems-building-long-term-relationships-waifu-ai-os-project.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Memory Systems Building Long Term Relationships Waifu Ai Os Project</h3>
+          <p>src/webapps/misc/338-memory-systems-building-long-term-relationships-waifu-ai-os-project.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/339-waifuos-adaptive-ai-operating-system.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Waifuos Adaptive Ai Operating System</h3>
+          <p>src/webapps/misc/339-waifuos-adaptive-ai-operating-system.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/340-waifuos-common-lisp-implementation.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Waifuos Common Lisp Implementation</h3>
+          <p>src/webapps/misc/340-waifuos-common-lisp-implementation.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/341-interactive-proof-parking-rectangle-algorithm.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Interactive Proof Parking Rectangle Algorithm</h3>
+          <p>src/webapps/misc/341-interactive-proof-parking-rectangle-algorithm.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/342-interactive-visualization-of-parking-rectangle-algorithm.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Interactive Visualization Of Parking Rectangle Algorithm</h3>
+          <p>src/webapps/misc/342-interactive-visualization-of-parking-rectangle-algorithm.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/343-algorithm-proof-visualization.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Algorithm Proof Visualization</h3>
+          <p>src/webapps/misc/343-algorithm-proof-visualization.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/344-custom-waifu-robots-build-your-perfect-companion.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Custom Waifu Robots Build Your Perfect Companion</h3>
+          <p>src/webapps/misc/344-custom-waifu-robots-build-your-perfect-companion.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/345-waifu-cursor.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Waifu Cursor</h3>
+          <p>src/webapps/misc/345-waifu-cursor.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/346-gputpu-model-parameter-estimates.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Gputpu Model Parameter Estimates</h3>
+          <p>src/webapps/misc/346-gputpu-model-parameter-estimates.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/347-text-browser.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Text Browser</h3>
+          <p>src/webapps/misc/347-text-browser.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/348-dynamic-commission-rate-optimization-simulator.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Dynamic Commission Rate Optimization Simulator</h3>
+          <p>src/webapps/misc/348-dynamic-commission-rate-optimization-simulator.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/349-tokenaffiliates-dynamic-commission-dashboard.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Tokenaffiliates Dynamic Commission Dashboard</h3>
+          <p>src/webapps/misc/349-tokenaffiliates-dynamic-commission-dashboard.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/350-modern-token-launch-platform.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Modern Token Launch Platform</h3>
+          <p>src/webapps/misc/350-modern-token-launch-platform.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/351-tokenaffiliates-dynamic-commission-model-visualization.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Tokenaffiliates Dynamic Commission Model Visualization</h3>
+          <p>src/webapps/misc/351-tokenaffiliates-dynamic-commission-model-visualization.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/352-ai-commission-rate-optimizer.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ai Commission Rate Optimizer</h3>
+          <p>src/webapps/misc/352-ai-commission-rate-optimizer.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/353-simulate-optimize-ai-for-commission-rates.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Simulate Optimize Ai For Commission Rates</h3>
+          <p>src/webapps/misc/353-simulate-optimize-ai-for-commission-rates.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/354-ai-commission-optimization-platform.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ai Commission Optimization Platform</h3>
+          <p>src/webapps/misc/354-ai-commission-optimization-platform.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/355-ai-commission-rate-optimizer-success-stories.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ai Commission Rate Optimizer Success Stories</h3>
+          <p>src/webapps/misc/355-ai-commission-rate-optimizer-success-stories.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/356-ai-commission-rate-optimizer.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ai Commission Rate Optimizer</h3>
+          <p>src/webapps/misc/356-ai-commission-rate-optimizer.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/357-ai-commission-rate-optimization-simulator.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ai Commission Rate Optimization Simulator</h3>
+          <p>src/webapps/misc/357-ai-commission-rate-optimization-simulator.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/358-simulation-results-summary.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Simulation Results Summary</h3>
+          <p>src/webapps/misc/358-simulation-results-summary.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/359-interactive-projectile-motion-demo.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Interactive Projectile Motion Demo</h3>
+          <p>src/webapps/misc/359-interactive-projectile-motion-demo.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/360-tokenaffiliates-dynamic-commission-rate-optimization.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Tokenaffiliates Dynamic Commission Rate Optimization</h3>
+          <p>src/webapps/misc/360-tokenaffiliates-dynamic-commission-rate-optimization.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/361-tokenaffiliates-a-formal-mathematical-model.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Tokenaffiliates A Formal Mathematical Model</h3>
+          <p>src/webapps/misc/361-tokenaffiliates-a-formal-mathematical-model.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/362-tokenaffiliates-a-formal-mathematical-model.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Tokenaffiliates A Formal Mathematical Model</h3>
+          <p>src/webapps/misc/362-tokenaffiliates-a-formal-mathematical-model.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/363-the-future-of-human-ai-collaboration.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Future Of Human Ai Collaboration</h3>
+          <p>src/webapps/misc/363-the-future-of-human-ai-collaboration.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/364-math-editor.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Math Editor</h3>
+          <p>src/webapps/misc/364-math-editor.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/365-text-width-formatter-80-characters.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Text Width Formatter 80 Characters</h3>
+          <p>src/webapps/misc/365-text-width-formatter-80-characters.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/368-mathhub-collaborative-mathematics-platform/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Mathhub Collaborative Mathematics Platform</h3>
+          <p>src/webapps/misc/368-mathhub-collaborative-mathematics-platform/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/369-math-equation-remix-studio/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Math Equation Remix Studio</h3>
+          <p>src/webapps/misc/369-math-equation-remix-studio/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/371-economic-model-producer-government-interaction/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Economic Model Producer Government Interaction</h3>
+          <p>src/webapps/misc/371-economic-model-producer-government-interaction/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/373-interactive-bonding-curve-modeler/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Interactive Bonding Curve Modeler</h3>
+          <p>src/webapps/misc/373-interactive-bonding-curve-modeler/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/376-web-manim-style-animation-generator/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Web Manim Style Animation Generator</h3>
+          <p>src/webapps/misc/376-web-manim-style-animation-generator/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/378-recursive-llm-evaluation-a-novel-approach-to-model-ranking/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Recursive Llm Evaluation A Novel Approach To Model Ranking</h3>
+          <p>src/webapps/misc/378-recursive-llm-evaluation-a-novel-approach-to-model-ranking/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/379-interactive-model-context-protocol-visualization/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Interactive Model Context Protocol Visualization</h3>
+          <p>src/webapps/misc/379-interactive-model-context-protocol-visualization/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/386-real-vs-imaginary-time/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Real Vs Imaginary Time</h3>
+          <p>src/webapps/misc/386-real-vs-imaginary-time/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/389-user-projects-overview/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>User Projects Overview</h3>
+          <p>src/webapps/misc/389-user-projects-overview/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/391-export-website/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Export Website</h3>
+          <p>src/webapps/misc/391-export-website/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/395-medication-tracker/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Medication Tracker</h3>
+          <p>src/webapps/misc/395-medication-tracker/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/396-sample-equation/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Sample Equation</h3>
+          <p>src/webapps/misc/396-sample-equation/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/398-the-refactor-revolution-how-to-invent-by-standing-on-the-shoulders-of-giants/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Refactor Revolution How To Invent By Standing On The Shoulders Of Giants</h3>
+          <p>src/webapps/misc/398-the-refactor-revolution-how-to-invent-by-standing-on-the-shoulders-of-giants/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/399-websim-contribution-calendar/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Websim Contribution Calendar</h3>
+          <p>src/webapps/misc/399-websim-contribution-calendar/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/409-emergent-economic-simulation/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Emergent Economic Simulation</h3>
+          <p>src/webapps/misc/409-emergent-economic-simulation/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/412-websim-contribution-calendar/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Websim Contribution Calendar</h3>
+          <p>src/webapps/misc/412-websim-contribution-calendar/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/415-token-ecosystem-simulation/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Token Ecosystem Simulation</h3>
+          <p>src/webapps/misc/415-token-ecosystem-simulation/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/417-personality-analysis-system/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Personality Analysis System</h3>
+          <p>src/webapps/misc/417-personality-analysis-system/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/418-personality-analysis-system/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Personality Analysis System</h3>
+          <p>src/webapps/misc/418-personality-analysis-system/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/419-adaptive-product-feature-discovery/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Adaptive Product Feature Discovery</h3>
+          <p>src/webapps/misc/419-adaptive-product-feature-discovery/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/420-python-function-dependency-graph/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Python Function Dependency Graph</h3>
+          <p>src/webapps/misc/420-python-function-dependency-graph/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/428-adaptive-product-feature-discovery/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Adaptive Product Feature Discovery</h3>
+          <p>src/webapps/misc/428-adaptive-product-feature-discovery/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/434-dotted-effect-app/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Dotted Effect App</h3>
+          <p>src/webapps/misc/434-dotted-effect-app/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/436-economic-model-producer-government-interaction/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Economic Model Producer Government Interaction</h3>
+          <p>src/webapps/misc/436-economic-model-producer-government-interaction/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/437-emergent-economic-simulation/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Emergent Economic Simulation</h3>
+          <p>src/webapps/misc/437-emergent-economic-simulation/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/438-interactive-bonding-curve-modeler/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Interactive Bonding Curve Modeler</h3>
+          <p>src/webapps/misc/438-interactive-bonding-curve-modeler/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/439-interactive-model-context-protocol-visualization/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Interactive Model Context Protocol Visualization</h3>
+          <p>src/webapps/misc/439-interactive-model-context-protocol-visualization/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/440-interactive-projectile-motion-demo/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Interactive Projectile Motion Demo</h3>
+          <p>src/webapps/misc/440-interactive-projectile-motion-demo/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/441-investment-simulation-dashboard/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Investment Simulation Dashboard</h3>
+          <p>src/webapps/misc/441-investment-simulation-dashboard/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/misc/451-websim-contribution-calendar/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Websim Contribution Calendar</h3>
+          <p>src/webapps/misc/451-websim-contribution-calendar/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+    </div>
+    <div id="no-results" class="no-results">No applications match your search.</div>
+    
+  </div>
+  
+  <script>
+    const searchInput = document.getElementById('search');
+    const items = document.querySelectorAll('.searchable-item');
+    const noResults = document.getElementById('no-results');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        items.forEach(item => {
+          const text = item.textContent.toLowerCase();
+          if (text.includes(query)) {
+            item.style.display = '';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        if (noResults) {
+          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+      });
+    }
+  </script>
 </body>
 </html>

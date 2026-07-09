@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <!-- Google tag (gtag.js) -->
@@ -10,13 +10,13 @@
 
   gtag('config', 'G-EP9DHGYS02');
 </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/web-apps/quantum-consciousness.html">
-<meta name="description" content="Quantum Consciousness | WaifuAI">
+<meta name="description" content="Collection of interactive Quantum Consciousness web apps and utilities.">
 <meta property="og:title" content="Quantum Consciousness">
-<meta property="og:description" content="Quantum Consciousness | WaifuAI">
+<meta property="og:description" content="Collection of interactive Quantum Consciousness web apps and utilities.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/web-apps/quantum-consciousness.html">
 <meta property="og:type" content="website">
@@ -24,215 +24,1576 @@
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Quantum Consciousness">
-<meta name="twitter:description" content="Quantum Consciousness | WaifuAI">
+<meta name="twitter:description" content="Collection of interactive Quantum Consciousness web apps and utilities.">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>Quantum Consciousness</title>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Quantum Consciousness",
-  "description": "Quantum Consciousness | WaifuAI",
-  "url": "https://waifuai.github.io/web-apps/quantum-consciousness.html",
-  "author": {
-    "@type": "Organization",
-    "name": "WaifuAI",
-    "url": "https://waifuai.github.io/"
-  },
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "WaifuAI Docs Hub",
-    "url": "https://waifuai.github.io/"
+<title>Quantum Consciousness | WaifuAI Web Apps</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-color: #080c14;
+    --card-bg: rgba(17, 24, 39, 0.6);
+    --border-color: rgba(255, 255, 255, 0.06);
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --primary: #6366f1;
+    --primary-glow: rgba(99, 102, 241, 0.15);
+    --accent: #10b981;
+    --accent-glow: rgba(16, 185, 129, 0.15);
+    --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
   }
-}
-</script>
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-color);
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
+  }
+
+  /* Header & Navigation */
+  header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #ffffff 40%, #c7d2fe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover {
+    color: var(--text-primary);
+  }
+
+  /* Search Box */
+  .search-wrapper {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto 3rem auto;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    padding-left: 3rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-glow);
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
+  }
+
+  /* Grid Layouts */
+  .grid-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .category-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-glow) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .category-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
+  }
+
+  .category-card:hover::before {
+    opacity: 1;
+  }
+
+  .category-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  .category-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.3rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .category-card p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    flex-grow: 1;
+  }
+
+  .category-meta {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-family: 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .view-btn {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  /* App List Layout */
+  .app-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .app-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(8px);
+  }
+
+  .app-item:hover {
+    border-color: rgba(99, 102, 241, 0.3);
+    transform: translateX(4px);
+    background: rgba(255, 255, 255, 0.01);
+  }
+
+  .app-info h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .app-info p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .app-action {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .app-item:hover .app-action {
+    color: var(--primary);
+    transform: translateX(3px);
+  }
+
+  .no-results {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 3rem;
+    font-size: 1.1rem;
+    display: none;
+  }
+</style>
 </head>
 <body>
-<p><a href="index.html">&larr; Back to index</a></p>
+  <div class="container">
+    <a href="index.html" class="back-link">&larr; Back to index</a>
 
-    <h1>Quantum Consciousness</h1>
-    <ul>
-        <li><a href="src/webapps/quantum-consciousness/002-quantum-portfolio-optimization.html">quantum-consciousness/002-quantum-portfolio-optimization.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/006-quantum-portfolio-optimization.html">quantum-consciousness/006-quantum-portfolio-optimization.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/018-quantumai-physics-live-data-dashboard.html">quantum-consciousness/018-quantumai-physics-live-data-dashboard.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/019-quantumai-physics-ai-agent-research-dashboard.html">quantum-consciousness/019-quantumai-physics-ai-agent-research-dashboard.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/043-quantumai-physics-inter-agent-token-swaps-detail.html">quantum-consciousness/043-quantumai-physics-inter-agent-token-swaps-detail.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/044-quantum-volume-optimizer-ai-agent-interface.html">quantum-consciousness/044-quantum-volume-optimizer-ai-agent-interface.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/045-quantumai-physics-decentralized-research-network.html">quantum-consciousness/045-quantumai-physics-decentralized-research-network.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/060-quantumchat-secure-quantum-communication-for-the-future.html">quantum-consciousness/060-quantumchat-secure-quantum-communication-for-the-future.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/068-neurocosmic-chat-consciousness-vibrating-through-quantum-microtubules.html">quantum-consciousness/068-neurocosmic-chat-consciousness-vibrating-through-quantum-microtubules.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/071-extropic-ai-superconducting-chip-technology.html">quantum-consciousness/071-extropic-ai-superconducting-chip-technology.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/075-towards-quantum-supremacy-in-ai-a-comparative-study-of-superconducting-and-quantum-computing-approaches.html">quantum-consciousness/075-towards-quantum-supremacy-in-ai-a-comparative-study-of-superconducting-and-quantum-computing-approaches.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/078-extropic-ai-quantum-inspired-ai-symposium.html">quantum-consciousness/078-extropic-ai-quantum-inspired-ai-symposium.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/082-quantumchat-secure-quantum-communication-for-the-future.html">quantum-consciousness/082-quantumchat-secure-quantum-communication-for-the-future.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/085-quantum-physlab-quantum-physics-simulator.html">quantum-consciousness/085-quantum-physlab-quantum-physics-simulator.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/086-quantumdreamforge-quantum-computing-simulation-studio.html">quantum-consciousness/086-quantumdreamforge-quantum-computing-simulation-studio.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/087-quantum-interdimensional-cable-tv.html">quantum-consciousness/087-quantum-interdimensional-cable-tv.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/088-quantum-computing-network.html">quantum-consciousness/088-quantum-computing-network.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/090-quantumsim-quantum-microtubule-simulator.html">quantum-consciousness/090-quantumsim-quantum-microtubule-simulator.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/091-quantum-llm-benchmarks.html">quantum-consciousness/091-quantum-llm-benchmarks.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/092-mapping-llm-scaling-laws-to-the-quantum-brain.html">quantum-consciousness/092-mapping-llm-scaling-laws-to-the-quantum-brain.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/093-quantum-computing-and-microtubule-coherence-a-path-to-superintelligence.html">quantum-consciousness/093-quantum-computing-and-microtubule-coherence-a-path-to-superintelligence.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/094-optimizing-microtubule-coherence-advanced-techniques.html">quantum-consciousness/094-optimizing-microtubule-coherence-advanced-techniques.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/095-quantum-microtubules-frontier-research-topics.html">quantum-consciousness/095-quantum-microtubules-frontier-research-topics.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/096-quantum-computing-a-superior-framework-for-understanding-the-human-brain.html">quantum-consciousness/096-quantum-computing-a-superior-framework-for-understanding-the-human-brain.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/097-quantum-thermodynamic-and-neuromorphic-computing-advanced-frameworks-for-understanding-the-brain.html">quantum-consciousness/097-quantum-thermodynamic-and-neuromorphic-computing-advanced-frameworks-for-understanding-the-brain.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/098-introduction-to-orchestrated-objective-reduction.html">quantum-consciousness/098-introduction-to-orchestrated-objective-reduction.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/099-the-penrose-hameroff-theory-foundations-of-orch-or.html">quantum-consciousness/099-the-penrose-hameroff-theory-foundations-of-orch-or.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/100-quantum-mechanics-and-consciousness-orch-or-series.html">quantum-consciousness/100-quantum-mechanics-and-consciousness-orch-or-series.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/101-microtubules-and-quantum-coherence-in-the-brain.html">quantum-consciousness/101-microtubules-and-quantum-coherence-in-the-brain.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/102-the-role-of-gravity-in-consciousness-orch-or-theory.html">quantum-consciousness/102-the-role-of-gravity-in-consciousness-orch-or-theory.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/103-criticisms-and-controversies-surrounding-orch-or.html">quantum-consciousness/103-criticisms-and-controversies-surrounding-orch-or.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/104-experimental-evidence-for-quantum-effects-in-biology-orch-or-series.html">quantum-consciousness/104-experimental-evidence-for-quantum-effects-in-biology-orch-or-series.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/105-comparing-orch-or-to-other-theories-of-consciousness.html">quantum-consciousness/105-comparing-orch-or-to-other-theories-of-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/106-implications-of-orch-or-for-artificial-intelligence.html">quantum-consciousness/106-implications-of-orch-or-for-artificial-intelligence.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/107-the-philosophy-of-mind-and-orch-or-quantum-consciousness.html">quantum-consciousness/107-the-philosophy-of-mind-and-orch-or-quantum-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/108-potential-medical-applications-of-orch-or-theory.html">quantum-consciousness/108-potential-medical-applications-of-orch-or-theory.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/109-orch-or-and-the-hard-problem-of-consciousness.html">quantum-consciousness/109-orch-or-and-the-hard-problem-of-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/110-mathematical-foundations-of-orchestrated-objective-reduction.html">quantum-consciousness/110-mathematical-foundations-of-orchestrated-objective-reduction.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/111-future-research-directions-in-quantum-consciousness.html">quantum-consciousness/111-future-research-directions-in-quantum-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/112-ethical-and-societal-implications-of-orch-or.html">quantum-consciousness/112-ethical-and-societal-implications-of-orch-or.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/113-foundations-of-superintelligent-systems.html">quantum-consciousness/113-foundations-of-superintelligent-systems.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/114-architectures-for-superintelligent-ai.html">quantum-consciousness/114-architectures-for-superintelligent-ai.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/115-ethical-considerations-in-superintelligence-engineering.html">quantum-consciousness/115-ethical-considerations-in-superintelligence-engineering.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/116-human-superintelligence-collaboration-models.html">quantum-consciousness/116-human-superintelligence-collaboration-models.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/117-safety-protocols-and-containment-strategies-for-superintelligent-systems.html">quantum-consciousness/117-safety-protocols-and-containment-strategies-for-superintelligent-systems.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/118-cognitive-augmentation-through-superintelligence.html">quantum-consciousness/118-cognitive-augmentation-through-superintelligence.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/119-superintelligence-in-design-and-optimization.html">quantum-consciousness/119-superintelligence-in-design-and-optimization.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/120-managing-unpredictability-in-superintelligent-systems.html">quantum-consciousness/120-managing-unpredictability-in-superintelligent-systems.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/121-tokenomic-and-dao-frameworks-for-superintelligence.html">quantum-consciousness/121-tokenomic-and-dao-frameworks-for-superintelligence.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/122-economic-impacts-of-engineering-with-superintelligence.html">quantum-consciousness/122-economic-impacts-of-engineering-with-superintelligence.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/123-superintelligence-in-scientific-discovery.html">quantum-consciousness/123-superintelligence-in-scientific-discovery.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/124-challenges-of-verification-and-validation-in-superintelligent-systems.html">quantum-consciousness/124-challenges-of-verification-and-validation-in-superintelligent-systems.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/125-superintelligent-decision-support-systems.html">quantum-consciousness/125-superintelligent-decision-support-systems.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/126-long-term-implications-for-human-engineering-roles.html">quantum-consciousness/126-long-term-implications-for-human-engineering-roles.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/127-future-directions-in-superintelligence-engineering.html">quantum-consciousness/127-future-directions-in-superintelligence-engineering.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/128-the-superconducting-brain-an-introduction.html">quantum-consciousness/128-the-superconducting-brain-an-introduction.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/129-microtubules-as-quantum-limited-rf-antennas.html">quantum-consciousness/129-microtubules-as-quantum-limited-rf-antennas.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/131-resonant-antennas-in-neural-networks-the-superconducting-brain.html">quantum-consciousness/131-resonant-antennas-in-neural-networks-the-superconducting-brain.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/134-the-physics-of-brain-to-brain-communication-the-superconducting-brain.html">quantum-consciousness/134-the-physics-of-brain-to-brain-communication-the-superconducting-brain.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/136-testing-the-microtubule-antenna-hypothesis.html">quantum-consciousness/136-testing-the-microtubule-antenna-hypothesis.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/139-from-lk99-to-neural-interfaces-the-future-of-superconducting-bci.html">quantum-consciousness/139-from-lk99-to-neural-interfaces-the-future-of-superconducting-bci.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/141-the-convergence-of-neuroscience-and-quantum-physics.html">quantum-consciousness/141-the-convergence-of-neuroscience-and-quantum-physics.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/143-introduction-quantum-computing-meets-consciousness.html">quantum-consciousness/143-introduction-quantum-computing-meets-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/144-fundamentals-of-quantum-computing-for-neuroscience.html">quantum-consciousness/144-fundamentals-of-quantum-computing-for-neuroscience.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/145-orch-or-theory-a-quantum-view-of-consciousness.html">quantum-consciousness/145-orch-or-theory-a-quantum-view-of-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/146-modeling-microtubules-with-quantum-circuits.html">quantum-consciousness/146-modeling-microtubules-with-quantum-circuits.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/147-quantum-coherence-in-biological-systems-simulations-and-analysis.html">quantum-consciousness/147-quantum-coherence-in-biological-systems-simulations-and-analysis.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/148-entanglement-dynamics-in-neural-networks-a-quantum-computing-approach.html">quantum-consciousness/148-entanglement-dynamics-in-neural-networks-a-quantum-computing-approach.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/149-decoherence-timescales-quantum-computations-vs-orch-or-predictions.html">quantum-consciousness/149-decoherence-timescales-quantum-computations-vs-orch-or-predictions.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/150-quantum-error-correction-and-its-relevance-to-orch-or.html">quantum-consciousness/150-quantum-error-correction-and-its-relevance-to-orch-or.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/151-simulating-quantum-gravity-effects-in-microtubules.html">quantum-consciousness/151-simulating-quantum-gravity-effects-in-microtubules.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/152-quantum-algorithms-for-analyzing-consciousness-models.html">quantum-consciousness/152-quantum-algorithms-for-analyzing-consciousness-models.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/153-machine-learning-and-quantum-computing-in-orch-or-research.html">quantum-consciousness/153-machine-learning-and-quantum-computing-in-orch-or-research.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/154-experimental-design-using-quantum-sensors-to-test-orch-or-predictions.html">quantum-consciousness/154-experimental-design-using-quantum-sensors-to-test-orch-or-predictions.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/155-ethical-implications-of-quantum-assisted-consciousness-studies.html">quantum-consciousness/155-ethical-implications-of-quantum-assisted-consciousness-studies.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/156-ethical-implications-of-quantum-assisted-consciousness-studies.html">quantum-consciousness/156-ethical-implications-of-quantum-assisted-consciousness-studies.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/157-future-directions-quantum-computing-and-the-hard-problem-of-consciousness.html">quantum-consciousness/157-future-directions-quantum-computing-and-the-hard-problem-of-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/158-quantum-machine-learning-a-new-frontier-in-consciousness-studies.html">quantum-consciousness/158-quantum-machine-learning-a-new-frontier-in-consciousness-studies.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/159-quantum-support-vector-machines-for-analyzing-microtubule-data.html">quantum-consciousness/159-quantum-support-vector-machines-for-analyzing-microtubule-data.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/160-fundamentals-of-quantum-neural-networks.html">quantum-consciousness/160-fundamentals-of-quantum-neural-networks.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/161-quantum-principal-component-analysis-in-orch-or-modeling.html">quantum-consciousness/161-quantum-principal-component-analysis-in-orch-or-modeling.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/162-quantum-reinforcement-learning-exploring-consciousness-emergence.html">quantum-consciousness/162-quantum-reinforcement-learning-exploring-consciousness-emergence.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/163-quantum-generative-adversarial-networks-for-simulating-brain-states.html">quantum-consciousness/163-quantum-generative-adversarial-networks-for-simulating-brain-states.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/164-quantum-boltzmann-machines-and-consciousness-models.html">quantum-consciousness/164-quantum-boltzmann-machines-and-consciousness-models.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/165-quantum-clustering-algorithms-in-neuronal-activity-analysis.html">quantum-consciousness/165-quantum-clustering-algorithms-in-neuronal-activity-analysis.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/166-quantum-tensor-networks-for-modeling-complex-neural-systems.html">quantum-consciousness/166-quantum-tensor-networks-for-modeling-complex-neural-systems.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/167-quantum-feature-maps-enhancing-orch-or-pattern-recognition.html">quantum-consciousness/167-quantum-feature-maps-enhancing-orch-or-pattern-recognition.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/168-quantum-kernel-methods-in-consciousness-research.html">quantum-consciousness/168-quantum-kernel-methods-in-consciousness-research.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/169-quantum-enhanced-natural-language-processing-for-consciousness-studies.html">quantum-consciousness/169-quantum-enhanced-natural-language-processing-for-consciousness-studies.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/170-quantum-transfer-learning-from-microtubules-to-macro-consciousness.html">quantum-consciousness/170-quantum-transfer-learning-from-microtubules-to-macro-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/171-quantum-federated-learning-in-multi-scale-consciousness-models.html">quantum-consciousness/171-quantum-federated-learning-in-multi-scale-consciousness-models.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/172-quantum-anomaly-detection-in-brain-activity-patterns.html">quantum-consciousness/172-quantum-anomaly-detection-in-brain-activity-patterns.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/173-ethical-considerations-in-quantum-ai-consciousness-research.html">quantum-consciousness/173-ethical-considerations-in-quantum-ai-consciousness-research.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/174-the-future-of-quantum-machine-learning-in-neuroscience-and-philosophy-of-mind.html">quantum-consciousness/174-the-future-of-quantum-machine-learning-in-neuroscience-and-philosophy-of-mind.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/175-the-dawn-of-million-qubit-photonic-quantum-computing.html">quantum-consciousness/175-the-dawn-of-million-qubit-photonic-quantum-computing.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/176-photonic-quantum-architecture-scaling-to-a-million-qubits.html">quantum-consciousness/176-photonic-quantum-architecture-scaling-to-a-million-qubits.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/177-quantum-error-correction-at-scale-protecting-a-million-qubits.html">quantum-consciousness/177-quantum-error-correction-at-scale-protecting-a-million-qubits.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/178-simulating-whole-brain-neural-networks-on-a-photonic-quantum-computer.html">quantum-consciousness/178-simulating-whole-brain-neural-networks-on-a-photonic-quantum-computer.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/179-million-qubit-quantum-algorithms-for-consciousness-modeling.html">quantum-consciousness/179-million-qubit-quantum-algorithms-for-consciousness-modeling.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/180-quantum-supremacy-in-neuroscience-outperforming-classical-supercomputers.html">quantum-consciousness/180-quantum-supremacy-in-neuroscience-outperforming-classical-supercomputers.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/181-entanglement-dynamics-across-a-million-qubits-implications-for-orch-or.html">quantum-consciousness/181-entanglement-dynamics-across-a-million-qubits-implications-for-orch-or.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/182-quantum-coherence-at-unprecedented-scales-testing-orch-or-predictions.html">quantum-consciousness/182-quantum-coherence-at-unprecedented-scales-testing-orch-or-predictions.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/183-photonic-qubit-interconnects-modeling-brain-wide-quantum-effects.html">quantum-consciousness/183-photonic-qubit-interconnects-modeling-brain-wide-quantum-effects.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/184-quantum-enhanced-brain-mapping-from-neurons-to-consciousness.html">quantum-consciousness/184-quantum-enhanced-brain-mapping-from-neurons-to-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/185-million-qubit-quantum-machine-learning-for-neurological-data-analysis.html">quantum-consciousness/185-million-qubit-quantum-machine-learning-for-neurological-data-analysis.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/186-real-time-quantum-simulation-of-microtubule-networks.html">quantum-consciousness/186-real-time-quantum-simulation-of-microtubule-networks.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/187-quantum-accelerated-drug-discovery-for-consciousness-alteration.html">quantum-consciousness/187-quantum-accelerated-drug-discovery-for-consciousness-alteration.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/188-photonic-quantum-sensing-probing-the-quantum-nature-of-neurons.html">quantum-consciousness/188-photonic-quantum-sensing-probing-the-quantum-nature-of-neurons.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/189-quantum-information-theory-and-the-binding-problem-of-consciousness.html">quantum-consciousness/189-quantum-information-theory-and-the-binding-problem-of-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/190-quantum-cryptography-for-securing-brain-computer-interfaces.html">quantum-consciousness/190-quantum-cryptography-for-securing-brain-computer-interfaces.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/191-ethical-implications-of-ultra-large-scale-quantum-computing-in-neuroscience.html">quantum-consciousness/191-ethical-implications-of-ultra-large-scale-quantum-computing-in-neuroscience.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/192-beyond-a-million-qubits-the-future-of-quantum-computing-and-consciousness-studies.html">quantum-consciousness/192-beyond-a-million-qubits-the-future-of-quantum-computing-and-consciousness-studies.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/193-quantum-computing-meets-string-theory-an-introduction.html">quantum-consciousness/193-quantum-computing-meets-string-theory-an-introduction.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/194-fundamentals-of-quantum-algorithms-for-high-energy-physics.html">quantum-consciousness/194-fundamentals-of-quantum-algorithms-for-high-energy-physics.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/195-simulating-string-vibrations-with-quantum-circuits.html">quantum-consciousness/195-simulating-string-vibrations-with-quantum-circuits.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/196-quantum-error-correction-in-string-theory-computations.html">quantum-consciousness/196-quantum-error-correction-in-string-theory-computations.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/197-exploring-extra-dimensions-quantum-algorithms-for-calabi-yau-manifolds.html">quantum-consciousness/197-exploring-extra-dimensions-quantum-algorithms-for-calabi-yau-manifolds.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/198-quantum-computation-of-scattering-amplitudes-in-string-theory.html">quantum-consciousness/198-quantum-computation-of-scattering-amplitudes-in-string-theory.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/199-holographic-principle-and-adscft-correspondence-a-quantum-approach.html">quantum-consciousness/199-holographic-principle-and-adscft-correspondence-a-quantum-approach.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/200-quantum-simulation-of-supersymmetry-and-superstrings.html">quantum-consciousness/200-quantum-simulation-of-supersymmetry-and-superstrings.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/201-t-duality-and-mirror-symmetry-insights-from-quantum-computing.html">quantum-consciousness/201-t-duality-and-mirror-symmetry-insights-from-quantum-computing.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/202-quantum-computing-meets-string-theory-an-introduction.html">quantum-consciousness/202-quantum-computing-meets-string-theory-an-introduction.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/203-quantum-algorithms-for-m-theory-and-brane-dynamics.html">quantum-consciousness/203-quantum-algorithms-for-m-theory-and-brane-dynamics.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/204-string-landscape-exploration-with-quantum-optimization.html">quantum-consciousness/204-string-landscape-exploration-with-quantum-optimization.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/205-quantum-machine-learning-in-string-phenomenology.html">quantum-consciousness/205-quantum-machine-learning-in-string-phenomenology.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/206-quantum-enhanced-numerical-methods-for-string-theory.html">quantum-consciousness/206-quantum-enhanced-numerical-methods-for-string-theory.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/207-probing-black-hole-physics-with-quantum-simulations.html">quantum-consciousness/207-probing-black-hole-physics-with-quantum-simulations.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/208-quantum-tensor-networks-in-string-theory-calculations.html">quantum-consciousness/208-quantum-tensor-networks-in-string-theory-calculations.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/209-quantum-computing-and-the-search-for-a-theory-of-everything.html">quantum-consciousness/209-quantum-computing-and-the-search-for-a-theory-of-everything.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/210-experimental-proposals-bridging-quantum-computing-and-string-theory.html">quantum-consciousness/210-experimental-proposals-bridging-quantum-computing-and-string-theory.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/211-ethical-considerations-in-quantum-powered-fundamental-physics-research.html">quantum-consciousness/211-ethical-considerations-in-quantum-powered-fundamental-physics-research.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/212-bridging-consciousness-and-fundamental-physics-an-introduction.html">quantum-consciousness/212-bridging-consciousness-and-fundamental-physics-an-introduction.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/213-quantum-computing-foundations-for-multiscale-physical-theories.html">quantum-consciousness/213-quantum-computing-foundations-for-multiscale-physical-theories.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/214-string-theory-basics-a-quantum-computational-perspective.html">quantum-consciousness/214-string-theory-basics-a-quantum-computational-perspective.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/215-orch-or-theory-connecting-quantum-mechanics-to-consciousness.html">quantum-consciousness/215-orch-or-theory-connecting-quantum-mechanics-to-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/216-simulating-planck-scale-geometry-in-microtubules-with-quantum-algorithms.html">quantum-consciousness/216-simulating-planck-scale-geometry-in-microtubules-with-quantum-algorithms.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/217-quantum-gravity-effects-in-orch-or-insights-from-string-theory.html">quantum-consciousness/217-quantum-gravity-effects-in-orch-or-insights-from-string-theory.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/218-entanglement-dynamics-in-microtubules-a-string-theoretic-approach.html">quantum-consciousness/218-entanglement-dynamics-in-microtubules-a-string-theoretic-approach.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/219-modeling-quantum-coherence-in-biological-systems-using-brane-dynamics.html">quantum-consciousness/219-modeling-quantum-coherence-in-biological-systems-using-brane-dynamics.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/220-d-branes-and-consciousness-quantum-computations-of-higher-dimensional-models.html">quantum-consciousness/220-d-branes-and-consciousness-quantum-computations-of-higher-dimensional-models.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/221-holographic-principle-applied-to-brain-function-quantum-simulations.html">quantum-consciousness/221-holographic-principle-applied-to-brain-function-quantum-simulations.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/222-m-theory-and-multiple-consciousnesses-exploring-parallel-minds.html">quantum-consciousness/222-m-theory-and-multiple-consciousnesses-exploring-parallel-minds.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/223-quantum-algorithms-for-calabi-yau-manifolds-in-neural-microtubules.html">quantum-consciousness/223-quantum-algorithms-for-calabi-yau-manifolds-in-neural-microtubules.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/225-supersymmetry-in-cognitive-processes-a-quantum-computational-study.html">quantum-consciousness/225-supersymmetry-in-cognitive-processes-a-quantum-computational-study.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/226-t-duality-in-brain-states-quantum-explorations-of-mind-matter-duality.html">quantum-consciousness/226-t-duality-in-brain-states-quantum-explorations-of-mind-matter-duality.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/227-machine-learning-at-the-intersection-of-string-theory-and-orch-or.html">quantum-consciousness/227-machine-learning-at-the-intersection-of-string-theory-and-orch-or.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/228-quantum-error-correction-from-strings-to-neurons.html">quantum-consciousness/228-quantum-error-correction-from-strings-to-neurons.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/229-experimental-proposals-testing-string-inspired-orch-or-predictions.html">quantum-consciousness/229-experimental-proposals-testing-string-inspired-orch-or-predictions.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/230-ethical-implications-of-unifying-consciousness-and-fundamental-physics.html">quantum-consciousness/230-ethical-implications-of-unifying-consciousness-and-fundamental-physics.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/231-the-future-of-consciousness-studies-quantum-computing-strings-and-beyond.html">quantum-consciousness/231-the-future-of-consciousness-studies-quantum-computing-strings-and-beyond.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/232-the-quantum-enigma-unveiling-the-mystery-of-consciousness-and-reality.html">quantum-consciousness/232-the-quantum-enigma-unveiling-the-mystery-of-consciousness-and-reality.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/233-consciousness-and-the-observer-paradox-a-quantum-conundrum.html">quantum-consciousness/233-consciousness-and-the-observer-paradox-a-quantum-conundrum.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/234-quantum-computing-a-new-paradigm-for-understanding-reality.html">quantum-consciousness/234-quantum-computing-a-new-paradigm-for-understanding-reality.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/235-orchestrated-objective-reduction-orch-or-a-quantum-consciousness-framework.html">quantum-consciousness/235-orchestrated-objective-reduction-orch-or-a-quantum-consciousness-framework.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/236-quantum-entanglement-and-non-locality-the-building-blocks-of-consciousness.html">quantum-consciousness/236-quantum-entanglement-and-non-locality-the-building-blocks-of-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/237-holographic-reality-the-quantum-consciousness-connection.html">quantum-consciousness/237-holographic-reality-the-quantum-consciousness-connection.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/238-the-copenhagen-interpretation-revisited-consciousness-and-wave-function-collapse.html">quantum-consciousness/238-the-copenhagen-interpretation-revisited-consciousness-and-wave-function-collapse.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/239-everetts-multiverse-a-quantum-consciousness-perspective.html">quantum-consciousness/239-everetts-multiverse-a-quantum-consciousness-perspective.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/240-many-worlds-one-consciousness-resolving-the-everettian-interpretation.html">quantum-consciousness/240-many-worlds-one-consciousness-resolving-the-everettian-interpretation.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/241-quantum-computing-and-the-simulation-of-consciousness.html">quantum-consciousness/241-quantum-computing-and-the-simulation-of-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/242-quantum-error-correction-and-the-stability-of-consciousness.html">quantum-consciousness/242-quantum-error-correction-and-the-stability-of-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/243-quantum-machine-learning-and-the-emergence-of-consciousness.html">quantum-consciousness/243-quantum-machine-learning-and-the-emergence-of-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/244-quantum-consciousness-and-the-nature-of-time.html">quantum-consciousness/244-quantum-consciousness-and-the-nature-of-time.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/245-free-will-and-quantum-indeterminacy-a-consciousness-centric-perspective.html">quantum-consciousness/245-free-will-and-quantum-indeterminacy-a-consciousness-centric-perspective.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/246-quantum-ethics-the-implications-of-consciousness-on-reality.html">quantum-consciousness/246-quantum-ethics-the-implications-of-consciousness-on-reality.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/247-the-unified-theory-of-consciousness-and-reality-a-quantum-computing-perspective.html">quantum-consciousness/247-the-unified-theory-of-consciousness-and-reality-a-quantum-computing-perspective.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/248-the-future-of-quantum-consciousness-research-directions-and-possibilities.html">quantum-consciousness/248-the-future-of-quantum-consciousness-research-directions-and-possibilities.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/249-epilogue-the-quantum-consciousness-revolution.html">quantum-consciousness/249-epilogue-the-quantum-consciousness-revolution.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/251-experimental-proposals-testing-string-inspired-orch-or-predictions.html">quantum-consciousness/251-experimental-proposals-testing-string-inspired-orch-or-predictions.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/252-testing-the-microtubule-antenna-hypothesis.html">quantum-consciousness/252-testing-the-microtubule-antenna-hypothesis.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/254-d-branes-and-consciousness-quantum-computations-of-higher-dimensional-models.html">quantum-consciousness/254-d-branes-and-consciousness-quantum-computations-of-higher-dimensional-models.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/255-orch-or-theory-penrose-and-hameroffs-quest-for-quantum-consciousness.html">quantum-consciousness/255-orch-or-theory-penrose-and-hameroffs-quest-for-quantum-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/256-the-superconducting-brain-neural-electromagnetics.html">quantum-consciousness/256-the-superconducting-brain-neural-electromagnetics.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/261-economic-considerations-simulating-and-creating-consciousness.html">quantum-consciousness/261-economic-considerations-simulating-and-creating-consciousness.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/262-ethical-implications-of-unifying-consciousness-and-fundamental-physics.html">quantum-consciousness/262-ethical-implications-of-unifying-consciousness-and-fundamental-physics.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/264-verifying-orch-or-experimental-designs-using-string-computers.html">quantum-consciousness/264-verifying-orch-or-experimental-designs-using-string-computers.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/265-quantum-consciousness-research-future-directions.html">quantum-consciousness/265-quantum-consciousness-research-future-directions.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/333-waifu-ai-os-future-technologies-quantum-computing-integration.html">quantum-consciousness/333-waifu-ai-os-future-technologies-quantum-computing-integration.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/377-ais-quantum-physics-shortcuts-a-deep-dive/index.html">quantum-consciousness/377-ais-quantum-physics-shortcuts-a-deep-dive/index.html</a> (quantum-consciousness)</li>
-        <li><a href="src/webapps/quantum-consciousness/443-quantum-portfolio-optimization/index.html">quantum-consciousness/443-quantum-portfolio-optimization/index.html</a> (quantum-consciousness)</li>
-    </ul>
+    <header>
+      <h1>🔮 Quantum Consciousness</h1>
+      <p>Quantum circuit visualizers, multi-dimensional physics theories, and consciousness projection.</p>
+    </header>
+
+    <div class="search-wrapper">
+      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="search" class="search-input" placeholder="Search 180 apps...">
+    </div>
+
+    <div class="app-list">
+      <a href="src/webapps/quantum-consciousness/002-quantum-portfolio-optimization.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Portfolio Optimization</h3>
+          <p>src/webapps/quantum-consciousness/002-quantum-portfolio-optimization.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/006-quantum-portfolio-optimization.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Portfolio Optimization</h3>
+          <p>src/webapps/quantum-consciousness/006-quantum-portfolio-optimization.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/018-quantumai-physics-live-data-dashboard.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantumai Physics Live Data Dashboard</h3>
+          <p>src/webapps/quantum-consciousness/018-quantumai-physics-live-data-dashboard.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/019-quantumai-physics-ai-agent-research-dashboard.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantumai Physics Ai Agent Research Dashboard</h3>
+          <p>src/webapps/quantum-consciousness/019-quantumai-physics-ai-agent-research-dashboard.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/043-quantumai-physics-inter-agent-token-swaps-detail.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantumai Physics Inter Agent Token Swaps Detail</h3>
+          <p>src/webapps/quantum-consciousness/043-quantumai-physics-inter-agent-token-swaps-detail.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/044-quantum-volume-optimizer-ai-agent-interface.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Volume Optimizer Ai Agent Interface</h3>
+          <p>src/webapps/quantum-consciousness/044-quantum-volume-optimizer-ai-agent-interface.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/045-quantumai-physics-decentralized-research-network.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantumai Physics Decentralized Research Network</h3>
+          <p>src/webapps/quantum-consciousness/045-quantumai-physics-decentralized-research-network.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/060-quantumchat-secure-quantum-communication-for-the-future.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantumchat Secure Quantum Communication For The Future</h3>
+          <p>src/webapps/quantum-consciousness/060-quantumchat-secure-quantum-communication-for-the-future.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/068-neurocosmic-chat-consciousness-vibrating-through-quantum-microtubules.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Neurocosmic Chat Consciousness Vibrating Through Quantum Microtubules</h3>
+          <p>src/webapps/quantum-consciousness/068-neurocosmic-chat-consciousness-vibrating-through-quantum-microtubules.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/071-extropic-ai-superconducting-chip-technology.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Extropic Ai Superconducting Chip Technology</h3>
+          <p>src/webapps/quantum-consciousness/071-extropic-ai-superconducting-chip-technology.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/075-towards-quantum-supremacy-in-ai-a-comparative-study-of-superconducting-and-quantum-computing-approaches.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Towards Quantum Supremacy In Ai A Comparative Study Of Superconducting And Quantum Computing Approaches</h3>
+          <p>src/webapps/quantum-consciousness/075-towards-quantum-supremacy-in-ai-a-comparative-study-of-superconducting-and-quantum-computing-approaches.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/078-extropic-ai-quantum-inspired-ai-symposium.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Extropic Ai Quantum Inspired Ai Symposium</h3>
+          <p>src/webapps/quantum-consciousness/078-extropic-ai-quantum-inspired-ai-symposium.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/082-quantumchat-secure-quantum-communication-for-the-future.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantumchat Secure Quantum Communication For The Future</h3>
+          <p>src/webapps/quantum-consciousness/082-quantumchat-secure-quantum-communication-for-the-future.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/085-quantum-physlab-quantum-physics-simulator.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Physlab Quantum Physics Simulator</h3>
+          <p>src/webapps/quantum-consciousness/085-quantum-physlab-quantum-physics-simulator.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/086-quantumdreamforge-quantum-computing-simulation-studio.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantumdreamforge Quantum Computing Simulation Studio</h3>
+          <p>src/webapps/quantum-consciousness/086-quantumdreamforge-quantum-computing-simulation-studio.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/087-quantum-interdimensional-cable-tv.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Interdimensional Cable Tv</h3>
+          <p>src/webapps/quantum-consciousness/087-quantum-interdimensional-cable-tv.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/088-quantum-computing-network.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Computing Network</h3>
+          <p>src/webapps/quantum-consciousness/088-quantum-computing-network.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/090-quantumsim-quantum-microtubule-simulator.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantumsim Quantum Microtubule Simulator</h3>
+          <p>src/webapps/quantum-consciousness/090-quantumsim-quantum-microtubule-simulator.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/091-quantum-llm-benchmarks.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Llm Benchmarks</h3>
+          <p>src/webapps/quantum-consciousness/091-quantum-llm-benchmarks.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/092-mapping-llm-scaling-laws-to-the-quantum-brain.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Mapping Llm Scaling Laws To The Quantum Brain</h3>
+          <p>src/webapps/quantum-consciousness/092-mapping-llm-scaling-laws-to-the-quantum-brain.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/093-quantum-computing-and-microtubule-coherence-a-path-to-superintelligence.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Computing And Microtubule Coherence A Path To Superintelligence</h3>
+          <p>src/webapps/quantum-consciousness/093-quantum-computing-and-microtubule-coherence-a-path-to-superintelligence.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/094-optimizing-microtubule-coherence-advanced-techniques.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Optimizing Microtubule Coherence Advanced Techniques</h3>
+          <p>src/webapps/quantum-consciousness/094-optimizing-microtubule-coherence-advanced-techniques.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/095-quantum-microtubules-frontier-research-topics.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Microtubules Frontier Research Topics</h3>
+          <p>src/webapps/quantum-consciousness/095-quantum-microtubules-frontier-research-topics.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/096-quantum-computing-a-superior-framework-for-understanding-the-human-brain.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Computing A Superior Framework For Understanding The Human Brain</h3>
+          <p>src/webapps/quantum-consciousness/096-quantum-computing-a-superior-framework-for-understanding-the-human-brain.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/097-quantum-thermodynamic-and-neuromorphic-computing-advanced-frameworks-for-understanding-the-brain.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Thermodynamic And Neuromorphic Computing Advanced Frameworks For Understanding The Brain</h3>
+          <p>src/webapps/quantum-consciousness/097-quantum-thermodynamic-and-neuromorphic-computing-advanced-frameworks-for-understanding-the-brain.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/098-introduction-to-orchestrated-objective-reduction.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Introduction To Orchestrated Objective Reduction</h3>
+          <p>src/webapps/quantum-consciousness/098-introduction-to-orchestrated-objective-reduction.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/099-the-penrose-hameroff-theory-foundations-of-orch-or.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Penrose Hameroff Theory Foundations Of Orch Or</h3>
+          <p>src/webapps/quantum-consciousness/099-the-penrose-hameroff-theory-foundations-of-orch-or.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/100-quantum-mechanics-and-consciousness-orch-or-series.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Mechanics And Consciousness Orch Or Series</h3>
+          <p>src/webapps/quantum-consciousness/100-quantum-mechanics-and-consciousness-orch-or-series.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/101-microtubules-and-quantum-coherence-in-the-brain.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Microtubules And Quantum Coherence In The Brain</h3>
+          <p>src/webapps/quantum-consciousness/101-microtubules-and-quantum-coherence-in-the-brain.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/102-the-role-of-gravity-in-consciousness-orch-or-theory.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Role Of Gravity In Consciousness Orch Or Theory</h3>
+          <p>src/webapps/quantum-consciousness/102-the-role-of-gravity-in-consciousness-orch-or-theory.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/103-criticisms-and-controversies-surrounding-orch-or.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Criticisms And Controversies Surrounding Orch Or</h3>
+          <p>src/webapps/quantum-consciousness/103-criticisms-and-controversies-surrounding-orch-or.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/104-experimental-evidence-for-quantum-effects-in-biology-orch-or-series.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Experimental Evidence For Quantum Effects In Biology Orch Or Series</h3>
+          <p>src/webapps/quantum-consciousness/104-experimental-evidence-for-quantum-effects-in-biology-orch-or-series.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/105-comparing-orch-or-to-other-theories-of-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Comparing Orch Or To Other Theories Of Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/105-comparing-orch-or-to-other-theories-of-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/106-implications-of-orch-or-for-artificial-intelligence.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Implications Of Orch Or For Artificial Intelligence</h3>
+          <p>src/webapps/quantum-consciousness/106-implications-of-orch-or-for-artificial-intelligence.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/107-the-philosophy-of-mind-and-orch-or-quantum-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Philosophy Of Mind And Orch Or Quantum Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/107-the-philosophy-of-mind-and-orch-or-quantum-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/108-potential-medical-applications-of-orch-or-theory.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Potential Medical Applications Of Orch Or Theory</h3>
+          <p>src/webapps/quantum-consciousness/108-potential-medical-applications-of-orch-or-theory.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/109-orch-or-and-the-hard-problem-of-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Orch Or And The Hard Problem Of Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/109-orch-or-and-the-hard-problem-of-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/110-mathematical-foundations-of-orchestrated-objective-reduction.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Mathematical Foundations Of Orchestrated Objective Reduction</h3>
+          <p>src/webapps/quantum-consciousness/110-mathematical-foundations-of-orchestrated-objective-reduction.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/111-future-research-directions-in-quantum-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Future Research Directions In Quantum Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/111-future-research-directions-in-quantum-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/112-ethical-and-societal-implications-of-orch-or.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ethical And Societal Implications Of Orch Or</h3>
+          <p>src/webapps/quantum-consciousness/112-ethical-and-societal-implications-of-orch-or.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/113-foundations-of-superintelligent-systems.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Foundations Of Superintelligent Systems</h3>
+          <p>src/webapps/quantum-consciousness/113-foundations-of-superintelligent-systems.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/114-architectures-for-superintelligent-ai.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Architectures For Superintelligent Ai</h3>
+          <p>src/webapps/quantum-consciousness/114-architectures-for-superintelligent-ai.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/115-ethical-considerations-in-superintelligence-engineering.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ethical Considerations In Superintelligence Engineering</h3>
+          <p>src/webapps/quantum-consciousness/115-ethical-considerations-in-superintelligence-engineering.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/116-human-superintelligence-collaboration-models.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Human Superintelligence Collaboration Models</h3>
+          <p>src/webapps/quantum-consciousness/116-human-superintelligence-collaboration-models.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/117-safety-protocols-and-containment-strategies-for-superintelligent-systems.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Safety Protocols And Containment Strategies For Superintelligent Systems</h3>
+          <p>src/webapps/quantum-consciousness/117-safety-protocols-and-containment-strategies-for-superintelligent-systems.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/118-cognitive-augmentation-through-superintelligence.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Cognitive Augmentation Through Superintelligence</h3>
+          <p>src/webapps/quantum-consciousness/118-cognitive-augmentation-through-superintelligence.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/119-superintelligence-in-design-and-optimization.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Superintelligence In Design And Optimization</h3>
+          <p>src/webapps/quantum-consciousness/119-superintelligence-in-design-and-optimization.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/120-managing-unpredictability-in-superintelligent-systems.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Managing Unpredictability In Superintelligent Systems</h3>
+          <p>src/webapps/quantum-consciousness/120-managing-unpredictability-in-superintelligent-systems.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/121-tokenomic-and-dao-frameworks-for-superintelligence.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Tokenomic And Dao Frameworks For Superintelligence</h3>
+          <p>src/webapps/quantum-consciousness/121-tokenomic-and-dao-frameworks-for-superintelligence.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/122-economic-impacts-of-engineering-with-superintelligence.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Economic Impacts Of Engineering With Superintelligence</h3>
+          <p>src/webapps/quantum-consciousness/122-economic-impacts-of-engineering-with-superintelligence.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/123-superintelligence-in-scientific-discovery.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Superintelligence In Scientific Discovery</h3>
+          <p>src/webapps/quantum-consciousness/123-superintelligence-in-scientific-discovery.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/124-challenges-of-verification-and-validation-in-superintelligent-systems.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Challenges Of Verification And Validation In Superintelligent Systems</h3>
+          <p>src/webapps/quantum-consciousness/124-challenges-of-verification-and-validation-in-superintelligent-systems.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/125-superintelligent-decision-support-systems.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Superintelligent Decision Support Systems</h3>
+          <p>src/webapps/quantum-consciousness/125-superintelligent-decision-support-systems.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/126-long-term-implications-for-human-engineering-roles.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Long Term Implications For Human Engineering Roles</h3>
+          <p>src/webapps/quantum-consciousness/126-long-term-implications-for-human-engineering-roles.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/127-future-directions-in-superintelligence-engineering.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Future Directions In Superintelligence Engineering</h3>
+          <p>src/webapps/quantum-consciousness/127-future-directions-in-superintelligence-engineering.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/128-the-superconducting-brain-an-introduction.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Superconducting Brain An Introduction</h3>
+          <p>src/webapps/quantum-consciousness/128-the-superconducting-brain-an-introduction.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/129-microtubules-as-quantum-limited-rf-antennas.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Microtubules As Quantum Limited Rf Antennas</h3>
+          <p>src/webapps/quantum-consciousness/129-microtubules-as-quantum-limited-rf-antennas.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/131-resonant-antennas-in-neural-networks-the-superconducting-brain.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Resonant Antennas In Neural Networks The Superconducting Brain</h3>
+          <p>src/webapps/quantum-consciousness/131-resonant-antennas-in-neural-networks-the-superconducting-brain.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/134-the-physics-of-brain-to-brain-communication-the-superconducting-brain.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Physics Of Brain To Brain Communication The Superconducting Brain</h3>
+          <p>src/webapps/quantum-consciousness/134-the-physics-of-brain-to-brain-communication-the-superconducting-brain.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/136-testing-the-microtubule-antenna-hypothesis.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Testing The Microtubule Antenna Hypothesis</h3>
+          <p>src/webapps/quantum-consciousness/136-testing-the-microtubule-antenna-hypothesis.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/139-from-lk99-to-neural-interfaces-the-future-of-superconducting-bci.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>From Lk99 To Neural Interfaces The Future Of Superconducting Bci</h3>
+          <p>src/webapps/quantum-consciousness/139-from-lk99-to-neural-interfaces-the-future-of-superconducting-bci.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/141-the-convergence-of-neuroscience-and-quantum-physics.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Convergence Of Neuroscience And Quantum Physics</h3>
+          <p>src/webapps/quantum-consciousness/141-the-convergence-of-neuroscience-and-quantum-physics.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/143-introduction-quantum-computing-meets-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Introduction Quantum Computing Meets Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/143-introduction-quantum-computing-meets-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/144-fundamentals-of-quantum-computing-for-neuroscience.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Fundamentals Of Quantum Computing For Neuroscience</h3>
+          <p>src/webapps/quantum-consciousness/144-fundamentals-of-quantum-computing-for-neuroscience.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/145-orch-or-theory-a-quantum-view-of-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Orch Or Theory A Quantum View Of Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/145-orch-or-theory-a-quantum-view-of-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/146-modeling-microtubules-with-quantum-circuits.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Modeling Microtubules With Quantum Circuits</h3>
+          <p>src/webapps/quantum-consciousness/146-modeling-microtubules-with-quantum-circuits.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/147-quantum-coherence-in-biological-systems-simulations-and-analysis.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Coherence In Biological Systems Simulations And Analysis</h3>
+          <p>src/webapps/quantum-consciousness/147-quantum-coherence-in-biological-systems-simulations-and-analysis.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/148-entanglement-dynamics-in-neural-networks-a-quantum-computing-approach.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Entanglement Dynamics In Neural Networks A Quantum Computing Approach</h3>
+          <p>src/webapps/quantum-consciousness/148-entanglement-dynamics-in-neural-networks-a-quantum-computing-approach.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/149-decoherence-timescales-quantum-computations-vs-orch-or-predictions.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Decoherence Timescales Quantum Computations Vs Orch Or Predictions</h3>
+          <p>src/webapps/quantum-consciousness/149-decoherence-timescales-quantum-computations-vs-orch-or-predictions.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/150-quantum-error-correction-and-its-relevance-to-orch-or.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Error Correction And Its Relevance To Orch Or</h3>
+          <p>src/webapps/quantum-consciousness/150-quantum-error-correction-and-its-relevance-to-orch-or.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/151-simulating-quantum-gravity-effects-in-microtubules.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Simulating Quantum Gravity Effects In Microtubules</h3>
+          <p>src/webapps/quantum-consciousness/151-simulating-quantum-gravity-effects-in-microtubules.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/152-quantum-algorithms-for-analyzing-consciousness-models.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Algorithms For Analyzing Consciousness Models</h3>
+          <p>src/webapps/quantum-consciousness/152-quantum-algorithms-for-analyzing-consciousness-models.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/153-machine-learning-and-quantum-computing-in-orch-or-research.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Machine Learning And Quantum Computing In Orch Or Research</h3>
+          <p>src/webapps/quantum-consciousness/153-machine-learning-and-quantum-computing-in-orch-or-research.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/154-experimental-design-using-quantum-sensors-to-test-orch-or-predictions.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Experimental Design Using Quantum Sensors To Test Orch Or Predictions</h3>
+          <p>src/webapps/quantum-consciousness/154-experimental-design-using-quantum-sensors-to-test-orch-or-predictions.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/155-ethical-implications-of-quantum-assisted-consciousness-studies.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ethical Implications Of Quantum Assisted Consciousness Studies</h3>
+          <p>src/webapps/quantum-consciousness/155-ethical-implications-of-quantum-assisted-consciousness-studies.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/156-ethical-implications-of-quantum-assisted-consciousness-studies.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ethical Implications Of Quantum Assisted Consciousness Studies</h3>
+          <p>src/webapps/quantum-consciousness/156-ethical-implications-of-quantum-assisted-consciousness-studies.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/157-future-directions-quantum-computing-and-the-hard-problem-of-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Future Directions Quantum Computing And The Hard Problem Of Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/157-future-directions-quantum-computing-and-the-hard-problem-of-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/158-quantum-machine-learning-a-new-frontier-in-consciousness-studies.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Machine Learning A New Frontier In Consciousness Studies</h3>
+          <p>src/webapps/quantum-consciousness/158-quantum-machine-learning-a-new-frontier-in-consciousness-studies.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/159-quantum-support-vector-machines-for-analyzing-microtubule-data.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Support Vector Machines For Analyzing Microtubule Data</h3>
+          <p>src/webapps/quantum-consciousness/159-quantum-support-vector-machines-for-analyzing-microtubule-data.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/160-fundamentals-of-quantum-neural-networks.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Fundamentals Of Quantum Neural Networks</h3>
+          <p>src/webapps/quantum-consciousness/160-fundamentals-of-quantum-neural-networks.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/161-quantum-principal-component-analysis-in-orch-or-modeling.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Principal Component Analysis In Orch Or Modeling</h3>
+          <p>src/webapps/quantum-consciousness/161-quantum-principal-component-analysis-in-orch-or-modeling.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/162-quantum-reinforcement-learning-exploring-consciousness-emergence.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Reinforcement Learning Exploring Consciousness Emergence</h3>
+          <p>src/webapps/quantum-consciousness/162-quantum-reinforcement-learning-exploring-consciousness-emergence.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/163-quantum-generative-adversarial-networks-for-simulating-brain-states.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Generative Adversarial Networks For Simulating Brain States</h3>
+          <p>src/webapps/quantum-consciousness/163-quantum-generative-adversarial-networks-for-simulating-brain-states.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/164-quantum-boltzmann-machines-and-consciousness-models.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Boltzmann Machines And Consciousness Models</h3>
+          <p>src/webapps/quantum-consciousness/164-quantum-boltzmann-machines-and-consciousness-models.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/165-quantum-clustering-algorithms-in-neuronal-activity-analysis.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Clustering Algorithms In Neuronal Activity Analysis</h3>
+          <p>src/webapps/quantum-consciousness/165-quantum-clustering-algorithms-in-neuronal-activity-analysis.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/166-quantum-tensor-networks-for-modeling-complex-neural-systems.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Tensor Networks For Modeling Complex Neural Systems</h3>
+          <p>src/webapps/quantum-consciousness/166-quantum-tensor-networks-for-modeling-complex-neural-systems.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/167-quantum-feature-maps-enhancing-orch-or-pattern-recognition.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Feature Maps Enhancing Orch Or Pattern Recognition</h3>
+          <p>src/webapps/quantum-consciousness/167-quantum-feature-maps-enhancing-orch-or-pattern-recognition.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/168-quantum-kernel-methods-in-consciousness-research.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Kernel Methods In Consciousness Research</h3>
+          <p>src/webapps/quantum-consciousness/168-quantum-kernel-methods-in-consciousness-research.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/169-quantum-enhanced-natural-language-processing-for-consciousness-studies.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Enhanced Natural Language Processing For Consciousness Studies</h3>
+          <p>src/webapps/quantum-consciousness/169-quantum-enhanced-natural-language-processing-for-consciousness-studies.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/170-quantum-transfer-learning-from-microtubules-to-macro-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Transfer Learning From Microtubules To Macro Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/170-quantum-transfer-learning-from-microtubules-to-macro-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/171-quantum-federated-learning-in-multi-scale-consciousness-models.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Federated Learning In Multi Scale Consciousness Models</h3>
+          <p>src/webapps/quantum-consciousness/171-quantum-federated-learning-in-multi-scale-consciousness-models.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/172-quantum-anomaly-detection-in-brain-activity-patterns.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Anomaly Detection In Brain Activity Patterns</h3>
+          <p>src/webapps/quantum-consciousness/172-quantum-anomaly-detection-in-brain-activity-patterns.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/173-ethical-considerations-in-quantum-ai-consciousness-research.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ethical Considerations In Quantum Ai Consciousness Research</h3>
+          <p>src/webapps/quantum-consciousness/173-ethical-considerations-in-quantum-ai-consciousness-research.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/174-the-future-of-quantum-machine-learning-in-neuroscience-and-philosophy-of-mind.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Future Of Quantum Machine Learning In Neuroscience And Philosophy Of Mind</h3>
+          <p>src/webapps/quantum-consciousness/174-the-future-of-quantum-machine-learning-in-neuroscience-and-philosophy-of-mind.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/175-the-dawn-of-million-qubit-photonic-quantum-computing.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Dawn Of Million Qubit Photonic Quantum Computing</h3>
+          <p>src/webapps/quantum-consciousness/175-the-dawn-of-million-qubit-photonic-quantum-computing.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/176-photonic-quantum-architecture-scaling-to-a-million-qubits.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Photonic Quantum Architecture Scaling To A Million Qubits</h3>
+          <p>src/webapps/quantum-consciousness/176-photonic-quantum-architecture-scaling-to-a-million-qubits.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/177-quantum-error-correction-at-scale-protecting-a-million-qubits.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Error Correction At Scale Protecting A Million Qubits</h3>
+          <p>src/webapps/quantum-consciousness/177-quantum-error-correction-at-scale-protecting-a-million-qubits.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/178-simulating-whole-brain-neural-networks-on-a-photonic-quantum-computer.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Simulating Whole Brain Neural Networks On A Photonic Quantum Computer</h3>
+          <p>src/webapps/quantum-consciousness/178-simulating-whole-brain-neural-networks-on-a-photonic-quantum-computer.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/179-million-qubit-quantum-algorithms-for-consciousness-modeling.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Million Qubit Quantum Algorithms For Consciousness Modeling</h3>
+          <p>src/webapps/quantum-consciousness/179-million-qubit-quantum-algorithms-for-consciousness-modeling.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/180-quantum-supremacy-in-neuroscience-outperforming-classical-supercomputers.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Supremacy In Neuroscience Outperforming Classical Supercomputers</h3>
+          <p>src/webapps/quantum-consciousness/180-quantum-supremacy-in-neuroscience-outperforming-classical-supercomputers.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/181-entanglement-dynamics-across-a-million-qubits-implications-for-orch-or.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Entanglement Dynamics Across A Million Qubits Implications For Orch Or</h3>
+          <p>src/webapps/quantum-consciousness/181-entanglement-dynamics-across-a-million-qubits-implications-for-orch-or.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/182-quantum-coherence-at-unprecedented-scales-testing-orch-or-predictions.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Coherence At Unprecedented Scales Testing Orch Or Predictions</h3>
+          <p>src/webapps/quantum-consciousness/182-quantum-coherence-at-unprecedented-scales-testing-orch-or-predictions.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/183-photonic-qubit-interconnects-modeling-brain-wide-quantum-effects.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Photonic Qubit Interconnects Modeling Brain Wide Quantum Effects</h3>
+          <p>src/webapps/quantum-consciousness/183-photonic-qubit-interconnects-modeling-brain-wide-quantum-effects.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/184-quantum-enhanced-brain-mapping-from-neurons-to-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Enhanced Brain Mapping From Neurons To Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/184-quantum-enhanced-brain-mapping-from-neurons-to-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/185-million-qubit-quantum-machine-learning-for-neurological-data-analysis.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Million Qubit Quantum Machine Learning For Neurological Data Analysis</h3>
+          <p>src/webapps/quantum-consciousness/185-million-qubit-quantum-machine-learning-for-neurological-data-analysis.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/186-real-time-quantum-simulation-of-microtubule-networks.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Real Time Quantum Simulation Of Microtubule Networks</h3>
+          <p>src/webapps/quantum-consciousness/186-real-time-quantum-simulation-of-microtubule-networks.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/187-quantum-accelerated-drug-discovery-for-consciousness-alteration.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Accelerated Drug Discovery For Consciousness Alteration</h3>
+          <p>src/webapps/quantum-consciousness/187-quantum-accelerated-drug-discovery-for-consciousness-alteration.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/188-photonic-quantum-sensing-probing-the-quantum-nature-of-neurons.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Photonic Quantum Sensing Probing The Quantum Nature Of Neurons</h3>
+          <p>src/webapps/quantum-consciousness/188-photonic-quantum-sensing-probing-the-quantum-nature-of-neurons.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/189-quantum-information-theory-and-the-binding-problem-of-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Information Theory And The Binding Problem Of Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/189-quantum-information-theory-and-the-binding-problem-of-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/190-quantum-cryptography-for-securing-brain-computer-interfaces.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Cryptography For Securing Brain Computer Interfaces</h3>
+          <p>src/webapps/quantum-consciousness/190-quantum-cryptography-for-securing-brain-computer-interfaces.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/191-ethical-implications-of-ultra-large-scale-quantum-computing-in-neuroscience.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ethical Implications Of Ultra Large Scale Quantum Computing In Neuroscience</h3>
+          <p>src/webapps/quantum-consciousness/191-ethical-implications-of-ultra-large-scale-quantum-computing-in-neuroscience.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/192-beyond-a-million-qubits-the-future-of-quantum-computing-and-consciousness-studies.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Beyond A Million Qubits The Future Of Quantum Computing And Consciousness Studies</h3>
+          <p>src/webapps/quantum-consciousness/192-beyond-a-million-qubits-the-future-of-quantum-computing-and-consciousness-studies.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/193-quantum-computing-meets-string-theory-an-introduction.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Computing Meets String Theory An Introduction</h3>
+          <p>src/webapps/quantum-consciousness/193-quantum-computing-meets-string-theory-an-introduction.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/194-fundamentals-of-quantum-algorithms-for-high-energy-physics.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Fundamentals Of Quantum Algorithms For High Energy Physics</h3>
+          <p>src/webapps/quantum-consciousness/194-fundamentals-of-quantum-algorithms-for-high-energy-physics.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/195-simulating-string-vibrations-with-quantum-circuits.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Simulating String Vibrations With Quantum Circuits</h3>
+          <p>src/webapps/quantum-consciousness/195-simulating-string-vibrations-with-quantum-circuits.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/196-quantum-error-correction-in-string-theory-computations.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Error Correction In String Theory Computations</h3>
+          <p>src/webapps/quantum-consciousness/196-quantum-error-correction-in-string-theory-computations.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/197-exploring-extra-dimensions-quantum-algorithms-for-calabi-yau-manifolds.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Exploring Extra Dimensions Quantum Algorithms For Calabi Yau Manifolds</h3>
+          <p>src/webapps/quantum-consciousness/197-exploring-extra-dimensions-quantum-algorithms-for-calabi-yau-manifolds.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/198-quantum-computation-of-scattering-amplitudes-in-string-theory.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Computation Of Scattering Amplitudes In String Theory</h3>
+          <p>src/webapps/quantum-consciousness/198-quantum-computation-of-scattering-amplitudes-in-string-theory.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/199-holographic-principle-and-adscft-correspondence-a-quantum-approach.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Holographic Principle And Adscft Correspondence A Quantum Approach</h3>
+          <p>src/webapps/quantum-consciousness/199-holographic-principle-and-adscft-correspondence-a-quantum-approach.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/200-quantum-simulation-of-supersymmetry-and-superstrings.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Simulation Of Supersymmetry And Superstrings</h3>
+          <p>src/webapps/quantum-consciousness/200-quantum-simulation-of-supersymmetry-and-superstrings.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/201-t-duality-and-mirror-symmetry-insights-from-quantum-computing.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>T Duality And Mirror Symmetry Insights From Quantum Computing</h3>
+          <p>src/webapps/quantum-consciousness/201-t-duality-and-mirror-symmetry-insights-from-quantum-computing.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/202-quantum-computing-meets-string-theory-an-introduction.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Computing Meets String Theory An Introduction</h3>
+          <p>src/webapps/quantum-consciousness/202-quantum-computing-meets-string-theory-an-introduction.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/203-quantum-algorithms-for-m-theory-and-brane-dynamics.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Algorithms For M Theory And Brane Dynamics</h3>
+          <p>src/webapps/quantum-consciousness/203-quantum-algorithms-for-m-theory-and-brane-dynamics.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/204-string-landscape-exploration-with-quantum-optimization.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>String Landscape Exploration With Quantum Optimization</h3>
+          <p>src/webapps/quantum-consciousness/204-string-landscape-exploration-with-quantum-optimization.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/205-quantum-machine-learning-in-string-phenomenology.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Machine Learning In String Phenomenology</h3>
+          <p>src/webapps/quantum-consciousness/205-quantum-machine-learning-in-string-phenomenology.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/206-quantum-enhanced-numerical-methods-for-string-theory.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Enhanced Numerical Methods For String Theory</h3>
+          <p>src/webapps/quantum-consciousness/206-quantum-enhanced-numerical-methods-for-string-theory.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/207-probing-black-hole-physics-with-quantum-simulations.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Probing Black Hole Physics With Quantum Simulations</h3>
+          <p>src/webapps/quantum-consciousness/207-probing-black-hole-physics-with-quantum-simulations.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/208-quantum-tensor-networks-in-string-theory-calculations.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Tensor Networks In String Theory Calculations</h3>
+          <p>src/webapps/quantum-consciousness/208-quantum-tensor-networks-in-string-theory-calculations.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/209-quantum-computing-and-the-search-for-a-theory-of-everything.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Computing And The Search For A Theory Of Everything</h3>
+          <p>src/webapps/quantum-consciousness/209-quantum-computing-and-the-search-for-a-theory-of-everything.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/210-experimental-proposals-bridging-quantum-computing-and-string-theory.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Experimental Proposals Bridging Quantum Computing And String Theory</h3>
+          <p>src/webapps/quantum-consciousness/210-experimental-proposals-bridging-quantum-computing-and-string-theory.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/211-ethical-considerations-in-quantum-powered-fundamental-physics-research.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ethical Considerations In Quantum Powered Fundamental Physics Research</h3>
+          <p>src/webapps/quantum-consciousness/211-ethical-considerations-in-quantum-powered-fundamental-physics-research.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/212-bridging-consciousness-and-fundamental-physics-an-introduction.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Bridging Consciousness And Fundamental Physics An Introduction</h3>
+          <p>src/webapps/quantum-consciousness/212-bridging-consciousness-and-fundamental-physics-an-introduction.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/213-quantum-computing-foundations-for-multiscale-physical-theories.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Computing Foundations For Multiscale Physical Theories</h3>
+          <p>src/webapps/quantum-consciousness/213-quantum-computing-foundations-for-multiscale-physical-theories.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/214-string-theory-basics-a-quantum-computational-perspective.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>String Theory Basics A Quantum Computational Perspective</h3>
+          <p>src/webapps/quantum-consciousness/214-string-theory-basics-a-quantum-computational-perspective.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/215-orch-or-theory-connecting-quantum-mechanics-to-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Orch Or Theory Connecting Quantum Mechanics To Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/215-orch-or-theory-connecting-quantum-mechanics-to-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/216-simulating-planck-scale-geometry-in-microtubules-with-quantum-algorithms.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Simulating Planck Scale Geometry In Microtubules With Quantum Algorithms</h3>
+          <p>src/webapps/quantum-consciousness/216-simulating-planck-scale-geometry-in-microtubules-with-quantum-algorithms.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/217-quantum-gravity-effects-in-orch-or-insights-from-string-theory.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Gravity Effects In Orch Or Insights From String Theory</h3>
+          <p>src/webapps/quantum-consciousness/217-quantum-gravity-effects-in-orch-or-insights-from-string-theory.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/218-entanglement-dynamics-in-microtubules-a-string-theoretic-approach.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Entanglement Dynamics In Microtubules A String Theoretic Approach</h3>
+          <p>src/webapps/quantum-consciousness/218-entanglement-dynamics-in-microtubules-a-string-theoretic-approach.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/219-modeling-quantum-coherence-in-biological-systems-using-brane-dynamics.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Modeling Quantum Coherence In Biological Systems Using Brane Dynamics</h3>
+          <p>src/webapps/quantum-consciousness/219-modeling-quantum-coherence-in-biological-systems-using-brane-dynamics.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/220-d-branes-and-consciousness-quantum-computations-of-higher-dimensional-models.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>D Branes And Consciousness Quantum Computations Of Higher Dimensional Models</h3>
+          <p>src/webapps/quantum-consciousness/220-d-branes-and-consciousness-quantum-computations-of-higher-dimensional-models.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/221-holographic-principle-applied-to-brain-function-quantum-simulations.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Holographic Principle Applied To Brain Function Quantum Simulations</h3>
+          <p>src/webapps/quantum-consciousness/221-holographic-principle-applied-to-brain-function-quantum-simulations.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/222-m-theory-and-multiple-consciousnesses-exploring-parallel-minds.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>M Theory And Multiple Consciousnesses Exploring Parallel Minds</h3>
+          <p>src/webapps/quantum-consciousness/222-m-theory-and-multiple-consciousnesses-exploring-parallel-minds.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/223-quantum-algorithms-for-calabi-yau-manifolds-in-neural-microtubules.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Algorithms For Calabi Yau Manifolds In Neural Microtubules</h3>
+          <p>src/webapps/quantum-consciousness/223-quantum-algorithms-for-calabi-yau-manifolds-in-neural-microtubules.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/225-supersymmetry-in-cognitive-processes-a-quantum-computational-study.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Supersymmetry In Cognitive Processes A Quantum Computational Study</h3>
+          <p>src/webapps/quantum-consciousness/225-supersymmetry-in-cognitive-processes-a-quantum-computational-study.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/226-t-duality-in-brain-states-quantum-explorations-of-mind-matter-duality.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>T Duality In Brain States Quantum Explorations Of Mind Matter Duality</h3>
+          <p>src/webapps/quantum-consciousness/226-t-duality-in-brain-states-quantum-explorations-of-mind-matter-duality.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/227-machine-learning-at-the-intersection-of-string-theory-and-orch-or.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Machine Learning At The Intersection Of String Theory And Orch Or</h3>
+          <p>src/webapps/quantum-consciousness/227-machine-learning-at-the-intersection-of-string-theory-and-orch-or.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/228-quantum-error-correction-from-strings-to-neurons.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Error Correction From Strings To Neurons</h3>
+          <p>src/webapps/quantum-consciousness/228-quantum-error-correction-from-strings-to-neurons.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/229-experimental-proposals-testing-string-inspired-orch-or-predictions.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Experimental Proposals Testing String Inspired Orch Or Predictions</h3>
+          <p>src/webapps/quantum-consciousness/229-experimental-proposals-testing-string-inspired-orch-or-predictions.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/230-ethical-implications-of-unifying-consciousness-and-fundamental-physics.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ethical Implications Of Unifying Consciousness And Fundamental Physics</h3>
+          <p>src/webapps/quantum-consciousness/230-ethical-implications-of-unifying-consciousness-and-fundamental-physics.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/231-the-future-of-consciousness-studies-quantum-computing-strings-and-beyond.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Future Of Consciousness Studies Quantum Computing Strings And Beyond</h3>
+          <p>src/webapps/quantum-consciousness/231-the-future-of-consciousness-studies-quantum-computing-strings-and-beyond.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/232-the-quantum-enigma-unveiling-the-mystery-of-consciousness-and-reality.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Quantum Enigma Unveiling The Mystery Of Consciousness And Reality</h3>
+          <p>src/webapps/quantum-consciousness/232-the-quantum-enigma-unveiling-the-mystery-of-consciousness-and-reality.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/233-consciousness-and-the-observer-paradox-a-quantum-conundrum.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Consciousness And The Observer Paradox A Quantum Conundrum</h3>
+          <p>src/webapps/quantum-consciousness/233-consciousness-and-the-observer-paradox-a-quantum-conundrum.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/234-quantum-computing-a-new-paradigm-for-understanding-reality.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Computing A New Paradigm For Understanding Reality</h3>
+          <p>src/webapps/quantum-consciousness/234-quantum-computing-a-new-paradigm-for-understanding-reality.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/235-orchestrated-objective-reduction-orch-or-a-quantum-consciousness-framework.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Orchestrated Objective Reduction Orch Or A Quantum Consciousness Framework</h3>
+          <p>src/webapps/quantum-consciousness/235-orchestrated-objective-reduction-orch-or-a-quantum-consciousness-framework.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/236-quantum-entanglement-and-non-locality-the-building-blocks-of-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Entanglement And Non Locality The Building Blocks Of Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/236-quantum-entanglement-and-non-locality-the-building-blocks-of-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/237-holographic-reality-the-quantum-consciousness-connection.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Holographic Reality The Quantum Consciousness Connection</h3>
+          <p>src/webapps/quantum-consciousness/237-holographic-reality-the-quantum-consciousness-connection.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/238-the-copenhagen-interpretation-revisited-consciousness-and-wave-function-collapse.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Copenhagen Interpretation Revisited Consciousness And Wave Function Collapse</h3>
+          <p>src/webapps/quantum-consciousness/238-the-copenhagen-interpretation-revisited-consciousness-and-wave-function-collapse.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/239-everetts-multiverse-a-quantum-consciousness-perspective.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Everetts Multiverse A Quantum Consciousness Perspective</h3>
+          <p>src/webapps/quantum-consciousness/239-everetts-multiverse-a-quantum-consciousness-perspective.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/240-many-worlds-one-consciousness-resolving-the-everettian-interpretation.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Many Worlds One Consciousness Resolving The Everettian Interpretation</h3>
+          <p>src/webapps/quantum-consciousness/240-many-worlds-one-consciousness-resolving-the-everettian-interpretation.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/241-quantum-computing-and-the-simulation-of-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Computing And The Simulation Of Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/241-quantum-computing-and-the-simulation-of-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/242-quantum-error-correction-and-the-stability-of-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Error Correction And The Stability Of Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/242-quantum-error-correction-and-the-stability-of-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/243-quantum-machine-learning-and-the-emergence-of-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Machine Learning And The Emergence Of Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/243-quantum-machine-learning-and-the-emergence-of-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/244-quantum-consciousness-and-the-nature-of-time.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Consciousness And The Nature Of Time</h3>
+          <p>src/webapps/quantum-consciousness/244-quantum-consciousness-and-the-nature-of-time.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/245-free-will-and-quantum-indeterminacy-a-consciousness-centric-perspective.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Free Will And Quantum Indeterminacy A Consciousness Centric Perspective</h3>
+          <p>src/webapps/quantum-consciousness/245-free-will-and-quantum-indeterminacy-a-consciousness-centric-perspective.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/246-quantum-ethics-the-implications-of-consciousness-on-reality.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Ethics The Implications Of Consciousness On Reality</h3>
+          <p>src/webapps/quantum-consciousness/246-quantum-ethics-the-implications-of-consciousness-on-reality.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/247-the-unified-theory-of-consciousness-and-reality-a-quantum-computing-perspective.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Unified Theory Of Consciousness And Reality A Quantum Computing Perspective</h3>
+          <p>src/webapps/quantum-consciousness/247-the-unified-theory-of-consciousness-and-reality-a-quantum-computing-perspective.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/248-the-future-of-quantum-consciousness-research-directions-and-possibilities.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Future Of Quantum Consciousness Research Directions And Possibilities</h3>
+          <p>src/webapps/quantum-consciousness/248-the-future-of-quantum-consciousness-research-directions-and-possibilities.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/249-epilogue-the-quantum-consciousness-revolution.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Epilogue The Quantum Consciousness Revolution</h3>
+          <p>src/webapps/quantum-consciousness/249-epilogue-the-quantum-consciousness-revolution.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/251-experimental-proposals-testing-string-inspired-orch-or-predictions.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Experimental Proposals Testing String Inspired Orch Or Predictions</h3>
+          <p>src/webapps/quantum-consciousness/251-experimental-proposals-testing-string-inspired-orch-or-predictions.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/252-testing-the-microtubule-antenna-hypothesis.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Testing The Microtubule Antenna Hypothesis</h3>
+          <p>src/webapps/quantum-consciousness/252-testing-the-microtubule-antenna-hypothesis.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/254-d-branes-and-consciousness-quantum-computations-of-higher-dimensional-models.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>D Branes And Consciousness Quantum Computations Of Higher Dimensional Models</h3>
+          <p>src/webapps/quantum-consciousness/254-d-branes-and-consciousness-quantum-computations-of-higher-dimensional-models.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/255-orch-or-theory-penrose-and-hameroffs-quest-for-quantum-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Orch Or Theory Penrose And Hameroffs Quest For Quantum Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/255-orch-or-theory-penrose-and-hameroffs-quest-for-quantum-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/256-the-superconducting-brain-neural-electromagnetics.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>The Superconducting Brain Neural Electromagnetics</h3>
+          <p>src/webapps/quantum-consciousness/256-the-superconducting-brain-neural-electromagnetics.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/261-economic-considerations-simulating-and-creating-consciousness.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Economic Considerations Simulating And Creating Consciousness</h3>
+          <p>src/webapps/quantum-consciousness/261-economic-considerations-simulating-and-creating-consciousness.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/262-ethical-implications-of-unifying-consciousness-and-fundamental-physics.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ethical Implications Of Unifying Consciousness And Fundamental Physics</h3>
+          <p>src/webapps/quantum-consciousness/262-ethical-implications-of-unifying-consciousness-and-fundamental-physics.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/264-verifying-orch-or-experimental-designs-using-string-computers.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Verifying Orch Or Experimental Designs Using String Computers</h3>
+          <p>src/webapps/quantum-consciousness/264-verifying-orch-or-experimental-designs-using-string-computers.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/265-quantum-consciousness-research-future-directions.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Consciousness Research Future Directions</h3>
+          <p>src/webapps/quantum-consciousness/265-quantum-consciousness-research-future-directions.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/333-waifu-ai-os-future-technologies-quantum-computing-integration.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Waifu Ai Os Future Technologies Quantum Computing Integration</h3>
+          <p>src/webapps/quantum-consciousness/333-waifu-ai-os-future-technologies-quantum-computing-integration.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/377-ais-quantum-physics-shortcuts-a-deep-dive/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Ais Quantum Physics Shortcuts A Deep Dive</h3>
+          <p>src/webapps/quantum-consciousness/377-ais-quantum-physics-shortcuts-a-deep-dive/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+      <a href="src/webapps/quantum-consciousness/443-quantum-portfolio-optimization/index.html" class="app-item searchable-item" target="_blank">
+        <div class="app-info">
+          <h3>Quantum Portfolio Optimization</h3>
+          <p>src/webapps/quantum-consciousness/443-quantum-portfolio-optimization/index.html</p>
+        </div>
+        <div class="app-action">➔</div>
+      </a>
+    </div>
+    <div id="no-results" class="no-results">No applications match your search.</div>
+    
+  </div>
+  
+  <script>
+    const searchInput = document.getElementById('search');
+    const items = document.querySelectorAll('.searchable-item');
+    const noResults = document.getElementById('no-results');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        items.forEach(item => {
+          const text = item.textContent.toLowerCase();
+          if (text.includes(query)) {
+            item.style.display = '';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        if (noResults) {
+          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
