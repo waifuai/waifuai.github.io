@@ -48,6 +48,7 @@
 </script>
 </head>
 <body>
+<style>
   body { background-color: #1f2937; color: #e5e7eb; font-family: system-ui; padding: 2rem; }
   .canvas-container { position: relative; width: 800px; height: 500px; border: 2px solid #4b5563; margin: 2rem auto; }
   canvas { background: #111827; }
@@ -84,26 +85,7 @@
   input:checked + .toggle-slider:before { transform: translateX(20px); }
   .fullscreen-button { position: absolute; top: 10px; left: 10px; background: rgba(17, 24, 39, 0.7); border: none; color: white; border-radius: 4px; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
   .fullscreen-button:hover { background: rgba(17, 24, 39, 0.9); }
-</style><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "index",
-  "description": "index — interactive web application by WaifuAI",
-  "url": "https://waifuai.github.io/web-apps/src/webapps/misc/440-interactive-projectile-motion-demo/",
-  "author": {
-    "@type": "Organization",
-    "name": "WaifuAI",
-    "url": "https://waifuai.github.io/"
-  },
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "WaifuAI Docs Hub",
-    "url": "https://waifuai.github.io/"
-  }
-}
-</script>
-</head><body>
+</style>
 <div class="info">
   <h2>Kinematic Intercept Visualization</h2>
   <p>This demo visualizes the mathematics of intercepting a moving target. The blue circle represents a target moving in a straight line at constant velocity, and the red circle is your projectile launcher.</p>
@@ -792,5 +774,3 @@ resetBtn.click();
 // Start the animation loop
 requestAnimationFrame(update);
 </script></body></html>
-</body>
-</html>

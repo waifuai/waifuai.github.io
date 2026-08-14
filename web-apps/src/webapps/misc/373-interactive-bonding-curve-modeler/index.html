@@ -48,6 +48,7 @@
 </script>
 </head>
 <body>
+<style>
 body { font-family: Arial, sans-serif; margin: 20px; background: #f0f4f8; }
 .container { max-width: 1200px; margin: 0 auto; }
 .graph-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
@@ -57,27 +58,7 @@ input[type="range"] { width: 100%; }
 .results { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 20px; }
 .result-card { background: #fff; padding: 15px; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 </style>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "index",
-  "description": "index — interactive web application by WaifuAI",
-  "url": "https://waifuai.github.io/web-apps/src/webapps/misc/373-interactive-bonding-curve-modeler/",
-  "author": {
-    "@type": "Organization",
-    "name": "WaifuAI",
-    "url": "https://waifuai.github.io/"
-  },
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "WaifuAI Docs Hub",
-    "url": "https://waifuai.github.io/"
-  }
-}
-</script>
-</head>
-<body>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <div class="container">
     <h1>Solana ICO Bonding Curve Simulator</h1>
     
@@ -215,5 +196,3 @@ document.getElementById('b').addEventListener('input', updateGraph);
 updateGraph();
 </script>
 </body></html>
-</body>
-</html>

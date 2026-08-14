@@ -48,6 +48,7 @@
 </script>
 </head>
 <body>
+<style>
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -103,27 +104,8 @@ button:hover {
     font-size: 12px;
     font-family: Arial, sans-serif;
 }
-</style><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "index",
-  "description": "index — interactive web application by WaifuAI",
-  "url": "https://waifuai.github.io/web-apps/src/webapps/guides/381-interactive-mcp-architecture-visualizer/",
-  "author": {
-    "@type": "Organization",
-    "name": "WaifuAI",
-    "url": "https://waifuai.github.io/"
-  },
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "WaifuAI Docs Hub",
-    "url": "https://waifuai.github.io/"
-  }
-}
-</script>
-</head><body>
-    <h1>Interactive MCP Architecture Visualizer</h1>
+</style>
+<h1>Interactive MCP Architecture Visualizer</h1>
     <div id="input-area">
         <textarea id="prompt" placeholder="Enter your description of an MCP architecture component or system...">The Model Context Protocol (MCP) facilitates secure integration between LLMs and external resources...</textarea>
         <button onclick="generateDiagram()">Generate Diagram</button>
@@ -317,5 +299,3 @@ async function generateDiagram() {
 // Initial diagram generation
 generateDiagram();
 </script></body></html>
-</body>
-</html>

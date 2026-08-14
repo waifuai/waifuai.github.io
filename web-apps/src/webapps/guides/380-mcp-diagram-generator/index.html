@@ -48,6 +48,7 @@
 </script>
 </head>
 <body>
+<style>
   body {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -117,27 +118,8 @@
     font-style: italic;
     color: #666;
   }
-</style><script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "index",
-  "description": "index — interactive web application by WaifuAI",
-  "url": "https://waifuai.github.io/web-apps/src/webapps/guides/380-mcp-diagram-generator/",
-  "author": {
-    "@type": "Organization",
-    "name": "WaifuAI",
-    "url": "https://waifuai.github.io/"
-  },
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "WaifuAI Docs Hub",
-    "url": "https://waifuai.github.io/"
-  }
-}
-</script>
-</head><body>
-  <div id="diagram-container">
+</style>
+<div id="diagram-container">
     <textarea id="prompt-input" rows="4" placeholder="Describe the software architecture you want to visualize..."></textarea>
     <button id="generate-btn">Generate MCP Diagram</button>
     <div id="loading">Generating diagram...</div>
@@ -303,5 +285,3 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
 generateDiagram(`The Model Context Protocol (MCP) facilitates secure integration between LLMs and external resources through a client-server architecture with Resources, Prompts, and Tools as key components.`);
 </script>
 </body></html>
-</body>
-</html>
