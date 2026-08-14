@@ -75,9 +75,10 @@
   h1 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    background: linear-gradient(135deg, #fff 30%, #a5b4fc 100%);
+    background: linear-gradient(135deg, var(--primary), var(--primary-hover), var(--accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 1.5rem;
   }
@@ -167,7 +168,7 @@
 
   /* Code highlights */
   pre {
-    background: #0f172a;
+    background: var(--card-bg);
     padding: 1.25rem;
     border-radius: 12px;
     border: 1px solid var(--border-color);
