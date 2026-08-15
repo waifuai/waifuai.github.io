@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -89,8 +89,8 @@
 <p><strong>1.3. Non-Linear Models (Exponential/Logarithmic):</strong></p>
 <p>These models provide more dynamic incentives:</p>
 <ul>
-<li><strong>Exponential:</strong> $\alpha = a \times e^{bx}$ (rapidly increasing rewards)</li>
-<li><strong>Logarithmic:</strong> $\alpha = a + b \times \ln(x)$ (diminishing returns)</li>
+<li><strong>Exponential:</strong> \(\alpha = a \times e^{bx}\) (rapidly increasing rewards)</li>
+<li><strong>Logarithmic:</strong> \(\alpha = a + b \times \ln(x)\) (diminishing returns)</li>
 </ul>
 <p><strong>1.4. Multi-Variable Functions:</strong></p>
 <p>Commission rates can depend on multiple factors (x, y, z):</p>
@@ -101,7 +101,7 @@
 <p><strong>1.5 Optimization with Time Decay:</strong></p>
 <p>Introduce a time decay factor (λ) to give more weight to recent performance:</p>
 <ul>
-<li><strong>$\alpha = a + b \times \sum_{t=1}^{n} \lambda^{(n-t)} \times x_t$ (Equation 3)</strong></li>
+<li><strong>\(\alpha = a + b \times \sum_{t=1}^{n} \lambda^{(n-t)} \times x_t\) (Equation 3)</strong></li>
 </ul>
 <p>Where x<sub>t</sub> is the performance metric at time t, and n is the current time period.</p>
 <p><strong>2. Token Barter Systems: Enabling Seamless Exchange</strong></p>

@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -81,87 +81,87 @@ t
  as 
 P(t)
 , governed by a stochastic differential equation (SDE) that extends the linear bonding curve. The price dynamics are modeled as:
-$$dP(t) = \mu (m S(t) + b - P(t)) \, dt + \sigma P(t) \, dW(t)$$
+\[dP(t) = \mu (m S(t) + b - P(t)) \, dt + \sigma P(t) \, dW(t)\]
 where:
-$P(t)$
+\(P(t)\)
  is the price of AbundanceCoin at time
-$t$
+\(t\)
 .
-$S(t)$
+\(S(t)\)
  is the circulating supply at time
-$t$
+\(t\)
 , assumed to evolve deterministically as
-$$S(t) = S_0 + \kappa t$$
+\[S(t) = S_0 + \kappa t\]
 (linear supply growth with rate
-$\kappa$
+\(\kappa\)
 ).
-$m$
+\(m\)
   is the slope of the bonding curve, and
- $b$
+ \(b\)
   is the base price.
- $\mu$
+ \(\mu\)
   is the mean reversion rate, pulling the price toward the bonding curve
- $m S(t) + b$
+ \(m S(t) + b\)
  .
- $\sigma$
+ \(\sigma\)
   is the volatility coefficient, scaling random fluctuations.
- $W(t)$
+ \(W(t)\)
   is a Wiener process, with
-$$dW(t) \sim N(0, dt)$$
+\[dW(t) \sim N(0, dt)\]
  , representing market noise.
 Determine:
 a) The expected price
- $\mathbb{E}[P(t)]$
+ \(\mathbb{E}[P(t)]\)
   at time
- $t$
+ \(t\)
  , assuming an initial price
- $P(0) = P_0$
+ \(P(0) = P_0\)
  .
  b) The variance of the price
- $\text{Var}[P(t)]$
+ \(\text{Var}[P(t)]\)
   to assess price uncertainty.
 Solution:
 This is an Ornstein-Uhlenbeck process modified with a time-dependent drift term. Define the equilibrium price as
-$$P_{\text{eq}}(t) = m S(t) + b = m (S_0 + \kappa t) + b$$
+\[P_{\text{eq}}(t) = m S(t) + b = m (S_0 + \kappa t) + b\]
  .
 a) Expected Price:
   For the SDE
-$$dP(t) = \mu (P_{\text{eq}}(t) - P(t)) \, dt + \sigma P(t) \, dW(t)$$
+\[dP(t) = \mu (P_{\text{eq}}(t) - P(t)) \, dt + \sigma P(t) \, dW(t)\]
  , the stochastic term
- $\sigma P(t) dW(t)$
+ \(\sigma P(t) dW(t)\)
  has zero expectation. However, the multiplicative noise complicates the solution. Applying Itô's lemma to 
 X(t) = P(t) e^{\mu t}
 , we derive:</p>
-<p>$$dX(t) = e^{\mu t} dP(t) + \mu e^{\mu t} P(t) \, dt$$</p>
+<p>\[dX(t) = e^{\mu t} dP(t) + \mu e^{\mu t} P(t) \, dt\]</p>
 <p>Substitute 
 dP(t)
 :</p>
-<p>$$dX(t) = e^{\mu t} [ \mu (P_{\text{eq}}(t) - P(t)) \, dt + \sigma P(t) \, dW(t) ] + \mu e^{\mu t} P(t) \, dt$$</p>
-<p>$$= \mu e^{\mu t} P_{\text{eq}}(t) \, dt + \sigma e^{\mu t} P(t) \, dW(t)$$</p>
+<p>\[dX(t) = e^{\mu t} [ \mu (P_{\text{eq}}(t) - P(t)) \, dt + \sigma P(t) \, dW(t) ] + \mu e^{\mu t} P(t) \, dt\]</p>
+<p>\[= \mu e^{\mu t} P_{\text{eq}}(t) \, dt + \sigma e^{\mu t} P(t) \, dW(t)\]</p>
 <p>Integrate from 0 to 
 t
 :</p>
-<p>$$X(t) = X(0) + \int_0^t \mu e^{\mu s} P_{\text{eq}}(s) \, ds + \int_0^t \sigma e^{\mu s} P(s) \, dW(s)$$</p>
+<p>\[X(t) = X(0) + \int_0^t \mu e^{\mu s} P_{\text{eq}}(s) \, ds + \int_0^t \sigma e^{\mu s} P(s) \, dW(s)\]</p>
 <p>Since 
-$$X(t) = P(t) e^{\mu t}$$
+\[X(t) = P(t) e^{\mu t}\]
  and 
 X(0) = P_0
 , take expectations (
 \mathbb{E}[\text{stochastic integral}] = 0
 ):</p>
-<p>$$\mathbb{E}[P(t)] e^{\mu t} = P_0 + \int_0^t \mu e^{\mu s} [m (S_0 + \kappa s) + b] \, ds$$</p>
+<p>\[\mathbb{E}[P(t)] e^{\mu t} = P_0 + \int_0^t \mu e^{\mu s} [m (S_0 + \kappa s) + b] \, ds\]</p>
 <p>Compute the integral:</p>
-<p>$$\int_0^t \mu e^{\mu s} (m S_0 + m \kappa s + b) \, ds = \mu m S_0 \int_0^t e^{\mu s} \, ds + \mu m \kappa \int_0^t s e^{\mu s} \, ds + \mu b \int_0^t e^{\mu s} \, ds$$
-$$\int_0^t e^{\mu s} \, ds = \frac{1}{\mu} (e^{\mu t} - 1)$$
-$$\int_0^t s e^{\mu s} \, ds = \left[ \frac{s e^{\mu s}}{\mu} \right]_0^t - \int_0^t \frac{e^{\mu s}}{\mu} \, ds = \frac{t e^{\mu t}}{\mu} - \frac{1}{\mu^2} (e^{\mu t} - 1)$$</p>
+<p>\[\int_0^t \mu e^{\mu s} (m S_0 + m \kappa s + b) \, ds = \mu m S_0 \int_0^t e^{\mu s} \, ds + \mu m \kappa \int_0^t s e^{\mu s} \, ds + \mu b \int_0^t e^{\mu s} \, ds\]
+\[\int_0^t e^{\mu s} \, ds = \frac{1}{\mu} (e^{\mu t} - 1)\]
+\[\int_0^t s e^{\mu s} \, ds = \left[ \frac{s e^{\mu s}}{\mu} \right]_0^t - \int_0^t \frac{e^{\mu s}}{\mu} \, ds = \frac{t e^{\mu t}}{\mu} - \frac{1}{\mu^2} (e^{\mu t} - 1)\]</p>
 <p>Thus:</p>
-<p>$$\mathbb{E}[P(t)] = e^{-\mu t} P_0 + m S_0 (1 - e^{-\mu t}) + m \kappa \left( t - \frac{1 - e^{-\mu t}}{\mu} \right) + b (1 - e^{-\mu t})$$
+<p>\[\mathbb{E}[P(t)] = e^{-\mu t} P_0 + m S_0 (1 - e^{-\mu t}) + m \kappa \left( t - \frac{1 - e^{-\mu t}}{\mu} \right) + b (1 - e^{-\mu t})\]
 b) Variance:
  The variance computation is complex due to multiplicative noise. For simplicity, consider a geometric Brownian motion approximation (
-$$dP = \mu P \, dt + \sigma P \, dW$$
+\[dP = \mu P \, dt + \sigma P \, dW\]
 ), where:</p>
-<p>$$P(t) = P_0 e^{(\mu - \frac{\sigma^2}{2}) t + \sigma W(t)}$$</p>
-<p>$$\text{Var}[P(t)] = P_0^2 e^{2 \mu t} (e^{\sigma^2 t} - 1)$$</p>
+<p>\[P(t) = P_0 e^{(\mu - \frac{\sigma^2}{2}) t + \sigma W(t)}\]</p>
+<p>\[\text{Var}[P(t)] = P_0^2 e^{2 \mu t} (e^{\sigma^2 t} - 1)\]</p>
 <p>For the original SDE, numerical methods (e.g., Monte Carlo) are typically required.
 9. Markov Chain Model for Token Exchange in a Tokenized Economy
 Problem Statement:

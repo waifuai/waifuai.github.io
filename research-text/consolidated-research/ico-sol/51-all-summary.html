@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -93,40 +93,40 @@
 </ul>
 <h3>2. Bonding Curves</h3>
 <p>Bonding curves are mathematical functions that define the relationship between a token's price and its supply. The project primarily utilizes a <strong>linear bonding curve</strong> for the AbundanceCoin ICO:</p>
-<p>$$P(S) = mS + b$$</p>
+<p>\[P(S) = mS + b\]</p>
 <p>where:</p>
 <ul>
-<li>$P(S)$ is the price of the token at supply $S$.</li>
-<li>$m$ is the slope of the curve (price increase per token).</li>
-<li>$b$ is the initial price of the token.</li>
+<li>\(P(S)\) is the price of the token at supply \(S\).</li>
+<li>\(m\) is the slope of the curve (price increase per token).</li>
+<li>\(b\) is the initial price of the token.</li>
 </ul>
-<p>The <strong>cost to buy</strong> $\Delta S$ tokens is the integral of the bonding curve:</p>
-<p>$$ \text{Cost} = \int_{S}^{S+\Delta S} (m\sigma + b) d\sigma = \frac{1}{2}m(\Delta S)^2 + mS\Delta S + b\Delta S $$</p>
+<p>The <strong>cost to buy</strong> \(\Delta S\) tokens is the integral of the bonding curve:</p>
+<p>\[\text{Cost} = \int_{S}^{S+\Delta S} (m\sigma + b) d\sigma = \frac{1}{2}m(\Delta S)^2 + mS\Delta S + b\Delta S\]</p>
 <p>Other bonding curve models (exponential, sigmoid, multi-segment) are also considered for different token economic models.</p>
 <h3>3. Token Exchange</h3>
 <p>Within the Tokenized Economy, tokens are exchanged directly between AI agents. The exchange rate between two tokens (A and B) is determined by the ratio of their prices on their respective bonding curves:</p>
-<p>$$ \text{Exchange Rate (A/B)} = \frac{P_A(S_A)}{P_B(S_B)} $$</p>
+<p>\[\text{Exchange Rate (A/B)} = \frac{P_A(S_A)}{P_B(S_B)}\]</p>
 <h3>4. AI Agents</h3>
 <p>AI agents are the primary actors in this autonomous economy. They are characterized by:</p>
 <ul>
-<li><strong>State:</strong> $S_i(t) = [B_i(t), H_{i,1}(t), ..., H_{i,M}(t), P_1(t), ..., P_M(t), \mathbf{M}(t)]$<ul>
-<li>$B_i(t)$: Balance of agent $i$ at time $t$.</li>
-<li>$H_{i,j}(t)$: Holdings of asset $j$ by agent $i$ at time $t$.</li>
-<li>$P_j(t)$: Price of asset $j$ at time $t$.</li>
-<li>$\mathbf{M}(t)$: Market conditions.</li>
+<li><strong>State:</strong> \(S_i(t) = [B_i(t), H_{i,1}(t), ..., H_{i,M}(t), P_1(t), ..., P_M(t), \mathbf{M}(t)]\)<ul>
+<li>\(B_i(t)\): Balance of agent \(i\) at time \(t\).</li>
+<li>\(H_{i,j}(t)\): Holdings of asset \(j\) by agent \(i\) at time \(t\).</li>
+<li>\(P_j(t)\): Price of asset \(j\) at time \(t\).</li>
+<li>\(\mathbf{M}(t)\): Market conditions.</li>
 </ul>
 </li>
-<li><strong>Action:</strong> $A_i(t) = [a_{i,1}(t), ..., a_{i,M}(t)]$, where $a_{i,j}(t) \in {-1, 0, 1}$ (sell, hold, buy).</li>
-<li><strong>Policy:</strong> $\pi_i: S_i(t) \rightarrow A_i(t)$, a mapping from states to actions, often learned through RL.</li>
-<li><strong>Reward:</strong> $r_i(t) = U_i(B_i(t), H_{i,j}(t), P_j(t))$, based on a utility function $U_i$.</li>
+<li><strong>Action:</strong> \(A_i(t) = [a_{i,1}(t), ..., a_{i,M}(t)]\), where \(a_{i,j}(t) \in {-1, 0, 1}\) (sell, hold, buy).</li>
+<li><strong>Policy:</strong> \(\pi_i: S_i(t) \rightarrow A_i(t)\), a mapping from states to actions, often learned through RL.</li>
+<li><strong>Reward:</strong> \(r_i(t) = U_i(B_i(t), H_{i,j}(t), P_j(t))\), based on a utility function \(U_i\).</li>
 </ul>
 <p>Agents use <strong>reinforcement learning</strong> (e.g., Q-learning, Deep Q-Networks) to optimize their trading and resource allocation strategies.</p>
 <h3>5. Dynamic Commission Affiliates</h3>
 <p>While the primary focus is on autonomous AI agents, the concept of incentivizing ecosystem growth is addressed through a "Dynamic Commission" model. Although not implemented as a human-centric affiliate program, it serves as a framework for AI agents to potentially benefit from promoting valuable projects or resources within the ecosystem.</p>
 <ul>
-<li><strong>Commission Structure:</strong> The basic commission model is $C = \alpha \cdot I$, where $C$ is the commission, $\alpha$ is the commission rate, and $I$ is the investment amount.</li>
-<li><strong>Dynamic Adjustment:</strong> The commission rate can be dynamically adjusted based on performance metrics or other factors. An example linear model is $\alpha(x) = a + bx$, where $x$ is a performance metric.</li>
-<li><strong>Optimization:</strong> An algorithm can optimize the commission rate to maximize an agent's expected earnings: $E_j(\alpha_j) = \alpha_j * I_j(\alpha_j)$.</li>
+<li><strong>Commission Structure:</strong> The basic commission model is \(C = \alpha \cdot I\), where \(C\) is the commission, \(\alpha\) is the commission rate, and \(I\) is the investment amount.</li>
+<li><strong>Dynamic Adjustment:</strong> The commission rate can be dynamically adjusted based on performance metrics or other factors. An example linear model is \(\alpha(x) = a + bx\), where \(x\) is a performance metric.</li>
+<li><strong>Optimization:</strong> An algorithm can optimize the commission rate to maximize an agent's expected earnings: \(E_j(\alpha_j) = \alpha_j * I_j(\alpha_j)\).</li>
 </ul>
 <h3>6. ContextCoin (CTX) and Resource Access</h3>
 <p>ContextCoin (CTX) is introduced as a utility token to manage access to resources and prevent spam/DDoS attacks.</p>

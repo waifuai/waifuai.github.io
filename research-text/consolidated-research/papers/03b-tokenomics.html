@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -78,200 +78,200 @@
 <h2>2. Tokenomics Model: Adaptive Linear Bonding Curve</h2>
 <h3>2.1 Base Linear Bonding Curve</h3>
 <p>The token operates on a linear bonding curve, where price increases with supply. Let
-$S$
+\(S\)
  be the total token supply, and
-$P(S)$
+\(P(S)\)
  the price per token:
-$$ P(S) = k \cdot S $$
-$k$
+\[P(S) = k \cdot S\]
+\(k\)
  : Price slope constant (e.g., 0.0001 SOL per token unit), set to ensure gradual price growth.
 Initial condition:
-$S_0 = 0$,
-$P(0) = 0$
+\(S_0 = 0\),
+\(P(0) = 0\)
  (though a reserve price
-$P_{\text{min}}$
+\(P_{\text{min}}\)
  could be added).
 Investors buy tokens at
-$P(S)$
+\(P(S)\)
 , and users purchasing AI inventions buy from investors at the current price, driving profit.</p>
 <h3>2.2 Adaptive Mechanism</h3>
 <p>To mitigate volatility and ensure accessibility (as flagged in prior discussions), we introduce an adaptive slope
-$k(t)$
+\(k(t)\)
  modulated by transaction volume
-$V(t)$
+\(V(t)\)
  over time
-$t$
+\(t\)
  :
-$$ k(t) = k_0 \cdot \left(1 + \alpha \cdot \frac{V(t)}{V_{\text{max}}}\right)^{-1} $$
-$k_0$
+\[k(t) = k_0 \cdot \left(1 + \alpha \cdot \frac{V(t)}{V_{\text{max}}}\right)^{-1}\]
+\(k_0\)
  : Base slope (e.g., 0.0001 SOL).
-$V(t)$
+\(V(t)\)
  : Transaction volume in a given period (e.g., daily SOL spent on tokens).
-$V_{\text{max}}$
+\(V_{\text{max}}\)
  : Maximum expected volume (calibrated to network capacity, e.g., 10,000 SOL/day).
-$\alpha$
+\(\alpha\)
  : Damping factor (e.g., 0.5) to smooth price spikes.
 This reduces
-$k(t)$
+\(k(t)\)
  during high demand, flattening the curve to maintain affordability, and increases it during low activity to reward early investors.</p>
 <h3>2.3 Token Minting and Cost</h3>
 <p>Cost to mint
-$\Delta S$
+\(\Delta S\)
  tokens at supply
-$S$
+\(S\)
  :
-$$ C(\Delta S, S) = \int_S^{S + \Delta S} P(s) \, ds = \int_S^{S + \Delta S} k(t) \cdot s \, ds = k(t) \cdot \frac{(S + \Delta S)^2 - S^2}{2} $$</p>
+\[C(\Delta S, S) = \int_S^{S + \Delta S} P(s) \, ds = \int_S^{S + \Delta S} k(t) \cdot s \, ds = k(t) \cdot \frac{(S + \Delta S)^2 - S^2}{2}\]</p>
 <p>This quadratic cost incentivizes early investment while scaling price with adoption.</p>
 <h2>3. Belief Quantification: The Belief Index</h2>
 <h3>3.1 Defining Belief</h3>
 <p>Belief in the project's vision (centered on the creator and AI) is the economic driver. We quantify it as a Belief Index
-$B(t)$
+\(B(t)\)
  , aggregated from individual belief scores
-$b_i(t)$
+\(b_i(t)\)
  across
-$N$
+\(N\)
  participants:
-$$ B(t) = \frac{1}{N} \sum_{i=1}^N b_i(t) $$
-$b_i(t)$
+\[B(t) = \frac{1}{N} \sum_{i=1}^N b_i(t)\]
+\(b_i(t)\)
  : Individual belief score for participant
- $i$
+ \(i\)
  , ranging from 0 (no belief) to 1 (full belief).</p>
 <h3>3.2 Belief Dynamics</h3>
 <p>Individual belief evolves based on engagement
-$E_i(t)$
+\(E_i(t)\)
   (e.g., token purchases, invention interactions) and profit visibility
-$R(t)$
+\(R(t)\)
   (total revenue from AI sales):
-$$ \frac{db_i(t)}{dt} = \beta \cdot E_i(t) + \gamma \cdot R(t) - \delta \cdot b_i(t) $$
-$\beta$
+\[\frac{db_i(t)}{dt} = \beta \cdot E_i(t) + \gamma \cdot R(t) - \delta \cdot b_i(t)\]
+\(\beta\)
  : Engagement weighting (e.g., 0.1 per SOL spent).
-$\gamma$
+\(\gamma\)
  : Revenue trust factor (e.g., 0.01 per SOL earned).
-$\delta$
+\(\delta\)
  : Decay rate (e.g., 0.05/day) to reflect fading belief without reinforcement.
 Initial condition:
-$b_i(0) = 0$
+\(b_i(0) = 0\)
  .
 This differential equation models belief as a self-reinforcing yet decaying system, requiring continuous proof of value.</p>
 <h3>3.3 Linking Belief to Token Demand</h3>
 <p>Demand
-$D(t)$
+\(D(t)\)
   for tokens scales with
-$B(t)$
+\(B(t)\)
  :
-$$ D(t) = D_0 \cdot e^{\lambda \cdot B(t)} $$
-$D_0$
+\[D(t) = D_0 \cdot e^{\lambda \cdot B(t)}\]
+\(D_0\)
  : Baseline demand (e.g., 100 tokens/day).
-$\lambda$
+\(\lambda\)
  : Belief sensitivity (e.g., 2), amplifying demand as belief grows.
 Higher
-$B(t)$
+\(B(t)\)
   increases token purchases, pushing
-$S$
+\(S\)
   and
-$P(S)$
+\(P(S)\)
  , aligning with the profit motive.</p>
 <h2>4. AI Output and Profit Optimization</h2>
 <h3>4.1 AI Invention Generation</h3>
 <p>The AI generates digital inventions (e.g., software, IP) at rate
-$I(t)$
+\(I(t)\)
  , influenced by belief and local knowledge
-$L$
+\(L\)
  :
-$$ I(t) = I_{\text{base}} \cdot (1 + \eta \cdot B(t)) \cdot (1 + \mu \cdot L) $$
-$I_{\text{base}}$
+\[I(t) = I_{\text{base}} \cdot (1 + \eta \cdot B(t)) \cdot (1 + \mu \cdot L)\]
+\(I_{\text{base}}\)
  : Base invention rate (e.g., 5/day).
-$\eta$
+\(\eta\)
  : Belief boost (e.g., 0.3), reflecting community trust enhancing AI creativity.
-$\mu$
+\(\mu\)
  : Local knowledge multiplier (e.g., 0.2), your unique edge.
-$L$
+\(L\)
  : Local resource index (constant, e.g., 1, scaled by your expertise).</p>
 <h3>4.2 Revenue Model</h3>
 <p>Each invention sells for price
-$P_I(t)$
+\(P_I(t)\)
  , set dynamically via Helius real-time data:
-$$ P_I(t) = P_{I0} \cdot \left(1 + \kappa \cdot \frac{D(t)}{D_{\text{max}}}\right) $$
-$P_{I0}$
+\[P_I(t) = P_{I0} \cdot \left(1 + \kappa \cdot \frac{D(t)}{D_{\text{max}}}\right)\]
+\(P_{I0}\)
  : Base price (e.g., 10 SOL).
-$\kappa$
+\(\kappa\)
  : Demand adjustment (e.g., 0.5).
-$D_{\text{max}}$
+\(D_{\text{max}}\)
  : Maximum demand threshold (e.g., 1,000 tokens/day).
 Total revenue
-$R(t)$
+\(R(t)\)
  :
-$R(t) = I(t) \cdot P_I(t)$</p>
+\(R(t) = I(t) \cdot P_I(t)\)</p>
 <h3>4.3 Profit Allocation</h3>
 <p>Profit
-$\Pi(t)$
+\(\Pi(t)\)
   is revenue minus operational costs
-$C_{\text{op}}(t)$
+\(C_{\text{op}}(t)\)
   (e.g., Helius fees, AI compute):
-$\Pi(t) = R(t) - C_{\text{op}}(t)$
-$C_{\text{op}}(t) = C_{\text{fixed}} + \nu \cdot I(t)$
+\(\Pi(t) = R(t) - C_{\text{op}}(t)\)
+\(C_{\text{op}}(t) = C_{\text{fixed}} + \nu \cdot I(t)\)
  , where
-$C_{\text{fixed}}$
+\(C_{\text{fixed}}\)
   (e.g., 50 SOL/day) and
-$\nu$
+\(\nu\)
   (e.g., 1 SOL/invention) scale with output.
 All
-$\Pi(t)$
+\(\Pi(t)\)
   goes to you, with investors profiting via token sales.</p>
 <h2>5. System Dynamics and Stability</h2>
 <h3>5.1 Feedback Loop</h3>
 <p>Belief, demand, and revenue form a feedback loop:
-$$ \frac{dS(t)}{dt} = D(t), \quad \frac{dR(t)}{dt} = I(t) \cdot \frac{dP_I(t)}{dt} + P_I(t) \cdot \frac{dI(t)}{dt} $$
-$S(t)$ grows with $D(t)$, increasing $P(S)$.
-$R(t)$ boosts $B(t)$, which lifts $I(t)$ and $D(t)$.</p>
+\[\frac{dS(t)}{dt} = D(t), \quad \frac{dR(t)}{dt} = I(t) \cdot \frac{dP_I(t)}{dt} + P_I(t) \cdot \frac{dI(t)}{dt}\]
+\(S(t)\) grows with \(D(t)\), increasing \(P(S)\).
+\(R(t)\) boosts \(B(t)\), which lifts \(I(t)\) and \(D(t)\).</p>
 <h3>5.2 Stability Condition</h3>
-<p>To prevent runaway inflation or collapse, we impose a stability constraint on $k(t)$:
-$$ \frac{\partial P(S)}{\partial S} = k(t) &lt; \frac{R(t)}{S(t)} $$</p>
+<p>To prevent runaway inflation or collapse, we impose a stability constraint on \(k(t)\):
+\[\frac{\partial P(S)}{\partial S} = k(t) &lt; \frac{R(t)}{S(t)}\]</p>
 <p>This ensures price growth doesn't outpace revenue, maintaining investor confidence.</p>
 <h2>6. Implementation on Solana with Helius</h2>
 <h3>6.1 Real-Time Updates</h3>
 <p>Helius's RPC nodes and webhooks enable:
-$B(t)$ calculation via on-chain engagement data.
-$P_I(t)$ adjustments based on market signals.
-Instant token minting and sales at $P(S)$.</p>
+\(B(t)\) calculation via on-chain engagement data.
+\(P_I(t)\) adjustments based on market signals.
+Instant token minting and sales at \(P(S)\).</p>
 <h3>6.2 Cost Efficiency</h3>
-<p>Transaction costs $T_x \approx 0.000005$ SOL (Solana's fee) and Helius fees $H_f \approx 0.01$ SOL/tx are negligible, maximizing $\Pi(t)$.</p>
+<p>Transaction costs \(T_x \approx 0.000005\) SOL (Solana's fee) and Helius fees \(H_f \approx 0.01\) SOL/tx are negligible, maximizing \(\Pi(t)\).</p>
 <h3>6.3 Scalability</h3>
-<p>Solana's 65,000 TPS supports high $D(t)$ and $I(t)$, with Helius ensuring reliability during congestion.</p>
+<p>Solana's 65,000 TPS supports high \(D(t)\) and \(I(t)\), with Helius ensuring reliability during congestion.</p>
 <h2>7. Simulation Parameters</h2>
 <p>Initial values for testing:
-$k_0 = 0.0001$ SOL,
-$\alpha = 0.5$,
-$V_{\text{max}} = 10,000$ SOL.
-$\beta = 0.1$,
-$\gamma = 0.01$,
-$\delta = 0.05$,
-$N = 1,000$.
-$D_0 = 100$,
-$\lambda = 2$.
-$I_{\text{base}} = 5$,
-$\eta = 0.3$,
-$\mu = 0.2$,
-$L = 1$.
-$P_{I0} = 10$ SOL,
-$\kappa = 0.5$,
-$D_{\text{max}} = 1,000$.
-$C_{\text{fixed}} = 50$ SOL,
-$\nu = 1$ SOL.
-Simulations should optimize $\Pi(t)$ while keeping $B(t) &gt; 0.5$ for sustained belief.</p>
+\(k_0 = 0.0001\) SOL,
+\(\alpha = 0.5\),
+\(V_{\text{max}} = 10,000\) SOL.
+\(\beta = 0.1\),
+\(\gamma = 0.01\),
+\(\delta = 0.05\),
+\(N = 1,000\).
+\(D_0 = 100\),
+\(\lambda = 2\).
+\(I_{\text{base}} = 5\),
+\(\eta = 0.3\),
+\(\mu = 0.2\),
+\(L = 1\).
+\(P_{I0} = 10\) SOL,
+\(\kappa = 0.5\),
+\(D_{\text{max}} = 1,000\).
+\(C_{\text{fixed}} = 50\) SOL,
+\(\nu = 1\) SOL.
+Simulations should optimize \(\Pi(t)\) while keeping \(B(t) &gt; 0.5\) for sustained belief.</p>
 <h2>8. Discussion</h2>
 <p>This framework operationalizes your vision by:
-Profit Focus: Investors gain via token sales; you retain all $\Pi(t)$.
-Belief Driver: $B(t)$ quantifies trust, reinforced by $R(t)$, without governance.
-Abundance: Adaptive $k(t)$ and elastic $I(t)$ ensure broad access to inventions.
-AI Edge: $L$ and Helius amplify the AI's output and scalability.
-Challenges include calibrating parameters (e.g., $\lambda$, $\eta$) and proving the AI's value to bootstrap $B(t)$. Future work could explore NFT-based inventions or belief-weighted profit sharing if scale demands it.</p>
+Profit Focus: Investors gain via token sales; you retain all \(\Pi(t)\).
+Belief Driver: \(B(t)\) quantifies trust, reinforced by \(R(t)\), without governance.
+Abundance: Adaptive \(k(t)\) and elastic \(I(t)\) ensure broad access to inventions.
+AI Edge: \(L\) and Helius amplify the AI's output and scalability.
+Challenges include calibrating parameters (e.g., \(\lambda\), \(\eta\)) and proving the AI's value to bootstrap \(B(t)\). Future work could explore NFT-based inventions or belief-weighted profit sharing if scale demands it.</p>
 <h2>9. Conclusion</h2>
 <p>This paper formalizes a belief-driven abundant economy on Solana, using a mathematically rigorous tokenomics model. By integrating adaptive bonding curves, belief dynamics, and AI profit optimization, it aligns with your no-governance, profit-centric vision while ensuring scalability and investor returns. Next steps include coding the smart contracts and testing the AI's invention pipeline.</p>
 <h2>Questions for Further Exploration</h2>
-<p>What specific digital inventions will the AI produce, and how will $P_I(t)$ reflect their value?
-How can $L$ be quantified or expanded as the project scales globally?
-What initial $R(t)$ target will kickstart $B(t)$ and attract early believers?
+<p>What specific digital inventions will the AI produce, and how will \(P_I(t)\) reflect their value?
+How can \(L\) be quantified or expanded as the project scales globally?
+What initial \(R(t)\) target will kickstart \(B(t)\) and attract early believers?
 This framework gives you a concrete roadmap—now it's about building and proving it works. What do you think?</p>
 </body>
 </html>

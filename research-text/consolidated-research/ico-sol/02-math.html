@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -73,12 +73,12 @@
 <p><strong>1. Bonding Curves:</strong></p>
 <p>A bonding curve, denoted by <em>P</em>( <em>S</em> ), defines the price <em>P</em> of a token as a function of its total supply <em>S</em>. Different curve types can be implemented, each with unique properties.  For this framework, we consider two primary types:</p>
 <ul>
-<li><strong>Linear Bonding Curve:</strong>  $P(S) = mS + b$, where $m$ represents the slope (price increment per token) and $b$ is the initial price. This curve offers simplicity and predictable price changes.</li>
-<li><strong>Exponential Bonding Curve:</strong>  $P(S) = ae^{kS}$, where $a$ is a scaling factor, $k$ controls the curve's steepness, and $e$ is the base of the natural logarithm. This curve creates more dramatic price changes as supply increases.</li>
+<li><strong>Linear Bonding Curve:</strong>  \(P(S) = mS + b\), where \(m\) represents the slope (price increment per token) and \(b\) is the initial price. This curve offers simplicity and predictable price changes.</li>
+<li><strong>Exponential Bonding Curve:</strong>  \(P(S) = ae^{kS}\), where \(a\) is a scaling factor, \(k\) controls the curve's steepness, and \(e\) is the base of the natural logarithm. This curve creates more dramatic price changes as supply increases.</li>
 </ul>
 <p><strong>2. Token Exchange:</strong></p>
 <p>Token exchange between participants occurs directly on the bonding curves. Consider two companies, A and B, with tokens A and B respectively. The exchange rate between tokens is determined by the ratio of their prices on their respective bonding curves:</p>
-<p>Exchange Rate (A/B) = $P_A(S_A) / P_B(S_B)$</p>
+<p>Exchange Rate (A/B) = \(P_A(S_A) / P_B(S_B)\)</p>
 <p>When a participant exchanges <em>x</em> amount of token A for token B, the following occurs:</p>
 <ul>
 <li>Tokens A are burned, reducing <em>S</em><sub>A</sub> by <em>x</em>.</li>
@@ -87,7 +87,7 @@
 </ul>
 <p><strong>3. Relative Debasement:</strong></p>
 <p>The value of SOL within the Tokenized Economy is determined by its purchasing power relative to the goods and services offered by participating companies.  As token prices fluctuate on their bonding curves, the relative value of SOL can change. This can be visualized by considering the ratio of a token's price to the price of SOL.</p>
-<p>Relative Value (A/SOL) = $P_A(S_A) / P_{SOL}$</p>
+<p>Relative Value (A/SOL) = \(P_A(S_A) / P_{SOL}\)</p>
 <p>If the demand for token A increases, driving its price up, its relative value to SOL increases. This implies that more SOL would be required to purchase the same amount of goods or services offered by company A.</p>
 <p><strong>4. Speculation Dynamics:</strong></p>
 <p>Speculation within the Tokenized Economy revolves around predicting the future demand for company products and services.  If a participant anticipates increased demand for company A's products, they may purchase token A. This increased demand for token A pushes its price up along the bonding curve, potentially generating profit for the early investors.</p>

@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -92,9 +92,7 @@ This paper presents a unified mathematical framework for modeling complex econom
 - <strong>Asset Holdings:</strong> ( H_{i,j}(t) ), representing their holdings of asset ( j ).<br />
 - <strong>Behavioral Parameters:</strong> A vector ( \mathbf{\Theta}_i ) capturing their trading strategies, risk preferences, and other decision-making factors. These parameters can be fixed or evolve over time.<br />
 - <strong>Utility Function:</strong> Agents act to maximize their utility, which can be explicitly modeled as a function of their holdings and beliefs. For example:<br />
-  $$
-  U_i(t) = \sum_{j=1}^{M} \left( \alpha_{i,j} \log(H_{i,j}(t)) + \beta_{i,j} B_i(t) \right)
-  $$<br />
+  \[U_i(t) = \sum_{j=1}^{M} \left( \alpha_{i,j} \log(H_{i,j}(t)) + \beta_{i,j} B_i(t) \right)\]<br />
   where ( \alpha_{i,j} ) and ( \beta_{i,j} ) are preference parameters.</p>
 <h4><strong>2.2. Assets:</strong></h4>
 <p>Each asset ( j ) at time ( t ) is characterized by:<br />
@@ -106,9 +104,7 @@ This paper presents a unified mathematical framework for modeling complex econom
 <p>The price of each asset is determined by a specific mechanism, which can be one of the following (or a combination thereof):</p>
 <h4><strong>3.1. Bonding Curves:</strong></h4>
 <p>The price of an asset ( j ) can be governed by a bonding curve function ( f_j ):<br />
-$$
-P_j(t) = f_j(S_j(t), \mathbf{\Phi}_j(t))
-$$<br />
+\[P_j(t) = f_j(S_j(t), \mathbf{\Phi}_j(t))\]<br />
 where ( \mathbf{\Phi}_j(t) ) represents the parameters of the bonding curve at time ( t ). Common examples include:<br />
 - <strong>Linear:</strong> ( f(S) = m S + b )<br />
 - <strong>Exponential:</strong> ( f(S) = a e^{k S} )<br />
@@ -118,52 +114,36 @@ where ( \mathbf{\Phi}_j(t) ) represents the parameters of the bonding curve at t
 - <strong>Order Books:</strong> Matching buy and sell orders to determine the clearing price.<br />
 - <strong>Demand and Supply Functions:</strong> Modeling aggregate demand ( D_j(P_j(t)) ) and supply ( O_j(P_j(t)) ) and finding the equilibrium price where ( D_j(P_j(t)) = O_j(P_j(t)) ).<br />
 - <strong>Price Adjustment Rules:</strong> Mechanisms where the price adjusts based on the imbalance between demand and supply:<br />
-  $$
-  \Delta P_j(t) = g(D_j(t) - O_j(t), S_j(t))
-  $$<br />
+  \[\Delta P_j(t) = g(D_j(t) - O_j(t), S_j(t))\]<br />
   where ( g ) is a function determining the price change.</p>
 <hr />
 <h3><strong>4. Agent Actions and Interactions</strong></h3>
 <p>At each time step, agents make decisions based on their individual states, the current prices of assets, and their behavioral parameters. Common actions include:</p>
 <h4><strong>4.1. Trading:</strong></h4>
 <p>The probability of buying ( P_{buy, i, j}(t) ) and selling ( P_{sell, i, j}(t) ) asset ( j ) by agent ( i ) can be modeled probabilistically:<br />
-$$
-P_{buy, i, j}(t) = h_{buy}(P_j(t), \text{beliefs}_i(t), \mathbf{\Theta}_i)
-$$<br />
-$$
-P_{sell, i, j}(t) = h_{sell}(P_j(t), \text{beliefs}_i(t), \mathbf{\Theta}_i)
-$$<br />
+\[P_{buy, i, j}(t) = h_{buy}(P_j(t), \text{beliefs}_i(t), \mathbf{\Theta}_i)\]<br />
+\[P_{sell, i, j}(t) = h_{sell}(P_j(t), \text{beliefs}_i(t), \mathbf{\Theta}_i)\]<br />
 where ( h_{buy} ) and ( h_{sell} ) are functions determining the probabilities, and ( \text{beliefs}_i(t) ) represents agent ( i )’s beliefs about future prices.</p>
 <h4><strong>4.2. Learning Mechanisms:</strong></h4>
 <p>Agents can adapt their strategies over time using reinforcement learning. For example, an agent may update its trading strategy based on past rewards:<br />
-$$
-\mathbf{\Theta}_i(t+1) = \mathbf{\Theta}_i(t) + \eta \nabla_{\mathbf{\Theta}_i} R_i(t)
-$$<br />
+\[\mathbf{\Theta}_i(t+1) = \mathbf{\Theta}_i(t) + \eta \nabla_{\mathbf{\Theta}_i} R_i(t)\]<br />
 where ( \eta ) is the learning rate, and ( R_i(t) ) is the reward earned by agent ( i ) at time ( t ).</p>
 <hr />
 <h3><strong>5. External Factors and Policies</strong></h3>
 <p>The system can be influenced by external factors and policy interventions:<br />
 - <strong>Airdrops:</strong> Initial distribution of assets to agents, following specific rules (uniform, lottery, tiered):<br />
-  $$
-  H_{i,j}(t_{airdrop}) = H_{i,j}(t_{airdrop}^-) + AirdropAmount_{i,j}
-  $$<br />
+  \[H_{i,j}(t_{airdrop}) = H_{i,j}(t_{airdrop}^-) + AirdropAmount_{i,j}\]<br />
 - <strong>Taxes and Subsidies:</strong> Government or protocol-level interventions that affect agent balances.<br />
 - <strong>Changes in Bonding Curve Parameters:</strong> Algorithmic adjustments to the price function.</p>
 <hr />
 <h3><strong>6. System Dynamics</strong></h3>
 <p>The state of the system evolves over time based on the interactions of agents and the asset pricing mechanisms. The key state variables are updated as follows:<br />
 - <strong>Asset Supply:</strong> Changes based on minting, burning, or production/consumption:<br />
-  $$
-  \Delta S_j(t) = \text{NetFlow}_j(t)
-  $$<br />
+  \[\Delta S_j(t) = \text{NetFlow}_j(t)\]<br />
 - <strong>Agent Balances:</strong> Updated based on trading, income, expenses, and policy interventions:<br />
-  $$
-  \Delta B_i(t) = \text{Income}_i(t) - \text{Expenses}_i(t) + \sum_{j=1}^{M} \text{TradeValue}_{i,j}(t) + \text{PolicyEffects}_i(t)
-  $$<br />
+  \[\Delta B_i(t) = \text{Income}_i(t) - \text{Expenses}_i(t) + \sum_{j=1}^{M} \text{TradeValue}_{i,j}(t) + \text{PolicyEffects}_i(t)\]<br />
 - <strong>Agent Asset Holdings:</strong> Updated based on trading and airdrops:<br />
-  $$
-  \Delta H_{i,j}(t) = \text{NetAcquisition}_{i,j}(t)
-  $$</p>
+  \[\Delta H_{i,j}(t) = \text{NetAcquisition}_{i,j}(t)\]</p>
 <hr />
 <h3><strong>7. Specific Instantiations and Case Studies</strong></h3>
 <h4><strong>7.1. Token Economy with Bonding Curves:</strong></h4>

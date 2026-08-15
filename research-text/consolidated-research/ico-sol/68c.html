@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -82,27 +82,27 @@ Ensures profitability under varying conditions with a mathematical framework bal
 <p>Volatility Response: During high volatility, the agent adjusts pool allocations to reduce risk, potentially increasing reserves on stable chains to prevent losses from rapid price swings.</p>
 <h2>Mathematical Framework</h2>
 <p>The mathematical framework is an optimization problem aimed at maximizing profit:
-$$\max_{\mathbf{a}} \left[ \text{profit}_{\text{arbitrage}} - \text{cost}_{\text{transaction}} - \text{cost}_{\text{bridging}} \right]$$</p>
+\[\max_{\mathbf{a}} \left[ \text{profit}_{\text{arbitrage}} - \text{cost}_{\text{transaction}} - \text{cost}_{\text{bridging}} \right]\]</p>
 <p>Variables:
-$\mathbf{a} = [a_1, a_2, \dots, a_n]$: Allocation vector, where $a_i$ is the proportion of liquidity allocated to blockchain $i$, and $\sum a_i = 1$.</p>
-<p>$p_i(t)$: Price of the RWA on blockchain $i$ at time $t$.</p>
-<p>$v$: Trade volume executed.
+\(\mathbf{a} = [a_1, a_2, \dots, a_n]\): Allocation vector, where \(a_i\) is the proportion of liquidity allocated to blockchain \(i\), and \(\sum a_i = 1\).</p>
+<p>\(p_i(t)\): Price of the RWA on blockchain \(i\) at time \(t\).</p>
+<p>\(v\): Trade volume executed.
 Profit:
-$$\text{profit}_{\text{arbitrage}} = v \cdot \max(p_j(t) - p_k(t), 0)$$
-where $j$ and $k$ are the blockchains with the highest and lowest prices, respectively.</p>
+\[\text{profit}_{\text{arbitrage}} = v \cdot \max(p_j(t) - p_k(t), 0)\]
+where \(j\) and \(k\) are the blockchains with the highest and lowest prices, respectively.</p>
 <p>Costs:
-$$\text{cost}_{\text{transaction}} = \sum_i (t_i \cdot v_i)$$
-, where $t_i$ is the transaction fee on blockchain $i$, and $v_i$ is the volume traded there.</p>
-<p>$$\text{cost}_{\text{bridging}} = b \cdot v \cdot d$$
-, where $b$ is the bridging cost per unit volume, and $d$ is the delay penalty (e.g., opportunity cost of locked funds).</p>
+\[\text{cost}_{\text{transaction}} = \sum_i (t_i \cdot v_i)\]
+, where \(t_i\) is the transaction fee on blockchain \(i\), and \(v_i\) is the volume traded there.</p>
+<p>\[\text{cost}_{\text{bridging}} = b \cdot v \cdot d\]
+, where \(b\) is the bridging cost per unit volume, and \(d\) is the delay penalty (e.g., opportunity cost of locked funds).</p>
 <p>Constraints:
-Liquidity pool balance: $a_i \cdot L \geq v_i$, where $L$ is total liquidity available.</p>
-<p>Bridging delay: $\Delta t_i \leq T_{\text{max}}$, where $\Delta t_i$ is the bridging time for blockchain $i$, and $T_{\text{max}}$ is the maximum acceptable delay.
+Liquidity pool balance: \(a_i \cdot L \geq v_i\), where \(L\) is total liquidity available.</p>
+<p>Bridging delay: \(\Delta t_i \leq T_{\text{max}}\), where \(\Delta t_i\) is the bridging time for blockchain \(i\), and \(T_{\text{max}}\) is the maximum acceptable delay.
 The agent uses dynamic programming to solve this, iteratively adjusting allocations to maximize profit under real-time constraints, as seen in Dynamic Programming in Finance.</p>
 <h2>Predicting and Mitigating Liquidity Fragmentation</h2>
 <p>Liquidity fragmentation occurs when RWA liquidity is unevenly distributed across blockchains, leading to price discrepancies and reduced trading efficiency. The AI agent addresses this:</p>
 <p>Prediction: Analyzes cross-chain price correlations using a correlation matrix:
-$$\rho_{ij} = \frac{\text{Cov}(p_i, p_j)}{\sigma_{p_i} \cdot \sigma_{p_j}}$$</p>
+\[\rho_{ij} = \frac{\text{Cov}(p_i, p_j)}{\sigma_{p_i} \cdot \sigma_{p_j}}\]</p>
 <p>High correlations indicate potential arbitrage opportunities, while low correlations signal fragmentation. The agent uses machine learning (e.g., LSTM models) to predict future price movements based on historical data, identifying fragmentation risks.</p>
 <p>Mitigation: Balances liquidity pools by reallocating assets to under-liquid chains, reducing price gaps. For example, if Solana has excess liquidity and Ethereum is thin, it shifts tokens via bridges, ensuring uniform market depth.</p>
 <h2>Update Frequency</h2>
@@ -115,25 +115,25 @@ $$\rho_{ij} = \frac{\text{Cov}(p_i, p_j)}{\sigma_{p_i} \cdot \sigma_{p_j}}$$</p>
 <p>Tokenized RWAs, such as real estate or commodities, traded across blockchains like Ethereum and Solana, face liquidity challenges due to differing transaction costs, bridging delays, and market fragmentation. An AI agent can optimize liquidity by managing dynamic pools, capitalizing on arbitrage, and ensuring efficient markets, aligning with technocapital acceleration goals in AI and the Economy. This builds on cross-chain technologies like Polkadot and Cosmos, as discussed in Cross-Chain Solutions.</p>
 <h2>Model Development</h2>
 <p>The dynamic liquidity pool model adjusts allocations based on real-time data, optimizing for arbitrage and stability:</p>
-<p>Liquidity Pool Dynamics: Total liquidity $L$ is distributed across $n$ blockchains: $L = \sum_i a_i L$.</p>
-<p>The agent adjusts $a_i$ based on price discrepancies, ensuring each chain has sufficient liquidity to support trading, minimizing fragmentation.</p>
-<p>Arbitrage Opportunities: Price discrepancies arise due to market fragmentation. The agent identifies opportunities where $p_j(t) &gt; p_k(t)$, executing trades to profit from the difference, adjusted for costs: $\text{net_profit} = v \cdot (p_j(t) - p_k(t)) - (\text{cost}_{\text{transaction}} + \text{cost}_{\text{bridging}})$</p>
-<p>Transaction Costs and Bridging Delays: Transaction costs vary (e.g., Ethereum gas fees ~$0.50-$5, Solana ~$0.00025), modeled as $t_i$.</p>
-<p>Bridging delays (e.g., Polkadot: minutes) introduce a time cost $d$, impacting profitability if prices change during transfer.</p>
+<p>Liquidity Pool Dynamics: Total liquidity \(L\) is distributed across \(n\) blockchains: \(L = \sum_i a_i L\).</p>
+<p>The agent adjusts \(a_i\) based on price discrepancies, ensuring each chain has sufficient liquidity to support trading, minimizing fragmentation.</p>
+<p>Arbitrage Opportunities: Price discrepancies arise due to market fragmentation. The agent identifies opportunities where \(p_j(t) &gt; p_k(t)\), executing trades to profit from the difference, adjusted for costs: \(\text{net_profit} = v \cdot (p_j(t) - p_k(t)) - (\text{cost}_{\text{transaction}} + \text{cost}_{\text{bridging}})\)</p>
+<p>Transaction Costs and Bridging Delays: Transaction costs vary (e.g., Ethereum gas fees ~$0.50-$5, Solana ~$0.00025), modeled as \(t_i\).</p>
+<p>Bridging delays (e.g., Polkadot: minutes) introduce a time cost \(d\), impacting profitability if prices change during transfer.</p>
 <p>Volatility Adjustment:
-Volatility, measured as $$\sigma_{p_i} = \sqrt{\frac{1}{T} \sum (p_i - \bar{p}_i)^2}$$, influences allocations. High volatility on a chain prompts reduced exposure to limit risk.
+Volatility, measured as \[\sigma_{p_i} = \sqrt{\frac{1}{T} \sum (p_i - \bar{p}_i)^2}\], influences allocations. High volatility on a chain prompts reduced exposure to limit risk.
 Mathematical Framework
 The optimization problem maximizes net profit:
-$$\max_{\mathbf{a}} \sum_{i,j} v_{ij} \cdot (p_j(t) - p_i(t)) - \sum_i t_i \cdot v_i - b \cdot v \cdot d$$</p>
+\[\max_{\mathbf{a}} \sum_{i,j} v_{ij} \cdot (p_j(t) - p_i(t)) - \sum_i t_i \cdot v_i - b \cdot v \cdot d\]</p>
 <p>Constraints:
-$\sum a_i = 1$ (total allocation sums to 1).</p>
-<p>$a_i L \geq v_i$ (liquidity covers traded volume).</p>
-<p>$\Delta t_i \leq T_{\text{max}}$ (bridging delay limit).</p>
+\(\sum a_i = 1\) (total allocation sums to 1).</p>
+<p>\(a_i L \geq v_i\) (liquidity covers traded volume).</p>
+<p>\(\Delta t_i \leq T_{\text{max}}\) (bridging delay limit).</p>
 <p>Dynamic Programming Solution: The agent uses a recursive approach, solving sub-problems for each blockchain pair, updating allocations iteratively:
-$$V(t, \mathbf{a}) = \max_{\mathbf{a'}} \left[ \text{profit}(t) + V(t+1, \mathbf{a'}) \right]$$</p>
+\[V(t, \mathbf{a}) = \max_{\mathbf{a'}} \left[ \text{profit}(t) + V(t+1, \mathbf{a'}) \right]\]</p>
 <p>This ensures optimal decisions over time, accounting for future states, as seen in Dynamic Programming in Finance.
 Predicting and Mitigating Liquidity Fragmentation
-Prediction: The agent uses a correlation matrix $\mathbf{\rho}$ to assess price alignment across chains, predicting fragmentation when correlations drop below a threshold (e.g., 0.8). Machine learning models, like LSTMs, forecast price trends, identifying potential liquidity gaps.</p>
+Prediction: The agent uses a correlation matrix \(\mathbf{\rho}\) to assess price alignment across chains, predicting fragmentation when correlations drop below a threshold (e.g., 0.8). Machine learning models, like LSTMs, forecast price trends, identifying potential liquidity gaps.</p>
 <p>Mitigation: Reallocates liquidity to balance pools, reducing discrepancies. For example, if Ethereum's pool is thin, the agent bridges assets from Solana, minimizing fragmentation risks, as noted in Cross-Chain Liquidity Management.</p>
 <p>Update Frequency
 Real-Time Adaptation: Updates occur every block (Ethereum: ~12 seconds, Solana: ~400ms) to capture arbitrage opportunities and respond to volatility, leveraging fast blockchains for efficiency.</p>

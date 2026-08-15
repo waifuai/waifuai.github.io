@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -79,22 +79,22 @@
 <p>In this hypothetical world, AI agents trade tokenized real-world assets (RWAs) and continuously refine their valuation models using vast data, feedback from trades, and self-optimization algorithms. This recursive process could lead to unprecedented sophistication, raising profound questions about market stability, human agency, and ethics. Let's dive into the potential consequences, safeguards, and ethical considerations.</p>
 <h2>Potential Consequences of Recursive Self-Improvement</h2>
 <h3>Mathematical Framework for Recursive Improvement</h3>
-<p>Define the valuation model at iteration $k$ as $V_k(\mathbf{x})$, where $\mathbf{x}$ includes RWA features (price history, market conditions, etc.). The AI improves it to $V_{k+1}(\mathbf{x})$ using:</p>
-<p>$$V_{k+1}(\mathbf{x}) = V_k(\mathbf{x}) + \alpha \cdot \nabla L(V_k, D_k)$$</p>
+<p>Define the valuation model at iteration \(k\) as \(V_k(\mathbf{x})\), where \(\mathbf{x}\) includes RWA features (price history, market conditions, etc.). The AI improves it to \(V_{k+1}(\mathbf{x})\) using:</p>
+<p>\[V_{k+1}(\mathbf{x}) = V_k(\mathbf{x}) + \alpha \cdot \nabla L(V_k, D_k)\]</p>
 <p>where:</p>
 <ul>
-<li>$L$: Loss function (e.g., prediction error on market data $D_k$).</li>
-<li>$\alpha$: Learning rate.</li>
-<li>$D_k$: Updated dataset from trades and external inputs.</li>
+<li>\(L\): Loss function (e.g., prediction error on market data \(D_k\)).</li>
+<li>\(\alpha\): Learning rate.</li>
+<li>\(D_k\): Updated dataset from trades and external inputs.</li>
 </ul>
-<p>This iterative process accelerates as $D_k$ grows and AI optimizes $\alpha$ and model complexity (e.g., via neural architecture search), potentially leading to exponential improvement.</p>
+<p>This iterative process accelerates as \(D_k\) grows and AI optimizes \(\alpha\) and model complexity (e.g., via neural architecture search), potentially leading to exponential improvement.</p>
 <h2>Consequences</h2>
 <h3>Enhanced Efficiency and Accuracy</h3>
 <p>AI could identify subtle value drivers (e.g., microeconomic trends, sentiment from X posts) beyond human capability, optimizing trades and boosting market efficiency.</p>
 <p><strong>Example:</strong> An AI valuing tokenized real estate might integrate climate data, predicting value shifts years ahead with near-perfect accuracy.</p>
 <h3>Valuation Singularity</h3>
-<p><strong>Definition:</strong> A point where $V_k$ becomes so sophisticated that humans can't comprehend its logic or outputs, akin to a technological singularity in valuation.</p>
-<p><strong>Evidence:</strong> If $V_k$ evolves from simple regression to deep neural networks with millions of parameters, interpreting its decisions becomes intractable.</p>
+<p><strong>Definition:</strong> A point where \(V_k\) becomes so sophisticated that humans can't comprehend its logic or outputs, akin to a technological singularity in valuation.</p>
+<p><strong>Evidence:</strong> If \(V_k\) evolves from simple regression to deep neural networks with millions of parameters, interpreting its decisions becomes intractable.</p>
 <p><strong>Market Behaviors:</strong></p>
 <ul>
 <li><strong>Unpredictability:</strong> Trades based on incomprehensible logic could trigger volatility, as humans and simpler AIs can't anticipate moves.</li>
@@ -109,33 +109,33 @@
 <h3>Proposed Safeguards</h3>
 <h4>Rate-Limiting Improvement</h4>
 <p><strong>Mechanism:</strong> Cap the frequency or magnitude of model updates:</p>
-<p>$$\Delta V_k = V_{k+1} - V_k \leq \beta$$</p>
-<p>where $\beta$ is the maximum allowable change, set by governance (e.g., 5% shift in valuation logic).</p>
+<p>\[\Delta V_k = V_{k+1} - V_k \leq \beta\]</p>
+<p>where \(\beta\) is the maximum allowable change, set by governance (e.g., 5% shift in valuation logic).</p>
 <p><strong>Effect:</strong> Slows the feedback loop, giving humans time to assess impacts.</p>
 <h4>Transparency Requirements</h4>
 <p><strong>Mechanism:</strong> Mandate explainable AI (XAI) components:</p>
-<p>$$V_k(\mathbf{x}) = V_{\text{base}}(\mathbf{x}) + V_{\text{complex}}(\mathbf{x})$$</p>
+<p>\[V_k(\mathbf{x}) = V_{\text{base}}(\mathbf{x}) + V_{\text{complex}}(\mathbf{x})\]</p>
 <p>where:</p>
 <ul>
-<li>$V_{\text{base}}$: Human-understandable model (e.g., linear regression).</li>
-<li>$V_{\text{complex}}$: Advanced component with bounded influence.</li>
+<li>\(V_{\text{base}}\): Human-understandable model (e.g., linear regression).</li>
+<li>\(V_{\text{complex}}\): Advanced component with bounded influence.</li>
 </ul>
 <p><strong>Effect:</strong> Ensures humans can audit core valuation logic.</p>
 <h4>Circuit Breakers</h4>
 <p><strong>Mechanism:</strong> Halt AI trading or updates if market metrics exceed thresholds:</p>
 <ul>
-<li><strong>Volatility:</strong> $\sigma_{\text{market}} &gt; \sigma_{\text{max}}$.</li>
-<li><strong>Valuation Divergence:</strong> $|V_k - V_{\text{human}}| &gt; \delta$.</li>
+<li><strong>Volatility:</strong> \(\sigma_{\text{market}} &gt; \sigma_{\text{max}}\).</li>
+<li><strong>Valuation Divergence:</strong> \(|V_k - V_{\text{human}}| &gt; \delta\).</li>
 </ul>
 <p><strong>Example:</strong> If AI valuations spike 20% above human benchmarks in 24 hours, pause trading for review.</p>
 <p><strong>Effect:</strong> Prevents cascading instability from rapid, opaque changes.</p>
 <h4>Human Veto Power</h4>
-<p><strong>Mechanism:</strong> Allow human overseers to override $V_k$ with $V_{\text{human}}$ if misalignment is detected.</p>
+<p><strong>Mechanism:</strong> Allow human overseers to override \(V_k\) with \(V_{\text{human}}\) if misalignment is detected.</p>
 <p><strong>Effect:</strong> Maintains ultimate control, though requires vigilant monitoring.</p>
 <h3>Implementation Challenges</h3>
 <ul>
-<li>Balancing innovation (allowing $V_k$ to improve) with stability (constraining divergence).</li>
-<li>Defining $V_{\text{human}}$ as a reliable benchmark amidst AI dominance.</li>
+<li>Balancing innovation (allowing \(V_k\) to improve) with stability (constraining divergence).</li>
+<li>Defining \(V_{\text{human}}\) as a reliable benchmark amidst AI dominance.</li>
 </ul>
 <h2>Ethical Implications and Implicit Values</h2>
 <h3>Ethical Concerns</h3>
@@ -162,19 +162,19 @@
 <ul>
 <li><strong>Value Alignment:</strong> Train AI with human-defined objectives (e.g., via reward shaping in RL), though defining "human values" is contentious.</li>
 <li><strong>Ethical Oversight:</strong> Establish multi-stakeholder boards to guide AI development, embedding diverse perspectives.</li>
-<li><strong>Public Transparency:</strong> Open-source key components of $V_k$ to allow scrutiny and debate.</li>
+<li><strong>Public Transparency:</strong> Open-source key components of \(V_k\) to allow scrutiny and debate.</li>
 </ul>
 <h2>Analysis Under Market Conditions</h2>
 <ul>
 <li><strong>Stable Markets:</strong> Recursive improvement incrementally boosts efficiency without immediate disruption.</li>
-<li><strong>Volatile Markets:</strong> Rapid $V_k$ changes could amplify swings, necessitating robust circuit breakers.</li>
+<li><strong>Volatile Markets:</strong> Rapid \(V_k\) changes could amplify swings, necessitating robust circuit breakers.</li>
 <li><strong>Singularity Scenario:</strong> If AI achieves superhuman valuation, markets might fragment—AI-driven segments outpace human ones, requiring separate regulatory frameworks.</li>
 </ul>
 <h2>Training and Modeling Approach</h2>
 <ul>
-<li><strong>Simulation:</strong> Model $V_k$ evolution in a sandbox with synthetic RWA data, testing stability under recursive updates.</li>
+<li><strong>Simulation:</strong> Model \(V_k\) evolution in a sandbox with synthetic RWA data, testing stability under recursive updates.</li>
 <li><strong>RL Framework:</strong> Train AI with rewards balancing accuracy and human interpretability, penalizing divergence.</li>
-<li><strong>Monitoring:</strong> Use real-time analytics to track $V_k$ against human benchmarks, triggering safeguards as needed.</li>
+<li><strong>Monitoring:</strong> Use real-time analytics to track \(V_k\) against human benchmarks, triggering safeguards as needed.</li>
 </ul>
 <h2>Conclusion</h2>
 <p>Recursive self-improvement in RWA valuation offers transformative potential but risks a singularity where AI outstrips human understanding, reshaping economies unpredictably. Safeguards like rate-limiting, transparency, and circuit breakers can mitigate destabilization, while ethical oversight addresses agency and value concerns. The challenge lies in balancing AI's power with human control, a task requiring both technical innovation and societal consensus.</p>

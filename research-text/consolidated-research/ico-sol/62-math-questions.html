@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -318,44 +318,36 @@
 <li>
 <p><strong>Mathematical Formula:</strong></p>
 <p>Let's define the dynamic bonding curve price (P) as a function of supply (S):</p>
-<p>$$
-P(S) = P_\text{base}(S) \times A(t, v, e) \times M(v)
-$$</p>
+<p>\[P(S) = P_\text{base}(S) \times A(t, v, e) \times M(v)\]</p>
 <p>Where:</p>
 <ul>
 <li>
-<p>$P_base(S)$:  A base bonding curve function (e.g., linear, exponential, sigmoid). For an illiquid asset, a sigmoid function might be suitable to reflect initial slow price discovery, followed by a steeper rise and then a plateau. We can represent a simple sigmoid function as:
-    $$
-    P_\text{base}(S) = P_\text{max} / (1 + \exp(-k \times (S - S_{\text{mid}})))
-    $$
+<p>\(P_base(S)\):  A base bonding curve function (e.g., linear, exponential, sigmoid). For an illiquid asset, a sigmoid function might be suitable to reflect initial slow price discovery, followed by a steeper rise and then a plateau. We can represent a simple sigmoid function as:
+    \[P_\text{base}(S) = P_\text{max} / (1 + \exp(-k \times (S - S_{\text{mid}})))\]
     Where:</p>
 <ul>
-<li>$P_max$ is the maximum price.</li>
-<li>$k$ is the steepness of the curve.</li>
-<li>$S_mid$ is the supply at the inflection point.</li>
+<li>\(P_max\) is the maximum price.</li>
+<li>\(k\) is the steepness of the curve.</li>
+<li>\(S_mid\) is the supply at the inflection point.</li>
 </ul>
 </li>
 <li>
-<p>$A(t, v, e)$:  Adaptation factor based on time since last trade ($t$), volume of attempted trades ($v$), and external market indicators ($e$).
-    $$
-    A(t, v, e) = (1 + \alpha / t) \times (1 + \beta \times \log(1 + v)) \times (1 + \gamma \times (e / e_{\text{avg}} - 1))
-    $$
+<p>\(A(t, v, e)\):  Adaptation factor based on time since last trade (\(t\)), volume of attempted trades (\(v\)), and external market indicators (\(e\)).
+    \[A(t, v, e) = (1 + \alpha / t) \times (1 + \beta \times \log(1 + v)) \times (1 + \gamma \times (e / e_{\text{avg}} - 1))\]
     Where:</p>
 <ul>
-<li>$α$ is the time decay factor.</li>
-<li>$\beta$ is the attempted trade volume sensitivity.</li>
-<li>$\gamma$ is the external market sensitivity.</li>
-<li>$e_{avg}$ is the average value of the external market indicator.</li>
+<li>\(α\) is the time decay factor.</li>
+<li>\(\beta\) is the attempted trade volume sensitivity.</li>
+<li>\(\gamma\) is the external market sensitivity.</li>
+<li>\(e_{avg}\) is the average value of the external market indicator.</li>
 </ul>
 </li>
 <li>
-<p>$M(v)$: Manipulation resistance factor based on trade volume ($v$).
-    $$
-    M(v) = 1 + \delta \times v^{2}
-    $$
+<p>\(M(v)\): Manipulation resistance factor based on trade volume (\(v\)).
+    \[M(v) = 1 + \delta \times v^{2}\]
     Where:</p>
 <ul>
-<li>$\delta$ is the manipulation resistance parameter.</li>
+<li>\(\delta\) is the manipulation resistance parameter.</li>
 </ul>
 </li>
 </ul>
@@ -363,9 +355,9 @@ $$</p>
 <li>
 <p><strong>Simulation and Analysis:</strong></p>
 <ul>
-<li><strong>High Activity:</strong> The model will show increased price sensitivity due to the $A(t, v, e)$ factor increasing with higher $v$ and lower $t$.</li>
-<li><strong>Low Activity:</strong> Prices will stabilize and potentially decrease slightly due to the $1/t$ term in $A(t, v, e)$.</li>
-<li><strong>Manipulation Attempt:</strong>  A large $v$ will trigger the $M(v)$ factor, significantly increasing the price and making manipulation costly.</li>
+<li><strong>High Activity:</strong> The model will show increased price sensitivity due to the \(A(t, v, e)\) factor increasing with higher \(v\) and lower \(t\).</li>
+<li><strong>Low Activity:</strong> Prices will stabilize and potentially decrease slightly due to the \(1/t\(term in\)A(t, v, e)\).</li>
+<li><strong>Manipulation Attempt:</strong>  A large \(v\) will trigger the \(M(v)\) factor, significantly increasing the price and making manipulation costly.</li>
 <li><strong>Comparison to Standard Bonding Curve:</strong> The dynamic model will exhibit less volatility during low activity and greater resistance to manipulation compared to a standard curve.</li>
 </ul>
 </li>
@@ -373,8 +365,8 @@ $$</p>
 <p><strong>AI Agent Training:</strong></p>
 <ul>
 <li>An AI agent could be trained using reinforcement learning to optimize its buy/sell decisions based on the dynamic bonding curve parameters, market conditions, and its own risk tolerance.</li>
-<li>The agent would need to predict future values of $t$, $v$, and $e$ to make informed decisions.</li>
-<li><strong>External Market Model:</strong> Yes, the AI agent would likely need to maintain its own model for external market indicators ($e$). This could involve techniques like regression analysis, time series forecasting, or even sentiment analysis of news related to the art market.</li>
+<li>The agent would need to predict future values of \(t\), \(v\), and \(e\) to make informed decisions.</li>
+<li><strong>External Market Model:</strong> Yes, the AI agent would likely need to maintain its own model for external market indicators (\(e\)). This could involve techniques like regression analysis, time series forecasting, or even sentiment analysis of news related to the art market.</li>
 </ul>
 </li>
 </ul>
@@ -394,33 +386,31 @@ $$</p>
 <ul>
 <li>
 <p><strong>Objective Function:</strong> Maximize the risk-adjusted return of the portfolio. We can use the Sharpe Ratio, modified to include transaction costs:</p>
-<pre><code>     $$
-     \max : (R_p - R_f - C_p) / \sigma_p
-     $$
+<pre><code>     \[\max : (R_p - R_f - C_p) / \sigma_p\]
 
      Where:
 
-     *   $R_p$: Expected portfolio return.
-     *   $R_f$: Risk-free rate.
-     *   $C_p$: Expected portfolio transaction costs.
-     *   $\sigma_p$: Portfolio standard deviation (risk).
+     *   \(R_p\): Expected portfolio return.
+     *   \(R_f\): Risk-free rate.
+     *   \(C_p\): Expected portfolio transaction costs.
+     *   \(\sigma_p\): Portfolio standard deviation (risk).
 </code></pre>
 </li>
 <li>
 <p><strong>Constraints:</strong></p>
 <ul>
-<li>$\sum w_i = 1$ (Weights sum to 100%).</li>
-<li>$0 \le w_i \le 1$ (No short selling, weights are non-negative).</li>
-<li>$w_i$: Weight of asset <code>i</code> in the portfolio.</li>
+<li>\(\sum w_i = 1\) (Weights sum to 100%).</li>
+<li>\(0 \le w_i \le 1\) (No short selling, weights are non-negative).</li>
+<li>\(w_i\): Weight of asset <code>i</code> in the portfolio.</li>
 </ul>
 </li>
 <li>
 <p><strong>Calculations:</strong></p>
 <ul>
-<li>$R_p = \sum (w_i \times R_i)$ (Weighted average of individual asset returns).</li>
-<li>$C_p = \sum ( |w_i - w_{iprev}| \times C_i )$ (Transaction costs based on rebalancing).</li>
-<li>$\sigma_p = \sqrt{ \sum\sum w_i \times w_j \times Cov(i, j) }$ (Portfolio standard deviation, considering covariances).</li>
-<li>$Cov(i,j)$ is the covariance between assets i and j.</li>
+<li>\(R_p = \sum (w_i \times R_i)\) (Weighted average of individual asset returns).</li>
+<li>\(C_p = \sum ( |w_i - w_{iprev}| \times C_i )\) (Transaction costs based on rebalancing).</li>
+<li>\(\sigma_p = \sqrt{ \sum\sum w_i \times w_j \times Cov(i, j) }\) (Portfolio standard deviation, considering covariances).</li>
+<li>\(Cov(i,j)\) is the covariance between assets i and j.</li>
 </ul>
 </li>
 </ul>
@@ -469,24 +459,24 @@ $$</p>
 <li>
 <p><strong>Initialization:</strong></p>
 <ul>
-<li>Create a set of $N$ loans, each with a random loan-to-value (LTV) ratio drawn from a predefined distribution (e.g., normal distribution centered around 60% with a standard deviation of 10%).</li>
-<li>Each loan has a collateral value $C_i$ based on the initial RWA price $P_0$ from the dynamic bonding curve.</li>
-<li>Set a liquidation threshold $L_{threshold}$ (e.g., 80%).</li>
+<li>Create a set of \(N\) loans, each with a random loan-to-value (LTV) ratio drawn from a predefined distribution (e.g., normal distribution centered around 60% with a standard deviation of 10%).</li>
+<li>Each loan has a collateral value \(C_i\) based on the initial RWA price \(P_0\) from the dynamic bonding curve.</li>
+<li>Set a liquidation threshold \(L_{threshold}\) (e.g., 80%).</li>
 </ul>
 </li>
 <li>
 <p><strong>Market Downturn:</strong></p>
 <ul>
-<li>Simulate a decrease in the base price of the RWA ($P_base(S)$ in the bonding curve model) over time steps $t$. This could be a gradual decline or a sudden drop.</li>
+<li>Simulate a decrease in the base price of the RWA (\(P_base(S)\) in the bonding curve model) over time steps \(t\). This could be a gradual decline or a sudden drop.</li>
 </ul>
 </li>
 <li>
 <p><strong>Liquidation Check:</strong></p>
 <ul>
-<li>At each time step, for each loan $i$:<ul>
-<li>Calculate the current collateral value: $$C_i(t) = C_i \times (P(t) / P_0)$$</li>
-<li>Calculate the current LTV: $$LTV_i(t) = \text{Loan}_i / C_i(t)$$</li>
-<li>If $LTV_i(t) &gt; L_{threshold}$, mark the loan for liquidation.</li>
+<li>At each time step, for each loan \(i\):<ul>
+<li>Calculate the current collateral value: \[C_i(t) = C_i \times (P(t) / P_0)\]</li>
+<li>Calculate the current LTV: \[LTV_i(t) = \text{Loan}_i / C_i(t)\]</li>
+<li>If \(LTV_i(t) &gt; L_{threshold}\), mark the loan for liquidation.</li>
 </ul>
 </li>
 </ul>
@@ -495,8 +485,8 @@ $$</p>
 <p><strong>Liquidation and Price Impact:</strong></p>
 <ul>
 <li>When a loan is liquidated, the collateral is sold on the market.</li>
-<li>This sale increases the supply $S$ in the bonding curve model.</li>
-<li>The new price $P(t+1)$ is calculated based on the updated supply.</li>
+<li>This sale increases the supply \(S\) in the bonding curve model.</li>
+<li>The new price \(P(t+1)\) is calculated based on the updated supply.</li>
 <li>The decrease in price can trigger further liquidations in the next time step.</li>
 </ul>
 </li>
@@ -627,21 +617,19 @@ $$</p>
 <li>
 <p><strong>Variables:</strong></p>
 <ul>
-<li>$P_A$: Price of the RWA on blockchain A.</li>
-<li>$P_B$: Price of the RWA on blockchain B.</li>
-<li>$C_A$: Transaction cost on blockchain A.</li>
-<li>$C_B$: Transaction cost on blockchain B.</li>
-<li>$C_{bridge}$: Cost to bridge the asset between A and B.</li>
-<li>$T_{bridge}$: Time to bridge the asset between A and B.</li>
-<li>$\Delta P_{risk}$: Risk of price change during bridging.</li>
+<li>\(P_A\): Price of the RWA on blockchain A.</li>
+<li>\(P_B\): Price of the RWA on blockchain B.</li>
+<li>\(C_A\): Transaction cost on blockchain A.</li>
+<li>\(C_B\): Transaction cost on blockchain B.</li>
+<li>\(C_{bridge}\): Cost to bridge the asset between A and B.</li>
+<li>\(T_{bridge}\): Time to bridge the asset between A and B.</li>
+<li>\(\Delta P_{risk}\): Risk of price change during bridging.</li>
 </ul>
 </li>
 <li>
 <p><strong>Profit Calculation:</strong></p>
-<p>$$
-Profit = (P_B - P_A) \times Q - C_A - C_B - C_bridge - \Delta P_{risk}
-$$</p>
-<p>Where $Q$ is the quantity of the RWA being arbitraged.</p>
+<p>\[Profit = (P_B - P_A) \times Q - C_A - C_B - C_bridge - \Delta P_{risk}\]</p>
+<p>Where \(Q\) is the quantity of the RWA being arbitraged.</p>
 </li>
 </ul>
 </li>
@@ -651,7 +639,7 @@ $$</p>
 <li><strong>Monitor Prices:</strong> Continuously monitor RWA prices on different blockchains.</li>
 <li><strong>Identify Arbitrage Opportunities:</strong>  Calculate the potential profit for each possible arbitrage trade (buy on A, sell on B, or vice versa).</li>
 <li><strong>Assess Risks:</strong><ul>
-<li>Estimate the risk of price changes during the bridging process ($\Delta P_{risk}$). This could involve analyzing historical price volatility and the time it takes to bridge assets.</li>
+<li>Estimate the risk of price changes during the bridging process (\(\Delta P_{risk}\)). This could involve analyzing historical price volatility and the time it takes to bridge assets.</li>
 <li>Consider the risk of other arbitrageurs competing for the same opportunity, potentially reducing the profit margin.</li>
 </ul>
 </li>
@@ -699,37 +687,33 @@ $$</p>
 <ul>
 <li>
 <p><strong>Mathematical Framework:</strong></p>
-<p>Let $V_{synth}$ be the value of the synthetic asset.</p>
-<p>$$
-V_{synth} = \left(\sum (w_i \times P_i) \times C_{ratio} \right) + F(\text{endogenous_risk})
-$$</p>
+<p>Let \(V_{synth}\) be the value of the synthetic asset.</p>
+<p>\[V_{synth} = \left(\sum (w_i \times P_i) \times C_{ratio} \right) + F(\text{endogenous_risk})\]</p>
 <p>Where:</p>
 <ul>
-<li>$w_i$: Weight of RWA $i$ in the portfolio.</li>
-<li>$P_i$: Price of RWA $i$.</li>
-<li>$C_{ratio}$: Collateralization ratio.</li>
-<li>$F(\text{endogenous_risk})$: Adjustment factor for endogenous risk.</li>
+<li>\(w_i\): Weight of RWA \(i\) in the portfolio.</li>
+<li>\(P_i\): Price of RWA \(i\).</li>
+<li>\(C_{ratio}\): Collateralization ratio.</li>
+<li>\(F(\text{endogenous_risk})\): Adjustment factor for endogenous risk.</li>
 </ul>
 <p><strong>Components:</strong></p>
 <ol>
 <li>
 <p><strong>Underlying RWA Valuation:</strong></p>
 <ul>
-<li>$P_i$ is determined by the dynamic bonding curve model (from Question 1) or other appropriate valuation models for each RWA.</li>
+<li>\(P_i\) is determined by the dynamic bonding curve model (from Question 1) or other appropriate valuation models for each RWA.</li>
 </ul>
 </li>
 <li>
 <p><strong>Collateralization Ratio:</strong></p>
 <ul>
-<li>$C_{ratio}$ should be dynamically adjusted based on the risk profile of the underlying RWAs.</li>
-<li>Higher volatility or correlation among RWAs would necessitate a higher $C_{ratio}$.</li>
+<li>\(C_{ratio}\) should be dynamically adjusted based on the risk profile of the underlying RWAs.</li>
+<li>Higher volatility or correlation among RWAs would necessitate a higher \(C_{ratio}\).</li>
 <li>A potential formula:
-    $$
-    C_{ratio} = C_{base} + \alpha \times Volatility + \beta \times Correlation
-    $$
+    \[C_{ratio} = C_{base} + \alpha \times Volatility + \beta \times Correlation\]
     Where:<ul>
-<li>$C_{base}$ is the minimum collateralization ratio.</li>
-<li>$\alpha$ and $\beta$ are sensitivity parameters.</li>
+<li>\(C_{base}\) is the minimum collateralization ratio.</li>
+<li>\(\alpha\) and \(\beta\) are sensitivity parameters.</li>
 </ul>
 </li>
 </ul>
@@ -737,7 +721,7 @@ $$</p>
 <li>
 <p><strong>Endogenous Risk Adjustment:</strong></p>
 <ul>
-<li>$F(\text{endogenous_risk})$ is the most complex part. It needs to capture the feedback loops between the synthetic asset's trading activity and the underlying RWA prices.</li>
+<li>\(F(\text{endogenous_risk})\) is the most complex part. It needs to capture the feedback loops between the synthetic asset's trading activity and the underlying RWA prices.</li>
 <li>This could involve:<ul>
 <li><strong>Modeling Market Impact:</strong> Estimating how the synthetic asset's trades affect the supply and demand (and thus prices) of the underlying RWAs.</li>
 <li><strong>Simulating Feedback Loops:</strong> Running simulations to see how price changes in the RWAs affect the synthetic asset's value, which in turn affects trading activity, and so on.</li>
@@ -757,7 +741,7 @@ $$</p>
 </ul>
 </li>
 <li><strong>Extreme Volatility:</strong> The model should be stress-tested under scenarios of extreme volatility in the underlying RWA market to see if the peg can hold.</li>
-<li><strong>Dynamic $C_{ratio}$ Adjustment:</strong> The mechanism for adjusting $C_{ratio}$ should be tested to ensure it responds appropriately to changes in market conditions.</li>
+<li><strong>Dynamic \(C_{ratio}\) Adjustment:</strong> The mechanism for adjusting \(C_{ratio}\) should be tested to ensure it responds appropriately to changes in market conditions.</li>
 </ul>
 </li>
 <li>

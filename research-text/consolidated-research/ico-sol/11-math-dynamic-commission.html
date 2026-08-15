@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -81,7 +81,7 @@
 <p><strong>2. Dynamic Commission Structure:</strong></p>
 <p>Unlike the fixed commission rate in the original model, affiliates now have the flexibility to set individual commission rates for each token they promote. The commission earned for a single investment in token <em>j</em> is now defined as:</p>
 <ul>
-<li><strong>$C_j = \alpha_j \times I_j$ (Equation 1')</strong></li>
+<li><strong>\(C_j = \alpha_j \times I_j\) (Equation 1')</strong></li>
 </ul>
 <p>Where α<sub>j</sub> is the custom commission rate set by the affiliate for token <em>j</em>.</p>
 <p><strong>3. Payout Mechanism (Dynamic):</strong></p>
@@ -101,7 +101,7 @@
 <p><strong>4.2 Token Distribution Heterogeneity:</strong></p>
 <p>With variable commission rates, the distribution of tokens becomes more heterogeneous. The total tokens distributed for token <em>j</em> are:</p>
 <ul>
-<li><strong>$\sum_{i=1}^{N_A} C_{j,i} = \sum_{i=1}^{N_A} \alpha_{j,i} \times I_{j,i}$ (Equation 3')</strong></li>
+<li><strong>\(\sum_{i=1}^{N_A} C_{j,i} = \sum_{i=1}^{N_A} \alpha_{j,i} \times I_{j,i}\) (Equation 3')</strong></li>
 </ul>
 <p>Where C<sub>j,i</sub> is the commission earned by the i-th affiliate for token <em>j</em>, and α<sub>j,i</sub> is the commission rate set by the i-th affiliate for token <em>j</em>. This introduces a weighted distribution based on individual affiliate strategies.</p>
 <p><strong>4.3 Bonding Curve Effects with Multiple Tokens:</strong></p>
@@ -112,7 +112,7 @@
 <p><strong>5. Affiliate Earnings (Dynamic):</strong></p>
 <p>An affiliate's total earnings are now calculated as the sum of commissions earned across all tokens:</p>
 <ul>
-<li><strong>$E = \sum_{j\in J} \sum_{i=1}^{n_j} \alpha_j \times I_{j,i}$ (Equation 5')</strong></li>
+<li><strong>\(E = \sum_{j\in J} \sum_{i=1}^{n_j} \alpha_j \times I_{j,i}\) (Equation 5')</strong></li>
 </ul>
 <p>Where <em>n<sub>j</sub></em> is the number of investments made in token <em>j</em> through the affiliate's link and I<sub>j,i</sub> is the i-th investment in token <em>j</em>.</p>
 <p><strong>6. Strategic Considerations and Optimization:</strong></p>

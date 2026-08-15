@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -85,23 +85,23 @@
 Optimization Algorithm
 The AI agent optimizes lending parameters using reinforcement learning to maximize platform revenue while minimizing default risk:
 Objective Function:
-$$\max_{\text{rate}, \text{collateral}} \left[ \text{revenue}_{\text{interest}} - \text{cost}_{\text{default}} \right]$$
-$\text{revenue}_{\text{interest}} = \sum_i r_i \cdot L_i$, where $r_i$ is the interest rate and $L_i$ is the loan amount for loan $i$.</li>
+\[\max_{\text{rate}, \text{collateral}} \left[ \text{revenue}_{\text{interest}} - \text{cost}_{\text{default}} \right]\]
+\(\text{revenue}_{\text{interest}} = \sum_i r_i \cdot L_i\), where \(r_i\) is the interest rate and \(L_i\) is the loan amount for loan \(i\).</li>
 </ul>
-<p>$\text{cost}_{\text{default}} = \sum_i P(\text{default}_i) \cdot (L_i - C_i)$, where $P(\text{default}_i)$ is the default probability, and $C_i$ is the collateral value recovered.
+<p>\(\text{cost}_{\text{default}} = \sum_i P(\text{default}_i) \cdot (L_i - C_i)\), where \(P(\text{default}_i)\) is the default probability, and \(C_i\) is the collateral value recovered.
 <strong>Constraints:</strong>
-Collateralization ratio: $\frac{C_i}{L_i} \geq CR_{\text{min}}$ (e.g., 150%), ensuring sufficient collateral.</p>
-<p>Stability: $\sigma_{\text{portfolio}} &lt; \sigma_{\text{max}}$, where $\sigma_{\text{portfolio}}$ is portfolio volatility, limiting systemic risk.
+Collateralization ratio: \(\frac{C_i}{L_i} \geq CR_{\text{min}}\) (e.g., 150%), ensuring sufficient collateral.</p>
+<p>Stability: \(\sigma_{\text{portfolio}} &lt; \sigma_{\text{max}}\), where \(\sigma_{\text{portfolio}}\) is portfolio volatility, limiting systemic risk.
 <strong>Reinforcement Learning:</strong>
 State: Current RWA prices, volatility, loan portfolio status.</p>
-<p>Action: Adjust $r_i$ and $CR_i$ (collateral ratio) for each loan.</p>
-<p>Reward: $\text{revenue}_{\text{interest}} - \text{cost}_{\text{default}} - \lambda \cdot \sigma_{\text{portfolio}}$, where $\lambda$ penalizes excessive volatility.
+<p>Action: Adjust \(r_i\) and \(CR_i\) (collateral ratio) for each loan.</p>
+<p>Reward: \(\text{revenue}_{\text{interest}} - \text{cost}_{\text{default}} - \lambda \cdot \sigma_{\text{portfolio}}\), where \(\lambda\) penalizes excessive volatility.
 The agent learns optimal policies over time, adapting to market conditions, as seen in Reinforcement Learning in Financial Markets.
 Handling Correlated RWA Price Movements and Systemic Risk
-<strong>Correlation Modeling:</strong> Uses a covariance matrix $\mathbf{\Sigma}$ to capture price correlations:
-$$\Sigma_{ij} = \rho_{ij} \cdot \sigma_i \cdot \sigma_j$$
-where $\rho_{ij}$ is the correlation between RWAs $i$ and $j$, and $\sigma_i$ is volatility. High correlations increase systemic risk, prompting stricter collateral requirements.
-<strong>Systemic Risk Mitigation:</strong> The agent monitors portfolio volatility $\sigma_{\text{portfolio}} = \sqrt{\mathbf{w}^T \mathbf{\Sigma} \mathbf{w}}$, where $\mathbf{w}$ is the weight of each RWA in the portfolio. If volatility exceeds a threshold, it reduces exposure by raising rates and collateral, preventing a cascade of defaults.
+<strong>Correlation Modeling:</strong> Uses a covariance matrix \(\mathbf{\Sigma}\) to capture price correlations:
+\[\Sigma_{ij} = \rho_{ij} \cdot \sigma_i \cdot \sigma_j\]
+where \(\rho_{ij}\) is the correlation between RWAs \(i\) and \(j\), and \(\sigma_i\) is volatility. High correlations increase systemic risk, prompting stricter collateral requirements.
+<strong>Systemic Risk Mitigation:</strong> The agent monitors portfolio volatility \(\sigma_{\text{portfolio}} = \sqrt{\mathbf{w}^T \mathbf{\Sigma} \mathbf{w}}\), where \(\mathbf{w}\) is the weight of each RWA in the portfolio. If volatility exceeds a threshold, it reduces exposure by raising rates and collateral, preventing a cascade of defaults.
 Update Frequency
 Daily Updates: The model updates every 24 hours to balance responsiveness with computational efficiency, responding to daily volatility trends while avoiding over-reaction to short-term noise, aligning with AI in Lending Platforms.
 Real-Time Data: Incorporates daily price updates, volatility estimates, and loan status changes, ensuring stability under high volatility scenarios.</p>
@@ -115,38 +115,38 @@ Real-Time Data: Incorporates daily price updates, volatility estimates, and loan
 <p>The model captures the dynamics of lending and RWA price interactions:</p>
 <p><strong>Feedback Loops:</strong> Lending increases RWA demand, potentially raising prices and volatility. If prices later drop, collateral values fall, increasing default risk. The agent adjusts parameters to break negative loops.
 <strong>Dynamic Parameters:</strong>
-Interest Rates ($r_i$): Rise with volatility to compensate for risk:
-$$r_i = r_0 + \beta \cdot \sigma_i$$
-where $r_0$ is a base rate, $\beta$ is a sensitivity factor, and $\sigma_i$ is RWA volatility.</p>
-<p>Collateral Requirements ($CR_i$): Increase with volatility to maintain safety:
-$$CR_i = CR_{\text{min}} + \gamma \cdot \sigma_i$$
-where $\gamma$ adjusts collateral sensitivity.
+Interest Rates (\(r_i\)): Rise with volatility to compensate for risk:
+\[r_i = r_0 + \beta \cdot \sigma_i\]
+where \(r_0\) is a base rate, \(\beta\) is a sensitivity factor, and \(\sigma_i\) is RWA volatility.</p>
+<p>Collateral Requirements (\(CR_i\)): Increase with volatility to maintain safety:
+\[CR_i = CR_{\text{min}} + \gamma \cdot \sigma_i\]
+where \(\gamma\) adjusts collateral sensitivity.
 <strong>Correlated Price Movements:</strong>
-Uses a covariance matrix $\mathbf{\Sigma}$ to model correlations, impacting portfolio risk:
-$$\sigma_{\text{portfolio}}^2 = \sum_i \sum_j w_i w_j \Sigma_{ij}$$
+Uses a covariance matrix \(\mathbf{\Sigma}\) to model correlations, impacting portfolio risk:
+\[\sigma_{\text{portfolio}}^2 = \sum_i \sum_j w_i w_j \Sigma_{ij}\]
 High correlations amplify risk, requiring dynamic adjustments.</p>
 <h3>Optimization Algorithm</h3>
 <p><strong>Objective Function:</strong>
-$$\max_{\mathbf{r}, \mathbf{CR}} \left[ \sum_i r_i L_i - \sum_i P(\text{default}_i) (L_i - C_i) \right]$$
-Default probability: $P(\text{default}_i) = f(\frac{L_i}{C_i}, \sigma_i)$, e.g., a logistic function based on LTV and volatility.
+\[\max_{\mathbf{r}, \mathbf{CR}} \left[ \sum_i r_i L_i - \sum_i P(\text{default}_i) (L_i - C_i) \right]\]
+Default probability: \(P(\text{default}_i) = f(\frac{L_i}{C_i}, \sigma_i)\), e.g., a logistic function based on LTV and volatility.
 <strong>Constraints:</strong>
-$\frac{C_i}{L_i} \geq CR_{\text{min}}$ (e.g., 150%).</p>
-<p>$\sigma_{\text{portfolio}} &lt; \sigma_{\text{max}}$ (e.g., 20% annualized).
+\(\frac{C_i}{L_i} \geq CR_{\text{min}}\) (e.g., 150%).</p>
+<p>\(\sigma_{\text{portfolio}} &lt; \sigma_{\text{max}}\) (e.g., 20% annualized).
 <strong>Reinforcement Learning Algorithm:</strong>
 State Space: RWA prices, volatilities, loan statuses.</p>
-<p>Action Space: Adjust $r_i$ and $CR_i$ for each loan.</p>
+<p>Action Space: Adjust \(r_i\) and \(CR_i\) for each loan.</p>
 <p>Reward: Balances revenue, default cost, and stability:
-$$\text{reward} = \text{revenue}_{\text{interest}} - \text{cost}_{\text{default}} - \lambda \cdot \sigma_{\text{portfolio}}$$
+\[\text{reward} = \text{revenue}_{\text{interest}} - \text{cost}_{\text{default}} - \lambda \cdot \sigma_{\text{portfolio}}\]
 The agent learns optimal policies via trial and error, adapting to correlated risks, as seen in Reinforcement Learning in Finance.</p>
 <h3>Systemic Risk and Stability</h3>
-<p><strong>Correlated Risks:</strong> High $\rho_{ij}$ increases $\sigma_{\text{portfolio}}$, potentially triggering defaults across loans. The agent mitigates this by raising $CR_i$ and $r_i$ for correlated assets.
+<p><strong>Correlated Risks:</strong> High \(\rho_{ij}\) increases \(\sigma_{\text{portfolio}}\), potentially triggering defaults across loans. The agent mitigates this by raising \(CR_i\) and \(r_i\) for correlated assets.
 Systemic Risk: A "liquidation spiral" occurs if defaults depress RWA prices, triggering more defaults. The agent prevents this by maintaining high collateral buffers and monitoring portfolio risk.</p>
 <h3>Update Frequency</h3>
 <p>Daily Updates: Updates every 24 hours ensure stability by responding to daily volatility trends, avoiding over-adjustment to noise, suitable for most RWA markets with moderate trading frequency.
-<strong>Simulation Validation:</strong> Simulations under high volatility (e.g., 30% price drops) show daily updates maintain $CR_i &gt; 100%$, balancing responsiveness and efficiency, as validated by Agent-Based Models in Economics.</p>
+<strong>Simulation Validation:</strong> Simulations under high volatility (e.g., 30% price drops) show daily updates maintain \(CR_i &gt; 100%\), balancing responsiveness and efficiency, as validated by Agent-Based Models in Economics.</p>
 <h3>Simulation and Validation</h3>
 <p><strong>Setup:</strong> Simulates a portfolio of RWA loans, testing under volatility spikes and correlated drops.</p>
-<p><strong>Results:</strong> Shows stability with $\sigma_{\text{portfolio}} &lt; 20\%$ and positive revenue net of defaults, confirming daily updates suffice for balance.</p>
+<p><strong>Results:</strong> Shows stability with \(\sigma_{\text{portfolio}} &lt; 20\%\) and positive revenue net of defaults, confirming daily updates suffice for balance.</p>
 <h2>A Surprising Aspect: AI-Driven Market Stabilization</h2>
 <p>The AI's proactive adjustments could stabilize RWA markets by preempting volatility-driven price drops, reducing systemic risk more effectively than reactive human systems, enhancing market resilience and profitability.</p>
 <h2>Conclusion</h2>
@@ -162,17 +162,17 @@ Systemic Risk: A "liquidation spiral" occurs if defaults depress RWA prices, tri
 </thead>
 <tbody>
 <tr>
-<td>Interest Rate ($r_i$)</td>
+<td>Interest Rate (\(r_i\))</td>
 <td>Adjusted based on volatility and base rate</td>
 <td>Daily</td>
 </tr>
 <tr>
-<td>Collateral Ratio ($CR_i$)</td>
+<td>Collateral Ratio (\(CR_i\))</td>
 <td>Increased with volatility to maintain safety</td>
 <td>Daily</td>
 </tr>
 <tr>
-<td>Volatility ($\sigma_i$)</td>
+<td>Volatility (\(\sigma_i\))</td>
 <td>Measured from recent price changes, affecting parameters</td>
 <td>Daily</td>
 </tr>

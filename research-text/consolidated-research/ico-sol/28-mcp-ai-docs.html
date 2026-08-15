@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -90,23 +90,23 @@ This document provides a formal specification for the ContextCoin (CTX) smart co
 
 \section{State Space}
 
-The state of the system is defined by a tuple $S = (O, M, T, S_s, B, C, E, R)$, where:
+The state of the system is defined by a tuple \(S = (O, M, T, S_s, B, C, E, R)\), where:
 
 \begin{itemize}
-    \item $O$: The public key of the ICO owner. ($O \in Pubkey$)
-    \item $M$: The public key of the SPL token mint. ($M \in Pubkey$)
-    \item $T$: The total supply of CTX tokens. ($T \in \mathbb{N}$)
-    \item $S_s$: The number of CTX tokens sold during the ICO. ($S_s \in \mathbb{N}$)
-    \item $B$: The base price of a CTX token (in lamports). ($B \in \mathbb{N}$)
-    \item $C$: The scaling factor for the bonding curve. ($C \in \mathbb{N}$)
-    \item $E$: The public key of the escrow account. ($E \in Pubkey$)
-     \item $R$: Set of Resource Definitions. ($R \subset \{R_i\}$)
+    \item \(O\): The public key of the ICO owner. (\(O \in Pubkey\))
+    \item \(M\): The public key of the SPL token mint. (\(M \in Pubkey\))
+    \item \(T\): The total supply of CTX tokens. (\(T \in \mathbb{N}\))
+    \item \(S_s\): The number of CTX tokens sold during the ICO. (\(S_s \in \mathbb{N}\))
+    \item \(B\): The base price of a CTX token (in lamports). (\(B \in \mathbb{N}\))
+    \item \(C\): The scaling factor for the bonding curve. (\(C \in \mathbb{N}\))
+    \item \(E\): The public key of the escrow account. (\(E \in Pubkey\))
+     \item \(R\): Set of Resource Definitions. (\(R \subset \{R_i\}\))
         \begin{itemize}
-             \item $R_i$: A resource.  $R_i = (id, s_a, a_f)$
+             \item \(R_i\): A resource.  \(R_i = (id, s_a, a_f)\)
                  \begin{itemize}
-                     \item $id$: The unique identifier of the resource. ($id \in String$)
-                     \item $s_a$: The public key of the server which is providing the resource. ($s_a \in Pubkey$)
-                     \item $a_f$: The access fee in lamports to access the resource. ($a_f \in \mathbb{N}$)
+                     \item \(id\): The unique identifier of the resource. (\(id \in String\))
+                     \item \(s_a\): The public key of the server which is providing the resource. (\(s_a \in Pubkey\))
+                     \item \(a_f\): The access fee in lamports to access the resource. (\(a_f \in \mathbb{N}\))
                  \end{itemize}
          \end{itemize}
 
@@ -116,7 +116,7 @@ The state of the system is defined by a tuple $S = (O, M, T, S_s, B, C, E, R)$, 
 \section{Invariants}
 The following system-wide invariants must always hold true.
 \begin{enumerate}
-    \item \label{inv:1}  $0 \leq S_s \leq T$: The number of CTX tokens sold must always be within the bounds of total supply.
+    \item \label{inv:1}  \(0 \leq S_s \leq T\): The number of CTX tokens sold must always be within the bounds of total supply.
     \item \label{inv:2} The escrow balance is always greater than or equal to 0.
 \end{enumerate}
 
@@ -126,100 +126,96 @@ The following system-wide invariants must always hold true.
 \subsection{InitializeIco}
 \begin{itemize}
     \item \textbf{Pre-conditions:} The ICO has not been initialized.
-    \item \textbf{Input:}  $m \in Pubkey$, $t \in \mathbb{N}$, $b \in \mathbb{N}$, $c \in \mathbb{N}$
+    \item \textbf{Input:}  \(m \in Pubkey\), \(t \in \mathbb{N}\), \(b \in \mathbb{N}\), \(c \in \mathbb{N}\)
     \item \textbf{State Transition:}
-            $S' = (O_n, M_n, T_n, S_{s_n}, B_n, C_n, E_n, R_n)$, where:
+            \(S' = (O_n, M_n, T_n, S_{s_n}, B_n, C_n, E_n, R_n)\), where:
             \begin{itemize}
-                 \item $O_n = owner_public_key$
-                 \item $M_n = m$
-                 \item $T_n = t$
-                 \item $S_{s_n} = 0$
-                 \item $B_n = b$
-                 \item $C_n = c$
-                 \item $E_n = escrow_public_key$
-                \item $R_n = \emptyset$
+                 \item \(O_n = owner_public_key\)
+                 \item \(M_n = m\)
+                 \item \(T_n = t\)
+                 \item \(S_{s_n} = 0\)
+                 \item \(B_n = b\)
+                 \item \(C_n = c\)
+                 \item \(E_n = escrow_public_key\)
+                \item \(R_n = \emptyset\)
             \end{itemize}
 
-    \item \textbf{Post-conditions:} State $S'$ is created, and all conditions within \ref{inv:1} hold true.
+    \item \textbf{Post-conditions:} State \(S'\) is created, and all conditions within \ref{inv:1} hold true.
 \end{itemize}
 
 \subsection{BuyTokens}
 \begin{itemize}
     \item \textbf{Pre-conditions:} The ICO has been initialized.
-        \item  \textbf{Input:} $a \in \mathbb{N}$ (The lamports being paid)
+        \item  \textbf{Input:} \(a \in \mathbb{N}\) (The lamports being paid)
 
         \item  \textbf{Helper Function:}
-        $$
-        p =
+        \[p =
         \begin{cases}
             b \times (1 + \lfloor S_s / c\rfloor)
             &amp; \text{if }  \lfloor S_s / c\rfloor &gt; 0
             \\
              b &amp; \text{if }  \lfloor S_s / c\rfloor = 0
-        \end{cases}
-        $$
-    \item  \textbf{Tokens to Mint:} $t_m = \lfloor a / p \rfloor $ (the number of tokens to mint)
+        \end{cases}\]
+    \item  \textbf{Tokens to Mint:} \(t_m = \lfloor a / p \rfloor\) (the number of tokens to mint)
      \item \textbf{State Transition:}
-            $S' = (O, M, T, S_{s_n}, B, C, E, R)$, where:
+            \(S' = (O, M, T, S_{s_n}, B, C, E, R)\), where:
             \begin{itemize}
-                 \item $S_{s_n} = S_s + t_m $
+                 \item \(S_{s_n} = S_s + t_m\)
             \end{itemize}
-    \item \textbf{Post-conditions:} $S_s &lt; T$ and escrow account balance increases by $a$, tokens are minted to the buyer, all invariants hold true.
+    \item \textbf{Post-conditions:} \(S_s &lt; T\) and escrow account balance increases by \(a\), tokens are minted to the buyer, all invariants hold true.
 \end{itemize}
 
 \subsection{SellTokens}
 \begin{itemize}
     \item \textbf{Pre-conditions:} The ICO has been initialized.
-         \item  \textbf{Input:} $a \in \mathbb{N}$ (The number of tokens to sell)
+         \item  \textbf{Input:} \(a \in \mathbb{N}\) (The number of tokens to sell)
     \item  \textbf{Helper Function:}
-    $$
-    p =
+    \[p =
     \begin{cases}
     b \times (1 + \lfloor (S_s - a) / c \rfloor)
         &amp; \text{if }  \lfloor (S_s - a) / c \rfloor &gt; 0
         \\
          b &amp; \text{if }  \lfloor (S_s - a) / c \rfloor = 0
-    \end{cases}
-    $$
-    \item  \textbf{Tokens to Burn:} $t_b = a$
-    \item \textbf{SOL to Return:} $s_r = p * t_b$
+    \end{cases}\]
+    \item  \textbf{Tokens to Burn:} \(t_b = a\)
+    \item \textbf{SOL to Return:} \(s_r = p * t_b\)
     \item \textbf{State Transition:}
-             $S' = (O, M, T, S_{s_n}, B, C, E, R)$, where:
+             \(S' = (O, M, T, S_{s_n}, B, C, E, R)\), where:
             \begin{itemize}
-                 \item $S_{s_n} = S_s - t_b $
+                 \item \(S_{s_n} = S_s - t_b\)
             \end{itemize}
-    \item \textbf{Post-conditions:} $S_s \geq 0$, tokens are burned, the seller receives $s_r$ lamports from escrow, all invariants hold true.
+    \item \textbf{Post-conditions:} \(S_s \geq 0\), tokens are burned, the seller receives \(s_r\) lamports from escrow, all invariants hold true.
 \end{itemize}
 
 \subsection{WithdrawFromEscrow}
 \begin{itemize}
    \item \textbf{Pre-conditions:} The ICO has been initialized.
-      \item \textbf{Input:}  $a \in \mathbb{N}$ (The amount to withdraw in lamports).
+      \item \textbf{Input:}  \(a \in \mathbb{N}\) (The amount to withdraw in lamports).
     \item \textbf{State Transition:}
-            $S' = S$
-    \item \textbf{Post-conditions:} The owner receives $a$ lamports from the escrow account, and all invariants hold true.
+            \(S' = S\)
+    \item \textbf{Post-conditions:} The owner receives \(a\) lamports from the escrow account, and all invariants hold true.
 \end{itemize}
 
 \subsection{CreateResourceAccess}
 \begin{itemize}
     \item \textbf{Pre-conditions:} The resource state does not exist.
-    \item \textbf{Input:}  $id \in String$, $s_a \in Pubkey$, $a_f \in \mathbb{N}$
+    \item \textbf{Input:}  \(id \in String\), \(s_a \in Pubkey\), \(a_f \in \mathbb{N}\)
     \item \textbf{State Transition:}
-            $S' = (O, M, T, S_s, B, C, E, R')$, where:
+            \(S' = (O, M, T, S_s, B, C, E, R')\), where:
             \begin{itemize}
-                \item $R' = R \cup \{ (id, s_a, a_f) \}$
+                \item \(R' = R \cup \{ (id, s_a, a_f) \}\)
             \end{itemize}
-    \item \textbf{Post-conditions:} Resource state created and stored in $R$, all invariants hold true.
+    \item \textbf{Post-conditions:} Resource state created and stored in \(R\), all invariants hold true.
 \end{itemize}
 \subsection{AccessResource}
 \begin{itemize}
    \item \textbf{Pre-conditions:} The resource state must exist.
 
-        \item \textbf{Input:}  $id \in String$, $a \in \mathbb{N}$ (The amount to pay),
+        \item \textbf{Input:}  \(id \in String\), \(a \in \mathbb{N}\) (The amount to pay),
 
          \item \textbf{State Transition:}
-        $S' = S$
-      \item \textbf{Post-conditions:} The server gets a payment of $a_f$ lamports, all invariants hold true.
+        \(S' = S\)
+      \item \textbf{Post-conditions:} The server gets a payment of \(a_f\) lamports, all invariants hold true.
 \end{itemize}
 \section{Security Properties}
 
@@ -258,10 +254,10 @@ This formal specification provides a rigorous description of the ContextCoin pro
 <h3>1. Invariant Verification</h3>
 <ul>
 <li><strong>Invariant 1</strong>
-        *    <strong>Proof Goal:</strong> Prove that $0 \leq S_s \leq T$ always holds.
+        *    <strong>Proof Goal:</strong> Prove that \(0 \leq S_s \leq T\) always holds.
         *   <strong>Approach:</strong>
             *   Show that the initial state satisfies this.
-            *   Demonstrate that each operation that updates the value $S_s$ preserves this invariant by updating it appropriately.</li>
+            *   Demonstrate that each operation that updates the value \(S_s\) preserves this invariant by updating it appropriately.</li>
 <li><strong>Invariant 2</strong>
         *    <strong>Proof Goal:</strong> Prove that the escrow balance is always greater than or equal to 0.
         *   <strong>Approach:</strong>

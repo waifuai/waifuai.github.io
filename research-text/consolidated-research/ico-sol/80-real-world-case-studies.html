@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -84,23 +84,15 @@
 - Token symbol: ECOTRAN</p>
 <h4>2.2 Economic Model Implementation</h4>
 <p><strong>Token Structure:</strong>
-$$
-\text{Total Supply} = S_0 = 10,000,000 \quad \text{ECOTRAN tokens}
-$$</p>
+\[\text{Total Supply} = S_0 = 10,000,000 \quad \text{ECOTRAN tokens}\]</p>
 <p><strong>Dynamic Bonding Curve:</strong>
-$$
-P(S) = \begin{cases}
+\[P(S) = \begin{cases}
 0.25 \cdot e^{S/1,000,000} &amp; S &lt; 2,000,000 \text{ (growth phase)} \
 0.25 \cdot (S/2,000,000)^{1.5} &amp; S \geq 2,000,000 \text{ (maturity phase)}
-\end{cases}
-$$</p>
+\end{cases}\]</p>
 <p><strong>Revenue Sharing Mechanism:</strong>
-$$
-\text{Token Holder Return} = 0.3 \cdot \text{Monthly Revenue}
-$$
-$$
-\text{Service Fee Rebate} = 0.15 \cdot \text{Platform Fee}
-$$</p>
+\[\text{Token Holder Return} = 0.3 \cdot \text{Monthly Revenue}\]
+\[\text{Service Fee Rebate} = 0.15 \cdot \text{Platform Fee}\]</p>
 <h4>2.3 Stakeholder Economic Incentives</h4>
 <p><strong>Customer Benefits:</strong>
 - Volume-based discounts through token staking
@@ -151,16 +143,10 @@ $$</p>
 - Current interest rates: 15-25% for unsecured loans</p>
 <h4>3.2 Tokenized Finance Architecture</h4>
 <p><strong>Asset Tokenization Framework:</strong>
-$$
-\text{Farm Asset Token} (FAT) = \frac{\text{Crop Revenue Share}}{\text{Bonding Curve Price}}
-$$
-$$
-\text{Value Backing} = 0.65 \cdot \text{Farm Equipment Value} + 0.35 \cdot \text{Future Revenue}
-$$</p>
+\[\text{Farm Asset Token} (FAT) = \frac{\text{Crop Revenue Share}}{\text{Bonding Curve Price}}\]
+\[\text{Value Backing} = 0.65 \cdot \text{Farm Equipment Value} + 0.35 \cdot \text{Future Revenue}\]</p>
 <p><strong>Dynamic Credit Scoring:</strong>
-$$
-Credit Score_t = \alpha \cdot \text{Historical Performance} + \beta \cdot \text{Token Staking} + \gamma \cdot \text{Community Rating}
-$$
+\[Credit Score_t = \alpha \cdot \text{Historical Performance} + \beta \cdot \text{Token Staking} + \gamma \cdot \text{Community Rating}\]
 where coefficients adjust based on seasonal factors.</p>
 <p><strong>Supply Chain Smart Contracts:</strong>
 {
@@ -182,24 +168,16 @@ collateral: "Equipment Token"
 - Income stability: Reduced seasonal income variation by 40%</p>
 <h4>3.4 Environmental and Social Benefits</h4>
 <p><strong>Sustainable Farming Incentives:</strong>
-$$
-\text{Sustainability Bonus} = 0.15 \cdot \text{Organic Certification Score}
-$$
-$$
-\text{Community Impact Score} = \frac{\text{Local Re-investment}}{\text{Total Earnings}} \times 100\%
-$$</p>
+\[\text{Sustainability Bonus} = 0.15 \cdot \text{Organic Certification Score}\]
+\[\text{Community Impact Score} = \frac{\text{Local Re-investment}}{\text{Total Earnings}} \times 100\%\]</p>
 <p><strong>Measured Outcomes:</strong>
 - Organic certification adoption: 340% increase
 - Local business investment: $2.1M additional capital
 - Employment generation: 1,200 new jobs created</p>
 <h4>3.5 Risk Management and Regulatory Navigation</h4>
 <p><strong>Counterparty Risk Mitigation:</strong>
-$$
-\text{Insurance Pool} = \sum_{i=1}^{N} \frac{\text{Token Stake}_i \cdot \text{Farm Rating}_i}{\text{Total System Stake}}
-$$
-$$
-\text{Loss Absorption} = 0.8 \times \text{Pool Value}
-$$</p>
+\[\text{Insurance Pool} = \sum_{i=1}^{N} \frac{\text{Token Stake}_i \cdot \text{Farm Rating}_i}{\text{Total System Stake}}\]
+\[\text{Loss Absorption} = 0.8 \times \text{Pool Value}\]</p>
 <p><strong>Regulatory Compliance Framework:</strong>
 - Local cryptocurrency licensing obtained
 - Banking sector integration through partnerships
@@ -210,41 +188,25 @@ $$</p>
 2. <strong>Phase 2:</strong> Tanzania and Uganda addition (target: 12,800 farmers)
 3. <strong>Phase 3:</strong> West Africa consolidation (target: 128,000 farmers)</p>
 <p><strong>Network Effects Quantification:</strong>
-$$
-\text{Platform Value} \propto (\text{Active Farmers})^{1.4}
-$$
-$$
-\text{Current Value}: \$8.2M \rightarrow \text{Projected Value at Scale}: \$156M
-$$</p>
+\[\text{Platform Value} \propto (\text{Active Farmers})^{1.4}\]
+\[\text{Current Value}: \8.2M \rightarrow \text{Projected Value at Scale}: \156M\]</p>
 <h3>4. Case Study 3: Environmental Impact Tokenization</h3>
 <h4>4.1 Project Overview: TerraCredit Network</h4>
 <p>TerraCredit Network creates a global marketplace for carbon credits and biodiversity preservation. The platform was launched in partnership with environmental NGOs and operates across 15 countries, focusing on rainforest protection and renewable energy projects.</p>
 <h4>4.2 Environmental Asset Tokenization</h4>
 <p><strong>Carbon Credit Token (CCT):</strong>
-$$
-CCT_{\text{value}} = \frac{\text{Vintage Provenance} \cdot \text{Additionality Factor} \cdot \text{Project Rating}}{1,000}
-$$
-$$
-\text{Token Supply} = \frac{\text{Annual Certified Sequestration}}{\text{Vintage Duration}} \times \text{Project Duration}
-$$</p>
+\[CCT_{\text{value}} = \frac{\text{Vintage Provenance} \cdot \text{Additionality Factor} \cdot \text{Project Rating}}{1,000}\]
+\[\text{Token Supply} = \frac{\text{Annual Certified Sequestration}}{\text{Vintage Duration}} \times \text{Project Duration}\]</p>
 <p><strong>Bioprotection Asset Token (BAT):</strong>
-$$
-BAT = \text{Hectare Protected} \times \text{Biodiversity Score} \times 10
-$$
+\[BAT = \text{Hectare Protected} \times \text{Biodiversity Score} \times 10\]
 where biodiversity score ranges 0.1 to 1.0 based on species richness.</p>
 <h4>4.3 Market Dynamics and Price Discovery</h4>
 <p><strong>Dynamic Pricing Mechanism:</strong>
-$$
-P_t^{CCT} = P_0 \cdot e^{\alpha \cdot (\text{Global Demand} - \text{Supply Buffer}) \cdot t}
-$$
+\[P_t^{CCT} = P_0 \cdot e^{\alpha \cdot (\text{Global Demand} - \text{Supply Buffer}) \cdot t}\]
 where (\alpha) adjusts seasonally based on climate policy developments.</p>
 <p><strong>Volatility Management:</strong>
-$$
-\text{Price Floor} = \text{Long-term Carbon Price} \times 0.8
-$$
-$$
-\text{Price Ceiling} = \text{Long-term Carbon Price} \times 1.4
-$$</p>
+\[\text{Price Floor} = \text{Long-term Carbon Price} \times 0.8\]
+\[\text{Price Ceiling} = \text{Long-term Carbon Price} \times 1.4\]</p>
 <h4>4.4 Quantitative Environmental Impact</h4>
 <p><strong>Carbon Sequestration Results (Year 1):</strong>
 - Acres under protection: 42,500 hectares
@@ -270,12 +232,8 @@ Table 3: Environmental Impact Metrics
 | Project Sustainability | N/A | 94% success rate | New capability |</p>
 <h4>4.6 Integration with ESG Reporting</h4>
 <p><strong>Automated Sustainability Reporting:</strong>
-$$
-\text{Total Environmental Impact} = \sum \text{CCT Tokens Retired} \times \text{Sequestration Rate}
-$$
-$$
-\text{Social Impact Coefficient} = \frac{\text{Community Jobs Created}}{\text{Implementation Cost}} \times 10,000
-$$</p>
+\[\text{Total Environmental Impact} = \sum \text{CCT Tokens Retired} \times \text{Sequestration Rate}\]
+\[\text{Social Impact Coefficient} = \frac{\text{Community Jobs Created}}{\text{Implementation Cost}} \times 10,000\]</p>
 <p><strong>Integration with Traditional Markets:</strong>
 - Partnership with NYSE-listed ESG funds
 - Compliance with Article 6 of Paris Agreement
@@ -290,28 +248,16 @@ $$</p>
 - Transaction volume target: $50M annually</p>
 <h4>5.2 Circular Economic Design</h4>
 <p><strong>Local Transaction Mechanism:</strong>
-$$
-\text{BCT Purchase} = \frac{\text{USD Amount}}{\text{Dynamic Peg Rate}}
-$$
-$$
-\text{Peg Rate} = P_0 \cdot (0.7 + 0.3 \cdot \text{Community Velocity})
-$$
+\[\text{BCT Purchase} = \frac{\text{USD Amount}}{\text{Dynamic Peg Rate}}\]
+\[\text{Peg Rate} = P_0 \cdot (0.7 + 0.3 \cdot \text{Community Velocity})\]
 where community velocity measures local economic circulation rate.</p>
 <p><strong>Business Financing Model:</strong>
-$$
-\text{Loan Amount} = \min(100,000 \text{ BCT}, 2.5 \times \text{Annual Revenue})
-$$
-$$
-\text{Interest Rate} = 0.05 + 0.02 \times \text{Community Credit Score}
-$$</p>
+\[\text{Loan Amount} = \min(100,000 \text{ BCT}, 2.5 \times \text{Annual Revenue})\]
+\[\text{Interest Rate} = 0.05 + 0.02 \times \text{Community Credit Score}\]</p>
 <h4>5.3 Economic Multiplier Effects</h4>
 <p><strong>Local Economic Impact:</strong>
-$$
-\text{Multiplier Effect} = 1 + \frac{\text{Leakage Rate Before}}{1 - \text{Marginal Propensity to Consume Locally}}
-$$
-$$
-\text{Measured Multiplier}: 2.8\times (\text{15\% currency retention locally})
-$$</p>
+\[\text{Multiplier Effect} = 1 + \frac{\text{Leakage Rate Before}}{1 - \text{Marginal Propensity to Consume Locally}}\]
+\[\text{Measured Multiplier}: 2.8\times (\text{15\% currency retention locally})\]</p>
 <p>Table 4: Community Economic Metrics
 | Metric Period | Pre-Implementation | Month 12 | Change |
 |---------------|---------------- ---|----------|--------|
@@ -346,19 +292,11 @@ $$</p>
 | System Integration | 91% | API-first approach |</p>
 <h4>6.3 Economic Impact Quantification</h4>
 <p><strong>Aggregate Economic Benefits:</strong>
-$$
-\text{Total Economic Value Created} = \$167.2M
-$$
-$$
-\text{Average ROI} = 4.2 : 1 \quad (\text{invested funds})
-$$
-$$
-\text{Employment Impact} = 3,600 \quad \text{new jobs}
-$$</p>
+\[\text{Total Economic Value Created} = \167.2M\]
+\[\text{Average ROI} = 4.2 : 1 \quad (\text{invested funds})\]
+\[\text{Employment Impact} = 3,600 \quad \text{new jobs}\]</p>
 <p><strong>Risk-Adjusted Performance:</strong>
-$$
-\text{Sharpe Ratio}_{\text{tokenized}} = 2.3 \quad \text{(vs. traditional 1.1)}
-$$</p>
+\[\text{Sharpe Ratio}_{\text{tokenized}} = 2.3 \quad \text{(vs. traditional 1.1)}\]</p>
 <h3>7. Policy Recommendations and Regulatory Framework</h3>
 <h4>7.1 Regulatory Environment Assessment</h4>
 <p><strong>Favorable Conditions:</strong>
@@ -367,9 +305,7 @@ $$</p>
 - Supportive innovation policies
 - Strong property rights enforcement</p>
 <p><strong>Recommendation Framework for Policymakers:</strong></p>
-<p>$$
-\text{Regulatory Score} = w_1 \cdot \text{Legislative Clarity} + w_2 \cdot \text{Institutional Capacity} + w_3 \cdot \text{Innovation Support}
-$$
+<p>\[\text{Regulatory Score} = w_1 \cdot \text{Legislative Clarity} + w_2 \cdot \text{Institutional Capacity} + w_3 \cdot \text{Innovation Support}\]
 where weights reflect the critical regulatory dimensions for tokenized economies.</p>
 <h4>7.2 International Policy Recommendations</h4>
 <p><strong>Global Standards Development:</strong>

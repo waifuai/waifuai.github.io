@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -75,180 +75,180 @@ Bayesian Optimization (BO) is a powerful technique for optimizing objectives in 
 26. Bayesian Optimization for AbundanceCoin ICO Cost Function
 Problem Statement:
 In the AbundanceCoin Initial Coin Offering (ICO), the price
-$P(S)$
+\(P(S)\)
  follows a linear bonding curve:
-$$P(S) = m S + b$$
-$S$
+\[P(S) = m S + b\]
+\(S\)
  is the circulating supply.
-$m$
+\(m\)
  is the slope, representing the price increase per unit supply.
-$b$
+\(b\)
  is the base price when supply is zero.
 The total cost to purchase
-$\Delta S$
+\(\Delta S\)
  tokens from supply
-$S$
+\(S\)
  is:
-$$C(m, b) = \int_{S}^{S + \Delta S} (m s + b) \, ds = \frac{m}{2} (\Delta S)^2 + (m S + b) \Delta S$$</p>
+\[C(m, b) = \int_{S}^{S + \Delta S} (m s + b) \, ds = \frac{m}{2} (\Delta S)^2 + (m S + b) \Delta S\]</p>
 <p>The goal is to maximize
-$C(m, b)$
+\(C(m, b)\)
  (e.g., revenue for the ICO issuer) by choosing optimal
-$m$
+\(m\)
  and
-$b$
+\(b\)
  within bounds
-$m \in [m_{\text{min}}, m_{\text{max}}]$
+\(m \in [m_{\text{min}}, m_{\text{max}}]\)
 ,
-$b \in [b_{\text{min}}, b_{\text{max}}]$
+\(b \in [b_{\text{min}}, b_{\text{max}}]\)
 , assuming
-$S$
+\(S\)
  and
-$\Delta S$
+\(\Delta S\)
  are fixed.
 Use Bayesian Optimization to find
-$(m^*, b^*)$
+\((m^*, b^*)\)
  that maximizes
-$C(m, b)$
+\(C(m, b)\)
 .
 Solution:
 Objective Function:
-$$C(m, b) = \frac{m}{2} (\Delta S)^2 + (m S + b) \Delta S$$
+\[C(m, b) = \frac{m}{2} (\Delta S)^2 + (m S + b) \Delta S\]
 Gaussian Process Surrogate:
 Model
-$C(m, b)$
+\(C(m, b)\)
  with a GP:
-$$C(m, b) \sim \mathcal{GP}(\mu(m, b), k((m, b), (m', b')))$$</p>
+\[C(m, b) \sim \mathcal{GP}(\mu(m, b), k((m, b), (m', b')))\]</p>
 <p>Mean:
-$\mu(m, b) = 0$
+\(\mu(m, b) = 0\)
  (initially zero-centered).
 Kernel: Squared Exponential,
-$$k((m, b), (m', b')) = \sigma_f^2 \exp\left( -\frac{(m - m')^2}{2 l_m^2} - \frac{(b - b')^2}{2 l_b^2} \right)$$
+\[k((m, b), (m', b')) = \sigma_f^2 \exp\left( -\frac{(m - m')^2}{2 l_m^2} - \frac{(b - b')^2}{2 l_b^2} \right)\]
 .
 BO Algorithm:
 Initialize: Evaluate
-$C(m, b)$
+\(C(m, b)\)
  at
-$n_0$
+\(n_0\)
  initial points (e.g., Latin Hypercube Sampling).
 Fit GP: For observed data
-$D = { (m_i, b_i), C_i }$
+\(D = { (m_i, b_i), C_i }\)
 :
 Posterior mean:
-$\mu(m, b) = k(m, b, X) [K(X, X) + \sigma_n^2 I]^{-1} C$
+\(\mu(m, b) = k(m, b, X) [K(X, X) + \sigma_n^2 I]^{-1} C\)
 Posterior variance:
-$$\sigma^2(m, b) = k(m, b, m, b) - k(m, b, X) [K(X, X) + \sigma_n^2 I]^{-1} k(X, m, b)$$</p>
+\[\sigma^2(m, b) = k(m, b, m, b) - k(m, b, X) [K(X, X) + \sigma_n^2 I]^{-1} k(X, m, b)\]</p>
 <p>where
-$X = [(m_1, b_1), \ldots]^T$
+\(X = [(m_1, b_1), \ldots]^T\)
 ,
-$K(X, X)$
+\(K(X, X)\)
  is the kernel matrix,
-$\sigma_n^2$
+\(\sigma_n^2\)
  is noise variance.
 Acquisition Function: Use Expected Improvement (EI):
-$$EI(m, b) = \mathbb{E}[\max(0, C(m, b) - C_{\text{best}})] = (\mu(m, b) - C_{\text{best}}) \Phi\left( \frac{\mu(m, b) - C_{\text{best}}}{\sigma(m, b)} \right) + \sigma(m, b) \phi\left( \frac{\mu(m, b) - C_{\text{best}}}{\sigma(m, b)} \right)$$
+\[EI(m, b) = \mathbb{E}[\max(0, C(m, b) - C_{\text{best}})] = (\mu(m, b) - C_{\text{best}}) \Phi\left( \frac{\mu(m, b) - C_{\text{best}}}{\sigma(m, b)} \right) + \sigma(m, b) \phi\left( \frac{\mu(m, b) - C_{\text{best}}}{\sigma(m, b)} \right)\]
 where
-$\Phi$
+\(\Phi\)
  and
-$\phi$
+\(\phi\)
  are the CDF and PDF of the standard normal,
-$C_{\text{best}}$
+\(C_{\text{best}}\)
  is the best observed value.
 Optimize: Select
-$(m_{t+1}, b_{t+1}) = \arg\max EI(m, b)$
+\((m_{t+1}, b_{t+1}) = \arg\max EI(m, b)\)
 , evaluate
-$C$
+\(C\)
 , update
-$D$
+\(D\)
 , and repeat.
 Output: Converge to
-$(m^*, b^*)$
+\((m^*, b^*)\)
 .
 27. Bayesian Optimization for Tokenized Economy Exchange Rate Stability
 Problem Statement:
 In a tokenized economy with Token A and Token B, prices are:
-$$P_A(S_A) = m_A S_A + b_A$$
+\[P_A(S_A) = m_A S_A + b_A\]
 , where
-$S_A$
+\(S_A\)
  is Token A's supply,
-$m_A$
+\(m_A\)
  is the slope, and
-$b_A$
+\(b_A\)
  is the base price.
-$$P_B(S_B) = m_B S_B + b_B$$
+\[P_B(S_B) = m_B S_B + b_B\]
 , with similar definitions for
-$S_B$
+\(S_B\)
 ,
-$m_B$
+\(m_B\)
 , and
-$b_B$
+\(b_B\)
 .
 The exchange rate is
-$R = \frac{P_A(S_A)}{P_B(S_B)}$
+\(R = \frac{P_A(S_A)}{P_B(S_B)}\)
 . Given fixed supplies
-$S_A, S_B$
+\(S_A, S_B\)
 , the goal is to minimize the variance of
-$R$
+\(R\)
  under perturbations (e.g., small supply changes), approximated as:
-$$f(m_A, b_A, m_B, b_B) = \left( \frac{\partial R}{\partial S_A} \right)^2 + \left( \frac{\partial R}{\partial S_B} \right)^2$$</p>
+\[f(m_A, b_A, m_B, b_B) = \left( \frac{\partial R}{\partial S_A} \right)^2 + \left( \frac{\partial R}{\partial S_B} \right)^2\]</p>
 <p>Optimize
-$m_A, b_A, m_B, b_B$
+\(m_A, b_A, m_B, b_B\)
  within bounds to minimize
-$f$
+\(f\)
 .
 Solution:
 Objective Function:
-$$R = \frac{m_A S_A + b_A}{m_B S_B + b_B}$$</p>
-<p>$$\frac{\partial R}{\partial S_A} = \frac{m_A}{m_B S_B + b_B}, \quad \frac{\partial R}{\partial S_B} = -\frac{(m_A S_A + b_A) m_B}{(m_B S_B + b_B)^2}$$</p>
-<p>$$f = \frac{m_A^2}{(m_B S_B + b_B)^2} + \frac{m_B^2 (m_A S_A + b_A)^2}{(m_B S_B + b_B)^4}$$
+\[R = \frac{m_A S_A + b_A}{m_B S_B + b_B}\]</p>
+<p>\[\frac{\partial R}{\partial S_A} = \frac{m_A}{m_B S_B + b_B}, \quad \frac{\partial R}{\partial S_B} = -\frac{(m_A S_A + b_A) m_B}{(m_B S_B + b_B)^2}\]</p>
+<p>\[f = \frac{m_A^2}{(m_B S_B + b_B)^2} + \frac{m_B^2 (m_A S_A + b_A)^2}{(m_B S_B + b_B)^4}\]
 GP and BO:
 GP:
-$f \sim \mathcal{GP}(0, k)$
+\(f \sim \mathcal{GP}(0, k)\)
 , fit to observed
-$f$
+\(f\)
  values.
 EI for minimization:
-$$EI(m_A, b_A, m_B, b_B) = (\mu - f_{\text{best}}) \Phi\left( \frac{f_{\text{best}} - \mu}{\sigma} \right) + \sigma \phi\left( \frac{f_{\text{best}} - \mu}{\sigma} \right)$$
+\[EI(m_A, b_A, m_B, b_B) = (\mu - f_{\text{best}}) \Phi\left( \frac{f_{\text{best}} - \mu}{\sigma} \right) + \sigma \phi\left( \frac{f_{\text{best}} - \mu}{\sigma} \right)\]
 .
 Iterate to find optimal parameters.
 28. Bayesian Optimization for TokenAffiliates Commission Rate
 Problem Statement:
 In the TokenAffiliates program, commission is
-$C = \alpha I$
+\(C = \alpha I\)
 , where
-$I \sim \text{Exp}(\lambda)$
+\(I \sim \text{Exp}(\lambda)\)
 , and
-$\lambda(\alpha) = k \alpha + l$
+\(\lambda(\alpha) = k \alpha + l\)
  with fixed
-$k, l$
+\(k, l\)
 . The expected earnings per investment are:
-$$E(\alpha) = \frac{\alpha}{k \alpha + l}$$</p>
+\[E(\alpha) = \frac{\alpha}{k \alpha + l}\]</p>
 <p>The goal is to maximize
-$E(\alpha)$
+\(E(\alpha)\)
  over
-$\alpha \in [\alpha_{\text{min}}, \alpha_{\text{max}}]$
+\(\alpha \in [\alpha_{\text{min}}, \alpha_{\text{max}}]\)
 , assuming evaluations are noisy due to stochastic
-$I$
+\(I\)
 .
 Solution:
 Objective Function:
-$$E(\alpha) = \frac{\alpha}{k \alpha + l}$$
+\[E(\alpha) = \frac{\alpha}{k \alpha + l}\]
 BO Process:
 GP:
-$$E(\alpha) \sim \mathcal{GP}(\mu(\alpha), k(\alpha, \alpha'))$$
+\[E(\alpha) \sim \mathcal{GP}(\mu(\alpha), k(\alpha, \alpha'))\]
 .</p>
 <p>Update GP with noisy samples
-$E(\alpha_i) + \epsilon_i$
+\(E(\alpha_i) + \epsilon_i\)
 .
 Maximize EI to find
-$\alpha^*$
+\(\alpha^*\)
 .
 Analytical Insight:
-$$\frac{dE}{d\alpha} = \frac{l}{(k \alpha + l)^2} &gt; 0$$</p>
-<p>$E(\alpha)$
+\[\frac{dE}{d\alpha} = \frac{l}{(k \alpha + l)^2} &gt; 0\]</p>
+<p>\(E(\alpha)\)
  increases with
-$\alpha$
+\(\alpha\)
 , so
-$\alpha^* = \alpha_{\text{max}}$
+\(\alpha^* = \alpha_{\text{max}}\)
  (BO confirms this).
 BO efficiently optimizes tokenized system parameters, leveraging GPs to guide exploration. Let me know if you'd like implementation details or multi-objective extensions!</p>
 </body>

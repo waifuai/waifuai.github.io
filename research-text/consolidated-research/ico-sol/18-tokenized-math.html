@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -85,21 +85,21 @@
 <li><em>c</em> be the y-intercept (a positive constant representing a reserve or base price).</li>
 </ul>
 <p>Then, the relationship between price and supply is given by:</p>
-<p><strong>Equation 1:</strong> $P = mS + c$</p>
+<p><strong>Equation 1:</strong> \(P = mS + c\)</p>
 <p><strong>2.2. Integral for Buy/Sell Price</strong></p>
 <p>To calculate the cost of buying or selling a certain amount of tokens, we need to integrate the bonding curve. Let:</p>
 <ul>
 <li>Δ<em>S</em> be the change in token supply (positive for buying, negative for selling).</li>
 <li><em>Cost</em> be the total cost to buy Δ<em>S</em> tokens.</li>
 </ul>
-<p><strong>Equation 2 (Buy):</strong> $Cost = \int_S^{S+\Delta S} (mS + c) \, dS = m(\Delta S)^2/2 + (mS + c)\Delta S$</p>
-<p><strong>Equation 3 (Sell):</strong> $Revenue = \int_{S-\Delta S}^S (mS + c) \, dS = -m(\Delta S)^2/2 + (mS + c)\Delta S$</p>
+<p><strong>Equation 2 (Buy):</strong> \(Cost = \int_S^{S+\Delta S} (mS + c) \, dS = m(\Delta S)^2/2 + (mS + c)\Delta S\)</p>
+<p><strong>Equation 3 (Sell):</strong> \(Revenue = \int_{S-\Delta S}^S (mS + c) \, dS = -m(\Delta S)^2/2 + (mS + c)\Delta S\)</p>
 <p><strong>Note:</strong>  The revenue from selling tokens is less than the cost of buying the same amount due to the shape of the bonding curve, incentivizing holding tokens.</p>
 <p><strong>2.3. Other Bonding Curve Models</strong></p>
 <p>More complex bonding curve models can be used, such as:</p>
 <ul>
-<li><strong>Sigmoid:</strong> $P = k / (1 + e^{-a(S-b)})$ (where $k$, $a$, and $b$ are constants) - This can model an initial slow price increase, followed by rapid growth and eventual price stabilization.</li>
-<li><strong>Polynomial:</strong> $P = a_n S^n + a_{n-1} S^{n-1} + \cdots + a_1 S + a_0$ - Allows for more flexible price curves.</li>
+<li><strong>Sigmoid:</strong> \(P = k / (1 + e^{-a(S-b)})\) (where \(k\), \(a\), and \(b\) are constants) - This can model an initial slow price increase, followed by rapid growth and eventual price stabilization.</li>
+<li><strong>Polynomial:</strong> \(P = a_n S^n + a_{n-1} S^{n-1} + \cdots + a_1 S + a_0\) - Allows for more flexible price curves.</li>
 </ul>
 <p>The choice of bonding curve model impacts the token's price dynamics and should be carefully considered based on the specific project's goals.</p>
 <p><strong>3. Token Utility and Demand</strong></p>
@@ -109,8 +109,8 @@
 <li><em>D</em> represent the demand for the token.</li>
 </ul>
 <p>We propose a simplified relationship:</p>
-<p><strong>Equation 4:</strong> $D = f(U)$</p>
-<p>Where $f$ is a monotonically increasing function. Higher utility leads to higher demand.</p>
+<p><strong>Equation 4:</strong> \(D = f(U)\)</p>
+<p>Where \(f\) is a monotonically increasing function. Higher utility leads to higher demand.</p>
 <p><strong>4. Interconnected ICO Ecosystem</strong></p>
 <p>The Tokenized Economy is characterized by multiple interconnected ICOs. Let:</p>
 <ul>
@@ -122,7 +122,7 @@
 </ul>
 <p><strong>4.1. Cross-ICO Demand</strong></p>
 <p>Demand for a token can be influenced by the utility of other tokens in the ecosystem. For instance, if ICO <em>i</em> offers a product that complements a product from ICO <em>j</em>, then an increase in <em>U<sub>j</sub></em> might lead to an increase in <em>D<sub>i</sub></em>.</p>
-<p><strong>Equation 5:</strong> $D_i = f(U_i) + \sum_{j \neq i} k \, g(U_i, U_j)$</p>
+<p><strong>Equation 5:</strong> \(D_i = f(U_i) + \sum_{j \neq i} k \, g(U_i, U_j)\)</p>
 <p>Where <em>g</em> is a function that models the cross-utility relationship between ICOs <em>i</em> and <em>j</em>.</p>
 <p><strong>5. Equilibrium and Stability</strong></p>
 <p>The Tokenized Economy will tend towards an equilibrium where supply and demand for each token balance. The stability of this equilibrium depends on:</p>

@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -87,7 +87,7 @@
 <h3>1. Defining the Hierarchy</h3>
 <p>We can structure the agent's decision-making process into multiple levels of a hierarchy. Here's a potential three-level hierarchy:</p>
 <ul>
-<li><strong>Level 0 (Primitive Actions):</strong> This level corresponds to the basic actions available to agents in Phase I, i.e., buying, selling, or holding tokens. The action space remains the same:  $A_i(t) = [a_{i,1}(t), ..., a_{i,M}(t)]$, where $a_{i,j}(t) \in {-1, 0, 1}$.</li>
+<li><strong>Level 0 (Primitive Actions):</strong> This level corresponds to the basic actions available to agents in Phase I, i.e., buying, selling, or holding tokens. The action space remains the same:  \(A_i(t) = [a_{i,1}(t), ..., a_{i,M}(t)]\), where \(a_{i,j}(t) \in {-1, 0, 1}\).</li>
 <li><strong>Level 1 (Skills/Options):</strong> This level introduces the concept of <strong>options</strong> or <strong>skills</strong>. An option is a temporally extended action, essentially a mini-policy that achieves a specific sub-goal. Examples of options in the Tokenized Economy include:<ul>
 <li><strong>Invest in ICO:</strong>  A policy that decides when and how much to invest in a new ICO, potentially spanning multiple time steps.</li>
 <li><strong>Liquidate Asset:</strong> A policy that determines the optimal way to sell a particular asset over time to maximize returns.</li>
@@ -96,7 +96,7 @@
 <li><strong>Form Partnership:</strong> A policy (more advanced) that seeks and negotiates partnerships with other agents.</li>
 </ul>
 </li>
-<li><strong>Level 2 (Meta-Controller):</strong> This is the highest level, responsible for selecting which option to execute at each time step. The meta-controller learns a policy $\pi_{meta}: S_i(t) \rightarrow O_i(t)$, where $O_i(t)$ is the chosen option from the set of available options.</li>
+<li><strong>Level 2 (Meta-Controller):</strong> This is the highest level, responsible for selecting which option to execute at each time step. The meta-controller learns a policy \(\pi_{meta}: S_i(t) \rightarrow O_i(t)\), where \(O_i(t)\) is the chosen option from the set of available options.</li>
 </ul>
 <h3>2. Learning Algorithms for HRL</h3>
 <p>Several HRL algorithms can be adapted for this framework, including:</p>
@@ -108,7 +108,7 @@
 <h3>3. State Representation and Abstraction</h3>
 <p>HRL requires careful consideration of state representation at each level of the hierarchy.</p>
 <ul>
-<li><strong>Level 0:</strong> The state representation remains the same as in Phase I: $S_i(t) = [B_i(t), H_{i,1}(t), ..., H_{i,M}(t), P_1(t), ..., P_M(t), \mathbf{M}(t)]$.</li>
+<li><strong>Level 0:</strong> The state representation remains the same as in Phase I: \(S_i(t) = [B_i(t), H_{i,1}(t), ..., H_{i,M}(t), P_1(t), ..., P_M(t), \mathbf{M}(t)]\).</li>
 <li><strong>Level 1 &amp; 2:</strong>  Higher levels may benefit from more abstract state representations. For example, the meta-controller might only need information about the agent's overall wealth, portfolio diversification, and high-level market trends, rather than the exact holdings of each asset. This can be achieved through <strong>state abstraction techniques</strong> that aggregate or filter the raw state information.</li>
 </ul>
 <h3>4. Reward Structures</h3>

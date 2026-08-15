@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -75,7 +75,7 @@ Below, I present equations organized by relevant subchapters, with brief explana
 <h2>Chapter 1: Introduction to Large Multimodal Transformer Models and Reinforcement Learning</h2>
 <h3>1.1.2 Key Architectural Components of Large Multimodal Transformer Models</h3>
 <p>Input Embeddings for Multimodal Data:
-$$ E_m = f_m(X_m; \theta_m), \quad m \in { \text{text}, \text{image}, \text{audio}, \dots } $$
+\[E_m = f_m(X_m; \theta_m), \quad m \in { \text{text}, \text{image}, \text{audio}, \dots }\]
 Where 
 E_m
  is the embedding for modality 
@@ -88,7 +88,7 @@ f_m
 \theta_m
  are learnable parameters.</p>
 <h3>Cross-Modal Attention Mechanism</h3>
-<p>$$ \text{Attention}(Q_m, K_n, V_n) = \text{softmax}\left(\frac{Q_m K_n^T}{\sqrt{d_k}}\right) V_n $$
+<p>\[\text{Attention}(Q_m, K_n, V_n) = \text{softmax}\left(\frac{Q_m K_n^T}{\sqrt{d_k}}\right) V_n\]
 Here, 
 Q_m
  (queries) is derived from modality 
@@ -103,7 +103,7 @@ n
 d_k
  is the dimensionality of the keys. This captures relationships across modalities.</p>
 <h3>Fusion Mechanism (e.g., Summation)</h3>
-<p>$$ H = \sum_{m} W_m E_m + b_m $$
+<p>\[H = \sum_{m} W_m E_m + b_m\]
 H
  is the fused representation, 
 W_m
@@ -114,7 +114,7 @@ m
 , combining modality-specific embeddings into a unified representation.</p>
 <h3>1.4.1 The Fundamental RL Problem</h3>
 <p>Expected Cumulative Reward:
-$$ J(\pi) = \mathbb{E}_{\pi} \left[ \sum_{t=0}^\infty \gamma^t R(s_t, a_t) \right] $$
+\[J(\pi) = \mathbb{E}_{\pi} \left[ \sum_{t=0}^\infty \gamma^t R(s_t, a_t) \right]\]
 J(\pi)
  is the objective function for policy 
 \pi
@@ -133,12 +133,12 @@ a_t
 .</p>
 <h3>1.5.1 Policy Gradient Methods</h3>
 <p>Policy Gradient Update:
-$$ \nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta} \left[ \nabla_\theta \log \pi_\theta(a_t | s_t) A(s_t, a_t) \right] $$
+\[\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta} \left[ \nabla_\theta \log \pi_\theta(a_t | s_t) A(s_t, a_t) \right]\]
 \theta
  are policy parameters, 
 \pi_\theta(a_t | s_t)
  is the policy probability, and 
-$$ A(s_t, a_t) = Q(s_t, a_t) - V(s_t) $$
+\[A(s_t, a_t) = Q(s_t, a_t) - V(s_t)\]
  is the advantage function, estimating the benefit of action 
 a_t
  over the baseline value 
@@ -147,7 +147,7 @@ V(s_t)
 <h2>Chapter 2: Fundamentals of Multimodal Data Representation and Preprocessing</h2>
 <h3>2.3.1 Normalization Techniques</h3>
 <h4>Min-Max Scaling</h4>
-<p>$$ x' = \frac{x - x_{\min}}{x_{\max} - x_{\min}} $$
+<p>\[x' = \frac{x - x_{\min}}{x_{\max} - x_{\min}}\]
 Scales feature 
 x
  to [0, 1] based on minimum 
@@ -156,7 +156,7 @@ x_{\min}
 x_{\max}
  values across the dataset.</p>
 <h4>Z-Score Normalization</h4>
-<p>$$ x' = \frac{x - \mu}{\sigma} $$
+<p>\[x' = \frac{x - \mu}{\sigma}\]
 Standardizes feature 
 x
  to zero mean (
@@ -167,7 +167,7 @@ x
 <h2>Chapter 3: Fine-tuning Multimodal Transformers for Specific Tasks</h2>
 <h3>3.2.1 Reward-based Loss Functions</h3>
 <h4>Mean Squared Error (MSE) for Reward Prediction</h4>
-<p>$$ L_{\text{MSE}} = \frac{1}{N} \sum_{i=1}^N (R_i - \hat{R}_i)^2 $$
+<p>\[L_{\text{MSE}} = \frac{1}{N} \sum_{i=1}^N (R_i - \hat{R}_i)^2\]
 R_i
  is the actual cumulative reward, 
 \hat{R}_i
@@ -175,14 +175,14 @@ R_i
 N
  is the number of samples.</p>
 <h4>Temporal Difference (TD) Loss</h4>
-<p>$$ L_{\text{TD}} = \mathbb{E} \left[ (R_t + \gamma V(s_{t+1}) - V(s_t))^2 \right] $$
+<p>\[L_{\text{TD}} = \mathbb{E} \left[ (R_t + \gamma V(s_{t+1}) - V(s_t))^2 \right]\]
 Penalizes the difference between the TD target 
 R_t + \gamma V(s_{t+1})
  and the current value estimate 
 V(s_t)
 .</p>
 <h4>Advantage Actor-Critic (A2C) Loss</h4>
-<p>$$ L_{\text{A2C}} = - \mathbb{E} \left[ \log \pi_\theta(a_t | s_t) A(s_t, a_t) \right] + \alpha L_{\text{TD}} $$
+<p>\[L_{\text{A2C}} = - \mathbb{E} \left[ \log \pi_\theta(a_t | s_t) A(s_t, a_t) \right] + \alpha L_{\text{TD}}\]
 Combines policy loss (first term) with value function loss (
 L_{\text{TD}}
 ), weighted by 
@@ -190,7 +190,7 @@ L_{\text{TD}}
 .</p>
 <h3>3.6.1 Multimodal Embeddings</h3>
 <h4>Cross-Modal Attention Embedding</h4>
-<p>$$ E_{\text{fused}} = \sum_{m} \text{Attention}(Q_m, K_{\text{all}}, V_{\text{all}}) W_m $$
+<p>\[E_{\text{fused}} = \sum_{m} \text{Attention}(Q_m, K_{\text{all}}, V_{\text{all}}) W_m\]
 Q_m
  queries from modality 
 m
@@ -202,8 +202,8 @@ W_m
 <h2>Chapter 4: Reinforcement Learning Strategies for Optimization</h2>
 <h3>4.1.2 Policy Gradient Approaches</h3>
 <h4>Proximal Policy Optimization (PPO) Objective</h4>
-<p>$$ L_{\text{PPO}}(\theta) = \mathbb{E} \left[ \min \left( r_t(\theta) A_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) A_t \right) \right] $$
-$$ r_t(\theta) = \frac{\pi_\theta(a_t | s_t)}{\pi_{\theta_{\text{old}}}(a_t | s_t)} $$
+<p>\[L_{\text{PPO}}(\theta) = \mathbb{E} \left[ \min \left( r_t(\theta) A_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) A_t \right) \right]\]
+\[r_t(\theta) = \frac{\pi_\theta(a_t | s_t)}{\pi_{\theta_{\text{old}}}(a_t | s_t)}\]
  is the probability ratio, 
 A_t
  is the advantage, and 
@@ -211,19 +211,19 @@ A_t
  is a clipping parameter to stabilize updates.</p>
 <h3>4.2.1 Actor-Critic Methods</h3>
 <h4>Actor Loss</h4>
-<p>$$ L_{\text{actor}} = - \mathbb{E} \left[ \log \pi_\theta(a_t | s_t) \hat{A}_t \right] $$
+<p>\[L_{\text{actor}} = - \mathbb{E} \left[ \log \pi_\theta(a_t | s_t) \hat{A}_t \right]\]
 Updates the policy to maximize expected advantage 
 \hat{A}_t
  estimated by the critic.</p>
 <h4>Critic Loss</h4>
-<p>$$ L_{\text{critic}} = \mathbb{E} \left[ (R_t + \gamma V_\phi(s_{t+1}) - V_\phi(s_t))^2 \right] $$
+<p>\[L_{\text{critic}} = \mathbb{E} \left[ (R_t + \gamma V_\phi(s_{t+1}) - V_\phi(s_t))^2 \right]\]
 V_\phi
  is the critic's value function parameterized by 
 \phi
 .</p>
 <h3>4.3.3 Reward Shaping</h3>
 <h4>Shaped Reward Function</h4>
-<p>$$ R_{\text{shaped}}(s_t, a_t) = R_{\text{env}}(s_t, a_t) + \beta \Phi(s_t, a_t) $$
+<p>\[R_{\text{shaped}}(s_t, a_t) = R_{\text{env}}(s_t, a_t) + \beta \Phi(s_t, a_t)\]
 Adds a shaping term 
 \Phi(s_t, a_t)
  (e.g., potential-based function) to the environment reward 
@@ -233,14 +233,14 @@ R_{\text{env}}
 .</p>
 <h3>4.4.4 Approximation Methods</h3>
 <h4>Value Function Approximation (e.g., DQN)</h4>
-<p>$$ L(\theta) = \mathbb{E} \left[ (R_t + \gamma \max_{a'} Q_\theta(s_{t+1}, a') - Q_\theta(s_t, a_t))^2 \right] $$
+<p>\[L(\theta) = \mathbb{E} \left[ (R_t + \gamma \max_{a'} Q_\theta(s_{t+1}, a') - Q_\theta(s_t, a_t))^2 \right]\]
 Updates Q-function parameters 
 \theta
  to minimize TD error.</p>
 <h2>Chapter 5: Advanced Techniques and Applications</h2>
 <h3>5.1.1 Transformers for Policy Representation</h3>
 <h4>Policy Output from Transformer</h4>
-<p>$$ \pi_\theta(a_t | s_t) = \text{softmax}(W_o H_t + b_o) $$
+<p>\[\pi_\theta(a_t | s_t) = \text{softmax}(W_o H_t + b_o)\]
 H_t
  is the transformer's output representation of state 
 s_t
@@ -249,11 +249,11 @@ W_o, b_o
  project it to action probabilities.</p>
 <h3>5.2.2 Uncertainty Quantification</h3>
 <h4>Monte Carlo Dropout Variance</h4>
-<p>$$ \text{Var}(y) = \frac{1}{T} \sum_{t=1}^T (f_\theta(s_t) - \bar{y})^2 $$
+<p>\[\text{Var}(y) = \frac{1}{T} \sum_{t=1}^T (f_\theta(s_t) - \bar{y})^2\]
 Estimates epistemic uncertainty by averaging 
 T
  forward passes with dropout, where 
-$$ \bar{y} = \frac{1}{T} \sum_t f_\theta(s_t) $$
+\[\bar{y} = \frac{1}{T} \sum_t f_\theta(s_t)\]
 .</p>
 <h2>Notes</h2>
 <h3>Scope Limitation: Due to the extensive content, I've selected subchapters where equations are most directly applicable (e.g., RL algorithms, transformer mechanics, loss functions). Sections like ethical considerations or case studies are less suited for equations and are omitted here.</h3>

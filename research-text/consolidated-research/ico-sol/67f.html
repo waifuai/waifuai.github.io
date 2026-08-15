@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -79,7 +79,7 @@
 - <strong>Adaptive Collateralization Ratio:</strong> Dynamically set the over-collateralization level to ensure the stablecoin remains fully backed, adapting to the changing risk profiles of RWAs.</p>
 <p><strong>Implementation:</strong>
 - <strong>Risk Scoring System:</strong> Each RWA receives a risk score derived from quantitative models (e.g., volatility forecasts, liquidity ratios) and qualitative factors (e.g., asset type, jurisdiction). For example, a tokenized real estate asset in a volatile market might score higher risk than a government bond-backed token.
-- <strong>Threshold-Based Adjustments:</strong> Predefined risk thresholds trigger automatic actions, such as rebalancing the portfolio or increasing the collateralization ratio (e.g., from $150\%$ to $200\%$ if volatility exceeds a certain level).
+- <strong>Threshold-Based Adjustments:</strong> Predefined risk thresholds trigger automatic actions, such as rebalancing the portfolio or increasing the collateralization ratio (e.g., from \(150\%\) to \(200\%\) if volatility exceeds a certain level).
 - <strong>Machine Learning Integration:</strong> Predictive analytics forecast RWA performance, enabling proactive adjustments to the portfolio.</p>
 <p><strong>Example:</strong> If a tokenized commodity asset experiences a liquidity drop during a market downturn, the model reduces its portfolio weight and increases the collateralization ratio to mitigate potential under-collateralization risks.</p>
 <h3>2. Multi-Layered Risk Mitigation System</h3>
@@ -87,7 +87,7 @@
 <p><strong>Components:</strong></p>
 <ul>
 <li><strong>Automated Liquidations:</strong></li>
-<li><strong>Function:</strong> Liquidate collateral when the collateralization ratio falls below a critical threshold (e.g., $110\%$).</li>
+<li><strong>Function:</strong> Liquidate collateral when the collateralization ratio falls below a critical threshold (e.g., \(110\%\)).</li>
 <li>
 <p><strong>Implementation:</strong> Smart contracts, powered by decentralized oracles, execute liquidations based on real-time price feeds, ensuring transparency and tamper-resistance.</p>
 </li>
@@ -96,7 +96,7 @@
 </li>
 <li><strong>Function:</strong> Pause trading or collateral adjustments during extreme market volatility to prevent cascading liquidations or panic selling.</li>
 <li>
-<p><strong>Implementation:</strong> Triggered by volatility metrics (e.g., a $20\%$ price drop within an hour), with automatic reactivation once conditions stabilize.</p>
+<p><strong>Implementation:</strong> Triggered by volatility metrics (e.g., a \(20\%\) price drop within an hour), with automatic reactivation once conditions stabilize.</p>
 </li>
 <li>
 <p><strong>Decentralized Insurance Pools:</strong></p>
@@ -134,7 +134,7 @@
 <li><strong>Mathematical Modeling:</strong></li>
 <li><strong>Approach:</strong> Build models for each component (e.g., collateralization dynamics, liquidation triggers) and their interactions.</li>
 <li>
-<p><strong>Technique:</strong> Apply control theory to assess stability and predict responses to external shocks (e.g., a sudden $30\%$ drop in RWA values).</p>
+<p><strong>Technique:</strong> Apply control theory to assess stability and predict responses to external shocks (e.g., a sudden \(30\%\) drop in RWA values).</p>
 </li>
 <li>
 <p><strong>Simulation-Based Testing:</strong></p>
@@ -153,14 +153,14 @@
 <li>
 <p><strong>Formal Methods:</strong></p>
 </li>
-<li><strong>Approach:</strong> Define critical properties (e.g., "the collateralization ratio never falls below $100\%$") using formal specification languages like TLA+.</li>
+<li><strong>Approach:</strong> Define critical properties (e.g., "the collateralization ratio never falls below \(100\%\)") using formal specification languages like TLA+.</li>
 <li><strong>Technique:</strong> Use model checking or theorem proving to verify these properties hold under all possible conditions.</li>
 </ul>
 <p><strong>Hybrid Approach:</strong>
 - <strong>Component-Level Verification:</strong> Mathematical modeling and formal methods ensure individual mechanisms (e.g., liquidation logic) function correctly.
 - <strong>System-Level Validation:</strong> Simulations test the integrated system, incorporating agent behaviors and market dynamics.
 - <strong>Incentive Compatibility:</strong> Game theory ensures governance decisions align with long-term stability.</p>
-<p><strong>Example:</strong> A simulation might reveal that in a $50\%$ market crash, the collateralization ratio stays above $120\%$, with liquidations occurring in only $5\%$ of cases. Game theory analysis confirms that agents avoid destabilizing actions due to aligned incentives.</p>
+<p><strong>Example:</strong> A simulation might reveal that in a \(50\%\) market crash, the collateralization ratio stays above \(120\%\), with liquidations occurring in only \(5\%\) of cases. Game theory analysis confirms that agents avoid destabilizing actions due to aligned incentives.</p>
 <h2>Summary</h2>
 <p>This RWA-backed stablecoin design integrates:</p>
 <ul>

@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -78,89 +78,61 @@
 <hr />
 <h3><strong>2. Problem Formulation</strong></h3>
 <p>We model the economic system as a <strong>Markov Decision Process (MDP)</strong> with the following components:</p>
-<h4><strong>2.1. State Space ($S_i(t)$)</strong></h4>
-<p>The state of agent $i$ at time $t$ includes:<br />
-$$
-S_i(t) = \left[ B_i(t), H_{i,1}(t), H_{i,2}(t), \dots, H_{i,M}(t), P_1(t), P_2(t), \dots, P_M(t), \mathbf{M}(t) \right]
-$$<br />
+<h4><strong>2.1. State Space (\(S_i(t)\))</strong></h4>
+<p>The state of agent \(i\) at time \(t\) includes:<br />
+\[S_i(t) = \left[ B_i(t), H_{i,1}(t), H_{i,2}(t), \dots, H_{i,M}(t), P_1(t), P_2(t), \dots, P_M(t), \mathbf{M}(t) \right]\]<br />
 where:<br />
-- $B_i(t)$: Balance of agent $i$.<br />
-- $H_{i,j}(t)$: Holdings of asset $j$ by agent $i$.<br />
-- $P_j(t)$: Price of asset $j$.<br />
-- $\mathbf{M}(t)$: Market conditions (e.g., total supply, demand, external shocks).</p>
-<h4><strong>2.2. Action Space ($A_i(t)$)</strong></h4>
-<p>The action of agent $i$ at time $t$ includes buying, selling, or holding assets:<br />
-$$
-A_i(t) = \left[ a_{i,1}(t), a_{i,2}(t), \dots, a_{i,M}(t) \right]
-$$<br />
-where $a_{i,j}(t) \in {-1, 0, 1}$ represents selling, holding, or buying asset $j$.</p>
-<h4><strong>2.3. Reward Function ($r_i(t)$)</strong></h4>
-<p>The reward for agent $i$ is based on its utility function:<br />
-$$
-r_i(t) = U_i(B_i(t), H_{i,j}(t), P_j(t))
-$$<br />
+- \(B_i(t)\): Balance of agent \(i\).<br />
+- \(H_{i,j}(t)\): Holdings of asset \(j\) by agent \(i\).<br />
+- \(P_j(t)\): Price of asset \(j\).<br />
+- \(\mathbf{M}(t)\): Market conditions (e.g., total supply, demand, external shocks).</p>
+<h4><strong>2.2. Action Space (\(A_i(t)\))</strong></h4>
+<p>The action of agent \(i\) at time \(t\) includes buying, selling, or holding assets:<br />
+\[A_i(t) = \left[ a_{i,1}(t), a_{i,2}(t), \dots, a_{i,M}(t) \right]\]<br />
+where \(a_{i,j}(t) \in {-1, 0, 1}\) represents selling, holding, or buying asset \(j\).</p>
+<h4><strong>2.3. Reward Function (\(r_i(t)\))</strong></h4>
+<p>The reward for agent \(i\) is based on its utility function:<br />
+\[r_i(t) = U_i(B_i(t), H_{i,j}(t), P_j(t))\]<br />
 For example, a profit-maximizing agent might have:<br />
-$$
-U_i = \sum_{j=1}^M \left[ H_{i,j}(t) \cdot P_j(t) \right] + B_i(t)
-$$</p>
+\[U_i = \sum_{j=1}^M \left[ H_{i,j}(t) \cdot P_j(t) \right] + B_i(t)\]</p>
 <hr />
 <h3><strong>3. Asset Pricing Mechanisms</strong></h3>
 <h4><strong>3.1. Bonding Curves</strong></h4>
-<p>The price of asset $j$ is determined by a bonding curve $f_j$:<br />
-$$
-P_j(t) = f_j(S_j(t), \mathbf{\Phi}_j(t))
-$$<br />
+<p>The price of asset \(j\) is determined by a bonding curve \(f_j\):<br />
+\[P_j(t) = f_j(S_j(t), \mathbf{\Phi}_j(t))\]<br />
 Examples include linear, exponential, and sigmoid curves.</p>
 <h4><strong>3.2. Market Clearing</strong></h4>
 <p>Prices emerge from demand-supply equilibrium:<br />
-$$
-D_j(P_j(t)) = O_j(P_j(t))
-$$</p>
+\[D_j(P_j(t)) = O_j(P_j(t))\]</p>
 <hr />
 <h3><strong>4. Reinforcement Learning Algorithms</strong></h3>
 <h4><strong>4.1. Q-Learning</strong></h4>
-<p>The action-value function $Q_i$ is updated as:<br />
-$$
-Q_i(S_i(t), A_i(t)) \leftarrow Q_i(S_i(t), A_i(t)) + \alpha \left[ r_i(t) + \gamma \max_{a'} Q_i(S_i(t+1), a') - Q_i(S_i(t), A_i(t)) \right]
-$$<br />
-where $\alpha$ is the learning rate and $\gamma$ is the discount factor.</p>
+<p>The action-value function \(Q_i\) is updated as:<br />
+\[Q_i(S_i(t), A_i(t)) \leftarrow Q_i(S_i(t), A_i(t)) + \alpha \left[ r_i(t) + \gamma \max_{a'} Q_i(S_i(t+1), a') - Q_i(S_i(t), A_i(t)) \right]\]<br />
+where \(\alpha\) is the learning rate and \(\gamma\) is the discount factor.</p>
 <h4><strong>4.2. Policy Gradient</strong></h4>
-<p>The policy parameters $\theta_i$ are updated using:<br />
-$$
-\theta_i \leftarrow \theta_i + \alpha \nabla_{\theta_i} \log \pi_i(A_i(t) | S_i(t)) \cdot G_i(t)
-$$<br />
-where $G_i(t)$ is the cumulative reward.</p>
+<p>The policy parameters \(\theta_i\) are updated using:<br />
+\[\theta_i \leftarrow \theta_i + \alpha \nabla_{\theta_i} \log \pi_i(A_i(t) | S_i(t)) \cdot G_i(t)\]<br />
+where \(G_i(t)\) is the cumulative reward.</p>
 <h4><strong>4.3. Deep RL</strong></h4>
 <p>For high-dimensional state spaces, a neural network approximates the Q-function or policy:<br />
-$$
-Q_i(S_i(t), A_i(t)) \approx Q_i(S_i(t), A_i(t); \mathbf{W}_i)
-$$</p>
+\[Q_i(S_i(t), A_i(t)) \approx Q_i(S_i(t), A_i(t); \mathbf{W}_i)\]</p>
 <hr />
 <h3><strong>5. Optimization</strong></h3>
 <h4><strong>5.1. Bonding Curve Parameter Optimization</strong></h4>
-<p>The parameters $\mathbf{\Phi}_j(t)$ are optimized to minimize price volatility:<br />
-$$
-\min_{\mathbf{\Phi}_j} \text{Var}(P_j(t))
-$$</p>
+<p>The parameters \(\mathbf{\Phi}_j(t)\) are optimized to minimize price volatility:<br />
+\[\min_{\mathbf{\Phi}_j} \text{Var}(P_j(t))\]</p>
 <h4><strong>5.2. Airdrop Strategy Optimization</strong></h4>
 <p>The airdrop strategy is optimized to maximize adoption:<br />
-$$
-\max_{\mathbf{AirdropParams}} \sum_{i=1}^N \mathbb{I}(H_{i,j}(t) &gt; 0)
-$$</p>
+\[\max_{\mathbf{AirdropParams}} \sum_{i=1}^N \mathbb{I}(H_{i,j}(t) &gt; 0)\]</p>
 <hr />
 <h3><strong>6. Evaluation Metrics</strong></h3>
 <h4><strong>6.1. Price Volatility</strong></h4>
-<p>$$
-\text{Volatility}(P_j) = \sqrt{\frac{1}{T} \sum_{t=1}^T (P_j(t) - \bar{P}_j)^2}
-$$</p>
+<p>\[\text{Volatility}(P_j) = \sqrt{\frac{1}{T} \sum_{t=1}^T (P_j(t) - \bar{P}_j)^2}\]</p>
 <h4><strong>6.2. Wealth Distribution (Gini Coefficient)</strong></h4>
-<p>$$
-G = \frac{\sum_{i=1}^N \sum_{k=1}^N |B_i(t) - B_k(t)|}{2N \sum_{i=1}^N B_i(t)}
-$$</p>
+<p>\[G = \frac{\sum_{i=1}^N \sum_{k=1}^N |B_i(t) - B_k(t)|}{2N \sum_{i=1}^N B_i(t)}\]</p>
 <h4><strong>6.3. Resource Utilization</strong></h4>
-<p>$$
-\text{Utilization} = \frac{\sum_{i=1}^N Q_{i,j}(t)}{C_j}
-$$</p>
+<p>\[\text{Utilization} = \frac{\sum_{i=1}^N Q_{i,j}(t)}{C_j}\]</p>
 <hr />
 <h3><strong>7. Experiments and Results</strong></h3>
 <p>We simulate the framework in four scenarios:<br />

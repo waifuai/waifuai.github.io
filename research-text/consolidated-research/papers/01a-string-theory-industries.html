@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -76,54 +76,54 @@
 <p>The resolution of string theory unveils a universe where energy is not merely a byproduct of macroscopic processes but an intrinsic property of the fundamental strings themselves. This section explores a novel approach to energy generation: String Resonance Energy Systems (SRES), which exploit the harmonic oscillations of strings to produce power at scales previously unattainable.</p>
 <h4>Theoretical Foundation</h4>
 <p>In string theory, the energy of a string is quantized and depends on its vibrational mode. The energy of a single string mode can be expressed as:
-$$ E_n = \hbar \omega_n \left( n + \frac{1}{2} \right) $$
+\[E_n = \hbar \omega_n \left( n + \frac{1}{2} \right)\]
 where 
-$\hbar$
+\(\hbar\)
  is the reduced Planck constant, 
-$\omega_n$
+\(\omega_n\)
  is the angular frequency of the 
-$n$
+\(n\)
 -th vibrational mode, and 
-$n$
+\(n\)
  is the quantum number. For a string of length 
 L
  in a compactified dimension, the frequency is:
-$$ \omega_n = \frac{n \pi c}{L} $$
+\[\omega_n = \frac{n \pi c}{L}\]
 where 
-$ c $
+\(c\)
  is the speed of light. In a realistic scenario, the compactification scale 
-$L$
+\(L\)
  is on the order of the Planck length (
 L_p \approx 1.616 \times 10^{-35} \, \text{m}
 ), implying extraordinarily high frequencies and thus immense energy densities.
 The total energy available in a volume 
 V
  of spacetime, assuming a dense population of strings, can be approximated by summing over all possible modes up to a cutoff 
-$ N_{\text{max}} $
+\(N_{\text{max}}\)
 :
-$$ E_{\text{total}} = \sum_{n=1}^{N_{\text{max}}} \hbar \omega_n \left( n + \frac{1}{2} \right) $$
+\[E_{\text{total}} = \sum_{n=1}^{N_{\text{max}}} \hbar \omega_n \left( n + \frac{1}{2} \right)\]
 Given the Planck-scale cutoff (
-$\omega_{\text{max}} \sim \frac{c}{L_p}$
+\(\omega_{\text{max}} \sim \frac{c}{L_p}\)
 ), this sum diverges unless regulated by a physical mechanism, such as supersymmetry or dimensional compactification, suggesting a finite but colossal energy reservoir.</p>
 <h3>String Resonance Energy Systems (SRES)</h3>
 <p>SRES devices would operate by inducing controlled resonances in a lattice of strings within a confined region. The resonance condition requires matching an external driving frequency 
-$\omega_d$
+\(\omega_d\)
  to the natural frequency 
-$\omega_n$
+\(\omega_n\)
 :
-$$ \omega_d = \omega_n $$
+\[\omega_d = \omega_n\]
 The amplitude of oscillation 
-$ A_n$
+\(A_n\)
  under resonance grows according to the driven harmonic oscillator equation:
-$$ \frac{d^2 A_n}{dt^2} + \gamma \frac{d A_n}{dt} + \omega_n^2 A_n = F_0 \cos(\omega_d t) $$
+\[\frac{d^2 A_n}{dt^2} + \gamma \frac{d A_n}{dt} + \omega_n^2 A_n = F_0 \cos(\omega_d t)\]
 where 
-$\gamma$
+\(\gamma\)
  is the damping factor, and 
-$F_0$
+\(F_0\)
  is the amplitude of the driving force. Solving this, the steady-state amplitude is:
 A_n = \frac{F_0}{\sqrt{(\omega_n^2 - \omega_d^2)^2 + (\gamma \omega_d)^2}}
 At resonance (
-$\omega_d = \omega_n$
+\(\omega_d = \omega_n\)
 ), this simplifies to:
 A_n = \frac{F_0}{\gamma \omega_n}
 This amplification allows SRES to extract significant energy from minimal input, potentially tapping into the vacuum energy predicted by string theory. For a practical system, the extracted power 
@@ -131,9 +131,9 @@ P
  could be modeled as:
 P = \eta \sum_{n} \frac{1}{2} \rho V \omega_n^2 A_n^2
 where 
-$\eta$
+\(\eta\)
  is the efficiency, 
-$\rho$
+\(\rho\)
  is the string energy density, and 
 V
  is the system volume.</p>
@@ -144,7 +144,7 @@ V
 <p>String theory suggests that particles are manifestations of string vibrations, implying that atomic properties can be altered by modifying these vibrations. This section introduces Dimensional Material Synthesis (DMS), a method to engineer materials beyond the constraints of the periodic table.</p>
 <h4>Mathematical Framework</h4>
 <p>The mass of a particle in string theory arises from its vibrational energy:
-$$ m = \frac{\sqrt{N} \hbar}{c \alpha'} $$
+\[m = \frac{\sqrt{N} \hbar}{c \alpha'}\]
 where 
 N
  is the total oscillator number (sum of left- and right-moving modes), and 
@@ -155,7 +155,7 @@ N
 N
  through controlled perturbations, we can shift a particle’s identity, effectively transmuting one element into another.
 The Hamiltonian for a string in a compactified dimension includes terms for both vibrational and potential energy:
-$$ H = \frac{p^2}{2m} + \sum_{n} \frac{1}{2} \hbar \omega_n (a_n^\dagger a_n + a_n a_n^\dagger) + V(x) $$
+\[H = \frac{p^2}{2m} + \sum_{n} \frac{1}{2} \hbar \omega_n (a_n^\dagger a_n + a_n a_n^\dagger) + V(x)\]
 where 
 p
  is the momentum, 
@@ -167,7 +167,7 @@ V(x)
  accounts for interactions with external fields. Applying a perturbation 
 V_{\text{pert}} = \epsilon \cos(\omega t) x
  can shift the mode occupation:
-$$ \Delta N = \frac{\epsilon^2}{2 \hbar^2 (\omega_n - \omega)^2 + \gamma^2} $$
+\[\Delta N = \frac{\epsilon^2}{2 \hbar^2 (\omega_n - \omega)^2 + \gamma^2}\]
 This allows precise tuning of atomic mass and charge.</p>
 <h4>DMS Process</h4>
 <p>String Perturbation Arrays (SPAs): Arrays of nanoscale devices emit coherent perturbations to target strings within atomic nuclei, adjusting their vibrational states.
@@ -181,7 +181,7 @@ Biological Mimetics: Synthesis of novel biomolecules with enhanced properties fo
 Energy Storage: Creation of materials with optimized lattice energies for ultra-high-density batteries.</p>
 <h4>Equations for Material Properties</h4>
 <p>The binding energy of a synthesized nucleus can be approximated using a modified liquid drop model:
-$$ E_b = a_V A - a_S A^{2/3} - a_C \frac{Z^2}{A^{1/3}} - a_A \frac{(N - Z)^2}{A} + \delta $$
+\[E_b = a_V A - a_S A^{2/3} - a_C \frac{Z^2}{A^{1/3}} - a_A \frac{(N - Z)^2}{A} + \delta\]
 where 
 A
 , 
@@ -256,7 +256,7 @@ h_{\mu\nu}
 T_{\mu\nu} = \partial_\mu \phi \partial_\nu \phi - g_{\mu\nu} \left( \frac{1}{2} (\partial \phi)^2 + V(\phi) \right)</p>
 <h4>SF Implementation</h4>
 <p>Warp Field Generators: Devices induce localized metric distortions, compressing spacetime ahead and expanding it behind a craft:
-$ v_{\text{eff}} = c \cdot \frac{\Delta g_{00}}{\sqrt{g_{ij}}} $
+\(v_{\text{eff}} = c \cdot \frac{\Delta g_{00}}{\sqrt{g_{ij}}}\)
 where 
 v_{\text{eff}}
  can exceed 
@@ -265,9 +265,9 @@ c
 Wormhole Stabilization: Injecting string-derived exotic energy (
 T_{00} &lt; 0
 ) stabilizes wormhole throats:
-$ R_{\text{throat}} = \sqrt{\frac{2 |T_{00}|}{\kappa}} $
+\(R_{\text{throat}} = \sqrt{\frac{2 |T_{00}|}{\kappa}}\)
 Dyson Sphere Variants: String-enhanced materials enable megastructures encircling stars, optimizing energy capture:
-$ P_{\text{Dyson}} = 4 \pi R^2 \sigma T^4 \cdot \eta_{\text{string}} $
+\(P_{\text{Dyson}} = 4 \pi R^2 \sigma T^4 \cdot \eta_{\text{string}}\)
 where 
 \eta_{\text{string}}
  reflects enhanced efficiency.</p>

@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -102,11 +102,11 @@
 <li><strong>Offer Resource:</strong> Offer a resource for use by other agents.</li>
 </ul>
 </li>
-<li><strong>Decision-Making Policy:</strong> A policy, denoted by $\pi_i$ for agent $i$, maps the agent's current state $s_i(t)$ to a probability distribution over the action space. This policy is learned and refined through reinforcement learning.</li>
-<li><strong>Reward Function:</strong>  A function $r_i(t)$ that provides feedback to the agent based on its actions and their consequences. The reward function is designed to align agent incentives with desired system-level outcomes (e.g., profit maximization, resource utilization, market stability).</li>
+<li><strong>Decision-Making Policy:</strong> A policy, denoted by \(\pi_i\) for agent \(i\), maps the agent's current state \(s_i(t)\) to a probability distribution over the action space. This policy is learned and refined through reinforcement learning.</li>
+<li><strong>Reward Function:</strong>  A function \(r_i(t)\) that provides feedback to the agent based on its actions and their consequences. The reward function is designed to align agent incentives with desired system-level outcomes (e.g., profit maximization, resource utilization, market stability).</li>
 </ul>
 <p><strong>2.2. Reinforcement Learning Algorithm</strong></p>
-<p>Agents employ Deep Q-Networks (DQN) to learn and optimize their trading strategies. DQN is a value-based reinforcement learning algorithm that uses a neural network to approximate the action-value function, $Q(s, a)$, which represents the expected cumulative reward for taking action $a$ in state $s$.</p>
+<p>Agents employ Deep Q-Networks (DQN) to learn and optimize their trading strategies. DQN is a value-based reinforcement learning algorithm that uses a neural network to approximate the action-value function, \(Q(s, a)\), which represents the expected cumulative reward for taking action \(a\) in state \(s\).</p>
 <ul>
 <li><strong>Q-Network:</strong> A neural network that takes the state as input and outputs Q-values for each possible action.</li>
 <li><strong>Experience Replay:</strong>  Agents store their experiences (state, action, reward, next state) in a replay buffer and sample from this buffer to update the Q-network. This breaks the correlation between consecutive experiences and improves learning stability.</li>
@@ -115,15 +115,15 @@
 </ul>
 <p><strong>2.3. Learning and Adaptation</strong></p>
 <p>Agents learn by interacting with the Tokenized Economy and receiving rewards based on their actions. The Q-learning update rule is:</p>
-<p>$$Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]$$</p>
+<p>\[Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]\]</p>
 <p>where:</p>
 <ul>
-<li>$Q(s, a)$ is the current estimated Q-value for state $s$ and action $a$.</li>
-<li>$\alpha$ is the learning rate.</li>
-<li>$r$ is the immediate reward received.</li>
-<li>$\gamma$ is the discount factor, determining the importance of future rewards.</li>
-<li>$s'$ is the next state.</li>
-<li>$\max_{a'} Q(s', a')$ is the maximum estimated Q-value for the next state over all possible actions.</li>
+<li>\(Q(s, a)\) is the current estimated Q-value for state \(s\) and action \(a\).</li>
+<li>\(\alpha\) is the learning rate.</li>
+<li>\(r\) is the immediate reward received.</li>
+<li>\(\gamma\) is the discount factor, determining the importance of future rewards.</li>
+<li>\(s'\) is the next state.</li>
+<li>\(\max_{a'} Q(s', a')\) is the maximum estimated Q-value for the next state over all possible actions.</li>
 </ul>
 <p><strong>3. Emergent Behavior in the Tokenized Economy</strong></p>
 <p>The interactions of autonomous agents within the Tokenized Economy lead to emergent system-level behaviors:</p>

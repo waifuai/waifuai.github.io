@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -151,42 +151,30 @@
 <p>This section details the mathematical models that govern the AbundanceCoin ICO and the broader Tokenized Economy.</p>
 <h3>3.1. AbundanceCoin ICO: Bonding Curve Mechanics</h3>
 <p>The AbundanceCoin ICO utilizes a linear bonding curve for price discovery:</p>
-<p>$$
-P(S) = mS + b
-$$</p>
+<p>\[P(S) = mS + b\]</p>
 <p>Where:</p>
 <ul>
-<li>$P(S)$: Price of the token at supply $S$</li>
-<li>$S$: Current circulating supply of AbundanceCoin</li>
-<li>$m$: Slope of the bonding curve, determining the price increase per token</li>
-<li>$b$: Initial price of the token</li>
+<li>\(P(S)\): Price of the token at supply \(S\)</li>
+<li>\(S\): Current circulating supply of AbundanceCoin</li>
+<li>\(m\): Slope of the bonding curve, determining the price increase per token</li>
+<li>\(b\): Initial price of the token</li>
 </ul>
-<p>The cost to purchase $\Delta S$ tokens is calculated by integrating the bonding curve:</p>
-<p>$$
-\text{Cost} = \int_{S}^{S+\Delta S} (mS + b) \, dS = \frac{m(\Delta S)^2}{2} + b\Delta S
-$$</p>
+<p>The cost to purchase \(\Delta S\) tokens is calculated by integrating the bonding curve:</p>
+<p>\[\text{Cost} = \int_{S}^{S+\Delta S} (mS + b) \, dS = \frac{m(\Delta S)^2}{2} + b\Delta S\]</p>
 <h3>3.2. The Tokenized Economy: Interconnectedness and Dynamics</h3>
 <p>Consider a simplified Tokenized Economy with two tokens, Token A and Token B, each with its own bonding curve:</p>
-<p>$$
-P_A(S_A) = m_A S_A + b_A
-$$</p>
-<p>$$
-P_B(S_B) = m_B S_B + b_B
-$$</p>
+<p>\[P_A(S_A) = m_A S_A + b_A\]</p>
+<p>\[P_B(S_B) = m_B S_B + b_B\]</p>
 <p>The exchange rate between Token A and Token B is determined by the ratio of their prices:</p>
-<p>$$
-\text{Exchange Rate (A/B)} = \frac{P_A(S_A)}{P_B(S_B)}
-$$</p>
-<p>When exchanging $x$ units of Token A for Token B:</p>
+<p>\[\text{Exchange Rate (A/B)} = \frac{P_A(S_A)}{P_B(S_B)}\]</p>
+<p>When exchanging \(x\) units of Token A for Token B:</p>
 <ol>
-<li>$x$ units of Token A are burned, reducing $S_A$</li>
-<li>$y$ units of Token B are minted, increasing $S_B$, where $y$ is calculated based on the exchange rate</li>
+<li>\(x\) units of Token A are burned, reducing \(S_A\)</li>
+<li>\(y\) units of Token B are minted, increasing \(S_B\), where \(y\) is calculated based on the exchange rate</li>
 </ol>
 <h3>3.3. Relative Debasement</h3>
 <p>The value of SOL within the Tokenized Economy is relative to the purchasing power it provides within the ecosystem. The relative value of a Token (e.g., Token A) compared to SOL is:</p>
-<p>$$
-\text{Relative Value (A/SOL)} = \frac{P_A(S_A)}{P_{\text{SOL}}}
-$$</p>
+<p>\[\text{Relative Value (A/SOL)} = \frac{P_A(S_A)}{P_{\text{SOL}}}\]</p>
 <p>Changes in token prices on their bonding curves affect this relative value.</p>
 <h3>3.4. Speculation Dynamics</h3>
 <p>Speculation is driven by anticipated future demand and utility. Purchasing tokens of a company with expected future success drives its price up along the bonding curve.</p>
@@ -196,43 +184,35 @@ $$</p>
 <p>Affiliates receive a unique referral link. For every successful ICO investment made through their link, they earn a commission.</p>
 <h3>4.2. Mathematical Model</h3>
 <p>The commission structure is a fixed percentage of the investment:</p>
-<p>$$
-C = \alpha \cdot I
-$$</p>
+<p>\[C = \alpha \cdot I\]</p>
 <p>Where:</p>
 <ul>
-<li>$C$: Commission earned</li>
-<li>$\alpha$: Commission rate (10% or 0.10)</li>
-<li>$I$: Investment amount</li>
+<li>\(C\): Commission earned</li>
+<li>\(\alpha\): Commission rate (10% or 0.10)</li>
+<li>\(I\): Investment amount</li>
 </ul>
 <p>The total earnings for an affiliate are:</p>
-<p>$$
-E = \alpha \cdot \sum I_i
-$$</p>
+<p>\[E = \alpha \cdot \sum I_i\]</p>
 <p>Where:</p>
 <ul>
-<li>$I_i$: Each individual investment made through the affiliate's link</li>
+<li>\(I_i\): Each individual investment made through the affiliate's link</li>
 </ul>
 <h3>4.3. Dynamic Commission Model</h3>
 <p>To further incentivize performance, a dynamic commission model can be implemented:</p>
-<p>$$
-\alpha = a + bx
-$$</p>
+<p>\[\alpha = a + bx\]</p>
 <p>Where:</p>
 <ul>
-<li>$\alpha$: Commission rate</li>
-<li>$a$: Base commission rate</li>
-<li>$b$: Sensitivity factor</li>
-<li>$x$: Performance metric (e.g., number of referrals, investment volume)</li>
+<li>\(\alpha\): Commission rate</li>
+<li>\(a\): Base commission rate</li>
+<li>\(b\): Sensitivity factor</li>
+<li>\(x\): Performance metric (e.g., number of referrals, investment volume)</li>
 </ul>
 <p>Alternatively, tiered commission structures can be used:</p>
-<p>$$
-\alpha = \begin{cases}
+<p>\[\alpha = \begin{cases}
 \alpha_1 &amp; \text{if } x &lt; T_1 \
 \alpha_2 &amp; \text{if } T_1 \leq x &lt; T_2 \
 \alpha_3 &amp; \text{if } x \geq T_2
-\end{cases}
-$$</p>
+\end{cases}\]</p>
 <h3>4.4. Algorithm for Dynamic Commission Rate Optimization</h3>
 <p>An algorithm can be used to dynamically calculate the optimal commission rate:</p>
 <ol>
@@ -242,9 +222,7 @@ $$</p>
 <li><strong>Risk Assessment:</strong> Evaluate token volatility and affiliate risk tolerance.</li>
 <li><strong>Optimization Function:</strong> Define a function to maximize expected affiliate earnings:</li>
 </ol>
-<p>$$
-E(\alpha) = \alpha \cdot I(\alpha)
-$$
+<p>\[E(\alpha) = \alpha \cdot I(\alpha)\]
 6. <strong>Constraints:</strong> Define minimum and maximum commission rates.
 7. <strong>Optimization Algorithm:</strong> Use algorithms like gradient descent to find the optimal commission rate.
 8. <strong>Continuous Monitoring:</strong> Track performance and adjust the algorithm as needed.</p>
@@ -331,9 +309,9 @@ $$
 <h3>8.3. ICOs on Custom Bonding Curves (Detailed)</h3>
 <p>Explore various bonding curve models:</p>
 <ul>
-<li>Linear: $P(S) = mS + b$</li>
-<li>Quadratic: $P(S) = aS^2 + bS + c$</li>
-<li>Sigmoid: $P(S) = \frac{K}{1 + e^{-k(S-S_0)}}$</li>
+<li>Linear: \(P(S) = mS + b\)</li>
+<li>Quadratic: \(P(S) = aS^2 + bS + c\)</li>
+<li>Sigmoid: \(P(S) = \frac{K}{1 + e^{-k(S-S_0)}}\)</li>
 <li>Multi-Segment: Combine different curve types for various ICO phases.</li>
 </ul>
 <h3>8.4. Cheaper ICOs</h3>
@@ -346,19 +324,11 @@ $$
 </ul>
 <h2>9. Formal Mathematical Model of TokenAffiliates</h2>
 <h3>9.1. Basic Model</h3>
-<p>$$
-C = \alpha \cdot I
-$$</p>
-<p>$$
-E = \alpha \cdot I_{\text{total}}
-$$</p>
+<p>\[C = \alpha \cdot I\]</p>
+<p>\[E = \alpha \cdot I_{\text{total}}\]</p>
 <h3>9.2. Dynamic Commission Model (Formalized)</h3>
-<p>$$
-C_j = \alpha_j \cdot I_j \quad (\text{Commission for token } j)
-$$</p>
-<p>$$
-E = \sum_{j \in J} \sum_{i=1}^{n_j} \alpha_j \cdot I_{j,i} \quad (\text{Total earnings across all tokens})
-$$</p>
+<p>\[C_j = \alpha_j \cdot I_j \quad (\text{Commission for token } j)\]</p>
+<p>\[E = \sum_{j \in J} \sum_{i=1}^{n_j} \alpha_j \cdot I_{j,i} \quad (\text{Total earnings across all tokens})\]</p>
 <h2>10. Conclusion: Building a Decentralized and Equitable Future</h2>
 <p>The AbundanceCoin project, spearheading the vision of a Tokenized Economy on Solana, offers a compelling alternative to traditional financial systems. By leveraging blockchain technology, sophisticated mathematical models, and incentivizing community participation through TokenAffiliates, we are building a more transparent, equitable, and innovative economic future. This integrated system aims to empower individuals, foster innovation, and unlock unprecedented economic opportunities. We invite you to join us in building this future.</p>
 </body>

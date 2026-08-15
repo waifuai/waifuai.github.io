@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -99,12 +99,8 @@
 - Risk sentiment indices</p>
 <h4>2.2 Statistical Framework</h4>
 <p>We employ rigorous statistical testing:
-$$
-H_0: \text{Model prediction} = \text{Empirical observation}
-$$
-$$
-H_1: \text{Model prediction} \neq \text{Empirical observation}
-$$</p>
+\[H_0: \text{Model prediction} = \text{Empirical observation}\]
+\[H_1: \text{Model prediction} \neq \text{Empirical observation}\]</p>
 <p><strong>Significance Levels:</strong>
 - (\alpha = 0.05) for primary tests
 - (\alpha = 0.01) for model rejections
@@ -114,14 +110,10 @@ $$</p>
 <p>We test the theoretical bonding curve predictions against real Uniswap v3 data:</p>
 <p><strong>Mathematical Formulation:</strong>
 For a Uniswap v3 pool with price range ([P_a, P_b]):
-$$
-L = \sqrt{k} = \sqrt{x \cdot y}
-$$
+\[L = \sqrt{k} = \sqrt{x \cdot y}\]
 where (x, y) are token reserves, and (k) is the constant product.</p>
 <p><strong>Empirical Fee Revenue Prediction:</strong>
-$$
-\text{Predicted Fee}(t) = f(\text{Price Range}, L, \nu(t))
-$$
+\[\text{Predicted Fee}(t) = f(\text{Price Range}, L, \nu(t))\]
 where (\nu(t)) is trading volume.</p>
 <p><strong>Statistical Results:</strong>
 - Pearson correlation: (r = 0.83) (99% CI: [0.80, 0.86])
@@ -130,12 +122,8 @@ where (\nu(t)) is trading volume.</p>
 <h4>3.2 Dynamic Bonding Curve Behavior</h4>
 <p>Testing parameter adaptation in real markets:</p>
 <p><strong>Volatility Adjustment:</strong>
-$$
-P(t+1) = P(t) \cdot (1 + \sigma(t) \epsilon_t)
-$$
-$$
-\sigma(t) = \alpha \cdot \sigma_{historical}(t) + \beta \cdot \sigma_{observed}(t)
-$$</p>
+\[P(t+1) = P(t) \cdot (1 + \sigma(t) \epsilon_t)\]
+\[\sigma(t) = \alpha \cdot \sigma_{historical}(t) + \beta \cdot \sigma_{observed}(t)\]</p>
 <p><strong>Empirical Validation:</strong>
 Table 1: Bonding Curve Model Performance
 | Parameter | Predicted | Observed | Absolute Error | Relative Error |
@@ -147,22 +135,12 @@ Table 1: Bonding Curve Model Performance
 <h4>4.1 Backtesting Framework</h4>
 <p>We implement comprehensive backtesting of RL agents:</p>
 <p><strong>Strategy Testing:</strong>
-$$
-\pi^*(s) = \arg\max_a Q(s, a | \theta^*)
-$$
-$$
-\theta^* = \arg\max_\theta \mathbb{E}\left[\sum_{t=0}^T r_t(\theta)\right]
-$$</p>
+\[\pi^*(s) = \arg\max_a Q(s, a | \theta^*)\]
+\[\theta^* = \arg\max_\theta \mathbb{E}\left[\sum_{t=0}^T r_t(\theta)\right]\]</p>
 <p><strong>Performance Metrics:</strong>
-$$
-\text{Sharpe Ratio} = \frac{\mathbb{E}[R_p] - R_f}{\sigma_{R_p}}
-$$
-$$
-\text{Maximum Drawdown} = \max_t \left( \max_{s \leq t} P(s) - P(t) \right)
-$$
-$$
-\text{Win Rate} = \frac{\text{Profitable Trades}}{\text{Total Trades}}
-$$</p>
+\[\text{Sharpe Ratio} = \frac{\mathbb{E}[R_p] - R_f}{\sigma_{R_p}}\]
+\[\text{Maximum Drawdown} = \max_t \left( \max_{s \leq t} P(s) - P(t) \right)\]
+\[\text{Win Rate} = \frac{\text{Profitable Trades}}{\text{Total Trades}}\]</p>
 <h4>4.2 Market Regime Analysis</h4>
 <p>Testing agent performance across different market conditions:</p>
 <p><strong>Bull Market Results:</strong>
@@ -177,9 +155,7 @@ $$</p>
 <h4>5.1 Posterior Predictive Checks</h4>
 <p>We calibrate the Bayesian models using historical data:</p>
 <p><strong>Model Evidence (Marginal Likelihood):</strong>
-$$
-p(\mathbf{y} | \mathcal{M}_i) = \int p(\mathbf{y} | \boldsymbol{\theta}, \mathcal{M}_i) p(\boldsymbol{\theta} | \mathcal{M}_i) d\boldsymbol{\theta}
-$$</p>
+\[p(\mathbf{y} | \mathcal{M}_i) = \int p(\mathbf{y} | \boldsymbol{\theta}, \mathcal{M}_i) p(\boldsymbol{\theta} | \mathcal{M}_i) d\boldsymbol{\theta}\]</p>
 <p><strong>Bayesian Model Comparison:</strong>
 Table 2: Model Comparison via Bayes Factors
 | Model | Log Marginal Likelihood | Bayes Factor | Probability |
@@ -190,50 +166,26 @@ Table 2: Model Comparison via Bayes Factors
 <h4>5.2 Parameter Recovery Analysis</h4>
 <p>Testing parameter estimation accuracy:</p>
 <p><strong>Posterior Concentration:</strong>
-$$
-\text{Effective Sample Size} \geq 1000 \quad \forall \text{parameters}
-$$
-$$
-\hat{R} \leq 1.01 \quad \text{convergence diagnostic}
-$$
-$$
-\frac{|\mathbb{E}[\theta | \mathbf{y}] - \theta_{\text{true}}|}{|\theta_{\text{true}}|} &lt; 0.10
-$$</p>
+\[\text{Effective Sample Size} \geq 1000 \quad \forall \text{parameters}\]
+\[\hat{R} \leq 1.01 \quad \text{convergence diagnostic}\]
+\[\frac{|\mathbb{E}[\theta | \mathbf{y}] - \theta_{\text{true}}|}{|\theta_{\text{true}}|} &lt; 0.10\]</p>
 <h3>6. Systemic Risk Assessment</h3>
 <h4>6.1 Network Analysis Validation</h4>
 <p>Testing network-based risk models against real contagion events:</p>
 <p><strong>2018 Crypto Winter Contagion:</strong>
-$$
-\text{Predicted Risk Increase:} = 487\%
-$$
-$$
-\text{Observed Risk Increase:} = 453\%
-$$
-$$
-\text{Prediction Error:} = 7.5\%
-$$</p>
+\[\text{Predicted Risk Increase:} = 487\%\]
+\[\text{Observed Risk Increase:} = 453\%\]
+\[\text{Prediction Error:} = 7.5\%\]</p>
 <p><strong>May 2021 Liquidation Cascade:</strong>
-$$
-\text{Forecasted Default Rate:} = 23.4\%
-$$
-$$
-\text{Actual Default Rate:} = 26.1\%
-$$
-$$
-\text{AUC-ROC:} = 0.87
-$$</p>
+\[\text{Forecasted Default Rate:} = 23.4\%\]
+\[\text{Actual Default Rate:} = 26.1\%\]
+\[\text{AUC-ROC:} = 0.87\]</p>
 <h4>6.2 Cross-Correlation Analysis</h4>
 <p>Empirical validation of inter-asset relationships:</p>
 <p><strong>Extreme Value Theory Application:</strong>
-$$
-P(X &gt; x) \approx 1 - F(x) \propto x^{-\alpha} e^{-(\lambda)^{-\tau}}
-$$
-$$
-\hat{\alpha}_{\text{empirical}} = 2.34 \quad (95\% \text{ CI: } [2.12, 2.56])
-$$
-$$
-\hat{\alpha}_{\text{theoretical}} = 2.41 \quad (\chi^2 \text{ test: } p = 0.23)
-$$</p>
+\[P(X &gt; x) \approx 1 - F(x) \propto x^{-\alpha} e^{-(\lambda)^{-\tau}}\]
+\[\hat{\alpha}_{\text{empirical}} = 2.34 \quad (95\% \text{ CI: } [2.12, 2.56])\]
+\[\hat{\alpha}_{\text{theoretical}} = 2.41 \quad (\chi^2 \text{ test: } p = 0.23)\]</p>
 <h3>7. Predictive Performance Analysis</h3>
 <h4>7.1 Out-of-Sample Forecasting</h4>
 <p>Testing model predictions on unseen data:</p>
@@ -242,59 +194,35 @@ $$</p>
 - Bayesian RL Agent: RMSE = 0.018, MAE = 0.012
 - Integrated Framework: RMSE = 0.015, MAE = 0.009</p>
 <p><strong>Improvement Statistics:</strong>
-$$
-t = \frac{\mu_{\text{new}} - \mu_{\text{baseline}}}{\sqrt{\frac{\sigma_{\text{new}}^2}{n_{\text{new}}} + \frac{\sigma_{\text{baseline}}^2}{n_{\text{baseline}}}}}
-$$
-$$
-t = 3.24, \quad p &lt; 0.001 \quad (\text{highly significant})
-$$</p>
+\[t = \frac{\mu_{\text{new}} - \mu_{\text{baseline}}}{\sqrt{\frac{\sigma_{\text{new}}^2}{n_{\text{new}}} + \frac{\sigma_{\text{baseline}}^2}{n_{\text{baseline}}}}}\]
+\[t = 3.24, \quad p &lt; 0.001 \quad (\text{highly significant})\]</p>
 <h4>7.2 Volatility Prediction</h4>
 <p>GARCH model validation:
-$$
-\sigma_t^2 = \omega + \alpha \epsilon_{t-1}^2 + \beta \sigma_{t-1}^2 + \gamma \sigma_{t-1}^2 I_{t-1}(\text{news impact})
-$$
-$$
-R^2_{\text{in-sample}} = 0.68, \quad R^2_{\text{out-of-sample}} = 0.64
-$$</p>
+\[\sigma_t^2 = \omega + \alpha \epsilon_{t-1}^2 + \beta \sigma_{t-1}^2 + \gamma \sigma_{t-1}^2 I_{t-1}(\text{news impact})\]
+\[R^2_{\text{in-sample}} = 0.68, \quad R^2_{\text{out-of-sample}} = 0.64\]</p>
 <h3>8. Statistical Testing Framework</h3>
 <h4>8.1 Model Specification Tests</h4>
 <p><strong>Jarque-Bera Test for Normality:</strong>
-$$
-JB = \frac{n}{6} (S^2 + \frac{(K-3)^2}{4})
-$$
+\[JB = \frac{n}{6} (S^2 + \frac{(K-3)^2}{4})\]
 where S is skewness, K is kurtosis.</p>
 <p><strong>Results Across Models:</strong>
 - Returns: JB = 2.34, p = 0.31 (normal)
 - Volatility: JB = 45.23, p ≈ 0.00 (non-normal, as expected)</p>
 <h4>8.2 Structural Break Analysis</h4>
 <p>Testing for parameter stability over time:
-$$
-\sup_T F(T) = \sup_{T} \frac{(\hat{u}' \hat{u} - \hat{u}'^{+} \hat{u}^{+})}{\hat{u}^{+} \hat{u}^{+} / (n-2)}
-$$
-$$
-\text{Critical Value (5\%):} 1.35
-$$
-$$
-\text{Test Statistic:} 0.89 \quad (\text{no structural break})
-$$</p>
+\[\sup_T F(T) = \sup_{T} \frac{(\hat{u}' \hat{u} - \hat{u}'^{+} \hat{u}^{+})}{\hat{u}^{+} \hat{u}^{+} / (n-2)}\]
+\[\text{Critical Value (5\%):} 1.35\]
+\[\text{Test Statistic:} 0.89 \quad (\text{no structural break})\]</p>
 <h3>9. Calibration and Production Deployment</h3>
 <h4>9.1 Model Calibration Pipeline</h4>
 <p>Automated calibration framework:
-$$
-\boldsymbol{\theta}^* = \arg\max_{\boldsymbol{\theta}} \text{log} p(\mathbf{y}_{\text{train}} | \boldsymbol{\theta})
-$$
+\[\boldsymbol{\theta}^* = \arg\max_{\boldsymbol{\theta}} \text{log} p(\mathbf{y}_{\text{train}} | \boldsymbol{\theta})\]
 subject to validation constraints:
-$$
-\text{VaR}_{95\%}^{\text{out-of-sample}} &lt; \text{Threshold}
-$$
-$$
-\text{Information Ratio} &gt; \text{Benchmark}
-$$</p>
+\[\text{VaR}_{95\%}^{\text{out-of-sample}} &lt; \text{Threshold}\]
+\[\text{Information Ratio} &gt; \text{Benchmark}\]</p>
 <h4>9.2 Production Performance Monitoring</h4>
 <p>Continuous validation metrics:
-$$
-\text{Model Health Score} = w_1 R^2 + w_2 |\hat{r} - r_{\text{bench}}| + w_3 \text{Stability}
-$$</p>
+\[\text{Model Health Score} = w_1 R^2 + w_2 |\hat{r} - r_{\text{bench}}| + w_3 \text{Stability}\]</p>
 <h3>10. Limitations and Model Extensions</h3>
 <h4>10.1 Identified Shortcomings</h4>
 <p><strong>Data Limitations:</strong>
@@ -306,12 +234,8 @@ $$</p>
 - Homoskedasticity assumptions not met in volatile periods</p>
 <h4>10.2 Proposed Improvements</h4>
 <p><strong>Next-Generation Models:</strong>
-$$
-\text{Enhanced Framework} = \text{Integrated BRL} + \text{Transformer Networks}
-$$
-$$
-\text{Attention-based Modeling:} A(\mathbf{X}) = \softmax\left(\frac{\mathbf{QK}^T}{\sqrt{d_k}}\right)\mathbf{V}
-$$</p>
+\[\text{Enhanced Framework} = \text{Integrated BRL} + \text{Transformer Networks}\]
+\[\text{Attention-based Modeling:} A(\mathbf{X}) = \softmax\left(\frac{\mathbf{QK}^T}{\sqrt{d_k}}\right)\mathbf{V}\]</p>
 <h3>11. Conclusion</h3>
 <p>This comprehensive empirical validation provides crucial insights into the practical applicability of the tokenized economic models:</p>
 <p><strong>Key Findings:</strong></p>

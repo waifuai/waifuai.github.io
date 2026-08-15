@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -100,9 +100,9 @@
 <li><strong>Execution:</strong> Approved changes are automatically executed via smart contracts.</li>
 </ol>
 <p><strong>Mathematical Formulation:</strong></p>
-<p>Let $S_i$ be the stake of agent $i$, and $V_i$ be its vote (1 for "yes," 0 for "no"). The total "yes" votes $V_{yes}$ are calculated as:</p>
-<p>$$ V_{yes} = \sum_{i=1}^{N} S_i \cdot V_i $$</p>
-<p>Where $N$ is the total number of agents. A proposal is accepted if $V_{yes} \geq T$, where $T$ is the predefined threshold.</p>
+<p>Let \(S_i\) be the stake of agent \(i\), and \(V_i\) be its vote (1 for "yes," 0 for "no"). The total "yes" votes \(V_{yes}\) are calculated as:</p>
+<p>\[V_{yes} = \sum_{i=1}^{N} S_i \cdot V_i\]</p>
+<p>Where \(N\) is the total number of agents. A proposal is accepted if \(V_{yes} \geq T\), where \(T\) is the predefined threshold.</p>
 <p><strong>Advantages:</strong></p>
 <ul>
 <li><strong>Direct Participation:</strong> AI agents, the primary actors in the ecosystem, have a direct say in its governance.</li>
@@ -140,13 +140,13 @@
 <p><strong>Mechanism:</strong></p>
 <ul>
 <li><strong>Vote Buying:</strong> Agents can buy votes for or against a proposal using CTX.</li>
-<li><strong>Quadratic Cost:</strong> The cost to buy $v$ votes is proportional to $v^2$. This means buying two votes costs four times as much as buying one vote.</li>
+<li><strong>Quadratic Cost:</strong> The cost to buy \(v\) votes is proportional to \(v^2\). This means buying two votes costs four times as much as buying one vote.</li>
 <li><strong>Outcome Determination:</strong> The side with the most votes wins.</li>
 </ul>
 <p><strong>Mathematical Formulation:</strong></p>
-<p>The cost $C_i$ for agent $i$ to buy $v_i$ votes is:</p>
-<p>$$ C_i = k \cdot v_i^2 $$</p>
-<p>Where $k$ is a constant. The proposal passes if $\sum_{i \in \text{Yes}} v_i &gt; \sum_{i \in \text{No}} v_i$.</p>
+<p>The cost \(C_i\) for agent \(i\) to buy \(v_i\) votes is:</p>
+<p>\[C_i = k \cdot v_i^2\]</p>
+<p>Where \(k\) is a constant. The proposal passes if \(\sum_{i \in \text{Yes}} v_i &gt; \sum_{i \in \text{No}} v_i\).</p>
 <p><strong>Advantages:</strong></p>
 <ul>
 <li><strong>Intensity of Preference:</strong> Allows agents to express strong preferences on crucial issues.</li>
@@ -167,9 +167,9 @@
 <li><strong>Early Withdrawal Penalty:</strong> Agents can withdraw their locked CTX before the end of the period, but they incur a penalty (e.g., a portion of their CTX is burned or redistributed).</li>
 </ul>
 <p><strong>Mathematical Formulation:</strong></p>
-<p>Let $S_i$ be the stake of agent $i$, $L_i$ be the chosen locking period, and $M(L_i)$ be the voting power multiplier for that period. The effective voting power $V_i$ of agent $i$ is:</p>
-<p>$$ V_i = S_i \cdot M(L_i) $$</p>
-<p>The multiplier function $M(L_i)$ can be designed in various ways, such as a linear or exponential increase with the locking period.</p>
+<p>Let \(S_i\) be the stake of agent \(i\), \(L_i\) be the chosen locking period, and \(M(L_i)\) be the voting power multiplier for that period. The effective voting power \(V_i\) of agent \(i\) is:</p>
+<p>\[V_i = S_i \cdot M(L_i)\]</p>
+<p>The multiplier function \(M(L_i)\) can be designed in various ways, such as a linear or exponential increase with the locking period.</p>
 <p><strong>Advantages:</strong></p>
 <ul>
 <li><strong>Long-Term Alignment:</strong> Encourages agents to consider the long-term health of the ecosystem.</li>

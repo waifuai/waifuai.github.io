@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -76,45 +76,45 @@
 <h2>Token Pricing Model: A Linear Approach to Market Dynamics</h2>
 <p>The SOL ICO utilizes a linear token pricing model, ensuring a direct correlation between token price and the total number of tokens sold. This method promotes transparency and predictability, fostering a fair market environment.</p>
 <h3>Mathematical Formulation of Token Price</h3>
-<p>The price of each SOL token, denoted as $P(T)$, is determined by the following linear equation:</p>
-<p>$P(T) = P_0 \times \left(1 + \frac{T}{S}\right)$</p>
+<p>The price of each SOL token, denoted as \(P(T)\), is determined by the following linear equation:</p>
+<p>\(P(T) = P_0 \times \left(1 + \frac{T}{S}\right)\)</p>
 <p>Where:</p>
 <ul>
-<li><strong>$P(T)$</strong>: The price of each token at any point during the ICO, expressed in lamports.</li>
-<li><strong>$P_0$</strong>: The initial price of a token, set at 10,000 lamports (equivalent to 0.00001 SOL).</li>
-<li><strong>$T$</strong>: The total number of tokens sold up to that point.</li>
-<li><strong>$S$</strong>: A scaling factor defining the sales volume that leads to a 100% price increase, set at 1,000,000 tokens in this ICO.</li>
+<li><strong>\(P(T)\)</strong>: The price of each token at any point during the ICO, expressed in lamports.</li>
+<li><strong>\(P_0\)</strong>: The initial price of a token, set at 10,000 lamports (equivalent to 0.00001 SOL).</li>
+<li><strong>\(T\)</strong>: The total number of tokens sold up to that point.</li>
+<li><strong>\(S\)</strong>: A scaling factor defining the sales volume that leads to a 100% price increase, set at 1,000,000 tokens in this ICO.</li>
 </ul>
 <p>This formula ensures that the price increases linearly as more tokens are sold, with a 100% increase observed when 1 million tokens are sold.</p>
 <h3>Price Conversion and Practical Implications</h3>
 <ul>
-<li><strong>SOL Conversion:</strong> Prices are calculated in lamports, with the conversion to SOL being $1 \, \text{lamport} = 10^{-9} \, \text{SOL}$.</li>
+<li><strong>SOL Conversion:</strong> Prices are calculated in lamports, with the conversion to SOL being \(1 \, \text{lamport} = 10^{-9} \, \text{SOL}\).</li>
 <li><strong>USD Conversion:</strong> Assuming a fixed exchange rate of 1 SOL = 150 USD, the USD price is:</li>
 </ul>
-<p>$P_{\text{USD}}(T) = \frac{P(T)}{10^9} \times 150$</p>
+<p>\(P_{\text{USD}}(T) = \frac{P(T)}{10^9} \times 150\)</p>
 <p>This conversion allows participants to understand the token price in practical terms, facilitating informed investment decisions.</p>
 <h3>Visualizing Price Growth</h3>
 <p>The linear nature of the pricing model results in a predictable price growth trajectory, visualized through a graph plotting token price against the number of tokens sold. This visualization underscores the incentive for early participation as the price increases gradually but consistently with growing sales.</p>
 <h2>Total Funds Raised: A Cumulative Impact of Progressive Pricing</h2>
-<p>The total funds raised, $M(T)$,  are calculated based on the cumulative sum of prices paid for each token sold. Due to the linear price increase, the total funds raised can be mathematically represented using an arithmetic series formula.</p>
+<p>The total funds raised, \(M(T)\),  are calculated based on the cumulative sum of prices paid for each token sold. Due to the linear price increase, the total funds raised can be mathematically represented using an arithmetic series formula.</p>
 <h3>Calculating Total Funds Raised</h3>
-<p>$M(T) = \frac{(P_0 + P(T)) \times T}{2}$</p>
+<p>\(M(T) = \frac{(P_0 + P(T)) \times T}{2}\)</p>
 <p>Where:</p>
 <ul>
-<li><strong>$M(T)$</strong>: The total funds raised in lamports after selling $T$ tokens.</li>
-<li><strong>$P_0$</strong>: The initial token price (10,000 lamports).</li>
-<li><strong>$P(T)$</strong>: The price of the token after selling $T$ tokens, calculated as per the pricing formula.</li>
+<li><strong>\(M(T)\)</strong>: The total funds raised in lamports after selling \(T\) tokens.</li>
+<li><strong>\(P_0\)</strong>: The initial token price (10,000 lamports).</li>
+<li><strong>\(P(T)\)</strong>: The price of the token after selling \(T\) tokens, calculated as per the pricing formula.</li>
 </ul>
 <p>To express the total funds in SOL and USD:</p>
-<p>$M_{\text{SOL}}(T) = \frac{M(T)}{10^9}$</p>
-<p>$M_{\text{USD}}(T) = M_{\text{SOL}}(T) \times 150$</p>
+<p>\(M_{\text{SOL}}(T) = \frac{M(T)}{10^9}\)</p>
+<p>\(M_{\text{USD}}(T) = M_{\text{SOL}}(T) \times 150\)</p>
 <h3>Illustrative Example</h3>
 <p>Consider the sale of 500 million tokens:</p>
 <ul>
-<li><strong>Initial price ($P_0$)</strong>: 10,000 lamports.</li>
-<li><strong>Final price ($P(500,000,000)$)</strong>: 15,000 lamports.</li>
+<li><strong>Initial price (\(P_0\))</strong>: 10,000 lamports.</li>
+<li><strong>Final price (\(P(500,000,000)\))</strong>: 15,000 lamports.</li>
 <li><strong>Average price</strong>: 12,500 lamports.</li>
-<li><strong>Total funds ($M(500,000,000)$)</strong>: $6.25 \times 10^{12}$ lamports, equivalent to 6,250 SOL or 937,500 USD.</li>
+<li><strong>Total funds (\(M(500,000,000)\))</strong>: \(6.25 \times 10^{12}\) lamports, equivalent to 6,250 SOL or 937,500 USD.</li>
 </ul>
 <p>This example demonstrates how the total funds raised are significantly impacted by the linear price increase, highlighting the efficacy of the pricing model in achieving fundraising goals.</p>
 <h2>Market Capitalization and Its Correlation with Token Price</h2>

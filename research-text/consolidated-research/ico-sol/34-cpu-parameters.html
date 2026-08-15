@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\[', right: '\\]', display: true}, {left: '\\(', right: '\\)', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
   pre { background: #161b22; padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid #30363d; }
@@ -76,9 +76,9 @@
 <li>
 <p><strong>Identify Key Components:</strong>  The whitepaper provides the essential elements for this optimization:</p>
 <ul>
-<li><strong>Dynamic Commission Formula:</strong> $\alpha = a + bx$ or tiered structures. For simplicity in the first iteration, let's focus on the linear formula.</li>
-<li><strong>Earnings Function:</strong> $E(\alpha) = \alpha \times I(\alpha)$, where $I(\alpha)$ is the investment volume influenced by the commission rate.</li>
-<li><strong>Optimization Goal:</strong> Maximize $E(\alpha)$.</li>
+<li><strong>Dynamic Commission Formula:</strong> \(\alpha = a + bx\) or tiered structures. For simplicity in the first iteration, let's focus on the linear formula.</li>
+<li><strong>Earnings Function:</strong> \(E(\alpha) = \alpha \times I(\alpha)\), where \(I(\alpha)\) is the investment volume influenced by the commission rate.</li>
+<li><strong>Optimization Goal:</strong> Maximize \(E(\alpha)\).</li>
 <li><strong>Potential Optimization Techniques:</strong>  The whitepaper mentions gradient descent. However, for a Kaggle notebook with CPU constraints and a likely simpler function, grid search or a more basic optimization algorithm might be sufficient.</li>
 </ul>
 </li>
@@ -257,8 +257,8 @@ else:
 <li>
 <p><strong><code>calculate_commission_linear()</code> Function:</strong></p>
 <ul>
-<li>Implements the linear dynamic commission formula: $\alpha = a + b \times performance_metric$.</li>
-<li>Calculates the commission earned based on the $\alpha$ and the $investment$.</li>
+<li>Implements the linear dynamic commission formula: \(\alpha = a + b \times performance_metric\).</li>
+<li>Calculates the commission earned based on the \(\alpha\) and the \(investment\).</li>
 </ul>
 </li>
 <li>
