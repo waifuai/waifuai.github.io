@@ -30,7 +30,7 @@
 <title>RWA-Backed Lending with Feedback Loop Optimization</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -85,17 +85,17 @@
 Optimization Algorithm
 The AI agent optimizes lending parameters using reinforcement learning to maximize platform revenue while minimizing default risk:
 Objective Function:
-$$\max_{\text{rate}, \text{collateral}} \left[ \text{revenue}<em>{\text{interest}} - \text{cost}</em>{\text{default}} \right]$$
+$$\max_{\text{rate}, \text{collateral}} \left[ \text{revenue}_{\text{interest}} - \text{cost}_{\text{default}} \right]$$
 $\text{revenue}_{\text{interest}} = \sum_i r_i \cdot L_i$, where $r_i$ is the interest rate and $L_i$ is the loan amount for loan $i$.</li>
 </ul>
-<p>$\text{cost}<em>{\text{default}} = \sum_i P(\text{default}_i) \cdot (L_i - C_i)$, where $P(\text{default}_i)$ is the default probability, and $C_i$ is the collateral value recovered.
+<p>$\text{cost}_{\text{default}} = \sum_i P(\text{default}_i) \cdot (L_i - C_i)$, where $P(\text{default}_i)$ is the default probability, and $C_i$ is the collateral value recovered.
 <strong>Constraints:</strong>
-Collateralization ratio: $\frac{C_i}{L_i} \geq CR</em>{\text{min}}$ (e.g., 150%), ensuring sufficient collateral.</p>
+Collateralization ratio: $\frac{C_i}{L_i} \geq CR_{\text{min}}$ (e.g., 150%), ensuring sufficient collateral.</p>
 <p>Stability: $\sigma_{\text{portfolio}} &lt; \sigma_{\text{max}}$, where $\sigma_{\text{portfolio}}$ is portfolio volatility, limiting systemic risk.
 <strong>Reinforcement Learning:</strong>
 State: Current RWA prices, volatility, loan portfolio status.</p>
 <p>Action: Adjust $r_i$ and $CR_i$ (collateral ratio) for each loan.</p>
-<p>Reward: $\text{revenue}<em>{\text{interest}} - \text{cost}</em>{\text{default}} - \lambda \cdot \sigma_{\text{portfolio}}$, where $\lambda$ penalizes excessive volatility.
+<p>Reward: $\text{revenue}_{\text{interest}} - \text{cost}_{\text{default}} - \lambda \cdot \sigma_{\text{portfolio}}$, where $\lambda$ penalizes excessive volatility.
 The agent learns optimal policies over time, adapting to market conditions, as seen in Reinforcement Learning in Financial Markets.
 Handling Correlated RWA Price Movements and Systemic Risk
 <strong>Correlation Modeling:</strong> Uses a covariance matrix $\mathbf{\Sigma}$ to capture price correlations:
@@ -127,16 +127,16 @@ $$\sigma_{\text{portfolio}}^2 = \sum_i \sum_j w_i w_j \Sigma_{ij}$$
 High correlations amplify risk, requiring dynamic adjustments.</p>
 <h3>Optimization Algorithm</h3>
 <p><strong>Objective Function:</strong>
-$$\max_{\mathbf{r}, \mathbf{CR}} \left[ \sum_i r_i L_i - \sum_i P(\text{default}<em>i) (L_i - C_i) \right]$$
+$$\max_{\mathbf{r}, \mathbf{CR}} \left[ \sum_i r_i L_i - \sum_i P(\text{default}_i) (L_i - C_i) \right]$$
 Default probability: $P(\text{default}_i) = f(\frac{L_i}{C_i}, \sigma_i)$, e.g., a logistic function based on LTV and volatility.
 <strong>Constraints:</strong>
-$\frac{C_i}{L_i} \geq CR</em>{\text{min}}$ (e.g., 150%).</p>
+$\frac{C_i}{L_i} \geq CR_{\text{min}}$ (e.g., 150%).</p>
 <p>$\sigma_{\text{portfolio}} &lt; \sigma_{\text{max}}$ (e.g., 20% annualized).
 <strong>Reinforcement Learning Algorithm:</strong>
 State Space: RWA prices, volatilities, loan statuses.</p>
 <p>Action Space: Adjust $r_i$ and $CR_i$ for each loan.</p>
 <p>Reward: Balances revenue, default cost, and stability:
-$$\text{reward} = \text{revenue}<em>{\text{interest}} - \text{cost}</em>{\text{default}} - \lambda \cdot \sigma_{\text{portfolio}}$$
+$$\text{reward} = \text{revenue}_{\text{interest}} - \text{cost}_{\text{default}} - \lambda \cdot \sigma_{\text{portfolio}}$$
 The agent learns optimal policies via trial and error, adapting to correlated risks, as seen in Reinforcement Learning in Finance.</p>
 <h3>Systemic Risk and Stability</h3>
 <p><strong>Correlated Risks:</strong> High $\rho_{ij}$ increases $\sigma_{\text{portfolio}}$, potentially triggering defaults across loans. The agent mitigates this by raising $CR_i$ and $r_i$ for correlated assets.

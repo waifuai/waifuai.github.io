@@ -30,7 +30,7 @@
 <title>Extended Kinematic Analysis of Projectile Interception: Constant Velocity and Beyond</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -79,101 +79,101 @@ $\mathbf{v}$
 <h3>2.1 Geometric Interpretation</h3>
 <p>The original solution expresses the projectile's velocity in two sets of components, reflecting the dual trajectories possible due to the quadratic nature of the speed constraint. Let’s redefine the key vectors:
 Target position: 
-$$ \mathbf{R}<em>\alpha(t) = \mathbf{R}</em>{\alpha 0} + \mathbf{v}<em>\alpha t $$
+$$ \mathbf{R}_\alpha(t) = \mathbf{R}_{\alpha 0} + \mathbf{v}_\alpha t $$
 Projectile position: 
-$$ \mathbf{R}</em>\beta(t) = \mathbf{R}<em>{\beta 0} + \mathbf{v}</em>\beta t $$
+$$ \mathbf{R}_\beta(t) = \mathbf{R}_{\beta 0} + \mathbf{v}_\beta t $$
 Interception occurs when 
-$$ \mathbf{R}<em>\alpha($t^<em>$) = \mathbf{R}_\beta($t^</em>$) $$
+$$ \mathbf{R}_\alpha($t^*$) = \mathbf{R}_\beta($t^_$) $$
 , yielding:
-$$ \mathbf{R}</em>{\alpha 0} + \mathbf{v}<em>\alpha $t^<em>$ = \mathbf{R}<em>{\beta 0} + \mathbf{v}</em>\beta $t^</em>$ $$
+$$ \mathbf{R}*{\alpha 0} + \mathbf{v}_\alpha $t^*$ = \mathbf{R}_{\beta 0} + \mathbf{v}_\beta $t^*$ $$
 Rearranging for the projectile velocity:
-$$ \mathbf{v}</em>\beta = \frac{\mathbf{R}<em>{\alpha 0} - \mathbf{R}</em>{\beta 0}}{$t^<em>$} + \mathbf{v}<em>\alpha $$
+$$ \mathbf{v}_\beta = \frac{\mathbf{R}_{\alpha 0} - \mathbf{R}_{\beta 0}}{$t^*$} + \mathbf{v}_\alpha $$
 The speed constraint is:
-$$ |\mathbf{v}</em>\beta|^2 = $s_\beta^2$ $$
+$$ |\mathbf{v}*\beta|^2 = $s_\beta^2$ $$
 Substitute 
-$\mathbf{v}<em>\beta$
+$\mathbf{v}_\beta$
  into the magnitude equation:
-$$ \left| \frac{\mathbf{R}</em>{\alpha 0} - \mathbf{R}_{\beta 0}}{$t^</em>$} + \mathbf{v}<em>\alpha \right|^2 = $s</em>\beta^2$ $$
+$$ \left| \frac{\mathbf{R}_{\alpha 0} - \mathbf{R}_{\beta 0}}{$t^_$} + \mathbf{v}_\alpha \right|^2 = $s_\beta^2$ $$
 Define the relative initial displacement as 
-$$ \mathbf{r}<em>0 = \mathbf{R}</em>{\alpha 0} - \mathbf{R}<em>{\beta 0} $$
+$$ \mathbf{r}_0 = \mathbf{R}_{\alpha 0} - \mathbf{R}_{\beta 0} $$
 . Then:
-$$ \left| \frac{\mathbf{r}_0}{$t^<em>$} + \mathbf{v}<em>\alpha \right|^2 = $s</em>\beta^2$ $$
+$$ \left| \frac{\mathbf{r}_0}{$t^*$} + \mathbf{v}_\alpha \right|^2 = $s_\beta^2$ $$
 Expanding the norm:
-$$ \left( \frac{\mathbf{r}_0}{$t^</em>$} + \mathbf{v}</em>\alpha \right) \cdot \left( \frac{\mathbf{r}<em>0}{$t^<em>$} + \mathbf{v}_\alpha \right) = \frac{\mathbf{r}_0 \cdot \mathbf{r}_0}{$t^{</em>2}$} + 2 \frac{\mathbf{r}_0 \cdot \mathbf{v}</em>\alpha}{$t^<em>$} + \mathbf{v}<em>\alpha \cdot \mathbf{v}</em>\alpha = $s_\beta^2$ $$
+$$ \left( \frac{\mathbf{r}_0}{$t^*$} + \mathbf{v}_\alpha \right) \cdot \left( \frac{\mathbf{r}_0}{$t^*$} + \mathbf{v}_\alpha \right) = \frac{\mathbf{r}_0 \cdot \mathbf{r}_0}{$t^{_2}$} + 2 \frac{\mathbf{r}_0 \cdot \mathbf{v}*\alpha}{$t^*$} + \mathbf{v}_\alpha \cdot \mathbf{v}*\alpha = $s_\beta^2$ $$
 Multiply through by
-$$t^{</em>2}$$
+$$t^{_2}$$
  to eliminate the denominator:
-$$ \mathbf{r}<em>0 \cdot \mathbf{r}_0 + 2 (\mathbf{r}_0 \cdot \mathbf{v}</em>\alpha) $t^<em>$ + (\mathbf{v}<em>\alpha \cdot \mathbf{v}</em>\alpha) $t^{</em>2}$ = $s_\beta^2$ $t^{<em>2}$ $$
+$$ \mathbf{r}_0 \cdot \mathbf{r}_0 + 2 (\mathbf{r}_0 \cdot \mathbf{v}_\alpha) $t^*$ + (\mathbf{v}_\alpha \cdot \mathbf{v}*\alpha) $t^{_2}$ = $s_\beta^2$ $t^{_2}$ $$
 Rearrange into a standard quadratic form in
-$$t^</em>$$
+$$t^_$$
  :
-$$ ($s_\beta^2$ - |\mathbf{v}<em>\alpha|^2) $t^{<em>2}$ - 2 (\mathbf{r}<em>0 \cdot \mathbf{v}</em>\alpha) $t^</em>$ - |\mathbf{r}_0|^2 = 0 $$
+$$ ($s_\beta^2$ - |\mathbf{v}_\alpha|^2) $t^{_2}$ - 2 (\mathbf{r}_0 \cdot \mathbf{v}_\alpha) $t^_$ - |\mathbf{r}_0|^2 = 0 $$
 Let:
-$$ a = $s</em>\beta^2$ - |\mathbf{v}<em>\alpha|^2 $$
-$$ b = -2 (\mathbf{r}_0 \cdot \mathbf{v}</em>\alpha) $$
-$$ c = -|\mathbf{r}<em>0|^2 $$
+$$ a = $s_\beta^2$ - |\mathbf{v}_\alpha|^2 $$
+$$ b = -2 (\mathbf{r}_0 \cdot \mathbf{v}_\alpha) $$
+$$ c = -|\mathbf{r}_0|^2 $$
 The discriminant of this quadratic is:
-$$ \Delta_t = b^2 - 4ac = [2 (\mathbf{r}_0 \cdot \mathbf{v}</em>\alpha)]^2 - 4 ($s_\beta^2$ - |\mathbf{v}<em>\alpha|^2) (-|\mathbf{r}_0|^2) $$
-$$ \Delta_t = 4 (\mathbf{r}_0 \cdot \mathbf{v}</em>\alpha)^2 + 4 ($s_\beta^2$ - |\mathbf{v}<em>\alpha|^2) |\mathbf{r}_0|^2 $$
-$$ \Delta_t = 4 [ (\mathbf{r}_0 \cdot \mathbf{v}</em>\alpha)^2 + ($s_\beta^2$ - |\mathbf{v}<em>\alpha|^2) |\mathbf{r}_0|^2 ] $$
+$$ \Delta_t = b^2 - 4ac = [2 (\mathbf{r}_0 \cdot \mathbf{v}_\alpha)]^2 - 4 ($s_\beta^2$ - |\mathbf{v}_\alpha|^2) (-|\mathbf{r}_0|^2) $$
+$$ \Delta_t = 4 (\mathbf{r}_0 \cdot \mathbf{v}_\alpha)^2 + 4 ($s_\beta^2$ - |\mathbf{v}_\alpha|^2) |\mathbf{r}_0|^2 $$
+$$ \Delta_t = 4 [ (\mathbf{r}_0 \cdot \mathbf{v}_\alpha)^2 + ($s_\beta^2$ - |\mathbf{v}_\alpha|^2) |\mathbf{r}_0|^2 ] $$
 The solutions for 
-$t^<em>$
+$t^*$
  are:
-$$ $t^</em>$ = \frac{-b \pm \sqrt{\Delta_t}}{2a} = \frac{2 (\mathbf{r}_0 \cdot \mathbf{v}</em>\alpha) \pm \sqrt{4 [ (\mathbf{r}<em>0 \cdot \mathbf{v}</em>\alpha)^2 + ($s_\beta^2$ - |\mathbf{v}<em>\alpha|^2) |\mathbf{r}_0|^2 ]}}{2 ($s</em>\beta^2$ - |\mathbf{v}_\alpha|^2)} $$
-$$ $t^<em>$ = \frac{(\mathbf{r}<em>0 \cdot \mathbf{v}</em>\alpha) \pm \sqrt{(\mathbf{r}<em>0 \cdot \mathbf{v}</em>\alpha)^2 + ($s_\beta^2$ - |\mathbf{v}<em>\alpha|^2) |\mathbf{r}_0|^2}}{$s</em>\beta^2$ - |\mathbf{v}_\alpha|^2} $$
+$$ $t^_$ = \frac{-b \pm \sqrt{\Delta_t}}{2a} = \frac{2 (\mathbf{r}_0 \cdot \mathbf{v}*\alpha) \pm \sqrt{4 [ (\mathbf{r}_0 \cdot \mathbf{v}_\alpha)^2 + ($s_\beta^2$ - |\mathbf{v}_\alpha|^2) |\mathbf{r}_0|^2 ]}}{2 ($s_\beta^2$ - |\mathbf{v}_\alpha|^2)} $$
+$$ $t^*$ = \frac{(\mathbf{r}_0 \cdot \mathbf{v}*\alpha) \pm \sqrt{(\mathbf{r}_0 \cdot \mathbf{v}_\alpha)^2 + ($s_\beta^2$ - |\mathbf{v}_\alpha|^2) |\mathbf{r}_0|^2}}{$s_\beta^2$ - |\mathbf{v}_\alpha|^2} $$
 For 
-$$t^</em>$ &gt; 0$
+$$t^_$ &gt; 0$
 , we select physically meaningful roots based on initial conditions and directionality.</p>
 <h3>2.2 Velocity Components</h3>
 <p>Once 
-$t^<em>$
+$t^*$
  is determined, the velocity becomes:
-$$ \mathbf{v}_\beta = \frac{\mathbf{r}_0}{$t^</em>$} + \mathbf{v}<em>\alpha $$
+$$ \mathbf{v}_\beta = \frac{\mathbf{r}_0}{$t^*$} + \mathbf{v}_\alpha $$
 This matches the structure of the original 
 $\mathbf{v}$
 , where the 
 $\pm \sqrt{\Delta}$
  term corresponds to the two possible interception times. To align with the original notation, note that:
-$$ D = |\mathbf{r}_0|^2, \quad \Delta = $s</em>\beta^2$ |\mathbf{r}<em>0|^2 - (\mathbf{v}</em>\alpha \cdot \mathbf{r}<em>0)^2 $$
+$$ D = |\mathbf{r}_0|^2, \quad \Delta = $s_\beta^2$ |\mathbf{r}_0|^2 - (\mathbf{v}_\alpha \cdot \mathbf{r}_0)^2 $$
 Thus, the velocity components can be expressed as:
-$$ \mathbf{v}</em>\beta^\pm = \mathbf{v}_\alpha \pm \frac{\mathbf{r}_0 \sqrt{\Delta}}{D} $$
+$$ \mathbf{v}_\beta^\pm = \mathbf{v}_\alpha \pm \frac{\mathbf{r}_0 \sqrt{\Delta}}{D} $$
 This form highlights the symmetry of the two solutions, differing only by the sign of the correction term.</p>
 <h2>3. Extension to Constant Acceleration</h2>
 <h3>3.1 Kinematic Equations</h3>
 <p>When the target accelerates with constant 
-$\mathbf{a}<em>\alpha$
+$\mathbf{a}_\alpha$
 , its position becomes:
-$$ \mathbf{R}</em>\alpha(t) = \mathbf{R}<em>{\alpha 0} + \mathbf{v}</em>{\alpha 0} t + \frac{1}{2} \mathbf{a}<em>\alpha t^2 $$
+$$ \mathbf{R}_\alpha(t) = \mathbf{R}_{\alpha 0} + \mathbf{v}_{\alpha 0} t + \frac{1}{2} \mathbf{a}_\alpha t^2 $$
 The projectile, assumed to have zero acceleration, follows:
-$$ \mathbf{R}</em>\beta(t) = \mathbf{R}<em>{\beta 0} + \mathbf{v}</em>\beta t $$
+$$ \mathbf{R}_\beta(t) = \mathbf{R}_{\beta 0} + \mathbf{v}_\beta t $$
 At interception time 
-$$t^<em>$$
+$$t^*$$
 :
-$$ \mathbf{R}<em>{\alpha 0} + \mathbf{v}</em>{\alpha 0} $t^</em>$ + \frac{1}{2} \mathbf{a}<em>\alpha $t^{<em>2}$ = \mathbf{R}<em>{\beta 0} + \mathbf{v}</em>\beta $t^</em>$ $$
+$$ \mathbf{R}_{\alpha 0} + \mathbf{v}*{\alpha 0} $t^_$ + \frac{1}{2} \mathbf{a}_\alpha $t^{_2}$ = \mathbf{R}_{\beta 0} + \mathbf{v}_\beta $t^_$ $$
 Solve for 
-$\mathbf{v}</em>\beta$
+$\mathbf{v}_\beta$
 :
-$$ \mathbf{v}<em>\beta = \frac{\mathbf{R}</em>{\alpha 0} - \mathbf{R}<em>{\beta 0}}{$t^<em>$} + \mathbf{v}<em>{\alpha 0} + \frac{1}{2} \mathbf{a}</em>\alpha $t^</em>$ $$
+$$ \mathbf{v}_\beta = \frac{\mathbf{R}_{\alpha 0} - \mathbf{R}_{\beta 0}}{$t^*$} + \mathbf{v}_{\alpha 0} + \frac{1}{2} \mathbf{a}_\alpha $t^*$ $$
 Apply the speed constraint:
-$$ \left| \frac{\mathbf{r}_0}{$t^<em>$} + \mathbf{v}<em>{\alpha 0} + \frac{1}{2} \mathbf{a}</em>\alpha $t^</em>$ \right|^2 = $s</em>\beta^2$ $$
+$$ \left| \frac{\mathbf{r}_0}{$t^*$} + \mathbf{v}_{\alpha 0} + \frac{1}{2} \mathbf{a}*\alpha $t^_$ \right|^2 = $s_\beta^2$ $$
 Expand the expression:
-$$ \left( \frac{\mathbf{r}<em>0}{$t^<em>$} + \mathbf{v}<em>{\alpha 0} + \frac{1}{2} \mathbf{a}</em>\alpha $t^</em>$ \right) \cdot \left( \frac{\mathbf{r}_0}{$t^<em>$} + \mathbf{v}<em>{\alpha 0} + \frac{1}{2} \mathbf{a}</em>\alpha $t^</em>$ \right) = $s</em>\beta^2$ $$
-$$ \frac{\mathbf{r}<em>0 \cdot \mathbf{r}_0}{$t^{<em>2}$} + 2 \frac{\mathbf{r}<em>0 \cdot \mathbf{v}</em>{\alpha 0}}{$t^</em>$} + \mathbf{r}_0 \cdot \mathbf{a}</em>\alpha + \mathbf{v}<em>{\alpha 0} \cdot \mathbf{v}</em>{\alpha 0} + \mathbf{v}<em>{\alpha 0} \cdot \mathbf{a}</em>\alpha $t^<em>$ + \frac{1}{4} \mathbf{a}<em>\alpha \cdot \mathbf{a}</em>\alpha $t^{</em>2}$ = $s_\beta^2$ $$
+$$ \left( \frac{\mathbf{r}_0}{$t^*$} + \mathbf{v}_{\alpha 0} + \frac{1}{2} \mathbf{a}_\alpha $t^*$ \right) \cdot \left( \frac{\mathbf{r}_0}{$t^*$} + \mathbf{v}_{\alpha 0} + \frac{1}{2} \mathbf{a}*\alpha $t^_$ \right) = $s_\beta^2$ $$
+$$ \frac{\mathbf{r}_0 \cdot \mathbf{r}_0}{$t^{_2}$} + 2 \frac{\mathbf{r}_0 \cdot \mathbf{v}_{\alpha 0}}{$t^_$} + \mathbf{r}_0 \cdot \mathbf{a}_\alpha + \mathbf{v}_{\alpha 0} \cdot \mathbf{v}_{\alpha 0} + \mathbf{v}_{\alpha 0} \cdot \mathbf{a}_\alpha $t^*$ + \frac{1}{4} \mathbf{a}_\alpha \cdot \mathbf{a}*\alpha $t^{_2}$ = $s_\beta^2$ $$
 Multiply through by 
-$t^{<em>2}$
+$t^{_2}$
 :
-$$ \mathbf{r}<em>0 \cdot \mathbf{r}_0 + 2 (\mathbf{r}_0 \cdot \mathbf{v}</em>{\alpha 0}) $t^</em>$ + (\mathbf{r}<em>0 \cdot \mathbf{a}</em>\alpha) $t^{<em>2}$ + (\mathbf{v}<em>{\alpha 0} \cdot \mathbf{v}</em>{\alpha 0}) $t^{</em>2}$ + (\mathbf{v}<em>{\alpha 0} \cdot \mathbf{a}</em>\alpha) t^{<em>3} + \frac{1}{4} (\mathbf{a}<em>\alpha \cdot \mathbf{a}</em>\alpha) t^{</em>4} = $s_\beta^2$ $t^{<em>2}$ $$
+$$ \mathbf{r}_0 \cdot \mathbf{r}_0 + 2 (\mathbf{r}_0 \cdot \mathbf{v}_{\alpha 0}) $t^_$ + (\mathbf{r}_0 \cdot \mathbf{a}_\alpha) $t^{_2}$ + (\mathbf{v}_{\alpha 0} \cdot \mathbf{v}_{\alpha 0}) $t^{_2}$ + (\mathbf{v}_{\alpha 0} \cdot \mathbf{a}_\alpha) t^{_3} + \frac{1}{4} (\mathbf{a}_\alpha \cdot \mathbf{a}_\alpha) t^{_4} = $s_\beta^2$ $t^{_2}$ $$
 Rearrange:
-$$ \frac{1}{4} (\mathbf{a}<em>\alpha \cdot \mathbf{a}</em>\alpha) t^{</em>4} + (\mathbf{v}<em>{\alpha 0} \cdot \mathbf{a}</em>\alpha) t^{<em>3} + [(\mathbf{r}<em>0 \cdot \mathbf{a}</em>\alpha) + \mathbf{v}<em>{\alpha 0} \cdot \mathbf{v}</em>{\alpha 0} - $s_\beta^2$] $t^{</em>2}$ + 2 (\mathbf{r}<em>0 \cdot \mathbf{v}</em>{\alpha 0}) $t^<em>$ + \mathbf{r}_0 \cdot \mathbf{r}_0 = 0 $$
+$$ \frac{1}{4} (\mathbf{a}_\alpha \cdot \mathbf{a}_\alpha) t^{_4} + (\mathbf{v}_{\alpha 0} \cdot \mathbf{a}_\alpha) t^{_3} + [(\mathbf{r}_0 \cdot \mathbf{a}_\alpha) + \mathbf{v}_{\alpha 0} \cdot \mathbf{v}_{\alpha 0} - $s_\beta^2$] $t^{_2}$ + 2 (\mathbf{r}_0 \cdot \mathbf{v}_{\alpha 0}) $t^*$ + \mathbf{r}_0 \cdot \mathbf{r}_0 = 0 $$
 This is a quartic equation in 
-$t^</em>$
+$t^*$
 :
-$$ p_4 t^{<em>4} + p_3 t^{</em>3} + p_2 $t^{<em>2}$ + p_1 $t^</em>$ + p_0 = 0 $$
+$$ p_4 t^{_4} + p_3 t^{_3} + p_2 $t^{_2}$ + p_1 $t^_$ + p_0 = 0 $$
 Where:
-p_4 = $\frac{1}{4} |\mathbf{a}<em>\alpha|^2$
-p_3 = \mathbf{v}</em>{\alpha 0} \cdot \mathbf{a}<em>\alpha
-p_2 = \mathbf{r}_0 \cdot \mathbf{a}</em>\alpha + |\mathbf{v}<em>{\alpha 0}|^2 - $s</em>\beta^2$
-p_1 = 2 (\mathbf{r}<em>0 \cdot \mathbf{v}</em>{\alpha 0})
+p_4 = $\frac{1}{4} |\mathbf{a}_\alpha|^2$
+p_3 = \mathbf{v}_{\alpha 0} \cdot \mathbf{a}_\alpha
+p_2 = \mathbf{r}_0 \cdot \mathbf{a}_\alpha + |\mathbf{v}_{\alpha 0}|^2 - $s_\beta^2$
+p_1 = 2 (\mathbf{r}_0 \cdot \mathbf{v}_{\alpha 0})
 p_0 = |\mathbf{r}_0|^2</p>
 <h3>3.2 Solving the Quartic</h3>
 <p>The quartic equation admits up to four real roots, corresponding to potential interception times. Analytical solutions exist (e.g., Ferrari’s method), but they are cumbersome. For practical purposes, we recommend numerical methods:
@@ -189,19 +189,19 @@ Root Bracketing: Identify intervals where
 $f(t)$
  changes sign, then refine using bisection.
 Once 
-$t^<em>$
+$t^*$
  is found, compute:
-$$ \mathbf{v}_\beta = \frac{\mathbf{r}_0}{$t^</em>$} + \mathbf{v}<em>{\alpha 0} + \frac{1}{2} \mathbf{a}</em>\alpha $t^*$ $$</p>
+$$ \mathbf{v}_\beta = \frac{\mathbf{r}_0}{$t^*$} + \mathbf{v}_{\alpha 0} + \frac{1}{2} \mathbf{a}_\alpha $t^*$ $$</p>
 <h2>4. Special Cases and Validation</h2>
 <h3>4.1 Zero Acceleration</h3>
 <p>If 
-$\mathbf{a}<em>\alpha = 0$
+$\mathbf{a}_\alpha = 0$
 , the quartic reduces to the quadratic from Section 2:
-$$ (|\mathbf{v}</em>{\alpha 0}|^2 - $s_\beta^2$) $t^{<em>2}$ - 2 (\mathbf{r}<em>0 \cdot \mathbf{v}</em>{\alpha 0}) $t^</em>$ - |\mathbf{r}_0|^2 = 0 $$
+$$ (|\mathbf{v}_{\alpha 0}|^2 - $s_\beta^2$) $t^{_2}$ - 2 (\mathbf{r}_0 \cdot \mathbf{v}_{\alpha 0}) $t^_$ - |\mathbf{r}_0|^2 = 0 $$
 This confirms consistency with the original solution.</p>
 <h3>4.2 Parallel Motion</h3>
 <p>If 
-$\mathbf{r}<em>0 \parallel \mathbf{v}</em>{\alpha 0} \parallel \mathbf{a}_\alpha$
+$\mathbf{r}_0 \parallel \mathbf{v}_{\alpha 0} \parallel \mathbf{a}_\alpha$
 , the equations simplify significantly, potentially reducing the degree of the polynomial.</p>
 <h2>5. Conclusion</h2>
 <p>This paper has enriched the original analysis by providing a time-based quadratic solution for constant velocity and a quartic formulation for constant acceleration. The wealth of equations—spanning vector manipulations, quadratic and quartic forms, and numerical strategies—offers a comprehensive toolkit for projectile interception problems. Future work could incorporate variable acceleration or external forces like gravity.

@@ -30,7 +30,7 @@
 <title>**1. Agent Dynamics**</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -194,9 +194,9 @@ where $\mathbf{W}_i$ are the network weights.</p>
 <hr />
 <h3><strong>6. Optimization</strong></h3>
 <h4><strong>6.1. Bonding Curve Parameter Optimization</strong></h4>
-<p>The parameters $\mathbf{\Phi}<em>j(t)$ are optimized to minimize price volatility:<br />
+<p>The parameters $\mathbf{\Phi}_j(t)$ are optimized to minimize price volatility:<br />
 $$
-\min</em>{\mathbf{\Phi}_j} \text{Var}(P_j(t))
+\min_{\mathbf{\Phi}_j} \text{Var}(P_j(t))
 $$</p>
 <h4><strong>6.2. Airdrop Strategy Optimization</strong></h4>
 <p>The airdrop strategy is optimized to maximize adoption:<br />

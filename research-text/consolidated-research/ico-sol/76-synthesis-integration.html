@@ -30,7 +30,7 @@
 <title>Unified Framework for Tokenized Economic Systems</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -129,7 +129,7 @@ $$</p>
 <p>The agent simultaneously learns optimal policies while maintaining beliefs about system parameters:</p>
 <p><strong>Joint Update Rule:</strong>
 $$
-Q_{t+1}(s_t, a_t, \boldsymbol{\theta}^{(b)}, \boldsymbol{\theta}^{(\sigma)}) = Q_t(s_t, a_t, \boldsymbol{\theta}^{(b)}, \boldsymbol{\theta}^{(\sigma)}) + \alpha_t \left[r_t + \gamma \mathbb{E}<em>{b</em>{t+1}}[\max_{a'} Q_t(s_{t+1}, a', \boldsymbol{\theta}^{(b)}, \boldsymbol{\theta}^{(\sigma)}) | b_t] - Q_t(s_t, a_t, \boldsymbol{\theta}^{(b)}, \boldsymbol{\theta}^{(\sigma)})\right]
+Q_{t+1}(s_t, a_t, \boldsymbol{\theta}^{(b)}, \boldsymbol{\theta}^{(\sigma)}) = Q_t(s_t, a_t, \boldsymbol{\theta}^{(b)}, \boldsymbol{\theta}^{(\sigma)}) + \alpha_t \left[r_t + \gamma \mathbb{E}_{b_{t+1}}[\max_{a'} Q_t(s_{t+1}, a', \boldsymbol{\theta}^{(b)}, \boldsymbol{\theta}^{(\sigma)}) | b_t] - Q_t(s_t, a_t, \boldsymbol{\theta}^{(b)}, \boldsymbol{\theta}^{(\sigma)})\right]
 $$</p>
 <p><strong>Belief Update with Stochastic Observations:</strong>
 $$
@@ -152,16 +152,16 @@ $$</p>
 <h4>5.1 Bayesian Nash Equilibrium in Dynamic Markets</h4>
 <p>We extend the framework to multiple agents with Bayesian beliefs:
 $$
-u_i(\boldsymbol{\sigma}<em>i, \boldsymbol{\sigma}</em>{-i}) = \mathbb{E}<em>{b_i} [U_i(\boldsymbol{\theta}^{(b)}, \boldsymbol{\theta}^{(\sigma)}_i, \boldsymbol{\theta}^{(\sigma)}</em>{X-i})]
+u_i(\boldsymbol{\sigma}_i, \boldsymbol{\sigma}_{-i}) = \mathbb{E}_{b_i} [U_i(\boldsymbol{\theta}^{(b)}, \boldsymbol{\theta}^{(\sigma)}_i, \boldsymbol{\theta}^{(\sigma)}_{X-i})]
 $$
 where agents maintain beliefs about others' strategies.</p>
 <h4>5.2 Collective Learning Dynamics</h4>
 <p>The system evolves through coupled learning:
 $$
-\frac{d}{dt} \boldsymbol{\mu}<em>t = \eta \nabla</em>{\boldsymbol{\mu}} \sum_i \mathbb{E}<em>{b_i} [\log \pi_i(a_i | s_t, b_i)]
+\frac{d}{dt} \boldsymbol{\mu}_t = \eta \nabla_{\boldsymbol{\mu}} \sum_i \mathbb{E}_{b_i} [\log \pi_i(a_i | s_t, b_i)]
 $$
 $$
-\frac{db_i}{dt} = \int \nabla</em>{\boldsymbol{\theta}} p(\boldsymbol{\theta} | h_t) (\log p(\boldsymbol{\theta} | h_t) - \log q_i(\boldsymbol{\theta})) q_i(\boldsymbol{\theta}) d\boldsymbol{\theta}
+\frac{db_i}{dt} = \int \nabla_{\boldsymbol{\theta}} p(\boldsymbol{\theta} | h_t) (\log p(\boldsymbol{\theta} | h_t) - \log q_i(\boldsymbol{\theta})) q_i(\boldsymbol{\theta}) d\boldsymbol{\theta}
 $$</p>
 <h3>6. Risk Management and Stability Analysis</h3>
 <h4>6.1 Bayesian Risk Measures</h4>
@@ -189,7 +189,7 @@ for eigenvalues of the Jacobian of the coupled dynamics.</p>
 <p>$$
 \begin{aligned}
 &amp;\text{Bayesian Sampler:} &amp;&amp; \boldsymbol{\theta} \sim P(\boldsymbol{\theta} | h_t) \
-&amp;\text{RL Learning:} &amp;&amp; Q(s, a, \boldsymbol{\theta}<em>{sampled}) \leftarrow Q(s, a, \boldsymbol{\theta}</em>{sampled}) + \alpha \delta \
+&amp;\text{RL Learning:} &amp;&amp; Q(s, a, \boldsymbol{\theta}_{sampled}) \leftarrow Q(s, a, \boldsymbol{\theta}_{sampled}) + \alpha \delta \
 &amp;\text{Policy Update:} &amp;&amp; \pi(a | s) \leftarrow \arg\max_a \mathbb{E}_{\boldsymbol{\theta} \sim b} [Q(s, a, \boldsymbol{\theta})] \
 &amp;\text{Belief Update:} &amp;&amp; b' \leftarrow \text{BayesUpdate}(b, \mathbf{y}_t, \boldsymbol{\theta})
 \end{aligned}

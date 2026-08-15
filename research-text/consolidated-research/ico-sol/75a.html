@@ -30,7 +30,7 @@
 <title>continuation paper</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -131,10 +131,10 @@ t
 , compute the integral:</p>
 <p>\text{Cost}($S$, \Delta $S$, t) = \int_{$S$}^{$S$ + \Delta $S$} (m u + b) \, du + \int_{$S$}^{$S$ + \Delta $S$} $\sigma$ $W(t)$ \, du
 First term:
-\int_{$S$}^{$S$ + \Delta $S$} (m u + b) \, du = \left[ \frac{m u^2}{2} + $b$ u \right]<em>{$S$}^{$S$ + \Delta $S$} = \left( \frac{m ($S$ + \Delta $S$)^2}{2} + $b$ ($S$ + \Delta $S$) \right) - \left( \frac{m $S$^2}{2} + $b$ $S$ \right)
+\int_{$S$}^{$S$ + \Delta $S$} (m u + b) \, du = \left[ \frac{m u^2}{2} + $b$ u \right]_{$S$}^{$S$ + \Delta $S$} = \left( \frac{m ($S$ + \Delta $S$)^2}{2} + $b$ ($S$ + \Delta $S$) \right) - \left( \frac{m $S$^2}{2} + $b$ $S$ \right)
 = \frac{m}{2} ($S$^2 + 2 $S$ \Delta $S$ + (\Delta $S$)^2) + $b$ $S$ + $b$ \Delta $S$ - \frac{m $S$^2}{2} - $b$ $S$ = \frac{m}{2} (\Delta $S$)^2 + $m$ $S$ \Delta $S$ + $b$ \Delta $S$
 Second term:
-\int</em>{$S$}^{$S$ + \Delta $S$} $\sigma$ $W(t)$ \, du = $\sigma$ $W(t)$ \int_{$S$}^{$S$ + \Delta $S$} 1 \, du = $\sigma$ $W(t)$ \cdot ($S$ + \Delta $S$ - $S$) = $\sigma$ $W(t)$ \cdot \Delta $S$
+\int_{$S$}^{$S$ + \Delta $S$} $\sigma$ $W(t)$ \, du = $\sigma$ $W(t)$ \int_{$S$}^{$S$ + \Delta $S$} 1 \, du = $\sigma$ $W(t)$ \cdot ($S$ + \Delta $S$ - $S$) = $\sigma$ $W(t)$ \cdot \Delta $S$
  Thus:</p>
 <p>\text{Cost}($S$, \Delta $S$, t) = \frac{m}{2} (\Delta $S$)^2 + $m$ $S$ \Delta $S$ + $b$ \Delta $S$ + $\sigma$ $W(t)$ \Delta $S$</p>
 <p>Taking the expectation:</p>
@@ -143,7 +143,7 @@ Second term:
 Problem Statement:
 In a tokenized economy with two tokens, Token A and Token B, each follows a linear bonding curve. Define their prices as:
 Price of Token A: 
-P_A($S$<em>A) = $m_A$ $S$_A + b_A
+P_A($S$_A) = $m_A$ $S$_A + b_A
 , where 
 $S$_A
  is the circulating supply, 
@@ -161,9 +161,9 @@ m_B
 b_B
 .
 An arbitrage opportunity arises if an external decentralized exchange (DEX) offers a different exchange rate than the bonding curve ratio. Let the DEX exchange rate be 
-R</em>{\text{DEX}}
+R_{\text{DEX}}
  (units of Token B per Token A), while the bonding curve exchange rate is 
-R_{\text{BC}} = \frac{P_A($S$<em>A)}{P_B($S$_B)}
+R_{\text{BC}} = \frac{P_A($S$_A)}{P_B($S$_B)}
 .
 Determine:
 a) The condition under which arbitrage is profitable.
@@ -174,15 +174,15 @@ Solution:
 a) Arbitrage Condition:
  Arbitrage is profitable if the DEX exchange rate differs from the bonding curve rate:
 If 
-R</em>{\text{DEX}} &gt; R_{\text{BC}}
+R_{\text{DEX}} &gt; R_{\text{BC}}
 , buy Token B with Token A on the DEX and redeem Token B via its bonding curve.
 If 
 R_{\text{DEX}} &lt; R_{\text{BC}}
 , buy Token A with Token B on the DEX and redeem Token A via its bonding curve.
  Define 
-R_{\text{BC}} = \frac{m_A $S$<em>A + b_A}{m_B $S$_B + b_B}
+R_{\text{BC}} = \frac{m_A $S$_A + b_A}{m_B $S$_B + b_B}
 . Profitability requires 
-R</em>{\text{DEX}} \neq R_{\text{BC}}
+R_{\text{DEX}} \neq R_{\text{BC}}
 .
 b) Profit Calculation (Case: 
 R_{\text{DEX}} &gt; R_{\text{BC}}
@@ -195,14 +195,14 @@ y = x \cdot R_{\text{DEX}}
 Redeem 
 y
  Token B via the bonding curve. The value received is the integral of 
-P_B($S$<em>B)
+P_B($S$_B)
  as supply decreases from 
 $S$_B
  to 
 $S$_B - y
 :
-\text{Value} = \int</em>{$S$<em>B - y}^{$S$_B} P_B(u) \, du = \int</em>{$S$<em>B - y}^{$S$_B} (m_B u + b_B) \, du
-= \left[ \frac{m_B u^2}{2} + b_B u \right]</em>{$S$<em>B - y}^{$S$_B} = \left( \frac{m_B $S$_B^2}{2} + b_B $S$_B \right) - \left( \frac{m_B ($S$_B - y)^2}{2} + b_B ($S$_B - y) \right)
+\text{Value} = \int_{$S$_B - y}^{$S$_B} P_B(u) \, du = \int_{$S$_B - y}^{$S$_B} (m_B u + b_B) \, du
+= \left[ \frac{m_B u^2}{2} + b_B u \right]_{$S$_B - y}^{$S$_B} = \left( \frac{m_B $S$_B^2}{2} + b_B $S$_B \right) - \left( \frac{m_B ($S$_B - y)^2}{2} + b_B ($S$_B - y) \right)
 = \frac{m_B}{2} ($S$_B^2 - ($S$_B^2 - 2 $S$_B y + y^2)) + b_B ($S$_B - ($S$_B - y))
 = \frac{m_B}{2} (2 $S$_B y - y^2) + b_B y = m_B $S$_B y - \frac{m_B y^2}{2} + b_B y
 Cost of 
@@ -210,7 +210,7 @@ x
  Token A via its bonding curve:
 \text{Cost} = x \cdot P_A($S$_A) = x (m_A $S$_A + b_A)
 Profit:
-\text{Profit} = m_B $S$_B (x R</em>{\text{DEX}}) - \frac{m_B (x R_{\text{DEX}})^2}{2} + b_B (x R_{\text{DEX}}) - x (m_A $S$_A + b_A)
+\text{Profit} = m_B $S$_B (x R_{\text{DEX}}) - \frac{m_B (x R_{\text{DEX}})^2}{2} + b_B (x R_{\text{DEX}}) - x (m_A $S$_A + b_A)
 7. Staking Rewards in a Tokenized Ecosystem
 Problem Statement:
 In a tokenized ecosystem, holders of Token A can stake their tokens to earn rewards in Token B. Define:

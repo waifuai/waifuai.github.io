@@ -30,7 +30,7 @@
 <title>mean-field approximation</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -109,20 +109,20 @@ q_m(m) = N(\mu_{qm}, \sigma_{qm}^2)
 q_b(b) = N(\mu_{qb}, \sigma_{qb}^2)
 ELBO:
 ELBO = \mathbb{E}_q[\log P(D, m, b)] - \mathbb{E}_q[\log q(m, b)]</p>
-<p>= \sum_{i=1}^n \mathbb{E}<em>q\left[ -\frac{1}{2} \log(2\pi \sigma^2) - \frac{(P_i - m S_i - b)^2}{2 \sigma^2} \right] - \text{KL}(q_m || P(m)) - \text{KL}(q_b || P(b))
+<p>= \sum_{i=1}^n \mathbb{E}_q\left[ -\frac{1}{2} \log(2\pi \sigma^2) - \frac{(P_i - m S_i - b)^2}{2 \sigma^2} \right] - \text{KL}(q_m || P(m)) - \text{KL}(q_b || P(b))
 Update Equations:
 For 
 q_m(m)
 :
-\log q_m^<em>(m) = \mathbb{E}<em>{q_b}[\log P(D, m, b)] + \log P(m) + \text{const}
-= -\frac{1}{2 \sigma^2} \sum</em>{i=1}^n \mathbb{E}<em>{q_b}\left[ (P_i - m S_i - b)^2 \right] - \frac{(m - \mu_m)^2}{2 \sigma_m^2} + \text{const}
+\log q_m^*(m) = \mathbb{E}_{q_b}[\log P(D, m, b)] + \log P(m) + \text{const}
+= -\frac{1}{2 \sigma^2} \sum_{i=1}^n \mathbb{E}_{q_b}\left[ (P_i - m S_i - b)^2 \right] - \frac{(m - \mu_m)^2}{2 \sigma_m^2} + \text{const}
 Expand:
 (P_i - m S_i - b)^2 = P_i^2 - 2 P_i m S_i - 2 P_i b + m^2 S_i^2 + 2 m S_i b + b^2
-\mathbb{E}</em>{q_b}[(P_i - m S_i - b)^2] = P_i^2 - 2 P_i m S_i - 2 P_i \mu_{qb} + m^2 S_i^2 + 2 m S_i \mu_{qb} + \mu_{qb}^2 + \sigma_{qb}^2
+\mathbb{E}_{q_b}[(P_i - m S_i - b)^2] = P_i^2 - 2 P_i m S_i - 2 P_i \mu_{qb} + m^2 S_i^2 + 2 m S_i \mu_{qb} + \mu_{qb}^2 + \sigma_{qb}^2
 Collect 
 m
 -terms:
-\log q_m^</em>(m) \propto -\frac{1}{2 \sigma^2} \sum</em>{i=1}^n (m^2 S_i^2 - 2 m S_i (P_i - \mu_{qb})) - \frac{m^2 - 2 m \mu_m}{2 \sigma_m^2}
+\log q_m^*(m) \propto -\frac{1}{2 \sigma^2} \sum_{i=1}^n (m^2 S_i^2 - 2 m S_i (P_i - \mu_{qb})) - \frac{m^2 - 2 m \mu_m}{2 \sigma_m^2}
 Match to Gaussian:
 \sigma_{qm}^{-2} = \frac{\sum S_i^2}{\sigma^2} + \frac{1}{\sigma_m^2}
 \mu_{qm} = \sigma_{qm}^2 \left( \frac{\sum S_i (P_i - \mu_{qb})}{\sigma^2} + \frac{\mu_m}{\sigma_m^2} \right)
@@ -174,11 +174,11 @@ q(m_A, b_A, m_B, b_B) = q_{m_A}(m_A) q_{b_A}(b_A) q_{m_B}(m_B) q_{b_B}(b_B)</p>
 q \sim N(\mu, \sigma^2)
 .
 ELBO:
-ELBO = \sum_{i=1}^N \mathbb{E}<em>q\left[ -\frac{1}{2 \tau^2} (R_i - \frac{m_A S</em>{Ai} + b_A}{m_B S_{Bi} + b_B})^2 \right] - \sum \text{KL}(q || P)
+ELBO = \sum_{i=1}^N \mathbb{E}_q\left[ -\frac{1}{2 \tau^2} (R_i - \frac{m_A S_{Ai} + b_A}{m_B S_{Bi} + b_B})^2 \right] - \sum \text{KL}(q || P)
 Updates:
 q_{m_A}(m_A)
 :
-\log q_{m_A}^<em> \propto \mathbb{E}<em>{q</em>{-m_A}}\left[ -\frac{1}{2 \tau^2} \sum (R_i - \frac{m_A S_{Ai} + b_A}{m_B S_{Bi} + b_B})^2 \right] - \frac{m_A^2}{2}
+\log q_{m_A}^* \propto \mathbb{E}_{q*{-m_A}}\left[ -\frac{1}{2 \tau^2} \sum (R_i - \frac{m_A S_{Ai} + b_A}{m_B S_{Bi} + b_B})^2 \right] - \frac{m_A^2}{2}
 Linearize or approximate numerically due to non-linearity:
 \mathbb{E}[R_i - \frac{m_A S_{Ai} + b_A}{m_B S_{Bi} + b_B}]^2 \approx S_{Ai}^2 m_A^2 \text{ terms (via Taylor expansion)}
 Solve iteratively.
@@ -221,13 +221,13 @@ ELBO = \sum_{i=1}^n \mathbb{E}_q[\log (k \alpha_0 + l) - (k \alpha_0 + l) I_i] -
 Updates:
 q_k(k)
 :
-\log q_k^</em>(k) \propto \sum \mathbb{E}<em>{q_l}[\log (k \alpha_0 + l) - k \alpha_0 I_i] - \frac{k^2}{2}
+\log q_k^_(k) \propto \sum \mathbb{E}_{q_l}[\log (k \alpha_0 + l) - k \alpha_0 I_i] - \frac{k^2}{2}
 Approximate 
 \mathbb{E}[\log (k \alpha_0 + l)]
  numerically.
 q_l(l)
 :
-\log q_l^*(l) \propto \sum [-l I_i + \mathbb{E}</em>{q_k}[\log (k \alpha_0 + l)]] - \frac{(l - 1)^2}{2}
+\log q_l^*(l) \propto \sum [-l I_i + \mathbb{E}_{q_k}[\log (k \alpha_0 + l)]] - \frac{(l - 1)^2}{2}
 Adjust for 
 l &gt; 0
 : Use truncated Gaussian.

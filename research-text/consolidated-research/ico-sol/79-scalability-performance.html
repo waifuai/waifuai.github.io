@@ -30,7 +30,7 @@
 <title>Scalability and Performance Analysis of Tokenized Economic Systems</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -97,9 +97,9 @@ where (N_t) time steps and (N_{\text{paths}}) Monte Carlo paths.</p>
 <p><strong>Network Effects:</strong>
 Agent interaction scales poorly:
 $$
-C_{\text{network}} = O(N_{\text{agents}}^2 \cdot \text{Degree}<em>{\text{avg}} \cdot \Delta t)
+C_{\text{network}} = O(N_{\text{agents}}^2 \cdot \text{Degree}_{\text{avg}} \cdot \Delta t)
 $$
-where (N</em>{\text{agents}}) is the number of agents and (\Delta t) transaction frequency.</p>
+where (N_{\text{agents}}) is the number of agents and (\Delta t) transaction frequency.</p>
 <p><strong>Consensus Algorithm Overhead:</strong>
 In a tokenized economy:
 $$
@@ -111,7 +111,7 @@ where (B_{\text{blocks}}) blocks per epoch.</p>
 <p><strong>Compute Units per Transaction:</strong>
 Each economic coordination requires significant compute:
 $$
-CU_{\text{economy}} = CU_{\text{state}<em>{\text{update}}} + CU</em>{\text{RL}<em>{\text{inference}}} + CU</em>{\text{transfer}}
+CU_{\text{economy}} = CU_{\text{state}_{\text{update}}} + CU_{\text{RL}_{\text{inference}}} + CU_{\text{transfer}}
 $$
 $$
 CU_{\text{economy}} \approx 150,000 \sim 450,000 \quad \text{compute units}
@@ -213,7 +213,7 @@ $$</p>
 <h4>5.2 Revenue Model Optimization</h4>
 <p><strong>Staking Reward Sustainability:</strong>
 $$
-\text{Revenue}<em>{\text{staking}} = r \cdot V</em>{\text{staked}} - C_{\text{maintenance}}
+\text{Revenue}_{\text{staking}} = r \cdot V_{\text{staked}} - C_{\text{maintenance}}
 $$
 $$
 \text{Break-even Condition:} r &gt; \frac{C_{\text{maintenance}}}{V_{\text{staked}} \cdot \Delta t}
@@ -306,7 +306,7 @@ $$
 $$</p>
 <p><strong>Empirical Cost Function:</strong>
 $$
-\text{Cost}<em>{\text{total}} = \alpha_1 C</em>{\text{compute}} + \alpha_2 C_{\text{storage}} + \alpha_3 C_{\text{network}}
+\text{Cost}_{\text{total}} = \alpha_1 C_{\text{compute}} + \alpha_2 C_{\text{storage}} + \alpha_3 C_{\text{network}}
 $$</p>
 <h4>10.2 Benchmark Results</h4>
 <p>Performance vs. Cost Analysis:

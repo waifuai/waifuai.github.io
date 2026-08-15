@@ -30,7 +30,7 @@
 <title>variational inference</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -110,23 +110,23 @@ $$q_b(b) = \mathcal{N}(\mu_{qb}, \sigma_{qb}^2)$$
 ELBO:
 The Evidence Lower Bound is:
 $$ELBO = \mathbb{E}_q[\log P(D, m, b)] - \mathbb{E}_q[\log q(m, b)]$$</p>
-<p>$$\quad = \mathbb{E}<em>q\left[ -\frac{1}{2} \log(2\pi \sigma^2) - \frac{1}{2 \sigma^2} \sum</em>{i=1}^n (P_i - m S_i - b)^2 \right] + \mathbb{E}<em>q[\log P(m)] + \mathbb{E}_q[\log P(b)] - \mathbb{E}_q[\log q_m(m)] - \mathbb{E}_q[\log q_b(b)]$$
+<p>$$\quad = \mathbb{E}_q\left[ -\frac{1}{2} \log(2\pi \sigma^2) - \frac{1}{2 \sigma^2} \sum_{i=1}^n (P_i - m S_i - b)^2 \right] + \mathbb{E}_q[\log P(m)] + \mathbb{E}_q[\log P(b)] - \mathbb{E}_q[\log q_m(m)] - \mathbb{E}_q[\log q_b(b)]$$
 Compute Expectations:
-$$\mathbb{E}_q[m] = \mu</em>{qm}$$
-$$\mathbb{E}<em>q[b] = \mu</em>{qb}$$
-$$\mathbb{E}<em>q[m^2] = \mu</em>{qm}^2 + \sigma_{qm}^2$$
-$$\mathbb{E}<em>q[b^2] = \mu</em>{qb}^2 + \sigma_{qb}^2$$
-$$\mathbb{E}<em>q[mb] = \mu</em>{qm} \mu_{qb}$$
+$$\mathbb{E}_q[m] = \mu_{qm}$$
+$$\mathbb{E}_q[b] = \mu_{qb}$$
+$$\mathbb{E}_q[m^2] = \mu_{qm}^2 + \sigma_{qm}^2$$
+$$\mathbb{E}_q[b^2] = \mu_{qb}^2 + \sigma_{qb}^2$$
+$$\mathbb{E}_q[mb] = \mu_{qm} \mu_{qb}$$
  (due to independence)
 $$\sum (P_i - m S_i - b)^2 = \sum P_i^2 - 2 \sum P_i (m S_i + b) + \sum (m S_i + b)^2$$
-$$\mathbb{E}<em>q[(m S_i + b)^2] = S_i^2 (\mu</em>{qm}^2 + \sigma_{qm}^2) + 2 S_i \mu_{qm} \mu_{qb} + \mu_{qb}^2 + \sigma_{qb}^2$$
+$$\mathbb{E}_q[(m S_i + b)^2] = S_i^2 (\mu_{qm}^2 + \sigma_{qm}^2) + 2 S_i \mu_{qm} \mu_{qb} + \mu_{qb}^2 + \sigma_{qb}^2$$
 Optimization:
 Maximize ELBO via coordinate ascent:
 Update 
 q_m(m)
 : 
-\log q_m^*(m) = \mathbb{E}<em>{q_b}[\log P(D, m, b)] + \log P(m) + \text{const}
-$$\propto -\frac{1}{2 \sigma^2} \sum</em>{i=1}^n \left[ -2 P_i m S_i + m^2 S_i^2 + 2 m S_i \mu_{qb} \right] - \frac{m^2 - 2 m \mu_m}{2 \sigma_m^2}$$
+\log q_m^*(m) = \mathbb{E}_{q_b}[\log P(D, m, b)] + \log P(m) + \text{const}
+$$\propto -\frac{1}{2 \sigma^2} \sum_{i=1}^n \left[ -2 P_i m S_i + m^2 S_i^2 + 2 m S_i \mu_{qb} \right] - \frac{m^2 - 2 m \mu_m}{2 \sigma_m^2}$$
 Match to 
 $\mathcal{N}(\mu_{qm}, \sigma_{qm}^2)$
 :
@@ -181,10 +181,10 @@ q(m_A, b_A, m_B, b_B) = q_{m_A}(m_A) q_{b_A}(b_A) q_{m_B}(m_B) q_{b_B}(b_B)</p>
 q \sim N(\mu, \sigma^2)
 .
 ELBO:
-$$ELBO = \mathbb{E}<em>q\left[ -\frac{1}{2 \tau^2} \sum</em>{i=1}^n \left( R_i - \frac{m_A S_{Ai} + b_A}{m_B S_{Bi} + b_B} \right)^2 \right] - \sum \mathbb{E}<em>q[\log q] + \text{prior terms}$$
+$$ELBO = \mathbb{E}_q\left[ -\frac{1}{2 \tau^2} \sum_{i=1}^n \left( R_i - \frac{m_A S_{Ai} + b_A}{m_B S_{Bi} + b_B} \right)^2 \right] - \sum \mathbb{E}_q[\log q] + \text{prior terms}$$
 Updates:
 Non-linear likelihood complicates analytical updates. Approximate 
-$$R_i \approx \frac{\mathbb{E}[m_A] S</em>{Ai} + \mathbb{E}[b_A]}{\mathbb{E}[m_B] S_{Bi} + \mathbb{E}[b_B]}$$
+$$R_i \approx \frac{\mathbb{E}[m_A] S_{Ai} + \mathbb{E}[b_A]}{\mathbb{E}[m_B] S_{Bi} + \mathbb{E}[b_B]}$$
  and optimize iteratively (or use stochastic VI).
 22. VI for TokenAffiliates Commission Rate Parameters
 Problem Statement:

@@ -30,7 +30,7 @@
 <title>stochastic variational inference</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -108,14 +108,14 @@ $q(m, b) = q_m(m) q_b(b)$
 $q_m(m) = N(\mu_{qm}, \sigma_{qm}^2)$
 $q_b(b) = N(\mu_{qb}, \sigma_{qb}^2)$
 ELBO:
-$$ELBO = \sum_{i=1}^N \mathbb{E}<em>q\left[ -\frac{1}{2} \log(2\pi \sigma^2) - \frac{(P_i - m S_i - b)^2}{2 \sigma^2} \right] - \text{KL}(q_m || P(m)) - \text{KL}(q_b || P(b))$$
+$$ELBO = \sum_{i=1}^N \mathbb{E}_q\left[ -\frac{1}{2} \log(2\pi \sigma^2) - \frac{(P_i - m S_i - b)^2}{2 \sigma^2} \right] - \text{KL}(q_m || P(m)) - \text{KL}(q_b || P(b))$$
 Stochastic Gradient:
 For a mini-batch
 $D_B = { (S_j, P_j) }$
  of size
 $B$
 :
-$$\nabla</em>{\theta} \text{ELBO} \approx \frac{N}{B} \sum_{j \in D_B} \nabla_{\theta} \mathbb{E}<em>q\left[ -\frac{(P_j - m S_j - b)^2}{2 \sigma^2} \right] - \nabla</em>{\theta} \text{KL terms}$$</p>
+$$\nabla_{\theta} \text{ELBO} \approx \frac{N}{B} \sum_{j \in D_B} \nabla_{\theta} \mathbb{E}_q\left[ -\frac{(P_j - m S_j - b)^2}{2 \sigma^2} \right] - \nabla_{\theta} \text{KL terms}$$</p>
 <p>where
 $\theta = [\mu_{qm}, \log \sigma_{qm}, \mu_{qb}, \log \sigma_{qb}]$
  (log-scale for variance stability).
@@ -174,9 +174,9 @@ $q = q_{m_A}(m_A) q_{b_A}(b_A) q_{m_B}(m_B) q_{b_B}(b_B)$</p>
 $q \sim N(\mu, \sigma^2)$
 .
 ELBO:
-$$ELBO = \sum_{i=1}^N \mathbb{E}<em>q\left[ -\frac{1}{2 \tau^2} (R_i - \frac{m_A S</em>{Ai} + b_A}{m_B S_{Bi} + b_B})^2 \right] - \sum \text{KL terms}$$
+$$ELBO = \sum_{i=1}^N \mathbb{E}_q\left[ -\frac{1}{2 \tau^2} (R_i - \frac{m_A S_{Ai} + b_A}{m_B S_{Bi} + b_B})^2 \right] - \sum \text{KL terms}$$
 Stochastic Gradient:
-$$\nabla_{\theta} \text{ELBO} \approx \frac{N}{B} \sum_{j \in D_B} \nabla_{\theta} \mathbb{E}<em>q\left[ -\frac{1}{2 \tau^2} (R_j - \frac{m_A S</em>{Aj} + b_A}{m_B S_{Bj} + b_B})^2 \right] - \nabla_{\theta} \text{KL}$$</p>
+$$\nabla_{\theta} \text{ELBO} \approx \frac{N}{B} \sum_{j \in D_B} \nabla_{\theta} \mathbb{E}_q\left[ -\frac{1}{2 \tau^2} (R_j - \frac{m_A S_{Aj} + b_A}{m_B S_{Bj} + b_B})^2 \right] - \nabla_{\theta} \text{KL}$$</p>
 <p>Use reparameterization and compute gradients numerically due to non-linearity.
 31. SVI for TokenAffiliates Commission Rate Parameters
 Problem Statement:
@@ -208,9 +208,9 @@ $q_l(l) = N(\mu_{ql}, \sigma_{ql}^2)$
 $l &gt; 0$
 ).
 ELBO:
-$$ELBO = \sum_{i=1}^N \mathbb{E}<em>q[\log (k \alpha_0 + l) - (k \alpha_0 + l) I_i] - \text{KL terms}$$
+$$ELBO = \sum_{i=1}^N \mathbb{E}_q[\log (k \alpha_0 + l) - (k \alpha_0 + l) I_i] - \text{KL terms}$$
 Stochastic Gradient:
-$$\nabla</em>{\theta} \text{ELBO} \approx \frac{N}{B} \sum_{j \in D_B} \nabla_{\theta} \mathbb{E}<em>q[\log (k \alpha_0 + l) - (k \alpha_0 + l) I_j] - \nabla</em>{\theta} \text{KL}$$</p>
+$$\nabla_{\theta} \text{ELBO} \approx \frac{N}{B} \sum_{j \in D_B} \nabla_{\theta} \mathbb{E}_q[\log (k \alpha_0 + l) - (k \alpha_0 + l) I_j] - \nabla_{\theta} \text{KL}$$</p>
 <p>Adjust for
 $l &gt; 0$
  using boundary constraints.

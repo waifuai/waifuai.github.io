@@ -30,7 +30,7 @@
 <title>Multimodal Quantum LLM Equations</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -104,7 +104,7 @@
 <p>$$ |\psi_{\text{fused}}\rangle = U_{\text{fusion}} |\psi_v\rangle \otimes |\psi_a\rangle \otimes |\psi_t\rangle $$</p>
 <p>Example: Simple Pairwise Entanglement with CNOT Gates</p>
 <p>For pairwise entanglement (e.g., vision-audio), apply a CNOT gate between a qubit from $ |\psi_v\rangle $ and $ |\psi_a\rangle $ :</p>
-<p>$$ U_{\text{CNOT}}^{v_i,a_j} = I \otimes \cdots \otimes |0\rangle\langle 0|<em>{v_i} \otimes I \otimes \cdots + I \otimes \cdots \otimes |1\rangle\langle 1|</em>{v_i} \otimes X_{a_j} \otimes \cdots $$</p>
+<p>$$ U_{\text{CNOT}}^{v_i,a_j} = I \otimes \cdots \otimes |0\rangle\langle 0|_{v_i} \otimes I \otimes \cdots + I \otimes \cdots \otimes |1\rangle\langle 1|_{v_i} \otimes X_{a_j} \otimes \cdots $$</p>
 <p>This entangles qubit $ v_i $ (control) with qubit $ a_j $ (target). Extend this across multiple qubits and modalities using a parameterized circuit:</p>
 <p>$$ U_{\text{fusion}}(\vec{\theta}) = \prod_{k} U_k(\theta_k) $$</p>
 <p>where $ U_k(\theta_k) $ are parameterized entangling gates (e.g., $ R_{ZZ}(\theta) = e^{-i \theta Z \otimes Z / 2} $ ), and $ \vec{\theta} $ are trainable parameters.</p>
@@ -116,7 +116,7 @@
 <p>Each modality may have a dedicated quantum layer, modeled as a parameterized quantum circuit (PQC). For a modality $ m \in {v, a, t} $, the layer is:</p>
 <p>$$ |\psi_m^{\text{layer}}\rangle = U_m(\vec{\phi}_m) |\psi_m\rangle $$</p>
 <p>where $ U_m(\vec{\phi}_m) $ is a variational circuit with parameters $ \vec{\phi}_m $, composed of single-qubit rotations and entangling gates:</p>
-<p>$$ U_m(\vec{\phi}<em>m) = \prod</em>{l=1}^{L_m} \left( \bigotimes_{q=1}^{n_m} R_q(\phi_{m,l,q}) \right) \cdot V_{m,l} $$</p>
+<p>$$ U_m(\vec{\phi}_m) = \prod_{l=1}^{L_m} \left( \bigotimes_{q=1}^{n_m} R_q(\phi_{m,l,q}) \right) \cdot V_{m,l} $$</p>
 <p>$$ R_q(\phi) = R_Z(\phi_1) R_Y(\phi_2) R_Z(\phi_3) $$</p>
 <p>: Rotation gates on qubit $ q $ .</p>
 <p>$ V_{m,l} $ : Entangling layer (e.g., a ring of CNOTs).</p>
@@ -135,7 +135,7 @@
 <p>This requires two circuit evaluations per parameter, implementable in Qiskit using Parameter objects and QuantumCircuit.bind_parameters.</p>
 <p>Optimization:</p>
 <p>Using a variational approach (e.g., VQE-like), update parameters via:</p>
-<p>$$ \vec{\theta}<em>{t+1} = \vec{\theta}_t - \eta \nabla</em>{\vec{\theta}} L, \quad \vec{\phi}<em>{t+1} = \vec{\phi}_t - \eta \nabla</em>{\vec{\phi}} L $$</p>
+<p>$$ \vec{\theta}_{t+1} = \vec{\theta}_t - \eta \nabla_{\vec{\theta}} L, \quad \vec{\phi}_{t+1} = \vec{\phi}_t - \eta \nabla_{\vec{\phi}} L $$</p>
 <p>where $ \eta $ is the learning rate, and optimizers like COBYLA or SPSA (available in Qiskit’s qiskit.algorithms.optimizers) adjust the step.</p>
 <h3>Qiskit Implementation Notes</h3>
 <p>These equations correspond to Qiskit constructs:</p>

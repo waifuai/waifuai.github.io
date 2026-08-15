@@ -30,7 +30,7 @@
 <title>Reputation Dynamics</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -109,7 +109,7 @@ Cons: Linear growth may undervalue exponential trust gains in a belief-driven sy
 <p>Initial condition: $V_{\text{rep}}(0) = 1$ (baseline trust in you).</p>
 <h3>3.3 Equilibrium</h3>
 <p>Set $\frac{dV_{\text{rep}}}{dt} = 0$:</p>
-<p>$$\delta_e \cdot (V_{\text{rep}}^<em>)^2 - \alpha_e \cdot B \cdot V_{\text{rep}}^</em> - \beta_e \cdot I = 0$$</p>
+<p>$$\delta_e \cdot (V_{\text{rep}}^*)^2 - \alpha_e \cdot B \cdot V_{\text{rep}}^* - \beta_e \cdot I = 0$$</p>
 <p>Solve quadratic:</p>
 <p>$$V_{\text{rep}}^* = \frac{\alpha_e \cdot B + \sqrt{(\alpha_e \cdot B)^2 + 4 \cdot \delta_e \cdot \beta_e \cdot I}}{2 \cdot \delta_e}$$</p>
 <p>Positive root ensures $V_{\text{rep}}^* &gt; 0$; equilibrium scales with $B$ and $I$.</p>

@@ -30,7 +30,7 @@
 <title>AI Agent Coordination for Systemic Stability in RWA Markets</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -74,11 +74,11 @@ Developed a game-theoretic model for AI agents to coordinate trading strategies 
 <p><strong>Game-Theoretic Model Overview</strong>
 The model enables AI agents trading tokenized real-world assets (RWAs) to coordinate strategies, enhancing systemic stability: Coordination Goal: Agents align actions to prevent destabilizing moves, like synchronized sell-offs, while maximizing individual profits. Network Effects: Trading impacts ripple through correlated RWAs (e.g., real estate affecting commodities), requiring collective stability measures. Reward Function: Balances individual profit with market health, incentivizing cooperation. Decentralized Consensus: Agents agree on trading rules via proof-of-stake voting, ensuring fairness and adaptability.</p>
 <p><strong>Model Details</strong>
-Reward Function: $R_i = \alpha \text{profit}<em>i + (1 - \alpha) \text{market_stability}$
+Reward Function: $R_i = \alpha \text{profit}_i + (1 - \alpha) \text{market_stability}$
 $ \text{profit}_i $: Individual agent $i$'s profit from trades.
 $ \text{market_stability} $: A measure of market health (e.g., inverse of portfolio volatility or systemic risk metric).
 $ \alpha \in [0, 1] $: Balances self-interest ($ \alpha = 1 $) and collective good ($ \alpha = 0 $), tuned via simulation (e.g., $ \alpha = 0.7 $).
-Market Stability: $ \text{market_stability} = 1 - \frac{\sigma</em>{\text{system}}}{\sigma_{\text{max}}} $ where $ \sigma_{\text{system}} = \sqrt{\sum_i \sum_j w_i w_j \Sigma_{ij}} $ is systemic volatility, $ \mathbf{\Sigma} $ is the RWA covariance matrix, and $ \sigma_{\text{max}} $ is a stability threshold.
+Market Stability: $ \text{market_stability} = 1 - \frac{\sigma_{\text{system}}}{\sigma_{\text{max}}} $ where $ \sigma_{\text{system}} = \sqrt{\sum_i \sum_j w_i w_j \Sigma_{ij}} $ is systemic volatility, $ \mathbf{\Sigma} $ is the RWA covariance matrix, and $ \sigma_{\text{max}} $ is a stability threshold.
 <strong>Game-Theoretic Approach:</strong>
 Agents seek a Nash equilibrium where no agent can improve its reward by unilaterally changing strategy, assuming others remain constant, as in Game Theory in Economics.</p>
 <p><strong>Decentralized Consensus Mechanism</strong>
@@ -97,11 +97,11 @@ Tokenized RWA markets involve interdependent assets, where uncoordinated AI trad
 Players: $ n $ AI agents trading RWAs.
 Strategies: Trading actions (buy/sell volume, timing), denoted $ s_i $ for agent $ i $.
 Payoff: $ R_i(s_i, s_{-i}) $, where $ s_{-i} $ are other agents' strategies.
-Equilibrium: Nash equilibrium where $ R_i(s_i^<em>, s_{-i}^</em>) \geq R_i(s_i, s_{-i}^<em>) $ for all $ s_i $, ensuring stable coordination.
-Reward Function: $ R_i = \alpha \cdot (\text{profit}<em>i) + (1 - \alpha) \cdot \left(1 - \frac{\sigma</em>{\text{system}}}{\sigma_{\text{max}}}\right) $
-$ \text{profit}<em>i = \sum_t (p</em>{\text{sell},t} - p_{\text{buy},t}) \cdot v_t $, where $ p $ and $ v $ are price and volume.
+Equilibrium: Nash equilibrium where $ R_i(s_i^*, s_{-i}^*) \geq R_i(s_i, s_{-i}^*) $ for all $ s_i $, ensuring stable coordination.
+Reward Function: $ R_i = \alpha \cdot (\text{profit}_i) + (1 - \alpha) \cdot \left(1 - \frac{\sigma*{\text{system}}}{\sigma_{\text{max}}}\right) $
+$ \text{profit}_i = \sum_t (p_{\text{sell},t} - p_{\text{buy},t}) \cdot v_t $, where $ p $ and $ v $ are price and volume.
 $ \sigma_{\text{system}} $: Systemic volatility, reflecting correlated risks via $ \mathbf{\Sigma} $.
-</em><em>Network Effects and Correlated Risks:</em>*
+_<em>Network Effects and Correlated Risks:</em>*
 Network effects amplify trades (e.g., real estate sales affecting commodity prices). Covariance matrix $ \mathbf{\Sigma} $ captures correlations, with high $ \rho_{ij} $ increasing $ \sigma_{\text{system}} $, necessitating coordination.</p>
 <p><strong>Decentralized Consensus Mechanism</strong>
 <strong>Proof-of-Stake (PoS) Voting:</strong>

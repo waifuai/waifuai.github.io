@@ -30,7 +30,7 @@
 <title>-hierarchical-rl</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -87,7 +87,7 @@ $C(t)$
  and performance feedback
 $F(t)$
 :
-$$D(t) = \text{argmax}<em>d \left[ \alpha C(t) - \beta \int_0^t F(\tau) e^{-\gamma (t-\tau)} d\tau \right]$$
+$$D(t) = \text{argmax}_d \left[ \alpha C(t) - \beta \int_0^t F(\tau) e^{-\gamma (t-\tau)} d\tau \right]$$
 where
 $\alpha, \beta, \gamma$
  are tuning parameters for complexity weight, feedback decay, and sensitivity.<br />
@@ -116,7 +116,7 @@ Skill Embedding Space: Skills
  . A transformer fuses them into a hybrid skill
  $s_h$
  :
-$$s_h = \sum</em>{j} w_j \cdot \text{Attention}(Q_j, K_j, V_j), \quad w_j = \frac{e^{z_j}}{\sum_k e^{z_k}}$$
+$$s_h = \sum_{j} w_j \cdot \text{Attention}(Q_j, K_j, V_j), \quad w_j = \frac{e^{z_j}}{\sum_k e^{z_k}}$$
 where
 $z_j$
  is a context score from market state
@@ -148,7 +148,7 @@ $$\mathcal{I}(t+1) = \mathcal{I}(t) + \sum_i \lambda_i \cdot g_i(t) \cdot e^{-||
  $\lambda_i, \sigma$
  control influence and spread.<br />
 Alignment Adjustment: Each agent aligns its hierarchy by minimizing:
-$$L_i = || \nabla_h U_i(t) - \nabla \mathcal{I}(t) ||<em>2^2 + \kappa ||h_i(t)||_2^2$$
+$$L_i = || \nabla_h U_i(t) - \nabla \mathcal{I}(t) ||_2^2 + \kappa ||h_i(t)||_2^2$$
 where
 $h_i(t)$
  is the hierarchy vector, and
@@ -178,7 +178,7 @@ $$R_c(t) = R(t) + \delta \int_t^{t+H} e^{-\rho (u-t)} \mathbb{E}[R(u)|S(t+\Delta
 Optimization: Agents maximize
  $R_c(t)$
   via gradient ascent:
-$$\theta \leftarrow \theta + \mu \nabla</em>\theta R_c(t)$$
+$$\theta \leftarrow \theta + \mu \nabla_\theta R_c(t)$$
 Edge: Foresight drives stability—agents hold through dips for bigger wins.
 Execution Blueprint
 Tech: Solana for transactions, distilled nets (e.g.,

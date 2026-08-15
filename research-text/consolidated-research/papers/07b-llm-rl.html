@@ -30,7 +30,7 @@
 <title>more examples</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -83,11 +83,11 @@ $W_q$, $W_k$, $W_v$
 $H_{\text{shared}}$
  is the fused output using a single attention mechanism across modalities.
 Separate but Coupled Encoders:
-$$ H_m = \text{Transformer}<em>m(E_m), \quad H</em>{\text{fused}} = W_f [H_1; H_2; \ldots; H_M] + b_f $$
+$$ H_m = \text{Transformer}_m(E_m), \quad H_{\text{fused}} = W_f [H_1; H_2; \ldots; H_M] + b_f $$
 Each modality $m$
-  has its own transformer encoder $\text{Transformer}<em>m$
+  has its own transformer encoder $\text{Transformer}_m$
 , producing $H_m$
-, which are concatenated and linearly transformed to $H</em>{\text{fused}}$
+, which are concatenated and linearly transformed to $H_{\text{fused}}$
   with weights $W_f$
   and bias $b_f$
 .</p>
@@ -105,9 +105,9 @@ $\gamma$
 .</p>
 <h4>1.7 Problem Statement: Challenges in Fine-tuning and Optimization</h4>
 <p>Regularized Loss for Stability:
-$$ L_{\text{total}} = L_{\text{task}} + \lambda ||\theta - \theta_{\text{pretrained}} ||<em>2^2 $$
+$$ L_{\text{total}} = L_{\text{task}} + \lambda ||\theta - \theta_{\text{pretrained}} ||_2^2 $$
 Adds an L2 regularization term to the task-specific loss
-$L</em>{\text{task}}$
+$L_{\text{task}}$
 , penalizing deviation from pretrained parameters
 $\theta_{\text{pretrained}}$
  with coefficient
@@ -135,8 +135,8 @@ $w_m$
 <h3>Chapter 3: Fine-tuning Multimodal Transformers for Specific Tasks</h3>
 <h4>3.1.2 Fine-tuning Strategies</h4>
 <p>Adapter Fine-tuning Loss:
-$$ L_{\text{adapter}} = L_{\text{task}}(f_{\text{adapter}}(H; \phi)) + \beta ||\phi||<em>2^2 $$
-$f</em>{\text{adapter}}$
+$$ L_{\text{adapter}} = L_{\text{task}}(f_{\text{adapter}}(H; \phi)) + \beta ||\phi||_2^2 $$
+$f_{\text{adapter}}$
  is the adapter function with parameters
 $\phi$
  applied to transformer output
@@ -202,13 +202,13 @@ $Z$
 $$ a_t =
 \begin{cases}
 \text{random action} &amp; \text{with probability } \epsilon \
-\text{argmax}<em>a Q(s_t, a) &amp; \text{with probability } 1 - \epsilon
+\text{argmax}_a Q(s_t, a) &amp; \text{with probability } 1 - \epsilon
 \end{cases} $$
 Balances exploration (random action) and exploitation (optimal action) with probability
 $\epsilon$
 .
 Boltzmann Exploration:
-$$ P(a_t | s_t) = \frac{e^{Q(s_t, a_t) / \tau}}{\sum</em>{a'} e^{Q(s_t, a') / \tau}} $$
+$$ P(a_t | s_t) = \frac{e^{Q(s_t, a_t) / \tau}}{\sum_{a'} e^{Q(s_t, a') / \tau}} $$
 Selects actions probabilistically based on Q-values, tempered by
 $\tau$
  (temperature).</p>
@@ -231,9 +231,9 @@ $\hat{y}_i$
 , balancing fit and uncertainty estimation.</p>
 <h4>5.4.1 Image Captioning Case Study</h4>
 <p>Captioning Reward Function:
-$$ R_{\text{cap}} = \alpha \text{BLEU}(c, c^<em>) + \beta \text{Detail}(c) - \gamma \text{Length}(c) $$
+$$ R_{\text{cap}} = \alpha \text{BLEU}(c, c^*) + \beta \text{Detail}(c) - \gamma \text{Length}(c) $$
 Combines BLEU score (accuracy to reference
-$c^</em>$
+$c^*$
 ), detail level, and penalizes verbosity, with weights
 $\alpha$, $\beta$, $\gamma$
 .</p>

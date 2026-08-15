@@ -30,7 +30,7 @@
 <title>answer 15: q1-3 RWA-Backed Loan Liquidation with Cascading Effects</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -103,9 +103,9 @@ Mathematical Model and Simulation</p>
 - $Q_i$: Initial RWA units collateralizing loan $i$</p>
 <h2>Liquidation Trigger</h2>
 <p>Liquidation occurs if:
-$$\text{LTV}<em>i(t) &gt; \text{LTV}</em>{\text{threshold}}$$</p>
+$$\text{LTV}_i(t) &gt; \text{LTV}_{\text{threshold}}$$</p>
 <p>Amount liquidated:
-$$Q_{\text{liq},i} = Q_i \cdot \frac{\text{LTV}<em>i(t) - \text{LTV}</em>{\text{target}}}{\text{LTV}<em>{\text{threshold}} - \text{LTV}</em>{\text{target}}}$$</p>
+$$Q_{\text{liq},i} = Q_i \cdot \frac{\text{LTV}_i(t) - \text{LTV}_{\text{target}}}{\text{LTV}_{\text{threshold}} - \text{LTV}_{\text{target}}}$$</p>
 <p>Where:
 - $\text{LTV}_{\text{target}}$: Post-liquidation target (e.g., 50%)</p>
 <h2>Supply Update</h2>
@@ -134,8 +134,8 @@ For each $t$:
 <p><strong>Simulation Result:</strong> With $\text{LTV}_i(0) \sim N(70\%,\ 5\%)$, $k = 0.05$, $\alpha = 0.1$, $P(t)$ drops from $268,941 to $50,000 in 5 steps, liquidating 80\% of loans.</p>
 <h2>Mitigation Mechanisms</h2>
 <h3>Dynamic Liquidation Thresholds</h3>
-<p><strong>Mechanism:</strong> Adjust $\text{LTV}<em>{\text{threshold}}$ based on market volatility:
-$$\text{LTV}</em>{\text{threshold}}(t) = 0.8 + \eta \cdot \sigma(t)$$</p>
+<p><strong>Mechanism:</strong> Adjust $\text{LTV}_{\text{threshold}}$ based on market volatility:
+$$\text{LTV}_{\text{threshold}}(t) = 0.8 + \eta \cdot \sigma(t)$$</p>
 <p>Where $\sigma(t) = \text{std dev of } P(t)$ over last 5 steps, $\eta = 0.5$.</p>
 <p><strong>Positive Effects:</strong> Reduces liquidations during downturns, stabilizing $P(t)$. In simulation, only 30% of loans liquidate vs. 80%.</p>
 <p><strong>Negative Effects:</strong> Increases risk for lenders, potentially raising interest rates or reducing loan availability for other borrowers.</p>

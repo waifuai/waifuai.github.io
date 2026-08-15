@@ -30,7 +30,7 @@
 <title>**6. Reinforcement Learning Algorithms**</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -92,11 +92,11 @@ $$A_i(t) = \left[ a_{i,1}(t), \dots, a_{i,M}(t) \right], \quad a_{i,j}(t) \in \m
 2.3. Transition Dynamics
 The state evolves stochastically:
 $$S_i(t+1) = f(S_i(t), A_i(t), \mathbf{A}_{-i}(t), \epsilon(t))$$</p>
-<p>where $\mathbf{A}<em>{-i}(t)$ denotes actions of all other agents, and $\epsilon(t)$ is a noise term capturing randomness.
+<p>where $\mathbf{A}_{-i}(t)$ denotes actions of all other agents, and $\epsilon(t)$ is a noise term capturing randomness.
 3. Asset Pricing Mechanisms
 3.1. Stochastic Bonding Curve
 Asset prices follow a stochastic bonding curve:
-$$P_j(t) = f_j(S_j(t), \mathbf{\Phi}_j) + \eta_j(t), \quad \eta_j(t) \sim \mathcal{N}(0, \sigma</em>{\eta,j}^2)$$</p>
+$$P_j(t) = f_j(S_j(t), \mathbf{\Phi}_j) + \eta_j(t), \quad \eta_j(t) \sim \mathcal{N}(0, \sigma_{\eta,j}^2)$$</p>
 <p>where $S_j(t) = \sum_{i=1}^N H_{i,j}(t)$ is the total supply, and examples include:
 Linear:
 $$f_j(S) = m_j S + b_j$$</p>
@@ -141,7 +141,7 @@ $$L(\theta_i) = \mathbb{E} \left[ \min(r_t(\theta_i) \hat{A}_t, \text{clip}(r_t(
 where $r_t(\theta_i)$ is the probability ratio, and $\hat{A}_t$ is the advantage estimate.</p>
 <h4><strong>6.2. Multi-Agent Q-Learning</strong></h4>
 <p>The Q-function evolves as:
-$$Q_i(S(t), A_i(t)) \leftarrow (1-\alpha) Q_i + \alpha \left[ r_i(t) + \gamma \mathbb{E}<em>{\mathbf{A}</em>{-i}} \max_{a_i'} Q_i(S(t+1), a_i') \right]$$
+$$Q_i(S(t), A_i(t)) \leftarrow (1-\alpha) Q_i + \alpha \left[ r_i(t) + \gamma \mathbb{E}_{\mathbf{A}_{-i}} \max_{a_i'} Q_i(S(t+1), a_i') \right]$$
 6.3. Actor-Critic with Noise
 The actor updates via:
 $$\theta_i \leftarrow \theta_i + \alpha \nabla_{\theta_i} J(\theta_i) + \xi(t), \quad \xi(t) \sim \mathcal{N}(0, \sigma_\xi^2)$$</p>
@@ -149,18 +149,18 @@ $$\theta_i \leftarrow \theta_i + \alpha \nabla_{\theta_i} J(\theta_i) + \xi(t), 
 7. Optimization and Stability
 7.1. Bonding Curve Tuning
 Minimize volatility:
-$$\min_{\mathbf{\Phi}<em>j} \mathbb{E} \left[ \frac{1}{T} \sum</em>{t=1}^T (P_j(t) - \bar{P}_j)^2 \right]$$
+$$\min_{\mathbf{\Phi}_j} \mathbb{E} \left[ \frac{1}{T} \sum_{t=1}^T (P_j(t) - \bar{P}_j)^2 \right]$$
 7.2. Lyapunov Stability
 Define a Lyapunov function for price stability:
 $$V(P_j) = (P_j(t) - P_j^*)^2$$</p>
-<p>Ensure $\dot{V}(P_j) &lt; 0$ for convergence to an equilibrium $P_j^<em>$.
+<p>Ensure $\dot{V}(P_j) &lt; 0$ for convergence to an equilibrium $P_j^*$.
 7.3. Nash Equilibrium Analysis
-Seek a policy profile $\pi^</em> = (\pi_1^<em>, \dots, \pi_N^</em>)$ such that:
-$$\mathbb{E}[R_i(\pi_i^<em>, \pi_{-i}^</em>)] \geq \mathbb{E}[R_i(\pi_i, \pi_{-i}^*)], \quad \forall i, \pi_i$$
+Seek a policy profile $\pi^* = (\pi_1^*, \dots, \pi_N^*)$ such that:
+$$\mathbb{E}[R_i(\pi_i^*, \pi_{-i}^*)] \geq \mathbb{E}[R_i(\pi_i, \pi_{-i}^*)], \quad \forall i, \pi_i$$
 8. Evaluation Metrics
 8.1. Herfindahl-Hirschman Index (HHI)
 Measure asset concentration:
-$$\text{HHI}<em>j = \sum</em>{i=1}^N \left( \frac{H_{i,j}(t)}{S_j(t)} \right)^2$$
+$$\text{HHI}_j = \sum_{i=1}^N \left( \frac{H_{i,j}(t)}{S_j(t)} \right)^2$$
 8.2. Price Entropy
 Quantify price predictability:
 $$H(P_j) = -\sum_{t} p(P_j(t)) \log p(P_j(t))$$

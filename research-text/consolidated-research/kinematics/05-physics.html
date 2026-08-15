@@ -30,7 +30,7 @@
 <title>White Paper: Projectile Interception of Moving Targets: A Kinematic Analysis</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -87,12 +87,12 @@
 * $t$ is the time elapsed from the start.</p>
 <p>The projectile has a fixed speed $s_b$ such that
 $$|\mathbf{v_b}|^2 =  v_{bx}^2 + v_{by}^2 + v_{bz}^2 = s_b^2$$</p>
-<p>The interception occurs at some time $t^<em>$ when the projectile and target occupy the same position:
-$$\mathbf{r_a}(t^</em>) = \mathbf{r_b}(t^*)$$
+<p>The interception occurs at some time $t^*$ when the projectile and target occupy the same position:
+$$\mathbf{r_a}(t^*) = \mathbf{r_b}(t^*)$$
 This leads to three equations:</p>
-<p>$x_a + v_{ax}t^<em> = x_b + v_{bx}t^</em>$  (1)</p>
-<p>$y_a + v_{ay}t^<em> = y_b + v_{by}t^</em>$  (2)</p>
-<p>$z_a + v_{az}t^<em> = z_b + v_{bz}t^</em>$  (3)</p>
+<p>$x_a + v_{ax}t^* = x_b + v_{bx}t^*$  (1)</p>
+<p>$y_a + v_{ay}t^* = y_b + v_{by}t^*$  (2)</p>
+<p>$z_a + v_{az}t^* = z_b + v_{bz}t^*$  (3)</p>
 <p>From equation (1) we obtain the time of intersection:
 $$t^* = \frac{x_b - x_a}{v_{ax} - v_{bx}}$$</p>
 <p>Substituting the time of intersection to the remaining two equations we obtain:</p>
@@ -105,19 +105,19 @@ $$t^* = \frac{x_b - x_a}{v_{ax} - v_{bx}}$$</p>
 <li>$\mathbf{r_a}(t) = \mathbf{r_{a0}} + \mathbf{v_{a0}} t + \frac{1}{2}\mathbf{a_a} t^2$: Target's position vector with constant acceleration.</li>
 <li>$\mathbf{r_b}(t) = \mathbf{r_{b0}} + \mathbf{v_b} t$: Projectile's position vector.</li>
 </ul>
-<p>Here, $\mathbf{a_a} = (a_{ax}, a_{ay}, a_{az})$ represents the constant acceleration of the target. The interception condition remains that the projectile and target are at the same location at time $t^<em>$:
-$$\mathbf{r_a}(t^</em>) = \mathbf{r_b}(t^*)$$</p>
+<p>Here, $\mathbf{a_a} = (a_{ax}, a_{ay}, a_{az})$ represents the constant acceleration of the target. The interception condition remains that the projectile and target are at the same location at time $t^*$:
+$$\mathbf{r_a}(t^*) = \mathbf{r_b}(t^*)$$</p>
 <p>This yields the following system of equations:</p>
-<p>$x_a + v_{ax}t^<em> + 1/2</em>a_{ax}t^{<em>2} = x_b + v_{bx}t^</em>$    (4)</p>
-<p>$y_a + v_{ay}t^<em> + 1/2</em>a_{ay}t^{<em>2} = y_b + v_{by}t^</em>$    (5)</p>
-<p>$z_a + v_{az}t^<em> + 1/2</em>a_{az}t^{<em>2} = z_b + v_{bz}t^</em>$    (6)</p>
+<p>$x_a + v_{ax}t^<em> + 1/2</em>a_{ax}t^{_2} = x_b + v_{bx}t^_$    (4)</p>
+<p>$y_a + v_{ay}t^<em> + 1/2</em>a_{ay}t^{_2} = y_b + v_{by}t^_$    (5)</p>
+<p>$z_a + v_{az}t^<em> + 1/2</em>a_{az}t^{_2} = z_b + v_{bz}t^_$    (6)</p>
 <p>$v_{bx}^2 + v_{by}^2 + v_{bz}^2 = s_b^2$   (7)</p>
 <p>Unlike the constant velocity case, these four equations, though mathematically well-posed, cannot be solved analytically for a closed-form solution of $\mathbf{v_b}$ and $t^*$. However, we can reduce the equations by isolating the velocity components to the left-hand side:</p>
-<p>$v_{bx}t^<em> = x_a - x_b + v_{ax}t^</em> + 1/2<em>a_{ax}t^{</em>2}$</p>
-<p>$v_{by}t^<em> = y_a - y_b + v_{ay}t^</em> + 1/2<em>a_{ay}t^{</em>2}$</p>
-<p>$v_{bz}t^<em> = z_a - z_b + v_{az}t^</em> + 1/2<em>a_{az}t^{</em>2}$</p>
+<p>$v_{bx}t^* = x_a - x_b + v_{ax}t^* + 1/2_a_{ax}t^{_2}$</p>
+<p>$v_{by}t^* = y_a - y_b + v_{ay}t^* + 1/2_a_{ay}t^{_2}$</p>
+<p>$v_{bz}t^* = z_a - z_b + v_{az}t^* + 1/2_a_{az}t^{_2}$</p>
 <p>Then, substituting these into equation (7), the velocity components can be removed and we arrive at a single equation on the unknown $t^*$:</p>
-<p>$$(x_a - x_b + v_{ax}t^<em> + 1/2</em>a_{ax}t^{<em>2})^2 + (y_a - y_b + v_{ay}t^</em> + 1/2<em>a_{ay}t^{</em>2})^2 + (z_a - z_b + v_{az}t^<em> + 1/2</em>a_{az}t^{<em>2})^2 = s_b^2 t^{</em>2}$$</p>
+<p>$$(x_a - x_b + v_{ax}t^<em> + 1/2</em>a_{ax}t^{_2})^2 + (y_a - y_b + v_{ay}t^_ + 1/2_a_{ay}t^{_2})^2 + (z_a - z_b + v_{az}t^<em> + 1/2</em>a_{az}t^{_2})^2 = s_b^2 t^{_2}$$</p>
 <p>This is a quartic equation in $t^*$ and is difficult to solve analytically.</p>
 <p><strong>4. Numerical Methods</strong></p>
 <p>Due to the complexity of the quartic equation in the acceleration case, numerical methods are needed to find the time of intersection $t^*$. Suitable methods include:</p>

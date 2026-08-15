@@ -30,7 +30,7 @@
 <title>Advanced Simulation Frameworks for Tokenized Economic Systems</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -84,10 +84,10 @@ $$
 where $A_g$ represents global aggregator agents, $A_m$ represents market-level agents, and $A_i$ represents individual agents.</p>
 <p><strong>Hierarchical Dynamics:</strong>
 $$
-\frac{d\mathbf{S}<em>g}{dt} = \sum</em>{m \in \mathcal{M}<em>g} w_m \frac{d\mathbf{S}_m}{dt} + \epsilon_g(t)
+\frac{d\mathbf{S}_g}{dt} = \sum_{m \in \mathcal{M}_g} w_m \frac{d\mathbf{S}_m}{dt} + \epsilon_g(t)
 $$
 $$
-\frac{d\mathbf{S}_m}{dt} = \sum</em>{i \in \mathcal{I}_m} w_i \frac{d\mathbf{S}_i}{dt} + \epsilon_m(t)
+\frac{d\mathbf{S}_m}{dt} = \sum_{i \in \mathcal{I}_m} w_i \frac{d\mathbf{S}_i}{dt} + \epsilon_m(t)
 $$</p>
 <p><strong>Adaptive Clustering:</strong>
 $$
@@ -137,24 +137,24 @@ $$</p>
 <h4>4.1 Inter-Chain Bridge Modeling</h4>
 <p>Building on intertoken swap mechanisms from earlier papers:
 $$
-\mathbf{P}^{(\text{chain}<em>i)}(t) = \mathbf{B}</em>{ij} \mathbf{P}^{(\text{chain}<em>j)}(t - \tau</em>{ij}) + \boldsymbol{\epsilon_{ij}}(t)
+\mathbf{P}^{(\text{chain}_i)}(t) = \mathbf{B}_{ij} \mathbf{P}^{(\text{chain}_j)}(t - \tau_{ij}) + \boldsymbol{\epsilon_{ij}}(t)
 $$
-where $\mathbf{B}<em>{ij}$ is the bridge matrix and $\tau</em>{ij}$ is transmission delay.</p>
+where $\mathbf{B}_{ij}$ is the bridge matrix and $\tau_{ij}$ is transmission delay.</p>
 <p><strong>Arbitrage Detection and Exploitation:</strong>
 $$
-\alpha_{ij} = \arg\max_{\alpha} \mathbb{E}\left[ \Pi(\alpha; \mathbf{P}<em>i, \mathbf{P}_j) \right]
+\alpha_{ij} = \arg\max_{\alpha} \mathbb{E}\left[ \Pi(\alpha; \mathbf{P}_i, \mathbf{P}_j) \right]
 $$
 $$
-\Pi(\alpha; \mathbf{P}_i, \mathbf{P}_j) = \alpha \cdot (\mathbf{P}_j \mathbf{B}</em>{ij} - \mathbf{P}_i) - C(\alpha)
+\Pi(\alpha; \mathbf{P}_i, \mathbf{P}_j) = \alpha \cdot (\mathbf{P}_j \mathbf{B}_{ij} - \mathbf{P}_i) - C(\alpha)
 $$</p>
 <h4>4.2 Multi-Asset Portfolio Dynamics</h4>
 <p>Agents manage portfolios across multiple chains:
 $$
-\frac{d\mathbf{H}<em>i}{dt} = \boldsymbol{\nu}_i(\mathbf{H}_i, \mathbf{P}, t) + \boldsymbol{\sigma}(\mathbf{H}_i, t) d\mathbf{W}_i
+\frac{d\mathbf{H}_i}{dt} = \boldsymbol{\nu}_i(\mathbf{H}_i, \mathbf{P}, t) + \boldsymbol{\sigma}(\mathbf{H}_i, t) d\mathbf{W}_i
 $$
 with rebalancing policies:
 $$
-\mathbf{r}_i(t) = \arg\min</em>{\mathbf{r}} \boldsymbol{\Lambda}(\mathbf{H}_i(t) + \mathbf{r}) + \mathbf{C}(\mathbf{r})
+\mathbf{r}_i(t) = \arg\min_{\mathbf{r}} \boldsymbol{\Lambda}(\mathbf{H}_i(t) + \mathbf{r}) + \mathbf{C}(\mathbf{r})
 $$
 subject to $\mathbf{H}_i(t+1) = \mathbf{H}_i(t) + \mathbf{r}$.</p>
 <h3>5. Real-Time Simulation Capabilities</h3>
@@ -166,10 +166,10 @@ $$
 where $\epsilon_n$ is the current error estimate.</p>
 <p><strong>Event-Driven Simulation:</strong>
 $$
-\mathcal{E} = {\mathbf{x}<em>i : g(\mathbf{x}_i, t) = 0}
+\mathcal{E} = {\mathbf{x}_i : g(\mathbf{x}_i, t) = 0}
 $$
 $$
-t</em>{n+1} = \min_{e \in \mathcal{E}} t_e - t_n
+t_{n+1} = \min_{e \in \mathcal{E}} t_e - t_n
 $$</p>
 <h4>5.2 Live Market Data Integration</h4>
 <p>Real-time data streams incorporated:
@@ -189,7 +189,7 @@ $$
 where $d_i$ is node's connectedness and $w_{ij}$ are portfolio correlations.</p>
 <p><strong>Contagion Propagation:</strong>
 $$
-P(\text{Default}<em>i | \text{Stressed}_j) = 1 - \Phi\left( \frac{\theta_i - \sum</em>{k} c_{ik} I_{k=j}}{\sigma_i}\right)
+P(\text{Default}_i | \text{Stressed}_j) = 1 - \Phi\left( \frac{\theta_i - \sum_{k} c_{ik} I_{k=j}}{\sigma_i}\right)
 $$</p>
 <h4>6.2 Economic Cycle Detection</h4>
 <p>Using spectral analysis of price trajectories:
@@ -259,7 +259,7 @@ with quantum amplitude estimation for risk computation.</p>
 <h4>10.2 Edge Computing Integration</h4>
 <p>Distributed simulations running on participant devices:
 $$
-\mathcal{F}<em>{federated} = \sum</em>{i=1}^N w_i f_i(\theta_i)
+\mathcal{F}_{federated} = \sum_{i=1}^N w_i f_i(\theta_i)
 $$
 with privacy-preserving federated learning.</p>
 <h3>11. Conclusion</h3>

@@ -30,7 +30,7 @@
 <title>airdrop</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -135,7 +135,7 @@
 <ul>
 <li><strong>Uniform Airdrop:</strong>  $\Gamma_{i,s} = \frac{A^{(s)}}{N}$.</li>
 <li><strong>Lottery Airdrop:</strong>  Select $\lfloor N \cdot \text{winners_fraction}^{(s)} \rfloor$ winners randomly. Airdrop amount per winner is $\frac{A^{(s)}}{\lfloor N \cdot \text{winners_fraction}^{(s)} \rfloor}$.</li>
-<li><strong>Tiered Airdrop:</strong> Eligibility is based on <code>criteria</code> (holdings or activity) and <code>thresholds</code> with corresponding <code>weights</code>. For holdings: $E_{i,s} = \sum_{j} \text{weight}<em>j^{(s)} \cdot \mathbb{I}(H</em>{i,0} \ge \text{threshold}<em>j^{(s)})$. The airdrop amount is proportional to eligibility: $\Gamma</em>{i,s} = A^{(s)} \cdot \frac{E_{i,s}}{\sum_{k \in U} E_{k,s}}$.</li>
+<li><strong>Tiered Airdrop:</strong> Eligibility is based on <code>criteria</code> (holdings or activity) and <code>thresholds</code> with corresponding <code>weights</code>. For holdings: $E_{i,s} = \sum_{j} \text{weight}_j^{(s)} \cdot \mathbb{I}(H_{i,0} \ge \text{threshold}_j^{(s)})$. The airdrop amount is proportional to eligibility: $\Gamma_{i,s} = A^{(s)} \cdot \frac{E_{i,s}}{\sum_{k \in U} E_{k,s}}$.</li>
 <li><strong>No Airdrop:</strong> $\Gamma_{i,s} = 0$.</li>
 </ul>
 <p><strong>3. Vesting:</strong></p>

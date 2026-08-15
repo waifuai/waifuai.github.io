@@ -30,7 +30,7 @@
 <title>laplace approximation</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -178,7 +178,7 @@ Approximate via finite differences or analytical second derivatives (complex due
 Approximation:
 $P(m_A, b_A, m_B, b_B | D) \approx N(\hat{\theta}, H^{-1})$</p>
 <p>where 
-$\hat{\theta} = [\hat{m}<em>A, \hat{b}_A, \hat{m}_B, \hat{b}_B]^T$
+$\hat{\theta} = [\hat{m}_A, \hat{b}_A, \hat{m}_B, \hat{b}_B]^T$
 .
 25. Laplace Approximation for TokenAffiliates Commission Rate Parameters
 Problem Statement:
@@ -204,7 +204,7 @@ $P(k, l | D)$
 .
 Solution:
 Negative Log-Posterior:
-$L(k, l) = -n \log(k \alpha_0 + l) + (k \alpha_0 + l) \sum</em>{i=1}^n I_i + \frac{k^2}{2} + \frac{(l - 1)^2}{2}$
+$L(k, l) = -n \log(k \alpha_0 + l) + (k \alpha_0 + l) \sum_{i=1}^n I_i + \frac{k^2}{2} + \frac{(l - 1)^2}{2}$
 MAP Estimate:
 $\frac{\partial L}{\partial k} = -\frac{n \alpha_0}{k \alpha_0 + l} + \alpha_0 \sum I_i + k = 0$
 $\frac{\partial L}{\partial l} = -\frac{n}{k \alpha_0 + l} + \sum I_i + (l - 1) = 0$

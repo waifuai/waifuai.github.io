@@ -30,7 +30,7 @@
 <title>answer 12: q1-5 Cross-Chain Arbitrage with RWA Price Discrepancies</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -152,7 +152,7 @@ $\sigma_A, \sigma_B$
 $k_A, k_B$
 : Market impact coefficients for buying on chain A and selling on chain B, respectively.
 The profit without considering price changes is:
-$$\text{Profit}<em>{\text{base}} = (P_B(0) - P_A(0)) \times Q - C_A - C_B - C</em>{\text{bridge}}$$</p>
+$$\text{Profit}_{\text{base}} = (P_B(0) - P_A(0)) \times Q - C_A - C_B - C_{\text{bridge}}$$</p>
 <p>However, during $t_{\text{bridge}}$, prices can change. We model price dynamics using geometric Brownian motion:
 $$P_B(t) = P_B(0) \times e^{(\mu_B - \frac{1}{2} \sigma_B^2) t + \sigma_B \sqrt{t} Z}$$</p>
 <p>where $Z$ is a standard normal random variable. The expected price at $t_{\text{bridge}}$ is:
@@ -172,8 +172,8 @@ The expected profit, taking $E[P_B(t_{\text{bridge}})] = P_B(0) e^{\mu_B t_{\tex
 $$E[\text{Profit}] = (P_B(0) e^{\mu_B t_{\text{bridge}}} - P_A(0) - (k_A + k_B) Q) \times Q - C_A - C_B - C_{\text{bridge}}$$
 To find the optimal $Q$, maximize with respect to $Q$:
 $$\frac{d E[\text{Profit}]}{d Q} = P_B(0) e^{\mu_B t_{\text{bridge}}} - P_A(0) - 2 (k_A + k_B) Q = 0$$
-$$Q^<em> = \frac{P_B(0) e^{\mu_B t_{\text{bridge}}} - P_A(0)}{2 (k_A + k_B)}$$
-This $Q^</em>$ is used if positive and within capital constraints.
+$$Q^* = \frac{P_B(0) e^{\mu_B t_{\text{bridge}}} - P_A(0)}{2 (k_A + k_B)}$$
+This $Q^*$ is used if positive and within capital constraints.
 Algorithm for Execution
 The AI agent executes the strategy with the following algorithm:
 Price Monitoring: Continuously monitor RWA prices $P_A(0), P_B(0)$ across all chain pairs using on-chain data and oracles.
@@ -183,11 +183,11 @@ Opportunity Selection: Select opportunities where $E[\text{Profit}] &gt; 0$, ens
 Probability of profit &gt; 0 exceeds a threshold (e.g., 90%), calculated via lognormal distribution:
 $$P(P_B(t_{\text{bridge}}) &gt; P_A(0) + \frac{C_A + C_B + C_{\text{bridge}}}{Q})$$
 Using the CDF of the lognormal distribution.
-Quantity Optimization: Compute $Q^<em>$ considering market impact, capping at available capital and liquidity limits.
+Quantity Optimization: Compute $Q^*$ considering market impact, capping at available capital and liquidity limits.
 Trade Execution:
-Buy $Q^</em>$ on chain A, incurring $C_A$.
+Buy $Q^*$ on chain A, incurring $C_A$.
 Initiate bridge, costing $C_{\text{bridge}}$, and wait $t_{\text{bridge}}$.
-Sell on chain B at $P_B(t_{\text{bridge}}) - k_B Q^<em>$.
+Sell on chain B at $P_B(t_{\text{bridge}}) - k_B Q^*$.
 Profitability and Risks Analysis
 Profitability Under Various Conditions:
 Low Volatility, Stable Prices: High profitability with significant price discrepancies, low $\sigma_A, \sigma_B$, and short $t_{\text{bridge}}$. Example: $P_A(0) = 100, P_B(0) = 110, t_{\text{bridge}} = 1 \text{ day}, C_{\text{total}} = 5$, profit ≈ $5 \times Q - \text{impact}$.
@@ -196,7 +196,7 @@ High Competition: Other arbitrageurs may normalize prices, reducing $P_B(0) - P_
 Risks:
 Price Change Risk: During $t_{\text{bridge}}$, $P_B(t_{\text{bridge}})$ may drop below $P_A(0) + \text{costs}/Q$, leading to losses. Mitigated by volatility hedging or smaller $Q$.
 Bridging Risk: Delays or failures in bridging increase exposure time, amplifying price risk.
-Market Impact Risk: Large $Q$ increases $k_A, k_B$, reducing net profit. Managed by optimizing $Q^</em>$.
+Market Impact Risk: Large $Q$ increases $k_A, k_B$, reducing net profit. Managed by optimizing $Q^*$.
 Given the feedback loop, pricing iteratively updates with:
 $$P_A' = P_A(0) + k_A \sum \text{buys}, \quad P_B' = P_B(0) - k_B \sum \text{sells}$$
 Simulations show profitability drops with high trade volumes, necessitating smaller, frequent trades.

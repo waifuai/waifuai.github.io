@@ -30,7 +30,7 @@
 <title>bonding curve</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -174,7 +174,7 @@
 <p>At each time step $t$, agent $i$ decides whether to buy or sell tokens based on:</p>
 <ul>
 <li>A random trading frequency.</li>
-<li>Analysis of the price trend using their memory $M_{i,t}$. The average price in the memory (excluding the latest price) is $\bar{P}<em>{i,t} = \frac{1}{M-1} \sum</em>{j=1}^{M-1} M_{i,t}[j]$. The price difference is $\Delta P_{i,t} = \frac{P_t - \bar{P}<em>{i,t}}{\bar{P}</em>{i,t}}$.</li>
+<li>Analysis of the price trend using their memory $M_{i,t}$. The average price in the memory (excluding the latest price) is $\bar{P}_{i,t} = \frac{1}{M-1} \sum_{j=1}^{M-1} M_{i,t}[j]$. The price difference is $\Delta P_{i,t} = \frac{P_t - \bar{P}_{i,t}}{\bar{P}_{i,t}}$.</li>
 <li>Trend threshold $\tau$:<ul>
 <li>If $\Delta P_{i,t} &gt; \tau$, the agent considers buying.</li>
 <li>If $\Delta P_{i,t} &lt; -\tau$, the agent considers selling.</li>
@@ -226,7 +226,7 @@
 <p><strong>6. Objective Function for Optimization:</strong></p>
 <p>The objective is to minimize the price volatility, measured by the standard deviation of the price history over $R$ simulation runs for a given set of bonding curve parameters $\theta$:</p>
 <p>$$J(\theta) = \frac{1}{R} \sum_{r=1}^{R} \sqrt{\frac{1}{T-1} \sum_{t=1}^{T} (P_{r,t} - \bar{P}_r)^2}$$</p>
-<p>where $P_{r,t}$ is the price at time $t$ in run $r$, and $\bar{P}<em>r = \frac{1}{T} \sum</em>{t=1}^{T} P_{r,t}$ is the average price in run $r$.</p>
+<p>where $P_{r,t}$ is the price at time $t$ in run $r$, and $\bar{P}_r = \frac{1}{T} \sum_{t=1}^{T} P_{r,t}$ is the average price in run $r$.</p>
 <p><strong>7. Optimization Process:</strong></p>
 <p>The Python code employs a randomized search approach to find the optimal parameters $\theta^*$:</p>
 <ul>

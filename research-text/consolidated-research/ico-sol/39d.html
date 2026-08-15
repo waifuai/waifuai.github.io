@@ -30,7 +30,7 @@
 <title>mcp</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -137,7 +137,7 @@
 <p>By following these steps and carefully translating the Python code's logic, we can arrive at a comprehensive mathematical problem statement and solution. and Solution: Agent-Based Resource Economy Simulation</p>
 <p>This document presents a mathematical formulation of the agent-based resource economy simulation described in the provided Python code.</p>
 <h3>Problem Statement</h3>
-<p>Consider a closed economic system with $N$ agents and $M$ resources evolving over discrete time steps $t$. Each agent $i \in {1, ..., N}$ has a context balance $B_i(t)$ and a resource demand preference vector $\mathbf{P}<em>i \in [0, 1]^M$, where $P</em>{ij}$ represents agent $i$'s preference for resource $j$. Each resource $j \in {1, ..., M}$ has a capacity $C_j(t)$, a current load $L_j(t)$, and a price $Pr_j(t)$.</p>
+<p>Consider a closed economic system with $N$ agents and $M$ resources evolving over discrete time steps $t$. Each agent $i \in {1, ..., N}$ has a context balance $B_i(t)$ and a resource demand preference vector $\mathbf{P}_i \in [0, 1]^M$, where $P_{ij}$ represents agent $i$'s preference for resource $j$. Each resource $j \in {1, ..., M}$ has a capacity $C_j(t)$, a current load $L_j(t)$, and a price $Pr_j(t)$.</p>
 <p>The system evolves according to the following rules at each time step $t$:</p>
 <ol>
 <li>
@@ -211,8 +211,8 @@
 </li>
 <li>
 <p><strong>Bankruptcy:</strong> An agent is declared bankrupt if their balance falls below a threshold $B_{bankrupt}$:
-    $$\text{Bankrupt}<em>i(t) = \begin{cases}
-        \text{True} &amp; \text{if } B_i(t) \le B</em>{bankrupt} \
+    $$\text{Bankrupt}_i(t) = \begin{cases}
+        \text{True} &amp; \text{if } B_i(t) \le B_{bankrupt} \
         \text{False} &amp; \text{otherwise}
     \end{cases}$$
     Bankrupt agents are removed from the simulation.</p>

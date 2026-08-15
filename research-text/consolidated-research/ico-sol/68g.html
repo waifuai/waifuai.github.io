@@ -30,7 +30,7 @@
 <title>Dynamic Risk Parity for RWA Portfolios with AI-Enhanced Correlation Forecasting</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -86,7 +86,7 @@ $$\min_{\mathbf{w}} \left[ \text{risk}_{\text{portfolio}} - \lambda \cdot \text{
 <p>$\text{risk}_{\text{portfolio}} = \sqrt{\mathbf{w}^T \mathbf{\Sigma} \mathbf{w}}$ where $\mathbf{\Sigma}$ is the covariance matrix.</p>
 <p>$\text{expected_return} = \mathbf{w}^T \mathbf{\mu}$, where $\mathbf{\mu}$ is the expected return vector.</p>
 <p>$\lambda$: Risk-return trade-off parameter (e.g., 1 for balance).
-<strong>Risk Contribution:</strong> $RC_i = w_i \cdot \frac{\partial \sigma_{\text{portfolio}}}{\partial w_i}$, where $\frac{\partial \sigma_{\text{portfolio}}}{\partial w_i} = \frac{(\mathbf{\Sigma} \mathbf{w})<em>i}{\sigma</em>{\text{portfolio}}}$.</p>
+<strong>Risk Contribution:</strong> $RC_i = w_i \cdot \frac{\partial \sigma_{\text{portfolio}}}{\partial w_i}$, where $\frac{\partial \sigma_{\text{portfolio}}}{\partial w_i} = \frac{(\mathbf{\Sigma} \mathbf{w})_i}{\sigma_{\text{portfolio}}}$.</p>
 <p>Goal: $RC_i = RC_j$ for all $i, j$, equalizing risk.
 <strong>Constraints:</strong>
 - Transaction costs: $\text{cost} = \sum_i c_i \cdot |w_i - w_{i,0}|$, where $c_i$ is the cost per unit change, and $w_{i,0}$ is the current weight.
@@ -115,7 +115,7 @@ $$\min_{\mathbf{w}} \left[ \text{risk}_{\text{portfolio}} - \lambda \cdot \text{
 <h4>Risk Parity Principle</h4>
 <ul>
 <li><strong>Portfolio risk:</strong> $\sigma_{\text{portfolio}} = \sqrt{\mathbf{w}^T \mathbf{\Sigma} \mathbf{w}}$.</li>
-<li><strong>Risk contribution:</strong> $RC_i = w_i \cdot \frac{(\mathbf{\Sigma} \mathbf{w})<em>i}{\sigma</em>{\text{portfolio}}}$.</li>
+<li><strong>Risk contribution:</strong> $RC_i = w_i \cdot \frac{(\mathbf{\Sigma} \mathbf{w})_i}{\sigma_{\text{portfolio}}}$.</li>
 <li><strong>Objective:</strong> $RC_i = \frac{\sigma_{\text{portfolio}}}{n}$ for all $i$.</li>
 </ul>
 <h4>Optimization Problem</h4>

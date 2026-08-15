@@ -30,7 +30,7 @@
 <title>Dynamic Pricing for Illiquid RWAs with AI-Driven Market Making</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -121,7 +121,7 @@ This ensures prices are centered on a stable reference, with spreads adjusting t
 AI Agent Optimization for Profit and Stability
 The AI agent's objective is to maximize profit while ensuring market stability, formulated as an optimization problem:
 Profit Maximization: Profit is defined as the spread captured minus inventory costs:
-$\text{profit} = \text{spread}(t) \times \text{volume}<em>{\text{traded}} - \text{cost}</em>{\text{inventory}}$
+$\text{profit} = \text{spread}(t) \times \text{volume}_{\text{traded}} - \text{cost}_{\text{inventory}}$
 where inventory costs include holding costs or risk from price changes, calculated as:
 $$
 \text{cost}_{\text{inventory}} = \text{holding_cost} \times \text{inventory level} + \text{risk cost} \times \text{volatility}

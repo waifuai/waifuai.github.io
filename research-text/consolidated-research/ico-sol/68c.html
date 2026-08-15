@@ -30,7 +30,7 @@
 <title>Cross-Chain Liquidity Optimization for Tokenized RWAs</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex/contrib/auto-render.min.js"
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #e6edf3; background: #0d1117; }
@@ -82,7 +82,7 @@ Ensures profitability under varying conditions with a mathematical framework bal
 <p>Volatility Response: During high volatility, the agent adjusts pool allocations to reduce risk, potentially increasing reserves on stable chains to prevent losses from rapid price swings.</p>
 <h2>Mathematical Framework</h2>
 <p>The mathematical framework is an optimization problem aimed at maximizing profit:
-$$\max_{\mathbf{a}} \left[ \text{profit}<em>{\text{arbitrage}} - \text{cost}</em>{\text{transaction}} - \text{cost}_{\text{bridging}} \right]$$</p>
+$$\max_{\mathbf{a}} \left[ \text{profit}_{\text{arbitrage}} - \text{cost}_{\text{transaction}} - \text{cost}_{\text{bridging}} \right]$$</p>
 <p>Variables:
 $\mathbf{a} = [a_1, a_2, \dots, a_n]$: Allocation vector, where $a_i$ is the proportion of liquidity allocated to blockchain $i$, and $\sum a_i = 1$.</p>
 <p>$p_i(t)$: Price of the RWA on blockchain $i$ at time $t$.</p>
@@ -117,14 +117,14 @@ $$\rho_{ij} = \frac{\text{Cov}(p_i, p_j)}{\sigma_{p_i} \cdot \sigma_{p_j}}$$</p>
 <p>The dynamic liquidity pool model adjusts allocations based on real-time data, optimizing for arbitrage and stability:</p>
 <p>Liquidity Pool Dynamics: Total liquidity $L$ is distributed across $n$ blockchains: $L = \sum_i a_i L$.</p>
 <p>The agent adjusts $a_i$ based on price discrepancies, ensuring each chain has sufficient liquidity to support trading, minimizing fragmentation.</p>
-<p>Arbitrage Opportunities: Price discrepancies arise due to market fragmentation. The agent identifies opportunities where $p_j(t) &gt; p_k(t)$, executing trades to profit from the difference, adjusted for costs: $\text{net_profit} = v \cdot (p_j(t) - p_k(t)) - (\text{cost}<em>{\text{transaction}} + \text{cost}</em>{\text{bridging}})$</p>
+<p>Arbitrage Opportunities: Price discrepancies arise due to market fragmentation. The agent identifies opportunities where $p_j(t) &gt; p_k(t)$, executing trades to profit from the difference, adjusted for costs: $\text{net_profit} = v \cdot (p_j(t) - p_k(t)) - (\text{cost}_{\text{transaction}} + \text{cost}_{\text{bridging}})$</p>
 <p>Transaction Costs and Bridging Delays: Transaction costs vary (e.g., Ethereum gas fees ~$0.50-$5, Solana ~$0.00025), modeled as $t_i$.</p>
 <p>Bridging delays (e.g., Polkadot: minutes) introduce a time cost $d$, impacting profitability if prices change during transfer.</p>
 <p>Volatility Adjustment:
-Volatility, measured as $$\sigma_{p_i} = \sqrt{\frac{1}{T} \sum (p_i - \bar{p}<em>i)^2}$$, influences allocations. High volatility on a chain prompts reduced exposure to limit risk.
+Volatility, measured as $$\sigma_{p_i} = \sqrt{\frac{1}{T} \sum (p_i - \bar{p}_i)^2}$$, influences allocations. High volatility on a chain prompts reduced exposure to limit risk.
 Mathematical Framework
 The optimization problem maximizes net profit:
-$$\max</em>{\mathbf{a}} \sum_{i,j} v_{ij} \cdot (p_j(t) - p_i(t)) - \sum_i t_i \cdot v_i - b \cdot v \cdot d$$</p>
+$$\max_{\mathbf{a}} \sum_{i,j} v_{ij} \cdot (p_j(t) - p_i(t)) - \sum_i t_i \cdot v_i - b \cdot v \cdot d$$</p>
 <p>Constraints:
 $\sum a_i = 1$ (total allocation sums to 1).</p>
 <p>$a_i L \geq v_i$ (liquidity covers traded volume).</p>
