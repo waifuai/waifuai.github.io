@@ -37,43 +37,7 @@
       {left: '$', right: '$', display: false}
     ]
   });"></script>
-<style>
-  body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem;
-    line-height: 1.7;
-    color: #e0e0e0;
-    background: #1a1a2e;
-  }
-  h1 { color: #e94560; border-bottom: 2px solid #e94560; padding-bottom: 0.3em; }
-  h2 { color: #0f3460; border-bottom: 1px solid #533483; padding-bottom: 0.2em; }
-  h3 { color: #533483; }
-  a { color: #4fc3f7; }
-  code { background: #16213e; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
-  pre { background: #16213e; padding: 1em; border-radius: 6px; overflow-x: auto; }
-  pre code { padding: 0; }
-  blockquote { border-left: 3px solid #533483; margin-left: 0; padding-left: 1em; color: #aaa; }
-  .katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.5em 0; }
-  table { border-collapse: collapse; width: 100%; }
-  th, td { border: 1px solid #333; padding: 0.5em; text-align: left; }
-  th { background: #16213e; }
-  .topbar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6em; margin-bottom: 1rem; padding: 0.7em 1rem; background: #16213e; border-radius: 6px; font-size: 0.85em; }
-  .topbar a { white-space: nowrap; }
-  .topbar .spacer { flex: 1 1 auto; }
-  .topbar .prevnext { padding: 0.3em 0.7em; background: #0f3460; border-radius: 4px; }
-  .topbar .prevnext.disabled { opacity: 0.35; pointer-events: none; }
-  details.toc { margin-bottom: 2rem; background: #16213e; border-radius: 6px; font-size: 0.85em; }
-  details.toc summary { cursor: pointer; padding: 0.7em 1rem; font-weight: 600; color: #4fc3f7; list-style: none; }
-  details.toc summary::-webkit-details-marker { display: none; }
-  details.toc summary::before { content: "\25B8"; display: inline-block; margin-right: 0.5em; transition: transform 0.15s; }
-  details.toc[open] summary::before { transform: rotate(90deg); }
-  .toc-body { padding: 0 1rem 1rem; display: flex; flex-direction: column; gap: 0.8em; }
-  .toc-chapter h4 { color: #7f9cf5; font-size: 0.9em; margin: 0 0 0.3em; text-transform: uppercase; letter-spacing: 0.04em; }
-  .toc-chapter .toc-links { display: flex; flex-wrap: wrap; gap: 0.3em 1em; }
-  .toc-chapter .toc-links a.current { color: #ff9e9e; font-weight: 600; }
-</style>
+<link rel="stylesheet" href="../../../theme.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -94,7 +58,7 @@
 }
 </script>
 </head>
-<body>
+<body class="doc-page">
 <div class="topbar">
   <a href="../../index.html">📚 All Books</a>
   <a href="05-transformer_rl.html">05-transformer_rl</a>
