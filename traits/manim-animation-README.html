@@ -28,32 +28,6 @@
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
 <title>Personality Analysis Animation</title>
-<style>
-  :root {
-    --bg: #0d1117;
-    --card-bg: #161b22;
-    --border: #30363d;
-    --text: #e6edf3;
-    --text-muted: #8b949e;
-    --accent: #58a6ff;
-    --accent2: #7ee787;
-    --accent3: #d2a8ff;
-  }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: var(--text); background: var(--bg); }
-  pre { background: var(--card-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border); }
-  code { background: var(--card-bg); padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
-  pre code { background: none; padding: 0; }
-  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
-  th, td { border: 1px solid var(--border); padding: 8px; text-align: left; }
-  th { background: var(--card-bg); }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  h1 { border-bottom: 1px solid var(--border); padding-bottom: 0.5em; margin-bottom: 0.75em; font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  h2, h3 { border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
-  blockquote { border-left: 4px solid var(--border); padding-left: 1rem; color: var(--text-muted); }
-  .back-link { display: inline-block; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.9rem; }
-  img { max-width: 100%; }
-</style>
 
 <script type="application/ld+json">
 {
@@ -74,8 +48,11 @@
   }
 }
 </script>
+<link rel="stylesheet" href="../theme.css">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
-<body>
+<body class="doc-page">
 <a class="back-link" href="index.html">&larr; Back to index</a>
 <h1>Personality Analysis Animation</h1>
 <p>A Manim animation explaining the Personality Analysis System architecture and functionality.</p>

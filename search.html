@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Search every page on the WaifuAI docs hub: projects, research books, web apps, benchmarks, blog posts, and reports.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://waifuai.github.io/search.html">
+<title>Search | WaifuAI</title>
+<meta property="og:title" content="Search | WaifuAI">
+<meta property="og:description" content="Search every page on the WaifuAI docs hub">
+<meta property="og:image" content="https://waifuai.github.io/og_image.png">
+<meta property="og:url" content="https://waifuai.github.io/search.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="WaifuAI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Search | WaifuAI">
+<meta name="twitter:description" content="Search every page on the WaifuAI docs hub">
+<meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
+<link rel="stylesheet" href="/theme.css">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<div class="container">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="/">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">Search</span></nav>
+<header>
+<h1>Search</h1>
+<p>Every page on the hub &mdash; projects, books, apps, reports</p>
+</header>
+
+<section>
+<div class="search-box">
+  <label class="skip-link" for="q">Search query</label>
+  <input id="q" type="search" autocomplete="off" autofocus placeholder="Search titles, sections, and descriptions…">
+</div>
+<p class="search-meta" id="meta" role="status" aria-live="polite">Loading index…</p>
+<div class="search-results" id="results"></div>
+</section>
+
+<footer>
+<p>WaifuAI Docs Hub &mdash; <a href="/">Home</a> &bull; <a href="/llms.txt">llms.txt</a> &bull; <a href="https://github.com/waifuai">GitHub</a></p>
+</footer>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('q');
+  var meta = document.getElementById('meta');
+  var results = document.getElementById('results');
+  var pages = [], sections = [], ready = false;
+  var LIMIT = 60;
+
+  fetch('/search-index.json').then(function (r) { return r.json(); }).then(function (data) {
+    sections = data.sections;
+    pages = data.pages.map(function (p) {
+      return { title: p[0], url: p[1], section: sections[p[2]], desc: p[3],
+               hay: (p[0] + ' ' + p[1] + ' ' + sections[p[2]] + ' ' + p[3]).toLowerCase() };
+    });
+    ready = true;
+    meta.textContent = pages.length.toLocaleString() + ' pages indexed. Type to search.';
+    var q = new URLSearchParams(location.search).get('q');
+    if (q) { input.value = q; run(); }
+  }).catch(function () {
+    meta.textContent = 'Could not load the search index.';
+  });
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  var BACKSLASH = String.fromCharCode(92);
+  var SPECIAL = '.*+?^${}()|[]' + BACKSLASH;
+
+  function escapeRegExp(term) {
+    var out = '';
+    for (var i = 0; i < term.length; i++) {
+      var c = term.charAt(i);
+      out += SPECIAL.indexOf(c) === -1 ? c : BACKSLASH + c;
+    }
+    return out;
+  }
+
+  function highlight(text, terms) {
+    var out = escapeHtml(text);
+    terms.forEach(function (t) {
+      if (!t) return;
+      var re = new RegExp('(' + escapeRegExp(t) + ')', 'ig');
+      out = out.replace(re, '<mark>$1</mark>');
+    });
+    return out;
+  }
+
+  function score(page, terms) {
+    var title = page.title.toLowerCase(), s = 0;
+    for (var i = 0; i < terms.length; i++) {
+      if (page.hay.indexOf(terms[i]) === -1) return -1;
+      if (title.indexOf(terms[i]) === 0) s += 6;
+      else if (title.indexOf(terms[i]) !== -1) s += 4;
+      else s += 1;
+    }
+    if (page.url.split('/').length <= 2) s += 2;   // shallow pages first
+    return s;
+  }
+
+  function run() {
+    if (!ready) return;
+    var raw = input.value.trim();
+    var terms = raw.toLowerCase().split(/\s+/).filter(Boolean);
+    if (!terms.length) {
+      results.innerHTML = '';
+      meta.textContent = pages.length.toLocaleString() + ' pages indexed. Type to search.';
+      return;
+    }
+    var hits = [];
+    for (var i = 0; i < pages.length; i++) {
+      var s = score(pages[i], terms);
+      if (s >= 0) hits.push([s, pages[i]]);
+    }
+    hits.sort(function (a, b) { return b[0] - a[0] || a[1].title.length - b[1].title.length; });
+    meta.textContent = hits.length + (hits.length === 1 ? ' match' : ' matches') +
+      (hits.length > LIMIT ? ' — showing the first ' + LIMIT : '');
+    results.innerHTML = hits.slice(0, LIMIT).map(function (h) {
+      var p = h[1];
+      return '<a href="/' + p.url + '"><strong>' + highlight(p.title, terms) + '</strong>' +
+             '<span class="path">' + p.section + ' &middot; /' + escapeHtml(p.url) + '</span></a>';
+    }).join('');
+  }
+
+  var timer;
+  input.addEventListener('input', function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      run();
+      var url = input.value ? '?q=' + encodeURIComponent(input.value) : location.pathname;
+      history.replaceState(null, '', url);
+    }, 90);
+  });
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      var first = results.querySelector('a');
+      if (first) location.href = first.getAttribute('href');
+    }
+  });
+})();
+</script>
+</body>
+</html>

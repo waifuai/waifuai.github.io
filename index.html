@@ -41,13 +41,17 @@
 }
 </script>
 <link rel="stylesheet" href="theme.css">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
+<a class="skip-link" href="#projects">Skip to projects</a>
 <div class="container">
 <header>
 <h1>WaifuAI Docs</h1>
 <p>40+ open-source projects for AI agents, developers, and builders</p>
 <div class="links">
+  <a href="search.html">search</a>
   <a href="llms.txt">llms.txt</a>
   <a href="sitemap.xml">sitemap</a>
   <a href="https://github.com/waifuai">GitHub</a>
@@ -56,6 +60,13 @@
 </div>
 </header>
 
+<div class="search-box">
+  <label class="skip-link" for="filter">Filter projects</label>
+  <input id="filter" type="search" autocomplete="off" placeholder="Filter projects… (or search every page)">
+</div>
+<p class="search-meta" id="filter-meta" role="status" aria-live="polite"></p>
+
+<div id="projects">
 <section>
 <h2>Agent Resources</h2>
 <div class="link-list">
@@ -154,9 +165,51 @@
 </div>
 </section>
 
+</div>
+
 <footer>
 <p>WaifuAI Docs Hub &mdash; Built for agents, by builders &bull; <a href="llms.txt">llms.txt</a> &bull; <a href="https://github.com/waifuai">GitHub</a></p>
 </footer>
 </div>
+<script>
+(function () {
+  var input = document.getElementById('filter');
+  var meta = document.getElementById('filter-meta');
+  var sections = Array.prototype.slice.call(document.querySelectorAll('#projects section'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('#projects .link-list a'));
+
+  function run() {
+    var q = input.value.trim().toLowerCase();
+    if (!q) {
+      cards.forEach(function (c) { c.hidden = false; });
+      sections.forEach(function (s) { s.hidden = false; });
+      meta.textContent = '';
+      return;
+    }
+    var terms = q.split(/\s+/);
+    var shown = 0;
+    cards.forEach(function (c) {
+      var hay = c.textContent.toLowerCase() + ' ' + c.getAttribute('href').toLowerCase();
+      var hit = terms.every(function (t) { return hay.indexOf(t) !== -1; });
+      c.hidden = !hit;
+      if (hit) shown++;
+    });
+    sections.forEach(function (s) {
+      s.hidden = !s.querySelector('.link-list a:not([hidden])');
+    });
+    meta.innerHTML = shown + (shown === 1 ? ' project' : ' projects') +
+      ' &middot; <a href="search.html?q=' + encodeURIComponent(input.value.trim()) + '">search all pages for &ldquo;' +
+      input.value.trim().replace(/[<>&]/g, '') + '&rdquo;</a>';
+  }
+
+  input.addEventListener('input', run);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      var first = document.querySelector('#projects .link-list a:not([hidden])');
+      if (first) location.href = first.getAttribute('href');
+    }
+  });
+})();
+</script>
 </body>
 </html>

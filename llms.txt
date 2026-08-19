@@ -7,6 +7,7 @@
 - [LLMS Full HTML](https://waifuai.github.io/llms-full-html/) — Aggregated HTML documentation bundles optimized for LLM ingestion
 - [LLMS Full TXT](https://waifuai.github.io/llms-full-txt/) — Markdown code aggregation with TOC and line counting
 - [Sitemap](https://waifuai.github.io/sitemap.xml) — Complete URL index of all pages
+- [Search](https://waifuai.github.io/search.html) — Client-side search across every page (index: /search-index.json)
 
 ## AI / LLM Infrastructure
 

@@ -28,29 +28,22 @@
     <meta name="twitter:description" content="Quantum circuit optimization library">
     <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
     <title>Quantum Circuit Optimization Library | WaifuAI</title>
+    <link rel="stylesheet" href="../theme.css">
     <style>
         :root {
-            --bg: #0d1117;
-            --surface: #161b22;
-            --border: #30363d;
-            --text: #e6edf3;
-            --text-muted: #8b949e;
-            --accent: #58a6ff;
+            --surface: var(--card-bg);
+            --code-bg: #1c2128;
             --accent-dim: #1f6feb;
             --green: #3fb950;
             --orange: #d29922;
             --red: #f85149;
             --purple: #bc8cff;
-            --code-bg: #1c2128;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
+            padding: 0;
             display: flex;
             min-height: 100vh;
         }
@@ -78,13 +71,16 @@
 
         nav.sidebar .logo h1 {
             font-size: 1.1em;
-            color: var(--accent);
+            color: var(--accent3);
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        nav.sidebar .logo h1 span { font-size: 1.3em; }
+        nav.sidebar .logo h1 span { font-size: 1.3em; -webkit-text-fill-color: initial; }
 
         nav.sidebar .logo p {
             font-size: 0.78em;
@@ -110,12 +106,12 @@
         }
 
         nav.sidebar ul li a:hover {
-            background: rgba(88,166,255,0.08);
+            background: rgba(255, 107, 157, 0.08);
             color: var(--text);
         }
 
         nav.sidebar ul li a.active {
-            background: rgba(88,166,255,0.12);
+            background: rgba(255, 107, 157, 0.12);
             color: var(--accent);
         }
 
@@ -162,7 +158,7 @@
 
         h3 {
             font-size: 1.2em;
-            color: var(--accent);
+            color: var(--accent3);
             margin: 28px 0 12px;
         }
 
@@ -174,8 +170,6 @@
 
         p { margin: 10px 0; color: var(--text); }
 
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
 
         code {
             font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
@@ -245,7 +239,7 @@
 
         th {
             background: var(--surface);
-            color: var(--accent);
+            color: var(--accent3);
             font-weight: 600;
         }
 
@@ -317,6 +311,8 @@
   "applicationCategory": "DeveloperApplication"
 }
 </script>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
 

@@ -80,6 +80,16 @@ Monorepo for [WaifuAI](https://waifuai.github.io) — an open-source ecosystem o
 | [traits](traits/) | Personality trait analysis and scoring system |
 | [quantum-circuit-optimization](quantum-circuit-optimization/) | Quantum circuit optimization library |
 
+## Site infrastructure
+
+| File | Purpose |
+|---|---|
+| [theme.css](theme.css) | Single shared stylesheet for every docs/content page (`web-apps/` demo apps keep their own bespoke styling) |
+| [search.html](search.html) | Client-side search over every page on the site |
+| [search-index.json](search-index.json) | Generated index (title, path, section, description) — rebuild with `python tools/build-search-index.py` |
+| [404.html](404.html) | Themed not-found page served by GitHub Pages |
+| sitemap*.xml | Sitemap index plus per-section sitemaps |
+
 ## Tech Stack
 
 - **Python** — dominant language across ~85% of projects (with Poetry/uv for dependency management)
