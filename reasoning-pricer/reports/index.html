@@ -37,7 +37,16 @@
             {left: '$', right: '$', display: false}
         ]
     });"></script>
-<link rel="stylesheet" href="../../theme.css">
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #333; }
+pre { background: #f5f5f5; padding: 1rem; border-radius: 4px; overflow-x: auto; }
+code { background: #f0f0f0; padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+th { background: #f5f5f5; }
+a { color: #0066cc; }
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -57,15 +66,11 @@
   }
 }
 </script>
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
-<body class="doc-page">
-<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">WaifuAI Docs</a><span class="sep">/</span><a href="../index.html">Reasoning Pricer</a></nav>
-
+<body>
 <h1>Solana Token Analysis Reports</h1>
 <h2>Overview</h2>
-<p>This repository contains comprehensive analysis reports for 110 Solana tokens, organized by risk classification and individual token details.</p>
+<p>This repository contains comprehensive analysis reports for 150 Solana tokens, organized by risk classification and individual token details.</p>
 <h2>📊 Risk Class Summary</h2>
 <table>
 <thead>
@@ -78,41 +83,42 @@
 <tbody>
 <tr>
 <td><a href="./summaries/class-a-real-yield.html"><strong>Class A (Real Yield)</strong></a></td>
-<td>69</td>
+<td>37</td>
 <td>Low-risk foundation assets</td>
 </tr>
 <tr>
 <td><a href="./summaries/class-b-systemic.html"><strong>Class B (Systemic)</strong></a></td>
-<td>22</td>
+<td>39</td>
 <td>Medium-risk ecosystem tokens</td>
 </tr>
 <tr>
 <td><a href="./summaries/class-c-venture-risk.html"><strong>Class C (Venture Risk)</strong></a></td>
-<td>19</td>
+<td>40</td>
 <td>Higher-risk growth opportunities</td>
 </tr>
 <tr>
 <td><a href="./summaries/class-d-speculative.html"><strong>Class D (Speculative)</strong></a></td>
-<td>0</td>
+<td>34</td>
 <td>Maximum-risk speculative assets</td>
 </tr>
 </tbody>
 </table>
 <h2>📈 Quick Stats</h2>
 <ul>
-<li><strong>Total Tokens Analyzed:</strong> 110</li>
+<li><strong>Total Tokens Analyzed:</strong> 150</li>
 <li><strong>Data Source:</strong> JSON files in <code>data/</code> directory</li>
-<li><strong>Average Insider Score:</strong> 35.5/100</li>
-<li><strong>Average Tariff:</strong> 31.6%</li>
-<li><strong>AI-Native/Enabled Tokens:</strong> 34</li>
-<li><strong>Static/Hard-Money Tokens:</strong> 3</li>
+<li><strong>Average Insider Score:</strong> 37.0/100</li>
+<li><strong>Average Tariff:</strong> 27.3%</li>
+<li><strong>AI-Native/Enabled Tokens:</strong> 44</li>
+<li><strong>Static/Hard-Money Tokens:</strong> 6</li>
 </ul>
 <h2>📁 Report Structure</h2>
 <h3>By Risk Class</h3>
 <ul>
-<li><a href="./summaries/class-a-real-yield.html">Class A (Real Yield)</a> - 69 tokens</li>
-<li><a href="./summaries/class-b-systemic.html">Class B (Systemic)</a> - 22 tokens</li>
-<li><a href="./summaries/class-c-venture-risk.html">Class C (Venture Risk)</a> - 19 tokens</li>
+<li><a href="./summaries/class-a-real-yield.html">Class A (Real Yield)</a> - 37 tokens</li>
+<li><a href="./summaries/class-b-systemic.html">Class B (Systemic)</a> - 39 tokens</li>
+<li><a href="./summaries/class-c-venture-risk.html">Class C (Venture Risk)</a> - 40 tokens</li>
+<li><a href="./summaries/class-d-speculative.html">Class D (Speculative)</a> - 34 tokens</li>
 </ul>
 <h3>AI-Acceleration Pricing</h3>
 <ul>
