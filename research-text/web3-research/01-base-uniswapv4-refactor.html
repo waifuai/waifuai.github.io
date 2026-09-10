@@ -54,29 +54,38 @@
     <span class="badge">Uniswap v4 Hooks</span>
   </div>
   <h1 style="border:none; padding:0; margin: 0 0 0.5rem 0;">Architectural &amp; Mathematical Refactor: Solana to Base / Uniswap v4</h1>
-  <p style="color: var(--text-muted); font-size: 1.05rem; margin:0;">Transitioning from custom SVM bonding curves to automated concentrated liquidity tick space and permanent fee lockers.</p>
+  <p class="section-desc" style="font-size: 1.05rem; line-height: 1.6; margin-top: 0.5rem;">
+    Architectural and mathematical refactoring from Solana (<code>ico-sol</code>) custom bonding curves to Base concentrated liquidity on Uniswap v4 with OpenLaunch permanent LP locking.
+  </p>
+  <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+    <a href="https://openlaunch.lol/t/base/0xf3018d16d3c75f86df76bdeed12027c813f4e4a0" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.1rem; border-radius: 6px; font-weight: 600; font-size: 0.9rem; background: linear-gradient(135deg, #ec4899 0%, #6366f1 100%); color: #fff; text-decoration: none; box-shadow: 0 2px 10px rgba(236, 72, 153, 0.25);">🚀 Trade $WAIFU on OpenLaunch &rarr;</a>
+    <a href="https://basescan.org/token/0xf3018d16d3c75f86df76bdeed12027c813f4e4a0" target="_blank" rel="noopener" style="font-size: 0.9rem; color: var(--accent3);">Basescan Contract &rarr;</a>
+  </div>
 </header>
 
-<div class="callout-box" style="margin: 1.5rem 0; padding: 1.25rem; background: rgba(96, 165, 250, 0.08); border-left: 4px solid var(--accent3); border-radius: 6px;">
+<div class="callout-box" style="border-left: 4px solid var(--accent); background: rgba(236, 72, 153, 0.05); margin-bottom: 2rem;">
   <strong>Executive Summary:</strong> This document formalizes the mathematical, architectural, and operational refactoring of the token economic framework originally developed for Solana (<code>ico-sol</code>) to the live production implementation deployed on <strong>Base</strong> leveraging <strong>Uniswap v4</strong> and <strong>OpenLaunch</strong>. By leveraging standardized, audited automated market maker (AMM) infrastructure instead of custom smart contract programs, development overhead is reduced by over 90% while achieving superior capital efficiency, permanent liquidity locking, and automated dual-asset revenue generation.
 </div>
 
-<h2>1. System Comparison Matrix</h2>
-<p>A comprehensive architectural comparison between the initial Solana specification and the deployed Base EVM implementation:</p>
+<h2>1. Motivation &amp; Structural Comparison</h2>
+
+<p>The original Solana implementation specified custom bonding curve formulas ($$P(S) = mS + b$$), multi-tiered pricing, and custom CPI fee distribution instructions. In production, this introduced critical drawbacks: high smart contract maintenance overhead, custom liquidity pool fragmentation, and the lack of composability with broader DeFi routing aggregators.</p>
+
+<p>Deploying on <strong>Base L2</strong> via <strong>Uniswap v4</strong> and <strong>OpenLaunch</strong> resolved these issues fundamentally:</p>
 
 <div class="table-container">
 <table class="comparison-table">
   <thead>
     <tr>
       <th>Dimension</th>
-      <th>Original Research (<code>ico-sol</code> / Solana)</th>
-      <th>Implemented Production System (Base)</th>
+      <th>Solana Architecture (Legacy)</th>
+      <th>Base Uniswap v4 (Production)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>Virtual Machine</strong></td>
-      <td>Solana Virtual Machine (SVM)</td>
+      <td><strong>Blockchain</strong></td>
+      <td>Solana (High-throughput SVM)</td>
       <td>Ethereum Virtual Machine (EVM, OP Stack L2)</td>
     </tr>
     <tr>
@@ -87,7 +96,7 @@
     <tr>
       <td><strong>Token Standard</strong></td>
       <td>SPL-Token / Token-2022</td>
-      <td>ERC-20 (<code>0xf3018d16d3c75f86df76bdeed12027c813f4e4a0</code>)</td>
+      <td>ERC-20 (<a href="https://openlaunch.lol/t/base/0xf3018d16d3c75f86df76bdeed12027c813f4e4a0" target="_blank" rel="noopener"><code>0xf3018d16d3c75f86df76bdeed12027c813f4e4a0</code></a>) &bull; <a href="https://openlaunch.lol/t/base/0xf3018d16d3c75f86df76bdeed12027c813f4e4a0" target="_blank" rel="noopener" style="font-weight:600; color: var(--accent);">Trade &rarr;</a></td>
     </tr>
     <tr>
       <td><strong>Reserve Asset</strong></td>
