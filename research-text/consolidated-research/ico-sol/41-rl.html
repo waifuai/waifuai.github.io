@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/research-text/consolidated-research/ico-sol/41-rl.html">
 <meta name="description" content="**1. Agent Dynamics** | WaifuAI">
-<meta property="og:title" content="**1. Agent Dynamics**">
+<meta property="og:title" content="🤖💹 RL in Economic Agents: Mastering Assets, Actions, and Rewards 🎯🧠">
 <meta property="og:description" content="**1. Agent Dynamics** | WaifuAI">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/research-text/consolidated-research/ico-sol/41-rl.html">
@@ -23,11 +23,11 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="**1. Agent Dynamics**">
+<meta name="twitter:title" content="🤖💹 RL in Economic Agents: Mastering Assets, Actions, and Rewards 🎯🧠">
 <meta name="twitter:description" content="**1. Agent Dynamics** | WaifuAI">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>**1. Agent Dynamics**</title>
+<title>🤖💹 RL in Economic Agents: Mastering Assets, Actions, and Rewards 🎯🧠 | WaifuAI</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -56,26 +56,32 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">RL in Economic Agents: Mastering Assets, Actions, and Rew...</span></nav>
 <a class="back-link" href="index.html">&larr; Back to index</a>
+<h1>🤖💹 RL in Economic Agents: Mastering Assets, Actions, and Rewards 🎯🧠</h1>
 <p>Below is a detailed development of the equations for the reinforcement learning (RL) framework applied to agent-based economic systems with dynamic asset pricing. These equations cover agent dynamics, asset pricing mechanisms, reward functions, and optimization processes.</p>
 <hr />
 <h3><strong>1. Agent Dynamics</strong></h3>
 <h4><strong>1.1. State Space (\(S_i(t)\))</strong></h4>
 <p>The state of agent \(i\) at time \(t\) includes its balance, asset holdings, and market observations:<br />
 \[S_i(t) = \left[ B_i(t), H_{i,1}(t), H_{i,2}(t), \dots, H_{i,M}(t), P_1(t), P_2(t), \dots, P_M(t), \mathbf{M}(t) \right]\]<br />
-where:<br />
-- \(B_i(t)\): Balance of agent \(i\) at time \(t\).<br />
-- \(H_{i,j}(t)\): Holdings of asset \(j\) by agent \(i\) at time \(t\).<br />
-- \(P_j(t)\): Price of asset \(j\) at time \(t\).<br />
-- \(\mathbf{M}(t)\): Market conditions (e.g., total supply, demand, external shocks).</p>
+where:<br /></p>
+<ul>
+  <li>\(B_i(t)\): Balance of agent \(i\) at time \(t\).<br /></li>
+  <li>\(H_{i,j}(t)\): Holdings of asset \(j\) by agent \(i\) at time \(t\).<br /></li>
+  <li>\(P_j(t)\): Price of asset \(j\) at time \(t\).<br /></li>
+  <li>\(\mathbf{M}(t)\): Market conditions (e.g., total supply, demand, external shocks).</li>
+</ul>
 <h4><strong>1.2. Action Space (\(A_i(t)\))</strong></h4>
 <p>The action of agent \(i\) at time \(t\) includes buying, selling, or holding assets:<br />
 \[A_i(t) = \left[ a_{i,1}(t), a_{i,2}(t), \dots, a_{i,M}(t) \right]\]<br />
 where \(a_{i,j}(t)\) represents the action for asset \(j\):<br />
-\[a_{i,j}(t) \in {-1, 0, 1}\]<br />
-- \(-1\): Sell one unit of asset \(j\).<br />
-- \(0\(: Hold asset\)j\).<br />
-- \(1\(: Buy one unit of asset\)j\).</p>
+\[a_{i,j}(t) \in {-1, 0, 1}\]<br /></p>
+<ul>
+  <li>\(-1\): Sell one unit of asset \(j\).<br /></li>
+  <li>\(0\(: Hold asset\)j\).<br /></li>
+  <li>\(1\(: Buy one unit of asset\)j\).</li>
+</ul>
 <h4><strong>1.3. Policy (\(\pi_i\))</strong></h4>
 <p>The policy \(\pi_i\) maps states to actions:<br />
 \[\pi_i: S_i(t) \rightarrow A_i(t)\]<br />
@@ -87,16 +93,17 @@ where \(Q_i\) is the action-value function, and \(\tau\) is the temperature para
 <h4><strong>2.1. Bonding Curve</strong></h4>
 <p>The price of asset \(j\) is determined by a bonding curve \(f_j\):<br />
 \[P_j(t) = f_j(S_j(t), \mathbf{\Phi}_j(t))\]<br />
-where:<br />
-- \(S_j(t)\): Total supply of asset \(j\) at time \(t\).<br />
-- \(\mathbf{\Phi}_j(t)\): Parameters of the bonding curve (e.g., slope, intercept).  </p>
-<p>Examples of bonding curves:<br />
-- <strong>Linear:</strong><br />
-  \[P_j(t) = m_j S_j(t) + b_j\]<br />
-- <strong>Exponential:</strong><br />
-  \[P_j(t) = a_j e^{k_j S_j(t)}\]<br />
-- <strong>Sigmoid:</strong><br />
-  \[P_j(t) = \frac{K_j}{1 + e^{-k_j(S_j(t) - S_{0,j})}}\]</p>
+where:<br /></p>
+<ul>
+  <li>\(S_j(t)\): Total supply of asset \(j\) at time \(t\).<br /></li>
+  <li>\(\mathbf{\Phi}_j(t)\): Parameters of the bonding curve (e.g., slope, intercept).</li>
+</ul>
+<p>Examples of bonding curves:<br /></p>
+<ul>
+  <li><strong>Linear:</strong><br /> \[P_j(t) = m_j S_j(t) + b_j\]<br /></li>
+  <li><strong>Exponential:</strong><br /> \[P_j(t) = a_j e^{k_j S_j(t)}\]<br /></li>
+  <li><strong>Sigmoid:</strong><br /> \[P_j(t) = \frac{K_j}{1 + e^{-k_j(S_j(t) - S_{0,j})}}\]</li>
+</ul>
 <h4><strong>2.2. Market Clearing</strong></h4>
 <p>Prices can also emerge from market clearing conditions:<br />
 \[D_j(P_j(t)) = O_j(P_j(t))\]<br />
@@ -128,9 +135,11 @@ where \(\lambda\) is the risk aversion coefficient.</p>
 <h4><strong>5.1. Q-Learning</strong></h4>
 <p>The action-value function \(Q_i\) is updated as:<br />
 \[Q_i(S_i(t), A_i(t)) \leftarrow Q_i(S_i(t), A_i(t)) + \alpha \left[ r_i(t) + \gamma \max_{a'} Q_i(S_i(t+1), a') - Q_i(S_i(t), A_i(t)) \right]\]<br />
-where:<br />
-- \(\alpha\): Learning rate.<br />
-- \(\gamma\): Discount factor.</p>
+where:<br /></p>
+<ul>
+  <li>\(\alpha\): Learning rate.<br /></li>
+  <li>\(\gamma\): Discount factor.</li>
+</ul>
 <h4><strong>5.2. Policy Gradient</strong></h4>
 <p>The policy parameters \(\theta_i\) are updated using the gradient:<br />
 \[\theta_i \leftarrow \theta_i + \alpha \nabla_{\theta_i} \log \pi_i(A_i(t) | S_i(t)) \cdot G_i(t)\]<br />

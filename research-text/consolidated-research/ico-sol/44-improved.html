@@ -27,7 +27,7 @@
 <meta name="twitter:description" content="A Unified Mathematical Framework for Agent-Based Economic Systems with Dynamic Asset Pricing | WaifuAI">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>A Unified Mathematical Framework for Agent-Based Economic Systems with Dynamic Asset Pricing</title>
+<title>A Unified Mathematical Framework for Agent-Based Economic Systems with Dynamic Asset Pricing | WaifuAI</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -56,10 +56,11 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">A Unified Mathematical Framework for Agent-Based Economic...</span></nav>
 <a class="back-link" href="index.html">&larr; Back to index</a>
 <p>Here’s the revised version of the paper, incorporating the feedback and suggestions provided. The paper now includes concrete examples, expanded discussions on computational methods and agent behavior, validation and sensitivity analysis, intuitive explanations, and a more detailed conclusion.</p>
 <hr />
-<h2>A Unified Mathematical Framework for Agent-Based Economic Systems with Dynamic Asset Pricing</h2>
+<h1>A Unified Mathematical Framework for Agent-Based Economic Systems with Dynamic Asset Pricing</h1>
 <p><strong>Abstract:</strong><br />
 This paper presents a unified mathematical framework for modeling complex economic systems involving interacting agents and dynamically priced assets. We integrate concepts from bonding curves, token airdrops, agent-based trading simulations, and resource allocation mechanisms into a cohesive model. This framework allows for the analysis of price formation, wealth distribution, and the impact of various economic policies and mechanisms. Concrete examples, computational details, and validation methods are provided to enhance the framework’s applicability and practicality.</p>
 <hr />
@@ -76,35 +77,39 @@ This paper presents a unified mathematical framework for modeling complex econom
 <h3><strong>2. Core Components of the Model</strong></h3>
 <p>We consider a discrete-time system evolving over ( t \in {0, 1, 2, ...} ). The system comprises a set of ( N ) agents, indexed by ( i \in {1, ..., N} ), and a set of ( M ) assets (which can represent tokens or resources), indexed by ( j \in {1, ..., M} ).</p>
 <h4><strong>2.1. Agents:</strong></h4>
-<p>Each agent ( i ) at time ( t ) is characterized by:<br />
-- <strong>Balance/Capital:</strong> ( B_i(t) ), representing their holdings of a base currency or capital.<br />
-- <strong>Asset Holdings:</strong> ( H_{i,j}(t) ), representing their holdings of asset ( j ).<br />
-- <strong>Behavioral Parameters:</strong> A vector ( \mathbf{\Theta}_i ) capturing their trading strategies, risk preferences, and other decision-making factors. These parameters can be fixed or evolve over time.<br />
-- <strong>Utility Function:</strong> Agents act to maximize their utility, which can be explicitly modeled as a function of their holdings and beliefs. For example:<br />
-  \[U_i(t) = \sum_{j=1}^{M} \left( \alpha_{i,j} \log(H_{i,j}(t)) + \beta_{i,j} B_i(t) \right)\]<br />
-  where ( \alpha_{i,j} ) and ( \beta_{i,j} ) are preference parameters.</p>
+<p>Each agent ( i ) at time ( t ) is characterized by:<br /></p>
+<ul>
+  <li><strong>Balance/Capital:</strong> ( B_i(t) ), representing their holdings of a base currency or capital.<br /></li>
+  <li><strong>Asset Holdings:</strong> ( H_{i,j}(t) ), representing their holdings of asset ( j ).<br /></li>
+  <li><strong>Behavioral Parameters:</strong> A vector ( \mathbf{\Theta}_i ) capturing their trading strategies, risk preferences, and other decision-making factors. These parameters can be fixed or evolve over time.<br /></li>
+  <li><strong>Utility Function:</strong> Agents act to maximize their utility, which can be explicitly modeled as a function of their holdings and beliefs. For example:<br /> \[U_i(t) = \sum_{j=1}^{M} \left( \alpha_{i,j} \log(H_{i,j}(t)) + \beta_{i,j} B_i(t) \right)\]<br /> where ( \alpha_{i,j} ) and ( \beta_{i,j} ) are preference parameters.</li>
+</ul>
 <h4><strong>2.2. Assets:</strong></h4>
-<p>Each asset ( j ) at time ( t ) is characterized by:<br />
-- <strong>Supply:</strong> ( S_j(t) ), the total amount of the asset in circulation.<br />
-- <strong>Price:</strong> ( P_j(t) ), the exchange rate of the asset with respect to the base currency.<br />
-- <strong>Intrinsic Properties:</strong> Parameters ( \Pi_j ) that define its characteristics, such as its utility, scarcity, or role in the economy.</p>
+<p>Each asset ( j ) at time ( t ) is characterized by:<br /></p>
+<ul>
+  <li><strong>Supply:</strong> ( S_j(t) ), the total amount of the asset in circulation.<br /></li>
+  <li><strong>Price:</strong> ( P_j(t) ), the exchange rate of the asset with respect to the base currency.<br /></li>
+  <li><strong>Intrinsic Properties:</strong> Parameters ( \Pi_j ) that define its characteristics, such as its utility, scarcity, or role in the economy.</li>
+</ul>
 <hr />
 <h3><strong>3. Asset Pricing Mechanisms</strong></h3>
 <p>The price of each asset is determined by a specific mechanism, which can be one of the following (or a combination thereof):</p>
 <h4><strong>3.1. Bonding Curves:</strong></h4>
 <p>The price of an asset ( j ) can be governed by a bonding curve function ( f_j ):<br />
 \[P_j(t) = f_j(S_j(t), \mathbf{\Phi}_j(t))\]<br />
-where ( \mathbf{\Phi}_j(t) ) represents the parameters of the bonding curve at time ( t ). Common examples include:<br />
-- <strong>Linear:</strong> ( f(S) = m S + b )<br />
-- <strong>Exponential:</strong> ( f(S) = a e^{k S} )<br />
-- <strong>Sigmoid:</strong> ( f(S) = \frac{K}{1 + e^{-k(S - S_0)}} )  </p>
+where ( \mathbf{\Phi}_j(t) ) represents the parameters of the bonding curve at time ( t ). Common examples include:<br /></p>
+<ul>
+  <li><strong>Linear:</strong> ( f(S) = m S + b )<br /></li>
+  <li><strong>Exponential:</strong> ( f(S) = a e^{k S} )<br /></li>
+  <li><strong>Sigmoid:</strong> ( f(S) = \frac{K}{1 + e^{-k(S - S_0)}} )</li>
+</ul>
 <h4><strong>3.2. Market Clearing Mechanisms:</strong></h4>
-<p>Prices can emerge from the interaction of buyers and sellers in a market. This can be modeled through:<br />
-- <strong>Order Books:</strong> Matching buy and sell orders to determine the clearing price.<br />
-- <strong>Demand and Supply Functions:</strong> Modeling aggregate demand ( D_j(P_j(t)) ) and supply ( O_j(P_j(t)) ) and finding the equilibrium price where ( D_j(P_j(t)) = O_j(P_j(t)) ).<br />
-- <strong>Price Adjustment Rules:</strong> Mechanisms where the price adjusts based on the imbalance between demand and supply:<br />
-  \[\Delta P_j(t) = g(D_j(t) - O_j(t), S_j(t))\]<br />
-  where ( g ) is a function determining the price change.</p>
+<p>Prices can emerge from the interaction of buyers and sellers in a market. This can be modeled through:<br /></p>
+<ul>
+  <li><strong>Order Books:</strong> Matching buy and sell orders to determine the clearing price.<br /></li>
+  <li><strong>Demand and Supply Functions:</strong> Modeling aggregate demand ( D_j(P_j(t)) ) and supply ( O_j(P_j(t)) ) and finding the equilibrium price where ( D_j(P_j(t)) = O_j(P_j(t)) ).<br /></li>
+  <li><strong>Price Adjustment Rules:</strong> Mechanisms where the price adjusts based on the imbalance between demand and supply:<br /> \[\Delta P_j(t) = g(D_j(t) - O_j(t), S_j(t))\]<br /> where ( g ) is a function determining the price change.</li>
+</ul>
 <hr />
 <h3><strong>4. Agent Actions and Interactions</strong></h3>
 <p>At each time step, agents make decisions based on their individual states, the current prices of assets, and their behavioral parameters. Common actions include:</p>
@@ -119,20 +124,20 @@ where ( h_{buy} ) and ( h_{sell} ) are functions determining the probabilities, 
 where ( \eta ) is the learning rate, and ( R_i(t) ) is the reward earned by agent ( i ) at time ( t ).</p>
 <hr />
 <h3><strong>5. External Factors and Policies</strong></h3>
-<p>The system can be influenced by external factors and policy interventions:<br />
-- <strong>Airdrops:</strong> Initial distribution of assets to agents, following specific rules (uniform, lottery, tiered):<br />
-  \[H_{i,j}(t_{airdrop}) = H_{i,j}(t_{airdrop}^-) + AirdropAmount_{i,j}\]<br />
-- <strong>Taxes and Subsidies:</strong> Government or protocol-level interventions that affect agent balances.<br />
-- <strong>Changes in Bonding Curve Parameters:</strong> Algorithmic adjustments to the price function.</p>
+<p>The system can be influenced by external factors and policy interventions:<br /></p>
+<ul>
+  <li><strong>Airdrops:</strong> Initial distribution of assets to agents, following specific rules (uniform, lottery, tiered):<br /> \[H_{i,j}(t_{airdrop}) = H_{i,j}(t_{airdrop}^-) + AirdropAmount_{i,j}\]<br /></li>
+  <li><strong>Taxes and Subsidies:</strong> Government or protocol-level interventions that affect agent balances.<br /></li>
+  <li><strong>Changes in Bonding Curve Parameters:</strong> Algorithmic adjustments to the price function.</li>
+</ul>
 <hr />
 <h3><strong>6. System Dynamics</strong></h3>
-<p>The state of the system evolves over time based on the interactions of agents and the asset pricing mechanisms. The key state variables are updated as follows:<br />
-- <strong>Asset Supply:</strong> Changes based on minting, burning, or production/consumption:<br />
-  \[\Delta S_j(t) = \text{NetFlow}_j(t)\]<br />
-- <strong>Agent Balances:</strong> Updated based on trading, income, expenses, and policy interventions:<br />
-  \[\Delta B_i(t) = \text{Income}_i(t) - \text{Expenses}_i(t) + \sum_{j=1}^{M} \text{TradeValue}_{i,j}(t) + \text{PolicyEffects}_i(t)\]<br />
-- <strong>Agent Asset Holdings:</strong> Updated based on trading and airdrops:<br />
-  \[\Delta H_{i,j}(t) = \text{NetAcquisition}_{i,j}(t)\]</p>
+<p>The state of the system evolves over time based on the interactions of agents and the asset pricing mechanisms. The key state variables are updated as follows:<br /></p>
+<ul>
+  <li><strong>Asset Supply:</strong> Changes based on minting, burning, or production/consumption:<br /> \[\Delta S_j(t) = \text{NetFlow}_j(t)\]<br /></li>
+  <li><strong>Agent Balances:</strong> Updated based on trading, income, expenses, and policy interventions:<br /> \[\Delta B_i(t) = \text{Income}_i(t) - \text{Expenses}_i(t) + \sum_{j=1}^{M} \text{TradeValue}_{i,j}(t) + \text{PolicyEffects}_i(t)\]<br /></li>
+  <li><strong>Agent Asset Holdings:</strong> Updated based on trading and airdrops:<br /> \[\Delta H_{i,j}(t) = \text{NetAcquisition}_{i,j}(t)\]</li>
+</ul>
 <hr />
 <h3><strong>7. Specific Instantiations and Case Studies</strong></h3>
 <h4><strong>7.1. Token Economy with Bonding Curves:</strong></h4>
@@ -152,10 +157,12 @@ where ( \eta ) is the learning rate, and ( R_i(t) ) is the reward earned by agen
 <p>The model is validated by comparing simulation results with real-world data from DeFi protocols. Sensitivity analysis is conducted to test the robustness of the model to parameter changes. For example, varying the bonding curve slope ( m ) shows that higher slopes lead to greater price volatility.</p>
 <hr />
 <h3><strong>9. Limitations and Future Directions</strong></h3>
-<p>The framework has several limitations:<br />
-- <strong>Assumptions:</strong> Agents are assumed to be rational, and parameters are static.<br />
-- <strong>Scalability:</strong> The model may struggle with large-scale systems (e.g., millions of agents).<br />
-- <strong>Real-World Complexity:</strong> Real-world systems may involve additional factors (e.g., regulatory changes, network effects).  </p>
+<p>The framework has several limitations:<br /></p>
+<ul>
+  <li><strong>Assumptions:</strong> Agents are assumed to be rational, and parameters are static.<br /></li>
+  <li><strong>Scalability:</strong> The model may struggle with large-scale systems (e.g., millions of agents).<br /></li>
+  <li><strong>Real-World Complexity:</strong> Real-world systems may involve additional factors (e.g., regulatory changes, network effects).</li>
+</ul>
 <p>Future research can focus on incorporating machine learning, exploring multi-agent coordination, and applying the framework to real-world economic systems.</p>
 <hr />
 <h3><strong>10. Conclusion</strong></h3>

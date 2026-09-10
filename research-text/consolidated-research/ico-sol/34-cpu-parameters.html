@@ -15,7 +15,7 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/research-text/consolidated-research/ico-sol/34-cpu-parameters.html">
 <meta name="description" content="--- Simulation Parameters (You can adjust these) --- | WaifuAI">
-<meta property="og:title" content="--- Simulation Parameters (You can adjust these) ---">
+<meta property="og:title" content="Commission Optimization Crusade: Maximizing Affiliate Earnings on a CPU Budget ⚡">
 <meta property="og:description" content="--- Simulation Parameters (You can adjust these) --- | WaifuAI">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/research-text/consolidated-research/ico-sol/34-cpu-parameters.html">
@@ -23,11 +23,11 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="--- Simulation Parameters (You can adjust these) ---">
+<meta name="twitter:title" content="Commission Optimization Crusade: Maximizing Affiliate Earnings on a CPU Budget ⚡">
 <meta name="twitter:description" content="--- Simulation Parameters (You can adjust these) --- | WaifuAI">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>--- Simulation Parameters (You can adjust these) ---</title>
+<title>Commission Optimization Crusade: Maximizing Affiliate Earnings on a CPU Budget ⚡ | WaifuAI</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -56,6 +56,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Commission Optimization Crusade: Maximizing Affiliate Ear...</span></nav>
 <a class="back-link" href="index.html">&larr; Back to index</a>
 <p>Here's a breakdown of the thought process to generate the Python code for optimizing the dynamic commission rate:</p>
 <ol>
@@ -127,23 +128,23 @@ import seaborn as sns</p>
 <p>NUM_SIMULATIONS = 1000
 INVESTORS_PER_SIMULATION = 100
 BASE_INVESTMENT_AMOUNT = 100  # Example base investment</p>
-<h1>--- Parameters for the Dynamic Commission Model (Linear) ---</h1>
-<h1>alpha = a + bx</h1>
+<h2>--- Parameters for the Dynamic Commission Model (Linear) ---</h2>
+<h2>alpha = a + bx</h2>
 <p>A_RANGE = np.linspace(0.05, 0.15, 5)  # Range of base commission rates
 B_RANGE = np.linspace(0.0001, 0.001, 5) # Range of sensitivity factors</p>
-<h1>--- Parameters for the Tiered Commission Model ---</h1>
+<h2>--- Parameters for the Tiered Commission Model ---</h2>
 <p>TIER_THRESHOLDS = [50, 100]  # Performance metric thresholds
 TIER_RATES = [0.08, 0.12, 0.15] # Corresponding commission rates</p>
-<h1>--- Function to Estimate Investment Volume (Simplified) ---</h1>
-<h1>In a real scenario, this would be a more complex model based on data</h1>
+<h2>--- Function to Estimate Investment Volume (Simplified) ---</h2>
+<h2>In a real scenario, this would be a more complex model based on data</h2>
 <p>def estimate_investment_volume(commission_rate, performance_metric):
     """A simplified model: higher commission, slightly higher volume (with diminishing returns)."""
     return BASE_INVESTMENT_AMOUNT * (INVESTORS_PER_SIMULATION + int(performance_metric * commission_rate * 100))</p>
-<h1>--- Function to Calculate Commission (Linear Model) ---</h1>
+<h2>--- Function to Calculate Commission (Linear Model) ---</h2>
 <p>def calculate_commission_linear(a, b, performance_metric, investment):
     alpha = a + b * performance_metric
     return alpha * investment</p>
-<h1>--- Function to Calculate Commission (Tiered Model) ---</h1>
+<h2>--- Function to Calculate Commission (Tiered Model) ---</h2>
 <p>def calculate_commission_tiered(thresholds, rates, performance_metric, investment):
     if performance_metric &lt; thresholds[0]:
         alpha = rates[0]
@@ -152,12 +153,12 @@ TIER_RATES = [0.08, 0.12, 0.15] # Corresponding commission rates</p>
     else:
         alpha = rates[2]
     return alpha * investment</p>
-<h1>--- Function to Simulate Affiliate Performance ---</h1>
+<h2>--- Function to Simulate Affiliate Performance ---</h2>
 <p>def simulate_affiliate_performance():
     """Simulates a single affiliate's performance, returning a performance metric."""
     # This is a simplified simulation. In reality, this would depend on marketing efforts, reach, etc.
     return np.random.randint(0, 150) # Example performance metric (e.g., number of referrals)</p>
-<h1>--- Function to Run Simulation and Evaluate Linear Model ---</h1>
+<h2>--- Function to Run Simulation and Evaluate Linear Model ---</h2>
 <p>def evaluate_linear_model(a, b):
     total_earnings = 0
     for _ in range(NUM_SIMULATIONS):
@@ -166,7 +167,7 @@ TIER_RATES = [0.08, 0.12, 0.15] # Corresponding commission rates</p>
         commission = calculate_commission_linear(a, b, performance_metric, investment)
         total_earnings += commission
     return total_earnings / NUM_SIMULATIONS  # Average earnings</p>
-<h1>--- Function to Run Simulation and Evaluate Tiered Model ---</h1>
+<h2>--- Function to Run Simulation and Evaluate Tiered Model ---</h2>
 <p>def evaluate_tiered_model(thresholds, rates):
     total_earnings = 0
     for _ in range(NUM_SIMULATIONS):
@@ -175,7 +176,7 @@ TIER_RATES = [0.08, 0.12, 0.15] # Corresponding commission rates</p>
         commission = calculate_commission_tiered(thresholds, rates, performance_metric, investment)
         total_earnings += commission
     return total_earnings / NUM_SIMULATIONS  # Average earnings</p>
-<h1>--- Optimization for Linear Model (Grid Search) ---</h1>
+<h2>--- Optimization for Linear Model (Grid Search) ---</h2>
 <p>print("Optimizing Linear Commission Model...")
 linear_results = []
 best_linear_earnings = -1
@@ -187,7 +188,7 @@ best_linear_params = None</p>
         best_linear_earnings = avg_earnings
         best_linear_params = {'a': a, 'b': b}</p>
 <p>linear_df = pd.DataFrame(linear_results)</p>
-<h1>--- Visualization of Linear Model Results ---</h1>
+<h2>--- Visualization of Linear Model Results ---</h2>
 <p>pivot_linear = linear_df.pivot_table(index='a', columns='b', values='avg_earnings')
 plt.figure(figsize=(10, 6))
 sns.heatmap(pivot_linear, annot=True, fmt=".2f", cmap="viridis")
@@ -196,11 +197,11 @@ plt.xlabel("Sensitivity Factor (b)")
 plt.ylabel("Base Commission Rate (a)")
 plt.show()</p>
 <p>print(f"Best Linear Model Parameters: {best_linear_params}, Best Average Earnings: {best_linear_earnings:.2f}")</p>
-<h1>--- Optimization for Tiered Model (Simple Evaluation) ---</h1>
+<h2>--- Optimization for Tiered Model (Simple Evaluation) ---</h2>
 <p>print("\nEvaluating Tiered Commission Model...")
 tiered_avg_earnings = evaluate_tiered_model(TIER_THRESHOLDS, TIER_RATES)
 print(f"Average Earnings for Tiered Commission Model: {tiered_avg_earnings:.2f}")</p>
-<h1>--- Compare Models ---</h1>
+<h2>--- Compare Models ---</h2>
 <p>print("\nComparing Models:")
 print(f"Best Linear Model Average Earnings: {best_linear_earnings:.2f}")
 print(f"Tiered Model Average Earnings: {tiered_avg_earnings:.2f}")</p>
