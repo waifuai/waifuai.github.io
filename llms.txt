@@ -38,8 +38,9 @@
 - [MCP Solana ICO](https://waifuai.github.io/mcp-solana-ico/) — Solana ICO with bonding curves, buy/sell, and discounts
 - [MCP Solana Internet](https://waifuai.github.io/mcp-solana-internet/) — Pay-to-access payment system with expiry
 
-## Solana / Blockchain
+## Blockchain & On-Chain Economy
 
+- [Base & Uniswap v4 Refactor](https://waifuai.github.io/research-text/web3-research/01-base-uniswapv4-refactor.html) — Mathematical transition from Solana bonding curves to Base Uniswap v4 concentrated liquidity, $WAIFU ERC-20, and dual-asset fee engine
 - [Solana Launchpad Ecosystem](https://waifuai.github.io/solana-launchpad-ecosystem/) — Multi-program Rust ecosystem for AI-driven tokenomics
 - [Solana ICO](https://waifuai.github.io/solana-ico/) — Python CLI for ContextCoin ICO with linear bonding curves
 - [Launchpad Skill](https://waifuai.github.io/launchpad-skill/) — Rust CLI for managing tokenized companies on Solana
@@ -60,8 +61,11 @@
 
 ## Research & Theory
 
-- [Research Books](https://waifuai.github.io/research-books/) — Academic research collection on AI, blockchain, and economics
-- [Research Text](https://waifuai.github.io/research-text/) — Research docs on tokenomics, quantum computing, and Solana
+- [Web3 & Agent Research Hub](https://waifuai.github.io/research-text/web3-research/) — Frontier research on autonomous agents, x402 payment rails, and systems forensics
+- [On-Chain AI Agent Economy](https://waifuai.github.io/research-text/web3-research/02-on-chain-agent-economy.html) — Comprehensive dragnet of 30+ agent projects, DePIN compute, and failure modes
+- [Dawn of a Digital Workforce](https://waifuai.github.io/research-text/web3-research/03-dawn-of-digital-workforce.html) — Forensic autopsies (ElizaOS, Virtuals), currency vs capital, and Uniswap v4 liquidity hooks
+- [Research Books](https://waifuai.github.io/research-books/) — Academic research collection on AI, blockchain, and economics (14 volumes)
+- [Research Text Hub](https://waifuai.github.io/research-text/) — 160+ research docs on tokenomics, kinematics, quantum LLMs, and DSLs
 - [Quantum Circuit Optimization](https://waifuai.github.io/quantum-circuit-optimization/) — Quantum circuit optimization library
 - [RANSOC](https://waifuai.github.io/ransoc/) — Real-time curiosity-driven search relevance algorithm
 - [Street Lines](https://waifuai.github.io/street-lines/) — Mathematical proofs and derivations

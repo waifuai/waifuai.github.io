@@ -11,8 +11,8 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Technical documentation hub for AI agents, developers, and builders. Live2D waifu, Solana blockchain tools, MCP servers, and AI infrastructure.">
-<meta name="keywords" content="waifuai, AI agents, developer documentation, MCP servers, Solana blockchain, LLM tools, waifu AI, Live2D, AI infrastructure, agent ecosystem, waifuai.github.io">
+<meta name="description" content="Technical documentation hub for AI agents, developers, and builders. Live2D waifu, Base & Solana blockchain tools, MCP servers, and AI infrastructure.">
+<meta name="keywords" content="waifuai, AI agents, developer documentation, MCP servers, Solana blockchain, Base L2, Uniswap v4, LLM tools, waifu AI, Live2D, AI infrastructure, agent ecosystem, waifuai.github.io">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/">
 <title>WaifuAI Docs Hub</title>
@@ -48,26 +48,65 @@
 <a class="skip-link" href="#projects">Skip to projects</a>
 <div class="container">
 <header>
-<h1>WaifuAI Docs</h1>
-<p>40+ open-source projects for AI agents, developers, and builders</p>
-<div class="links">
-  <a href="search.html">search</a>
-  <a href="llms.txt">llms.txt</a>
-  <a href="sitemap.xml">sitemap</a>
-  <a href="https://github.com/waifuai">GitHub</a>
-  <a href="https://x.com/thewaifuai">Twitter</a>
-  <a href="https://www.youtube.com/@thewaifuai">YouTube</a>
-</div>
+  <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+    <span class="badge badge-accent">Ecosystem Hub &bull; 2026</span>
+    <span class="badge">Open Source</span>
+    <span class="badge">Base &amp; Solana</span>
+  </div>
+  <h1>WaifuAI Docs Hub</h1>
+  <p>45+ open-source projects for autonomous AI agents, Live2D companions, and on-chain economies</p>
+  <div class="links">
+    <a href="search.html">Search</a>
+    <a href="research-text/web3-research/">Web3 Research</a>
+    <a href="llms.txt">llms.txt</a>
+    <a href="sitemap.xml">Sitemap</a>
+    <a href="https://github.com/waifuai" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://x.com/thewaifuai" target="_blank" rel="noopener">Twitter</a>
+    <a href="https://www.youtube.com/@thewaifuai" target="_blank" rel="noopener">YouTube</a>
+  </div>
 </header>
+
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">45+</div>
+    <div class="stat-label">Open-Source Projects</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">160+</div>
+    <div class="stat-label">Research Papers</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">7</div>
+    <div class="stat-label">Production MCP Servers</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">2</div>
+    <div class="stat-label">Chains (Base L2 &bull; Solana)</div>
+  </div>
+</div>
 
 <div class="search-box">
   <label class="skip-link" for="filter">Filter projects</label>
-  <input id="filter" type="search" autocomplete="off" placeholder="Filter projects… (or search every page)">
+  <input id="filter" type="search" autocomplete="off" placeholder="Filter projects or search 160+ documents…">
 </div>
+
+<div class="filter-chips" id="category-chips">
+  <button type="button" class="chip active" data-cat="all">All (45+)</button>
+  <button type="button" class="chip" data-cat="blockchain">Blockchain &amp; Web3</button>
+  <button type="button" class="chip" data-cat="research">Research &amp; Theory</button>
+  <button type="button" class="chip" data-cat="waifu">Waifu / Companion</button>
+  <button type="button" class="chip" data-cat="infra">AI Infrastructure</button>
+  <button type="button" class="chip" data-cat="mcp">MCP Servers</button>
+  <button type="button" class="chip" data-cat="nlp">NLP &amp; Paraphrase</button>
+  <button type="button" class="chip" data-cat="tools">Tools &amp; Web Apps</button>
+  <button type="button" class="chip" data-cat="resources">Agent Resources</button>
+</div>
+
 <p class="search-meta" id="filter-meta" role="status" aria-live="polite"></p>
 
 <div id="projects">
-<section>
+
+<section data-cat="resources">
 <h2>Agent Resources</h2>
 <div class="link-list">
 <a href="llms-full-html/index.html"><h3>LLMS Full HTML</h3><p>Aggregated HTML documentation bundles optimized for LLM ingestion</p></a>
@@ -75,7 +114,50 @@
 </div>
 </section>
 
-<section>
+<section data-cat="research">
+<h2>Research &amp; Theory</h2>
+<div class="link-list">
+<a href="research-text/web3-research/index.html" style="border-color: var(--accent);">
+  <span class="badge badge-accent" style="margin-bottom: 0.35rem; display: inline-block;">New &bull; 2026</span>
+  <h3>Web3 &amp; Agent Research</h3>
+  <p>3 frontier papers: Base Uniswap v4 refactor, 30+ agent dragnet, and forensic autopsies</p>
+</a>
+<a href="research-text/index.html">
+  <span class="badge" style="border-color: var(--accent2); color: var(--accent2); margin-bottom: 0.35rem; display: inline-block;">160+ Papers</span>
+  <h3>Research Hub (All Papers)</h3>
+  <p>Comprehensive repository: tokenomics, kinematics, quantum LLMs, and DSLs</p>
+</a>
+<a href="research-books/index.html">
+  <span class="badge" style="border-color: var(--accent3); color: var(--accent3); margin-bottom: 0.35rem; display: inline-block;">14 Volumes</span>
+  <h3>Research Books</h3>
+  <p>Academic research collection on AI, blockchain, quantum biology, and economics</p>
+</a>
+<a href="quantum-circuit-optimization/index.html"><h3>Quantum Circuit Optimization</h3><p>Quantum circuit optimization library and simulation tools</p></a>
+<a href="ransoc/index.html"><h3>RANSOC</h3><p>Real-time curiosity-driven search relevance algorithm</p></a>
+<a href="street-lines/index.html"><h3>Street Lines</h3><p>Mathematical proofs and geometric derivations</p></a>
+</div>
+</section>
+
+<section data-cat="blockchain">
+<h2>Blockchain &amp; On-Chain Economy</h2>
+<div class="link-list">
+<a href="research-text/web3-research/01-base-uniswapv4-refactor.html" style="border-color: var(--accent3);">
+  <span class="badge badge-accent" style="margin-bottom: 0.35rem; display: inline-block;">Base L2 &bull; Live</span>
+  <h3>Base &amp; Uniswap v4 ($WAIFU)</h3>
+  <p>ERC-20 token, concentrated liquidity tick space, and 1% dual-asset fee engine</p>
+</a>
+<a href="solana-launchpad-ecosystem/index.html"><h3>Solana Launchpad Ecosystem</h3><p>Multi-program Rust ecosystem for AI-driven tokenomics</p></a>
+<a href="solana-ico/index.html"><h3>Solana ICO</h3><p>Python CLI for ContextCoin ICO with linear bonding curves</p></a>
+<a href="launchpad-skill/index.html"><h3>Launchpad Skill</h3><p>Rust CLI for managing tokenized companies on Solana</p></a>
+<a href="crypto-simulation/index.html"><h3>Crypto Simulation</h3><p>Unified mathematical theory of token economy simulations</p></a>
+<a href="sim-affiliate/index.html"><h3>Sim Affiliate</h3><p>Token economy simulation with affiliate dynamics</p></a>
+<a href="sim-airdrop/index.html"><h3>Sim Airdrop</h3><p>Airdrop strategy simulation with tiered/lottery/uniform distributions</p></a>
+<a href="sim-bonding-curve/index.html"><h3>Sim Bonding Curve</h3><p>Agent-based bonding curve token economy simulations</p></a>
+<a href="sim-mcp-token/index.html"><h3>Sim MCP Token</h3><p>Multi-agent economic simulation with resource ecosystems</p></a>
+</div>
+</section>
+
+<section data-cat="waifu">
 <h2>Waifu / AI Companion</h2>
 <div class="link-list">
 <a href="hermes-waifu/index.html"><h3>Hermes Waifu</h3><p>Live2D animated waifu with expression controls for Hermes Agent</p></a>
@@ -88,7 +170,7 @@
 </div>
 </section>
 
-<section>
+<section data-cat="infra">
 <h2>AI / LLM Infrastructure</h2>
 <div class="link-list">
 <a href="ai-benchmarks/index.html"><h3>AI Benchmarks</h3><p>LLM spatial reasoning evaluation with leaderboard and multi-model testing</p></a>
@@ -100,8 +182,8 @@
 </div>
 </section>
 
-<section>
-<h2>MCP Servers</h2>
+<section data-cat="mcp">
+<h2>MCP Servers (Model Context Protocol)</h2>
 <div class="link-list">
 <a href="mcp-waifu-chat/index.html"><h3>MCP Waifu Chat</h3><p>Conversational AI waifu with SQLite history (FastMCP)</p></a>
 <a href="mcp-waifu-queue/index.html"><h3>MCP Waifu Queue</h3><p>Redis-backed async job queue for text generation</p></a>
@@ -113,21 +195,7 @@
 </div>
 </section>
 
-<section>
-<h2>Solana / Blockchain</h2>
-<div class="link-list">
-<a href="solana-launchpad-ecosystem/index.html"><h3>Solana Launchpad Ecosystem</h3><p>Multi-program Rust ecosystem for AI-driven tokenomics</p></a>
-<a href="solana-ico/index.html"><h3>Solana ICO</h3><p>Python CLI for ContextCoin ICO with linear bonding curves</p></a>
-<a href="launchpad-skill/index.html"><h3>Launchpad Skill</h3><p>Rust CLI for managing tokenized companies on Solana</p></a>
-<a href="crypto-simulation/index.html"><h3>Crypto Simulation</h3><p>Unified mathematical theory of token economy simulations</p></a>
-<a href="sim-affiliate/index.html"><h3>Sim Affiliate</h3><p>Token economy simulation with affiliate dynamics</p></a>
-<a href="sim-airdrop/index.html"><h3>Sim Airdrop</h3><p>Airdrop strategy simulation with tiered/lottery/uniform distributions</p></a>
-<a href="sim-bonding-curve/index.html"><h3>Sim Bonding Curve</h3><p>Agent-based bonding curve token economy simulations</p></a>
-<a href="sim-mcp-token/index.html"><h3>Sim MCP Token</h3><p>Multi-agent economic simulation with resource ecosystems</p></a>
-</div>
-</section>
-
-<section>
+<section data-cat="nlp">
 <h2>NLP / Paraphrase</h2>
 <div class="link-list">
 <a href="paraphrase-generation/index.html"><h3>Paraphrase Generation</h3><p>NLP paraphrase generation suite overview</p></a>
@@ -139,26 +207,15 @@
 </div>
 </section>
 
-<section>
-<h2>Research & Theory</h2>
-<div class="link-list">
-<a href="research-books/index.html"><h3>Research Books</h3><p>Academic research collection on AI, blockchain, and economics</p></a>
-<a href="research-text/index.html"><h3>Research Text</h3><p>Research docs on tokenomics, quantum computing, and Solana</p></a>
-<a href="quantum-circuit-optimization/index.html"><h3>Quantum Circuit Optimization</h3><p>Quantum circuit optimization library</p></a>
-<a href="ransoc/index.html"><h3>RANSOC</h3><p>Real-time curiosity-driven search relevance algorithm</p></a>
-<a href="street-lines/index.html"><h3>Street Lines</h3><p>Mathematical proofs and derivations</p></a>
-</div>
-</section>
-
-<section>
-<h2>Tools & Apps</h2>
+<section data-cat="tools">
+<h2>Tools &amp; Web Apps</h2>
 <div class="link-list">
 <a href="function-graph-generator/index.html"><h3>Function Graph Generator</h3><p>Visualize mathematical functions and graphs</p></a>
 <a href="web-apps/index.html"><h3>Web Apps</h3><p>Browser-based AI applications: chat, guides, simulations, quantum consciousness</p></a>
 </div>
 </section>
 
-<section>
+<section data-cat="blog">
 <h2>Blog</h2>
 <div class="link-list">
 <a href="blog-posts/"><h3>Blog Posts</h3><p>14 articles: ecosystem announcements, Live2D guides, TTS architecture, philosophy</p></a>
@@ -168,39 +225,72 @@
 </div>
 
 <footer>
-<p>WaifuAI Docs Hub &mdash; Built for agents, by builders &bull; <a href="llms.txt">llms.txt</a> &bull; <a href="https://github.com/waifuai">GitHub</a></p>
+<p>WaifuAI Docs Hub &mdash; Built for agents, by builders &bull; <a href="llms.txt">llms.txt</a> &bull; <a href="sitemap.xml">Sitemap</a> &bull; <a href="https://github.com/waifuai">GitHub</a></p>
 </footer>
 </div>
+
 <script>
 (function () {
   var input = document.getElementById('filter');
   var meta = document.getElementById('filter-meta');
+  var chips = Array.prototype.slice.call(document.querySelectorAll('#category-chips .chip'));
   var sections = Array.prototype.slice.call(document.querySelectorAll('#projects section'));
   var cards = Array.prototype.slice.call(document.querySelectorAll('#projects .link-list a'));
+  var activeCategory = 'all';
 
   function run() {
     var q = input.value.trim().toLowerCase();
-    if (!q) {
-      cards.forEach(function (c) { c.hidden = false; });
-      sections.forEach(function (s) { s.hidden = false; });
-      meta.textContent = '';
-      return;
-    }
-    var terms = q.split(/\s+/);
+    var terms = q ? q.split(/\s+/) : [];
     var shown = 0;
-    cards.forEach(function (c) {
-      var hay = c.textContent.toLowerCase() + ' ' + c.getAttribute('href').toLowerCase();
-      var hit = terms.every(function (t) { return hay.indexOf(t) !== -1; });
-      c.hidden = !hit;
-      if (hit) shown++;
+
+    sections.forEach(function (sec) {
+      var secCat = sec.getAttribute('data-cat') || '';
+      var catMatch = (activeCategory === 'all' || secCat === activeCategory);
+
+      if (!catMatch) {
+        sec.hidden = true;
+        return;
+      }
+
+      var secCards = Array.prototype.slice.call(sec.querySelectorAll('.link-list a'));
+      var secShown = 0;
+
+      secCards.forEach(function (c) {
+        if (!terms.length) {
+          c.hidden = false;
+          secShown++;
+          shown++;
+          return;
+        }
+        var hay = (c.textContent + ' ' + c.getAttribute('href')).toLowerCase();
+        var hit = terms.every(function (t) { return hay.indexOf(t) !== -1; });
+        c.hidden = !hit;
+        if (hit) {
+          secShown++;
+          shown++;
+        }
+      });
+
+      sec.hidden = (secShown === 0);
     });
-    sections.forEach(function (s) {
-      s.hidden = !s.querySelector('.link-list a:not([hidden])');
-    });
-    meta.innerHTML = shown + (shown === 1 ? ' project' : ' projects') +
-      ' &middot; <a href="search.html?q=' + encodeURIComponent(input.value.trim()) + '">search all pages for &ldquo;' +
-      input.value.trim().replace(/[<>&]/g, '') + '&rdquo;</a>';
+
+    if (!q && activeCategory === 'all') {
+      meta.textContent = '';
+    } else {
+      meta.innerHTML = shown + (shown === 1 ? ' project' : ' projects') +
+        ' found' + (q ? ' &middot; <a href="search.html?q=' + encodeURIComponent(input.value.trim()) + '">search all pages for &ldquo;' +
+        input.value.trim().replace(/[<>&]/g, '') + '&rdquo;</a>' : '');
+    }
   }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      chips.forEach(function (c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      activeCategory = chip.getAttribute('data-cat') || 'all';
+      run();
+    });
+  });
 
   input.addEventListener('input', run);
   input.addEventListener('keydown', function (e) {
