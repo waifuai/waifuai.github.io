@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Live open telemetry and ecosystem analytics for WaifuAI: GitHub repositories, 600+ generative WebSim simulations, GA4 traffic, and Google search reach.">
+<meta name="keywords" content="waifu ai data, waifuai analytics, websim projects, open telemetry, github stars, live2d companion stats">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://waifuai.github.io/data/">
+<title>WaifuAI Open Data &amp; Ecosystem Telemetry — Live Analytics</title>
+<meta property="og:title" content="WaifuAI Open Data &amp; Ecosystem Telemetry — Live Analytics">
+<meta property="og:description" content="Transparent metrics across 52 GitHub repos, 611 WebSim generative simulations, 53K+ content views, and 16.6K+ web visitors.">
+<meta property="og:image" content="https://waifuai.github.io/og_image.png">
+<meta property="og:url" content="https://waifuai.github.io/data/">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="../theme.css">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  .telemetry-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .telemetry-header {
+    text-align: center;
+    padding: 1.5rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .pulse-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #34d399;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10b981;
+    animation: pulseGlow 2s infinite;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  /* Macro KPI Cards Grid */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .kpi-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.1rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
+  }
+  .kpi-card:hover {
+    border-color: var(--border-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  .kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    opacity: 0.8;
+  }
+  .kpi-card.websim::before { background: linear-gradient(90deg, #ec4899, #f59e0b); }
+  .kpi-card.traffic::before { background: linear-gradient(90deg, #3b82f6, #10b981); }
+  .kpi-card.search::before { background: linear-gradient(90deg, #8b5cf6, #ec4899); }
+  .kpi-card.stars::before { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+
+  .kpi-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .kpi-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+  }
+  .kpi-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Tab Navigation */
+  .telemetry-tabs {
+    display: flex;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+  }
+  .telemetry-tab-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.65rem 1.25rem;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
+    position: relative;
+  }
+  .telemetry-tab-btn:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .telemetry-tab-btn.active {
+    color: var(--accent);
+    background: rgba(255, 107, 157, 0.06);
+    border-bottom: 2px solid var(--accent);
+  }
+  .telemetry-tab-btn .badge-pill {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 12px;
+    background: var(--border);
+    color: var(--text);
+  }
+
+  /* Panels */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Charts & Graphs */
+  .chart-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .chart-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .chart-legend {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+
+  .bar-chart-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 160px;
+    padding-top: 10px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+    overflow-x: auto;
+  }
+  .bar-group {
+    flex: 1;
+    min-width: 10px;
+    max-width: 24px;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    cursor: pointer;
+  }
+  .bar-group:hover .bar-fill {
+    filter: brightness(1.25);
+  }
+  .bar-fill {
+    width: 100%;
+    border-radius: 3px 3px 0 0;
+    transition: height 0.4s ease, filter 0.15s ease;
+  }
+  .bar-fill.users { background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%); }
+  .bar-fill.views { background: linear-gradient(180deg, #f472b6 0%, #db2777 100%); }
+
+  /* Tooltip */
+  .chart-tooltip {
+    position: absolute;
+    bottom: 105%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000000;
+    border: 1px solid var(--border-light);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    z-index: 10;
+  }
+  .bar-group:hover .chart-tooltip { opacity: 1; }
+
+  /* Grid lists */
+  .grid-2col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Data Table */
+  .data-table-container {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  .table-header-box {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .search-input {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.45rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    width: 240px;
+    transition: border-color 0.2s ease;
+  }
+  .search-input:focus { border-color: var(--accent3); }
+  
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  table.data-table th {
+    text-align: left;
+    padding: 0.85rem 1.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border);
+  }
+  table.data-table td {
+    padding: 0.95rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    vertical-align: middle;
+  }
+  table.data-table tr:hover td {
+    background: var(--card-hover);
+  }
+
+  /* WebSim Project Cards Grid */
+  .websim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .websim-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+  }
+  .websim-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  }
+  .websim-thumb {
+    width: 100%;
+    height: 140px;
+    background: #080b11;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border);
+  }
+  .websim-body {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .websim-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 0.4rem 0;
+  }
+  .websim-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+    margin-bottom: 0.85rem;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .websim-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 0.75rem;
+    margin-top: auto;
+  }
+  .websim-stats {
+    display: flex;
+    gap: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .websim-btn {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.82rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+  }
+  .websim-btn:hover { text-decoration: underline; }
+
+  .badge-tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+  .badge-tag.mcp { border-color: rgba(96, 165, 250, 0.4); color: #60a5fa; background: rgba(96, 165, 250, 0.08); }
+  .badge-tag.companion { border-color: rgba(244, 114, 182, 0.4); color: #f472b6; background: rgba(244, 114, 182, 0.08); }
+  .badge-tag.web3 { border-color: rgba(192, 132, 252, 0.4); color: #c084fc; background: rgba(192, 132, 252, 0.08); }
+  .badge-tag.intel { border-color: rgba(52, 211, 153, 0.4); color: #34d399; background: rgba(52, 211, 153, 0.08); }
+
+  .raw-export-banner {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="telemetry-container">
+  <div style="margin-bottom: 1.5rem;">
+    <a href="../index.html" class="back" style="display: inline-flex; align-items: center; gap: 0.4rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; padding: 0.35rem 0.75rem; border: 1px solid var(--border); border-radius: 6px; background: var(--card-bg);">
+      &larr; Return to WaifuAI Docs Hub
+    </a>
+  </div>
+
+  <header class="telemetry-header">
+    <div class="pulse-badge">
+      <span class="pulse-dot"></span>
+      <span id="sync-status">Live Telemetry &bull; all-db engine</span>
+    </div>
+    <h1>WaifuAI Open Data &amp; Telemetry</h1>
+    <p>Real-time transparency across 52 open-source repositories, 600+ generative web simulations, and multi-channel traffic.</p>
+    <div class="links" style="margin-top: 1.25rem;">
+      <a href="../index.html" title="Documentation Hub">Docs Hub</a>
+      <a href="https://waifuai.com/" target="_blank" rel="noopener" class="link-app">✨ Companion App</a>
+      <a href="https://github.com/waifuai" target="_blank" rel="noopener">GitHub Org</a>
+      <a href="stats.json" target="_blank" title="Raw JSON Data Feed" style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; border-color: var(--accent);">[stats.json]</a>
+    </div>
+  </header>
+
+  <!-- Macro KPI Hero Grid -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">
+        <span>Total Projects</span>
+        <span>📦</span>
+      </div>
+      <div class="kpi-value" id="kpi-total-projects">663</div>
+      <div class="kpi-sub">52 GitHub &bull; 611 WebSim</div>
+    </div>
+
+    <div class="kpi-card traffic">
+      <div class="kpi-label">
+        <span>Content Views</span>
+        <span>👁️</span>
+      </div>
+      <div class="kpi-value" id="kpi-total-views">53.2K</div>
+      <div class="kpi-sub">26.8K Web &bull; 26.5K WebSim</div>
+    </div>
+
+    <div class="kpi-card websim">
+      <div class="kpi-label">
+        <span>Active Web Visitors</span>
+        <span>🌐</span>
+      </div>
+      <div class="kpi-value" id="kpi-total-users">16.6K</div>
+      <div class="kpi-sub">GA4 Unique User Sessions</div>
+    </div>
+
+    <div class="kpi-card stars">
+      <div class="kpi-label">
+        <span>Stars &amp; Likes</span>
+        <span>⭐</span>
+      </div>
+      <div class="kpi-value" id="kpi-total-stars">1,262</div>
+      <div class="kpi-sub">163 Stars &bull; 1,099 Likes</div>
+    </div>
+
+    <div class="kpi-card search">
+      <div class="kpi-label">
+        <span>Search Impressions</span>
+        <span>🔍</span>
+      </div>
+      <div class="kpi-value" id="kpi-search-impressions">69.2K</div>
+      <div class="kpi-sub">Google Search Console</div>
+    </div>
+  </div>
+
+  <!-- Tab Switcher -->
+  <div class="telemetry-tabs">
+    <button class="telemetry-tab-btn active" data-tab="tab-overview">
+      <span>Overview &amp; Trends</span>
+    </button>
+    <button class="telemetry-tab-btn" data-tab="tab-websim">
+      <span>WebSim Lab</span>
+      <span class="badge-pill" id="tab-pill-websim">611</span>
+    </button>
+    <button class="telemetry-tab-btn" data-tab="tab-github">
+      <span>GitHub Repos</span>
+      <span class="badge-pill" id="tab-pill-github">52</span>
+    </button>
+    <button class="telemetry-tab-btn" data-tab="tab-traffic">
+      <span>Web Traffic (GA4)</span>
+    </button>
+    <button class="telemetry-tab-btn" data-tab="tab-search">
+      <span>Search Reach (GSC)</span>
+    </button>
+  </div>
+
+  <!-- TAB 1: OVERVIEW -->
+  <div class="tab-panel active" id="tab-overview">
+    <!-- Activity Chart Card -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">30-Day Platform Engagement Timeline</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">Daily active users visiting documentation, web companion, and developer tools.</div>
+        </div>
+        <div class="chart-legend">
+          <div class="legend-item">
+            <span class="legend-dot" style="background: #38bdf8;"></span>
+            <span>Active Users</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-dot" style="background: #f472b6;"></span>
+            <span>Page Views</span>
+          </div>
+        </div>
+      </div>
+      <div class="bar-chart-container" id="overview-chart">
+        <!-- Bars dynamically populated via JS -->
+      </div>
+      <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; font-family: 'JetBrains Mono', monospace;">
+        <span id="chart-date-start">30 days ago</span>
+        <span id="chart-date-end">Today</span>
+      </div>
+    </div>
+
+    <!-- 2 Column Side-by-Side Highlights -->
+    <div class="grid-2col">
+      <!-- Top Repos Highlight -->
+      <div class="data-table-container">
+        <div class="table-header-box">
+          <div style="font-weight: 700; font-family: 'Outfit', sans-serif;">Top GitHub Repositories</div>
+          <a href="#" class="view-all-link" data-target="tab-github" style="color: var(--accent3); font-size: 0.85rem; text-decoration: none;">View All 52 &rarr;</a>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Repository</th>
+              <th>Category</th>
+              <th style="text-align: right;">Stars</th>
+            </tr>
+          </thead>
+          <tbody id="overview-repos-body">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Top WebSim Apps Highlight -->
+      <div class="data-table-container">
+        <div class="table-header-box">
+          <div style="font-weight: 700; font-family: 'Outfit', sans-serif;">Top WebSim Generative Apps</div>
+          <a href="#" class="view-all-link" data-target="tab-websim" style="color: var(--accent); font-size: 0.85rem; text-decoration: none;">View All 611 &rarr;</a>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Project Title</th>
+              <th style="text-align: right;">Views</th>
+              <th style="text-align: right;">Likes</th>
+              <th style="text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody id="overview-websim-body">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: WEBSIM LAB -->
+  <div class="tab-panel" id="tab-websim">
+    <div class="chart-card" style="margin-bottom: 1.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div class="chart-title" style="margin-bottom: 0.25rem;">WebSim Generative Project Showcase</div>
+          <div style="font-size: 0.88rem; color: var(--text-muted);">
+            Curated selection of top interactive generative simulations, 3D VRM visualizers, games, and chatbot experiments.
+          </div>
+        </div>
+        <input type="text" id="websim-search" class="search-input" placeholder="Filter simulations...">
+      </div>
+    </div>
+
+    <div class="websim-grid" id="websim-cards-container">
+      <!-- Populated via JS -->
+    </div>
+  </div>
+
+  <!-- TAB 3: GITHUB REPOSITORIES -->
+  <div class="tab-panel" id="tab-github">
+    <div class="data-table-container">
+      <div class="table-header-box">
+        <div>
+          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">GitHub Repository Directory</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">52 repositories covering FastMCP, Live2D companion engines, tokenomics simulations, and research.</div>
+        </div>
+        <input type="text" id="github-search" class="search-input" placeholder="Search repositories...">
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Repository</th>
+            <th>Category</th>
+            <th style="text-align: right;">Stars</th>
+            <th style="text-align: right;">Forks</th>
+            <th style="text-align: right;">Open Issues</th>
+            <th style="text-align: right;">Link</th>
+          </tr>
+        </thead>
+        <tbody id="github-full-table-body">
+          <!-- Populated via JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Referrers Box -->
+    <div class="data-table-container">
+      <div class="table-header-box">
+        <div style="font-weight: 700; font-family: 'Outfit', sans-serif;">Top Inbound GitHub Referrers</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted);">External sources sending developers to our repositories</div>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Referrer Domain</th>
+            <th style="text-align: right;">Total Views</th>
+            <th style="text-align: right;">Unique Visitors</th>
+          </tr>
+        </thead>
+        <tbody id="github-referrers-body">
+          <!-- Populated via JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TAB 4: WEB TRAFFIC (GA4) -->
+  <div class="tab-panel" id="tab-traffic">
+    <div class="grid-2col">
+      <div class="data-table-container">
+        <div class="table-header-box">
+          <div style="font-weight: 700; font-family: 'Outfit', sans-serif;">Most Visited Documentation &amp; Tools</div>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Page Path</th>
+              <th style="text-align: right;">Views</th>
+              <th style="text-align: right;">Users</th>
+            </tr>
+          </thead>
+          <tbody id="ga4-pages-body">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="data-table-container">
+        <div class="table-header-box">
+          <div style="font-weight: 700; font-family: 'Outfit', sans-serif;">Traffic Acquisition Channels</div>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Source / Medium</th>
+              <th style="text-align: right;">Sessions</th>
+              <th style="text-align: right;">Active Users</th>
+            </tr>
+          </thead>
+          <tbody id="ga4-sources-body">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 5: SEARCH REACH (GSC) -->
+  <div class="tab-panel" id="tab-search">
+    <div class="data-table-container">
+      <div class="table-header-box">
+        <div>
+          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">Google Search Discovery Keywords</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">High-intent search queries leading developers and users to the WaifuAI platform.</div>
+        </div>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Search Query</th>
+            <th style="text-align: right;">Clicks</th>
+            <th style="text-align: right;">Impressions</th>
+            <th style="text-align: right;">Average Position</th>
+          </tr>
+        </thead>
+        <tbody id="gsc-queries-body">
+          <!-- Populated via JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Raw Data Export Banner -->
+  <div class="raw-export-banner">
+    <div>
+      <div style="font-weight: 600; color: var(--text);">Open Telemetry JSON Feed</div>
+      <div style="font-size: 0.85rem; color: var(--text-muted);">
+        All data displayed above is exported from our local read-only SQLite intelligence hub (all-db) and published directly to GitHub Pages.
+      </div>
+    </div>
+    <a href="stats.json" target="_blank" class="link-app" style="font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; padding: 0.4rem 0.9rem; text-decoration: none;">
+      Download stats.json &darr;
+    </a>
+  </div>
+
+</div>
+
+<script src="stats.js"></script>
+<script>
+let STATS_DATA = null;
+
+// Tab switcher logic
+document.querySelectorAll('.telemetry-tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.telemetry-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const target = btn.getAttribute('data-tab');
+    document.getElementById(target).classList.add('active');
+  });
+});
+
+// View all links jump to tabs
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('view-all-link')) {
+    e.preventDefault();
+    const tabId = e.target.getAttribute('data-target');
+    const btn = document.querySelector(`.telemetry-tab-btn[data-tab="${tabId}"]`);
+    if (btn) btn.click();
+  }
+});
+
+function getBadgeClass(cat) {
+  if (cat.includes('MCP')) return 'mcp';
+  if (cat.includes('Companion')) return 'companion';
+  if (cat.includes('Web3')) return 'web3';
+  return 'intel';
+}
+
+function renderOverview(data) {
+  // Sync status
+  if (data.synced_at) {
+    const dt = new Date(data.synced_at);
+    document.getElementById('sync-status').textContent = `Live Telemetry • Synced ${dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
+  }
+
+  // KPIs
+  const k = data.macro_kpis || {};
+  document.getElementById('kpi-total-projects').textContent = (k.total_projects || 663).toLocaleString();
+  document.getElementById('kpi-total-views').textContent = `${Math.round((k.total_content_views || 53239) / 1000 * 10) / 10}K`;
+  document.getElementById('kpi-total-users').textContent = `${Math.round((k.total_web_users || 16647) / 1000 * 10) / 10}K`;
+  document.getElementById('kpi-total-stars').textContent = (k.total_stars_and_likes || 1262).toLocaleString();
+  document.getElementById('kpi-search-impressions').textContent = `${Math.round((k.total_search_impressions || 69231) / 1000 * 10) / 10}K`;
+
+  // Activity Chart
+  const timeline = data.analytics?.ga4?.timeline || [];
+  const chartEl = document.getElementById('overview-chart');
+  chartEl.innerHTML = '';
+  if (timeline.length > 0) {
+    document.getElementById('chart-date-start').textContent = timeline[0].date;
+    document.getElementById('chart-date-end').textContent = timeline[timeline.length - 1].date;
+
+    const maxVal = Math.max(...timeline.map(d => d.page_views || d.active_users || 1), 50);
+    timeline.forEach(d => {
+      const uHeight = Math.max(8, Math.round((d.active_users / maxVal) * 140));
+      const group = document.createElement('div');
+      group.className = 'bar-group';
+      group.innerHTML = `
+        <div class="chart-tooltip">${d.date}: ${d.active_users} users / ${d.page_views} views</div>
+        <div class="bar-fill users" style="height: ${uHeight}px;"></div>
+      `;
+      chartEl.appendChild(group);
+    });
+  }
+
+  // Top Repos Table (Top 7)
+  const reposBody = document.getElementById('overview-repos-body');
+  reposBody.innerHTML = '';
+  const topRepos = (data.github?.all_repos || []).slice(0, 7);
+  topRepos.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>
+        <a href="${r.url}" target="_blank" rel="noopener" style="color: var(--text); font-weight: 600; text-decoration: none;">
+          ${r.name}
+        </a>
+      </td>
+      <td><span class="badge-tag ${getBadgeClass(r.category)}">${r.category}</span></td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f59e0b;">
+        ★ ${r.stars}
+      </td>
+    `;
+    reposBody.appendChild(tr);
+  });
+
+  // Top WebSim Table (Top 7)
+  const wsBody = document.getElementById('overview-websim-body');
+  wsBody.innerHTML = '';
+  const topWs = (data.websim?.top_projects || []).slice(0, 7);
+  topWs.forEach(p => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight: 600; color: var(--text);">${p.title}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${p.views.toLocaleString()}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: #ec4899;">♥ ${p.likes}</td>
+      <td style="text-align: right;">
+        <a href="${p.link}" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a>
+      </td>
+    `;
+    wsBody.appendChild(tr);
+  });
+}
+
+function renderWebSimCards(projects) {
+  const container = document.getElementById('websim-cards-container');
+  container.innerHTML = '';
+  projects.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'websim-card';
+    const thumbHtml = p.thumbnail 
+      ? `<img src="${p.thumbnail}" alt="${p.title}" class="websim-thumb" loading="lazy" onerror="this.style.display='none'">`
+      : `<div class="websim-thumb" style="display:flex;align-items:center;justify-content:center;color:#475569;font-size:2rem;">✨</div>`;
+
+    card.innerHTML = `
+      ${thumbHtml}
+      <div class="websim-body">
+        <h3 class="websim-title">${p.title}</h3>
+        <div class="websim-desc">${p.description || 'Interactive autonomous AI application built with WebSim.'}</div>
+        <div class="websim-footer">
+          <div class="websim-stats">
+            <span>👁️ ${p.views.toLocaleString()}</span>
+            <span style="color: #ec4899;">♥ ${p.likes}</span>
+          </div>
+          <a href="${p.link}" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function renderGitHubFull(repos) {
+  const tbody = document.getElementById('github-full-table-body');
+  tbody.innerHTML = '';
+  repos.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>
+        <a href="${r.url}" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">
+          ${r.name}
+        </a>
+      </td>
+      <td><span class="badge-tag ${getBadgeClass(r.category)}">${r.category}</span></td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f59e0b;">★ ${r.stars}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${r.forks}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">${r.open_issues}</td>
+      <td style="text-align: right;">
+        <a href="${r.url}" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function renderTraffic(analytics) {
+  // Pages
+  const pagesBody = document.getElementById('ga4-pages-body');
+  pagesBody.innerHTML = '';
+  (analytics.ga4?.top_pages || []).forEach(p => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><code style="color: var(--accent3); font-size: 0.85rem;">${p.path}</code></td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${p.views.toLocaleString()}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${p.users.toLocaleString()}</td>
+    `;
+    pagesBody.appendChild(tr);
+  });
+
+  // Sources
+  const sourcesBody = document.getElementById('ga4-sources-body');
+  sourcesBody.innerHTML = '';
+  (analytics.ga4?.traffic_sources || []).forEach(s => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight: 500;">${s.channel}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${s.sessions.toLocaleString()}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${s.users.toLocaleString()}</td>
+    `;
+    sourcesBody.appendChild(tr);
+  });
+}
+
+function renderSearch(analytics) {
+  const gscBody = document.getElementById('gsc-queries-body');
+  gscBody.innerHTML = '';
+  (analytics.gsc?.top_queries || []).forEach(q => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight: 600; color: var(--text);">${q.query}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: #34d399; font-weight: 600;">${q.clicks.toLocaleString()}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${q.impressions.toLocaleString()}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">#${q.position}</td>
+    `;
+    gscBody.appendChild(tr);
+  });
+}
+
+function renderReferrers(github) {
+  const refBody = document.getElementById('github-referrers-body');
+  refBody.innerHTML = '';
+  (github.top_referrers || []).forEach(ref => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight: 600;">${ref.referrer}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${ref.count.toLocaleString()}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${ref.uniques.toLocaleString()}</td>
+    `;
+    refBody.appendChild(tr);
+  });
+}
+
+function initTelemetry(data) {
+  if (!data) return;
+  STATS_DATA = data;
+  renderOverview(data);
+  renderWebSimCards(data.websim?.top_projects || []);
+  renderGitHubFull(data.github?.all_repos || []);
+  renderTraffic(data.analytics || {});
+  renderSearch(data.analytics || {});
+  renderReferrers(data.github || {});
+}
+
+// 1. Instant offline / file:// protocol initialization from stats.js
+if (window.WAIFU_STATS) {
+  initTelemetry(window.WAIFU_STATS);
+}
+
+// 2. Fetch stats.json dynamically if accessed via HTTP / HTTPS
+if (window.location.protocol.startsWith('http')) {
+  fetch('stats.json')
+    .then(res => res.json())
+    .then(data => initTelemetry(data))
+    .catch(err => console.log('HTTP stats fetch note:', err));
+}
+
+// WebSim Search filter
+document.getElementById('websim-search').addEventListener('input', e => {
+  if (!STATS_DATA) return;
+  const q = e.target.value.toLowerCase().trim();
+  const all = STATS_DATA.websim?.top_projects || [];
+  const filtered = all.filter(p => p.title.toLowerCase().includes(q) || (p.description && p.description.toLowerCase().includes(q)));
+  renderWebSimCards(filtered);
+});
+
+// GitHub Search filter
+document.getElementById('github-search').addEventListener('input', e => {
+  if (!STATS_DATA) return;
+  const q = e.target.value.toLowerCase().trim();
+  const all = STATS_DATA.github?.all_repos || [];
+  const filtered = all.filter(r => r.name.toLowerCase().includes(q) || r.category.toLowerCase().includes(q));
+  renderGitHubFull(filtered);
+});
+</script>
+
+</body>
+</html>
