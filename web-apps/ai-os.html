@@ -14,465 +14,781 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/web-apps/ai-os.html">
-<meta name="description" content="Collection of interactive AI OS web apps and utilities.">
-<meta property="og:title" content="AI OS">
-<meta property="og:description" content="Collection of interactive AI OS web apps and utilities.">
+<meta name="description" content="Collection of 56 interactive AI OS Suite web apps, visualizers, and simulation tools | WaifuAI">
+<meta property="og:title" content="AI OS Suite (56 Apps) | WaifuAI Web Apps">
+<meta property="og:description" content="Collection of 56 interactive AI OS Suite web apps and simulation sandboxes.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/web-apps/ai-os.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI OS">
-<meta name="twitter:description" content="Collection of interactive AI OS web apps and utilities.">
+<meta name="twitter:title" content="AI OS Suite (56 Apps) | WaifuAI Web Apps">
+<meta name="twitter:description" content="Collection of 56 interactive AI OS Suite web apps and simulation sandboxes.">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>AI OS | WaifuAI Web Apps</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>AI OS Suite (56 Apps) | WaifuAI Web Apps</title>
 <link rel="stylesheet" href="web-apps.css">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
   <div class="container">
-    <a href="index.html" class="back-link">&larr; Back to index</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="../">WaifuAI Docs</a>
+      <span class="sep">/</span>
+      <a href="index.html">Web Apps Suite</a>
+      <span class="sep">/</span>
+      <span aria-current="page">AI OS Suite</span>
+    </nav>
 
     <header>
-      <h1>🤖 AI OS</h1>
-      <p>Interactive tools, developer dashboards, operating system layouts, and self-healing agent architectures.</p>
+      <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+        <span class="badge badge-accent">Operating Systems & Agents</span>
+        <span class="badge">56 Interactive Apps</span>
+        <span class="badge" style="border-color: var(--success); color: var(--success);">100% Client-Side Native</span>
+      </div>
+      <h1>🤖 AI OS Suite</h1>
+      <p>Interactive tools, agent visualizers, operating system desktops, and autonomous multi-agent coordination architectures.</p>
+      <div class="links">
+        <a href="index.html">&larr; All Web App Suites</a>
+        <a href="../">🏠 Docs Hub</a>
+        <a href="../research-books/index.html">📚 Research Books</a>
+      </div>
     </header>
 
-    <div class="search-wrapper">
-      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input type="text" id="search" class="search-input" placeholder="Search 56 apps...">
+    <!-- Cross Hub Theory Bridge -->
+    <div class="callout-box">
+      <div class="callout-header">
+        <span class="badge badge-accent">🔬 Theory to Code Bridge</span>
+        <a href="../research-books/books/09-waifu_ai_os/index.html" class="callout-link">Read Volume 09 (Waifu AI OS) & Volume 03 (Waifu AI) &rarr;</a>
+      </div>
+      <p style="margin: 0; color: var(--text-muted); font-size: 0.92rem; line-height: 1.55;">
+        These 56 applications translate autonomous agent cognitive loops, memory hierarchies, and desktop OS interfaces from Volume 03 (Waifu AI) and Volume 09 (Waifu AI OS) into interactive client-side sandboxes.
+      </p>
     </div>
 
-    <div class="app-list">
-      <a href="src/webapps/ai-os/040-reinforcement-learning-to-llm-api-interface.html" class="app-item searchable-item" target="_blank">
+    <!-- Search Section -->
+    <section aria-label="Search Applications">
+      <div class="search-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search" class="search-input" placeholder="Search 56 ai os suite apps (press '/' to focus)..." aria-label="Search apps">
+      </div>
+
+      <div class="search-controls">
+        <div id="search-counter">Showing all 56 applications</div>
+        <div class="hotkey-hint">
+          <kbd>/</kbd> to search &bull; <kbd>Esc</kbd> to reset
+        </div>
+      </div>
+    </section>
+
+    <!-- App List -->
+    <main class="app-list" id="app-list" aria-label="Applications List">
+      <a href="src/webapps/ai-os/040-reinforcement-learning-to-llm-api-interface.html" class="app-item searchable-item" target="_blank" data-title="reinforcement learning to llm api interface" data-id="040" title="Open Reinforcement Learning To Llm Api Interface in new tab">
         <div class="app-info">
           <h3>Reinforcement Learning To Llm Api Interface</h3>
-          <p>src/webapps/ai-os/040-reinforcement-learning-to-llm-api-interface.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#040</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/041-rl-llm-interface-builder.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/041-rl-llm-interface-builder.html" class="app-item searchable-item" target="_blank" data-title="rl llm interface builder" data-id="041" title="Open Rl Llm Interface Builder in new tab">
         <div class="app-info">
           <h3>Rl Llm Interface Builder</h3>
-          <p>src/webapps/ai-os/041-rl-llm-interface-builder.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#041</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/064-aiagentforge-collaborative-ai-agent-development-hub.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/064-aiagentforge-collaborative-ai-agent-development-hub.html" class="app-item searchable-item" target="_blank" data-title="aiagentforge collaborative ai agent development hub" data-id="064" title="Open Aiagentforge Collaborative Ai Agent Development Hub in new tab">
         <div class="app-info">
           <h3>Aiagentforge Collaborative Ai Agent Development Hub</h3>
-          <p>src/webapps/ai-os/064-aiagentforge-collaborative-ai-agent-development-hub.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#064</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/080-llm-api-to-rl-program-translator.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/080-llm-api-to-rl-program-translator.html" class="app-item searchable-item" target="_blank" data-title="llm api to rl program translator" data-id="080" title="Open Llm Api To Rl Program Translator in new tab">
         <div class="app-info">
           <h3>Llm Api To Rl Program Translator</h3>
-          <p>src/webapps/ai-os/080-llm-api-to-rl-program-translator.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#080</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/266-ai-git-commit-stream.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/266-ai-git-commit-stream.html" class="app-item searchable-item" target="_blank" data-title="ai git commit stream" data-id="266" title="Open Ai Git Commit Stream in new tab">
         <div class="app-info">
           <h3>Ai Git Commit Stream</h3>
-          <p>src/webapps/ai-os/266-ai-git-commit-stream.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#266</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/267-tokenaffiliates-mathematical-model-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/267-tokenaffiliates-mathematical-model-visualization.html" class="app-item searchable-item" target="_blank" data-title="tokenaffiliates mathematical model visualization" data-id="267" title="Open Tokenaffiliates Mathematical Model Visualization in new tab">
         <div class="app-info">
           <h3>Tokenaffiliates Mathematical Model Visualization</h3>
-          <p>src/webapps/ai-os/267-tokenaffiliates-mathematical-model-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#267</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/268-research-text-analysis-interface.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/268-research-text-analysis-interface.html" class="app-item searchable-item" target="_blank" data-title="research text analysis interface" data-id="268" title="Open Research Text Analysis Interface in new tab">
         <div class="app-info">
           <h3>Research Text Analysis Interface</h3>
-          <p>src/webapps/ai-os/268-research-text-analysis-interface.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#268</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/269-stretched-circle-contours.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/269-stretched-circle-contours.html" class="app-item searchable-item" target="_blank" data-title="stretched circle contours" data-id="269" title="Open Stretched Circle Contours in new tab">
         <div class="app-info">
           <h3>Stretched Circle Contours</h3>
-          <p>src/webapps/ai-os/269-stretched-circle-contours.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#269</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/270-lispos-a-universal-operating-system.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/270-lispos-a-universal-operating-system.html" class="app-item searchable-item" target="_blank" data-title="lispos a universal operating system" data-id="270" title="Open Lispos A Universal Operating System in new tab">
         <div class="app-info">
           <h3>Lispos A Universal Operating System</h3>
-          <p>src/webapps/ai-os/270-lispos-a-universal-operating-system.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#270</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/271-self-healing-ai-native-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/271-self-healing-ai-native-os.html" class="app-item searchable-item" target="_blank" data-title="self healing ai native os" data-id="271" title="Open Self Healing Ai Native Os in new tab">
         <div class="app-info">
           <h3>Self Healing Ai Native Os</h3>
-          <p>src/webapps/ai-os/271-self-healing-ai-native-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#271</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/272-innohub-connect-inventors-ideas.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/272-innohub-connect-inventors-ideas.html" class="app-item searchable-item" target="_blank" data-title="innohub connect inventors ideas" data-id="272" title="Open Innohub Connect Inventors Ideas in new tab">
         <div class="app-info">
           <h3>Innohub Connect Inventors Ideas</h3>
-          <p>src/webapps/ai-os/272-innohub-connect-inventors-ideas.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#272</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/273-lispos-explorer.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/273-lispos-explorer.html" class="app-item searchable-item" target="_blank" data-title="lispos explorer" data-id="273" title="Open Lispos Explorer in new tab">
         <div class="app-info">
           <h3>Lispos Explorer</h3>
-          <p>src/webapps/ai-os/273-lispos-explorer.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#273</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/274-advanced-equation-editor.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/274-advanced-equation-editor.html" class="app-item searchable-item" target="_blank" data-title="advanced equation editor" data-id="274" title="Open Advanced Equation Editor in new tab">
         <div class="app-info">
           <h3>Advanced Equation Editor</h3>
-          <p>src/webapps/ai-os/274-advanced-equation-editor.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#274</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/276-autorky-user-dashboard.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/276-autorky-user-dashboard.html" class="app-item searchable-item" target="_blank" data-title="autorky user dashboard" data-id="276" title="Open Autorky User Dashboard in new tab">
         <div class="app-info">
           <h3>Autorky User Dashboard</h3>
-          <p>src/webapps/ai-os/276-autorky-user-dashboard.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#276</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/277-lispos-universal-computing-platform.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/277-lispos-universal-computing-platform.html" class="app-item searchable-item" target="_blank" data-title="lispos universal computing platform" data-id="277" title="Open Lispos Universal Computing Platform in new tab">
         <div class="app-info">
           <h3>Lispos Universal Computing Platform</h3>
-          <p>src/webapps/ai-os/277-lispos-universal-computing-platform.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#277</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/278-evolution-guide-maintaining-your-waifu-ai-os-installation-waifu-ai-os-project.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/278-evolution-guide-maintaining-your-waifu-ai-os-installation-waifu-ai-os-project.html" class="app-item searchable-item" target="_blank" data-title="evolution guide maintaining your waifu ai os installation waifu ai os project" data-id="278" title="Open Evolution Guide Maintaining Your Waifu Ai Os Installation Waifu Ai Os Project in new tab">
         <div class="app-info">
           <h3>Evolution Guide Maintaining Your Waifu Ai Os Installation Waifu Ai Os Project</h3>
-          <p>src/webapps/ai-os/278-evolution-guide-maintaining-your-waifu-ai-os-installation-waifu-ai-os-project.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#278</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/279-waifuos-terminal.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/279-waifuos-terminal.html" class="app-item searchable-item" target="_blank" data-title="waifuos terminal" data-id="279" title="Open Waifuos Terminal in new tab">
         <div class="app-info">
           <h3>Waifuos Terminal</h3>
-          <p>src/webapps/ai-os/279-waifuos-terminal.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#279</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/280-character-dialog.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/280-character-dialog.html" class="app-item searchable-item" target="_blank" data-title="character dialog" data-id="280" title="Open Character Dialog in new tab">
         <div class="app-info">
           <h3>Character Dialog</h3>
-          <p>src/webapps/ai-os/280-character-dialog.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#280</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/281-street-line.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/281-street-line.html" class="app-item searchable-item" target="_blank" data-title="street line" data-id="281" title="Open Street Line in new tab">
         <div class="app-info">
           <h3>Street Line</h3>
-          <p>src/webapps/ai-os/281-street-line.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#281</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/282-street-lines-openstreetmap-road-segment-analysis.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/282-street-lines-openstreetmap-road-segment-analysis.html" class="app-item searchable-item" target="_blank" data-title="street lines openstreetmap road segment analysis" data-id="282" title="Open Street Lines Openstreetmap Road Segment Analysis in new tab">
         <div class="app-info">
           <h3>Street Lines Openstreetmap Road Segment Analysis</h3>
-          <p>src/webapps/ai-os/282-street-lines-openstreetmap-road-segment-analysis.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#282</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/283-tokenaffiliates-commission-rate-optimization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/283-tokenaffiliates-commission-rate-optimization.html" class="app-item searchable-item" target="_blank" data-title="tokenaffiliates commission rate optimization" data-id="283" title="Open Tokenaffiliates Commission Rate Optimization in new tab">
         <div class="app-info">
           <h3>Tokenaffiliates Commission Rate Optimization</h3>
-          <p>src/webapps/ai-os/283-tokenaffiliates-commission-rate-optimization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#283</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/304-common-lisp-operating-system.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/304-common-lisp-operating-system.html" class="app-item searchable-item" target="_blank" data-title="common lisp operating system" data-id="304" title="Open Common Lisp Operating System in new tab">
         <div class="app-info">
           <h3>Common Lisp Operating System</h3>
-          <p>src/webapps/ai-os/304-common-lisp-operating-system.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#304</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/305-mit-0-license-notice.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/305-mit-0-license-notice.html" class="app-item searchable-item" target="_blank" data-title="mit 0 license notice" data-id="305" title="Open Mit 0 License Notice in new tab">
         <div class="app-info">
           <h3>Mit 0 License Notice</h3>
-          <p>src/webapps/ai-os/305-mit-0-license-notice.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#305</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/306-universal-ai-integrated-operating-system.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/306-universal-ai-integrated-operating-system.html" class="app-item searchable-item" target="_blank" data-title="universal ai integrated operating system" data-id="306" title="Open Universal Ai Integrated Operating System in new tab">
         <div class="app-info">
           <h3>Universal Ai Integrated Operating System</h3>
-          <p>src/webapps/ai-os/306-universal-ai-integrated-operating-system.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#306</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/307-lispos-ai-integration-demo.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/307-lispos-ai-integration-demo.html" class="app-item searchable-item" target="_blank" data-title="lispos ai integration demo" data-id="307" title="Open Lispos Ai Integration Demo in new tab">
         <div class="app-info">
           <h3>Lispos Ai Integration Demo</h3>
-          <p>src/webapps/ai-os/307-lispos-ai-integration-demo.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#307</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/308-universal-driver-system-architecture.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/308-universal-driver-system-architecture.html" class="app-item searchable-item" target="_blank" data-title="universal driver system architecture" data-id="308" title="Open Universal Driver System Architecture in new tab">
         <div class="app-info">
           <h3>Universal Driver System Architecture</h3>
-          <p>src/webapps/ai-os/308-universal-driver-system-architecture.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#308</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/309-welcome-to-waifu-ai-os-building-your-ai-companion-operating-system.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/309-welcome-to-waifu-ai-os-building-your-ai-companion-operating-system.html" class="app-item searchable-item" target="_blank" data-title="welcome to waifu ai os building your ai companion operating system" data-id="309" title="Open Welcome To Waifu Ai Os Building Your Ai Companion Operating System in new tab">
         <div class="app-info">
           <h3>Welcome To Waifu Ai Os Building Your Ai Companion Operating System</h3>
-          <p>src/webapps/ai-os/309-welcome-to-waifu-ai-os-building-your-ai-companion-operating-system.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#309</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/310-welcome-to-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/310-welcome-to-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="welcome to waifu ai os" data-id="310" title="Open Welcome To Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Welcome To Waifu Ai Os</h3>
-          <p>src/webapps/ai-os/310-welcome-to-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#310</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/311-why-common-lisp-the-magic-behind-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/311-why-common-lisp-the-magic-behind-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="why common lisp the magic behind waifu ai os" data-id="311" title="Open Why Common Lisp The Magic Behind Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Why Common Lisp The Magic Behind Waifu Ai Os</h3>
-          <p>src/webapps/ai-os/311-why-common-lisp-the-magic-behind-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#311</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/312-your-first-steps-with-waifu-ai-os-development-environment-setup.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/312-your-first-steps-with-waifu-ai-os-development-environment-setup.html" class="app-item searchable-item" target="_blank" data-title="your first steps with waifu ai os development environment setup" data-id="312" title="Open Your First Steps With Waifu Ai Os Development Environment Setup in new tab">
         <div class="app-info">
           <h3>Your First Steps With Waifu Ai Os Development Environment Setup</h3>
-          <p>src/webapps/ai-os/312-your-first-steps-with-waifu-ai-os-development-environment-setup.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#312</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/313-core-architecture-building-the-foundation-of-your-ai-companion-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/313-core-architecture-building-the-foundation-of-your-ai-companion-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="core architecture building the foundation of your ai companion waifu ai os" data-id="313" title="Open Core Architecture Building The Foundation Of Your Ai Companion Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Core Architecture Building The Foundation Of Your Ai Companion Waifu Ai Os</h3>
-          <p>src/webapps/ai-os/313-core-architecture-building-the-foundation-of-your-ai-companion-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#313</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/314-the-heart-of-waifu-implementing-the-ai-driven-microkernel-waifu-ai-os-documentation.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/314-the-heart-of-waifu-implementing-the-ai-driven-microkernel-waifu-ai-os-documentation.html" class="app-item searchable-item" target="_blank" data-title="the heart of waifu implementing the ai driven microkernel waifu ai os documentation" data-id="314" title="Open The Heart Of Waifu Implementing The Ai Driven Microkernel Waifu Ai Os Documentation in new tab">
         <div class="app-info">
           <h3>The Heart Of Waifu Implementing The Ai Driven Microkernel Waifu Ai Os Documentation</h3>
-          <p>src/webapps/ai-os/314-the-heart-of-waifu-implementing-the-ai-driven-microkernel-waifu-ai-os-documentation.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#314</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/315-universal-hardware-integration-teaching-your-waifu-new-devices-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/315-universal-hardware-integration-teaching-your-waifu-new-devices-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="universal hardware integration teaching your waifu new devices waifu ai os" data-id="315" title="Open Universal Hardware Integration Teaching Your Waifu New Devices Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Universal Hardware Integration Teaching Your Waifu New Devices Waifu Ai Os</h3>
-          <p>src/webapps/ai-os/315-universal-hardware-integration-teaching-your-waifu-new-devices-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#315</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/316-desktop-to-mobile-your-waifu-everywhere-you-go-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/316-desktop-to-mobile-your-waifu-everywhere-you-go-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="desktop to mobile your waifu everywhere you go waifu ai os" data-id="316" title="Open Desktop To Mobile Your Waifu Everywhere You Go Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Desktop To Mobile Your Waifu Everywhere You Go Waifu Ai Os</h3>
-          <p>src/webapps/ai-os/316-desktop-to-mobile-your-waifu-everywhere-you-go-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#316</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/324-multi-device-synchronization-your-waifus-distributed-presence-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/324-multi-device-synchronization-your-waifus-distributed-presence-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="multi device synchronization your waifus distributed presence waifu ai os" data-id="324" title="Open Multi Device Synchronization Your Waifus Distributed Presence Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Multi Device Synchronization Your Waifus Distributed Presence Waifu Ai Os</h3>
-          <p>src/webapps/ai-os/324-multi-device-synchronization-your-waifus-distributed-presence-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#324</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/326-extension-system-creating-your-waifus-module-framework-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/326-extension-system-creating-your-waifus-module-framework-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="extension system creating your waifus module framework waifu ai os" data-id="326" title="Open Extension System Creating Your Waifus Module Framework Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Extension System Creating Your Waifus Module Framework Waifu Ai Os</h3>
-          <p>src/webapps/ai-os/326-extension-system-creating-your-waifus-module-framework-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#326</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/327-community-contributions-growing-the-waifu-ai-os-ecosystem.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/327-community-contributions-growing-the-waifu-ai-os-ecosystem.html" class="app-item searchable-item" target="_blank" data-title="community contributions growing the waifu ai os ecosystem" data-id="327" title="Open Community Contributions Growing The Waifu Ai Os Ecosystem in new tab">
         <div class="app-info">
           <h3>Community Contributions Growing The Waifu Ai Os Ecosystem</h3>
-          <p>src/webapps/ai-os/327-community-contributions-growing-the-waifu-ai-os-ecosystem.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#327</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/328-universal-deployment-installing-waifu-ai-os-everywhere-waifu-ai-os-guide.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/328-universal-deployment-installing-waifu-ai-os-everywhere-waifu-ai-os-guide.html" class="app-item searchable-item" target="_blank" data-title="universal deployment installing waifu ai os everywhere waifu ai os guide" data-id="328" title="Open Universal Deployment Installing Waifu Ai Os Everywhere Waifu Ai Os Guide in new tab">
         <div class="app-info">
           <h3>Universal Deployment Installing Waifu Ai Os Everywhere Waifu Ai Os Guide</h3>
-          <p>src/webapps/ai-os/328-universal-deployment-installing-waifu-ai-os-everywhere-waifu-ai-os-guide.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#328</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/329-open-security-model-protecting-your-ai-companion-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/329-open-security-model-protecting-your-ai-companion-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="open security model protecting your ai companion waifu ai os" data-id="329" title="Open Open Security Model Protecting Your Ai Companion Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Open Security Model Protecting Your Ai Companion Waifu Ai Os</h3>
-          <p>src/webapps/ai-os/329-open-security-model-protecting-your-ai-companion-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#329</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/330-real-time-interactions-optimizing-waifu-ai-os-performance.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/330-real-time-interactions-optimizing-waifu-ai-os-performance.html" class="app-item searchable-item" target="_blank" data-title="real time interactions optimizing waifu ai os performance" data-id="330" title="Open Real Time Interactions Optimizing Waifu Ai Os Performance in new tab">
         <div class="app-info">
           <h3>Real Time Interactions Optimizing Waifu Ai Os Performance</h3>
-          <p>src/webapps/ai-os/330-real-time-interactions-optimizing-waifu-ai-os-performance.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#330</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/331-app-development-creating-extensions-for-your-waifu-waifu-ai-os-series.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/331-app-development-creating-extensions-for-your-waifu-waifu-ai-os-series.html" class="app-item searchable-item" target="_blank" data-title="app development creating extensions for your waifu waifu ai os series" data-id="331" title="Open App Development Creating Extensions For Your Waifu Waifu Ai Os Series in new tab">
         <div class="app-info">
           <h3>App Development Creating Extensions For Your Waifu Waifu Ai Os Series</h3>
-          <p>src/webapps/ai-os/331-app-development-creating-extensions-for-your-waifu-waifu-ai-os-series.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#331</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/367-designing-ai-agent-compatible-web-services/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/367-designing-ai-agent-compatible-web-services/index.html" class="app-item searchable-item" target="_blank" data-title="designing ai agent compatible web services" data-id="367" title="Open Designing Ai Agent Compatible Web Services in new tab">
         <div class="app-info">
           <h3>Designing Ai Agent Compatible Web Services</h3>
-          <p>src/webapps/ai-os/367-designing-ai-agent-compatible-web-services/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#367</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/372-internet-of-protocols--thermodynamic-model-of-ai-agent-networks/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/372-internet-of-protocols--thermodynamic-model-of-ai-agent-networks/index.html" class="app-item searchable-item" target="_blank" data-title="internet of protocols thermodynamic model of ai agent networks" data-id="372" title="Open Internet Of Protocols Thermodynamic Model Of Ai Agent Networks in new tab">
         <div class="app-info">
           <h3>Internet Of Protocols Thermodynamic Model Of Ai Agent Networks</h3>
-          <p>src/webapps/ai-os/372-internet-of-protocols--thermodynamic-model-of-ai-agent-networks/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#372</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/390-waifuai-social-links/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/390-waifuai-social-links/index.html" class="app-item searchable-item" target="_blank" data-title="waifuai social links" data-id="390" title="Open Waifuai Social Links in new tab">
         <div class="app-info">
           <h3>Waifuai Social Links</h3>
-          <p>src/webapps/ai-os/390-waifuai-social-links/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#390</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/393-book-generator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/393-book-generator/index.html" class="app-item searchable-item" target="_blank" data-title="book generator" data-id="393" title="Open Book Generator in new tab">
         <div class="app-info">
           <h3>Book Generator</h3>
-          <p>src/webapps/ai-os/393-book-generator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#393</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/394-digital-companion/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/394-digital-companion/index.html" class="app-item searchable-item" target="_blank" data-title="digital companion" data-id="394" title="Open Digital Companion in new tab">
         <div class="app-info">
           <h3>Digital Companion</h3>
-          <p>src/webapps/ai-os/394-digital-companion/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#394</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/397-the-inverted-attention-economy--humans-vs-ai/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/397-the-inverted-attention-economy--humans-vs-ai/index.html" class="app-item searchable-item" target="_blank" data-title="the inverted attention economy humans vs ai" data-id="397" title="Open The Inverted Attention Economy Humans Vs Ai in new tab">
         <div class="app-info">
           <h3>The Inverted Attention Economy Humans Vs Ai</h3>
-          <p>src/webapps/ai-os/397-the-inverted-attention-economy--humans-vs-ai/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#397</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/400-ai-api-documentation/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/400-ai-api-documentation/index.html" class="app-item searchable-item" target="_blank" data-title="ai api documentation" data-id="400" title="Open Ai Api Documentation in new tab">
         <div class="app-info">
           <h3>Ai Api Documentation</h3>
-          <p>src/webapps/ai-os/400-ai-api-documentation/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#400</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/416-tokenomics-airdrop-simulation/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/416-tokenomics-airdrop-simulation/index.html" class="app-item searchable-item" target="_blank" data-title="tokenomics airdrop simulation" data-id="416" title="Open Tokenomics Airdrop Simulation in new tab">
         <div class="app-info">
           <h3>Tokenomics Airdrop Simulation</h3>
-          <p>src/webapps/ai-os/416-tokenomics-airdrop-simulation/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#416</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/421-book-generator-library/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/421-book-generator-library/index.html" class="app-item searchable-item" target="_blank" data-title="book generator library" data-id="421" title="Open Book Generator Library in new tab">
         <div class="app-info">
           <h3>Book Generator Library</h3>
-          <p>src/webapps/ai-os/421-book-generator-library/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#421</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/422-profile-overview---websim-ai/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/422-profile-overview---websim-ai/index.html" class="app-item searchable-item" target="_blank" data-title="profile overview websim ai" data-id="422" title="Open Profile Overview Websim Ai in new tab">
         <div class="app-info">
           <h3>Profile Overview Websim Ai</h3>
-          <p>src/webapps/ai-os/422-profile-overview---websim-ai/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#422</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/423-crypto-airdrop-simulation/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/423-crypto-airdrop-simulation/index.html" class="app-item searchable-item" target="_blank" data-title="crypto airdrop simulation" data-id="423" title="Open Crypto Airdrop Simulation in new tab">
         <div class="app-info">
           <h3>Crypto Airdrop Simulation</h3>
-          <p>src/webapps/ai-os/423-crypto-airdrop-simulation/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#423</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/427-ai-book-generator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/427-ai-book-generator/index.html" class="app-item searchable-item" target="_blank" data-title="ai book generator" data-id="427" title="Open Ai Book Generator in new tab">
         <div class="app-info">
           <h3>Ai Book Generator</h3>
-          <p>src/webapps/ai-os/427-ai-book-generator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#427</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/432-book-generator-library/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/432-book-generator-library/index.html" class="app-item searchable-item" target="_blank" data-title="book generator library" data-id="432" title="Open Book Generator Library in new tab">
         <div class="app-info">
           <h3>Book Generator Library</h3>
-          <p>src/webapps/ai-os/432-book-generator-library/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#432</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/433-digital-companion/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/433-digital-companion/index.html" class="app-item searchable-item" target="_blank" data-title="digital companion" data-id="433" title="Open Digital Companion in new tab">
         <div class="app-info">
           <h3>Digital Companion</h3>
-          <p>src/webapps/ai-os/433-digital-companion/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#433</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/ai-os/449-tokenomics-airdrop-simulation/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/ai-os/449-tokenomics-airdrop-simulation/index.html" class="app-item searchable-item" target="_blank" data-title="tokenomics airdrop simulation" data-id="449" title="Open Tokenomics Airdrop Simulation in new tab">
         <div class="app-info">
           <h3>Tokenomics Airdrop Simulation</h3>
-          <p>src/webapps/ai-os/449-tokenomics-airdrop-simulation/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#449</span>
+            <span class="app-tag">Operating Systems & Agents</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
+    </main>
+
+    <div id="no-results" class="no-results" hidden>
+      <h3>No applications match your search</h3>
+      <p>Try searching for a different keyword or application number.</p>
+      <button class="btn btn-secondary" id="btn-reset-search" style="margin-top: 0.75rem; padding: 0.45rem 0.9rem; border-radius: 6px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: #fff; cursor: pointer;">Clear Search</button>
     </div>
-    <div id="no-results" class="no-results">No applications match your search.</div>
     
+    <footer>
+      <p>WaifuAI Web Apps Suite &bull; AI OS Suite</p>
+      <p style="margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-muted);">
+        <a href="index.html">Web Apps Hub</a> &bull;
+        <a href="../">Docs Hub</a> &bull;
+        <a href="../research-books/index.html">Research Books</a> &bull;
+        <a href="../research-text/consolidated-research/index.html">Genesis Archive</a> &bull;
+        <a href="../research-text/web3-research/index.html">Web3 Research</a> &bull;
+        <a href="https://github.com/waifuai/waifuai.github.io" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </footer>
   </div>
   
   <script>
-    const searchInput = document.getElementById('search');
-    const items = document.querySelectorAll('.searchable-item');
-    const noResults = document.getElementById('no-results');
+    (function() {
+      const searchInput = document.getElementById('search');
+      const items = Array.from(document.querySelectorAll('.searchable-item'));
+      const counter = document.getElementById('search-counter');
+      const noResults = document.getElementById('no-results');
+      const resetBtn = document.getElementById('btn-reset-search');
+      const totalCount = items.length;
 
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().trim();
+      function filterApps() {
+        const query = searchInput.value.toLowerCase().trim();
         let visibleCount = 0;
 
         items.forEach(item => {
-          const text = item.textContent.toLowerCase();
-          if (text.includes(query)) {
-            item.style.display = '';
+          const title = (item.getAttribute('data-title') || '').toLowerCase();
+          const id = (item.getAttribute('data-id') || '').toLowerCase();
+          const text = title + ' ' + id;
+
+          if (!query || text.includes(query)) {
+            item.style.display = 'flex';
             visibleCount++;
           } else {
             item.style.display = 'none';
           }
         });
 
-        if (noResults) {
-          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        if (visibleCount === totalCount) {
+          counter.textContent = 'Showing all ' + totalCount + ' applications';
+        } else {
+          counter.textContent = 'Showing ' + visibleCount + ' of ' + totalCount + ' applications' + (query ? ' matching "' + query + '"' : '');
+        }
+
+        noResults.hidden = visibleCount > 0;
+      }
+
+      if (searchInput) {
+        let timeout;
+        searchInput.addEventListener('input', () => {
+          clearTimeout(timeout);
+          timeout = setTimeout(filterApps, 40);
+        });
+      }
+
+      // Hotkey listener: '/' to focus, 'Escape' to clear
+      window.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== searchInput) {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.select();
+        } else if (e.key === 'Escape' && (document.activeElement === searchInput || searchInput.value)) {
+          searchInput.value = '';
+          filterApps();
+          searchInput.blur();
         }
       });
-    }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          filterApps();
+          searchInput.focus();
+        });
+      }
+    })();
   </script>
 </body>
 </html>

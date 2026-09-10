@@ -14,150 +14,286 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/web-apps/guides.html">
-<meta name="description" content="Collection of interactive Guides web apps and utilities.">
-<meta property="og:title" content="Guides">
-<meta property="og:description" content="Collection of interactive Guides web apps and utilities.">
+<meta name="description" content="Collection of 11 interactive Interactive Guides web apps, visualizers, and simulation tools | WaifuAI">
+<meta property="og:title" content="Interactive Guides (11 Apps) | WaifuAI Web Apps">
+<meta property="og:description" content="Collection of 11 interactive Interactive Guides web apps and simulation sandboxes.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/web-apps/guides.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Guides">
-<meta name="twitter:description" content="Collection of interactive Guides web apps and utilities.">
+<meta name="twitter:title" content="Interactive Guides (11 Apps) | WaifuAI Web Apps">
+<meta name="twitter:description" content="Collection of 11 interactive Interactive Guides web apps and simulation sandboxes.">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>Guides | WaifuAI Web Apps</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Interactive Guides (11 Apps) | WaifuAI Web Apps</title>
 <link rel="stylesheet" href="web-apps.css">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
   <div class="container">
-    <a href="index.html" class="back-link">&larr; Back to index</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="../">WaifuAI Docs</a>
+      <span class="sep">/</span>
+      <a href="index.html">Web Apps Suite</a>
+      <span class="sep">/</span>
+      <span aria-current="page">Interactive Guides</span>
+    </nav>
 
     <header>
-      <h1>📘 Guides</h1>
-      <p>Detailed deployment manuals, operating manuals, and developer setup instructions.</p>
+      <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+        <span class="badge badge-accent">Developer Documentation</span>
+        <span class="badge">11 Interactive Apps</span>
+        <span class="badge" style="border-color: var(--success); color: var(--success);">100% Client-Side Native</span>
+      </div>
+      <h1>📘 Interactive Guides</h1>
+      <p>Interactive deployment manuals, system architecture walk-throughs, and developer walkthrough tools.</p>
+      <div class="links">
+        <a href="index.html">&larr; All Web App Suites</a>
+        <a href="../">🏠 Docs Hub</a>
+        <a href="../research-books/index.html">📚 Research Books</a>
+      </div>
     </header>
 
-    <div class="search-wrapper">
-      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input type="text" id="search" class="search-input" placeholder="Search 11 apps...">
+    <!-- Cross Hub Theory Bridge -->
+    <div class="callout-box">
+      <div class="callout-header">
+        <span class="badge badge-accent">🔬 Theory to Code Bridge</span>
+        <a href="../research-text/web3-research/00-evolution-and-synthesis.html" class="callout-link">Read Evolution & Synthesis Master Crosswalk &rarr;</a>
+      </div>
+      <p style="margin: 0; color: var(--text-muted); font-size: 0.92rem; line-height: 1.55;">
+        These 11 tools provide visual interactive blueprints for deploying, configuring, and verifying the WaifuAI ecosystem across Web3 and AI agent rails.
+      </p>
     </div>
 
-    <div class="app-list">
-      <a href="src/webapps/guides/374-model-context-protocol--mcp--interactive-explorer/index.html" class="app-item searchable-item" target="_blank">
+    <!-- Search Section -->
+    <section aria-label="Search Applications">
+      <div class="search-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search" class="search-input" placeholder="Search 11 interactive guides apps (press '/' to focus)..." aria-label="Search apps">
+      </div>
+
+      <div class="search-controls">
+        <div id="search-counter">Showing all 11 applications</div>
+        <div class="hotkey-hint">
+          <kbd>/</kbd> to search &bull; <kbd>Esc</kbd> to reset
+        </div>
+      </div>
+    </section>
+
+    <!-- App List -->
+    <main class="app-list" id="app-list" aria-label="Applications List">
+      <a href="src/webapps/guides/374-model-context-protocol--mcp--interactive-explorer/index.html" class="app-item searchable-item" target="_blank" data-title="model context protocol mcp interactive explorer" data-id="374" title="Open Model Context Protocol Mcp Interactive Explorer in new tab">
         <div class="app-info">
           <h3>Model Context Protocol Mcp Interactive Explorer</h3>
-          <p>src/webapps/guides/374-model-context-protocol--mcp--interactive-explorer/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#374</span>
+            <span class="app-tag">Developer Documentation</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/guides/375-model-context-protocol--mcp--interactive-documentation/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/guides/375-model-context-protocol--mcp--interactive-documentation/index.html" class="app-item searchable-item" target="_blank" data-title="model context protocol mcp interactive documentation" data-id="375" title="Open Model Context Protocol Mcp Interactive Documentation in new tab">
         <div class="app-info">
           <h3>Model Context Protocol Mcp Interactive Documentation</h3>
-          <p>src/webapps/guides/375-model-context-protocol--mcp--interactive-documentation/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#375</span>
+            <span class="app-tag">Developer Documentation</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/guides/380-mcp-diagram-generator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/guides/380-mcp-diagram-generator/index.html" class="app-item searchable-item" target="_blank" data-title="mcp diagram generator" data-id="380" title="Open Mcp Diagram Generator in new tab">
         <div class="app-info">
           <h3>Mcp Diagram Generator</h3>
-          <p>src/webapps/guides/380-mcp-diagram-generator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#380</span>
+            <span class="app-tag">Developer Documentation</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/guides/381-interactive-mcp-architecture-visualizer/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/guides/381-interactive-mcp-architecture-visualizer/index.html" class="app-item searchable-item" target="_blank" data-title="interactive mcp architecture visualizer" data-id="381" title="Open Interactive Mcp Architecture Visualizer in new tab">
         <div class="app-info">
           <h3>Interactive Mcp Architecture Visualizer</h3>
-          <p>src/webapps/guides/381-interactive-mcp-architecture-visualizer/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#381</span>
+            <span class="app-tag">Developer Documentation</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/guides/382-model-context-protocol--mcp--architecture-tutorial/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/guides/382-model-context-protocol--mcp--architecture-tutorial/index.html" class="app-item searchable-item" target="_blank" data-title="model context protocol mcp architecture tutorial" data-id="382" title="Open Model Context Protocol Mcp Architecture Tutorial in new tab">
         <div class="app-info">
           <h3>Model Context Protocol Mcp Architecture Tutorial</h3>
-          <p>src/webapps/guides/382-model-context-protocol--mcp--architecture-tutorial/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#382</span>
+            <span class="app-tag">Developer Documentation</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/guides/383-interactive-mcp-tutorial-----styl/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/guides/383-interactive-mcp-tutorial-----styl/index.html" class="app-item searchable-item" target="_blank" data-title="interactive mcp tutorial styl" data-id="383" title="Open Interactive Mcp Tutorial Styl in new tab">
         <div class="app-info">
           <h3>Interactive Mcp Tutorial Styl</h3>
-          <p>src/webapps/guides/383-interactive-mcp-tutorial-----styl/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#383</span>
+            <span class="app-tag">Developer Documentation</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/guides/384-interactive-mcp-architecture-diagram-generator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/guides/384-interactive-mcp-architecture-diagram-generator/index.html" class="app-item searchable-item" target="_blank" data-title="interactive mcp architecture diagram generator" data-id="384" title="Open Interactive Mcp Architecture Diagram Generator in new tab">
         <div class="app-info">
           <h3>Interactive Mcp Architecture Diagram Generator</h3>
-          <p>src/webapps/guides/384-interactive-mcp-architecture-diagram-generator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#384</span>
+            <span class="app-tag">Developer Documentation</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/guides/385-alternative-physics-perspectives/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/guides/385-alternative-physics-perspectives/index.html" class="app-item searchable-item" target="_blank" data-title="alternative physics perspectives" data-id="385" title="Open Alternative Physics Perspectives in new tab">
         <div class="app-info">
           <h3>Alternative Physics Perspectives</h3>
-          <p>src/webapps/guides/385-alternative-physics-perspectives/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#385</span>
+            <span class="app-tag">Developer Documentation</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/guides/387-mcp-architecture-diagram-generator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/guides/387-mcp-architecture-diagram-generator/index.html" class="app-item searchable-item" target="_blank" data-title="mcp architecture diagram generator" data-id="387" title="Open Mcp Architecture Diagram Generator in new tab">
         <div class="app-info">
           <h3>Mcp Architecture Diagram Generator</h3>
-          <p>src/webapps/guides/387-mcp-architecture-diagram-generator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#387</span>
+            <span class="app-tag">Developer Documentation</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/guides/388-mcp-4x/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/guides/388-mcp-4x/index.html" class="app-item searchable-item" target="_blank" data-title="mcp 4x" data-id="388" title="Open Mcp 4X in new tab">
         <div class="app-info">
           <h3>Mcp 4X</h3>
-          <p>src/webapps/guides/388-mcp-4x/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#388</span>
+            <span class="app-tag">Developer Documentation</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/guides/426-mcp-architecture-diagram-generator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/guides/426-mcp-architecture-diagram-generator/index.html" class="app-item searchable-item" target="_blank" data-title="mcp architecture diagram generator" data-id="426" title="Open Mcp Architecture Diagram Generator in new tab">
         <div class="app-info">
           <h3>Mcp Architecture Diagram Generator</h3>
-          <p>src/webapps/guides/426-mcp-architecture-diagram-generator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#426</span>
+            <span class="app-tag">Developer Documentation</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
+    </main>
+
+    <div id="no-results" class="no-results" hidden>
+      <h3>No applications match your search</h3>
+      <p>Try searching for a different keyword or application number.</p>
+      <button class="btn btn-secondary" id="btn-reset-search" style="margin-top: 0.75rem; padding: 0.45rem 0.9rem; border-radius: 6px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: #fff; cursor: pointer;">Clear Search</button>
     </div>
-    <div id="no-results" class="no-results">No applications match your search.</div>
     
+    <footer>
+      <p>WaifuAI Web Apps Suite &bull; Interactive Guides</p>
+      <p style="margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-muted);">
+        <a href="index.html">Web Apps Hub</a> &bull;
+        <a href="../">Docs Hub</a> &bull;
+        <a href="../research-books/index.html">Research Books</a> &bull;
+        <a href="../research-text/consolidated-research/index.html">Genesis Archive</a> &bull;
+        <a href="../research-text/web3-research/index.html">Web3 Research</a> &bull;
+        <a href="https://github.com/waifuai/waifuai.github.io" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </footer>
   </div>
   
   <script>
-    const searchInput = document.getElementById('search');
-    const items = document.querySelectorAll('.searchable-item');
-    const noResults = document.getElementById('no-results');
+    (function() {
+      const searchInput = document.getElementById('search');
+      const items = Array.from(document.querySelectorAll('.searchable-item'));
+      const counter = document.getElementById('search-counter');
+      const noResults = document.getElementById('no-results');
+      const resetBtn = document.getElementById('btn-reset-search');
+      const totalCount = items.length;
 
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().trim();
+      function filterApps() {
+        const query = searchInput.value.toLowerCase().trim();
         let visibleCount = 0;
 
         items.forEach(item => {
-          const text = item.textContent.toLowerCase();
-          if (text.includes(query)) {
-            item.style.display = '';
+          const title = (item.getAttribute('data-title') || '').toLowerCase();
+          const id = (item.getAttribute('data-id') || '').toLowerCase();
+          const text = title + ' ' + id;
+
+          if (!query || text.includes(query)) {
+            item.style.display = 'flex';
             visibleCount++;
           } else {
             item.style.display = 'none';
           }
         });
 
-        if (noResults) {
-          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        if (visibleCount === totalCount) {
+          counter.textContent = 'Showing all ' + totalCount + ' applications';
+        } else {
+          counter.textContent = 'Showing ' + visibleCount + ' of ' + totalCount + ' applications' + (query ? ' matching "' + query + '"' : '');
+        }
+
+        noResults.hidden = visibleCount > 0;
+      }
+
+      if (searchInput) {
+        let timeout;
+        searchInput.addEventListener('input', () => {
+          clearTimeout(timeout);
+          timeout = setTimeout(filterApps, 40);
+        });
+      }
+
+      // Hotkey listener: '/' to focus, 'Escape' to clear
+      window.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== searchInput) {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.select();
+        } else if (e.key === 'Escape' && (document.activeElement === searchInput || searchInput.value)) {
+          searchInput.value = '';
+          filterApps();
+          searchInput.blur();
         }
       });
-    }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          filterApps();
+          searchInput.focus();
+        });
+      }
+    })();
   </script>
 </body>
 </html>

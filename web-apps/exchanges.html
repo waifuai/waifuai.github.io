@@ -14,101 +14,209 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/web-apps/exchanges.html">
-<meta name="description" content="Collection of interactive Exchanges web apps and utilities.">
-<meta property="og:title" content="Exchanges">
-<meta property="og:description" content="Collection of interactive Exchanges web apps and utilities.">
+<meta name="description" content="Collection of 4 interactive Decentralized Exchanges web apps, visualizers, and simulation tools | WaifuAI">
+<meta property="og:title" content="Decentralized Exchanges (4 Apps) | WaifuAI Web Apps">
+<meta property="og:description" content="Collection of 4 interactive Decentralized Exchanges web apps and simulation sandboxes.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/web-apps/exchanges.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Exchanges">
-<meta name="twitter:description" content="Collection of interactive Exchanges web apps and utilities.">
+<meta name="twitter:title" content="Decentralized Exchanges (4 Apps) | WaifuAI Web Apps">
+<meta name="twitter:description" content="Collection of 4 interactive Decentralized Exchanges web apps and simulation sandboxes.">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>Exchanges | WaifuAI Web Apps</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Decentralized Exchanges (4 Apps) | WaifuAI Web Apps</title>
 <link rel="stylesheet" href="web-apps.css">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
   <div class="container">
-    <a href="index.html" class="back-link">&larr; Back to index</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="../">WaifuAI Docs</a>
+      <span class="sep">/</span>
+      <a href="index.html">Web Apps Suite</a>
+      <span class="sep">/</span>
+      <span aria-current="page">Decentralized Exchanges</span>
+    </nav>
 
     <header>
-      <h1>💱 Exchanges</h1>
-      <p>Decentralized exchange interfaces, token pools, swap simulators, and liquidity pools.</p>
+      <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+        <span class="badge badge-accent">DEX & Liquidity Pools</span>
+        <span class="badge">4 Interactive Apps</span>
+        <span class="badge" style="border-color: var(--success); color: var(--success);">100% Client-Side Native</span>
+      </div>
+      <h1>💱 Decentralized Exchanges</h1>
+      <p>Decentralized exchange mock interfaces, token pools, swap simulators, and liquidity pool architectures.</p>
+      <div class="links">
+        <a href="index.html">&larr; All Web App Suites</a>
+        <a href="../">🏠 Docs Hub</a>
+        <a href="../research-books/index.html">📚 Research Books</a>
+      </div>
     </header>
 
-    <div class="search-wrapper">
-      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input type="text" id="search" class="search-input" placeholder="Search 4 apps...">
+    <!-- Cross Hub Theory Bridge -->
+    <div class="callout-box">
+      <div class="callout-header">
+        <span class="badge badge-accent">🔬 Theory to Code Bridge</span>
+        <a href="../research-books/books/02-bonding_curve_token_interswap_stock_market_on_monero/index.html" class="callout-link">Read Volume 02 (Interswap AMM Stock Market) &rarr;</a>
+      </div>
+      <p style="margin: 0; color: var(--text-muted); font-size: 0.92rem; line-height: 1.55;">
+        These 4 applications prototype order book matching, tokenized barter systems, and portfolio performance tracking analyzed in Volume 02 and Volume 13 (Crypto LLM).
+      </p>
     </div>
 
-    <div class="app-list">
-      <a href="src/webapps/exchanges/051-trade-confirmation-galts-exchange.html" class="app-item searchable-item" target="_blank">
+    <!-- Search Section -->
+    <section aria-label="Search Applications">
+      <div class="search-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search" class="search-input" placeholder="Search 4 decentralized exchanges apps (press '/' to focus)..." aria-label="Search apps">
+      </div>
+
+      <div class="search-controls">
+        <div id="search-counter">Showing all 4 applications</div>
+        <div class="hotkey-hint">
+          <kbd>/</kbd> to search &bull; <kbd>Esc</kbd> to reset
+        </div>
+      </div>
+    </section>
+
+    <!-- App List -->
+    <main class="app-list" id="app-list" aria-label="Applications List">
+      <a href="src/webapps/exchanges/051-trade-confirmation-galts-exchange.html" class="app-item searchable-item" target="_blank" data-title="trade confirmation galts exchange" data-id="051" title="Open Trade Confirmation Galts Exchange in new tab">
         <div class="app-info">
           <h3>Trade Confirmation Galts Exchange</h3>
-          <p>src/webapps/exchanges/051-trade-confirmation-galts-exchange.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#051</span>
+            <span class="app-tag">DEX & Liquidity Pools</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/exchanges/052-galts-exchange-marketplace-tokenized-barter-system.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/exchanges/052-galts-exchange-marketplace-tokenized-barter-system.html" class="app-item searchable-item" target="_blank" data-title="galts exchange marketplace tokenized barter system" data-id="052" title="Open Galts Exchange Marketplace Tokenized Barter System in new tab">
         <div class="app-info">
           <h3>Galts Exchange Marketplace Tokenized Barter System</h3>
-          <p>src/webapps/exchanges/052-galts-exchange-marketplace-tokenized-barter-system.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#052</span>
+            <span class="app-tag">DEX & Liquidity Pools</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/exchanges/053-my-portfolio-galts-exchange.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/exchanges/053-my-portfolio-galts-exchange.html" class="app-item searchable-item" target="_blank" data-title="my portfolio galts exchange" data-id="053" title="Open My Portfolio Galts Exchange in new tab">
         <div class="app-info">
           <h3>My Portfolio Galts Exchange</h3>
-          <p>src/webapps/exchanges/053-my-portfolio-galts-exchange.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#053</span>
+            <span class="app-tag">DEX & Liquidity Pools</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/exchanges/054-portfolio-performance-chart-galts-exchange.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/exchanges/054-portfolio-performance-chart-galts-exchange.html" class="app-item searchable-item" target="_blank" data-title="portfolio performance chart galts exchange" data-id="054" title="Open Portfolio Performance Chart Galts Exchange in new tab">
         <div class="app-info">
           <h3>Portfolio Performance Chart Galts Exchange</h3>
-          <p>src/webapps/exchanges/054-portfolio-performance-chart-galts-exchange.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#054</span>
+            <span class="app-tag">DEX & Liquidity Pools</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
+    </main>
+
+    <div id="no-results" class="no-results" hidden>
+      <h3>No applications match your search</h3>
+      <p>Try searching for a different keyword or application number.</p>
+      <button class="btn btn-secondary" id="btn-reset-search" style="margin-top: 0.75rem; padding: 0.45rem 0.9rem; border-radius: 6px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: #fff; cursor: pointer;">Clear Search</button>
     </div>
-    <div id="no-results" class="no-results">No applications match your search.</div>
     
+    <footer>
+      <p>WaifuAI Web Apps Suite &bull; Decentralized Exchanges</p>
+      <p style="margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-muted);">
+        <a href="index.html">Web Apps Hub</a> &bull;
+        <a href="../">Docs Hub</a> &bull;
+        <a href="../research-books/index.html">Research Books</a> &bull;
+        <a href="../research-text/consolidated-research/index.html">Genesis Archive</a> &bull;
+        <a href="../research-text/web3-research/index.html">Web3 Research</a> &bull;
+        <a href="https://github.com/waifuai/waifuai.github.io" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </footer>
   </div>
   
   <script>
-    const searchInput = document.getElementById('search');
-    const items = document.querySelectorAll('.searchable-item');
-    const noResults = document.getElementById('no-results');
+    (function() {
+      const searchInput = document.getElementById('search');
+      const items = Array.from(document.querySelectorAll('.searchable-item'));
+      const counter = document.getElementById('search-counter');
+      const noResults = document.getElementById('no-results');
+      const resetBtn = document.getElementById('btn-reset-search');
+      const totalCount = items.length;
 
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().trim();
+      function filterApps() {
+        const query = searchInput.value.toLowerCase().trim();
         let visibleCount = 0;
 
         items.forEach(item => {
-          const text = item.textContent.toLowerCase();
-          if (text.includes(query)) {
-            item.style.display = '';
+          const title = (item.getAttribute('data-title') || '').toLowerCase();
+          const id = (item.getAttribute('data-id') || '').toLowerCase();
+          const text = title + ' ' + id;
+
+          if (!query || text.includes(query)) {
+            item.style.display = 'flex';
             visibleCount++;
           } else {
             item.style.display = 'none';
           }
         });
 
-        if (noResults) {
-          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        if (visibleCount === totalCount) {
+          counter.textContent = 'Showing all ' + totalCount + ' applications';
+        } else {
+          counter.textContent = 'Showing ' + visibleCount + ' of ' + totalCount + ' applications' + (query ? ' matching "' + query + '"' : '');
+        }
+
+        noResults.hidden = visibleCount > 0;
+      }
+
+      if (searchInput) {
+        let timeout;
+        searchInput.addEventListener('input', () => {
+          clearTimeout(timeout);
+          timeout = setTimeout(filterApps, 40);
+        });
+      }
+
+      // Hotkey listener: '/' to focus, 'Escape' to clear
+      window.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== searchInput) {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.select();
+        } else if (e.key === 'Escape' && (document.activeElement === searchInput || searchInput.value)) {
+          searchInput.value = '';
+          filterApps();
+          searchInput.blur();
         }
       });
-    }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          filterApps();
+          searchInput.focus();
+        });
+      }
+    })();
   </script>
 </body>
 </html>

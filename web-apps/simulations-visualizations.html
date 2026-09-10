@@ -14,444 +14,748 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/web-apps/simulations-visualizations.html">
-<meta name="description" content="Collection of interactive Simulations & Visualizations web apps and utilities.">
-<meta property="og:title" content="Simulations & Visualizations">
-<meta property="og:description" content="Collection of interactive Simulations & Visualizations web apps and utilities.">
+<meta name="description" content="Collection of 53 interactive Simulations & Visualizations web apps, visualizers, and simulation tools | WaifuAI">
+<meta property="og:title" content="Simulations & Visualizations (53 Apps) | WaifuAI Web Apps">
+<meta property="og:description" content="Collection of 53 interactive Simulations & Visualizations web apps and simulation sandboxes.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/web-apps/simulations-visualizations.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Simulations & Visualizations">
-<meta name="twitter:description" content="Collection of interactive Simulations & Visualizations web apps and utilities.">
+<meta name="twitter:title" content="Simulations & Visualizations (53 Apps) | WaifuAI Web Apps">
+<meta name="twitter:description" content="Collection of 53 interactive Simulations & Visualizations web apps and simulation sandboxes.">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>Simulations & Visualizations | WaifuAI Web Apps</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Simulations & Visualizations (53 Apps) | WaifuAI Web Apps</title>
 <link rel="stylesheet" href="web-apps.css">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
   <div class="container">
-    <a href="index.html" class="back-link">&larr; Back to index</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="../">WaifuAI Docs</a>
+      <span class="sep">/</span>
+      <a href="index.html">Web Apps Suite</a>
+      <span class="sep">/</span>
+      <span aria-current="page">Simulations & Visualizations</span>
+    </nav>
 
     <header>
+      <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+        <span class="badge badge-accent">Dynamics & RL Charts</span>
+        <span class="badge">53 Interactive Apps</span>
+        <span class="badge" style="border-color: var(--success); color: var(--success);">100% Client-Side Native</span>
+      </div>
       <h1>📊 Simulations & Visualizations</h1>
-      <p>Data graphing modules, economic simulations, interactive charts, and token system tools.</p>
+      <p>Economic system dynamics, transformer RL training visualizers, real-time function plotters, and token flow diagrams.</p>
+      <div class="links">
+        <a href="index.html">&larr; All Web App Suites</a>
+        <a href="../">🏠 Docs Hub</a>
+        <a href="../research-books/index.html">📚 Research Books</a>
+      </div>
     </header>
 
-    <div class="search-wrapper">
-      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input type="text" id="search" class="search-input" placeholder="Search 53 apps...">
+    <!-- Cross Hub Theory Bridge -->
+    <div class="callout-box">
+      <div class="callout-header">
+        <span class="badge badge-accent">🔬 Theory to Code Bridge</span>
+        <a href="../research-books/books/05-transformer_rl/index.html" class="callout-link">Read Volume 05 (Transformer RL) & Volume 12 (Physics) &rarr;</a>
+      </div>
+      <p style="margin: 0; color: var(--text-muted); font-size: 0.92rem; line-height: 1.55;">
+        These 53 interactive simulations visualize neural network dynamics, reinforcement learning policy curves, and decentralized physics mechanics established in Volumes 05 and 12.
+      </p>
     </div>
 
-    <div class="app-list">
-      <a href="src/webapps/simulations-visualizations/039-websim-fireworks-celebration.html" class="app-item searchable-item" target="_blank">
+    <!-- Search Section -->
+    <section aria-label="Search Applications">
+      <div class="search-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search" class="search-input" placeholder="Search 53 simulations & visualizations apps (press '/' to focus)..." aria-label="Search apps">
+      </div>
+
+      <div class="search-controls">
+        <div id="search-counter">Showing all 53 applications</div>
+        <div class="hotkey-hint">
+          <kbd>/</kbd> to search &bull; <kbd>Esc</kbd> to reset
+        </div>
+      </div>
+    </section>
+
+    <!-- App List -->
+    <main class="app-list" id="app-list" aria-label="Applications List">
+      <a href="src/webapps/simulations-visualizations/039-websim-fireworks-celebration.html" class="app-item searchable-item" target="_blank" data-title="websim fireworks celebration" data-id="039" title="Open Websim Fireworks Celebration in new tab">
         <div class="app-info">
           <h3>Websim Fireworks Celebration</h3>
-          <p>src/webapps/simulations-visualizations/039-websim-fireworks-celebration.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#039</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/055-techsim-twitter-where-tweets-generate-realities.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/055-techsim-twitter-where-tweets-generate-realities.html" class="app-item searchable-item" target="_blank" data-title="techsim twitter where tweets generate realities" data-id="055" title="Open Techsim Twitter Where Tweets Generate Realities in new tab">
         <div class="app-info">
           <h3>Techsim Twitter Where Tweets Generate Realities</h3>
-          <p>src/webapps/simulations-visualizations/055-techsim-twitter-where-tweets-generate-realities.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#055</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/056-websim-advanced-guide-htmx-streaming.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/056-websim-advanced-guide-htmx-streaming.html" class="app-item searchable-item" target="_blank" data-title="websim advanced guide htmx streaming" data-id="056" title="Open Websim Advanced Guide Htmx Streaming in new tab">
         <div class="app-info">
           <h3>Websim Advanced Guide Htmx Streaming</h3>
-          <p>src/webapps/simulations-visualizations/056-websim-advanced-guide-htmx-streaming.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#056</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/057-websim-advanced-guide-htmx-best-practices.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/057-websim-advanced-guide-htmx-best-practices.html" class="app-item searchable-item" target="_blank" data-title="websim advanced guide htmx best practices" data-id="057" title="Open Websim Advanced Guide Htmx Best Practices in new tab">
         <div class="app-info">
           <h3>Websim Advanced Guide Htmx Best Practices</h3>
-          <p>src/webapps/simulations-visualizations/057-websim-advanced-guide-htmx-best-practices.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#057</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/058-ceo-profit-predictor-battle.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/058-ceo-profit-predictor-battle.html" class="app-item searchable-item" target="_blank" data-title="ceo profit predictor battle" data-id="058" title="Open Ceo Profit Predictor Battle in new tab">
         <div class="app-info">
           <h3>Ceo Profit Predictor Battle</h3>
-          <p>src/webapps/simulations-visualizations/058-ceo-profit-predictor-battle.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#058</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/059-ceo-profit-predictor-battle.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/059-ceo-profit-predictor-battle.html" class="app-item searchable-item" target="_blank" data-title="ceo profit predictor battle" data-id="059" title="Open Ceo Profit Predictor Battle in new tab">
         <div class="app-info">
           <h3>Ceo Profit Predictor Battle</h3>
-          <p>src/webapps/simulations-visualizations/059-ceo-profit-predictor-battle.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#059</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/079-ceo-profit-maximizer-simulation.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/079-ceo-profit-maximizer-simulation.html" class="app-item searchable-item" target="_blank" data-title="ceo profit maximizer simulation" data-id="079" title="Open Ceo Profit Maximizer Simulation in new tab">
         <div class="app-info">
           <h3>Ceo Profit Maximizer Simulation</h3>
-          <p>src/webapps/simulations-visualizations/079-ceo-profit-maximizer-simulation.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#079</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/083-techcorp-strategic-analysis-2d-plot.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/083-techcorp-strategic-analysis-2d-plot.html" class="app-item searchable-item" target="_blank" data-title="techcorp strategic analysis 2d plot" data-id="083" title="Open Techcorp Strategic Analysis 2D Plot in new tab">
         <div class="app-info">
           <h3>Techcorp Strategic Analysis 2D Plot</h3>
-          <p>src/webapps/simulations-visualizations/083-techcorp-strategic-analysis-2d-plot.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#083</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/084-hackersim-autonomous-hacker-terminal.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/084-hackersim-autonomous-hacker-terminal.html" class="app-item searchable-item" target="_blank" data-title="hackersim autonomous hacker terminal" data-id="084" title="Open Hackersim Autonomous Hacker Terminal in new tab">
         <div class="app-info">
           <h3>Hackersim Autonomous Hacker Terminal</h3>
-          <p>src/webapps/simulations-visualizations/084-hackersim-autonomous-hacker-terminal.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#084</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/089-zerocapital-network-global-network-view.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/089-zerocapital-network-global-network-view.html" class="app-item searchable-item" target="_blank" data-title="zerocapital network global network view" data-id="089" title="Open Zerocapital Network Global Network View in new tab">
         <div class="app-info">
           <h3>Zerocapital Network Global Network View</h3>
-          <p>src/webapps/simulations-visualizations/089-zerocapital-network-global-network-view.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#089</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/259-sleep-time-calculator.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/259-sleep-time-calculator.html" class="app-item searchable-item" target="_blank" data-title="sleep time calculator" data-id="259" title="Open Sleep Time Calculator in new tab">
         <div class="app-info">
           <h3>Sleep Time Calculator</h3>
-          <p>src/webapps/simulations-visualizations/259-sleep-time-calculator.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#259</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/284-commission-simulation.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/284-commission-simulation.html" class="app-item searchable-item" target="_blank" data-title="commission simulation" data-id="284" title="Open Commission Simulation in new tab">
         <div class="app-info">
           <h3>Commission Simulation</h3>
-          <p>src/webapps/simulations-visualizations/284-commission-simulation.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#284</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/285-interactive-algorithm-proof-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/285-interactive-algorithm-proof-visualization.html" class="app-item searchable-item" target="_blank" data-title="interactive algorithm proof visualization" data-id="285" title="Open Interactive Algorithm Proof Visualization in new tab">
         <div class="app-info">
           <h3>Interactive Algorithm Proof Visualization</h3>
-          <p>src/webapps/simulations-visualizations/285-interactive-algorithm-proof-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#285</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/287-interactive-parking-rectangle-algorithm-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/287-interactive-parking-rectangle-algorithm-visualization.html" class="app-item searchable-item" target="_blank" data-title="interactive parking rectangle algorithm visualization" data-id="287" title="Open Interactive Parking Rectangle Algorithm Visualization in new tab">
         <div class="app-info">
           <h3>Interactive Parking Rectangle Algorithm Visualization</h3>
-          <p>src/webapps/simulations-visualizations/287-interactive-parking-rectangle-algorithm-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#287</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/288-the-tokenized-economy-a-mathematical-framework.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/288-the-tokenized-economy-a-mathematical-framework.html" class="app-item searchable-item" target="_blank" data-title="the tokenized economy a mathematical framework" data-id="288" title="Open The Tokenized Economy A Mathematical Framework in new tab">
         <div class="app-info">
           <h3>The Tokenized Economy A Mathematical Framework</h3>
-          <p>src/webapps/simulations-visualizations/288-the-tokenized-economy-a-mathematical-framework.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#288</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/289-ransoc-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/289-ransoc-visualization.html" class="app-item searchable-item" target="_blank" data-title="ransoc visualization" data-id="289" title="Open Ransoc Visualization in new tab">
         <div class="app-info">
           <h3>Ransoc Visualization</h3>
-          <p>src/webapps/simulations-visualizations/289-ransoc-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#289</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/290-ransoc-space-coverage-theorem-visualizer.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/290-ransoc-space-coverage-theorem-visualizer.html" class="app-item searchable-item" target="_blank" data-title="ransoc space coverage theorem visualizer" data-id="290" title="Open Ransoc Space Coverage Theorem Visualizer in new tab">
         <div class="app-info">
           <h3>Ransoc Space Coverage Theorem Visualizer</h3>
-          <p>src/webapps/simulations-visualizations/290-ransoc-space-coverage-theorem-visualizer.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#290</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/291-ransoc-space-coverage-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/291-ransoc-space-coverage-visualization.html" class="app-item searchable-item" target="_blank" data-title="ransoc space coverage visualization" data-id="291" title="Open Ransoc Space Coverage Visualization in new tab">
         <div class="app-info">
           <h3>Ransoc Space Coverage Visualization</h3>
-          <p>src/webapps/simulations-visualizations/291-ransoc-space-coverage-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#291</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/292-proof-of-ransocs-full-space-coverage-property.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/292-proof-of-ransocs-full-space-coverage-property.html" class="app-item searchable-item" target="_blank" data-title="proof of ransocs full space coverage property" data-id="292" title="Open Proof Of Ransocs Full Space Coverage Property in new tab">
         <div class="app-info">
           <h3>Proof Of Ransocs Full Space Coverage Property</h3>
-          <p>src/webapps/simulations-visualizations/292-proof-of-ransocs-full-space-coverage-property.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#292</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/293-ransoc-space-coverage-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/293-ransoc-space-coverage-visualization.html" class="app-item searchable-item" target="_blank" data-title="ransoc space coverage visualization" data-id="293" title="Open Ransoc Space Coverage Visualization in new tab">
         <div class="app-info">
           <h3>Ransoc Space Coverage Visualization</h3>
-          <p>src/webapps/simulations-visualizations/293-ransoc-space-coverage-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#293</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/294-ransoc-space-coverage-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/294-ransoc-space-coverage-visualization.html" class="app-item searchable-item" target="_blank" data-title="ransoc space coverage visualization" data-id="294" title="Open Ransoc Space Coverage Visualization in new tab">
         <div class="app-info">
           <h3>Ransoc Space Coverage Visualization</h3>
-          <p>src/webapps/simulations-visualizations/294-ransoc-space-coverage-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#294</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/295-interactive-social-network-simulation.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/295-interactive-social-network-simulation.html" class="app-item searchable-item" target="_blank" data-title="interactive social network simulation" data-id="295" title="Open Interactive Social Network Simulation in new tab">
         <div class="app-info">
           <h3>Interactive Social Network Simulation</h3>
-          <p>src/webapps/simulations-visualizations/295-interactive-social-network-simulation.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#295</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/296-relative-motion-system-analysis.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/296-relative-motion-system-analysis.html" class="app-item searchable-item" target="_blank" data-title="relative motion system analysis" data-id="296" title="Open Relative Motion System Analysis in new tab">
         <div class="app-info">
           <h3>Relative Motion System Analysis</h3>
-          <p>src/webapps/simulations-visualizations/296-relative-motion-system-analysis.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#296</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/297-interactive-contour-lines-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/297-interactive-contour-lines-visualization.html" class="app-item searchable-item" target="_blank" data-title="interactive contour lines visualization" data-id="297" title="Open Interactive Contour Lines Visualization in new tab">
         <div class="app-info">
           <h3>Interactive Contour Lines Visualization</h3>
-          <p>src/webapps/simulations-visualizations/297-interactive-contour-lines-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#297</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/298-contour-lines.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/298-contour-lines.html" class="app-item searchable-item" target="_blank" data-title="contour lines" data-id="298" title="Open Contour Lines in new tab">
         <div class="app-info">
           <h3>Contour Lines</h3>
-          <p>src/webapps/simulations-visualizations/298-contour-lines.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#298</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/299-personality-matching-system-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/299-personality-matching-system-visualization.html" class="app-item searchable-item" target="_blank" data-title="personality matching system visualization" data-id="299" title="Open Personality Matching System Visualization in new tab">
         <div class="app-info">
           <h3>Personality Matching System Visualization</h3>
-          <p>src/webapps/simulations-visualizations/299-personality-matching-system-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#299</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/300-interactive-algorithm-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/300-interactive-algorithm-visualization.html" class="app-item searchable-item" target="_blank" data-title="interactive algorithm visualization" data-id="300" title="Open Interactive Algorithm Visualization in new tab">
         <div class="app-info">
           <h3>Interactive Algorithm Visualization</h3>
-          <p>src/webapps/simulations-visualizations/300-interactive-algorithm-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#300</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/301-parking-rectangle-algorithm-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/301-parking-rectangle-algorithm-visualization.html" class="app-item searchable-item" target="_blank" data-title="parking rectangle algorithm visualization" data-id="301" title="Open Parking Rectangle Algorithm Visualization in new tab">
         <div class="app-info">
           <h3>Parking Rectangle Algorithm Visualization</h3>
-          <p>src/webapps/simulations-visualizations/301-parking-rectangle-algorithm-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#301</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/302-parking-rectangle-algorithm-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/302-parking-rectangle-algorithm-visualization.html" class="app-item searchable-item" target="_blank" data-title="parking rectangle algorithm visualization" data-id="302" title="Open Parking Rectangle Algorithm Visualization in new tab">
         <div class="app-info">
           <h3>Parking Rectangle Algorithm Visualization</h3>
-          <p>src/webapps/simulations-visualizations/302-parking-rectangle-algorithm-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#302</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/303-ransoc-proof-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/303-ransoc-proof-visualization.html" class="app-item searchable-item" target="_blank" data-title="ransoc proof visualization" data-id="303" title="Open Ransoc Proof Visualization in new tab">
         <div class="app-info">
           <h3>Ransoc Proof Visualization</h3>
-          <p>src/webapps/simulations-visualizations/303-ransoc-proof-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#303</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/370-economic-entropy-model-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/370-economic-entropy-model-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="economic entropy model simulator" data-id="370" title="Open Economic Entropy Model Simulator in new tab">
         <div class="app-info">
           <h3>Economic Entropy Model Simulator</h3>
-          <p>src/webapps/simulations-visualizations/370-economic-entropy-model-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#370</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/401-waifu-chat-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/401-waifu-chat-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="waifu chat simulator" data-id="401" title="Open Waifu Chat Simulator in new tab">
         <div class="app-info">
           <h3>Waifu Chat Simulator</h3>
-          <p>src/webapps/simulations-visualizations/401-waifu-chat-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#401</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/402-airdrop-strategy-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/402-airdrop-strategy-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="airdrop strategy simulator" data-id="402" title="Open Airdrop Strategy Simulator in new tab">
         <div class="app-info">
           <h3>Airdrop Strategy Simulator</h3>
-          <p>src/webapps/simulations-visualizations/402-airdrop-strategy-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#402</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/403-airdrop-strategy-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/403-airdrop-strategy-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="airdrop strategy simulator" data-id="403" title="Open Airdrop Strategy Simulator in new tab">
         <div class="app-info">
           <h3>Airdrop Strategy Simulator</h3>
-          <p>src/webapps/simulations-visualizations/403-airdrop-strategy-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#403</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/404-token-economy-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/404-token-economy-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="token economy simulator" data-id="404" title="Open Token Economy Simulator in new tab">
         <div class="app-info">
           <h3>Token Economy Simulator</h3>
-          <p>src/webapps/simulations-visualizations/404-token-economy-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#404</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/405-token-dynamics-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/405-token-dynamics-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="token dynamics simulator" data-id="405" title="Open Token Dynamics Simulator in new tab">
         <div class="app-info">
           <h3>Token Dynamics Simulator</h3>
-          <p>src/webapps/simulations-visualizations/405-token-dynamics-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#405</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/406-token-economy-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/406-token-economy-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="token economy simulator" data-id="406" title="Open Token Economy Simulator in new tab">
         <div class="app-info">
           <h3>Token Economy Simulator</h3>
-          <p>src/webapps/simulations-visualizations/406-token-economy-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#406</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/407-token-economy-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/407-token-economy-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="token economy simulator" data-id="407" title="Open Token Economy Simulator in new tab">
         <div class="app-info">
           <h3>Token Economy Simulator</h3>
-          <p>src/webapps/simulations-visualizations/407-token-economy-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#407</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/408-token-airdrop-strategy-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/408-token-airdrop-strategy-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="token airdrop strategy simulator" data-id="408" title="Open Token Airdrop Strategy Simulator in new tab">
         <div class="app-info">
           <h3>Token Airdrop Strategy Simulator</h3>
-          <p>src/webapps/simulations-visualizations/408-token-airdrop-strategy-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#408</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/410-token-airdrop-strategy-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/410-token-airdrop-strategy-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="token airdrop strategy simulator" data-id="410" title="Open Token Airdrop Strategy Simulator in new tab">
         <div class="app-info">
           <h3>Token Airdrop Strategy Simulator</h3>
-          <p>src/webapps/simulations-visualizations/410-token-airdrop-strategy-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#410</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/411-crypto-airdrop-strategy-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/411-crypto-airdrop-strategy-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="crypto airdrop strategy simulator" data-id="411" title="Open Crypto Airdrop Strategy Simulator in new tab">
         <div class="app-info">
           <h3>Crypto Airdrop Strategy Simulator</h3>
-          <p>src/webapps/simulations-visualizations/411-crypto-airdrop-strategy-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#411</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/413-ai-waifu-chat-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/413-ai-waifu-chat-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="ai waifu chat simulator" data-id="413" title="Open Ai Waifu Chat Simulator in new tab">
         <div class="app-info">
           <h3>Ai Waifu Chat Simulator</h3>
-          <p>src/webapps/simulations-visualizations/413-ai-waifu-chat-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#413</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/414-ai-waifu-chat-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/414-ai-waifu-chat-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="ai waifu chat simulator" data-id="414" title="Open Ai Waifu Chat Simulator in new tab">
         <div class="app-info">
           <h3>Ai Waifu Chat Simulator</h3>
-          <p>src/webapps/simulations-visualizations/414-ai-waifu-chat-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#414</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/424-solana-dex-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/424-solana-dex-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="solana dex simulator" data-id="424" title="Open Solana Dex Simulator in new tab">
         <div class="app-info">
           <h3>Solana Dex Simulator</h3>
-          <p>src/webapps/simulations-visualizations/424-solana-dex-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#424</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/425-quantum-circuit-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/425-quantum-circuit-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="quantum circuit simulator" data-id="425" title="Open Quantum Circuit Simulator in new tab">
         <div class="app-info">
           <h3>Quantum Circuit Simulator</h3>
-          <p>src/webapps/simulations-visualizations/425-quantum-circuit-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#425</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/429-ai-commission-rate-optimization-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/429-ai-commission-rate-optimization-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="ai commission rate optimization simulator" data-id="429" title="Open Ai Commission Rate Optimization Simulator in new tab">
         <div class="app-info">
           <h3>Ai Commission Rate Optimization Simulator</h3>
-          <p>src/webapps/simulations-visualizations/429-ai-commission-rate-optimization-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#429</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/430-ai-waifu-chat-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/430-ai-waifu-chat-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="ai waifu chat simulator" data-id="430" title="Open Ai Waifu Chat Simulator in new tab">
         <div class="app-info">
           <h3>Ai Waifu Chat Simulator</h3>
-          <p>src/webapps/simulations-visualizations/430-ai-waifu-chat-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#430</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/431-ai-waifu-chat-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/431-ai-waifu-chat-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="ai waifu chat simulator" data-id="431" title="Open Ai Waifu Chat Simulator in new tab">
         <div class="app-info">
           <h3>Ai Waifu Chat Simulator</h3>
-          <p>src/webapps/simulations-visualizations/431-ai-waifu-chat-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#431</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/435-economic-entropy-model-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/435-economic-entropy-model-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="economic entropy model simulator" data-id="435" title="Open Economic Entropy Model Simulator in new tab">
         <div class="app-info">
           <h3>Economic Entropy Model Simulator</h3>
-          <p>src/webapps/simulations-visualizations/435-economic-entropy-model-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#435</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/444-solana-dex-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/444-solana-dex-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="solana dex simulator" data-id="444" title="Open Solana Dex Simulator in new tab">
         <div class="app-info">
           <h3>Solana Dex Simulator</h3>
-          <p>src/webapps/simulations-visualizations/444-solana-dex-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#444</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/445-token-airdrop-strategy-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/445-token-airdrop-strategy-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="token airdrop strategy simulator" data-id="445" title="Open Token Airdrop Strategy Simulator in new tab">
         <div class="app-info">
           <h3>Token Airdrop Strategy Simulator</h3>
-          <p>src/webapps/simulations-visualizations/445-token-airdrop-strategy-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#445</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/446-token-economy-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/446-token-economy-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="token economy simulator" data-id="446" title="Open Token Economy Simulator in new tab">
         <div class="app-info">
           <h3>Token Economy Simulator</h3>
-          <p>src/webapps/simulations-visualizations/446-token-economy-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#446</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/simulations-visualizations/450-waifu-chat-simulator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/simulations-visualizations/450-waifu-chat-simulator/index.html" class="app-item searchable-item" target="_blank" data-title="waifu chat simulator" data-id="450" title="Open Waifu Chat Simulator in new tab">
         <div class="app-info">
           <h3>Waifu Chat Simulator</h3>
-          <p>src/webapps/simulations-visualizations/450-waifu-chat-simulator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#450</span>
+            <span class="app-tag">Dynamics & RL Charts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
+    </main>
+
+    <div id="no-results" class="no-results" hidden>
+      <h3>No applications match your search</h3>
+      <p>Try searching for a different keyword or application number.</p>
+      <button class="btn btn-secondary" id="btn-reset-search" style="margin-top: 0.75rem; padding: 0.45rem 0.9rem; border-radius: 6px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: #fff; cursor: pointer;">Clear Search</button>
     </div>
-    <div id="no-results" class="no-results">No applications match your search.</div>
     
+    <footer>
+      <p>WaifuAI Web Apps Suite &bull; Simulations & Visualizations</p>
+      <p style="margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-muted);">
+        <a href="index.html">Web Apps Hub</a> &bull;
+        <a href="../">Docs Hub</a> &bull;
+        <a href="../research-books/index.html">Research Books</a> &bull;
+        <a href="../research-text/consolidated-research/index.html">Genesis Archive</a> &bull;
+        <a href="../research-text/web3-research/index.html">Web3 Research</a> &bull;
+        <a href="https://github.com/waifuai/waifuai.github.io" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </footer>
   </div>
   
   <script>
-    const searchInput = document.getElementById('search');
-    const items = document.querySelectorAll('.searchable-item');
-    const noResults = document.getElementById('no-results');
+    (function() {
+      const searchInput = document.getElementById('search');
+      const items = Array.from(document.querySelectorAll('.searchable-item'));
+      const counter = document.getElementById('search-counter');
+      const noResults = document.getElementById('no-results');
+      const resetBtn = document.getElementById('btn-reset-search');
+      const totalCount = items.length;
 
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().trim();
+      function filterApps() {
+        const query = searchInput.value.toLowerCase().trim();
         let visibleCount = 0;
 
         items.forEach(item => {
-          const text = item.textContent.toLowerCase();
-          if (text.includes(query)) {
-            item.style.display = '';
+          const title = (item.getAttribute('data-title') || '').toLowerCase();
+          const id = (item.getAttribute('data-id') || '').toLowerCase();
+          const text = title + ' ' + id;
+
+          if (!query || text.includes(query)) {
+            item.style.display = 'flex';
             visibleCount++;
           } else {
             item.style.display = 'none';
           }
         });
 
-        if (noResults) {
-          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        if (visibleCount === totalCount) {
+          counter.textContent = 'Showing all ' + totalCount + ' applications';
+        } else {
+          counter.textContent = 'Showing ' + visibleCount + ' of ' + totalCount + ' applications' + (query ? ' matching "' + query + '"' : '');
+        }
+
+        noResults.hidden = visibleCount > 0;
+      }
+
+      if (searchInput) {
+        let timeout;
+        searchInput.addEventListener('input', () => {
+          clearTimeout(timeout);
+          timeout = setTimeout(filterApps, 40);
+        });
+      }
+
+      // Hotkey listener: '/' to focus, 'Escape' to clear
+      window.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== searchInput) {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.select();
+        } else if (e.key === 'Escape' && (document.activeElement === searchInput || searchInput.value)) {
+          searchInput.value = '';
+          filterApps();
+          searchInput.blur();
         }
       });
-    }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          filterApps();
+          searchInput.focus();
+        });
+      }
+    })();
   </script>
 </body>
 </html>

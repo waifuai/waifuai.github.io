@@ -102,7 +102,7 @@
     {
       "@type": "Book",
       "name": "Volume 10: String Theory Industries",
-      "url": "https://waifuai.github.io/research-books/books/10-string_theory_industries/index.html",
+      "url": "https://waifuai.github.io/research-books/books/10-string_theory_industration/index.html",
       "numberOfPages": 47
     },
     {
@@ -137,15 +137,15 @@
 /* Library Specific Styles */
 .book-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.75rem;
   margin-top: 1.5rem;
 }
 
 .book-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -162,19 +162,51 @@
   right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
-  opacity: 0.3;
-  transition: opacity 0.25s ease;
+  opacity: 0.4;
+  transition: opacity 0.25s ease, height 0.25s ease;
+}
+
+/* Track-Themed Accent Lighting */
+.book-card[data-track="quantum-physics"]::before {
+  background: linear-gradient(90deg, #c084fc, #a855f7);
+}
+.book-card[data-track="quantum-physics"]:hover {
+  border-color: rgba(192, 132, 252, 0.6);
+  box-shadow: 0 12px 32px rgba(192, 132, 252, 0.16);
+}
+
+.book-card[data-track="ai-agents"]::before {
+  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+}
+.book-card[data-track="ai-agents"]:hover {
+  border-color: rgba(96, 165, 250, 0.6);
+  box-shadow: 0 12px 32px rgba(96, 165, 250, 0.16);
+}
+
+.book-card[data-track="web3-crypto"]::before {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+.book-card[data-track="web3-crypto"]:hover {
+  border-color: rgba(16, 185, 129, 0.6);
+  box-shadow: 0 12px 32px rgba(16, 185, 129, 0.16);
+}
+
+.book-card[data-track="vr-interactive"]::before {
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+}
+.book-card[data-track="vr-interactive"]:hover {
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 12px 32px rgba(245, 158, 11, 0.16);
 }
 
 .book-card:hover {
-  border-color: var(--accent);
   background: var(--card-hover);
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(255, 107, 157, 0.12);
 }
 
 .book-card:hover::before {
   opacity: 1;
+  height: 4px;
 }
 
 .book-top {
@@ -290,7 +322,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 .book-tag {
@@ -301,6 +333,139 @@
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
   color: var(--text-muted);
+}
+
+/* Companion App Link Pill */
+.companion-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed var(--border-light);
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 0.85rem;
+  transition: all 0.2s ease;
+}
+.companion-bar:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--accent3);
+  color: var(--text);
+  text-decoration: none;
+  transform: translateX(2px);
+}
+.companion-bar strong {
+  color: var(--accent3);
+}
+.companion-arrow {
+  margin-left: auto;
+  opacity: 0.6;
+  transition: transform 0.2s ease;
+}
+.companion-bar:hover .companion-arrow {
+  transform: translateX(3px);
+  opacity: 1;
+}
+
+/* Drawer Toggle */
+.drawer-trigger-wrap {
+  margin-bottom: 0.75rem;
+}
+
+.btn-drawer-toggle {
+  width: 100%;
+  justify-content: space-between;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-drawer-toggle:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  border-color: var(--border-light);
+}
+.drawer-caret {
+  transition: transform 0.2s ease;
+}
+.btn-drawer-toggle[aria-expanded="true"] .drawer-caret {
+  transform: rotate(180deg);
+}
+
+/* Chapters Drawer */
+.chapters-drawer {
+  background: rgba(10, 14, 24, 0.7);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 0.85rem;
+  animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.drawer-header {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent2);
+  margin-bottom: 0.5rem;
+}
+.chapters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+.chapter-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.78rem;
+  color: var(--text);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+.chapter-chip:hover {
+  background: rgba(255, 107, 157, 0.12);
+  border-color: rgba(255, 107, 157, 0.35);
+  color: #fff;
+  text-decoration: none;
+  transform: translateX(2px);
+}
+.ch-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(255, 107, 157, 0.1);
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+}
+.ch-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chapter-more {
+  justify-content: center;
+  color: var(--accent3);
+  font-weight: 600;
 }
 
 .book-actions {
@@ -361,14 +526,57 @@
   background: transparent;
   border: 1px dashed var(--border-light);
   color: var(--text-muted);
-  font-size: 0.78rem;
-  padding: 0.45rem 0.65rem;
 }
 
-.btn-ghost:hover {
-  border-color: var(--text-muted);
+/* Controls bar: sort + hotkey hint */
+.controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.sort-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.sort-select {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
   color: var(--text);
-  text-decoration: none;
+  font-size: 0.82rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+.sort-select:focus {
+  border-color: var(--accent);
+}
+
+.hotkey-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+kbd {
+  display: inline-block;
+  padding: 0.15rem 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  color: var(--text);
 }
 
 /* Empty search state */
@@ -386,7 +594,7 @@
   margin-bottom: 0.5rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .book-grid {
     grid-template-columns: 1fr;
   }
@@ -395,6 +603,10 @@
   }
   .btn {
     width: 100%;
+  }
+  .controls-bar {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 </style>
@@ -419,17 +631,18 @@
       <a href="../">🏠 Docs Hub</a>
       <a href="../research-text/consolidated-research/index.html">📜 Genesis Archive (150+ Papers)</a>
       <a href="../research-text/web3-research/index.html" class="link-app">⚡ Web3 Research Hub (Live Base L2)</a>
+      <a href="../web-apps/index.html">🎮 Web Apps Portal (449+ Apps)</a>
     </div>
   </header>
 
   <!-- Cross Hub Connection Callout -->
   <div class="callout-box" style="margin: 0 0 2rem; padding: 1.25rem 1.5rem; background: linear-gradient(135deg, rgba(255, 107, 157, 0.08), rgba(96, 165, 250, 0.08)); border: 1px solid var(--border-light); border-radius: 10px;">
     <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
-      <span class="badge badge-accent">🔗 Theoretical Foundations &bull; Production Bridges</span>
+      <span class="badge badge-accent">🔗 Theoretical Foundations &bull; Interactive Sandbox Bridges</span>
       <a href="../research-text/web3-research/00-evolution-and-synthesis.html" style="font-weight: 600; font-size: 0.9rem; color: var(--accent3);">Read Evolution &amp; Production Synthesis &rarr;</a>
     </div>
     <p style="margin: 0; color: var(--text-muted); font-size: 0.92rem; line-height: 1.55;">
-      These 14 academic volumes represent the foundational theoretical corpus of WaifuAI. For the concrete mathematical papers and on-chain implementations, see the <a href="../research-text/consolidated-research/index.html" style="color: var(--accent2); font-weight: 500;">Genesis Research Archive</a> and the active <a href="../research-text/web3-research/index.html" style="color: var(--accent); font-weight: 500;">Web3 Research Hub (Uniswap v4 on Base)</a>.
+      These 14 academic volumes represent the foundational theoretical corpus of WaifuAI. For concrete mathematical papers and on-chain implementations, see the <a href="../research-text/consolidated-research/index.html" style="color: var(--accent2); font-weight: 500;">Genesis Research Archive</a> and the active <a href="../research-text/web3-research/index.html" style="color: var(--accent); font-weight: 500;">Web3 Research Hub (Uniswap v4 on Base)</a>. To run interactive simulations of these models in your browser, explore the <a href="../web-apps/index.html" style="color: var(--accent3); font-weight: 500;">Web Apps Collection (449 apps)</a>.
     </p>
   </div>
 
@@ -456,9 +669,8 @@
   <!-- Search and Category Filters -->
   <section aria-label="Book Search and Filtering">
     <div class="search-box">
-      <input type="text" id="library-search" placeholder="Search 14 volumes by title, topic, algorithm, or keyword (e.g., 'Monero', 'Quantum', 'Transformer', 'WebVR')..." aria-label="Search research books">
+      <input type="text" id="library-search" placeholder="Search 14 volumes by title, topic, algorithm, or keyword (press '/' to focus)..." aria-label="Search research books">
     </div>
-    <div class="search-meta" id="search-counter" aria-live="polite">Showing all 14 published volumes</div>
 
     <div class="filter-chips" role="tablist" aria-label="Filter books by research track">
       <button class="chip active" data-track="all" role="tab" aria-selected="true">All Tracks (14)</button>
@@ -467,13 +679,31 @@
       <button class="chip" data-track="web3-crypto" role="tab" aria-selected="false">⛓️ Web3 &amp; Cryptoeconomics (2)</button>
       <button class="chip" data-track="vr-interactive" role="tab" aria-selected="false">🥽 VR &amp; Interactive Systems (3)</button>
     </div>
+
+    <div class="controls-bar">
+      <div class="search-meta" id="search-counter" aria-live="polite">Showing all 14 published volumes</div>
+      <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+        <div class="sort-group">
+          <label for="sort-select">Sort:</label>
+          <select id="sort-select" class="sort-select" aria-label="Sort books catalog">
+            <option value="vol-asc">Volume Order (01 &rarr; 14)</option>
+            <option value="vol-desc">Volume Order (14 &rarr; 01)</option>
+            <option value="docs-desc">Depth (Most Documents)</option>
+            <option value="title-asc">Title (A &rarr; Z)</option>
+          </select>
+        </div>
+        <div class="hotkey-hint">
+          <kbd>/</kbd> to search &bull; <kbd>Esc</kbd> to reset
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Books Catalog Grid -->
   <main class="book-grid" id="book-grid" aria-label="Research Books Catalog">
 
-    <!-- Volume 01 -->
-    <article class="book-card" data-track="quantum-physics" data-keywords="quantum biology photosynthesis fret coherence entanglement dna tunneling enzymes photoreceptor retina biophysics">
+    <!-- VOL 01 -->
+    <article class="book-card" data-track="quantum-physics" data-vol="1" data-docs="44" data-title="quantum biology" data-keywords="quantum biology photosynthesis fret coherence entanglement dna tunneling enzymes photoreceptor retina biophysics">
       <div class="book-top">
         <span class="vol-badge">VOL 01</span>
         <span class="track-badge track-quantum">Quantum &amp; Physics</span>
@@ -482,29 +712,88 @@
       <div class="book-subtitle">Quantum phenomena in cellular processes, biomolecular interactions &amp; life functions</div>
       <div class="book-stats">
         <span>📖 7 Chapters</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>📄 44 Documents</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>🧪 Open Access</span>
       </div>
-      <p class="book-desc">
-        Explores the quantum-classical boundary in biological systems, investigating quantum coherence, superposition, and entanglement in photosynthesis, enzyme catalysis, DNA mutation, and photoreceptor dynamics.
-      </p>
+      <p class="book-desc">Explores the quantum-classical boundary in biological systems, investigating quantum coherence, superposition, and entanglement in photosynthesis, enzyme catalysis, DNA mutation, and photoreceptor dynamics.</p>
+      
       <div class="book-tags">
         <span class="book-tag">Photosynthesis FRET</span>
         <span class="book-tag">Quantum Coherence</span>
         <span class="book-tag">Retinal Isomerization</span>
         <span class="book-tag">DNA Tunneling</span>
       </div>
+
+      
+    <a href="../web-apps/quantum-consciousness.html" class="companion-bar" title="Explore interactive web simulations for Quantum Biology">
+      <span class="companion-icon">🔮</span>
+      <span class="companion-text">Interactive: <strong>Quantum Consciousness Apps (180)</strong></span>
+      <span class="companion-arrow">&rarr;</span>
+    </a>
+  
+
+      <div class="drawer-trigger-wrap">
+        <button class="btn btn-ghost btn-drawer-toggle" type="button" aria-expanded="false" aria-controls="drawer-01">
+          <span>📑 Peek Chapters (7)</span>
+          <span class="drawer-caret">▾</span>
+        </button>
+      </div>
+
+      
+      <div class="chapters-drawer" id="drawer-01" hidden>
+        <div class="drawer-header">Key Chapters &bull; 7 Sections</div>
+        <div class="chapters-list">
+          
+            <a class="chapter-chip" href="books/01-quantum_biology/chapter_1_subsection_0.html">
+              <span class="ch-num">Ch 1</span>
+              <span class="ch-title">Chapter 1</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/01-quantum_biology/chapter_2_subsection_0.html">
+              <span class="ch-num">Ch 2</span>
+              <span class="ch-title">Chapter 2</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/01-quantum_biology/chapter_3_subsection_1.html">
+              <span class="ch-num">Ch 3</span>
+              <span class="ch-title">The Photoreceptor Complex: Structure and Function</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/01-quantum_biology/chapter_4_subsection_0.html">
+              <span class="ch-num">Ch 4</span>
+              <span class="ch-title">Chapter 4</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/01-quantum_biology/chapter_5_subsection_0.html">
+              <span class="ch-num">Ch 5</span>
+              <span class="ch-title">Chapter 5</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/01-quantum_biology/chapter_6_subsection_0.html">
+              <span class="ch-num">Ch 6</span>
+              <span class="ch-title">Chapter 6</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/01-quantum_biology/chapter_7_subsection_0.html">
+              <span class="ch-num">Ch 7</span>
+              <span class="ch-title">Chapter 7</span>
+            </a>
+          
+          
+        </div>
+      </div>
+  
+
       <div class="book-actions">
         <a class="btn btn-primary" href="books/01-quantum_biology/chapter_1_subsection_0.html">📖 Read Book (Ch. 1)</a>
         <a class="btn btn-secondary" href="books/01-quantum_biology/index.html">📋 Contents</a>
-        <a class="btn btn-ghost" href="books/01-quantum_biology/01-quantum_biology.html" title="Read entire volume on a single page">📄 Full Page</a>
       </div>
     </article>
 
-    <!-- Volume 02 -->
-    <article class="book-card" data-track="web3-crypto" data-keywords="bonding curve token interswap stock market monero privacy dex amm liquidity cross-chain slippage defi">
+    <!-- VOL 02 -->
+    <article class="book-card" data-track="web3-crypto" data-vol="2" data-docs="53" data-title="bonding curve token interswap on monero" data-keywords="bonding curve token interswap stock market monero privacy dex amm liquidity cross-chain slippage defi">
       <div class="book-top">
         <span class="vol-badge">VOL 02</span>
         <span class="track-badge track-web3">Web3 &amp; Cryptoeconomics</span>
@@ -513,29 +802,97 @@
       <div class="book-subtitle">Decentralized privacy DEX mechanics, continuous liquidity &amp; bonding curves on Monero</div>
       <div class="book-stats">
         <span>📖 9 Chapters</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>📄 53 Documents</span>
-        <span>•</span>
-        <span>🔒 Privacy AMM</span>
+        <span>&bull;</span>
+        <span>🧪 Open Access</span>
       </div>
-      <p class="book-desc">
-        Theoretical foundations and mathematical modeling for privacy-preserving decentralized token interswap protocols on Monero, integrating continuous bonding curves, dynamic slippage formulas, and atomic cross-chain liquidity.
-      </p>
+      <p class="book-desc">Theoretical foundations and mathematical modeling for privacy-preserving decentralized token interswap protocols on Monero, integrating continuous bonding curves, dynamic slippage formulas, and atomic cross-chain liquidity.</p>
+      
       <div class="book-tags">
         <span class="book-tag">Privacy AMM</span>
         <span class="book-tag">Bonding Curves</span>
         <span class="book-tag">Monero InterSwap</span>
         <span class="book-tag">Dynamic Slippage</span>
       </div>
+
+      
+    <a href="../web-apps/bonding-curves.html" class="companion-bar" title="Explore interactive web simulations for Bonding Curve Token Interswap on Monero">
+      <span class="companion-icon">📈</span>
+      <span class="companion-text">Interactive: <strong>Bonding Curves & Exchanges (30)</strong></span>
+      <span class="companion-arrow">&rarr;</span>
+    </a>
+  
+
+      <div class="drawer-trigger-wrap">
+        <button class="btn btn-ghost btn-drawer-toggle" type="button" aria-expanded="false" aria-controls="drawer-02">
+          <span>📑 Peek Chapters (9)</span>
+          <span class="drawer-caret">▾</span>
+        </button>
+      </div>
+
+      
+      <div class="chapters-drawer" id="drawer-02" hidden>
+        <div class="drawer-header">Key Chapters &bull; 9 Sections</div>
+        <div class="chapters-list">
+          
+            <a class="chapter-chip" href="books/02-bonding_curve_token_interswap_stock_market_on_monero/chapter_1_subsection_0.html">
+              <span class="ch-num">Ch 1</span>
+              <span class="ch-title">Chapter 1</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/02-bonding_curve_token_interswap_stock_market_on_monero/chapter_2_subsection_0.html">
+              <span class="ch-num">Ch 2</span>
+              <span class="ch-title">Chapter 2</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/02-bonding_curve_token_interswap_stock_market_on_monero/chapter_3_subsection_0.html">
+              <span class="ch-num">Ch 3</span>
+              <span class="ch-title">Chapter 3</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/02-bonding_curve_token_interswap_stock_market_on_monero/chapter_4_subsection_0.html">
+              <span class="ch-num">Ch 4</span>
+              <span class="ch-title">Chapter 4</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/02-bonding_curve_token_interswap_stock_market_on_monero/chapter_5_subsection_0.html">
+              <span class="ch-num">Ch 5</span>
+              <span class="ch-title">Chapter 5</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/02-bonding_curve_token_interswap_stock_market_on_monero/chapter_6_subsection_0.html">
+              <span class="ch-num">Ch 6</span>
+              <span class="ch-title">Chapter 6</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/02-bonding_curve_token_interswap_stock_market_on_monero/chapter_7_subsection_0.html">
+              <span class="ch-num">Ch 7</span>
+              <span class="ch-title">Chapter 7</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/02-bonding_curve_token_interswap_stock_market_on_monero/chapter_8_subsection_0.html">
+              <span class="ch-num">Ch 8</span>
+              <span class="ch-title">Chapter 8</span>
+            </a>
+          
+          
+            <a class="chapter-chip chapter-more" href="books/02-bonding_curve_token_interswap_stock_market_on_monero/index.html">
+              <span>+1 more chapters &rarr;</span>
+            </a>
+          
+        </div>
+      </div>
+  
+
       <div class="book-actions">
         <a class="btn btn-primary" href="books/02-bonding_curve_token_interswap_stock_market_on_monero/chapter_1_subsection_0.html">📖 Read Book (Ch. 1)</a>
         <a class="btn btn-secondary" href="books/02-bonding_curve_token_interswap_stock_market_on_monero/index.html">📋 Contents</a>
-        <a class="btn btn-ghost" href="books/02-bonding_curve_token_interswap_stock_market_on_monero/02-bonding_curve_token_interswap_stock_market_on_monero.html" title="Read entire volume on a single page">📄 Full Page</a>
       </div>
     </article>
 
-    <!-- Volume 03 -->
-    <article class="book-card" data-track="ai-agents" data-keywords="waifu ai 3d characters interactive virtual agents neural animation style transfer character conditioning companion">
+    <!-- VOL 03 -->
+    <article class="book-card" data-track="ai-agents" data-vol="3" data-docs="35" data-title="waifu ai" data-keywords="waifu ai 3d characters interactive virtual agents neural animation style transfer character conditioning companion">
       <div class="book-top">
         <span class="vol-badge">VOL 03</span>
         <span class="track-badge track-ai">AI &amp; Autonomous Agents</span>
@@ -544,29 +901,83 @@
       <div class="book-subtitle">Architectures for interactive, intelligent 3D anime companions &amp; real-time character agents</div>
       <div class="book-stats">
         <span>📖 6 Chapters</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>📄 35 Documents</span>
-        <span>•</span>
-        <span>🤖 Embodied Agent</span>
+        <span>&bull;</span>
+        <span>🧪 Open Access</span>
       </div>
-      <p class="book-desc">
-        Foundational architectures for intelligent 3D virtual companions and interactive agents, bridging computer graphics, style transfer, personality conditioning, and neural animation for immersive environments.
-      </p>
+      <p class="book-desc">Foundational architectures for intelligent 3D virtual companions and interactive agents, bridging computer graphics, style transfer, personality conditioning, and neural animation for immersive environments.</p>
+      
       <div class="book-tags">
         <span class="book-tag">Interactive Companions</span>
         <span class="book-tag">Neural Animation</span>
         <span class="book-tag">Style Transfer</span>
         <span class="book-tag">Virtual World Agents</span>
       </div>
+
+      
+    <a href="../web-apps/ai-os.html" class="companion-bar" title="Explore interactive web simulations for Waifu AI">
+      <span class="companion-icon">🤖</span>
+      <span class="companion-text">Interactive: <strong>AI OS & Anime Chats (61)</strong></span>
+      <span class="companion-arrow">&rarr;</span>
+    </a>
+  
+
+      <div class="drawer-trigger-wrap">
+        <button class="btn btn-ghost btn-drawer-toggle" type="button" aria-expanded="false" aria-controls="drawer-03">
+          <span>📑 Peek Chapters (6)</span>
+          <span class="drawer-caret">▾</span>
+        </button>
+      </div>
+
+      
+      <div class="chapters-drawer" id="drawer-03" hidden>
+        <div class="drawer-header">Key Chapters &bull; 6 Sections</div>
+        <div class="chapters-list">
+          
+            <a class="chapter-chip" href="books/03-waifu_ai/chapter_1_subsection_0.html">
+              <span class="ch-num">Ch 1</span>
+              <span class="ch-title">Chapter 1</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/03-waifu_ai/chapter_2_subsection_0.html">
+              <span class="ch-num">Ch 2</span>
+              <span class="ch-title">Chapter 2</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/03-waifu_ai/chapter_3_subsection_0.html">
+              <span class="ch-num">Ch 3</span>
+              <span class="ch-title">Chapter 3</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/03-waifu_ai/chapter_4_subsection_0.html">
+              <span class="ch-num">Ch 4</span>
+              <span class="ch-title">Chapter 4</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/03-waifu_ai/chapter_5_subsection_0.html">
+              <span class="ch-num">Ch 5</span>
+              <span class="ch-title">Chapter 5</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/03-waifu_ai/chapter_6_subsection_0.html">
+              <span class="ch-num">Ch 6</span>
+              <span class="ch-title">Chapter 6</span>
+            </a>
+          
+          
+        </div>
+      </div>
+  
+
       <div class="book-actions">
         <a class="btn btn-primary" href="books/03-waifu_ai/chapter_1_subsection_0.html">📖 Read Book (Ch. 1)</a>
         <a class="btn btn-secondary" href="books/03-waifu_ai/index.html">📋 Contents</a>
-        <a class="btn btn-ghost" href="books/03-waifu_ai/03-waifu_ai.html" title="Read entire volume on a single page">📄 Full Page</a>
       </div>
     </article>
 
-    <!-- Volume 04 -->
-    <article class="book-card" data-track="quantum-physics" data-keywords="quantum computing in quantum biology vqe algorithms molecular simulation protein folding quantum chemistry excitons">
+    <!-- VOL 04 -->
+    <article class="book-card" data-track="quantum-physics" data-vol="4" data-docs="47" data-title="quantum computing in quantum biology" data-keywords="quantum computing in quantum biology vqe algorithms molecular simulation protein folding quantum chemistry excitons">
       <div class="book-top">
         <span class="vol-badge">VOL 04</span>
         <span class="track-badge track-quantum">Quantum &amp; Physics</span>
@@ -575,29 +986,97 @@
       <div class="book-subtitle">Quantum algorithms, VQE molecular simulations &amp; protein folding optimization</div>
       <div class="book-stats">
         <span>📖 9 Chapters</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>📄 47 Documents</span>
-        <span>•</span>
-        <span>💻 Quantum Algo</span>
+        <span>&bull;</span>
+        <span>🧪 Open Access</span>
       </div>
-      <p class="book-desc">
-        Applies quantum computational algorithms to model complex biomolecular systems, featuring Variational Quantum Eigensolver (VQE) implementations for molecular energy landscapes and protein folding simulations.
-      </p>
+      <p class="book-desc">Applies quantum computational algorithms to model complex biomolecular systems, featuring Variational Quantum Eigensolver (VQE) implementations for molecular energy landscapes and protein folding simulations.</p>
+      
       <div class="book-tags">
         <span class="book-tag">VQE Algorithms</span>
         <span class="book-tag">Biomolecular Simulation</span>
         <span class="book-tag">Protein Folding</span>
         <span class="book-tag">Quantum Chemistry</span>
       </div>
+
+      
+    <a href="../web-apps/quantum-consciousness.html" class="companion-bar" title="Explore interactive web simulations for Quantum Computing in Quantum Biology">
+      <span class="companion-icon">🔮</span>
+      <span class="companion-text">Interactive: <strong>Quantum Circuit Visualizers (180)</strong></span>
+      <span class="companion-arrow">&rarr;</span>
+    </a>
+  
+
+      <div class="drawer-trigger-wrap">
+        <button class="btn btn-ghost btn-drawer-toggle" type="button" aria-expanded="false" aria-controls="drawer-04">
+          <span>📑 Peek Chapters (9)</span>
+          <span class="drawer-caret">▾</span>
+        </button>
+      </div>
+
+      
+      <div class="chapters-drawer" id="drawer-04" hidden>
+        <div class="drawer-header">Key Chapters &bull; 9 Sections</div>
+        <div class="chapters-list">
+          
+            <a class="chapter-chip" href="books/04-quantum_computing_in_quantum_biology/chapter_1_subsection_0.html">
+              <span class="ch-num">Ch 1</span>
+              <span class="ch-title">Chapter 1</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/04-quantum_computing_in_quantum_biology/chapter_2_subsection_1.html">
+              <span class="ch-num">Ch 2</span>
+              <span class="ch-title">Classical Approaches to Protein Folding: Limita...</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/04-quantum_computing_in_quantum_biology/chapter_3_subsection_1.html">
+              <span class="ch-num">Ch 3</span>
+              <span class="ch-title">The Quantum Nature of Light Harvesting in Photo...</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/04-quantum_computing_in_quantum_biology/chapter_4_subsection_1.html">
+              <span class="ch-num">Ch 4</span>
+              <span class="ch-title">Quantum Simulation of DN</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/04-quantum_computing_in_quantum_biology/chapter_5_subsection_1.html">
+              <span class="ch-num">Ch 5</span>
+              <span class="ch-title">Quantum Mechanisms in Vision and Hearing</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/04-quantum_computing_in_quantum_biology/chapter_6_subsection_1.html">
+              <span class="ch-num">Ch 6</span>
+              <span class="ch-title">Quantum Simulation of Molecular Interactions in...</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/04-quantum_computing_in_quantum_biology/chapter_7_subsection_1.html">
+              <span class="ch-num">Ch 7</span>
+              <span class="ch-title">Quantum Algorithms for Modeling Biological Cont...</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/04-quantum_computing_in_quantum_biology/chapter_8_subsection_1.html">
+              <span class="ch-num">Ch 8</span>
+              <span class="ch-title">Current Limitations and Open Research Questions</span>
+            </a>
+          
+          
+            <a class="chapter-chip chapter-more" href="books/04-quantum_computing_in_quantum_biology/index.html">
+              <span>+1 more chapters &rarr;</span>
+            </a>
+          
+        </div>
+      </div>
+  
+
       <div class="book-actions">
         <a class="btn btn-primary" href="books/04-quantum_computing_in_quantum_biology/chapter_1_subsection_0.html">📖 Read Book (Ch. 1)</a>
         <a class="btn btn-secondary" href="books/04-quantum_computing_in_quantum_biology/index.html">📋 Contents</a>
-        <a class="btn btn-ghost" href="books/04-quantum_computing_in_quantum_biology/04-quantum_computing_in_quantum_biology.html" title="Read entire volume on a single page">📄 Full Page</a>
       </div>
     </article>
 
-    <!-- Volume 05 -->
-    <article class="book-card" data-track="ai-agents" data-keywords="transformer rl reinforcement learning attention decision transformers policy gradient sequence decision hybrid agents">
+    <!-- VOL 05 -->
+    <article class="book-card" data-track="ai-agents" data-vol="5" data-docs="40" data-title="transformer rl" data-keywords="transformer rl reinforcement learning attention decision transformers policy gradient sequence decision hybrid agents">
       <div class="book-top">
         <span class="vol-badge">VOL 05</span>
         <span class="track-badge track-ai">AI &amp; Autonomous Agents</span>
@@ -606,29 +1085,83 @@
       <div class="book-subtitle">Integrating attention-based transformer architectures with deep reinforcement learning</div>
       <div class="book-stats">
         <span>📖 6 Chapters</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>📄 40 Documents</span>
-        <span>•</span>
-        <span>🧠 Deep RL</span>
+        <span>&bull;</span>
+        <span>🧪 Open Access</span>
       </div>
-      <p class="book-desc">
-        Explores the unification of attention mechanisms and policy optimization, covering Decision Transformers, trajectory attention, multimodal policy gradients, and hybrid architectures for scalable decision-making.
-      </p>
+      <p class="book-desc">Explores the unification of attention mechanisms and policy optimization, covering Decision Transformers, trajectory attention, multimodal policy gradients, and hybrid architectures for scalable decision-making.</p>
+      
       <div class="book-tags">
         <span class="book-tag">Decision Transformers</span>
         <span class="book-tag">Policy Gradient Attention</span>
         <span class="book-tag">Multimodal RL</span>
         <span class="book-tag">Hybrid Architectures</span>
       </div>
+
+      
+    <a href="../web-apps/simulations-visualizations.html" class="companion-bar" title="Explore interactive web simulations for Transformer RL">
+      <span class="companion-icon">📊</span>
+      <span class="companion-text">Interactive: <strong>Simulations & RL Visualizers (53)</strong></span>
+      <span class="companion-arrow">&rarr;</span>
+    </a>
+  
+
+      <div class="drawer-trigger-wrap">
+        <button class="btn btn-ghost btn-drawer-toggle" type="button" aria-expanded="false" aria-controls="drawer-05">
+          <span>📑 Peek Chapters (6)</span>
+          <span class="drawer-caret">▾</span>
+        </button>
+      </div>
+
+      
+      <div class="chapters-drawer" id="drawer-05" hidden>
+        <div class="drawer-header">Key Chapters &bull; 6 Sections</div>
+        <div class="chapters-list">
+          
+            <a class="chapter-chip" href="books/05-transformer_rl/chapter_1_subsection_0.html">
+              <span class="ch-num">Ch 1</span>
+              <span class="ch-title">Introduction to Large Multimodal Transformer Models and Reinforcement Learning</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/05-transformer_rl/chapter_2_subsection_1.html">
+              <span class="ch-num">Ch 2</span>
+              <span class="ch-title">Representing Different Modalities</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/05-transformer_rl/chapter_3_subsection_1.html">
+              <span class="ch-num">Ch 3</span>
+              <span class="ch-title">Transfer Learning with Multimodal Transformers</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/05-transformer_rl/chapter_4_subsection_1.html">
+              <span class="ch-num">Ch 4</span>
+              <span class="ch-title">Policy Gradient Methods for Multimodal Transformers</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/05-transformer_rl/chapter_5_subsection_1.html">
+              <span class="ch-num">Ch 5</span>
+              <span class="ch-title">Hybrid Architectures Combining Transformers and RL</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/05-transformer_rl/chapter_6_subsection_1.html">
+              <span class="ch-num">Ch 6</span>
+              <span class="ch-title">Summary of Key Concepts and Findings</span>
+            </a>
+          
+          
+        </div>
+      </div>
+  
+
       <div class="book-actions">
         <a class="btn btn-primary" href="books/05-transformer_rl/chapter_1_subsection_0.html">📖 Read Book (Ch. 1)</a>
         <a class="btn btn-secondary" href="books/05-transformer_rl/index.html">📋 Contents</a>
-        <a class="btn btn-ghost" href="books/05-transformer_rl/05-transformer_rl.html" title="Read entire volume on a single page">📄 Full Page</a>
       </div>
     </article>
 
-    <!-- Volume 06 -->
-    <article class="book-card" data-track="quantum-physics" data-keywords="qc agi quantum computing general purpose ai neural networks annealing qnlp superposition circuits">
+    <!-- VOL 06 -->
+    <article class="book-card" data-track="quantum-physics" data-vol="6" data-docs="49" data-title="qc agi: quantum computing for agi" data-keywords="qc agi quantum computing general purpose ai neural networks annealing qnlp superposition circuits">
       <div class="book-top">
         <span class="vol-badge">VOL 06</span>
         <span class="track-badge track-quantum">Quantum &amp; Physics</span>
@@ -637,29 +1170,93 @@
       <div class="book-subtitle">Quantum representations, quantum neural networks &amp; algorithmic pathways to AGI</div>
       <div class="book-stats">
         <span>📖 8 Chapters</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>📄 49 Documents</span>
-        <span>•</span>
-        <span>🔮 Quantum AGI</span>
+        <span>&bull;</span>
+        <span>🧪 Open Access</span>
       </div>
-      <p class="book-desc">
-        A comprehensive treatise on leveraging quantum computation for artificial general intelligence, covering qubit state encoding, parameterized quantum circuits, quantum NLP, and quantum annealing optimization.
-      </p>
+      <p class="book-desc">A comprehensive treatise on leveraging quantum computation for artificial general intelligence, covering qubit state encoding, parameterized quantum circuits, quantum NLP, and quantum annealing optimization.</p>
+      
       <div class="book-tags">
         <span class="book-tag">Quantum AGI</span>
         <span class="book-tag">Parameterized Circuits</span>
         <span class="book-tag">Quantum Neural Networks</span>
         <span class="book-tag">Quantum NLP</span>
       </div>
+
+      
+    <a href="../web-apps/ai-os.html" class="companion-bar" title="Explore interactive web simulations for QC AGI: Quantum Computing for AGI">
+      <span class="companion-icon">🤖</span>
+      <span class="companion-text">Interactive: <strong>AI OS Dashboards & QC Tools (56)</strong></span>
+      <span class="companion-arrow">&rarr;</span>
+    </a>
+  
+
+      <div class="drawer-trigger-wrap">
+        <button class="btn btn-ghost btn-drawer-toggle" type="button" aria-expanded="false" aria-controls="drawer-06">
+          <span>📑 Peek Chapters (8)</span>
+          <span class="drawer-caret">▾</span>
+        </button>
+      </div>
+
+      
+      <div class="chapters-drawer" id="drawer-06" hidden>
+        <div class="drawer-header">Key Chapters &bull; 8 Sections</div>
+        <div class="chapters-list">
+          
+            <a class="chapter-chip" href="books/06-qc_agi/chapter_1_subsection_0.html">
+              <span class="ch-num">Ch 1</span>
+              <span class="ch-title">Chapter 1</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/06-qc_agi/chapter_2_subsection_0.html">
+              <span class="ch-num">Ch 2</span>
+              <span class="ch-title">Chapter 2</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/06-qc_agi/chapter_3_subsection_0.html">
+              <span class="ch-num">Ch 3</span>
+              <span class="ch-title">Chapter 3</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/06-qc_agi/chapter_4_subsection_0.html">
+              <span class="ch-num">Ch 4</span>
+              <span class="ch-title">Chapter 4</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/06-qc_agi/chapter_5_subsection_0.html">
+              <span class="ch-num">Ch 5</span>
+              <span class="ch-title">Chapter 5</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/06-qc_agi/chapter_6_subsection_0.html">
+              <span class="ch-num">Ch 6</span>
+              <span class="ch-title">Chapter 6</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/06-qc_agi/chapter_7_subsection_0.html">
+              <span class="ch-num">Ch 7</span>
+              <span class="ch-title">Chapter 7</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/06-qc_agi/chapter_8_subsection_0.html">
+              <span class="ch-num">Ch 8</span>
+              <span class="ch-title">Chapter 8</span>
+            </a>
+          
+          
+        </div>
+      </div>
+  
+
       <div class="book-actions">
         <a class="btn btn-primary" href="books/06-qc_agi/chapter_1_subsection_0.html">📖 Read Book (Ch. 1)</a>
         <a class="btn btn-secondary" href="books/06-qc_agi/index.html">📋 Contents</a>
-        <a class="btn btn-ghost" href="books/06-qc_agi/06-qc_agi.html" title="Read entire volume on a single page">📄 Full Page</a>
       </div>
     </article>
 
-    <!-- Volume 07 -->
-    <article class="book-card" data-track="vr-interactive" data-keywords="multimodal llm interactive 3d ai characters webvr threejs webxr embodied agents spatial audio gesture synthesis">
+    <!-- VOL 07 -->
+    <article class="book-card" data-track="vr-interactive" data-vol="7" data-docs="45" data-title="interactive 3d characters in webvr" data-keywords="multimodal llm interactive 3d ai characters webvr threejs webxr embodied agents spatial audio gesture synthesis">
       <div class="book-top">
         <span class="vol-badge">VOL 07</span>
         <span class="track-badge track-vr">VR &amp; Interactive Systems</span>
@@ -668,29 +1265,97 @@
       <div class="book-subtitle">Full-stack pipeline for deploying embodied LLM agents in WebXR and 3D browser worlds</div>
       <div class="book-stats">
         <span>📖 9 Chapters</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>📄 45 Documents</span>
-        <span>•</span>
-        <span>🥽 WebVR / WebXR</span>
+        <span>&bull;</span>
+        <span>🧪 Open Access</span>
       </div>
-      <p class="book-desc">
-        End-to-end development guide for creating embodied conversational AI agents inside immersive WebVR and Three.js environments, integrating real-time speech, gesture synthesis, and spatial perception.
-      </p>
+      <p class="book-desc">End-to-end development guide for creating embodied conversational AI agents inside immersive WebVR and Three.js environments, integrating real-time speech, gesture synthesis, and spatial perception.</p>
+      
       <div class="book-tags">
         <span class="book-tag">WebVR / WebXR</span>
         <span class="book-tag">Three.js Agents</span>
         <span class="book-tag">Embodied LLM</span>
         <span class="book-tag">Gesture Synthesis</span>
       </div>
+
+      
+    <a href="../web-apps/misc.html" class="companion-bar" title="Explore interactive web simulations for Interactive 3D Characters in WebVR">
+      <span class="companion-icon">🥽</span>
+      <span class="companion-text">Interactive: <strong>WebVR & 3D Chat Companions (119)</strong></span>
+      <span class="companion-arrow">&rarr;</span>
+    </a>
+  
+
+      <div class="drawer-trigger-wrap">
+        <button class="btn btn-ghost btn-drawer-toggle" type="button" aria-expanded="false" aria-controls="drawer-07">
+          <span>📑 Peek Chapters (9)</span>
+          <span class="drawer-caret">▾</span>
+        </button>
+      </div>
+
+      
+      <div class="chapters-drawer" id="drawer-07" hidden>
+        <div class="drawer-header">Key Chapters &bull; 9 Sections</div>
+        <div class="chapters-list">
+          
+            <a class="chapter-chip" href="books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/chapter_1_subsection_0.html">
+              <span class="ch-num">Ch 1</span>
+              <span class="ch-title">Table of Contents</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/chapter_2_subsection_1.html">
+              <span class="ch-num">Ch 2</span>
+              <span class="ch-title">Chapter 2: Building the Foundation - 3D Character Creation</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/chapter_3_subsection_1.html">
+              <span class="ch-num">Ch 3</span>
+              <span class="ch-title">Chapter 3: Interacting with LLMs for Character Behavior</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/chapter_4_subsection_1.html">
+              <span class="ch-num">Ch 4</span>
+              <span class="ch-title">Chapter 4: Implementing Multimodal Interaction</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/chapter_5_subsection_1.html">
+              <span class="ch-num">Ch 5</span>
+              <span class="ch-title">Chapter 5: Animating Character Behavior from LLMs</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/chapter_6_subsection_1.html">
+              <span class="ch-num">Ch 6</span>
+              <span class="ch-title">Chapter 6: WebVR Development and Integration</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/chapter_7_subsection_1.html">
+              <span class="ch-num">Ch 7</span>
+              <span class="ch-title">Chapter 7: Advanced Techniques and Best Practices</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/chapter_8_subsection_1.html">
+              <span class="ch-num">Ch 8</span>
+              <span class="ch-title">Chapter 8: Deploying and Maintaining Your Project</span>
+            </a>
+          
+          
+            <a class="chapter-chip chapter-more" href="books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/index.html">
+              <span>+1 more chapters &rarr;</span>
+            </a>
+          
+        </div>
+      </div>
+  
+
       <div class="book-actions">
         <a class="btn btn-primary" href="books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/chapter_1_subsection_0.html">📖 Read Book (Ch. 1)</a>
         <a class="btn btn-secondary" href="books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/index.html">📋 Contents</a>
-        <a class="btn btn-ghost" href="books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr.html" title="Read entire volume on a single page">📄 Full Page</a>
       </div>
     </article>
 
-    <!-- Volume 08 -->
-    <article class="book-card" data-track="quantum-physics" data-keywords="multimodal quantum llm vision audio text qiskit python variational circuits pytorch quantum ml">
+    <!-- VOL 08 -->
+    <article class="book-card" data-track="quantum-physics" data-vol="8" data-docs="56" data-title="multimodal quantum llm in qiskit python" data-keywords="multimodal quantum llm vision audio text qiskit python variational circuits pytorch quantum ml">
       <div class="book-top">
         <span class="vol-badge">VOL 08</span>
         <span class="track-badge track-quantum">Quantum &amp; Physics</span>
@@ -699,29 +1364,88 @@
       <div class="book-subtitle">Hybrid quantum-classical multimodal architectures using IBM Qiskit and PyTorch</div>
       <div class="book-stats">
         <span>📖 7 Chapters</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>📄 56 Documents</span>
-        <span>•</span>
-        <span>🐍 Qiskit Python</span>
+        <span>&bull;</span>
+        <span>🧪 Open Access</span>
       </div>
-      <p class="book-desc">
-        Practical implementation manual detailing quantum machine learning pipelines for multimodal data fusion, constructing variational quantum circuits to jointly encode vision, audio, and language tokens.
-      </p>
+      <p class="book-desc">Practical implementation manual detailing quantum machine learning pipelines for multimodal data fusion, constructing variational quantum circuits to jointly encode vision, audio, and language tokens.</p>
+      
       <div class="book-tags">
         <span class="book-tag">Qiskit Python</span>
         <span class="book-tag">Quantum Multimodal</span>
         <span class="book-tag">Variational Circuits</span>
         <span class="book-tag">Quantum PyTorch</span>
       </div>
+
+      
+    <a href="../web-apps/quantum-consciousness.html" class="companion-bar" title="Explore interactive web simulations for Multimodal Quantum LLM in Qiskit Python">
+      <span class="companion-icon">🔮</span>
+      <span class="companion-text">Interactive: <strong>Quantum Consciousness & Qiskit (180)</strong></span>
+      <span class="companion-arrow">&rarr;</span>
+    </a>
+  
+
+      <div class="drawer-trigger-wrap">
+        <button class="btn btn-ghost btn-drawer-toggle" type="button" aria-expanded="false" aria-controls="drawer-08">
+          <span>📑 Peek Chapters (7)</span>
+          <span class="drawer-caret">▾</span>
+        </button>
+      </div>
+
+      
+      <div class="chapters-drawer" id="drawer-08" hidden>
+        <div class="drawer-header">Key Chapters &bull; 7 Sections</div>
+        <div class="chapters-list">
+          
+            <a class="chapter-chip" href="books/08-multimodal_quantum_llm_for_vision+audio+text_in_qiskit_python/chapter_1_subsection_0.html">
+              <span class="ch-num">Ch 1</span>
+              <span class="ch-title">Introduction to Quantum Machine Learning with Qiskit</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/08-multimodal_quantum_llm_for_vision+audio+text_in_qiskit_python/chapter_2_subsection_0.html">
+              <span class="ch-num">Ch 2</span>
+              <span class="ch-title">Understanding Vision, Audio, and Text Data</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/08-multimodal_quantum_llm_for_vision+audio+text_in_qiskit_python/chapter_3_subsection_0.html">
+              <span class="ch-num">Ch 3</span>
+              <span class="ch-title">Building a Multimodal Quantum Neural Network</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/08-multimodal_quantum_llm_for_vision+audio+text_in_qiskit_python/chapter_4_subsection_0.html">
+              <span class="ch-num">Ch 4</span>
+              <span class="ch-title">Developing the Quantum LLMs</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/08-multimodal_quantum_llm_for_vision+audio+text_in_qiskit_python/chapter_5_subsection_0.html">
+              <span class="ch-num">Ch 5</span>
+              <span class="ch-title">Multimodal Vision-Audio-Text Tasks</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/08-multimodal_quantum_llm_for_vision+audio+text_in_qiskit_python/chapter_6_subsection_1.html">
+              <span class="ch-num">Ch 6</span>
+              <span class="ch-title">Limitations of Current Quantum Hardware</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/08-multimodal_quantum_llm_for_vision+audio+text_in_qiskit_python/chapter_7_subsection_0.html">
+              <span class="ch-num">Ch 7</span>
+              <span class="ch-title">Appendix</span>
+            </a>
+          
+          
+        </div>
+      </div>
+  
+
       <div class="book-actions">
         <a class="btn btn-primary" href="books/08-multimodal_quantum_llm_for_vision+audio+text_in_qiskit_python/chapter_6_sub_section_0.html">📖 Read Book (Ch. 1)</a>
         <a class="btn btn-secondary" href="books/08-multimodal_quantum_llm_for_vision+audio+text_in_qiskit_python/index.html">📋 Contents</a>
-        <a class="btn btn-ghost" href="books/08-multimodal_quantum_llm_for_vision+audio+text_in_qiskit_python/08-multimodal_quantum_llm_for_vision+audio+text_in_qiskit_python.html" title="Read entire volume on a single page">📄 Full Page</a>
       </div>
     </article>
 
-    <!-- Volume 09 -->
-    <article class="book-card" data-track="ai-agents" data-keywords="waifu ai os operating system kernel common lisp memory scheduling driver companion architecture">
+    <!-- VOL 09 -->
+    <article class="book-card" data-track="ai-agents" data-vol="9" data-docs="58" data-title="waifu ai os" data-keywords="waifu ai os operating system kernel common lisp memory scheduling driver companion architecture">
       <div class="book-top">
         <span class="vol-badge">VOL 09</span>
         <span class="track-badge track-ai">AI &amp; Autonomous Agents</span>
@@ -730,29 +1454,93 @@
       <div class="book-subtitle">Operating system kernels &amp; frameworks specialized for embodied autonomous AI companions</div>
       <div class="book-stats">
         <span>📖 8 Chapters</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>📄 58 Documents</span>
-        <span>•</span>
-        <span>⚙️ OS Kernel</span>
+        <span>&bull;</span>
+        <span>🧪 Open Access</span>
       </div>
-      <p class="book-desc">
-        Architectural blueprint for an AI-native operating system designed to host autonomous virtual companions, featuring Common Lisp kernel layers, model memory management, and specialized hardware drivers.
-      </p>
+      <p class="book-desc">Architectural blueprint for an AI-native operating system designed to host autonomous virtual companions, featuring Common Lisp kernel layers, model memory management, and specialized hardware drivers.</p>
+      
       <div class="book-tags">
         <span class="book-tag">AI-Native OS</span>
         <span class="book-tag">Common Lisp Kernel</span>
         <span class="book-tag">Perception Scheduling</span>
         <span class="book-tag">Driver Framework</span>
       </div>
+
+      
+    <a href="../web-apps/ai-os.html" class="companion-bar" title="Explore interactive web simulations for Waifu AI OS">
+      <span class="companion-icon">🤖</span>
+      <span class="companion-text">Interactive: <strong>Waifu AI OS Interactive Suite (56)</strong></span>
+      <span class="companion-arrow">&rarr;</span>
+    </a>
+  
+
+      <div class="drawer-trigger-wrap">
+        <button class="btn btn-ghost btn-drawer-toggle" type="button" aria-expanded="false" aria-controls="drawer-09">
+          <span>📑 Peek Chapters (8)</span>
+          <span class="drawer-caret">▾</span>
+        </button>
+      </div>
+
+      
+      <div class="chapters-drawer" id="drawer-09" hidden>
+        <div class="drawer-header">Key Chapters &bull; 8 Sections</div>
+        <div class="chapters-list">
+          
+            <a class="chapter-chip" href="books/09-waifu_ai_os/chapter_1_subsection_0.html">
+              <span class="ch-num">Ch 1</span>
+              <span class="ch-title">Chapter 1</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/09-waifu_ai_os/chapter_2_subsection_1.html">
+              <span class="ch-num">Ch 2</span>
+              <span class="ch-title">Core Common Lisp Concepts</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/09-waifu_ai_os/chapter_3_subsection_1.html">
+              <span class="ch-num">Ch 3</span>
+              <span class="ch-title">Choosing Appropriate AI Models</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/09-waifu_ai_os/chapter_4_subsection_1.html">
+              <span class="ch-num">Ch 4</span>
+              <span class="ch-title">Understanding User Interaction in Waifu AI OS</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/09-waifu_ai_os/chapter_5_subsection_1.html">
+              <span class="ch-num">Ch 5</span>
+              <span class="ch-title">Designing the Driver Framework</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/09-waifu_ai_os/chapter_6_subsection_1.html">
+              <span class="ch-num">Ch 6</span>
+              <span class="ch-title">Chapter 6.1: Strategies for Desktop Development (e.g., GNOME, Qt)</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/09-waifu_ai_os/chapter_7_subsection_1.html">
+              <span class="ch-num">Ch 7</span>
+              <span class="ch-title">Deployment Strategies for Different Platforms</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/09-waifu_ai_os/chapter_8_subsection_1.html">
+              <span class="ch-num">Ch 8</span>
+              <span class="ch-title">List of Common Lisp Libraries</span>
+            </a>
+          
+          
+        </div>
+      </div>
+  
+
       <div class="book-actions">
         <a class="btn btn-primary" href="books/09-waifu_ai_os/chapter_1_subsection_0.html">📖 Read Book (Ch. 1)</a>
         <a class="btn btn-secondary" href="books/09-waifu_ai_os/index.html">📋 Contents</a>
-        <a class="btn btn-ghost" href="books/09-waifu_ai_os/09-waifu_ai_os.html" title="Read entire volume on a single page">📄 Full Page</a>
       </div>
     </article>
 
-    <!-- Volume 10 -->
-    <article class="book-card" data-track="quantum-physics" data-keywords="string theory industries physics multidimensional vibrational energy materials computing moore">
+    <!-- VOL 10 -->
+    <article class="book-card" data-track="quantum-physics" data-vol="10" data-docs="47" data-title="string theory industries" data-keywords="string theory industries physics multidimensional vibrational energy materials computing moore">
       <div class="book-top">
         <span class="vol-badge">VOL 10</span>
         <span class="track-badge track-quantum">Quantum &amp; Physics</span>
@@ -761,29 +1549,97 @@
       <div class="book-subtitle">Bridging multidimensional physics, vibrational modes &amp; industrial/economic systems</div>
       <div class="book-stats">
         <span>📖 9 Chapters</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>📄 47 Documents</span>
-        <span>•</span>
-        <span>🎻 String Physics</span>
+        <span>&bull;</span>
+        <span>🧪 Open Access</span>
       </div>
-      <p class="book-desc">
-        Investigates mathematical concepts from superstring theory and multidimensional manifolds applied to industrial optimization, advanced energy paradigms, and atomic frontier material science.
-      </p>
+      <p class="book-desc">Investigates mathematical concepts from superstring theory and multidimensional manifolds applied to industrial optimization, advanced energy paradigms, and atomic frontier material science.</p>
+      
       <div class="book-tags">
         <span class="book-tag">String Theory</span>
         <span class="book-tag">Multidimensional Manifolds</span>
         <span class="book-tag">Advanced Energy</span>
         <span class="book-tag">Theoretical Industry</span>
       </div>
+
+      
+    <a href="../web-apps/quantum-consciousness.html" class="companion-bar" title="Explore interactive web simulations for String Theory Industries">
+      <span class="companion-icon">🔮</span>
+      <span class="companion-text">Interactive: <strong>Physics & String Simulations (180)</strong></span>
+      <span class="companion-arrow">&rarr;</span>
+    </a>
+  
+
+      <div class="drawer-trigger-wrap">
+        <button class="btn btn-ghost btn-drawer-toggle" type="button" aria-expanded="false" aria-controls="drawer-10">
+          <span>📑 Peek Chapters (9)</span>
+          <span class="drawer-caret">▾</span>
+        </button>
+      </div>
+
+      
+      <div class="chapters-drawer" id="drawer-10" hidden>
+        <div class="drawer-header">Key Chapters &bull; 9 Sections</div>
+        <div class="chapters-list">
+          
+            <a class="chapter-chip" href="books/10-string_theory_industries/chapter_1_subsection_1.html">
+              <span class="ch-num">Ch 1</span>
+              <span class="ch-title">The Unfolding Revolution: From Hypothesis to Reality</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/10-string_theory_industries/chapter_2_subsection_1.html">
+              <span class="ch-num">Ch 2</span>
+              <span class="ch-title">A Brief History of String Theory: From Early Ideas to Modern Developments</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/10-string_theory_industries/chapter_3_subsection_1.html">
+              <span class="ch-num">Ch 3</span>
+              <span class="ch-title">Beyond Fossil Fuels: The Need for New Energy Paradigms</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/10-string_theory_industries/chapter_4_subsection_1.html">
+              <span class="ch-num">Ch 4</span>
+              <span class="ch-title">The Limitations of Conventional Materials: Reaching the Atomic Frontier</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/10-string_theory_industries/chapter_5_subsection_1.html">
+              <span class="ch-num">Ch 5</span>
+              <span class="ch-title">Beyond Moore&#x27;s Law: The Quest for Unparalleled Computational Power</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/10-string_theory_industries/chapter_6_subsection_1.html">
+              <span class="ch-num">Ch 6</span>
+              <span class="ch-title">Understanding Disease at the String Level: A New Paradigm for Diagnostics</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/10-string_theory_industries/chapter_7_subsection_1.html">
+              <span class="ch-num">Ch 7</span>
+              <span class="ch-title">The Challenges of Interstellar Travel: Overcoming the Limitations of Relativity</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/10-string_theory_industries/chapter_8_subsection_1.html">
+              <span class="ch-num">Ch 8</span>
+              <span class="ch-title">The Economic Transformation: From a Digital Economy to a String-Based Economy</span>
+            </a>
+          
+          
+            <a class="chapter-chip chapter-more" href="books/10-string_theory_industries/index.html">
+              <span>+1 more chapters &rarr;</span>
+            </a>
+          
+        </div>
+      </div>
+  
+
       <div class="book-actions">
         <a class="btn btn-primary" href="books/10-string_theory_industries/chapter_1_subsection_1.html">📖 Read Book (Ch. 1)</a>
         <a class="btn btn-secondary" href="books/10-string_theory_industries/index.html">📋 Contents</a>
-        <a class="btn btn-ghost" href="books/10-string_theory_industries/10-string_theory_industries.html" title="Read entire volume on a single page">📄 Full Page</a>
       </div>
     </article>
 
-    <!-- Volume 11 -->
-    <article class="book-card" data-track="vr-interactive" data-keywords="decentralized physics llms emojis hilbert space symbolic computing peer review simulation">
+    <!-- VOL 11 -->
+    <article class="book-card" data-track="vr-interactive" data-vol="11" data-docs="49" data-title="decentralized physics llms emojis" data-keywords="decentralized physics llms emojis hilbert space symbolic computing peer review simulation">
       <div class="book-top">
         <span class="vol-badge">VOL 11</span>
         <span class="track-badge track-vr">VR &amp; Interactive Systems</span>
@@ -792,28 +1648,97 @@
       <div class="book-subtitle">Decentralized physics simulation, symbolic emoji representations &amp; LLM cognitive frameworks</div>
       <div class="book-stats">
         <span>📖 14 Chapters</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>📄 49 Documents</span>
-        <span>•</span>
-        <span>🌟 Symbolic DeSci</span>
+        <span>&bull;</span>
+        <span>🧪 Open Access</span>
       </div>
-      <p class="book-desc">
-        An unconventional exploration of decentralized scientific computing, using neural embeddings as Hilbert space analogues, modular physics task engines, and expressive symbolic emoji representations.
-      </p>
+      <p class="book-desc">An unconventional exploration of decentralized scientific computing, using neural embeddings as Hilbert space analogues, modular physics task engines, and expressive symbolic emoji representations.</p>
+      
       <div class="book-tags">
         <span class="book-tag">Symbolic Physics</span>
         <span class="book-tag">Emoji Semantics</span>
         <span class="book-tag">Hilbert Embeddings</span>
         <span class="book-tag">Continuous Peer Review</span>
       </div>
+
+      
+    <a href="../web-apps/quantum-consciousness.html" class="companion-bar" title="Explore interactive web simulations for Decentralized Physics LLMs Emojis">
+      <span class="companion-icon">⚛️</span>
+      <span class="companion-text">Interactive: <strong>Decentralized Physics Experiments (180)</strong></span>
+      <span class="companion-arrow">&rarr;</span>
+    </a>
+  
+
+      <div class="drawer-trigger-wrap">
+        <button class="btn btn-ghost btn-drawer-toggle" type="button" aria-expanded="false" aria-controls="drawer-11">
+          <span>📑 Peek Chapters (14)</span>
+          <span class="drawer-caret">▾</span>
+        </button>
+      </div>
+
+      
+      <div class="chapters-drawer" id="drawer-11" hidden>
+        <div class="drawer-header">Key Chapters &bull; 14 Sections</div>
+        <div class="chapters-list">
+          
+            <a class="chapter-chip" href="books/11-decentralized-physics-llms-emojis/chapter_1_subsection_1_1.html">
+              <span class="ch-num">Ch 1</span>
+              <span class="ch-title">🌟 The Spark of Decentralized Thought</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/11-decentralized-physics-llms-emojis/chapter_2_subsection_2_1.html">
+              <span class="ch-num">Ch 2</span>
+              <span class="ch-title">🏛️ Classical Foundations in a New Light</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/11-decentralized-physics-llms-emojis/chapter_3_subsection_3_1.html">
+              <span class="ch-num">Ch 3</span>
+              <span class="ch-title">🌀 Embeddings as Hilbert Space Analogues 🔬</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/11-decentralized-physics-llms-emojis/chapter_4_subsection_4_1.html">
+              <span class="ch-num">Ch 4</span>
+              <span class="ch-title">🏗️ Modular Framework for Domain-Specific Physics Tasks 🧩</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/11-decentralized-physics-llms-emojis/chapter_5_subsection_5_3.html">
+              <span class="ch-num">Ch 5</span>
+              <span class="ch-title">🔄 Continuous Peer Review</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/11-decentralized-physics-llms-emojis/chapter_6_subsection_6_1.html">
+              <span class="ch-num">Ch 6</span>
+              <span class="ch-title">🌀 Quantum Weirdness Meets LLMs</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/11-decentralized-physics-llms-emojis/chapter_7_subsection_7_1.html">
+              <span class="ch-num">Ch 7</span>
+              <span class="ch-title">💥 Atoms, Bonds, and Beyond</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/11-decentralized-physics-llms-emojis/chapter_8_subsection_8_1.html">
+              <span class="ch-num">Ch 8</span>
+              <span class="ch-title">🧱 Building Blocks of the Future</span>
+            </a>
+          
+          
+            <a class="chapter-chip chapter-more" href="books/11-decentralized-physics-llms-emojis/index.html">
+              <span>+6 more chapters &rarr;</span>
+            </a>
+          
+        </div>
+      </div>
+  
+
       <div class="book-actions">
         <a class="btn btn-primary" href="books/11-decentralized-physics-llms-emojis/chapter_1_subsection_1_1.html">📖 Read Book (Ch. 1)</a>
         <a class="btn btn-secondary" href="books/11-decentralized-physics-llms-emojis/index.html">📋 Contents</a>
       </div>
     </article>
 
-    <!-- Volume 12 -->
-    <article class="book-card" data-track="quantum-physics" data-keywords="decentralized physics desci blockchain daos monte carlo wavefunction operators open science">
+    <!-- VOL 12 -->
+    <article class="book-card" data-track="quantum-physics" data-vol="12" data-docs="79" data-title="decentralized physics" data-keywords="decentralized physics desci blockchain daos monte carlo wavefunction operators open science">
       <div class="book-top">
         <span class="vol-badge">VOL 12</span>
         <span class="track-badge track-quantum">Quantum &amp; Physics</span>
@@ -822,28 +1747,97 @@
       <div class="book-subtitle">Open scientific computing without gatekeepers using blockchain, DAOs &amp; distributed simulations</div>
       <div class="book-stats">
         <span>📖 18 Chapters</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>📄 79 Documents</span>
-        <span>•</span>
-        <span>🌐 Open DeSci</span>
+        <span>&bull;</span>
+        <span>🧪 Open Access</span>
       </div>
-      <p class="book-desc">
-        The magnum opus on permissionless science (DeSci), detailing distributed Monte Carlo engines, peer-to-peer compute networks, wavefunction prompting operators, and blockchain-governed physics experiments.
-      </p>
+      <p class="book-desc">The magnum opus on permissionless science (DeSci), detailing distributed Monte Carlo engines, peer-to-peer compute networks, wavefunction prompting operators, and blockchain-governed physics experiments.</p>
+      
       <div class="book-tags">
         <span class="book-tag">DeSci (Decentralized Science)</span>
         <span class="book-tag">Wavefunction Prompts</span>
         <span class="book-tag">Distributed Monte Carlo</span>
         <span class="book-tag">Physics DAOs</span>
       </div>
+
+      
+    <a href="../web-apps/simulations-visualizations.html" class="companion-bar" title="Explore interactive web simulations for Decentralized Physics">
+      <span class="companion-icon">📊</span>
+      <span class="companion-text">Interactive: <strong>Decentralized Physics & Graphing (233)</strong></span>
+      <span class="companion-arrow">&rarr;</span>
+    </a>
+  
+
+      <div class="drawer-trigger-wrap">
+        <button class="btn btn-ghost btn-drawer-toggle" type="button" aria-expanded="false" aria-controls="drawer-12">
+          <span>📑 Peek Chapters (18)</span>
+          <span class="drawer-caret">▾</span>
+        </button>
+      </div>
+
+      
+      <div class="chapters-drawer" id="drawer-12" hidden>
+        <div class="drawer-header">Key Chapters &bull; 18 Sections</div>
+        <div class="chapters-list">
+          
+            <a class="chapter-chip" href="books/12-decentralized-physics/1_1.html">
+              <span class="ch-num">Ch 1</span>
+              <span class="ch-title">The Vision: Physics Without Gatekeepers</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/12-decentralized-physics/2_1.html">
+              <span class="ch-num">Ch 2</span>
+              <span class="ch-title">Quantum Computing’s Intended Role in Physics</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/12-decentralized-physics/3_1.html">
+              <span class="ch-num">Ch 3</span>
+              <span class="ch-title">Embeddings as Hilbert Space Analogues</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/12-decentralized-physics/4_1.html">
+              <span class="ch-num">Ch 4</span>
+              <span class="ch-title">Base Modules for Foundational Utilities</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/12-decentralized-physics/5_1.html">
+              <span class="ch-num">Ch 5</span>
+              <span class="ch-title">Simulating Classical Systems with LLMs</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/12-decentralized-physics/6_1.html">
+              <span class="ch-num">Ch 6</span>
+              <span class="ch-title">Molecular Simulation and Orbital Approximation</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/12-decentralized-physics/7_1.html">
+              <span class="ch-num">Ch 7</span>
+              <span class="ch-title">Catalyst Design via Surrogate Modeling</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/12-decentralized-physics/8_1.html">
+              <span class="ch-num">Ch 8</span>
+              <span class="ch-title">Condensed Matter: Many-Body Approximations</span>
+            </a>
+          
+          
+            <a class="chapter-chip chapter-more" href="books/12-decentralized-physics/index.html">
+              <span>+10 more chapters &rarr;</span>
+            </a>
+          
+        </div>
+      </div>
+  
+
       <div class="book-actions">
         <a class="btn btn-primary" href="books/12-decentralized-physics/1_1.html">📖 Read Book (Ch. 1)</a>
         <a class="btn btn-secondary" href="books/12-decentralized-physics/index.html">📋 Contents</a>
       </div>
     </article>
 
-    <!-- Volume 13 -->
-    <article class="book-card" data-track="web3-crypto" data-keywords="crypto llm cryptoeconomics hedge funds agent swarms yield farming token stability smart contract security">
+    <!-- VOL 13 -->
+    <article class="book-card" data-track="web3-crypto" data-vol="13" data-docs="28" data-title="crypto llm" data-keywords="crypto llm cryptoeconomics hedge funds agent swarms yield farming token stability smart contract security">
       <div class="book-top">
         <span class="vol-badge">VOL 13</span>
         <span class="track-badge track-web3">Web3 &amp; Cryptoeconomics</span>
@@ -852,28 +1846,97 @@
       <div class="book-subtitle">Cryptoeconomic modeling, autonomous hedge fund agent swarms &amp; on-chain smart contract security</div>
       <div class="book-stats">
         <span>📖 9 Chapters</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>📄 28 Documents</span>
-        <span>•</span>
-        <span>🤖 Agent Swarms</span>
+        <span>&bull;</span>
+        <span>🧪 Open Access</span>
       </div>
-      <p class="book-desc">
-        Analysis of autonomous multi-agent swarms in cryptoeconomics, covering algorithmic yield farming, automated hedge fund portfolio management, token stability simulations, and LLM-assisted smart contract verification.
-      </p>
+      <p class="book-desc">Analysis of autonomous multi-agent swarms in cryptoeconomics, covering algorithmic yield farming, automated hedge fund portfolio management, token stability simulations, and LLM-assisted smart contract verification.</p>
+      
       <div class="book-tags">
         <span class="book-tag">Agent Swarms</span>
         <span class="book-tag">Autonomous Hedge Funds</span>
         <span class="book-tag">Cryptoeconomic Stability</span>
         <span class="book-tag">Smart Contract Auditing</span>
       </div>
+
+      
+    <a href="../web-apps/bonding-curves.html" class="companion-bar" title="Explore interactive web simulations for Crypto LLM">
+      <span class="companion-icon">📈</span>
+      <span class="companion-text">Interactive: <strong>Crypto Simulation & Bonding Curves (79)</strong></span>
+      <span class="companion-arrow">&rarr;</span>
+    </a>
+  
+
+      <div class="drawer-trigger-wrap">
+        <button class="btn btn-ghost btn-drawer-toggle" type="button" aria-expanded="false" aria-controls="drawer-13">
+          <span>📑 Peek Chapters (9)</span>
+          <span class="drawer-caret">▾</span>
+        </button>
+      </div>
+
+      
+      <div class="chapters-drawer" id="drawer-13" hidden>
+        <div class="drawer-header">Key Chapters &bull; 9 Sections</div>
+        <div class="chapters-list">
+          
+            <a class="chapter-chip" href="books/13-crypto-llm/chapter1_subsection1.html">
+              <span class="ch-num">Ch 1</span>
+              <span class="ch-title">The Foundations of Cryptoeconomic Principles</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/13-crypto-llm/chapter2_subsection1.html">
+              <span class="ch-num">Ch 2</span>
+              <span class="ch-title">Introduction</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/13-crypto-llm/chapter3_subsection1.html">
+              <span class="ch-num">Ch 3</span>
+              <span class="ch-title">Key Synthesis Strategies</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/13-crypto-llm/chapter4_subsection1.html">
+              <span class="ch-num">Ch 4</span>
+              <span class="ch-title">Simulating Economic Stability: Multi-Agent LLM Swarms for Token Modeling</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/13-crypto-llm/chapter5_subsection1.html">
+              <span class="ch-num">Ch 5</span>
+              <span class="ch-title">Autonomous Hedge Funds: LLM Agents for Portfolio Optimization and Yield Farming</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/13-crypto-llm/chapter6_subsection1.html">
+              <span class="ch-num">Ch 6</span>
+              <span class="ch-title">Multi-Agent Simulation Frameworks</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/13-crypto-llm/chapter7_subsection1.html">
+              <span class="ch-num">Ch 7</span>
+              <span class="ch-title">Market Dynamics and Equilibrium</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/13-crypto-llm/chapter8_subsection1.html">
+              <span class="ch-num">Ch 8</span>
+              <span class="ch-title">Mathematical Frameworks for Alignment</span>
+            </a>
+          
+          
+            <a class="chapter-chip chapter-more" href="books/13-crypto-llm/index.html">
+              <span>+1 more chapters &rarr;</span>
+            </a>
+          
+        </div>
+      </div>
+  
+
       <div class="book-actions">
         <a class="btn btn-primary" href="books/13-crypto-llm/chapter1_subsection1.html">📖 Read Book (Ch. 1)</a>
         <a class="btn btn-secondary" href="books/13-crypto-llm/index.html">📋 Contents</a>
       </div>
     </article>
 
-    <!-- Volume 14 -->
-    <article class="book-card" data-track="quantum-physics" data-keywords="multiverse cosmology many worlds quantum mechanics reality simulation branching parallel universes">
+    <!-- VOL 14 -->
+    <article class="book-card" data-track="quantum-physics" data-vol="14" data-docs="31" data-title="multiverse" data-keywords="multiverse cosmology many worlds quantum mechanics reality simulation branching parallel universes">
       <div class="book-top">
         <span class="vol-badge">VOL 14</span>
         <span class="track-badge track-quantum">Quantum &amp; Physics</span>
@@ -882,20 +1945,75 @@
       <div class="book-subtitle">Cosmological multiverse theories, quantum many-worlds &amp; computational reality simulation</div>
       <div class="book-stats">
         <span>📖 6 Chapters</span>
-        <span>•</span>
+        <span>&bull;</span>
         <span>📄 31 Documents</span>
-        <span>•</span>
-        <span>🌌 Multiverse Physics</span>
+        <span>&bull;</span>
+        <span>🧪 Open Access</span>
       </div>
-      <p class="book-desc">
-        Theoretical frameworks and computational algorithms for simulating parallel universes, quantum Everett many-worlds branching, cosmic inflationary multiverse topologies, and information-theoretic realities.
-      </p>
+      <p class="book-desc">Theoretical frameworks and computational algorithms for simulating parallel universes, quantum Everett many-worlds branching, cosmic inflationary multiverse topologies, and information-theoretic realities.</p>
+      
       <div class="book-tags">
         <span class="book-tag">Multiverse Cosmology</span>
         <span class="book-tag">Many-Worlds Branching</span>
         <span class="book-tag">Reality Simulation</span>
         <span class="book-tag">Topological Physics</span>
       </div>
+
+      
+    <a href="../web-apps/quantum-consciousness.html" class="companion-bar" title="Explore interactive web simulations for Multiverse">
+      <span class="companion-icon">🌌</span>
+      <span class="companion-text">Interactive: <strong>Multiverse Physics & Simulators (180)</strong></span>
+      <span class="companion-arrow">&rarr;</span>
+    </a>
+  
+
+      <div class="drawer-trigger-wrap">
+        <button class="btn btn-ghost btn-drawer-toggle" type="button" aria-expanded="false" aria-controls="drawer-14">
+          <span>📑 Peek Chapters (6)</span>
+          <span class="drawer-caret">▾</span>
+        </button>
+      </div>
+
+      
+      <div class="chapters-drawer" id="drawer-14" hidden>
+        <div class="drawer-header">Key Chapters &bull; 6 Sections</div>
+        <div class="chapters-list">
+          
+            <a class="chapter-chip" href="books/14-multiverse/chapter1_subchapter1.html">
+              <span class="ch-num">Ch 1</span>
+              <span class="ch-title">Key Components</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/14-multiverse/chapter2_subchapter1.html">
+              <span class="ch-num">Ch 2</span>
+              <span class="ch-title">Computational Modeling Techniques</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/14-multiverse/chapter3_subchapter1.html">
+              <span class="ch-num">Ch 3</span>
+              <span class="ch-title">Introduction</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/14-multiverse/chapter4_subchapter1.html">
+              <span class="ch-num">Ch 4</span>
+              <span class="ch-title">Introduction</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/14-multiverse/chapter5_subchapter1.html">
+              <span class="ch-num">Ch 5</span>
+              <span class="ch-title">Introduction</span>
+            </a>
+          
+            <a class="chapter-chip" href="books/14-multiverse/chapter6_subchapter1.html">
+              <span class="ch-num">Ch 6</span>
+              <span class="ch-title">Introduction</span>
+            </a>
+          
+          
+        </div>
+      </div>
+  
+
       <div class="book-actions">
         <a class="btn btn-primary" href="books/14-multiverse/chapter1_subchapter1.html">📖 Read Book (Ch. 1)</a>
         <a class="btn btn-secondary" href="books/14-multiverse/index.html">📋 Contents</a>
@@ -918,6 +2036,7 @@
       <a href="../research-text/index.html">Research Text</a> &bull;
       <a href="../research-text/consolidated-research/index.html">Genesis Archive</a> &bull;
       <a href="../research-text/web3-research/index.html">Web3 Research</a> &bull;
+      <a href="../web-apps/index.html">Web Apps</a> &bull;
       <a href="../search.html">Search</a> &bull;
       <a href="https://github.com/waifuai/waifuai.github.io" target="_blank" rel="noopener">GitHub</a>
     </p>
@@ -925,26 +2044,80 @@
 </div>
 
 <script>
-// Interactive Search and Filtering Logic
+// Interactive Search, Filtering, Sorting, URL Sync and Drawer Logic
 (function() {
   const searchInput = document.getElementById('library-search');
   const counter = document.getElementById('search-counter');
   const chips = document.querySelectorAll('.filter-chips .chip');
+  const grid = document.getElementById('book-grid');
   const cards = Array.from(document.querySelectorAll('.book-card'));
   const noResults = document.getElementById('no-results');
   const resetBtn = document.getElementById('btn-reset-search');
+  const sortSelect = document.getElementById('sort-select');
 
   let activeTrack = 'all';
   let searchQuery = '';
+  let activeSort = 'vol-asc';
+
+  // Read URL params on load
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('track')) {
+    const t = urlParams.get('track');
+    const targetChip = Array.from(chips).find(c => c.getAttribute('data-track') === t);
+    if (targetChip) {
+      chips.forEach(c => { c.classList.remove('active'); c.setAttribute('aria-selected', 'false'); });
+      targetChip.classList.add('active');
+      targetChip.setAttribute('aria-selected', 'true');
+      activeTrack = t;
+    }
+  }
+  if (urlParams.has('q')) {
+    searchQuery = urlParams.get('q');
+    searchInput.value = searchQuery;
+  }
+  if (urlParams.has('sort')) {
+    activeSort = urlParams.get('sort');
+    if (sortSelect) sortSelect.value = activeSort;
+  }
+
+  function updateUrlState() {
+    const params = new URLSearchParams();
+    if (activeTrack && activeTrack !== 'all') params.set('track', activeTrack);
+    if (searchQuery.trim()) params.set('q', searchQuery.trim());
+    if (activeSort && activeSort !== 'vol-asc') params.set('sort', activeSort);
+    const newRelativePathQuery = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+    window.history.replaceState(null, '', newRelativePathQuery);
+  }
+
+  function sortCards(cardList) {
+    return cardList.sort((a, b) => {
+      if (activeSort === 'vol-asc') {
+        return parseInt(a.getAttribute('data-vol') || '0') - parseInt(b.getAttribute('data-vol') || '0');
+      } else if (activeSort === 'vol-desc') {
+        return parseInt(b.getAttribute('data-vol') || '0') - parseInt(a.getAttribute('data-vol') || '0');
+      } else if (activeSort === 'docs-desc') {
+        return parseInt(b.getAttribute('data-docs') || '0') - parseInt(a.getAttribute('data-docs') || '0');
+      } else if (activeSort === 'title-asc') {
+        return (a.getAttribute('data-title') || '').localeCompare(b.getAttribute('data-title') || '');
+      }
+      return 0;
+    });
+  }
 
   function filterLibrary() {
     let visibleCount = 0;
     const query = searchQuery.trim().toLowerCase();
 
+    // Sort cards in DOM
+    const sorted = sortCards(cards);
+    sorted.forEach(card => {
+      grid.insertBefore(card, noResults);
+    });
+
     cards.forEach(card => {
       const cardTrack = card.getAttribute('data-track') || '';
       const cardKeywords = (card.getAttribute('data-keywords') || '').toLowerCase();
-      const cardTitle = (card.querySelector('.book-title') ? card.querySelector('.book-title').textContent : '').toLowerCase();
+      const cardTitle = (card.getAttribute('data-title') || '').toLowerCase();
       const cardSubtitle = (card.querySelector('.book-subtitle') ? card.querySelector('.book-subtitle').textContent : '').toLowerCase();
       const cardDesc = (card.querySelector('.book-desc') ? card.querySelector('.book-desc').textContent : '').toLowerCase();
 
@@ -975,6 +2148,8 @@
     } else {
       noResults.hidden = true;
     }
+
+    updateUrlState();
   }
 
   // Filter Chips Click
@@ -991,6 +2166,14 @@
     });
   });
 
+  // Sort Select Change
+  if (sortSelect) {
+    sortSelect.addEventListener('change', (e) => {
+      activeSort = e.target.value;
+      filterLibrary();
+    });
+  }
+
   // Search Input Event with Debounce
   let debounceTimeout;
   searchInput.addEventListener('input', (e) => {
@@ -1001,12 +2184,36 @@
     }, 50);
   });
 
+  // Hotkey listener: '/' to focus, 'Esc' to clear
+  window.addEventListener('keydown', (e) => {
+    if (e.key === '/' && document.activeElement !== searchInput) {
+      e.preventDefault();
+      searchInput.focus();
+      searchInput.select();
+    } else if (e.key === 'Escape') {
+      if (document.activeElement === searchInput || searchQuery || activeTrack !== 'all') {
+        searchInput.value = '';
+        searchQuery = '';
+        activeTrack = 'all';
+        chips.forEach(c => {
+          const isAll = c.getAttribute('data-track') === 'all';
+          c.classList.toggle('active', isAll);
+          c.setAttribute('aria-selected', isAll ? 'true' : 'false');
+        });
+        filterLibrary();
+        searchInput.blur();
+      }
+    }
+  });
+
   // Reset Button
   if (resetBtn) {
     resetBtn.addEventListener('click', () => {
       searchInput.value = '';
       searchQuery = '';
       activeTrack = 'all';
+      activeSort = 'vol-asc';
+      if (sortSelect) sortSelect.value = 'vol-asc';
       chips.forEach(c => {
         const isAll = c.getAttribute('data-track') === 'all';
         c.classList.toggle('active', isAll);
@@ -1016,6 +2223,19 @@
       searchInput.focus();
     });
   }
+
+  // Chapter Drawer Toggles
+  document.querySelectorAll('.btn-drawer-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const drawerId = btn.getAttribute('aria-controls');
+      const drawer = document.getElementById(drawerId);
+      if (drawer) {
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !isExpanded);
+        drawer.hidden = isExpanded;
+      }
+    });
+  });
 
   // Initial Filter Execution
   filterLibrary();

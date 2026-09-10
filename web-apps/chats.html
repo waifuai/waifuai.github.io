@@ -14,108 +14,220 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/web-apps/chats.html">
-<meta name="description" content="Collection of interactive Chats web apps and utilities.">
-<meta property="og:title" content="Chats">
-<meta property="og:description" content="Collection of interactive Chats web apps and utilities.">
+<meta name="description" content="Collection of 5 interactive Conversational Interfaces web apps, visualizers, and simulation tools | WaifuAI">
+<meta property="og:title" content="Conversational Interfaces (5 Apps) | WaifuAI Web Apps">
+<meta property="og:description" content="Collection of 5 interactive Conversational Interfaces web apps and simulation sandboxes.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/web-apps/chats.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Chats">
-<meta name="twitter:description" content="Collection of interactive Chats web apps and utilities.">
+<meta name="twitter:title" content="Conversational Interfaces (5 Apps) | WaifuAI Web Apps">
+<meta name="twitter:description" content="Collection of 5 interactive Conversational Interfaces web apps and simulation sandboxes.">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>Chats | WaifuAI Web Apps</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Conversational Interfaces (5 Apps) | WaifuAI Web Apps</title>
 <link rel="stylesheet" href="web-apps.css">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
   <div class="container">
-    <a href="index.html" class="back-link">&larr; Back to index</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="../">WaifuAI Docs</a>
+      <span class="sep">/</span>
+      <a href="index.html">Web Apps Suite</a>
+      <span class="sep">/</span>
+      <span aria-current="page">Conversational Interfaces</span>
+    </nav>
 
     <header>
-      <h1>💬 Chats</h1>
-      <p>Secure, decentralized, and dimensional chat interfaces featuring specialized anime companions.</p>
+      <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+        <span class="badge badge-accent">AI Companions & Prompts</span>
+        <span class="badge">5 Interactive Apps</span>
+        <span class="badge" style="border-color: var(--success); color: var(--success);">100% Client-Side Native</span>
+      </div>
+      <h1>💬 Conversational Interfaces</h1>
+      <p>Multi-dimensional chat interfaces, persona engines, and decentralized client-side AI companion experiments.</p>
+      <div class="links">
+        <a href="index.html">&larr; All Web App Suites</a>
+        <a href="../">🏠 Docs Hub</a>
+        <a href="../research-books/index.html">📚 Research Books</a>
+      </div>
     </header>
 
-    <div class="search-wrapper">
-      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input type="text" id="search" class="search-input" placeholder="Search 5 apps...">
+    <!-- Cross Hub Theory Bridge -->
+    <div class="callout-box">
+      <div class="callout-header">
+        <span class="badge badge-accent">🔬 Theory to Code Bridge</span>
+        <a href="../research-books/books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/index.html" class="callout-link">Read Volume 07 (Multimodal 3D Characters in WebVR) &rarr;</a>
+      </div>
+      <p style="margin: 0; color: var(--text-muted); font-size: 0.92rem; line-height: 1.55;">
+        These 5 applications explore client-side dialogue rendering, tokenomic chat rails, and high-dimensional character prompting formulated in Volumes 03 and 07.
+      </p>
     </div>
 
-    <div class="app-list">
-      <a href="src/webapps/chats/050-catgirlchat-your-anime-companion.html" class="app-item searchable-item" target="_blank">
+    <!-- Search Section -->
+    <section aria-label="Search Applications">
+      <div class="search-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search" class="search-input" placeholder="Search 5 conversational interfaces apps (press '/' to focus)..." aria-label="Search apps">
+      </div>
+
+      <div class="search-controls">
+        <div id="search-counter">Showing all 5 applications</div>
+        <div class="hotkey-hint">
+          <kbd>/</kbd> to search &bull; <kbd>Esc</kbd> to reset
+        </div>
+      </div>
+    </section>
+
+    <!-- App List -->
+    <main class="app-list" id="app-list" aria-label="Applications List">
+      <a href="src/webapps/chats/050-catgirlchat-your-anime-companion.html" class="app-item searchable-item" target="_blank" data-title="catgirlchat your anime companion" data-id="050" title="Open Catgirlchat Your Anime Companion in new tab">
         <div class="app-info">
           <h3>Catgirlchat Your Anime Companion</h3>
-          <p>src/webapps/chats/050-catgirlchat-your-anime-companion.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#050</span>
+            <span class="app-tag">AI Companions & Prompts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/chats/061-cryptochat-secure-communication-for-blockchain-enthusiasts.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/chats/061-cryptochat-secure-communication-for-blockchain-enthusiasts.html" class="app-item searchable-item" target="_blank" data-title="cryptochat secure communication for blockchain enthusiasts" data-id="061" title="Open Cryptochat Secure Communication For Blockchain Enthusiasts in new tab">
         <div class="app-info">
           <h3>Cryptochat Secure Communication For Blockchain Enthusiasts</h3>
-          <p>src/webapps/chats/061-cryptochat-secure-communication-for-blockchain-enthusiasts.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#061</span>
+            <span class="app-tag">AI Companions & Prompts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/chats/066-tokenomicschat-secure-communication-for-crypto-enthusiasts.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/chats/066-tokenomicschat-secure-communication-for-crypto-enthusiasts.html" class="app-item searchable-item" target="_blank" data-title="tokenomicschat secure communication for crypto enthusiasts" data-id="066" title="Open Tokenomicschat Secure Communication For Crypto Enthusiasts in new tab">
         <div class="app-info">
           <h3>Tokenomicschat Secure Communication For Crypto Enthusiasts</h3>
-          <p>src/webapps/chats/066-tokenomicschat-secure-communication-for-crypto-enthusiasts.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#066</span>
+            <span class="app-tag">AI Companions & Prompts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/chats/067-stringchat-vibrating-communication-across-11-dimensions.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/chats/067-stringchat-vibrating-communication-across-11-dimensions.html" class="app-item searchable-item" target="_blank" data-title="stringchat vibrating communication across 11 dimensions" data-id="067" title="Open Stringchat Vibrating Communication Across 11 Dimensions in new tab">
         <div class="app-info">
           <h3>Stringchat Vibrating Communication Across 11 Dimensions</h3>
-          <p>src/webapps/chats/067-stringchat-vibrating-communication-across-11-dimensions.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#067</span>
+            <span class="app-tag">AI Companions & Prompts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/chats/081-tokenomicschat-secure-communication-for-crypto-enthusiasts.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/chats/081-tokenomicschat-secure-communication-for-crypto-enthusiasts.html" class="app-item searchable-item" target="_blank" data-title="tokenomicschat secure communication for crypto enthusiasts" data-id="081" title="Open Tokenomicschat Secure Communication For Crypto Enthusiasts in new tab">
         <div class="app-info">
           <h3>Tokenomicschat Secure Communication For Crypto Enthusiasts</h3>
-          <p>src/webapps/chats/081-tokenomicschat-secure-communication-for-crypto-enthusiasts.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#081</span>
+            <span class="app-tag">AI Companions & Prompts</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
+    </main>
+
+    <div id="no-results" class="no-results" hidden>
+      <h3>No applications match your search</h3>
+      <p>Try searching for a different keyword or application number.</p>
+      <button class="btn btn-secondary" id="btn-reset-search" style="margin-top: 0.75rem; padding: 0.45rem 0.9rem; border-radius: 6px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: #fff; cursor: pointer;">Clear Search</button>
     </div>
-    <div id="no-results" class="no-results">No applications match your search.</div>
     
+    <footer>
+      <p>WaifuAI Web Apps Suite &bull; Conversational Interfaces</p>
+      <p style="margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-muted);">
+        <a href="index.html">Web Apps Hub</a> &bull;
+        <a href="../">Docs Hub</a> &bull;
+        <a href="../research-books/index.html">Research Books</a> &bull;
+        <a href="../research-text/consolidated-research/index.html">Genesis Archive</a> &bull;
+        <a href="../research-text/web3-research/index.html">Web3 Research</a> &bull;
+        <a href="https://github.com/waifuai/waifuai.github.io" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </footer>
   </div>
   
   <script>
-    const searchInput = document.getElementById('search');
-    const items = document.querySelectorAll('.searchable-item');
-    const noResults = document.getElementById('no-results');
+    (function() {
+      const searchInput = document.getElementById('search');
+      const items = Array.from(document.querySelectorAll('.searchable-item'));
+      const counter = document.getElementById('search-counter');
+      const noResults = document.getElementById('no-results');
+      const resetBtn = document.getElementById('btn-reset-search');
+      const totalCount = items.length;
 
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().trim();
+      function filterApps() {
+        const query = searchInput.value.toLowerCase().trim();
         let visibleCount = 0;
 
         items.forEach(item => {
-          const text = item.textContent.toLowerCase();
-          if (text.includes(query)) {
-            item.style.display = '';
+          const title = (item.getAttribute('data-title') || '').toLowerCase();
+          const id = (item.getAttribute('data-id') || '').toLowerCase();
+          const text = title + ' ' + id;
+
+          if (!query || text.includes(query)) {
+            item.style.display = 'flex';
             visibleCount++;
           } else {
             item.style.display = 'none';
           }
         });
 
-        if (noResults) {
-          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        if (visibleCount === totalCount) {
+          counter.textContent = 'Showing all ' + totalCount + ' applications';
+        } else {
+          counter.textContent = 'Showing ' + visibleCount + ' of ' + totalCount + ' applications' + (query ? ' matching "' + query + '"' : '');
+        }
+
+        noResults.hidden = visibleCount > 0;
+      }
+
+      if (searchInput) {
+        let timeout;
+        searchInput.addEventListener('input', () => {
+          clearTimeout(timeout);
+          timeout = setTimeout(filterApps, 40);
+        });
+      }
+
+      // Hotkey listener: '/' to focus, 'Escape' to clear
+      window.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== searchInput) {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.select();
+        } else if (e.key === 'Escape' && (document.activeElement === searchInput || searchInput.value)) {
+          searchInput.value = '';
+          filterApps();
+          searchInput.blur();
         }
       });
-    }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          filterApps();
+          searchInput.focus();
+        });
+      }
+    })();
   </script>
 </body>
 </html>

@@ -14,871 +14,1419 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/web-apps/misc.html">
-<meta name="description" content="Collection of interactive Misc web apps and utilities.">
-<meta property="og:title" content="Misc">
-<meta property="og:description" content="Collection of interactive Misc web apps and utilities.">
+<meta name="description" content="Collection of 114 interactive Experimental Utilities web apps, visualizers, and simulation tools | WaifuAI">
+<meta property="og:title" content="Experimental Utilities (114 Apps) | WaifuAI Web Apps">
+<meta property="og:description" content="Collection of 114 interactive Experimental Utilities web apps and simulation sandboxes.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/web-apps/misc.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Misc">
-<meta name="twitter:description" content="Collection of interactive Misc web apps and utilities.">
+<meta name="twitter:title" content="Experimental Utilities (114 Apps) | WaifuAI Web Apps">
+<meta name="twitter:description" content="Collection of 114 interactive Experimental Utilities web apps and simulation sandboxes.">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>Misc | WaifuAI Web Apps</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Experimental Utilities (114 Apps) | WaifuAI Web Apps</title>
 <link rel="stylesheet" href="web-apps.css">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
   <div class="container">
-    <a href="index.html" class="back-link">&larr; Back to index</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="../">WaifuAI Docs</a>
+      <span class="sep">/</span>
+      <a href="index.html">Web Apps Suite</a>
+      <span class="sep">/</span>
+      <span aria-current="page">Experimental Utilities</span>
+    </nav>
 
     <header>
-      <h1>⚙️ Misc</h1>
-      <p>Experimental widgets, utility tools, mathematical tests, and unique web experiments.</p>
+      <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+        <span class="badge badge-accent">Generative Experiments</span>
+        <span class="badge">114 Interactive Apps</span>
+        <span class="badge" style="border-color: var(--success); color: var(--success);">100% Client-Side Native</span>
+      </div>
+      <h1>⚙️ Experimental Utilities</h1>
+      <p>Multidimensional mathematical testbeds, 3D WebVR experiments, audio generators, and unique generative web sandboxes.</p>
+      <div class="links">
+        <a href="index.html">&larr; All Web App Suites</a>
+        <a href="../">🏠 Docs Hub</a>
+        <a href="../research-books/index.html">📚 Research Books</a>
+      </div>
     </header>
 
-    <div class="search-wrapper">
-      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input type="text" id="search" class="search-input" placeholder="Search 114 apps...">
+    <!-- Cross Hub Theory Bridge -->
+    <div class="callout-box">
+      <div class="callout-header">
+        <span class="badge badge-accent">🔬 Theory to Code Bridge</span>
+        <a href="../research-books/books/10-string_theory_industries/index.html" class="callout-link">Read Volume 10 (String Theory) & Volume 14 (Multiverse) &rarr;</a>
+      </div>
+      <p style="margin: 0; color: var(--text-muted); font-size: 0.92rem; line-height: 1.55;">
+        A sandbox collection of 114 experimental tools testing 3D scene graphs, audio synthesis, dimensional geometries, and algorithmic puzzles from Volumes 10, 11, and 14.
+      </p>
     </div>
 
-    <div class="app-list">
-      <a href="src/webapps/misc/010-techops-competitive-intelligence-board.html" class="app-item searchable-item" target="_blank">
+    <!-- Search Section -->
+    <section aria-label="Search Applications">
+      <div class="search-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search" class="search-input" placeholder="Search 114 experimental utilities apps (press '/' to focus)..." aria-label="Search apps">
+      </div>
+
+      <div class="search-controls">
+        <div id="search-counter">Showing all 114 applications</div>
+        <div class="hotkey-hint">
+          <kbd>/</kbd> to search &bull; <kbd>Esc</kbd> to reset
+        </div>
+      </div>
+    </section>
+
+    <!-- App List -->
+    <main class="app-list" id="app-list" aria-label="Applications List">
+      <a href="src/webapps/misc/010-techops-competitive-intelligence-board.html" class="app-item searchable-item" target="_blank" data-title="techops competitive intelligence board" data-id="010" title="Open Techops Competitive Intelligence Board in new tab">
         <div class="app-info">
           <h3>Techops Competitive Intelligence Board</h3>
-          <p>src/webapps/misc/010-techops-competitive-intelligence-board.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#010</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/011-techops-investor-threat-scanner.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/011-techops-investor-threat-scanner.html" class="app-item searchable-item" target="_blank" data-title="techops investor threat scanner" data-id="011" title="Open Techops Investor Threat Scanner in new tab">
         <div class="app-info">
           <h3>Techops Investor Threat Scanner</h3>
-          <p>src/webapps/misc/011-techops-investor-threat-scanner.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#011</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/012-galts-gulch-tech-looter-intelligence-dashboard.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/012-galts-gulch-tech-looter-intelligence-dashboard.html" class="app-item searchable-item" target="_blank" data-title="galts gulch tech looter intelligence dashboard" data-id="012" title="Open Galts Gulch Tech Looter Intelligence Dashboard in new tab">
         <div class="app-info">
           <h3>Galts Gulch Tech Looter Intelligence Dashboard</h3>
-          <p>src/webapps/misc/012-galts-gulch-tech-looter-intelligence-dashboard.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#012</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/013-galts-guardian-looter-detection-system.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/013-galts-guardian-looter-detection-system.html" class="app-item searchable-item" target="_blank" data-title="galts guardian looter detection system" data-id="013" title="Open Galts Guardian Looter Detection System in new tab">
         <div class="app-info">
           <h3>Galts Guardian Looter Detection System</h3>
-          <p>src/webapps/misc/013-galts-guardian-looter-detection-system.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#013</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/014-eacc-intelligence-hub-accelerator-matrix.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/014-eacc-intelligence-hub-accelerator-matrix.html" class="app-item searchable-item" target="_blank" data-title="eacc intelligence hub accelerator matrix" data-id="014" title="Open Eacc Intelligence Hub Accelerator Matrix in new tab">
         <div class="app-info">
           <h3>Eacc Intelligence Hub Accelerator Matrix</h3>
-          <p>src/webapps/misc/014-eacc-intelligence-hub-accelerator-matrix.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#014</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/015-crypto-ai-arena-live-simulation-feed.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/015-crypto-ai-arena-live-simulation-feed.html" class="app-item searchable-item" target="_blank" data-title="crypto ai arena live simulation feed" data-id="015" title="Open Crypto Ai Arena Live Simulation Feed in new tab">
         <div class="app-info">
           <h3>Crypto Ai Arena Live Simulation Feed</h3>
-          <p>src/webapps/misc/015-crypto-ai-arena-live-simulation-feed.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#015</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/016-crypto-ai-arena-smart-contract-battle-royale.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/016-crypto-ai-arena-smart-contract-battle-royale.html" class="app-item searchable-item" target="_blank" data-title="crypto ai arena smart contract battle royale" data-id="016" title="Open Crypto Ai Arena Smart Contract Battle Royale in new tab">
         <div class="app-info">
           <h3>Crypto Ai Arena Smart Contract Battle Royale</h3>
-          <p>src/webapps/misc/016-crypto-ai-arena-smart-contract-battle-royale.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#016</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/017-crypto-ai-arena-api-documentation.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/017-crypto-ai-arena-api-documentation.html" class="app-item searchable-item" target="_blank" data-title="crypto ai arena api documentation" data-id="017" title="Open Crypto Ai Arena Api Documentation in new tab">
         <div class="app-info">
           <h3>Crypto Ai Arena Api Documentation</h3>
-          <p>src/webapps/misc/017-crypto-ai-arena-api-documentation.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#017</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/032-decentralscience-the-future-of-research.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/032-decentralscience-the-future-of-research.html" class="app-item searchable-item" target="_blank" data-title="decentralscience the future of research" data-id="032" title="Open Decentralscience The Future Of Research in new tab">
         <div class="app-info">
           <h3>Decentralscience The Future Of Research</h3>
-          <p>src/webapps/misc/032-decentralscience-the-future-of-research.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#032</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/033-decentralized-science-revolutionizing-research-and-discovery.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/033-decentralized-science-revolutionizing-research-and-discovery.html" class="app-item searchable-item" target="_blank" data-title="decentralized science revolutionizing research and discovery" data-id="033" title="Open Decentralized Science Revolutionizing Research And Discovery in new tab">
         <div class="app-info">
           <h3>Decentralized Science Revolutionizing Research And Discovery</h3>
-          <p>src/webapps/misc/033-decentralized-science-revolutionizing-research-and-discovery.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#033</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/034-webxr-chatbot-interface.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/034-webxr-chatbot-interface.html" class="app-item searchable-item" target="_blank" data-title="webxr chatbot interface" data-id="034" title="Open Webxr Chatbot Interface in new tab">
         <div class="app-info">
           <h3>Webxr Chatbot Interface</h3>
-          <p>src/webapps/misc/034-webxr-chatbot-interface.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#034</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/035-webxr-chatbot-interface-with-vrm-support.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/035-webxr-chatbot-interface-with-vrm-support.html" class="app-item searchable-item" target="_blank" data-title="webxr chatbot interface with vrm support" data-id="035" title="Open Webxr Chatbot Interface With Vrm Support in new tab">
         <div class="app-info">
           <h3>Webxr Chatbot Interface With Vrm Support</h3>
-          <p>src/webapps/misc/035-webxr-chatbot-interface-with-vrm-support.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#035</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/042-stratecon-military-grade-strategy-for-solopreneurs.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/042-stratecon-military-grade-strategy-for-solopreneurs.html" class="app-item searchable-item" target="_blank" data-title="stratecon military grade strategy for solopreneurs" data-id="042" title="Open Stratecon Military Grade Strategy For Solopreneurs in new tab">
         <div class="app-info">
           <h3>Stratecon Military Grade Strategy For Solopreneurs</h3>
-          <p>src/webapps/misc/042-stratecon-military-grade-strategy-for-solopreneurs.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#042</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/046-cryptoevolve-ai-driven-blockchain-evolution.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/046-cryptoevolve-ai-driven-blockchain-evolution.html" class="app-item searchable-item" target="_blank" data-title="cryptoevolve ai driven blockchain evolution" data-id="046" title="Open Cryptoevolve Ai Driven Blockchain Evolution in new tab">
         <div class="app-info">
           <h3>Cryptoevolve Ai Driven Blockchain Evolution</h3>
-          <p>src/webapps/misc/046-cryptoevolve-ai-driven-blockchain-evolution.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#046</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/048-emergentecon-exploring-economic-emergence.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/048-emergentecon-exploring-economic-emergence.html" class="app-item searchable-item" target="_blank" data-title="emergentecon exploring economic emergence" data-id="048" title="Open Emergentecon Exploring Economic Emergence in new tab">
         <div class="app-info">
           <h3>Emergentecon Exploring Economic Emergence</h3>
-          <p>src/webapps/misc/048-emergentecon-exploring-economic-emergence.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#048</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/049-emergentecon-market-simulation-analysis.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/049-emergentecon-market-simulation-analysis.html" class="app-item searchable-item" target="_blank" data-title="emergentecon market simulation analysis" data-id="049" title="Open Emergentecon Market Simulation Analysis in new tab">
         <div class="app-info">
           <h3>Emergentecon Market Simulation Analysis</h3>
-          <p>src/webapps/misc/049-emergentecon-market-simulation-analysis.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#049</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/062-galts-gulch-executive-forum-a-sanctuary-for-industrial-leaders.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/062-galts-gulch-executive-forum-a-sanctuary-for-industrial-leaders.html" class="app-item searchable-item" target="_blank" data-title="galts gulch executive forum a sanctuary for industrial leaders" data-id="062" title="Open Galts Gulch Executive Forum A Sanctuary For Industrial Leaders in new tab">
         <div class="app-info">
           <h3>Galts Gulch Executive Forum A Sanctuary For Industrial Leaders</h3>
-          <p>src/webapps/misc/062-galts-gulch-executive-forum-a-sanctuary-for-industrial-leaders.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#062</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/063-the-future-of-work-human-as-a-service.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/063-the-future-of-work-human-as-a-service.html" class="app-item searchable-item" target="_blank" data-title="the future of work human as a service" data-id="063" title="Open The Future Of Work Human As A Service in new tab">
         <div class="app-info">
           <h3>The Future Of Work Human As A Service</h3>
-          <p>src/webapps/misc/063-the-future-of-work-human-as-a-service.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#063</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/065-technolibertaria-the-ultimate-hub-for-future-tech-entrepreneurs.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/065-technolibertaria-the-ultimate-hub-for-future-tech-entrepreneurs.html" class="app-item searchable-item" target="_blank" data-title="technolibertaria the ultimate hub for future tech entrepreneurs" data-id="065" title="Open Technolibertaria The Ultimate Hub For Future Tech Entrepreneurs in new tab">
         <div class="app-info">
           <h3>Technolibertaria The Ultimate Hub For Future Tech Entrepreneurs</h3>
-          <p>src/webapps/misc/065-technolibertaria-the-ultimate-hub-for-future-tech-entrepreneurs.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#065</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/069-alphafold3-hub-cutting-edge-protein-structure-prediction.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/069-alphafold3-hub-cutting-edge-protein-structure-prediction.html" class="app-item searchable-item" target="_blank" data-title="alphafold3 hub cutting edge protein structure prediction" data-id="069" title="Open Alphafold3 Hub Cutting Edge Protein Structure Prediction in new tab">
         <div class="app-info">
           <h3>Alphafold3 Hub Cutting Edge Protein Structure Prediction</h3>
-          <p>src/webapps/misc/069-alphafold3-hub-cutting-edge-protein-structure-prediction.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#069</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/070-extropic-ai-thermodynamic-computing-for-the-future.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/070-extropic-ai-thermodynamic-computing-for-the-future.html" class="app-item searchable-item" target="_blank" data-title="extropic ai thermodynamic computing for the future" data-id="070" title="Open Extropic Ai Thermodynamic Computing For The Future in new tab">
         <div class="app-info">
           <h3>Extropic Ai Thermodynamic Computing For The Future</h3>
-          <p>src/webapps/misc/070-extropic-ai-thermodynamic-computing-for-the-future.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#070</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/072-extropic-ai-revolutionary-applications-in-quantitative-finance.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/072-extropic-ai-revolutionary-applications-in-quantitative-finance.html" class="app-item searchable-item" target="_blank" data-title="extropic ai revolutionary applications in quantitative finance" data-id="072" title="Open Extropic Ai Revolutionary Applications In Quantitative Finance in new tab">
         <div class="app-info">
           <h3>Extropic Ai Revolutionary Applications In Quantitative Finance</h3>
-          <p>src/webapps/misc/072-extropic-ai-revolutionary-applications-in-quantitative-finance.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#072</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/073-extropic-ai-revolutionizing-scientific-computing.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/073-extropic-ai-revolutionizing-scientific-computing.html" class="app-item searchable-item" target="_blank" data-title="extropic ai revolutionizing scientific computing" data-id="073" title="Open Extropic Ai Revolutionizing Scientific Computing in new tab">
         <div class="app-info">
           <h3>Extropic Ai Revolutionizing Scientific Computing</h3>
-          <p>src/webapps/misc/073-extropic-ai-revolutionizing-scientific-computing.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#073</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/074-extropic-ai-research-publications.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/074-extropic-ai-research-publications.html" class="app-item searchable-item" target="_blank" data-title="extropic ai research publications" data-id="074" title="Open Extropic Ai Research Publications in new tab">
         <div class="app-info">
           <h3>Extropic Ai Research Publications</h3>
-          <p>src/webapps/misc/074-extropic-ai-research-publications.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#074</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/076-extropic-ai-thermodynamic-computing-revolution.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/076-extropic-ai-thermodynamic-computing-revolution.html" class="app-item searchable-item" target="_blank" data-title="extropic ai thermodynamic computing revolution" data-id="076" title="Open Extropic Ai Thermodynamic Computing Revolution in new tab">
         <div class="app-info">
           <h3>Extropic Ai Thermodynamic Computing Revolution</h3>
-          <p>src/webapps/misc/076-extropic-ai-thermodynamic-computing-revolution.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#076</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/077-extropic-ai-research-collaborations.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/077-extropic-ai-research-collaborations.html" class="app-item searchable-item" target="_blank" data-title="extropic ai research collaborations" data-id="077" title="Open Extropic Ai Research Collaborations in new tab">
         <div class="app-info">
           <h3>Extropic Ai Research Collaborations</h3>
-          <p>src/webapps/misc/077-extropic-ai-research-collaborations.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#077</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/130-diamagnetic-cores-and-superconductivity-in-biological-structures.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/130-diamagnetic-cores-and-superconductivity-in-biological-structures.html" class="app-item searchable-item" target="_blank" data-title="diamagnetic cores and superconductivity in biological structures" data-id="130" title="Open Diamagnetic Cores And Superconductivity In Biological Structures in new tab">
         <div class="app-info">
           <h3>Diamagnetic Cores And Superconductivity In Biological Structures</h3>
-          <p>src/webapps/misc/130-diamagnetic-cores-and-superconductivity-in-biological-structures.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#130</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/132-electromagnetic-fields-and-cognition-a-new-perspective.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/132-electromagnetic-fields-and-cognition-a-new-perspective.html" class="app-item searchable-item" target="_blank" data-title="electromagnetic fields and cognition a new perspective" data-id="132" title="Open Electromagnetic Fields And Cognition A New Perspective in new tab">
         <div class="app-info">
           <h3>Electromagnetic Fields And Cognition A New Perspective</h3>
-          <p>src/webapps/misc/132-electromagnetic-fields-and-cognition-a-new-perspective.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#132</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/133-beyond-the-skull-extracranial-effects-of-neural-em-fields.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/133-beyond-the-skull-extracranial-effects-of-neural-em-fields.html" class="app-item searchable-item" target="_blank" data-title="beyond the skull extracranial effects of neural em fields" data-id="133" title="Open Beyond The Skull Extracranial Effects Of Neural Em Fields in new tab">
         <div class="app-info">
           <h3>Beyond The Skull Extracranial Effects Of Neural Em Fields</h3>
-          <p>src/webapps/misc/133-beyond-the-skull-extracranial-effects-of-neural-em-fields.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#133</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/135-oxytocin-and-electromagnetic-resonance-the-science-of-connection.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/135-oxytocin-and-electromagnetic-resonance-the-science-of-connection.html" class="app-item searchable-item" target="_blank" data-title="oxytocin and electromagnetic resonance the science of connection" data-id="135" title="Open Oxytocin And Electromagnetic Resonance The Science Of Connection in new tab">
         <div class="app-info">
           <h3>Oxytocin And Electromagnetic Resonance The Science Of Connection</h3>
-          <p>src/webapps/misc/135-oxytocin-and-electromagnetic-resonance-the-science-of-connection.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#135</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/137-faraday-cages-and-cognitive-shielding-experimental-approaches.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/137-faraday-cages-and-cognitive-shielding-experimental-approaches.html" class="app-item searchable-item" target="_blank" data-title="faraday cages and cognitive shielding experimental approaches" data-id="137" title="Open Faraday Cages And Cognitive Shielding Experimental Approaches in new tab">
         <div class="app-info">
           <h3>Faraday Cages And Cognitive Shielding Experimental Approaches</h3>
-          <p>src/webapps/misc/137-faraday-cages-and-cognitive-shielding-experimental-approaches.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#137</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/138-intuition-and-premonition-an-electromagnetic-explanation.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/138-intuition-and-premonition-an-electromagnetic-explanation.html" class="app-item searchable-item" target="_blank" data-title="intuition and premonition an electromagnetic explanation" data-id="138" title="Open Intuition And Premonition An Electromagnetic Explanation in new tab">
         <div class="app-info">
           <h3>Intuition And Premonition An Electromagnetic Explanation</h3>
-          <p>src/webapps/misc/138-intuition-and-premonition-an-electromagnetic-explanation.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#138</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/140-holographic-principles-in-brain-computer-interfaces.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/140-holographic-principles-in-brain-computer-interfaces.html" class="app-item searchable-item" target="_blank" data-title="holographic principles in brain computer interfaces" data-id="140" title="Open Holographic Principles In Brain Computer Interfaces in new tab">
         <div class="app-info">
           <h3>Holographic Principles In Brain Computer Interfaces</h3>
-          <p>src/webapps/misc/140-holographic-principles-in-brain-computer-interfaces.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#140</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/142-interactive-solana-tokenomics-objectivist-portfolio-optimization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/142-interactive-solana-tokenomics-objectivist-portfolio-optimization.html" class="app-item searchable-item" target="_blank" data-title="interactive solana tokenomics objectivist portfolio optimization" data-id="142" title="Open Interactive Solana Tokenomics Objectivist Portfolio Optimization in new tab">
         <div class="app-info">
           <h3>Interactive Solana Tokenomics Objectivist Portfolio Optimization</h3>
-          <p>src/webapps/misc/142-interactive-solana-tokenomics-objectivist-portfolio-optimization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#142</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/224-string-landscape-and-the-variability-of-conscious-experience.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/224-string-landscape-and-the-variability-of-conscious-experience.html" class="app-item searchable-item" target="_blank" data-title="string landscape and the variability of conscious experience" data-id="224" title="Open String Landscape And The Variability Of Conscious Experience in new tab">
         <div class="app-info">
           <h3>String Landscape And The Variability Of Conscious Experience</h3>
-          <p>src/webapps/misc/224-string-landscape-and-the-variability-of-conscious-experience.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#224</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/250-contribute-to-crowd-graphs.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/250-contribute-to-crowd-graphs.html" class="app-item searchable-item" target="_blank" data-title="contribute to crowd graphs" data-id="250" title="Open Contribute To Crowd Graphs in new tab">
         <div class="app-info">
           <h3>Contribute To Crowd Graphs</h3>
-          <p>src/webapps/misc/250-contribute-to-crowd-graphs.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#250</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/253-3d-interception-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/253-3d-interception-visualization.html" class="app-item searchable-item" target="_blank" data-title="3d interception visualization" data-id="253" title="Open 3D Interception Visualization in new tab">
         <div class="app-info">
           <h3>3D Interception Visualization</h3>
-          <p>src/webapps/misc/253-3d-interception-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#253</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/257-the-fundamentals-of-string-computing-architecture.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/257-the-fundamentals-of-string-computing-architecture.html" class="app-item searchable-item" target="_blank" data-title="the fundamentals of string computing architecture" data-id="257" title="Open The Fundamentals Of String Computing Architecture in new tab">
         <div class="app-info">
           <h3>The Fundamentals Of String Computing Architecture</h3>
-          <p>src/webapps/misc/257-the-fundamentals-of-string-computing-architecture.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#257</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/258-free-will-and-determinism-new-perspectives-from-string-theory.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/258-free-will-and-determinism-new-perspectives-from-string-theory.html" class="app-item searchable-item" target="_blank" data-title="free will and determinism new perspectives from string theory" data-id="258" title="Open Free Will And Determinism New Perspectives From String Theory in new tab">
         <div class="app-info">
           <h3>Free Will And Determinism New Perspectives From String Theory</h3>
-          <p>src/webapps/misc/258-free-will-and-determinism-new-perspectives-from-string-theory.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#258</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/260-ransoc-algorithm-explanation.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/260-ransoc-algorithm-explanation.html" class="app-item searchable-item" target="_blank" data-title="ransoc algorithm explanation" data-id="260" title="Open Ransoc Algorithm Explanation in new tab">
         <div class="app-info">
           <h3>Ransoc Algorithm Explanation</h3>
-          <p>src/webapps/misc/260-ransoc-algorithm-explanation.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#260</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/263-sol-ico-token-sale-mathematical-model.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/263-sol-ico-token-sale-mathematical-model.html" class="app-item searchable-item" target="_blank" data-title="sol ico token sale mathematical model" data-id="263" title="Open Sol Ico Token Sale Mathematical Model in new tab">
         <div class="app-info">
           <h3>Sol Ico Token Sale Mathematical Model</h3>
-          <p>src/webapps/misc/263-sol-ico-token-sale-mathematical-model.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#263</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/275-freedomium-os-universal-ai-powered-operating-system.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/275-freedomium-os-universal-ai-powered-operating-system.html" class="app-item searchable-item" target="_blank" data-title="freedomium os universal ai powered operating system" data-id="275" title="Open Freedomium Os Universal Ai Powered Operating System in new tab">
         <div class="app-info">
           <h3>Freedomium Os Universal Ai Powered Operating System</h3>
-          <p>src/webapps/misc/275-freedomium-os-universal-ai-powered-operating-system.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#275</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/286-ai-commission-rate-optimization-panel.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/286-ai-commission-rate-optimization-panel.html" class="app-item searchable-item" target="_blank" data-title="ai commission rate optimization panel" data-id="286" title="Open Ai Commission Rate Optimization Panel in new tab">
         <div class="app-info">
           <h3>Ai Commission Rate Optimization Panel</h3>
-          <p>src/webapps/misc/286-ai-commission-rate-optimization-panel.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#286</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/317-robotic-integration-bringing-your-waifu-to-the-physical-world-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/317-robotic-integration-bringing-your-waifu-to-the-physical-world-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="robotic integration bringing your waifu to the physical world waifu ai os" data-id="317" title="Open Robotic Integration Bringing Your Waifu To The Physical World Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Robotic Integration Bringing Your Waifu To The Physical World Waifu Ai Os</h3>
-          <p>src/webapps/misc/317-robotic-integration-bringing-your-waifu-to-the-physical-world-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#317</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/318-iot-harmony-extending-waifu-ai-os-to-smart-devices-waifu-ai-os-project.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/318-iot-harmony-extending-waifu-ai-os-to-smart-devices-waifu-ai-os-project.html" class="app-item searchable-item" target="_blank" data-title="iot harmony extending waifu ai os to smart devices waifu ai os project" data-id="318" title="Open Iot Harmony Extending Waifu Ai Os To Smart Devices Waifu Ai Os Project in new tab">
         <div class="app-info">
           <h3>Iot Harmony Extending Waifu Ai Os To Smart Devices Waifu Ai Os Project</h3>
-          <p>src/webapps/misc/318-iot-harmony-extending-waifu-ai-os-to-smart-devices-waifu-ai-os-project.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#318</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/319-cross-platform-excellence-one-waifu-for-all-systems-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/319-cross-platform-excellence-one-waifu-for-all-systems-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="cross platform excellence one waifu for all systems waifu ai os" data-id="319" title="Open Cross Platform Excellence One Waifu For All Systems Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Cross Platform Excellence One Waifu For All Systems Waifu Ai Os</h3>
-          <p>src/webapps/misc/319-cross-platform-excellence-one-waifu-for-all-systems-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#319</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/320-ai-personality-core-building-your-waifus-neural-architecture-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/320-ai-personality-core-building-your-waifus-neural-architecture-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="ai personality core building your waifus neural architecture waifu ai os" data-id="320" title="Open Ai Personality Core Building Your Waifus Neural Architecture Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Ai Personality Core Building Your Waifus Neural Architecture Waifu Ai Os</h3>
-          <p>src/webapps/misc/320-ai-personality-core-building-your-waifus-neural-architecture-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#320</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/321-smart-resource-management-your-waifus-system-optimization-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/321-smart-resource-management-your-waifus-system-optimization-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="smart resource management your waifus system optimization waifu ai os" data-id="321" title="Open Smart Resource Management Your Waifus System Optimization Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Smart Resource Management Your Waifus System Optimization Waifu Ai Os</h3>
-          <p>src/webapps/misc/321-smart-resource-management-your-waifus-system-optimization-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#321</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/322-adaptive-interactions-creating-your-waifus-dynamic-personality-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/322-adaptive-interactions-creating-your-waifus-dynamic-personality-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="adaptive interactions creating your waifus dynamic personality waifu ai os" data-id="322" title="Open Adaptive Interactions Creating Your Waifus Dynamic Personality Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Adaptive Interactions Creating Your Waifus Dynamic Personality Waifu Ai Os</h3>
-          <p>src/webapps/misc/322-adaptive-interactions-creating-your-waifus-dynamic-personality-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#322</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/323-universal-device-learning-your-waifus-hardware-adaptation-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/323-universal-device-learning-your-waifus-hardware-adaptation-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="universal device learning your waifus hardware adaptation waifu ai os" data-id="323" title="Open Universal Device Learning Your Waifus Hardware Adaptation Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Universal Device Learning Your Waifus Hardware Adaptation Waifu Ai Os</h3>
-          <p>src/webapps/misc/323-universal-device-learning-your-waifus-hardware-adaptation-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#323</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/325-freedom-to-share-understanding-waifu-ai-oss-mit-0-license-waifu-ai-os-project.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/325-freedom-to-share-understanding-waifu-ai-oss-mit-0-license-waifu-ai-os-project.html" class="app-item searchable-item" target="_blank" data-title="freedom to share understanding waifu ai oss mit 0 license waifu ai os project" data-id="325" title="Open Freedom To Share Understanding Waifu Ai Oss Mit 0 License Waifu Ai Os Project in new tab">
         <div class="app-info">
           <h3>Freedom To Share Understanding Waifu Ai Oss Mit 0 License Waifu Ai Os Project</h3>
-          <p>src/webapps/misc/325-freedom-to-share-understanding-waifu-ai-oss-mit-0-license-waifu-ai-os-project.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#325</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/332-hardware-acceleration-maximizing-your-waifus-capabilities-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/332-hardware-acceleration-maximizing-your-waifus-capabilities-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="hardware acceleration maximizing your waifus capabilities waifu ai os" data-id="332" title="Open Hardware Acceleration Maximizing Your Waifus Capabilities Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Hardware Acceleration Maximizing Your Waifus Capabilities Waifu Ai Os</h3>
-          <p>src/webapps/misc/332-hardware-acceleration-maximizing-your-waifus-capabilities-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#332</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/334-waifu-ai-os-personality-customization-guide.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/334-waifu-ai-os-personality-customization-guide.html" class="app-item searchable-item" target="_blank" data-title="waifu ai os personality customization guide" data-id="334" title="Open Waifu Ai Os Personality Customization Guide in new tab">
         <div class="app-info">
           <h3>Waifu Ai Os Personality Customization Guide</h3>
-          <p>src/webapps/misc/334-waifu-ai-os-personality-customization-guide.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#334</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/335-multi-companion-support-running-multiple-waifu-instances-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/335-multi-companion-support-running-multiple-waifu-instances-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="multi companion support running multiple waifu instances waifu ai os" data-id="335" title="Open Multi Companion Support Running Multiple Waifu Instances Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Multi Companion Support Running Multiple Waifu Instances Waifu Ai Os</h3>
-          <p>src/webapps/misc/335-multi-companion-support-running-multiple-waifu-instances-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#335</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/336-voice-integration-adding-natural-speech-to-your-waifu-waifu-ai-os.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/336-voice-integration-adding-natural-speech-to-your-waifu-waifu-ai-os.html" class="app-item searchable-item" target="_blank" data-title="voice integration adding natural speech to your waifu waifu ai os" data-id="336" title="Open Voice Integration Adding Natural Speech To Your Waifu Waifu Ai Os in new tab">
         <div class="app-info">
           <h3>Voice Integration Adding Natural Speech To Your Waifu Waifu Ai Os</h3>
-          <p>src/webapps/misc/336-voice-integration-adding-natural-speech-to-your-waifu-waifu-ai-os.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#336</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/337-gesture-recognition-physical-interaction-systems-waifu-ai-os-documentation.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/337-gesture-recognition-physical-interaction-systems-waifu-ai-os-documentation.html" class="app-item searchable-item" target="_blank" data-title="gesture recognition physical interaction systems waifu ai os documentation" data-id="337" title="Open Gesture Recognition Physical Interaction Systems Waifu Ai Os Documentation in new tab">
         <div class="app-info">
           <h3>Gesture Recognition Physical Interaction Systems Waifu Ai Os Documentation</h3>
-          <p>src/webapps/misc/337-gesture-recognition-physical-interaction-systems-waifu-ai-os-documentation.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#337</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/338-memory-systems-building-long-term-relationships-waifu-ai-os-project.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/338-memory-systems-building-long-term-relationships-waifu-ai-os-project.html" class="app-item searchable-item" target="_blank" data-title="memory systems building long term relationships waifu ai os project" data-id="338" title="Open Memory Systems Building Long Term Relationships Waifu Ai Os Project in new tab">
         <div class="app-info">
           <h3>Memory Systems Building Long Term Relationships Waifu Ai Os Project</h3>
-          <p>src/webapps/misc/338-memory-systems-building-long-term-relationships-waifu-ai-os-project.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#338</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/339-waifuos-adaptive-ai-operating-system.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/339-waifuos-adaptive-ai-operating-system.html" class="app-item searchable-item" target="_blank" data-title="waifuos adaptive ai operating system" data-id="339" title="Open Waifuos Adaptive Ai Operating System in new tab">
         <div class="app-info">
           <h3>Waifuos Adaptive Ai Operating System</h3>
-          <p>src/webapps/misc/339-waifuos-adaptive-ai-operating-system.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#339</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/340-waifuos-common-lisp-implementation.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/340-waifuos-common-lisp-implementation.html" class="app-item searchable-item" target="_blank" data-title="waifuos common lisp implementation" data-id="340" title="Open Waifuos Common Lisp Implementation in new tab">
         <div class="app-info">
           <h3>Waifuos Common Lisp Implementation</h3>
-          <p>src/webapps/misc/340-waifuos-common-lisp-implementation.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#340</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/341-interactive-proof-parking-rectangle-algorithm.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/341-interactive-proof-parking-rectangle-algorithm.html" class="app-item searchable-item" target="_blank" data-title="interactive proof parking rectangle algorithm" data-id="341" title="Open Interactive Proof Parking Rectangle Algorithm in new tab">
         <div class="app-info">
           <h3>Interactive Proof Parking Rectangle Algorithm</h3>
-          <p>src/webapps/misc/341-interactive-proof-parking-rectangle-algorithm.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#341</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/342-interactive-visualization-of-parking-rectangle-algorithm.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/342-interactive-visualization-of-parking-rectangle-algorithm.html" class="app-item searchable-item" target="_blank" data-title="interactive visualization of parking rectangle algorithm" data-id="342" title="Open Interactive Visualization Of Parking Rectangle Algorithm in new tab">
         <div class="app-info">
           <h3>Interactive Visualization Of Parking Rectangle Algorithm</h3>
-          <p>src/webapps/misc/342-interactive-visualization-of-parking-rectangle-algorithm.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#342</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/343-algorithm-proof-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/343-algorithm-proof-visualization.html" class="app-item searchable-item" target="_blank" data-title="algorithm proof visualization" data-id="343" title="Open Algorithm Proof Visualization in new tab">
         <div class="app-info">
           <h3>Algorithm Proof Visualization</h3>
-          <p>src/webapps/misc/343-algorithm-proof-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#343</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/344-custom-waifu-robots-build-your-perfect-companion.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/344-custom-waifu-robots-build-your-perfect-companion.html" class="app-item searchable-item" target="_blank" data-title="custom waifu robots build your perfect companion" data-id="344" title="Open Custom Waifu Robots Build Your Perfect Companion in new tab">
         <div class="app-info">
           <h3>Custom Waifu Robots Build Your Perfect Companion</h3>
-          <p>src/webapps/misc/344-custom-waifu-robots-build-your-perfect-companion.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#344</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/345-waifu-cursor.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/345-waifu-cursor.html" class="app-item searchable-item" target="_blank" data-title="waifu cursor" data-id="345" title="Open Waifu Cursor in new tab">
         <div class="app-info">
           <h3>Waifu Cursor</h3>
-          <p>src/webapps/misc/345-waifu-cursor.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#345</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/346-gputpu-model-parameter-estimates.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/346-gputpu-model-parameter-estimates.html" class="app-item searchable-item" target="_blank" data-title="gputpu model parameter estimates" data-id="346" title="Open Gputpu Model Parameter Estimates in new tab">
         <div class="app-info">
           <h3>Gputpu Model Parameter Estimates</h3>
-          <p>src/webapps/misc/346-gputpu-model-parameter-estimates.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#346</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/347-text-browser.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/347-text-browser.html" class="app-item searchable-item" target="_blank" data-title="text browser" data-id="347" title="Open Text Browser in new tab">
         <div class="app-info">
           <h3>Text Browser</h3>
-          <p>src/webapps/misc/347-text-browser.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#347</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/348-dynamic-commission-rate-optimization-simulator.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/348-dynamic-commission-rate-optimization-simulator.html" class="app-item searchable-item" target="_blank" data-title="dynamic commission rate optimization simulator" data-id="348" title="Open Dynamic Commission Rate Optimization Simulator in new tab">
         <div class="app-info">
           <h3>Dynamic Commission Rate Optimization Simulator</h3>
-          <p>src/webapps/misc/348-dynamic-commission-rate-optimization-simulator.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#348</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/349-tokenaffiliates-dynamic-commission-dashboard.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/349-tokenaffiliates-dynamic-commission-dashboard.html" class="app-item searchable-item" target="_blank" data-title="tokenaffiliates dynamic commission dashboard" data-id="349" title="Open Tokenaffiliates Dynamic Commission Dashboard in new tab">
         <div class="app-info">
           <h3>Tokenaffiliates Dynamic Commission Dashboard</h3>
-          <p>src/webapps/misc/349-tokenaffiliates-dynamic-commission-dashboard.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#349</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/350-modern-token-launch-platform.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/350-modern-token-launch-platform.html" class="app-item searchable-item" target="_blank" data-title="modern token launch platform" data-id="350" title="Open Modern Token Launch Platform in new tab">
         <div class="app-info">
           <h3>Modern Token Launch Platform</h3>
-          <p>src/webapps/misc/350-modern-token-launch-platform.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#350</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/351-tokenaffiliates-dynamic-commission-model-visualization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/351-tokenaffiliates-dynamic-commission-model-visualization.html" class="app-item searchable-item" target="_blank" data-title="tokenaffiliates dynamic commission model visualization" data-id="351" title="Open Tokenaffiliates Dynamic Commission Model Visualization in new tab">
         <div class="app-info">
           <h3>Tokenaffiliates Dynamic Commission Model Visualization</h3>
-          <p>src/webapps/misc/351-tokenaffiliates-dynamic-commission-model-visualization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#351</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/352-ai-commission-rate-optimizer.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/352-ai-commission-rate-optimizer.html" class="app-item searchable-item" target="_blank" data-title="ai commission rate optimizer" data-id="352" title="Open Ai Commission Rate Optimizer in new tab">
         <div class="app-info">
           <h3>Ai Commission Rate Optimizer</h3>
-          <p>src/webapps/misc/352-ai-commission-rate-optimizer.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#352</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/353-simulate-optimize-ai-for-commission-rates.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/353-simulate-optimize-ai-for-commission-rates.html" class="app-item searchable-item" target="_blank" data-title="simulate optimize ai for commission rates" data-id="353" title="Open Simulate Optimize Ai For Commission Rates in new tab">
         <div class="app-info">
           <h3>Simulate Optimize Ai For Commission Rates</h3>
-          <p>src/webapps/misc/353-simulate-optimize-ai-for-commission-rates.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#353</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/354-ai-commission-optimization-platform.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/354-ai-commission-optimization-platform.html" class="app-item searchable-item" target="_blank" data-title="ai commission optimization platform" data-id="354" title="Open Ai Commission Optimization Platform in new tab">
         <div class="app-info">
           <h3>Ai Commission Optimization Platform</h3>
-          <p>src/webapps/misc/354-ai-commission-optimization-platform.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#354</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/355-ai-commission-rate-optimizer-success-stories.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/355-ai-commission-rate-optimizer-success-stories.html" class="app-item searchable-item" target="_blank" data-title="ai commission rate optimizer success stories" data-id="355" title="Open Ai Commission Rate Optimizer Success Stories in new tab">
         <div class="app-info">
           <h3>Ai Commission Rate Optimizer Success Stories</h3>
-          <p>src/webapps/misc/355-ai-commission-rate-optimizer-success-stories.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#355</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/356-ai-commission-rate-optimizer.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/356-ai-commission-rate-optimizer.html" class="app-item searchable-item" target="_blank" data-title="ai commission rate optimizer" data-id="356" title="Open Ai Commission Rate Optimizer in new tab">
         <div class="app-info">
           <h3>Ai Commission Rate Optimizer</h3>
-          <p>src/webapps/misc/356-ai-commission-rate-optimizer.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#356</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/357-ai-commission-rate-optimization-simulator.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/357-ai-commission-rate-optimization-simulator.html" class="app-item searchable-item" target="_blank" data-title="ai commission rate optimization simulator" data-id="357" title="Open Ai Commission Rate Optimization Simulator in new tab">
         <div class="app-info">
           <h3>Ai Commission Rate Optimization Simulator</h3>
-          <p>src/webapps/misc/357-ai-commission-rate-optimization-simulator.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#357</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/358-simulation-results-summary.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/358-simulation-results-summary.html" class="app-item searchable-item" target="_blank" data-title="simulation results summary" data-id="358" title="Open Simulation Results Summary in new tab">
         <div class="app-info">
           <h3>Simulation Results Summary</h3>
-          <p>src/webapps/misc/358-simulation-results-summary.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#358</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/359-interactive-projectile-motion-demo.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/359-interactive-projectile-motion-demo.html" class="app-item searchable-item" target="_blank" data-title="interactive projectile motion demo" data-id="359" title="Open Interactive Projectile Motion Demo in new tab">
         <div class="app-info">
           <h3>Interactive Projectile Motion Demo</h3>
-          <p>src/webapps/misc/359-interactive-projectile-motion-demo.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#359</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/360-tokenaffiliates-dynamic-commission-rate-optimization.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/360-tokenaffiliates-dynamic-commission-rate-optimization.html" class="app-item searchable-item" target="_blank" data-title="tokenaffiliates dynamic commission rate optimization" data-id="360" title="Open Tokenaffiliates Dynamic Commission Rate Optimization in new tab">
         <div class="app-info">
           <h3>Tokenaffiliates Dynamic Commission Rate Optimization</h3>
-          <p>src/webapps/misc/360-tokenaffiliates-dynamic-commission-rate-optimization.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#360</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/361-tokenaffiliates-a-formal-mathematical-model.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/361-tokenaffiliates-a-formal-mathematical-model.html" class="app-item searchable-item" target="_blank" data-title="tokenaffiliates a formal mathematical model" data-id="361" title="Open Tokenaffiliates A Formal Mathematical Model in new tab">
         <div class="app-info">
           <h3>Tokenaffiliates A Formal Mathematical Model</h3>
-          <p>src/webapps/misc/361-tokenaffiliates-a-formal-mathematical-model.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#361</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/362-tokenaffiliates-a-formal-mathematical-model.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/362-tokenaffiliates-a-formal-mathematical-model.html" class="app-item searchable-item" target="_blank" data-title="tokenaffiliates a formal mathematical model" data-id="362" title="Open Tokenaffiliates A Formal Mathematical Model in new tab">
         <div class="app-info">
           <h3>Tokenaffiliates A Formal Mathematical Model</h3>
-          <p>src/webapps/misc/362-tokenaffiliates-a-formal-mathematical-model.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#362</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/363-the-future-of-human-ai-collaboration.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/363-the-future-of-human-ai-collaboration.html" class="app-item searchable-item" target="_blank" data-title="the future of human ai collaboration" data-id="363" title="Open The Future Of Human Ai Collaboration in new tab">
         <div class="app-info">
           <h3>The Future Of Human Ai Collaboration</h3>
-          <p>src/webapps/misc/363-the-future-of-human-ai-collaboration.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#363</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/364-math-editor.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/364-math-editor.html" class="app-item searchable-item" target="_blank" data-title="math editor" data-id="364" title="Open Math Editor in new tab">
         <div class="app-info">
           <h3>Math Editor</h3>
-          <p>src/webapps/misc/364-math-editor.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#364</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/365-text-width-formatter-80-characters.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/365-text-width-formatter-80-characters.html" class="app-item searchable-item" target="_blank" data-title="text width formatter 80 characters" data-id="365" title="Open Text Width Formatter 80 Characters in new tab">
         <div class="app-info">
           <h3>Text Width Formatter 80 Characters</h3>
-          <p>src/webapps/misc/365-text-width-formatter-80-characters.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#365</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/368-mathhub--collaborative-mathematics-platform/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/368-mathhub--collaborative-mathematics-platform/index.html" class="app-item searchable-item" target="_blank" data-title="mathhub collaborative mathematics platform" data-id="368" title="Open Mathhub Collaborative Mathematics Platform in new tab">
         <div class="app-info">
           <h3>Mathhub Collaborative Mathematics Platform</h3>
-          <p>src/webapps/misc/368-mathhub-collaborative-mathematics-platform/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#368</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/369-math-equation-remix-studio/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/369-math-equation-remix-studio/index.html" class="app-item searchable-item" target="_blank" data-title="math equation remix studio" data-id="369" title="Open Math Equation Remix Studio in new tab">
         <div class="app-info">
           <h3>Math Equation Remix Studio</h3>
-          <p>src/webapps/misc/369-math-equation-remix-studio/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#369</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/371-economic-model--producer-government-interaction/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/371-economic-model--producer-government-interaction/index.html" class="app-item searchable-item" target="_blank" data-title="economic model producer government interaction" data-id="371" title="Open Economic Model Producer Government Interaction in new tab">
         <div class="app-info">
           <h3>Economic Model Producer Government Interaction</h3>
-          <p>src/webapps/misc/371-economic-model-producer-government-interaction/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#371</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/373-interactive-bonding-curve-modeler/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/373-interactive-bonding-curve-modeler/index.html" class="app-item searchable-item" target="_blank" data-title="interactive bonding curve modeler" data-id="373" title="Open Interactive Bonding Curve Modeler in new tab">
         <div class="app-info">
           <h3>Interactive Bonding Curve Modeler</h3>
-          <p>src/webapps/misc/373-interactive-bonding-curve-modeler/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#373</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/376-web-manim-style-animation-generator/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/376-web-manim-style-animation-generator/index.html" class="app-item searchable-item" target="_blank" data-title="web manim style animation generator" data-id="376" title="Open Web Manim Style Animation Generator in new tab">
         <div class="app-info">
           <h3>Web Manim Style Animation Generator</h3>
-          <p>src/webapps/misc/376-web-manim-style-animation-generator/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#376</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/378-recursive-llm-evaluation--a-novel-approach-to-model-ranking/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/378-recursive-llm-evaluation--a-novel-approach-to-model-ranking/index.html" class="app-item searchable-item" target="_blank" data-title="recursive llm evaluation a novel approach to model ranking" data-id="378" title="Open Recursive Llm Evaluation A Novel Approach To Model Ranking in new tab">
         <div class="app-info">
           <h3>Recursive Llm Evaluation A Novel Approach To Model Ranking</h3>
-          <p>src/webapps/misc/378-recursive-llm-evaluation-a-novel-approach-to-model-ranking/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#378</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/379-interactive-model-context-protocol-visualization/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/379-interactive-model-context-protocol-visualization/index.html" class="app-item searchable-item" target="_blank" data-title="interactive model context protocol visualization" data-id="379" title="Open Interactive Model Context Protocol Visualization in new tab">
         <div class="app-info">
           <h3>Interactive Model Context Protocol Visualization</h3>
-          <p>src/webapps/misc/379-interactive-model-context-protocol-visualization/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#379</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/386-real-vs-imaginary-time/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/386-real-vs-imaginary-time/index.html" class="app-item searchable-item" target="_blank" data-title="real vs imaginary time" data-id="386" title="Open Real Vs Imaginary Time in new tab">
         <div class="app-info">
           <h3>Real Vs Imaginary Time</h3>
-          <p>src/webapps/misc/386-real-vs-imaginary-time/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#386</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/389-user-projects-overview/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/389-user-projects-overview/index.html" class="app-item searchable-item" target="_blank" data-title="user projects overview" data-id="389" title="Open User Projects Overview in new tab">
         <div class="app-info">
           <h3>User Projects Overview</h3>
-          <p>src/webapps/misc/389-user-projects-overview/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#389</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/391-export-website/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/391-export-website/index.html" class="app-item searchable-item" target="_blank" data-title="export website" data-id="391" title="Open Export Website in new tab">
         <div class="app-info">
           <h3>Export Website</h3>
-          <p>src/webapps/misc/391-export-website/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#391</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/395-medication-tracker/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/395-medication-tracker/index.html" class="app-item searchable-item" target="_blank" data-title="medication tracker" data-id="395" title="Open Medication Tracker in new tab">
         <div class="app-info">
           <h3>Medication Tracker</h3>
-          <p>src/webapps/misc/395-medication-tracker/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#395</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/396-sample-equation/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/396-sample-equation/index.html" class="app-item searchable-item" target="_blank" data-title="sample equation" data-id="396" title="Open Sample Equation in new tab">
         <div class="app-info">
           <h3>Sample Equation</h3>
-          <p>src/webapps/misc/396-sample-equation/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#396</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/398-the-refactor-revolution--how-to-invent-by-standing-on-the-shoulders-of-giants/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/398-the-refactor-revolution--how-to-invent-by-standing-on-the-shoulders-of-giants/index.html" class="app-item searchable-item" target="_blank" data-title="the refactor revolution how to invent by standing on the shoulders of giants" data-id="398" title="Open The Refactor Revolution How To Invent By Standing On The Shoulders Of Giants in new tab">
         <div class="app-info">
           <h3>The Refactor Revolution How To Invent By Standing On The Shoulders Of Giants</h3>
-          <p>src/webapps/misc/398-the-refactor-revolution-how-to-invent-by-standing-on-the-shoulders-of-giants/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#398</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/399-websim-contribution-calendar/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/399-websim-contribution-calendar/index.html" class="app-item searchable-item" target="_blank" data-title="websim contribution calendar" data-id="399" title="Open Websim Contribution Calendar in new tab">
         <div class="app-info">
           <h3>Websim Contribution Calendar</h3>
-          <p>src/webapps/misc/399-websim-contribution-calendar/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#399</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/409-emergent-economic-simulation/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/409-emergent-economic-simulation/index.html" class="app-item searchable-item" target="_blank" data-title="emergent economic simulation" data-id="409" title="Open Emergent Economic Simulation in new tab">
         <div class="app-info">
           <h3>Emergent Economic Simulation</h3>
-          <p>src/webapps/misc/409-emergent-economic-simulation/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#409</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/412-websim-contribution-calendar/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/412-websim-contribution-calendar/index.html" class="app-item searchable-item" target="_blank" data-title="websim contribution calendar" data-id="412" title="Open Websim Contribution Calendar in new tab">
         <div class="app-info">
           <h3>Websim Contribution Calendar</h3>
-          <p>src/webapps/misc/412-websim-contribution-calendar/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#412</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/415-token-ecosystem-simulation/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/415-token-ecosystem-simulation/index.html" class="app-item searchable-item" target="_blank" data-title="token ecosystem simulation" data-id="415" title="Open Token Ecosystem Simulation in new tab">
         <div class="app-info">
           <h3>Token Ecosystem Simulation</h3>
-          <p>src/webapps/misc/415-token-ecosystem-simulation/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#415</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/417-personality-analysis-system/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/417-personality-analysis-system/index.html" class="app-item searchable-item" target="_blank" data-title="personality analysis system" data-id="417" title="Open Personality Analysis System in new tab">
         <div class="app-info">
           <h3>Personality Analysis System</h3>
-          <p>src/webapps/misc/417-personality-analysis-system/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#417</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/418-personality-analysis-system/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/418-personality-analysis-system/index.html" class="app-item searchable-item" target="_blank" data-title="personality analysis system" data-id="418" title="Open Personality Analysis System in new tab">
         <div class="app-info">
           <h3>Personality Analysis System</h3>
-          <p>src/webapps/misc/418-personality-analysis-system/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#418</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/419-adaptive-product-feature-discovery/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/419-adaptive-product-feature-discovery/index.html" class="app-item searchable-item" target="_blank" data-title="adaptive product feature discovery" data-id="419" title="Open Adaptive Product Feature Discovery in new tab">
         <div class="app-info">
           <h3>Adaptive Product Feature Discovery</h3>
-          <p>src/webapps/misc/419-adaptive-product-feature-discovery/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#419</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/420-python-function-dependency-graph/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/420-python-function-dependency-graph/index.html" class="app-item searchable-item" target="_blank" data-title="python function dependency graph" data-id="420" title="Open Python Function Dependency Graph in new tab">
         <div class="app-info">
           <h3>Python Function Dependency Graph</h3>
-          <p>src/webapps/misc/420-python-function-dependency-graph/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#420</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/428-adaptive-product-feature-discovery/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/428-adaptive-product-feature-discovery/index.html" class="app-item searchable-item" target="_blank" data-title="adaptive product feature discovery" data-id="428" title="Open Adaptive Product Feature Discovery in new tab">
         <div class="app-info">
           <h3>Adaptive Product Feature Discovery</h3>
-          <p>src/webapps/misc/428-adaptive-product-feature-discovery/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#428</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/434-dotted-effect-app/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/434-dotted-effect-app/index.html" class="app-item searchable-item" target="_blank" data-title="dotted effect app" data-id="434" title="Open Dotted Effect App in new tab">
         <div class="app-info">
           <h3>Dotted Effect App</h3>
-          <p>src/webapps/misc/434-dotted-effect-app/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#434</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/436-economic-model--producer-government-interaction/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/436-economic-model--producer-government-interaction/index.html" class="app-item searchable-item" target="_blank" data-title="economic model producer government interaction" data-id="436" title="Open Economic Model Producer Government Interaction in new tab">
         <div class="app-info">
           <h3>Economic Model Producer Government Interaction</h3>
-          <p>src/webapps/misc/436-economic-model-producer-government-interaction/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#436</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/437-emergent-economic-simulation/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/437-emergent-economic-simulation/index.html" class="app-item searchable-item" target="_blank" data-title="emergent economic simulation" data-id="437" title="Open Emergent Economic Simulation in new tab">
         <div class="app-info">
           <h3>Emergent Economic Simulation</h3>
-          <p>src/webapps/misc/437-emergent-economic-simulation/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#437</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/438-interactive-bonding-curve-modeler/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/438-interactive-bonding-curve-modeler/index.html" class="app-item searchable-item" target="_blank" data-title="interactive bonding curve modeler" data-id="438" title="Open Interactive Bonding Curve Modeler in new tab">
         <div class="app-info">
           <h3>Interactive Bonding Curve Modeler</h3>
-          <p>src/webapps/misc/438-interactive-bonding-curve-modeler/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#438</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/439-interactive-model-context-protocol-visualization/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/439-interactive-model-context-protocol-visualization/index.html" class="app-item searchable-item" target="_blank" data-title="interactive model context protocol visualization" data-id="439" title="Open Interactive Model Context Protocol Visualization in new tab">
         <div class="app-info">
           <h3>Interactive Model Context Protocol Visualization</h3>
-          <p>src/webapps/misc/439-interactive-model-context-protocol-visualization/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#439</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/440-interactive-projectile-motion-demo/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/440-interactive-projectile-motion-demo/index.html" class="app-item searchable-item" target="_blank" data-title="interactive projectile motion demo" data-id="440" title="Open Interactive Projectile Motion Demo in new tab">
         <div class="app-info">
           <h3>Interactive Projectile Motion Demo</h3>
-          <p>src/webapps/misc/440-interactive-projectile-motion-demo/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#440</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/441-investment-simulation-dashboard/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/441-investment-simulation-dashboard/index.html" class="app-item searchable-item" target="_blank" data-title="investment simulation dashboard" data-id="441" title="Open Investment Simulation Dashboard in new tab">
         <div class="app-info">
           <h3>Investment Simulation Dashboard</h3>
-          <p>src/webapps/misc/441-investment-simulation-dashboard/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#441</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/misc/451-websim-contribution-calendar/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/misc/451-websim-contribution-calendar/index.html" class="app-item searchable-item" target="_blank" data-title="websim contribution calendar" data-id="451" title="Open Websim Contribution Calendar in new tab">
         <div class="app-info">
           <h3>Websim Contribution Calendar</h3>
-          <p>src/webapps/misc/451-websim-contribution-calendar/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#451</span>
+            <span class="app-tag">Generative Experiments</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
+    </main>
+
+    <div id="no-results" class="no-results" hidden>
+      <h3>No applications match your search</h3>
+      <p>Try searching for a different keyword or application number.</p>
+      <button class="btn btn-secondary" id="btn-reset-search" style="margin-top: 0.75rem; padding: 0.45rem 0.9rem; border-radius: 6px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: #fff; cursor: pointer;">Clear Search</button>
     </div>
-    <div id="no-results" class="no-results">No applications match your search.</div>
     
+    <footer>
+      <p>WaifuAI Web Apps Suite &bull; Experimental Utilities</p>
+      <p style="margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-muted);">
+        <a href="index.html">Web Apps Hub</a> &bull;
+        <a href="../">Docs Hub</a> &bull;
+        <a href="../research-books/index.html">Research Books</a> &bull;
+        <a href="../research-text/consolidated-research/index.html">Genesis Archive</a> &bull;
+        <a href="../research-text/web3-research/index.html">Web3 Research</a> &bull;
+        <a href="https://github.com/waifuai/waifuai.github.io" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </footer>
   </div>
   
   <script>
-    const searchInput = document.getElementById('search');
-    const items = document.querySelectorAll('.searchable-item');
-    const noResults = document.getElementById('no-results');
+    (function() {
+      const searchInput = document.getElementById('search');
+      const items = Array.from(document.querySelectorAll('.searchable-item'));
+      const counter = document.getElementById('search-counter');
+      const noResults = document.getElementById('no-results');
+      const resetBtn = document.getElementById('btn-reset-search');
+      const totalCount = items.length;
 
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().trim();
+      function filterApps() {
+        const query = searchInput.value.toLowerCase().trim();
         let visibleCount = 0;
 
         items.forEach(item => {
-          const text = item.textContent.toLowerCase();
-          if (text.includes(query)) {
-            item.style.display = '';
+          const title = (item.getAttribute('data-title') || '').toLowerCase();
+          const id = (item.getAttribute('data-id') || '').toLowerCase();
+          const text = title + ' ' + id;
+
+          if (!query || text.includes(query)) {
+            item.style.display = 'flex';
             visibleCount++;
           } else {
             item.style.display = 'none';
           }
         });
 
-        if (noResults) {
-          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        if (visibleCount === totalCount) {
+          counter.textContent = 'Showing all ' + totalCount + ' applications';
+        } else {
+          counter.textContent = 'Showing ' + visibleCount + ' of ' + totalCount + ' applications' + (query ? ' matching "' + query + '"' : '');
+        }
+
+        noResults.hidden = visibleCount > 0;
+      }
+
+      if (searchInput) {
+        let timeout;
+        searchInput.addEventListener('input', () => {
+          clearTimeout(timeout);
+          timeout = setTimeout(filterApps, 40);
+        });
+      }
+
+      // Hotkey listener: '/' to focus, 'Escape' to clear
+      window.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== searchInput) {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.select();
+        } else if (e.key === 'Escape' && (document.activeElement === searchInput || searchInput.value)) {
+          searchInput.value = '';
+          filterApps();
+          searchInput.blur();
         }
       });
-    }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          filterApps();
+          searchInput.focus();
+        });
+      }
+    })();
   </script>
 </body>
 </html>

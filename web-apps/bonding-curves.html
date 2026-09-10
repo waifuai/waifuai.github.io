@@ -14,255 +14,451 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/web-apps/bonding-curves.html">
-<meta name="description" content="Collection of interactive Bonding Curves web apps and utilities.">
-<meta property="og:title" content="Bonding Curves">
-<meta property="og:description" content="Collection of interactive Bonding Curves web apps and utilities.">
+<meta name="description" content="Collection of 26 interactive Bonding Curves & AMMs web apps, visualizers, and simulation tools | WaifuAI">
+<meta property="og:title" content="Bonding Curves & AMMs (26 Apps) | WaifuAI Web Apps">
+<meta property="og:description" content="Collection of 26 interactive Bonding Curves & AMMs web apps and simulation sandboxes.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/web-apps/bonding-curves.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bonding Curves">
-<meta name="twitter:description" content="Collection of interactive Bonding Curves web apps and utilities.">
+<meta name="twitter:title" content="Bonding Curves & AMMs (26 Apps) | WaifuAI Web Apps">
+<meta name="twitter:description" content="Collection of 26 interactive Bonding Curves & AMMs web apps and simulation sandboxes.">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>Bonding Curves | WaifuAI Web Apps</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Bonding Curves & AMMs (26 Apps) | WaifuAI Web Apps</title>
 <link rel="stylesheet" href="web-apps.css">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
   <div class="container">
-    <a href="index.html" class="back-link">&larr; Back to index</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="../">WaifuAI Docs</a>
+      <span class="sep">/</span>
+      <a href="index.html">Web Apps Suite</a>
+      <span class="sep">/</span>
+      <span aria-current="page">Bonding Curves & AMMs</span>
+    </nav>
 
     <header>
-      <h1>📈 Bonding Curves</h1>
-      <p>Bonding curve simulations, parameter optimizers, and automated pricing model visualizers.</p>
+      <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+        <span class="badge badge-accent">Cryptoeconomic Primitives</span>
+        <span class="badge">26 Interactive Apps</span>
+        <span class="badge" style="border-color: var(--success); color: var(--success);">100% Client-Side Native</span>
+      </div>
+      <h1>📈 Bonding Curves & AMMs</h1>
+      <p>Bonding curve simulations, parameter optimizers, mathematical pricing visualizers, and continuous liquidity models.</p>
+      <div class="links">
+        <a href="index.html">&larr; All Web App Suites</a>
+        <a href="../">🏠 Docs Hub</a>
+        <a href="../research-books/index.html">📚 Research Books</a>
+      </div>
     </header>
 
-    <div class="search-wrapper">
-      <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input type="text" id="search" class="search-input" placeholder="Search 26 apps...">
+    <!-- Cross Hub Theory Bridge -->
+    <div class="callout-box">
+      <div class="callout-header">
+        <span class="badge badge-accent">🔬 Theory to Code Bridge</span>
+        <a href="../research-books/books/02-bonding_curve_token_interswap_stock_market_on_monero/index.html" class="callout-link">Read Volume 02 (Monero AMM Bonding Curves) &rarr;</a>
+      </div>
+      <p style="margin: 0; color: var(--text-muted); font-size: 0.92rem; line-height: 1.55;">
+        These 26 applications simulate mathematical pricing models P(S), integral cost areas, and concentrated liquidity ticks derived in Volume 02 and the Base Uniswap v4 architectural refactor.
+      </p>
     </div>
 
-    <div class="app-list">
-      <a href="src/webapps/bonding-curves/001-uniswap-curve-simulator.html" class="app-item searchable-item" target="_blank">
+    <!-- Search Section -->
+    <section aria-label="Search Applications">
+      <div class="search-wrapper">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search" class="search-input" placeholder="Search 26 bonding curves & amms apps (press '/' to focus)..." aria-label="Search apps">
+      </div>
+
+      <div class="search-controls">
+        <div id="search-counter">Showing all 26 applications</div>
+        <div class="hotkey-hint">
+          <kbd>/</kbd> to search &bull; <kbd>Esc</kbd> to reset
+        </div>
+      </div>
+    </section>
+
+    <!-- App List -->
+    <main class="app-list" id="app-list" aria-label="Applications List">
+      <a href="src/webapps/bonding-curves/001-uniswap-curve-simulator.html" class="app-item searchable-item" target="_blank" data-title="uniswap curve simulator" data-id="001" title="Open Uniswap Curve Simulator in new tab">
         <div class="app-info">
           <h3>Uniswap Curve Simulator</h3>
-          <p>src/webapps/bonding-curves/001-uniswap-curve-simulator.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#001</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/003-solanaai-token-bonding-curve-exchange.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/003-solanaai-token-bonding-curve-exchange.html" class="app-item searchable-item" target="_blank" data-title="solanaai token bonding curve exchange" data-id="003" title="Open Solanaai Token Bonding Curve Exchange in new tab">
         <div class="app-info">
           <h3>Solanaai Token Bonding Curve Exchange</h3>
-          <p>src/webapps/bonding-curves/003-solanaai-token-bonding-curve-exchange.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#003</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/004-interactive-bonding-curve-builder.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/004-interactive-bonding-curve-builder.html" class="app-item searchable-item" target="_blank" data-title="interactive bonding curve builder" data-id="004" title="Open Interactive Bonding Curve Builder in new tab">
         <div class="app-info">
           <h3>Interactive Bonding Curve Builder</h3>
-          <p>src/webapps/bonding-curves/004-interactive-bonding-curve-builder.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#004</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/005-bonding-curve-quiz-generator.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/005-bonding-curve-quiz-generator.html" class="app-item searchable-item" target="_blank" data-title="bonding curve quiz generator" data-id="005" title="Open Bonding Curve Quiz Generator in new tab">
         <div class="app-info">
           <h3>Bonding Curve Quiz Generator</h3>
-          <p>src/webapps/bonding-curves/005-bonding-curve-quiz-generator.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#005</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/007-solana-5-token-interchange-pair-analytics.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/007-solana-5-token-interchange-pair-analytics.html" class="app-item searchable-item" target="_blank" data-title="solana 5 token interchange pair analytics" data-id="007" title="Open Solana 5 Token Interchange Pair Analytics in new tab">
         <div class="app-info">
           <h3>Solana 5 Token Interchange Pair Analytics</h3>
-          <p>src/webapps/bonding-curves/007-solana-5-token-interchange-pair-analytics.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#007</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/008-solana-ecosystem-productive-utility-tokens-speculative-assets.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/008-solana-ecosystem-productive-utility-tokens-speculative-assets.html" class="app-item searchable-item" target="_blank" data-title="solana ecosystem productive utility tokens speculative assets" data-id="008" title="Open Solana Ecosystem Productive Utility Tokens Speculative Assets in new tab">
         <div class="app-info">
           <h3>Solana Ecosystem Productive Utility Tokens Speculative Assets</h3>
-          <p>src/webapps/bonding-curves/008-solana-ecosystem-productive-utility-tokens-speculative-assets.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#008</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/009-solana-ecosystem-asset-speculation-currency-debasement.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/009-solana-ecosystem-asset-speculation-currency-debasement.html" class="app-item searchable-item" target="_blank" data-title="solana ecosystem asset speculation currency debasement" data-id="009" title="Open Solana Ecosystem Asset Speculation Currency Debasement in new tab">
         <div class="app-info">
           <h3>Solana Ecosystem Asset Speculation Currency Debasement</h3>
-          <p>src/webapps/bonding-curves/009-solana-ecosystem-asset-speculation-currency-debasement.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#009</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/020-solana-ico-tutorial-for-digital-product-companies-cryptolaunchpad.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/020-solana-ico-tutorial-for-digital-product-companies-cryptolaunchpad.html" class="app-item searchable-item" target="_blank" data-title="solana ico tutorial for digital product companies cryptolaunchpad" data-id="020" title="Open Solana Ico Tutorial For Digital Product Companies Cryptolaunchpad in new tab">
         <div class="app-info">
           <h3>Solana Ico Tutorial For Digital Product Companies Cryptolaunchpad</h3>
-          <p>src/webapps/bonding-curves/020-solana-ico-tutorial-for-digital-product-companies-cryptolaunchpad.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#020</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/021-ico-on-solana-technical-guide-for-digital-product-companies.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/021-ico-on-solana-technical-guide-for-digital-product-companies.html" class="app-item searchable-item" target="_blank" data-title="ico on solana technical guide for digital product companies" data-id="021" title="Open Ico On Solana Technical Guide For Digital Product Companies in new tab">
         <div class="app-info">
           <h3>Ico On Solana Technical Guide For Digital Product Companies</h3>
-          <p>src/webapps/bonding-curves/021-ico-on-solana-technical-guide-for-digital-product-companies.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#021</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/022-advanced-tokenomics-utility-token-with-bonding-curve-and-profit-margin-on-solana.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/022-advanced-tokenomics-utility-token-with-bonding-curve-and-profit-margin-on-solana.html" class="app-item searchable-item" target="_blank" data-title="advanced tokenomics utility token with bonding curve and profit margin on solana" data-id="022" title="Open Advanced Tokenomics Utility Token With Bonding Curve And Profit Margin On Solana in new tab">
         <div class="app-info">
           <h3>Advanced Tokenomics Utility Token With Bonding Curve And Profit Margin On Solana</h3>
-          <p>src/webapps/bonding-curves/022-advanced-tokenomics-utility-token-with-bonding-curve-and-profit-margin-on-solana.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#022</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/023-solana-bonding-curve-token-in-python.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/023-solana-bonding-curve-token-in-python.html" class="app-item searchable-item" target="_blank" data-title="solana bonding curve token in python" data-id="023" title="Open Solana Bonding Curve Token In Python in new tab">
         <div class="app-info">
           <h3>Solana Bonding Curve Token In Python</h3>
-          <p>src/webapps/bonding-curves/023-solana-bonding-curve-token-in-python.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#023</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/024-bancor-bonding-curve-explorer.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/024-bancor-bonding-curve-explorer.html" class="app-item searchable-item" target="_blank" data-title="bancor bonding curve explorer" data-id="024" title="Open Bancor Bonding Curve Explorer in new tab">
         <div class="app-info">
           <h3>Bancor Bonding Curve Explorer</h3>
-          <p>src/webapps/bonding-curves/024-bancor-bonding-curve-explorer.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#024</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/025-next-gen-ico-guide-solana-based-bonding-curve-with-commission.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/025-next-gen-ico-guide-solana-based-bonding-curve-with-commission.html" class="app-item searchable-item" target="_blank" data-title="next gen ico guide solana based bonding curve with commission" data-id="025" title="Open Next Gen Ico Guide Solana Based Bonding Curve With Commission in new tab">
         <div class="app-info">
           <h3>Next Gen Ico Guide Solana Based Bonding Curve With Commission</h3>
-          <p>src/webapps/bonding-curves/025-next-gen-ico-guide-solana-based-bonding-curve-with-commission.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#025</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/026-advanced-solana-ico-tutorial-bonding-curve-with-commission-python-version.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/026-advanced-solana-ico-tutorial-bonding-curve-with-commission-python-version.html" class="app-item searchable-item" target="_blank" data-title="advanced solana ico tutorial bonding curve with commission python version" data-id="026" title="Open Advanced Solana Ico Tutorial Bonding Curve With Commission Python Version in new tab">
         <div class="app-info">
           <h3>Advanced Solana Ico Tutorial Bonding Curve With Commission Python Version</h3>
-          <p>src/webapps/bonding-curves/026-advanced-solana-ico-tutorial-bonding-curve-with-commission-python-version.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#026</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/027-innovative-solana-ico-system-bancor-bonding-curve-affiliate-commission.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/027-innovative-solana-ico-system-bancor-bonding-curve-affiliate-commission.html" class="app-item searchable-item" target="_blank" data-title="innovative solana ico system bancor bonding curve affiliate commission" data-id="027" title="Open Innovative Solana Ico System Bancor Bonding Curve Affiliate Commission in new tab">
         <div class="app-info">
           <h3>Innovative Solana Ico System Bancor Bonding Curve Affiliate Commission</h3>
-          <p>src/webapps/bonding-curves/027-innovative-solana-ico-system-bancor-bonding-curve-affiliate-commission.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#027</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/028-utility-token-interswap-a-tokenized-barter-system-for-speculative-holdings.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/028-utility-token-interswap-a-tokenized-barter-system-for-speculative-holdings.html" class="app-item searchable-item" target="_blank" data-title="utility token interswap a tokenized barter system for speculative holdings" data-id="028" title="Open Utility Token Interswap A Tokenized Barter System For Speculative Holdings in new tab">
         <div class="app-info">
           <h3>Utility Token Interswap A Tokenized Barter System For Speculative Holdings</h3>
-          <p>src/webapps/bonding-curves/028-utility-token-interswap-a-tokenized-barter-system-for-speculative-holdings.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#028</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/029-how-utility-token-interswap-counters-fiat-money-printing-and-debt-creation.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/029-how-utility-token-interswap-counters-fiat-money-printing-and-debt-creation.html" class="app-item searchable-item" target="_blank" data-title="how utility token interswap counters fiat money printing and debt creation" data-id="029" title="Open How Utility Token Interswap Counters Fiat Money Printing And Debt Creation in new tab">
         <div class="app-info">
           <h3>How Utility Token Interswap Counters Fiat Money Printing And Debt Creation</h3>
-          <p>src/webapps/bonding-curves/029-how-utility-token-interswap-counters-fiat-money-printing-and-debt-creation.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#029</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/030-advanced-utility-token-speculation-aiming-for-99-profit-margins-and-1m-mrr.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/030-advanced-utility-token-speculation-aiming-for-99-profit-margins-and-1m-mrr.html" class="app-item searchable-item" target="_blank" data-title="advanced utility token speculation aiming for 99 profit margins and 1m mrr" data-id="030" title="Open Advanced Utility Token Speculation Aiming For 99 Profit Margins And 1M Mrr in new tab">
         <div class="app-info">
           <h3>Advanced Utility Token Speculation Aiming For 99 Profit Margins And 1M Mrr</h3>
-          <p>src/webapps/bonding-curves/030-advanced-utility-token-speculation-aiming-for-99-profit-margins-and-1m-mrr.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#030</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/031-hyper-optimized-token-speculation-in-the-ai-agent-supereconomy.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/031-hyper-optimized-token-speculation-in-the-ai-agent-supereconomy.html" class="app-item searchable-item" target="_blank" data-title="hyper optimized token speculation in the ai agent supereconomy" data-id="031" title="Open Hyper Optimized Token Speculation In The Ai Agent Supereconomy in new tab">
         <div class="app-info">
           <h3>Hyper Optimized Token Speculation In The Ai Agent Supereconomy</h3>
-          <p>src/webapps/bonding-curves/031-hyper-optimized-token-speculation-in-the-ai-agent-supereconomy.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#031</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/036-bondingcurve-architect-high-profit-token-design.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/036-bondingcurve-architect-high-profit-token-design.html" class="app-item searchable-item" target="_blank" data-title="bondingcurve architect high profit token design" data-id="036" title="Open Bondingcurve Architect High Profit Token Design in new tab">
         <div class="app-info">
           <h3>Bondingcurve Architect High Profit Token Design</h3>
-          <p>src/webapps/bonding-curves/036-bondingcurve-architect-high-profit-token-design.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#036</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/037-tokenaffiliates-commission-sales-dashboard.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/037-tokenaffiliates-commission-sales-dashboard.html" class="app-item searchable-item" target="_blank" data-title="tokenaffiliates commission sales dashboard" data-id="037" title="Open Tokenaffiliates Commission Sales Dashboard in new tab">
         <div class="app-info">
           <h3>Tokenaffiliates Commission Sales Dashboard</h3>
-          <p>src/webapps/bonding-curves/037-tokenaffiliates-commission-sales-dashboard.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#037</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/038-join-tokenaffiliates-skyrocket-your-earnings-with-high-profit-token-sales.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/038-join-tokenaffiliates-skyrocket-your-earnings-with-high-profit-token-sales.html" class="app-item searchable-item" target="_blank" data-title="join tokenaffiliates skyrocket your earnings with high profit token sales" data-id="038" title="Open Join Tokenaffiliates Skyrocket Your Earnings With High Profit Token Sales in new tab">
         <div class="app-info">
           <h3>Join Tokenaffiliates Skyrocket Your Earnings With High Profit Token Sales</h3>
-          <p>src/webapps/bonding-curves/038-join-tokenaffiliates-skyrocket-your-earnings-with-high-profit-token-sales.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#038</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/047-solana-blink-ico.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/047-solana-blink-ico.html" class="app-item searchable-item" target="_blank" data-title="solana blink ico" data-id="047" title="Open Solana Blink Ico in new tab">
         <div class="app-info">
           <h3>Solana Blink Ico</h3>
-          <p>src/webapps/bonding-curves/047-solana-blink-ico.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#047</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/392-solana-tokenomics-on-a-bonding-curve/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/392-solana-tokenomics-on-a-bonding-curve/index.html" class="app-item searchable-item" target="_blank" data-title="solana tokenomics on a bonding curve" data-id="392" title="Open Solana Tokenomics On A Bonding Curve in new tab">
         <div class="app-info">
           <h3>Solana Tokenomics On A Bonding Curve</h3>
-          <p>src/webapps/bonding-curves/392-solana-tokenomics-on-a-bonding-curve/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#392</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/447-tokenaffiliates---dynamic-commission-rate-optimizations/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/447-tokenaffiliates---dynamic-commission-rate-optimizations/index.html" class="app-item searchable-item" target="_blank" data-title="tokenaffiliates dynamic commission rate optimizations" data-id="447" title="Open Tokenaffiliates Dynamic Commission Rate Optimizations in new tab">
         <div class="app-info">
           <h3>Tokenaffiliates Dynamic Commission Rate Optimizations</h3>
-          <p>src/webapps/bonding-curves/447-tokenaffiliates---dynamic-commission-rate-optimizations/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#447</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
-      <a href="src/webapps/bonding-curves/448-tokenaffiliates-dynamic-commission-dashboard/index.html" class="app-item searchable-item" target="_blank">
+      <a href="src/webapps/bonding-curves/448-tokenaffiliates-dynamic-commission-dashboard/index.html" class="app-item searchable-item" target="_blank" data-title="tokenaffiliates dynamic commission dashboard" data-id="448" title="Open Tokenaffiliates Dynamic Commission Dashboard in new tab">
         <div class="app-info">
           <h3>Tokenaffiliates Dynamic Commission Dashboard</h3>
-          <p>src/webapps/bonding-curves/448-tokenaffiliates-dynamic-commission-dashboard/index.html</p>
+          <div class="app-meta-tags">
+            <span class="app-id">#448</span>
+            <span class="app-tag">Cryptoeconomic Primitives</span>
+            <span class="app-tag-live">Client-Side Native</span>
+          </div>
         </div>
-        <div class="app-action">➔</div>
+        <div class="app-action" aria-label="Launch app">&rarr;</div>
       </a>
+    </main>
+
+    <div id="no-results" class="no-results" hidden>
+      <h3>No applications match your search</h3>
+      <p>Try searching for a different keyword or application number.</p>
+      <button class="btn btn-secondary" id="btn-reset-search" style="margin-top: 0.75rem; padding: 0.45rem 0.9rem; border-radius: 6px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); color: #fff; cursor: pointer;">Clear Search</button>
     </div>
-    <div id="no-results" class="no-results">No applications match your search.</div>
     
+    <footer>
+      <p>WaifuAI Web Apps Suite &bull; Bonding Curves & AMMs</p>
+      <p style="margin-top: 0.5rem; font-size: 0.82rem; color: var(--text-muted);">
+        <a href="index.html">Web Apps Hub</a> &bull;
+        <a href="../">Docs Hub</a> &bull;
+        <a href="../research-books/index.html">Research Books</a> &bull;
+        <a href="../research-text/consolidated-research/index.html">Genesis Archive</a> &bull;
+        <a href="../research-text/web3-research/index.html">Web3 Research</a> &bull;
+        <a href="https://github.com/waifuai/waifuai.github.io" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </footer>
   </div>
   
   <script>
-    const searchInput = document.getElementById('search');
-    const items = document.querySelectorAll('.searchable-item');
-    const noResults = document.getElementById('no-results');
+    (function() {
+      const searchInput = document.getElementById('search');
+      const items = Array.from(document.querySelectorAll('.searchable-item'));
+      const counter = document.getElementById('search-counter');
+      const noResults = document.getElementById('no-results');
+      const resetBtn = document.getElementById('btn-reset-search');
+      const totalCount = items.length;
 
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().trim();
+      function filterApps() {
+        const query = searchInput.value.toLowerCase().trim();
         let visibleCount = 0;
 
         items.forEach(item => {
-          const text = item.textContent.toLowerCase();
-          if (text.includes(query)) {
-            item.style.display = '';
+          const title = (item.getAttribute('data-title') || '').toLowerCase();
+          const id = (item.getAttribute('data-id') || '').toLowerCase();
+          const text = title + ' ' + id;
+
+          if (!query || text.includes(query)) {
+            item.style.display = 'flex';
             visibleCount++;
           } else {
             item.style.display = 'none';
           }
         });
 
-        if (noResults) {
-          noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        if (visibleCount === totalCount) {
+          counter.textContent = 'Showing all ' + totalCount + ' applications';
+        } else {
+          counter.textContent = 'Showing ' + visibleCount + ' of ' + totalCount + ' applications' + (query ? ' matching "' + query + '"' : '');
+        }
+
+        noResults.hidden = visibleCount > 0;
+      }
+
+      if (searchInput) {
+        let timeout;
+        searchInput.addEventListener('input', () => {
+          clearTimeout(timeout);
+          timeout = setTimeout(filterApps, 40);
+        });
+      }
+
+      // Hotkey listener: '/' to focus, 'Escape' to clear
+      window.addEventListener('keydown', (e) => {
+        if (e.key === '/' && document.activeElement !== searchInput) {
+          e.preventDefault();
+          searchInput.focus();
+          searchInput.select();
+        } else if (e.key === 'Escape' && (document.activeElement === searchInput || searchInput.value)) {
+          searchInput.value = '';
+          filterApps();
+          searchInput.blur();
         }
       });
-    }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          filterApps();
+          searchInput.focus();
+        });
+      }
+    })();
   </script>
 </body>
 </html>
