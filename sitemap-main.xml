@@ -368,4 +368,10 @@
     <loc>https://waifuai.github.io/blog-posts/index.html</loc>
     <lastmod>2026-07-08</lastmod>
   </url>
+  <url>
+    <loc>https://waifuai.github.io/cat-maze/index.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
