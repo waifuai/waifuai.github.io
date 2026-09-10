@@ -11,33 +11,64 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Technical documentation hub for AI agents, developers, and builders. Live2D waifu, Base & Solana blockchain tools, MCP servers, and AI infrastructure.">
-<meta name="keywords" content="waifuai, AI agents, developer documentation, MCP servers, Solana blockchain, Base L2, Uniswap v4, LLM tools, waifu AI, Live2D, AI infrastructure, agent ecosystem, waifuai.github.io">
+<meta name="description" content="Technical documentation and open-source code for WaifuAI: Live2D companion engine, Soul of Waifu architecture, Base &amp; Solana MCP tools, and autonomous agent tokenomics.">
+<meta name="keywords" content="waifu ai, waifu ai code, soul of waifu, AI companion github, waifu engine, waifu chatbot, open source waifu, Live2D AI, Base Uniswap v4, Solana MCP, AI agents, waifuai.github.io">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/">
-<title>WaifuAI Docs Hub</title>
-<meta property="og:title" content="WaifuAI Docs Hub">
-<meta property="og:description" content="Technical documentation for AI agents, developers, and builders">
+<title>WaifuAI Docs Hub — Open-Source AI Companion Code, Agent Infrastructure &amp; Research</title>
+<meta property="og:title" content="WaifuAI Docs Hub — Open-Source AI Companion Code &amp; Infrastructure">
+<meta property="og:description" content="Technical documentation and open-source code for WaifuAI: Live2D companion engine, Soul of Waifu architecture, Base &amp; Solana MCP tools, and on-chain agent economics.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WaifuAI Docs Hub">
-<meta name="twitter:description" content="Technical documentation for AI agents, developers, and builders">
+<meta name="twitter:title" content="WaifuAI Docs Hub — Open-Source AI Companion Code &amp; Infrastructure">
+<meta name="twitter:description" content="Technical documentation and open-source code for WaifuAI: Live2D companion engine, Base &amp; Solana MCP tools, and on-chain agent economics.">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "WaifuAI Docs Hub",
-  "description": "Technical documentation hub for AI agents, developers, and builders",
-  "url": "https://waifuai.github.io/",
-  "about": {
-    "@type": "Thing",
-    "name": "AI Agent Infrastructure"
-  }
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://waifuai.github.io/#website",
+      "name": "WaifuAI Docs Hub",
+      "url": "https://waifuai.github.io/",
+      "description": "Open-source technical documentation and code for AI agents, Live2D companions, and on-chain economics",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://waifuai.github.io/search.html?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://waifuai.com/#organization",
+      "name": "WaifuAI",
+      "url": "https://waifuai.com/",
+      "logo": "https://waifuai.github.io/og_image.png",
+      "sameAs": [
+        "https://waifuai.github.io/",
+        "https://github.com/waifuai",
+        "https://x.com/thewaifuai",
+        "https://www.youtube.com/@thewaifuai"
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://waifuai.github.io/#webpage",
+      "url": "https://waifuai.github.io/",
+      "name": "WaifuAI Docs Hub",
+      "isPartOf": { "@id": "https://waifuai.github.io/#website" },
+      "about": { "@id": "https://waifuai.com/#organization" },
+      "description": "Technical documentation hub for AI agents, developers, and builders."
+    }
+  ]
 }
 </script>
 <link rel="stylesheet" href="theme.css">
@@ -56,8 +87,10 @@
   <h1>WaifuAI Docs Hub</h1>
   <p>45+ open-source projects for autonomous AI agents, Live2D companions, and on-chain economies</p>
   <div class="links">
+    <a href="https://waifuai.com/" class="link-app" target="_blank" rel="noopener" title="Launch Interactive Live2D Companion Web App">✨ Launch Web App (waifuai.com)</a>
     <a href="search.html">Search</a>
     <a href="research-text/web3-research/">Web3 Research</a>
+    <a href="research-text/">All Research</a>
     <a href="llms.txt">llms.txt</a>
     <a href="sitemap.xml">Sitemap</a>
     <a href="https://github.com/waifuai" target="_blank" rel="noopener">GitHub</a>
@@ -65,6 +98,17 @@
     <a href="https://www.youtube.com/@thewaifuai" target="_blank" rel="noopener">YouTube</a>
   </div>
 </header>
+
+<div class="ecosystem-callout" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(99, 102, 241, 0.08) 100%); border: 1px solid rgba(236, 72, 153, 0.25); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 2rem;">
+  <div style="display: flex; align-items: center; gap: 0.75rem;">
+    <span style="font-size: 1.5rem;">✨</span>
+    <div>
+      <div style="font-weight: 600; color: var(--text);">Looking for the interactive AI companion?</div>
+      <div style="font-size: 0.88rem; color: var(--text-muted);">Chat with our Live2D waifu companion in your browser with real-time voice synthesis and zero setup.</div>
+    </div>
+  </div>
+  <a href="https://waifuai.com/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.1rem; border-radius: 6px; font-weight: 600; font-size: 0.92rem; background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%); color: #fff; text-decoration: none; box-shadow: 0 2px 10px rgba(236, 72, 153, 0.3); transition: all 0.2s ease;">Launch Web Companion &rarr;</a>
+</div>
 
 <div class="stats-bar">
   <div class="stat-item">

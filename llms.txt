@@ -1,6 +1,13 @@
-# WaifuAI Docs Hub
+# WaifuAI Ecosystem & Docs Hub
 
-> Technical documentation hub for AI agents, developers, and builders. Part of the WaifuAI ecosystem on GitHub.
+> Open-source technical documentation, code, and live applications for autonomous AI agents, Live2D companions, and on-chain decentralized economies.
+
+## Canonical Endpoints
+
+- **Live Web Companion**: https://waifuai.com/ — Free online interactive Live2D AI companion with real-time voice synthesis and zero-setup guest chat.
+- **Technical Docs Hub**: https://waifuai.github.io/ — Complete developer documentation, 160+ research papers, and interactive simulators.
+- **GitHub Organization**: https://github.com/waifuai — 45+ open-source repositories, Python libraries, Rust tools, and MCP servers.
+- **Web3 Research Track**: https://waifuai.github.io/research-text/web3-research/ — Base Uniswap v4 concentrated liquidity hooks, $WAIFU ERC-20, and dual-asset fee engine.
 
 ## Agent Resources
 

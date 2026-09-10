@@ -87,6 +87,18 @@ header .links a:hover, header .back:hover {
   text-decoration: none;
   transform: translateY(-1px);
 }
+header .links a.link-app {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(168, 85, 247, 0.15));
+  border-color: rgba(236, 72, 153, 0.5);
+  color: #f472b6;
+  font-weight: 600;
+}
+header .links a.link-app:hover {
+  border-color: #ec4899;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.28), rgba(168, 85, 247, 0.28));
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(236, 72, 153, 0.35);
+}
 
 section { margin-bottom: 2.75rem; }
 

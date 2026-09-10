@@ -55,13 +55,27 @@
 </head>
 <body>
 <div class="container">
-<nav class="crumbs" aria-label="Breadcrumb"><a href="../">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">Sim Airdrop</span></nav>
+<nav class="crumbs" aria-label="Breadcrumb">
+  <a href="../">WaifuAI Docs</a><span class="sep">/</span>
+  <span aria-current="page">Sim Airdrop</span>
+</nav>
 
 <header>
-<h1>🚀 Token Airdrop Strategy Simulator</h1>
-<p></p>
+  <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+    <span class="badge badge-accent">Token Economics</span>
+    <span class="badge">Simulation Suite</span>
+    <span class="badge">Python CLI</span>
+  </div>
+  <h1>Token Airdrop Strategy Simulator</h1>
+  <p>Agent-based Monte Carlo simulation framework evaluating tiered, lottery, and uniform token distribution mechanisms against market cycles.</p>
+  <div class="links" style="margin-top: 1rem;">
+    <a href="../">← Docs Hub</a>
+    <a href="../research-text/web3-research/">Web3 Research</a>
+    <a href="https://waifuai.com/" class="link-app" target="_blank" rel="noopener">✨ Live Web App</a>
+    <a href="https://github.com/waifuai/sim-airdrop" target="_blank" rel="noopener">GitHub</a>
+  </div>
 </header>
-<h1>🚀 Token Airdrop Strategy Simulator</h1>
+
 <h2>📖 Project Overview</h2>
 <p>This comprehensive simulation framework analyzes the impact of different token airdrop strategies on market dynamics. It models user behavior, market cycles, and complex vesting mechanisms to evaluate strategy effectiveness based on final token price and supply metrics.</p>
 <h2>✨ Key Features</h2>
@@ -332,11 +346,32 @@ pip install plotly kaleido
 <pre><code class="language-bash">sim-airdrop run --max-strategies 10
 </code></pre>
 
+<section style="margin-top: 3rem;">
+  <h2>Related Simulations &amp; Research</h2>
+  <p class="section-desc">Explore related agent-based tokenomics and on-chain infrastructure</p>
+  <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem;">
+    <a href="../sim-bonding-curve/" class="card" style="padding: 1.25rem; border: 1px solid var(--border); border-radius: 8px; background: var(--card-bg); text-decoration: none; color: inherit; transition: border-color 0.2s;">
+      <h3 style="margin-top: 0; color: var(--accent); font-size: 1.15rem;">📈 Sim Bonding Curve</h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0.5rem 0 0;">Agent-based bonding curve token economy simulations with automated price discovery.</p>
+    </a>
+    <a href="../sim-affiliate/" class="card" style="padding: 1.25rem; border: 1px solid var(--border); border-radius: 8px; background: var(--card-bg); text-decoration: none; color: inherit; transition: border-color 0.2s;">
+      <h3 style="margin-top: 0; color: var(--accent2); font-size: 1.15rem;">🤝 Sim Affiliate</h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0.5rem 0 0;">Multi-tiered affiliate dynamics and commission optimization models.</p>
+    </a>
+    <a href="../research-text/web3-research/" class="card" style="padding: 1.25rem; border: 1px solid var(--border); border-radius: 8px; background: var(--card-bg); text-decoration: none; color: inherit; transition: border-color 0.2s;">
+      <h3 style="margin-top: 0; color: var(--accent3); font-size: 1.15rem;">⚡ Web3 Research Track</h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0.5rem 0 0;">Mathematical transition to Base Uniswap v4 concentrated liquidity hooks.</p>
+    </a>
+  </div>
+</section>
+
 <section>
-  <h2>Source Code</h2>
-  <p class="section-desc">Browse the source repository</p>
-  <div class="link-list">
-    <a href="https://github.com/waifuai/sim-airdrop">GitHub Repository</a>
+  <h2>Source Code &amp; Community</h2>
+  <p class="section-desc">Browse repository or launch the companion application</p>
+  <div class="link-list" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+    <a href="https://github.com/waifuai/sim-airdrop" target="_blank" rel="noopener">GitHub Repository</a>
+    <a href="../">All Projects</a>
+    <a href="https://waifuai.com/" target="_blank" rel="noopener">WaifuAI Live Companion</a>
   </div>
 </section>
 
