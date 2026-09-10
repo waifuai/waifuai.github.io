@@ -27,7 +27,7 @@
 <meta name="twitter:description" content="Ransoc Documentation Index | WaifuAI Docs Hub">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>Ransoc Documentation Index</title>
+<title>RANSOC — Realtime Adaptive Normalization for Curiosity | WaifuAI</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -42,9 +42,9 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "name": "Ransoc Documentation Index",
-  "description": "Ransoc Documentation Index | WaifuAI Docs Hub",
+  "@type": "SoftwareApplication",
+  "name": "RANSOC — Realtime Adaptive Normalization for Curiosity",
+  "description": "RANSOC ensures your users experience the full breadth of your product's capabilities through adaptive normalization of search spaces.",
   "url": "https://waifuai.github.io/ransoc/index.html",
   "author": {
     "@type": "Organization",
@@ -65,17 +65,70 @@
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">RANSOC</span></nav>
 
-<h1>Ransoc Documentation Index</h1>
-<p>Welcome to the documentation index. Explore the detailed guides below:</p>
-<ul>
-  <li><a href="./1-math.html">RANSOC: Real-time Adaptive Normalization for the Satisfaction of Curiosity</a></li>
-  <li><a href="./2-proof.html">2 Proof</a></li>
-  <li><a href="./3-physics.html">RANSOC: A Gravitational Analogy for Dynamic Search Space Exploration</a></li>
-</ul>
+<h1>RANSOC: Realtime Adaptive Normalization for the Satisfaction of Curiosity</h1>
+<p><strong>RANSOC ensures your users experience the full breadth of your product's capabilities, not just the most obvious ones.</strong></p>
+
+<p>Imagine a virtual character capable of a wide range of facial expressions or actions. Without RANSOC, users might only see a limited subset, assuming that's all the character can do. RANSOC guarantees they eventually encounter the entire spectrum, fostering surprise, engagement, and a deeper appreciation for your creation.</p>
+
+<hr />
+<h2>🚀 Installation</h2>
+<pre><code class="language-bash">pip install -e .
+</code></pre>
+<p>Requires Python 3.9+. Dependencies (<code>numpy</code>, <code>matplotlib</code>, <code>seaborn</code>) are installed automatically.</p>
+
+<hr />
+<h2>📖 Python Usage</h2>
+<p>Each result option (&ldquo;planet&rdquo;) lives at a position in n-dimensional space; each query (&ldquo;star&rdquo;) is a point in that same space. <code>RANSOC.query()</code> picks the closest planet, then rebalances masses so that repeatedly-hit planets become less likely to be hit again &mdash; surfacing the full range of results over time instead of always returning the single closest match.</p>
+
+<pre><code class="language-python">from ransoc import RANSOC, RANSOCConfig, DistanceMetric, Star
+
+# Positions of candidate results ("planets") in feature space
+positions = [
+    [0.0, 0.0],   # e.g. "happy"
+    [1.0, 0.0],   # e.g. "sad"
+    [0.0, 1.0],   # e.g. "surprised"
+    [1.0, 1.0],   # e.g. "angry"
+]
+planet_ids = ["happy", "sad", "surprised", "angry"]
+
+ransoc = RANSOC(
+    positions,
+    config=RANSOCConfig(alpha=0.1, distance_metric=DistanceMetric.EUCLIDEAN),
+    planet_ids=planet_ids,
+)
+
+# User queries repeatedly near "happy" [0.1, 0.1]
+star = Star(position=[0.1, 0.1], mass=1.0)
+for epoch in range(10):
+    winner_idx, planet = ransoc.query(star)
+    print(f"Epoch {epoch}: {planet.id} (mass remaining: {planet.mass:.3f})")
+</code></pre>
+
+<hr />
+<h2>📚 Theoretical Papers &amp; Mathematical Proofs</h2>
+<div class="link-list">
+  <a href="./1-math.html">
+    <span class="badge badge-accent" style="margin-bottom: 0.35rem; display: inline-block;">Paper 1</span>
+    <h3>RANSOC: Mathematical Formulation</h3>
+    <p>Core formulation of Real-time Adaptive Normalization for the Satisfaction of Curiosity.</p>
+  </a>
+  <a href="./2-proof.html">
+    <span class="badge" style="margin-bottom: 0.35rem; display: inline-block;">Paper 2</span>
+    <h3>Formal Proof of Full Space Coverage</h3>
+    <p>Mathematical proof demonstrating guaranteed exploration across finite epochs.</p>
+  </a>
+  <a href="./3-physics.html">
+    <span class="badge" style="margin-bottom: 0.35rem; display: inline-block;">Paper 3</span>
+    <h3>Gravitational Analogy for Dynamic Search Space Exploration</h3>
+    <p>Physical interpretation using celestial mechanics and multi-body gravitational potential.</p>
+  </a>
+</div>
+
 <hr />
 <h2>Navigation</h2>
 <ul>
-  <li><a href="../index.html">Main Home</a></li>
+  <li><a href="../index.html">&larr; Back to WaifuAI Docs Hub</a></li>
+  <li><a href="https://github.com/waifuai/ransoc" target="_blank" rel="noopener">GitHub: waifuai/ransoc</a></li>
 </ul>
 </body>
 </html>

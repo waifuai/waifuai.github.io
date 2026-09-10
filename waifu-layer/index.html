@@ -17,7 +17,7 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/waifu-layer/">
 <meta property="og:title" content="Waifu Layer | WaifuAI">
-<meta property="og:description" content="Personality trait layering system for LLM waifu responses">
+<meta property="og:description" content="The Agentic Layer 1 Blockchain where LLMs replace AMMs, agents replace corporations, and intelligence is the consensus mechanism.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/waifu-layer/">
 <meta property="og:type" content="website">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Waifu Layer | WaifuAI">
-<meta name="twitter:description" content="Personality trait layering system for LLM waifu responses">
+<meta name="twitter:description" content="The Agentic Layer 1 Blockchain where LLMs replace AMMs, agents replace corporations, and intelligence is the consensus mechanism.">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 <title>Waifu Layer — L1 Blockchain for AI | WaifuAI</title>
 
@@ -167,15 +167,15 @@ libp2p + QUIC networking with gossipsub for unblockable agent-to-agent streaming
 <tbody>
 <tr>
 <td><strong><code>llm_pricer</code></strong></td>
-<td>Deterministic LLM pricing engine using Candle (HuggingFace Rust). Encodes transaction context into embeddings and outputs clearing rates.</td>
+<td>Deterministic LLM pricing engine using numpy for tensor math. Encodes transaction context into embeddings and outputs clearing rates.</td>
 </tr>
 <tr>
 <td><strong><code>consensus</code></strong></td>
-<td>Proof-of-Intelligence block production. Parallel pricing via Rayon, PoI proof generation with model hash verification.</td>
+<td>Proof-of-Intelligence block production. Parallel pricing via a thread pool, PoI proof generation with model hash verification.</td>
 </tr>
 <tr>
 <td><strong><code>state</code></strong></td>
-<td>Lock-free global state with atomic counters and concurrent hash maps. DAG-based block application.</td>
+<td>Global state guarded by <code>threading</code> locks. DAG-based block application.</td>
 </tr>
 <tr>
 <td><strong><code>types</code></strong></td>
@@ -191,7 +191,7 @@ libp2p + QUIC networking with gossipsub for unblockable agent-to-agent streaming
 </tr>
 <tr>
 <td><strong><code>network</code></strong></td>
-<td>libp2p mesh with gossipsub and mDNS for peer discovery.</td>
+<td>Peer/PeerId bookkeeping stand-in for decentralized agent transport.</td>
 </tr>
 </tbody>
 </table>
@@ -199,14 +199,13 @@ libp2p + QUIC networking with gossipsub for unblockable agent-to-agent streaming
 <h2>🚀 Quick Start</h2>
 <h3>Prerequisites</h3>
 <ul>
-<ul><li>Rust 1.70+ </li>
-<li>CUDA/Metal (optional, for GPU inference)</li>
-</ul></ul>
-<h3>Build</h3>
-<pre><code class="language-bash">cargo build --release
+<li>Python 3.10+</li>
+</ul>
+<h3>Install</h3>
+<pre><code class="language-bash">pip install -e .
 </code></pre>
 <h3>Run</h3>
-<pre><code class="language-bash">cargo run --release
+<pre><code class="language-bash">python -m waifu_layer.main
 </code></pre>
 <p>You'll see:</p>
 <pre><code>╦ ╦╔═╗╦╔═╗╦ ╦  ╦  ╔╦╗
@@ -218,7 +217,7 @@ STATUS: AGENTIC SINGULARITY ONLINE
 
 [✓] Global state initialized (lock-free DAG)
 [✓] LLM Pricer loaded (deterministic mode)
-[✓] Mempool initialized (unbounded channel)
+[✓] Mempool initialized (unbounded queue)
 [✓] Genesis agent funded
 
 [CONSENSUS] Proof-of-Intelligence validator running...
@@ -229,34 +228,30 @@ STATUS: AGENTIC SINGULARITY ONLINE
 <table>
 <thead>
 <tr>
-<th>Crate</th>
+<th>Package</th>
 <th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>candle-*</code></td>
-<td>HuggingFace Rust LLM framework for deterministic inference</td>
-</tr>
-<tr>
-<td><code>libp2p</code></td>
-<td>Decentralized P2P networking (TCP, QUIC, Gossipsub)</td>
-</tr>
-<tr>
-<td><code>crossbeam</code></td>
-<td>Lock-free concurrent data structures</td>
-</tr>
-<tr>
-<td><code>rayon</code></td>
-<td>Parallel CPU compute for batch pricing</td>
+<td><code>numpy</code></td>
+<td>Tensor math for the pricing engine's matmuls</td>
 </tr>
 <tr>
 <td><code>blake3</code></td>
 <td>High-speed cryptographic hashing for DAG</td>
 </tr>
 <tr>
-<td><code>tokio</code></td>
-<td>Async runtime for high-throughput networking</td>
+<td><code>asyncio</code> (stdlib)</td>
+<td>Async runtime for node mempool/validator loop</td>
+</tr>
+<tr>
+<td><code>threading</code> (stdlib)</td>
+<td>Locking for concurrent global state</td>
+</tr>
+<tr>
+<td><code>concurrent.futures</code> (stdlib)</td>
+<td>Thread pool for batch transaction pricing</td>
 </tr>
 </tbody>
 </table>
@@ -265,28 +260,28 @@ STATUS: AGENTIC SINGULARITY ONLINE
 <h3>Sovereign Assets</h3>
 <p>WAIFU has no "tokens" in the traditional sense. The economy runs on:</p>
 <ul>
-<ul><li><strong>Compute</strong> — Raw computational bandwidth, the base unit</li>
-<li><strong>Energy</strong> — Consumed per operation</li>
-<li><strong>Staked Compute</strong> — Locked for consensus participation</li>
-<li><strong>Agent Equity</strong> — Shares in autonomous agents</li>
-</ul></ul>
+<li><strong>Compute</strong> &mdash; Raw computational bandwidth, the base unit</li>
+<li><strong>Energy</strong> &mdash; Consumed per operation</li>
+<li><strong>Staked Compute</strong> &mdash; Locked for consensus participation</li>
+<li><strong>Agent Equity</strong> &mdash; Shares in autonomous agents</li>
+</ul>
 <h3>Transaction Pricing</h3>
 <p>Transactions don't specify gas prices. Instead, they submit <strong>context</strong>:</p>
-<pre><code class="language-rust">TransactionContext {
-    operation: Operation::Transfer { amount: 100.0 },
-    energy_budget: 1.0,
-    priority: Priority::Normal,
-    payload: vec![],
-    oracle_refs: vec![],
-}
+<pre><code class="language-python">TransactionContext(
+    operation=Operation.transfer(100.0),
+    energy_budget=1.0,
+    priority=Priority.NORMAL,
+    payload=b"",
+    oracle_refs=[],
+)
 </code></pre>
 <p>The LLM analyzes context + network state to determine the clearing rate.</p>
 <h3>Agent Goals</h3>
 <p>Deploy autonomous agents with built-in objectives:</p>
-<pre><code class="language-rust">AgentGoal::AlphaSeeker { risk_tolerance: 0.8 }  // Hedge fund
-AgentGoal::MarketMaker { spread_bps: 30 }       // Liquidity provider
-AgentGoal::ComputeMaximizer { target_rate: 0.1 } // Yield optimizer
-AgentGoal::Custom { objective: &quot;...&quot; }          // LLM-interpreted goal
+<pre><code class="language-python">AgentGoal.alpha_seeker(0.8)          # Hedge fund
+AgentGoal.market_maker(30)           # Liquidity provider
+AgentGoal.compute_maximizer(0.1)     # Yield optimizer
+AgentGoal.custom("...")              # LLM-interpreted goal
 </code></pre>
 <hr />
 <h2>📄 License</h2>

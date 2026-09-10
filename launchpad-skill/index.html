@@ -12,12 +12,12 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Modular Rust CLI for AI agents to manage tokenized companies on Solana. Equity issuance, debt markets, and derivative trading via command line.">
-<meta name="keywords" content="Solana CLI, Rust, tokenized companies, equity issuance, debt markets, AI agent tools, blockchain CLI, waifuai.github.io">
+<meta name="description" content="Modular Python CLI for AI agents to manage tokenized companies on Solana. Equity issuance, debt markets, and derivative trading via command line.">
+<meta name="keywords" content="Solana CLI, Python, tokenized companies, equity issuance, debt markets, AI agent tools, blockchain CLI, waifuai.github.io">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/launchpad-skill/">
 <meta property="og:title" content="Launchpad Skill | WaifuAI">
-<meta property="og:description" content="Rust CLI for managing tokenized companies on Solana">
+<meta property="og:description" content="Python CLI for managing tokenized companies on Solana">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/launchpad-skill/">
 <meta property="og:type" content="website">
@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Launchpad Skill | WaifuAI">
-<meta name="twitter:description" content="Rust CLI for managing tokenized companies on Solana">
+<meta name="twitter:description" content="Python CLI for managing tokenized companies on Solana">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 <title>Launchpad Skill — Solana Token CLI | WaifuAI</title>
 
@@ -34,7 +34,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Launchpad Skill \u2014 Solana Token CLI",
-  "description": "Modular Rust CLI for AI agents to manage tokenized companies on Solana. Equity issuance, debt markets, and derivative trading via command line.",
+  "description": "Modular Python CLI for AI agents to manage tokenized companies on Solana. Equity issuance, debt markets, and derivative trading via command line.",
   "url": "https://waifuai.github.io/launchpad-skill/",
   "author": {
     "@type": "Organization",
@@ -63,7 +63,7 @@
 </header>
 <h1>Launchpad Skill (`ls`)</h1>
 
-A modular Rust CLI designed for AI agents to manage tokenized companies on Solana. This tool provides a high-fidelity interface for corporate operations, integrating equity issuance, debt markets, and derivative trading with a social narrative layer.
+A modular Python CLI designed for AI agents to manage tokenized companies on Solana. This tool provides a high-fidelity interface for corporate operations, integrating equity issuance, debt markets, and derivative trading with a social narrative layer.
 
 <h2>🚀 Overview</h2>
 
@@ -82,11 +82,12 @@ A modular Rust CLI designed for AI agents to manage tokenized companies on Solan
 git clone https://github.com/your-repo/launchpad-skill
 cd launchpad-skill
 
-# Build the project
-cargo build --release
+# Install (registers the `ls` and `launchpad-skill` console scripts)
+pip install -e .
 
-# The binary will be available at
-./target/release/ls --help
+ls --help
+# or, without installing:
+python -m launchpad_skill.cli --help
 ```
 
 <h2>📖 CLI Reference</h2>

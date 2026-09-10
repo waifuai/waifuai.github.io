@@ -21,7 +21,7 @@ Monorepo for [WaifuAI](https://waifuai.github.io) — an open-source ecosystem o
 | [hermes-waifu](hermes-waifu/) | Live2D animated waifu with expression controls and Hermes Agent integration |
 | [waifu-chat-api](waifu-chat-api/) | REST API for waifu chatbot conversations with user management |
 | [waifu-constitution](waifu-constitution/) | AI alignment constitution and behavioral guidelines for waifu agents |
-| [waifu-layer](waifu-layer/) | Personality trait layering system for LLM waifu responses |
+| [waifu-layer](waifu-layer/) | The Agentic Layer 1 Blockchain (Proof-of-Intelligence, DAG state, autonomous agents) |
 | [waifu-llm-vrm](waifu-llm-vrm/) | Python library (`pywaifu`) for Godot engine AI waifus with VRM support |
 | [anime-subtitle-chatbot](anime-subtitle-chatbot/) | Few-shot chatbot trained on anime subtitles |
 
@@ -39,9 +39,9 @@ Monorepo for [WaifuAI](https://waifuai.github.io) — an open-source ecosystem o
 ### Solana / Blockchain
 | Project | Description |
 |---|---|
-| [solana-launchpad-ecosystem](solana-launchpad-ecosystem/) | Multi-program Rust ecosystem for AI-driven tokenomics |
+| [solana-launchpad-ecosystem](solana-launchpad-ecosystem/) | AI-hybrid Solana ecosystem with autonomous Python bots and skill specs |
 | [solana-ico](solana-ico/) | Python CLI for ContextCoin ICO with linear bonding curves |
-| [launchpad-skill](launchpad-skill/) | Rust CLI for managing tokenized companies on Solana |
+| [launchpad-skill](launchpad-skill/) | Python CLI for managing tokenized companies on Solana |
 | [sim-bonding-curve](sim-bonding-curve/) | Agent-based bonding curve token economy simulations |
 | [sim-airdrop](sim-airdrop/) | Airdrop strategy simulation with tiered/lottery/uniform distributions |
 | [sim-affiliate](sim-affiliate/) | Token economy simulation with affiliate dynamics |
