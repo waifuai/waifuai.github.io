@@ -1,5 +1,5 @@
 // --- Game Configuration ---
-export const TILE_SIZE = 30; // Keep for potential future use, though grid handles sizing now
+export const TILE_SIZE = 40; // Base tile size in pixels (coordinates for grid & scaling)
 export const EMOJI_MAP = {
     EMPTY: '', WALL: '🧱', CHIP: '🐟', WATER: '💧', FIRE: '🔥', // Using '.' for empty for JSON visibility
     KEY_RED: '🔑', DOOR_RED: '🚪', EXIT: '🏁', PLAYER: '🐈', // 5, 6, 7, P

@@ -115,8 +115,8 @@ export function setEditorGridData(data) {
 }
 
 export function setZoomLevel(level) {
-    // Add clamping to prevent excessive zoom
-    zoomLevel = Math.max(0.5, Math.min(level, 3));
+    // Clamp zoom level to sensible limits (allow small scales for huge levels)
+    zoomLevel = Math.max(0.05, Math.min(level, 5.0));
 }
 
 export function setPanOffset(x, y) {

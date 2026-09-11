@@ -1,8 +1,10 @@
 import * as state from './state.js';
-import { EMOJI_MAP } from './config.js';
+import { EMOJI_MAP, TILE_SIZE } from './config.js';
 
 // --- DOM Elements ---
 export const gameBoard = document.getElementById('game-board');
+export const boardViewport = document.getElementById('board-viewport');
+export const editorBoardViewport = document.getElementById('editor-board-viewport');
 export const gameContainer = document.getElementById('game-container');
 export const gameSection = document.getElementById('game-section');
 export const gameArea = document.getElementById('game-area');
@@ -42,7 +44,7 @@ export const editorBrushIndicator = document.getElementById('editor-brush-indica
 // Check for missing elements and warn in console
 const checkElements = () => {
     const elementMap = {
-        gameBoard, gameContainer, gameSection, gameArea, levelStatus, fishesStatus, keysStatus, bootsStatus,
+        gameBoard, boardViewport, editorBoardViewport, gameContainer, gameSection, gameArea, levelStatus, fishesStatus, keysStatus, bootsStatus,
         messageBox, levelMenuContainer, btnResetView, btnToggleMapView, controlsContainer,
         levelSidebar, editorContainer, editorToolbar, editorRowsInput, editorColsInput,
         editorResizeButton, editorExportButton, editorLoadCurrentButton, toggleEditorButton,
@@ -93,9 +95,12 @@ export function setupGameBoard(rows, cols) {
     }
     
     gameBoard.innerHTML = '';
-    gameBoard.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
-    gameBoard.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
-    gameBoard.style.aspectRatio = `${cols} / ${rows}`;
+    gameBoard.dataset.rows = rows;
+    gameBoard.dataset.cols = cols;
+    gameBoard.style.width = `${cols * TILE_SIZE}px`;
+    gameBoard.style.height = `${rows * TILE_SIZE}px`;
+    gameBoard.style.gridTemplateColumns = `repeat(${cols}, ${TILE_SIZE}px)`;
+    gameBoard.style.gridTemplateRows = `repeat(${rows}, ${TILE_SIZE}px)`;
 
     // Clear any existing transform
     gameBoard.style.transform = '';
@@ -191,87 +196,66 @@ export function renderGame() {
 }
 
 // --- Calculate and Apply Board Transform ---
-function updateBoardTransform() {
-    if (!gameBoard || !gameContainer) {
-        console.error("Game board or container not available for transform!");
+export function updateBoardTransform() {
+    if (!gameBoard) return;
+
+    const viewport = state.isEditorMode ? editorBoardViewport : boardViewport;
+    if (!viewport) return;
+
+    const viewportWidth = viewport.clientWidth;
+    const viewportHeight = viewport.clientHeight;
+
+    if (!viewportWidth || !viewportHeight) {
+        // Retry shortly if layout has not stabilized yet
+        setTimeout(() => updateBoardTransform(), 40);
         return;
     }
 
-    const containerRect = gameContainer.getBoundingClientRect();
-    const containerWidth = containerRect.width;
-    const containerHeight = containerRect.height - 
-        (document.getElementById('status-area')?.offsetHeight || 0) -
-        (document.getElementById('message-box')?.offsetHeight || 0) -
-        (document.getElementById('bottom-controls')?.offsetHeight || 0) - 40;
+    const rows = parseInt(gameBoard.dataset.rows, 10) || 10;
+    const cols = parseInt(gameBoard.dataset.cols, 10) || 10;
+    const boardWidth = cols * TILE_SIZE;
+    const boardHeight = rows * TILE_SIZE;
 
-    // Get board natural dimensions
-    const boardRect = gameBoard.getBoundingClientRect();
-    const boardWidth = gameBoard.offsetWidth || boardRect.width;
-    const boardHeight = gameBoard.offsetHeight || boardRect.height;
+    // Viewport padding for pleasant border spacing
+    const padding = 16;
+    const availWidth = Math.max(viewportWidth - padding, 20);
+    const availHeight = Math.max(viewportHeight - padding, 20);
 
-    if (!boardWidth || !boardHeight || !containerWidth || !containerHeight) {
-        // Retry after a short delay if dimensions aren't ready
-        setTimeout(() => updateBoardTransform(), 50);
-        return;
-    }
+    const fitScale = Math.min(availWidth / boardWidth, availHeight / boardHeight);
 
+    let finalScale = 1;
     let finalTranslateX = 0;
     let finalTranslateY = 0;
-    let finalScale = 1;
 
     if (state.isEditorMode) {
-        // Editor Mode: Use manual pan/zoom only
-        finalScale = state.zoomLevel;
+        // Editor Mode: Use manual pan/zoom or fallback to fit
+        finalScale = state.zoomLevel || fitScale;
         finalTranslateX = state.panOffset.x;
         finalTranslateY = state.panOffset.y;
     } else if (state.mapViewMode) {
-        // Full Map View Mode: Fit entire board to container
-        const scaleX = containerWidth / boardWidth;
-        const scaleY = containerHeight / boardHeight;
-        
-        // Use the smaller scale to ensure entire board fits, with some padding
-        finalScale = Math.min(scaleX, scaleY) * 0.95;
-        finalScale = Math.max(finalScale, 0.1); // Ensure minimum scale
-
-        // Center the scaled board in the container
+        // Full Map View Mode: Fit entire board centered in the viewport
+        finalScale = fitScale;
         const scaledBoardWidth = boardWidth * finalScale;
         const scaledBoardHeight = boardHeight * finalScale;
-        
-        finalTranslateX = (containerWidth - scaledBoardWidth) / 2;
-        finalTranslateY = (containerHeight - scaledBoardHeight) / 2;
-        
-        // Update state to match the calculated values
+
+        finalTranslateX = (viewportWidth - scaledBoardWidth) / 2;
+        finalTranslateY = (viewportHeight - scaledBoardHeight) / 2;
+
         state.setZoomLevel(finalScale);
         state.setPanOffset(finalTranslateX, finalTranslateY);
     } else {
-        // Player-Centered View Mode: Use manual pan/zoom with optional player centering
-        finalScale = state.zoomLevel;
-        finalTranslateX = state.panOffset.x;
-        finalTranslateY = state.panOffset.y;
+        // Player-Centered View Mode: Camera smoothly follows player position
+        const basePlayerZoom = Math.max(1.0, fitScale * 1.8);
+        finalScale = state.zoomLevel || basePlayerZoom;
 
-        // Optionally center on player if they're visible
-        if (!state.gameWon && !state.gameLost && state.playerPos) {
-            const playerTile = document.getElementById(`tile-${state.playerPos.x}-${state.playerPos.y}`);
-            if (playerTile) {
-                const tileRect = playerTile.getBoundingClientRect();
-                const boardRect = gameBoard.getBoundingClientRect();
-                
-                // Calculate tile position relative to board
-                const tileX = playerTile.offsetLeft;
-                const tileY = playerTile.offsetTop;
-                const tileWidth = playerTile.offsetWidth;
-                const tileHeight = playerTile.offsetHeight;
+        // Player center in board coordinate space
+        const playerX = (state.playerPos.x + 0.5) * TILE_SIZE;
+        const playerY = (state.playerPos.y + 0.5) * TILE_SIZE;
 
-                // Calculate centering offset
-                const playerCenterX = containerWidth / 2 - (tileX + tileWidth / 2) * finalScale;
-                const playerCenterY = containerHeight / 2 - (tileY + tileHeight / 2) * finalScale;
-
-                finalTranslateX += playerCenterX;
-                finalTranslateY += playerCenterY;
-            }
-        }
+        finalTranslateX = (viewportWidth / 2) - (playerX * finalScale) + state.panOffset.x;
+        finalTranslateY = (viewportHeight / 2) - (playerY * finalScale) + state.panOffset.y;
     }
 
-    // Apply the transform
+    // Apply the exact transform
     gameBoard.style.transform = `translate(${finalTranslateX}px, ${finalTranslateY}px) scale(${finalScale})`;
 }

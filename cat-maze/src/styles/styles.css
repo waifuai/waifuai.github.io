@@ -128,21 +128,35 @@ h2 {
     min-height: 300px;
 }
 
+#board-viewport, #editor-board-viewport {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, rgba(35, 35, 45, 0.4) 0%, rgba(15, 15, 16, 0.8) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
 #game-board {
     display: grid;
+    position: absolute;
+    top: 0;
+    left: 0;
     border: 3px solid var(--border-color);
     background-color: var(--background-color);
-    width: 100%;
-    height: auto;
-    max-height: 100%;
-    position: relative;
     transition: transform 0.1s linear;
     transform-origin: 0 0;
     touch-action: none;
     will-change: transform;
     z-index: 1;
-    flex: 1;
-    min-height: 0;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    border-radius: 4px;
 }
 
 #game-board.editor-mode {
@@ -152,30 +166,32 @@ h2 {
 }
 
 .tile {
-    width: 100%;
-    height: 100%;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(8px, 2vw, 20px);
+    font-size: 24px;
     line-height: 1;
     background-color: var(--tile-bg-color);
     box-sizing: border-box;
     user-select: none;
-    border: 1px solid transparent;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     overflow: hidden;
     touch-action: none;
     min-width: 0;
     min-height: 0;
     aspect-ratio: 1;
+    position: relative;
 }
 
 .emoji-content {
-    display: inline-block;
-    transform-origin: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     line-height: 1;
-    transform: scale(var(--emoji-scale));
-    transition: transform 0.2s ease-in-out;
+    user-select: none;
+    pointer-events: none;
     text-rendering: optimizeSpeed;
 }
 
@@ -205,6 +221,12 @@ h2 {
 .fire { background-color: var(--fire-color); }
 .key-red { background-color: var(--tile-bg-color); }
 .door-red { background-color: #c0392b; }
+.key-blue { background-color: var(--tile-bg-color); }
+.door-blue { background-color: #1976d2; }
+.key-yellow { background-color: var(--tile-bg-color); }
+.door-yellow { background-color: #fbc02d; }
+.key-green { background-color: var(--tile-bg-color); }
+.door-green { background-color: #388e3c; }
 .exit { background-color: var(--exit-color); }
 .player { background-color: var(--player-color); border-radius: 50%; }
 .ice { background-color: var(--ice-color); }

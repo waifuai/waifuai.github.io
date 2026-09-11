@@ -48,25 +48,6 @@ export async function loadLevel(levelIndex) {
 
     const levelMapData = await fetchLevelData(levelIndex);
 
-    // --- Set Emoji Scale based on Level --- 
-    let emojiScale = 1.0; // Default scale
-    const levelNum = levelIndex + 1;
-    if (levelNum >= 1 && levelNum <= 4) {
-        emojiScale = 2.5;
-    } else if (levelNum >= 5 && levelNum <= 9) {
-        emojiScale = 2.0;
-    } else if (levelNum >= 10 && levelNum <= 20) { 
-        emojiScale = 1.0;
-    }
-    // No longer have levels > 20 that need smaller scale or 'large-level' class
-    document.documentElement.style.setProperty('--emoji-scale', emojiScale);
-    // --- End Emoji Scale --- 
-
-    // Remove large-level class if it was ever added, as it's no longer used
-    if (dom.gameBoard) {
-        dom.gameBoard.classList.remove('large-level');
-    }
-
     if (!levelMapData) {
         state.setIsLoadingLevel(false);
         return; // Error message already set by fetchLevelData
@@ -78,17 +59,10 @@ export async function loadLevel(levelIndex) {
     trackEvent('level_loaded', { level: levelNum });
 
     state.setCurrentLevelIndex(levelIndex);
+    state.resetView(); // Reset view to full map mode
     initializeGame(levelMapData); // Pass the map data directly
 
-    // Reset view to ensure full map fits on screen
-    state.resetView();
-    
-    // Clear any existing transform before measuring for a clean state
-    if (dom.gameBoard) {
-        dom.gameBoard.style.transform = '';
-    }
-
-    // Short delay to allow message to display before clearing loading flag
+    // Short delay to allow level message to display and level menu initialization
     setTimeout(() => {
         state.setIsLoadingLevel(false);
         // Set levelsLoaded flag after the first successful load
@@ -96,13 +70,8 @@ export async function loadLevel(levelIndex) {
             state.setLevelsLoaded(true);
             createLevelMenu(); // Create menu once levels are confirmed loadable
         }
-        
-        // Re-render after a longer delay to ensure proper fit
-        setTimeout(() => {
-            state.setMapViewMode(true); // Force full map view mode
-            dom.renderGame();
-        }, 150);
-    }, 150);
+        dom.renderGame();
+    }, 50);
 }
 
 

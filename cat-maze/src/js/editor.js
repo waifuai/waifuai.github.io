@@ -54,6 +54,7 @@ function setupEditorGridAndRender() {
     
     dom.setupGameBoard(editorRows, editorCols);
     selectTool(state.editorBrush); 
+    state.setPanOffset(0, 0);
     dom.renderGame(); 
 }
 

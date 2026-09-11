@@ -89,7 +89,9 @@ async function toggleEditorMode() {
         dom.toggleEditorButton.textContent = "Exit Editor";
         dom.gameBoard.classList.add('editor-mode');
         
-        dom.editorContainer.insertBefore(dom.gameBoard, document.getElementById('editor-controls'));
+        if (dom.editorBoardViewport) {
+            dom.editorBoardViewport.appendChild(dom.gameBoard);
+        }
         
         await initializeEditor(); // Await editor setup
         // Message is handled by initializeEditor
@@ -100,7 +102,9 @@ async function toggleEditorMode() {
         dom.toggleEditorButton.textContent = "Toggle Editor";
         dom.gameBoard.classList.remove('editor-mode');
         
-        dom.gameContainer.insertBefore(dom.gameBoard, document.getElementById('message-box'));
+        if (dom.boardViewport) {
+            dom.boardViewport.appendChild(dom.gameBoard);
+        }
         
         await loadLevel(state.currentLevelIndex); // Await level load
         resetView();
@@ -115,11 +119,8 @@ function toggleMapView() {
     trackEvent('map_view_toggled', { mode: state.mapViewMode ? 'full_map' : 'player_centered' });
     updateMapViewButton(); // Update button appearance
     
-    // Reset pan offset when switching to map view mode
-    if (state.mapViewMode) {
-        setPanOffset(0, 0);
-        setZoomLevel(1.0);
-    }
+    // Reset pan offset when switching view mode
+    setPanOffset(0, 0);
     
     dom.renderGame(); // Re-render to apply the new view mode transform
     dom.setMessage(state.mapViewMode ? "Switched to Full Map View." : "Switched to Player-Centered View.");
@@ -144,10 +145,11 @@ const MIN_ZOOM = 0.1;
 const MAX_ZOOM = 5.0;
 
 function zoomBoard(direction) {
-    // Allow zoom in editor mode or when not in map view mode
+    // If in full map view, automatically switch to player-centered view to zoom in
     if (state.mapViewMode && !state.isEditorMode) {
-        dom.setMessage("Zoom disabled in Full Map View. Switch to Player-Centered View to zoom.");
-        return;
+        setMapViewMode(false);
+        setPanOffset(0, 0);
+        updateMapViewButton();
     }
 
     // Calculate new zoom level
@@ -161,62 +163,29 @@ function zoomBoard(direction) {
         return;
     }
 
-    // Get container center for zoom centering
-    const rect = dom.gameContainer.getBoundingClientRect();
-    const containerCenterX = rect.width / 2;
-    const containerCenterY = rect.height / 2;
-
-    // Calculate the point on the board currently at the container's center
-    const boardCenterX = (containerCenterX - state.panOffset.x) / state.zoomLevel;
-    const boardCenterY = (containerCenterY - state.panOffset.y) / state.zoomLevel;
-
-    // Calculate new pan offset to keep the same board point centered
-    const newPanX = containerCenterX - boardCenterX * newZoom;
-    const newPanY = containerCenterY - boardCenterY * newZoom;
-
-    // Update state
     setZoomLevel(newZoom);
-    setPanOffset(newPanX, newPanY);
-
-    // Re-apply transform
     dom.renderGame();
-    
     dom.setMessage(`Zoom: ${Math.round(newZoom * 100)}%`);
 }
 
 function handleWheelZoom(event) {
-    // Allow zoom in editor mode or when not in map view mode
-    if (state.mapViewMode && !state.isEditorMode) return;
+    if (state.mapViewMode && !state.isEditorMode) {
+        // Auto-switch to player view on wheel zoom
+        setMapViewMode(false);
+        setPanOffset(0, 0);
+        updateMapViewButton();
+    }
 
     // Prevent default page scroll
     event.preventDefault();
 
-    const rect = dom.gameContainer.getBoundingClientRect();
-    // Calculate mouse position relative to the container
-    const mouseX = event.clientX - rect.left;
-    const mouseY = event.clientY - rect.top;
-
-    // Calculate mouse position relative to the board before zoom
-    const boardXBefore = (mouseX - state.panOffset.x) / state.zoomLevel;
-    const boardYBefore = (mouseY - state.panOffset.y) / state.zoomLevel;
-
-    // Determine zoom direction and calculate new zoom level
-    const zoomFactor = event.deltaY < 0 ? 1.1 : 0.9;
+    const zoomFactor = event.deltaY < 0 ? 1.15 : 0.85;
     let newZoom = state.zoomLevel * zoomFactor;
     newZoom = Math.max(MIN_ZOOM, Math.min(newZoom, MAX_ZOOM));
 
-    // If zoom didn't change, do nothing
     if (Math.abs(newZoom - state.zoomLevel) < 0.01) return;
 
-    // Calculate new pan offset to keep mouse point stationary
-    const newPanX = mouseX - boardXBefore * newZoom;
-    const newPanY = mouseY - boardYBefore * newZoom;
-
-    // Update state
     setZoomLevel(newZoom);
-    setPanOffset(newPanX, newPanY);
-
-    // Re-apply transform
     dom.renderGame();
 }
 
@@ -389,6 +358,9 @@ async function startGame() {
 // --- Initialize ---
 document.addEventListener('keydown', handleInteraction);
 document.body.addEventListener('click', handleInteraction);
+window.addEventListener('resize', () => {
+    dom.renderGame();
+});
 
 // Consolidate audio start attempts
 let audioInitializedByInteraction = false;
