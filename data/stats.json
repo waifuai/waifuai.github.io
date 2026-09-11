@@ -2115,13 +2115,13 @@
         "created": "2025-05-12T19:50:44.758784+00:00"
       },
       {
-        "title": "Anime Waifu Chatbot",
-        "description": "mobile friendly version, image in background, separate box to describe image, also the image is pre-prompted so easier to describe with less words.",
-        "link": "https://websim.ai/p/1e6f3t3kjkljhg18k6vl",
-        "thumbnail": "https://project-screenshots.websim.com/0195a69e-ac7a-7c04-afea-a4695ecbd5a2",
-        "views": 1479,
-        "likes": 16,
-        "created": "2025-03-18T00:16:09.093633+00:00"
+        "title": "animated chatbot live2d",
+        "description": "Your interactive animated companion awaits! 💖 Chat with AI 💬, stream anime music 🎶, and tweak settings ✨. Adjust the character's position 🖱️, and check the time ⏰.",
+        "link": "https://websim.ai/p/zix54kss8b0c3bs0jgmx",
+        "thumbnail": "https://project-screenshots.websim.com/01984348-4a74-7003-898c-9a296a5925cc",
+        "views": 1158,
+        "likes": 41,
+        "created": "2025-04-19T07:09:54.312613+00:00"
       },
       {
         "title": "Waifu Collector",
@@ -2133,15 +2133,6 @@
         "created": "2025-04-06T13:33:12.079922+00:00"
       },
       {
-        "title": "animated chatbot live2d",
-        "description": "Your interactive animated companion awaits! 💖 Chat with AI 💬, stream anime music 🎶, and tweak settings ✨. Adjust the character's position 🖱️, and check the time ⏰.",
-        "link": "https://websim.ai/p/zix54kss8b0c3bs0jgmx",
-        "thumbnail": "https://project-screenshots.websim.com/01984348-4a74-7003-898c-9a296a5925cc",
-        "views": 1158,
-        "likes": 41,
-        "created": "2025-04-19T07:09:54.312613+00:00"
-      },
-      {
         "title": "cat maze",
         "description": "collect all 🐟, use 🤿 to cross 💧 and use 🥾 to cross 🔥, 🔑 unlocks 🚪, reach the exit 🏁, and slide on 🧊 --- known bugs: exit doesn't appear on some devices, when you use toggle editor you need to add a player character for the export json to work because it doesn't add the player character by itself. map modes :full map (default) and player map (click player icon to center on player and zoom in/out of map and move map around).",
         "link": "https://websim.ai/p/ihv_wdb3ml28ym674a93",
@@ -2149,33 +2140,6 @@
         "views": 755,
         "likes": 34,
         "created": "2025-04-22T20:47:15.726828+00:00"
-      },
-      {
-        "title": "Video Gallery",
-        "description": "Browse videos in a neat gallery ✨. Tap thumbnails to watch them ▶️. Filter by landscape or portrait orientation 📐. Hit autoplay for continuous viewing ⏭️. Turn on optional TTS for title announcements 🔊. Listen to a background radio stream 🎵 and adjust its volume 🎚️.",
-        "link": "https://websim.ai/p/21tsi_0jc61xx478svgz",
-        "thumbnail": "https://project-screenshots.websim.com/0196894a-e451-7361-bd09-6a342f5393e9",
-        "views": 694,
-        "likes": 15,
-        "created": "2025-04-30T10:45:50.63727+00:00"
-      },
-      {
-        "title": "Profile",
-        "description": "This dynamic portfolio aggregates content from GitHub, YouTube, and an image gallery. ✨ It dynamically sorts and filters projects by views, likes, and recency. 💡 The interface includes a background video player, an integrated audio stream, and a fullscreen modal for images. 🚀 It also displays user statistics like total project views and likes. 🌟",
-        "link": "https://websim.ai/p/5lipoik4gq5rfi4lpuc2",
-        "thumbnail": "https://project-screenshots.websim.com/0198d5ae-4804-79f6-8db2-a4c0fa64143b",
-        "views": 442,
-        "likes": 4,
-        "created": "2025-03-16T20:31:08.184405+00:00"
-      },
-      {
-        "title": "Infinite AI Tech Tree",
-        "description": "Creates a dynamic and interactive tech tree visualization. 🌳 Users can explore nodes, view details, and see prerequisites for inventions. ✨ It allows for the addition of custom inventions to the tree. 💡 An image library displays generated images for each invention. 🖼️ Settings can be adjusted for a personalized experience. ⚙️",
-        "link": "https://websim.ai/p/497vutj48h9hq3dvfhq3",
-        "thumbnail": "https://project-screenshots.websim.com/0198ea76-4003-7cce-891f-9c4fbc711f6a",
-        "views": 420,
-        "likes": 15,
-        "created": "2025-05-30T08:40:47.05763+00:00"
       },
       {
         "title": "Advanced Equation Editor",
@@ -2187,40 +2151,31 @@
         "created": "2024-10-27T20:21:36.152333+00:00"
       },
       {
-        "title": "CatgirlChat - Your Anime Companion",
-        "description": "This website is an interactive chat interface featuring an anime catgirl companion. ✨ It provides a real-time messaging experience with a predefined character persona. 💖 The front-end includes playful animations like a bouncing avatar and floating hearts on click. 💡 It communicates with a backend API to generate dynamic, in-character responses. 🎀",
-        "link": "https://websim.ai/p/zs1_uiiavjnc0m98a0gz",
-        "thumbnail": "https://project-screenshots.websim.com/0198bdbd-5572-7e44-b595-0d421b0b3e45",
-        "views": 334,
-        "likes": 4,
-        "created": "2024-07-06T20:03:58.024559+00:00"
+        "title": "Anime Waifu Chatbot",
+        "description": "mobile friendly version, image in background, separate box to describe image, also the image is pre-prompted so easier to describe with less words.",
+        "link": "https://websim.ai/p/1e6f3t3kjkljhg18k6vl",
+        "thumbnail": "https://project-screenshots.websim.com/0195a69e-ac7a-7c04-afea-a4695ecbd5a2",
+        "views": 1479,
+        "likes": 16,
+        "created": "2025-03-18T00:16:09.093633+00:00"
       },
       {
-        "title": "AI Waifu Chat Simulator",
-        "description": "Chat with an AI waifu! 💬 Type your message and see her respond. Her image, dere type, emotion, and actions update. View the conversation history. 🥰✨ (Tsundere, etc). Info panel displays current prompt.",
-        "link": "https://websim.ai/p/s_rc5ipg9udfp1suw7fj",
-        "thumbnail": "https://project-screenshots.websim.com/0198b473-4607-7b4b-9388-bffa0bbd4037",
-        "views": 298,
-        "likes": 3,
-        "created": "2025-01-22T02:10:53.515899+00:00"
+        "title": "Video Gallery",
+        "description": "Browse videos in a neat gallery ✨. Tap thumbnails to watch them ▶️. Filter by landscape or portrait orientation 📐. Hit autoplay for continuous viewing ⏭️. Turn on optional TTS for title announcements 🔊. Listen to a background radio stream 🎵 and adjust its volume 🎚️.",
+        "link": "https://websim.ai/p/21tsi_0jc61xx478svgz",
+        "thumbnail": "https://project-screenshots.websim.com/0196894a-e451-7361-bd09-6a342f5393e9",
+        "views": 694,
+        "likes": 15,
+        "created": "2025-04-30T10:45:50.63727+00:00"
       },
       {
-        "title": "Waifu Chat Simulator",
-        "description": "It's a fun, interactive chat simulator! 💬 Choose a waifu personality (Tsundere, Yandere, etc.) and chat with her. 🌸 Features a dark mode toggle 🌙, clear chat 🗑️, and cute, animated background. ✨",
-        "link": "https://websim.ai/p/va23vine2hb9r5zv8j8t",
-        "thumbnail": "https://project-screenshots.websim.com/0196b4f8-fe7f-7db1-a8d2-fa0aec5669d1",
-        "views": 289,
-        "likes": 7,
-        "created": "2025-01-21T21:59:30.346013+00:00"
-      },
-      {
-        "title": "visual novel",
-        "description": "Experience a delightful Ghibli-esque visual novel ✨. Interact by clicking dialogue choices ✅ or typing your own input ⌨️. Watch the character 🌸 and lovely background scenes 🖼️ dynamically update based on your interactions. A heartwarming, AI-driven story awaits your touch 💖. Enjoy the gentle journey 🍃.",
-        "link": "https://websim.ai/p/y12bs4ti0icj66v42icx",
-        "thumbnail": "https://project-screenshots.websim.com/01970936-6009-7995-be88-db800ada90a4",
-        "views": 274,
-        "likes": 11,
-        "created": "2025-04-23T00:02:14.864324+00:00"
+        "title": "Infinite AI Tech Tree",
+        "description": "Creates a dynamic and interactive tech tree visualization. 🌳 Users can explore nodes, view details, and see prerequisites for inventions. ✨ It allows for the addition of custom inventions to the tree. 💡 An image library displays generated images for each invention. 🖼️ Settings can be adjusted for a personalized experience. ⚙️",
+        "link": "https://websim.ai/p/497vutj48h9hq3dvfhq3",
+        "thumbnail": "https://project-screenshots.websim.com/0198ea76-4003-7cce-891f-9c4fbc711f6a",
+        "views": 420,
+        "likes": 15,
+        "created": "2025-05-30T08:40:47.05763+00:00"
       },
       {
         "title": "Websim Profile Card Generator",
@@ -2232,40 +2187,22 @@
         "created": "2025-04-13T22:13:17.856007+00:00"
       },
       {
-        "title": "Digital Companion Waifu",
-        "description": "Interact with a cute anime character! 🖼️ Choose from pre-set questions or type your own. 🤔 See the character's image change based on their emotions, and their responses displayed with a typing effect. 💬 Copy the chat log. 📝🔄 Regenerate the image.",
-        "link": "https://websim.ai/p/gt_lxa10q_z2lv3kos51",
-        "thumbnail": "https://project-screenshots.websim.com/0196b8f8-f19b-719c-8716-ab593564f7aa",
-        "views": 205,
-        "likes": 3,
-        "created": "2024-12-10T19:11:11.989968+00:00"
+        "title": "visual novel",
+        "description": "Experience a delightful Ghibli-esque visual novel ✨. Interact by clicking dialogue choices ✅ or typing your own input ⌨️. Watch the character 🌸 and lovely background scenes 🖼️ dynamically update based on your interactions. A heartwarming, AI-driven story awaits your touch 💖. Enjoy the gentle journey 🍃.",
+        "link": "https://websim.ai/p/y12bs4ti0icj66v42icx",
+        "thumbnail": "https://project-screenshots.websim.com/01970936-6009-7995-be88-db800ada90a4",
+        "views": 274,
+        "likes": 11,
+        "created": "2025-04-23T00:02:14.864324+00:00"
       },
       {
-        "title": "Waifu Whispers: Endless Hearts",
-        "description": "A procedurally generated romance adventure with dynamic story events. ✨ Interact with characters using both preset choices and free text input. 💬 Build affection to unlock memories and CGs for a gallery. ❤️ Manage your multiple relationships through a character roster. 💕 The game also supports voice-acted dialogue. 👍",
-        "link": "https://websim.ai/p/8oturolsb778x9fkghg3",
-        "thumbnail": "https://project-screenshots.websim.com/019708f2-366d-75bf-82e0-7a820ac725c2",
-        "views": 170,
-        "likes": 1,
-        "created": "2025-05-24T21:00:08.3219+00:00"
-      },
-      {
-        "title": "animated background",
-        "description": "Engage in real-time conversations with a visual AI character. ✨ The interface features a dynamic, animated environment with particle effects. 💡 AI responses appear in a speech bubble with a typing indicator for better user feedback. 👍 The application also tracks session stats like message count and time active. 🚀",
-        "link": "https://websim.ai/p/3_2mbvr5g5sb2k2jod7n",
-        "thumbnail": "https://project-screenshots.websim.com/0196fa90-d17b-7fac-8503-0c63e64ed129",
-        "views": 138,
-        "likes": 2,
-        "created": "2025-05-19T01:47:30.930402+00:00"
-      },
-      {
-        "title": "Waifu Mobile",
-        "description": "Chat with a cute anime waifu! 💬 Type your message and get a text response, along with an updated waifu image reflecting her mood. 😊 Text appears over image. The chat history and images are dynamic. Mobile-friendly. 📱",
-        "link": "https://websim.ai/p/7gnepgq5d4uk6kylslpq",
-        "thumbnail": "https://project-screenshots.websim.com/0196bba3-8950-7b5e-8aaa-a1f0058c73bc",
-        "views": 123,
-        "likes": 3,
-        "created": "2025-03-01T14:53:08.126145+00:00"
+        "title": "Waifu Chat Simulator",
+        "description": "It's a fun, interactive chat simulator! 💬 Choose a waifu personality (Tsundere, Yandere, etc.) and chat with her. 🌸 Features a dark mode toggle 🌙, clear chat 🗑️, and cute, animated background. ✨",
+        "link": "https://websim.ai/p/va23vine2hb9r5zv8j8t",
+        "thumbnail": "https://project-screenshots.websim.com/0196b4f8-fe7f-7db1-a8d2-fa0aec5669d1",
+        "views": 289,
+        "likes": 7,
+        "created": "2025-01-21T21:59:30.346013+00:00"
       },
       {
         "title": "TokenomicsChat 2 - Secure Communication for Crypto Enthusiasts",
@@ -2277,33 +2214,6 @@
         "created": "2024-07-11T23:58:02.3357+00:00"
       },
       {
-        "title": "Waifu Cursor",
-        "description": "Interactive webpage where your cursor is replaced by a cute waifu 🥰. Moving the mouse creates a trailing star effect ⭐ and plays a soft sound. Clicking generates sparkling stars ✨ and a distinct click sound. The default cursor is hidden.",
-        "link": "https://websim.ai/p/_k46x2ehd_qj6ajgugaq",
-        "thumbnail": "https://project-screenshots.websim.com/0198b11d-3f3a-7777-aece-51922d231086",
-        "views": 108,
-        "likes": 3,
-        "created": "2024-11-10T01:55:18.735162+00:00"
-      },
-      {
-        "title": "AI Book Generator",
-        "description": "(broken) Create books with AI! 🤖 Enter a title/topic, get title suggestions, generate a table of contents, and then the full book content. Edit, pause, save, or copy the Markdown. Manage your creations in a library. 📚✍️✅",
-        "link": "https://websim.ai/p/7sy94cwe3fl4hemna5mj",
-        "thumbnail": "https://project-screenshots.websim.com/0196fa28-ede8-762e-9a74-23bedb207d84",
-        "views": 85,
-        "likes": 2,
-        "created": "2025-01-22T00:26:12.988081+00:00"
-      },
-      {
-        "title": "Waifu Beast Fusion - Infinite Crafting",
-        "description": "A fusion system for creating hybrid characters by combining anime personality archetypes and animal aspects 🎨. Supports both dual and multi-element crafting to generate results 🧪. Each fused creation comes with a unique image, a descriptive profile, and a special quirk ✨. Fusions can be saved into a personal collection and viewed in a gallery 🖼️.",
-        "link": "https://websim.ai/p/c73uczijnkuf_b3h9140",
-        "thumbnail": "https://project-screenshots.websim.com/01973e0a-0e83-7b92-9d1e-f3fbbd42ea15",
-        "views": 84,
-        "likes": 1,
-        "created": "2025-06-03T06:21:22.689276+00:00"
-      },
-      {
         "title": "Waifu AI RPG",
         "description": "infinite rpg. known bugs: when using fallback for the text the tts is mismatched to the text on screen. known bugs: when skip to latest is on only one tts should be playing at a time. if it wants to play a next tts (like when click a button while the old tts is playing) then it should stop the old tts. currently it doesn't stop the previous tts and plays in parallel. future todo: add navigation to go to different locations on a map at any time, the map should have multiple new locations",
         "link": "https://websim.ai/p/20uqf4na_w0dh994aabq",
@@ -2313,22 +2223,31 @@
         "created": "2025-05-07T07:57:09.722651+00:00"
       },
       {
-        "title": "Anime Waifu Image Generator - Ghibli Style",
-        "description": "Design your perfect Ghibli waifu! 🎀 Select appearance and personality options using simple dropdowns. ✅ Press generate ⚙️ and watch your character magically appear! 🖼️ Get a cute profile description too. 📜 Save your creation 💾 or easily request a fun variation. ✨",
-        "link": "https://websim.ai/p/lvjbhkgpdsvv_tx4fulx",
-        "thumbnail": "https://project-screenshots.websim.com/0199114d-ef5b-743b-8319-c98d04dd807c",
-        "views": 82,
-        "likes": 1,
-        "created": "2025-04-01T08:55:06.610036+00:00"
+        "title": "MCP Architecture Diagram Generator",
+        "description": "Describe your software architecture ⌨️, click \"Generate Diagram\" 🖱️, and instantly see a visual representation! 📊 The page simulates an AI that creates interactive diagrams from your text input. Nodes and connecting lines appear. 🎉 View clear visuals of your system! 👓",
+        "link": "https://websim.ai/p/yvxlw2rgviq9o17b4eto",
+        "thumbnail": "https://project-screenshots.websim.com/0194c089-ff60-7ad3-8ec5-73d7eda35e13",
+        "views": 31,
+        "likes": 6,
+        "created": "2025-02-01T08:03:37.207137+00:00"
       },
       {
-        "title": "waifu os ui",
-        "description": "Interactive terminal-style WaifuOS 🌸. Type commands (help, nyaa, lisp, clear) in a pink & black UI. Features a draggable terminal & AI assistant window with an animated 3D anime character 🎀, speech bubbles, and click-triggered sparkles ✨. Simulates a Lisp REPL and OS commands.",
-        "link": "https://websim.ai/p/ym6m6qw5qpysy8ylc31v",
-        "thumbnail": "https://project-screenshots.websim.com/01967dbe-e579-72ee-998e-d28c0d3d20ae",
-        "views": 70,
-        "likes": 2,
-        "created": "2024-10-27T20:38:43.389948+00:00"
+        "title": "Profile",
+        "description": "This dynamic portfolio aggregates content from GitHub, YouTube, and an image gallery. ✨ It dynamically sorts and filters projects by views, likes, and recency. 💡 The interface includes a background video player, an integrated audio stream, and a fullscreen modal for images. 🚀 It also displays user statistics like total project views and likes. 🌟",
+        "link": "https://websim.ai/p/5lipoik4gq5rfi4lpuc2",
+        "thumbnail": "https://project-screenshots.websim.com/0198d5ae-4804-79f6-8db2-a4c0fa64143b",
+        "views": 442,
+        "likes": 4,
+        "created": "2025-03-16T20:31:08.184405+00:00"
+      },
+      {
+        "title": "CatgirlChat - Your Anime Companion",
+        "description": "This website is an interactive chat interface featuring an anime catgirl companion. ✨ It provides a real-time messaging experience with a predefined character persona. 💖 The front-end includes playful animations like a bouncing avatar and floating hearts on click. 💡 It communicates with a backend API to generate dynamic, in-character responses. 🎀",
+        "link": "https://websim.ai/p/zs1_uiiavjnc0m98a0gz",
+        "thumbnail": "https://project-screenshots.websim.com/0198bdbd-5572-7e44-b595-0d421b0b3e45",
+        "views": 334,
+        "likes": 4,
+        "created": "2024-07-06T20:03:58.024559+00:00"
       },
       {
         "title": "Crypto AI Arena - Live Simulation Feed with Charts",
@@ -2340,13 +2259,40 @@
         "created": "2024-07-06T20:20:15.771015+00:00"
       },
       {
-        "title": "The Waifu AI Project Showcase",
-        "description": "Circular profile picture 🖼️ at the center. Surrounding it, a constellation of project previews 🌌 rotate. Hover over a project 🖱️ to reveal its title and stats (views/likes) ⭐. Projects are fetched and displayed dynamically 🔄. The background has a large username. Click a preview to open. 🎉",
-        "link": "https://websim.ai/p/lz7l4stgy4v17knhnql9",
-        "thumbnail": "https://project-screenshots.websim.com/01936cdd-6482-74f3-ac5a-7798b4b8c0d7",
-        "views": 61,
-        "likes": 1,
-        "created": "2024-11-27T09:03:29.255861+00:00"
+        "title": "AI Waifu Chat Simulator",
+        "description": "Chat with an AI waifu! 💬 Type your message and see her respond. Her image, dere type, emotion, and actions update. View the conversation history. 🥰✨ (Tsundere, etc). Info panel displays current prompt.",
+        "link": "https://websim.ai/p/s_rc5ipg9udfp1suw7fj",
+        "thumbnail": "https://project-screenshots.websim.com/0198b473-4607-7b4b-9388-bffa0bbd4037",
+        "views": 298,
+        "likes": 3,
+        "created": "2025-01-22T02:10:53.515899+00:00"
+      },
+      {
+        "title": "Digital Companion Waifu",
+        "description": "Interact with a cute anime character! 🖼️ Choose from pre-set questions or type your own. 🤔 See the character's image change based on their emotions, and their responses displayed with a typing effect. 💬 Copy the chat log. 📝🔄 Regenerate the image.",
+        "link": "https://websim.ai/p/gt_lxa10q_z2lv3kos51",
+        "thumbnail": "https://project-screenshots.websim.com/0196b8f8-f19b-719c-8716-ab593564f7aa",
+        "views": 205,
+        "likes": 3,
+        "created": "2024-12-10T19:11:11.989968+00:00"
+      },
+      {
+        "title": "Waifu Mobile",
+        "description": "Chat with a cute anime waifu! 💬 Type your message and get a text response, along with an updated waifu image reflecting her mood. 😊 Text appears over image. The chat history and images are dynamic. Mobile-friendly. 📱",
+        "link": "https://websim.ai/p/7gnepgq5d4uk6kylslpq",
+        "thumbnail": "https://project-screenshots.websim.com/0196bba3-8950-7b5e-8aaa-a1f0058c73bc",
+        "views": 123,
+        "likes": 3,
+        "created": "2025-03-01T14:53:08.126145+00:00"
+      },
+      {
+        "title": "Waifu Cursor",
+        "description": "Interactive webpage where your cursor is replaced by a cute waifu 🥰. Moving the mouse creates a trailing star effect ⭐ and plays a soft sound. Clicking generates sparkling stars ✨ and a distinct click sound. The default cursor is hidden.",
+        "link": "https://websim.ai/p/_k46x2ehd_qj6ajgugaq",
+        "thumbnail": "https://project-screenshots.websim.com/0198b11d-3f3a-7777-aece-51922d231086",
+        "views": 108,
+        "likes": 3,
+        "created": "2024-11-10T01:55:18.735162+00:00"
       },
       {
         "title": "QuantumAI Physics - Live Data Dashboard",
@@ -2358,13 +2304,40 @@
         "created": "2024-07-02T20:10:05.531689+00:00"
       },
       {
-        "title": "AI ad Studio (Ghibli Style)",
-        "description": "Craft charming Ghibli-style characters! ✨ Use text prompts or upload images 🖼️. Instantly regenerate variations ✨. Experiment with different artistic styles 🎨, apply specific edits ✏️, or creatively merge two characters 🧬. Add text for memes ✍️ and receive AI design analysis 💡 for helpful tips. Simple controls, endless fun! 💖",
-        "link": "https://websim.ai/p/1rvjkkh0cwamm_cb_v7w",
-        "thumbnail": "https://project-screenshots.websim.com/01961e5d-d10d-789f-8184-d1c67e17fcb4",
-        "views": 54,
-        "likes": 1,
-        "created": "2025-03-31T08:47:43.075802+00:00"
+        "title": "Simulating Quantum Gravity Effects in Microtubules",
+        "description": "This project explores consciousness via the Orch-OR theory with an interactive simulation. ✨ It features a 3D microtubule model with toggleable quantum gravity effects. 💡 A dynamic chart visualizes Planck scale fluctuations in real-time. 📈 The model simulates how these fundamental physical interactions could potentially give rise to consciousness. 🔬",
+        "link": "https://websim.ai/p/tnw5fxlhaol60n3s54ta",
+        "thumbnail": "https://project-screenshots.websim.com/0198b4b0-ff89-77b0-ad47-e23af432c7dd",
+        "views": 36,
+        "likes": 3,
+        "created": "2024-09-21T00:36:05.709579+00:00"
+      },
+      {
+        "title": "animated background",
+        "description": "Engage in real-time conversations with a visual AI character. ✨ The interface features a dynamic, animated environment with particle effects. 💡 AI responses appear in a speech bubble with a typing indicator for better user feedback. 👍 The application also tracks session stats like message count and time active. 🚀",
+        "link": "https://websim.ai/p/3_2mbvr5g5sb2k2jod7n",
+        "thumbnail": "https://project-screenshots.websim.com/0196fa90-d17b-7fac-8503-0c63e64ed129",
+        "views": 138,
+        "likes": 2,
+        "created": "2025-05-19T01:47:30.930402+00:00"
+      },
+      {
+        "title": "AI Book Generator",
+        "description": "(broken) Create books with AI! 🤖 Enter a title/topic, get title suggestions, generate a table of contents, and then the full book content. Edit, pause, save, or copy the Markdown. Manage your creations in a library. 📚✍️✅",
+        "link": "https://websim.ai/p/7sy94cwe3fl4hemna5mj",
+        "thumbnail": "https://project-screenshots.websim.com/0196fa28-ede8-762e-9a74-23bedb207d84",
+        "views": 85,
+        "likes": 2,
+        "created": "2025-01-22T00:26:12.988081+00:00"
+      },
+      {
+        "title": "waifu os ui",
+        "description": "Interactive terminal-style WaifuOS 🌸. Type commands (help, nyaa, lisp, clear) in a pink & black UI. Features a draggable terminal & AI assistant window with an animated 3D anime character 🎀, speech bubbles, and click-triggered sparkles ✨. Simulates a Lisp REPL and OS commands.",
+        "link": "https://websim.ai/p/ym6m6qw5qpysy8ylc31v",
+        "thumbnail": "https://project-screenshots.websim.com/01967dbe-e579-72ee-998e-d28c0d3d20ae",
+        "views": 70,
+        "likes": 2,
+        "created": "2024-10-27T20:38:43.389948+00:00"
       },
       {
         "title": "Solana Bonding Curve Token in Python",
@@ -2376,15 +2349,6 @@
         "created": "2024-07-23T06:33:34.736793+00:00"
       },
       {
-        "title": "Waifu Slideshow Explainer",
-        "description": "Explore topics visually! ✨ Input a subject, choose tone & art style 🎨. AI generates a step-by-step slideshow with images 🖼️ and text. Navigate manually ⏯️ or let it autoplay with optional TTS 🔊. Past lessons are saved! 📚",
-        "link": "https://websim.ai/p/4d_e89krqr1eb9ab_wqj",
-        "thumbnail": "https://project-screenshots.websim.com/01991061-5021-727a-bb34-2ce6a135a48d",
-        "views": 42,
-        "likes": 1,
-        "created": "2025-04-25T10:01:00.720738+00:00"
-      },
-      {
         "title": "3D Avatar Viewer",
         "description": "Interactive 3D avatar viewer. 🔄 Drag to rotate, pinch/scroll to zoom. Toggle auto-rotation, reset view, and switch to preset camera angles (front, side, top). Displays performance (high/med/low) and offers AR mode if supported. 📱 Shows a hotspot on the model and basic help.",
         "link": "https://websim.ai/p/xcx79uz7gbrjei2lwiv8",
@@ -2392,24 +2356,6 @@
         "views": 39,
         "likes": 2,
         "created": "2024-11-20T08:20:07.150979+00:00"
-      },
-      {
-        "title": "profile",
-        "description": "View my profile! 🧠 See total views & likes.📊 Explore projects sorted by recent, views, or likes.🖱️ Click project thumbnails to view. 🖼️  Light/dark mode. 🌓 Responsive design. Links to socials. 🐦",
-        "link": "https://websim.ai/p/o76ivpfd9qz0a99rqfjg",
-        "thumbnail": "https://project-screenshots.websim.com/01966525-a3a7-7a38-b3f9-6146442db31d",
-        "views": 38,
-        "likes": 1,
-        "created": "2025-03-15T02:09:06.054404+00:00"
-      },
-      {
-        "title": "Simulating Quantum Gravity Effects in Microtubules",
-        "description": "This project explores consciousness via the Orch-OR theory with an interactive simulation. ✨ It features a 3D microtubule model with toggleable quantum gravity effects. 💡 A dynamic chart visualizes Planck scale fluctuations in real-time. 📈 The model simulates how these fundamental physical interactions could potentially give rise to consciousness. 🔬",
-        "link": "https://websim.ai/p/tnw5fxlhaol60n3s54ta",
-        "thumbnail": "https://project-screenshots.websim.com/0198b4b0-ff89-77b0-ad47-e23af432c7dd",
-        "views": 36,
-        "likes": 3,
-        "created": "2024-09-21T00:36:05.709579+00:00"
       },
       {
         "title": "Tariff Tycoon",
@@ -2439,13 +2385,67 @@
         "created": "2024-11-29T09:51:27.755346+00:00"
       },
       {
-        "title": "MCP Architecture Diagram Generator",
-        "description": "Describe your software architecture ⌨️, click \"Generate Diagram\" 🖱️, and instantly see a visual representation! 📊 The page simulates an AI that creates interactive diagrams from your text input. Nodes and connecting lines appear. 🎉 View clear visuals of your system! 👓",
-        "link": "https://websim.ai/p/yvxlw2rgviq9o17b4eto",
-        "thumbnail": "https://project-screenshots.websim.com/0194c089-ff60-7ad3-8ec5-73d7eda35e13",
-        "views": 31,
-        "likes": 6,
-        "created": "2025-02-01T08:03:37.207137+00:00"
+        "title": "Waifu Whispers: Endless Hearts",
+        "description": "A procedurally generated romance adventure with dynamic story events. ✨ Interact with characters using both preset choices and free text input. 💬 Build affection to unlock memories and CGs for a gallery. ❤️ Manage your multiple relationships through a character roster. 💕 The game also supports voice-acted dialogue. 👍",
+        "link": "https://websim.ai/p/8oturolsb778x9fkghg3",
+        "thumbnail": "https://project-screenshots.websim.com/019708f2-366d-75bf-82e0-7a820ac725c2",
+        "views": 170,
+        "likes": 1,
+        "created": "2025-05-24T21:00:08.3219+00:00"
+      },
+      {
+        "title": "Waifu Beast Fusion - Infinite Crafting",
+        "description": "A fusion system for creating hybrid characters by combining anime personality archetypes and animal aspects 🎨. Supports both dual and multi-element crafting to generate results 🧪. Each fused creation comes with a unique image, a descriptive profile, and a special quirk ✨. Fusions can be saved into a personal collection and viewed in a gallery 🖼️.",
+        "link": "https://websim.ai/p/c73uczijnkuf_b3h9140",
+        "thumbnail": "https://project-screenshots.websim.com/01973e0a-0e83-7b92-9d1e-f3fbbd42ea15",
+        "views": 84,
+        "likes": 1,
+        "created": "2025-06-03T06:21:22.689276+00:00"
+      },
+      {
+        "title": "Anime Waifu Image Generator - Ghibli Style",
+        "description": "Design your perfect Ghibli waifu! 🎀 Select appearance and personality options using simple dropdowns. ✅ Press generate ⚙️ and watch your character magically appear! 🖼️ Get a cute profile description too. 📜 Save your creation 💾 or easily request a fun variation. ✨",
+        "link": "https://websim.ai/p/lvjbhkgpdsvv_tx4fulx",
+        "thumbnail": "https://project-screenshots.websim.com/0199114d-ef5b-743b-8319-c98d04dd807c",
+        "views": 82,
+        "likes": 1,
+        "created": "2025-04-01T08:55:06.610036+00:00"
+      },
+      {
+        "title": "The Waifu AI Project Showcase",
+        "description": "Circular profile picture 🖼️ at the center. Surrounding it, a constellation of project previews 🌌 rotate. Hover over a project 🖱️ to reveal its title and stats (views/likes) ⭐. Projects are fetched and displayed dynamically 🔄. The background has a large username. Click a preview to open. 🎉",
+        "link": "https://websim.ai/p/lz7l4stgy4v17knhnql9",
+        "thumbnail": "https://project-screenshots.websim.com/01936cdd-6482-74f3-ac5a-7798b4b8c0d7",
+        "views": 61,
+        "likes": 1,
+        "created": "2024-11-27T09:03:29.255861+00:00"
+      },
+      {
+        "title": "AI ad Studio (Ghibli Style)",
+        "description": "Craft charming Ghibli-style characters! ✨ Use text prompts or upload images 🖼️. Instantly regenerate variations ✨. Experiment with different artistic styles 🎨, apply specific edits ✏️, or creatively merge two characters 🧬. Add text for memes ✍️ and receive AI design analysis 💡 for helpful tips. Simple controls, endless fun! 💖",
+        "link": "https://websim.ai/p/1rvjkkh0cwamm_cb_v7w",
+        "thumbnail": "https://project-screenshots.websim.com/01961e5d-d10d-789f-8184-d1c67e17fcb4",
+        "views": 54,
+        "likes": 1,
+        "created": "2025-03-31T08:47:43.075802+00:00"
+      },
+      {
+        "title": "Waifu Slideshow Explainer",
+        "description": "Explore topics visually! ✨ Input a subject, choose tone & art style 🎨. AI generates a step-by-step slideshow with images 🖼️ and text. Navigate manually ⏯️ or let it autoplay with optional TTS 🔊. Past lessons are saved! 📚",
+        "link": "https://websim.ai/p/4d_e89krqr1eb9ab_wqj",
+        "thumbnail": "https://project-screenshots.websim.com/01991061-5021-727a-bb34-2ce6a135a48d",
+        "views": 42,
+        "likes": 1,
+        "created": "2025-04-25T10:01:00.720738+00:00"
+      },
+      {
+        "title": "profile",
+        "description": "View my profile! 🧠 See total views & likes.📊 Explore projects sorted by recent, views, or likes.🖱️ Click project thumbnails to view. 🖼️  Light/dark mode. 🌓 Responsive design. Links to socials. 🐦",
+        "link": "https://websim.ai/p/o76ivpfd9qz0a99rqfjg",
+        "thumbnail": "https://project-screenshots.websim.com/01966525-a3a7-7a38-b3f9-6146442db31d",
+        "views": 38,
+        "likes": 1,
+        "created": "2025-03-15T02:09:06.054404+00:00"
       },
       {
         "title": "Waifu Picture Quiz",

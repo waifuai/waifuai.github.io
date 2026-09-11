@@ -1,1 +1,2470 @@
-window.WAIFU_STATS = {"synced_at": "2026-09-10T12:37:26.788845", "source": "all-db unified cross-database engine", "macro_kpis": {"total_projects": 663, "github_repos_count": 52, "websim_projects_count": 611, "total_content_views": 53239, "web_page_views": 26775, "websim_views": 26464, "total_stars_and_likes": 1262, "github_stars": 163, "websim_likes": 1099, "total_web_users": 16647, "total_search_impressions": 69231, "total_search_clicks": 3688}, "github": {"repos_count": 52, "total_stars": 163, "total_forks": 18, "total_open_issues": 3, "total_views": 627, "total_view_uniques": 413, "total_clones": 687, "total_clone_uniques": 566, "views_timeline": [{"date": "2026-08-21", "views": 0, "uniques": 0}, {"date": "2026-08-22", "views": 0, "uniques": 0}, {"date": "2026-08-23", "views": 27, "uniques": 21}, {"date": "2026-08-24", "views": 20, "uniques": 18}, {"date": "2026-08-25", "views": 55, "uniques": 21}, {"date": "2026-08-26", "views": 20, "uniques": 15}, {"date": "2026-08-27", "views": 27, "uniques": 22}, {"date": "2026-08-28", "views": 17, "uniques": 15}, {"date": "2026-08-29", "views": 55, "uniques": 37}, {"date": "2026-08-30", "views": 34, "uniques": 30}, {"date": "2026-08-31", "views": 43, "uniques": 31}, {"date": "2026-09-01", "views": 33, "uniques": 22}, {"date": "2026-09-02", "views": 20, "uniques": 19}, {"date": "2026-09-03", "views": 41, "uniques": 22}, {"date": "2026-09-04", "views": 32, "uniques": 23}, {"date": "2026-09-05", "views": 33, "uniques": 27}, {"date": "2026-09-06", "views": 53, "uniques": 26}, {"date": "2026-09-07", "views": 61, "uniques": 23}, {"date": "2026-09-08", "views": 23, "uniques": 19}, {"date": "2026-09-09", "views": 33, "uniques": 22}], "clones_timeline": [{"date": "2026-08-21", "clones": 2, "uniques": 2}, {"date": "2026-08-22", "clones": 0, "uniques": 0}, {"date": "2026-08-23", "clones": 29, "uniques": 18}, {"date": "2026-08-24", "clones": 17, "uniques": 14}, {"date": "2026-08-25", "clones": 14, "uniques": 14}, {"date": "2026-08-26", "clones": 23, "uniques": 10}, {"date": "2026-08-27", "clones": 30, "uniques": 25}, {"date": "2026-08-28", "clones": 55, "uniques": 45}, {"date": "2026-08-29", "clones": 25, "uniques": 13}, {"date": "2026-08-30", "clones": 23, "uniques": 22}, {"date": "2026-08-31", "clones": 70, "uniques": 62}, {"date": "2026-09-01", "clones": 33, "uniques": 33}, {"date": "2026-09-02", "clones": 55, "uniques": 47}, {"date": "2026-09-03", "clones": 62, "uniques": 57}, {"date": "2026-09-04", "clones": 78, "uniques": 54}, {"date": "2026-09-05", "clones": 37, "uniques": 34}, {"date": "2026-09-06", "clones": 35, "uniques": 31}, {"date": "2026-09-07", "clones": 19, "uniques": 19}, {"date": "2026-09-08", "clones": 46, "uniques": 36}, {"date": "2026-09-09", "clones": 34, "uniques": 30}], "top_referrers": [{"referrer": "Google", "count": 112, "uniques": 65}, {"referrer": "github.com", "count": 81, "uniques": 58}, {"referrer": "waifuai.com", "count": 79, "uniques": 33}, {"referrer": "t.co", "count": 33, "uniques": 29}, {"referrer": "reddit.com", "count": 12, "uniques": 9}, {"referrer": "Bing", "count": 8, "uniques": 7}, {"referrer": "chatgpt.com", "count": 7, "uniques": 7}, {"referrer": "DuckDuckGo", "count": 7, "uniques": 6}, {"referrer": "doubao.com", "count": 6, "uniques": 2}, {"referrer": "yandex.ru", "count": 3, "uniques": 2}], "top_repos": [{"repo": "waifuai/waifu-companion", "name": "waifu-companion", "stars": 34, "forks": 3, "open_issues": 0, "watchers": 0, "category": "Companion & VRM", "url": "https://github.com/waifuai/waifu-companion"}, {"repo": "waifuai/hermes-waifu", "name": "hermes-waifu", "stars": 21, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Companion & VRM", "url": "https://github.com/waifuai/hermes-waifu"}, {"repo": "waifuai/waifu-sprites", "name": "waifu-sprites", "stars": 21, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Companion & VRM", "url": "https://github.com/waifuai/waifu-sprites"}, {"repo": "waifuai/llms-full-txt", "name": "llms-full-txt", "stars": 8, "forks": 4, "open_issues": 0, "watchers": 0, "category": "Documentation & LLM Feeds", "url": "https://github.com/waifuai/llms-full-txt"}, {"repo": "waifuai/waifu-llm-vrm", "name": "waifu-llm-vrm", "stars": 6, "forks": 2, "open_issues": 0, "watchers": 0, "category": "Companion & VRM", "url": "https://github.com/waifuai/waifu-llm-vrm"}, {"repo": "waifuai/web-apps", "name": "web-apps", "stars": 4, "forks": 1, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/web-apps"}, {"repo": "waifuai/mcp-waifu-chat", "name": "mcp-waifu-chat", "stars": 4, "forks": 0, "open_issues": 0, "watchers": 0, "category": "MCP Server", "url": "https://github.com/waifuai/mcp-waifu-chat"}, {"repo": "waifuai/waifuai", "name": "waifuai", "stars": 3, "forks": 1, "open_issues": 1, "watchers": 1, "category": "Open Source Project", "url": "https://github.com/waifuai/waifuai"}, {"repo": "waifuai/book-generator", "name": "book-generator", "stars": 3, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/book-generator"}, {"repo": "waifuai/macro-language-model", "name": "macro-language-model", "stars": 3, "forks": 0, "open_issues": 0, "watchers": 0, "category": "AI Intelligence & Pricing", "url": "https://github.com/waifuai/macro-language-model"}, {"repo": "waifuai/mcp-solana-ico", "name": "mcp-solana-ico", "stars": 3, "forks": 0, "open_issues": 0, "watchers": 0, "category": "MCP Server", "url": "https://github.com/waifuai/mcp-solana-ico"}, {"repo": "waifuai/sim-mcp-token", "name": "sim-mcp-token", "stars": 3, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Web3 Simulation", "url": "https://github.com/waifuai/sim-mcp-token"}, {"repo": "waifuai/solana-launchpad-ecosystem", "name": "solana-launchpad-ecosystem", "stars": 3, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Web3 Simulation", "url": "https://github.com/waifuai/solana-launchpad-ecosystem"}, {"repo": "waifuai/mcp-waifu-queue", "name": "mcp-waifu-queue", "stars": 2, "forks": 1, "open_issues": 2, "watchers": 0, "category": "MCP Server", "url": "https://github.com/waifuai/mcp-waifu-queue"}, {"repo": "waifuai/reasoning-pricer", "name": "reasoning-pricer", "stars": 2, "forks": 1, "open_issues": 0, "watchers": 0, "category": "AI Intelligence & Pricing", "url": "https://github.com/waifuai/reasoning-pricer"}, {"repo": "waifuai/research-books", "name": "research-books", "stars": 2, "forks": 1, "open_issues": 0, "watchers": 1, "category": "AI Intelligence & Pricing", "url": "https://github.com/waifuai/research-books"}, {"repo": "waifuai/research-text", "name": "research-text", "stars": 2, "forks": 1, "open_issues": 0, "watchers": 0, "category": "AI Intelligence & Pricing", "url": "https://github.com/waifuai/research-text"}, {"repo": "waifuai/waifu-chat-api", "name": "waifu-chat-api", "stars": 2, "forks": 1, "open_issues": 0, "watchers": 0, "category": "Companion & VRM", "url": "https://github.com/waifuai/waifu-chat-api"}, {"repo": "waifuai/mcp-solana-dex", "name": "mcp-solana-dex", "stars": 2, "forks": 0, "open_issues": 0, "watchers": 0, "category": "MCP Server", "url": "https://github.com/waifuai/mcp-solana-dex"}, {"repo": "waifuai/mcp-traits-matcher", "name": "mcp-traits-matcher", "stars": 2, "forks": 0, "open_issues": 0, "watchers": 0, "category": "MCP Server", "url": "https://github.com/waifuai/mcp-traits-matcher"}, {"repo": "waifuai/quantum-circuit-optimization", "name": "quantum-circuit-optimization", "stars": 2, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Bio & Applied Science", "url": "https://github.com/waifuai/quantum-circuit-optimization"}, {"repo": "waifuai/traits", "name": "traits", "stars": 2, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/traits"}, {"repo": "waifuai/waifu-constitution", "name": "waifu-constitution", "stars": 2, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/waifu-constitution"}, {"repo": "waifuai/biochem-framework", "name": "biochem-framework", "stars": 1, "forks": 1, "open_issues": 0, "watchers": 0, "category": "Bio & Applied Science", "url": "https://github.com/waifuai/biochem-framework"}, {"repo": "waifuai/launchpad-skill", "name": "launchpad-skill", "stars": 1, "forks": 1, "open_issues": 0, "watchers": 0, "category": "Web3 Simulation", "url": "https://github.com/waifuai/launchpad-skill"}], "all_repos": [{"repo": "waifuai/waifu-companion", "name": "waifu-companion", "stars": 34, "forks": 3, "open_issues": 0, "watchers": 0, "category": "Companion & VRM", "url": "https://github.com/waifuai/waifu-companion"}, {"repo": "waifuai/hermes-waifu", "name": "hermes-waifu", "stars": 21, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Companion & VRM", "url": "https://github.com/waifuai/hermes-waifu"}, {"repo": "waifuai/waifu-sprites", "name": "waifu-sprites", "stars": 21, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Companion & VRM", "url": "https://github.com/waifuai/waifu-sprites"}, {"repo": "waifuai/llms-full-txt", "name": "llms-full-txt", "stars": 8, "forks": 4, "open_issues": 0, "watchers": 0, "category": "Documentation & LLM Feeds", "url": "https://github.com/waifuai/llms-full-txt"}, {"repo": "waifuai/waifu-llm-vrm", "name": "waifu-llm-vrm", "stars": 6, "forks": 2, "open_issues": 0, "watchers": 0, "category": "Companion & VRM", "url": "https://github.com/waifuai/waifu-llm-vrm"}, {"repo": "waifuai/web-apps", "name": "web-apps", "stars": 4, "forks": 1, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/web-apps"}, {"repo": "waifuai/mcp-waifu-chat", "name": "mcp-waifu-chat", "stars": 4, "forks": 0, "open_issues": 0, "watchers": 0, "category": "MCP Server", "url": "https://github.com/waifuai/mcp-waifu-chat"}, {"repo": "waifuai/waifuai", "name": "waifuai", "stars": 3, "forks": 1, "open_issues": 1, "watchers": 1, "category": "Open Source Project", "url": "https://github.com/waifuai/waifuai"}, {"repo": "waifuai/book-generator", "name": "book-generator", "stars": 3, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/book-generator"}, {"repo": "waifuai/macro-language-model", "name": "macro-language-model", "stars": 3, "forks": 0, "open_issues": 0, "watchers": 0, "category": "AI Intelligence & Pricing", "url": "https://github.com/waifuai/macro-language-model"}, {"repo": "waifuai/mcp-solana-ico", "name": "mcp-solana-ico", "stars": 3, "forks": 0, "open_issues": 0, "watchers": 0, "category": "MCP Server", "url": "https://github.com/waifuai/mcp-solana-ico"}, {"repo": "waifuai/sim-mcp-token", "name": "sim-mcp-token", "stars": 3, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Web3 Simulation", "url": "https://github.com/waifuai/sim-mcp-token"}, {"repo": "waifuai/solana-launchpad-ecosystem", "name": "solana-launchpad-ecosystem", "stars": 3, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Web3 Simulation", "url": "https://github.com/waifuai/solana-launchpad-ecosystem"}, {"repo": "waifuai/mcp-waifu-queue", "name": "mcp-waifu-queue", "stars": 2, "forks": 1, "open_issues": 2, "watchers": 0, "category": "MCP Server", "url": "https://github.com/waifuai/mcp-waifu-queue"}, {"repo": "waifuai/reasoning-pricer", "name": "reasoning-pricer", "stars": 2, "forks": 1, "open_issues": 0, "watchers": 0, "category": "AI Intelligence & Pricing", "url": "https://github.com/waifuai/reasoning-pricer"}, {"repo": "waifuai/research-books", "name": "research-books", "stars": 2, "forks": 1, "open_issues": 0, "watchers": 1, "category": "AI Intelligence & Pricing", "url": "https://github.com/waifuai/research-books"}, {"repo": "waifuai/research-text", "name": "research-text", "stars": 2, "forks": 1, "open_issues": 0, "watchers": 0, "category": "AI Intelligence & Pricing", "url": "https://github.com/waifuai/research-text"}, {"repo": "waifuai/waifu-chat-api", "name": "waifu-chat-api", "stars": 2, "forks": 1, "open_issues": 0, "watchers": 0, "category": "Companion & VRM", "url": "https://github.com/waifuai/waifu-chat-api"}, {"repo": "waifuai/mcp-solana-dex", "name": "mcp-solana-dex", "stars": 2, "forks": 0, "open_issues": 0, "watchers": 0, "category": "MCP Server", "url": "https://github.com/waifuai/mcp-solana-dex"}, {"repo": "waifuai/mcp-traits-matcher", "name": "mcp-traits-matcher", "stars": 2, "forks": 0, "open_issues": 0, "watchers": 0, "category": "MCP Server", "url": "https://github.com/waifuai/mcp-traits-matcher"}, {"repo": "waifuai/quantum-circuit-optimization", "name": "quantum-circuit-optimization", "stars": 2, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Bio & Applied Science", "url": "https://github.com/waifuai/quantum-circuit-optimization"}, {"repo": "waifuai/traits", "name": "traits", "stars": 2, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/traits"}, {"repo": "waifuai/waifu-constitution", "name": "waifu-constitution", "stars": 2, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/waifu-constitution"}, {"repo": "waifuai/biochem-framework", "name": "biochem-framework", "stars": 1, "forks": 1, "open_issues": 0, "watchers": 0, "category": "Bio & Applied Science", "url": "https://github.com/waifuai/biochem-framework"}, {"repo": "waifuai/launchpad-skill", "name": "launchpad-skill", "stars": 1, "forks": 1, "open_issues": 0, "watchers": 0, "category": "Web3 Simulation", "url": "https://github.com/waifuai/launchpad-skill"}, {"repo": "waifuai/.github", "name": ".github", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/.github"}, {"repo": "waifuai/ai-benchmarks", "name": "ai-benchmarks", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "AI Intelligence & Pricing", "url": "https://github.com/waifuai/ai-benchmarks"}, {"repo": "waifuai/anime-subtitle-chatbot", "name": "anime-subtitle-chatbot", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/anime-subtitle-chatbot"}, {"repo": "waifuai/blog-posts", "name": "blog-posts", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/blog-posts"}, {"repo": "waifuai/crypto-simulation", "name": "crypto-simulation", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Web3 Simulation", "url": "https://github.com/waifuai/crypto-simulation"}, {"repo": "waifuai/function-graph-generator", "name": "function-graph-generator", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/function-graph-generator"}, {"repo": "waifuai/llm-text-queue", "name": "llm-text-queue", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/llm-text-queue"}, {"repo": "waifuai/llms-full-html", "name": "llms-full-html", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Documentation & LLM Feeds", "url": "https://github.com/waifuai/llms-full-html"}, {"repo": "waifuai/mcp-solana-affiliate", "name": "mcp-solana-affiliate", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "MCP Server", "url": "https://github.com/waifuai/mcp-solana-affiliate"}, {"repo": "waifuai/mcp-solana-internet", "name": "mcp-solana-internet", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "MCP Server", "url": "https://github.com/waifuai/mcp-solana-internet"}, {"repo": "waifuai/paraphrase-back-translate", "name": "paraphrase-back-translate", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/paraphrase-back-translate"}, {"repo": "waifuai/paraphrase-gan", "name": "paraphrase-gan", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/paraphrase-gan"}, {"repo": "waifuai/paraphrase-gan-utils", "name": "paraphrase-gan-utils", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/paraphrase-gan-utils"}, {"repo": "waifuai/paraphrase-human-sentence-classifier", "name": "paraphrase-human-sentence-classifier", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/paraphrase-human-sentence-classifier"}, {"repo": "waifuai/paraphrase-neural-machine-translation", "name": "paraphrase-neural-machine-translation", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/paraphrase-neural-machine-translation"}, {"repo": "waifuai/projects-assets", "name": "projects-assets", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/projects-assets"}, {"repo": "waifuai/projects-data", "name": "projects-data", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/projects-data"}, {"repo": "waifuai/ransoc", "name": "ransoc", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/ransoc"}, {"repo": "waifuai/sim-affiliate", "name": "sim-affiliate", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Web3 Simulation", "url": "https://github.com/waifuai/sim-affiliate"}, {"repo": "waifuai/sim-airdrop", "name": "sim-airdrop", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Web3 Simulation", "url": "https://github.com/waifuai/sim-airdrop"}, {"repo": "waifuai/sim-bonding-curve", "name": "sim-bonding-curve", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Web3 Simulation", "url": "https://github.com/waifuai/sim-bonding-curve"}, {"repo": "waifuai/solana-ico", "name": "solana-ico", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Web3 Simulation", "url": "https://github.com/waifuai/solana-ico"}, {"repo": "waifuai/street-lines", "name": "street-lines", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/street-lines"}, {"repo": "waifuai/waifu", "name": "waifu", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/waifu"}, {"repo": "waifuai/waifu-layer", "name": "waifu-layer", "stars": 1, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/waifu-layer"}, {"repo": "waifuai/paraphrase-generation", "name": "paraphrase-generation", "stars": 0, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Open Source Project", "url": "https://github.com/waifuai/paraphrase-generation"}, {"repo": "waifuai/waifuai.github.io", "name": "waifuai.github.io", "stars": 0, "forks": 0, "open_issues": 0, "watchers": 0, "category": "Core Web Portal", "url": "https://github.com/waifuai/waifuai.github.io"}]}, "analytics": {"ga4": {"active_users": 16647, "new_users": 15806, "sessions": 17974, "page_views": 26775, "avg_engagement_time_sec": 164.1, "bounce_rate": 0.429, "date_range": ["2026-02-22", "2026-09-09"], "timeline": [{"date": "2026-07-12", "active_users": 149, "sessions": 157, "page_views": 218}, {"date": "2026-07-13", "active_users": 151, "sessions": 163, "page_views": 196}, {"date": "2026-07-14", "active_users": 144, "sessions": 150, "page_views": 199}, {"date": "2026-07-15", "active_users": 126, "sessions": 132, "page_views": 215}, {"date": "2026-07-16", "active_users": 138, "sessions": 145, "page_views": 234}, {"date": "2026-07-17", "active_users": 132, "sessions": 143, "page_views": 194}, {"date": "2026-07-18", "active_users": 139, "sessions": 149, "page_views": 222}, {"date": "2026-07-19", "active_users": 126, "sessions": 134, "page_views": 191}, {"date": "2026-07-20", "active_users": 138, "sessions": 152, "page_views": 212}, {"date": "2026-07-21", "active_users": 124, "sessions": 139, "page_views": 184}, {"date": "2026-07-22", "active_users": 104, "sessions": 113, "page_views": 151}, {"date": "2026-07-23", "active_users": 114, "sessions": 128, "page_views": 182}, {"date": "2026-07-24", "active_users": 105, "sessions": 115, "page_views": 162}, {"date": "2026-07-25", "active_users": 107, "sessions": 112, "page_views": 195}, {"date": "2026-07-26", "active_users": 110, "sessions": 116, "page_views": 161}, {"date": "2026-07-27", "active_users": 134, "sessions": 139, "page_views": 175}, {"date": "2026-07-28", "active_users": 108, "sessions": 116, "page_views": 168}, {"date": "2026-07-29", "active_users": 111, "sessions": 119, "page_views": 159}, {"date": "2026-07-30", "active_users": 131, "sessions": 135, "page_views": 162}, {"date": "2026-07-31", "active_users": 142, "sessions": 157, "page_views": 229}, {"date": "2026-08-01", "active_users": 90, "sessions": 100, "page_views": 124}, {"date": "2026-08-02", "active_users": 102, "sessions": 109, "page_views": 142}, {"date": "2026-08-03", "active_users": 101, "sessions": 108, "page_views": 145}, {"date": "2026-08-04", "active_users": 136, "sessions": 144, "page_views": 192}, {"date": "2026-08-05", "active_users": 97, "sessions": 112, "page_views": 161}, {"date": "2026-08-06", "active_users": 81, "sessions": 85, "page_views": 115}, {"date": "2026-08-07", "active_users": 99, "sessions": 115, "page_views": 166}, {"date": "2026-08-08", "active_users": 103, "sessions": 109, "page_views": 149}, {"date": "2026-08-09", "active_users": 130, "sessions": 137, "page_views": 188}, {"date": "2026-08-10", "active_users": 110, "sessions": 120, "page_views": 166}, {"date": "2026-08-11", "active_users": 108, "sessions": 119, "page_views": 157}, {"date": "2026-08-12", "active_users": 122, "sessions": 131, "page_views": 193}, {"date": "2026-08-13", "active_users": 130, "sessions": 142, "page_views": 209}, {"date": "2026-08-14", "active_users": 172, "sessions": 188, "page_views": 302}, {"date": "2026-08-15", "active_users": 257, "sessions": 278, "page_views": 493}, {"date": "2026-08-16", "active_users": 129, "sessions": 142, "page_views": 202}, {"date": "2026-08-17", "active_users": 151, "sessions": 167, "page_views": 241}, {"date": "2026-08-18", "active_users": 148, "sessions": 159, "page_views": 239}, {"date": "2026-08-19", "active_users": 156, "sessions": 169, "page_views": 234}, {"date": "2026-08-20", "active_users": 168, "sessions": 180, "page_views": 269}, {"date": "2026-08-21", "active_users": 158, "sessions": 171, "page_views": 242}, {"date": "2026-08-22", "active_users": 294, "sessions": 327, "page_views": 465}, {"date": "2026-08-23", "active_users": 304, "sessions": 335, "page_views": 466}, {"date": "2026-08-24", "active_users": 299, "sessions": 323, "page_views": 493}, {"date": "2026-08-25", "active_users": 327, "sessions": 352, "page_views": 657}, {"date": "2026-08-26", "active_users": 299, "sessions": 330, "page_views": 477}, {"date": "2026-08-27", "active_users": 268, "sessions": 282, "page_views": 420}, {"date": "2026-08-28", "active_users": 290, "sessions": 319, "page_views": 500}, {"date": "2026-08-29", "active_users": 295, "sessions": 313, "page_views": 492}, {"date": "2026-08-30", "active_users": 235, "sessions": 255, "page_views": 363}, {"date": "2026-08-31", "active_users": 242, "sessions": 251, "page_views": 384}, {"date": "2026-09-01", "active_users": 190, "sessions": 200, "page_views": 314}, {"date": "2026-09-02", "active_users": 181, "sessions": 196, "page_views": 303}, {"date": "2026-09-03", "active_users": 210, "sessions": 222, "page_views": 353}, {"date": "2026-09-04", "active_users": 207, "sessions": 215, "page_views": 306}, {"date": "2026-09-05", "active_users": 207, "sessions": 213, "page_views": 263}, {"date": "2026-09-06", "active_users": 0, "sessions": 1, "page_views": 1}, {"date": "2026-09-07", "active_users": 207, "sessions": 216, "page_views": 305}, {"date": "2026-09-08", "active_users": 213, "sessions": 220, "page_views": 306}, {"date": "2026-09-09", "active_users": 185, "sessions": 197, "page_views": 255}], "top_pages": [{"path": "/", "title": "WaifuAI — Free AI Companion with Live2D & Voice", "views": 7762, "users": 5244}, {"path": "/app/index.html", "title": "WaifuAI – Free AI Companion with Live2D & Voice", "views": 1050, "users": 664}, {"path": "/live2d/index.html", "title": "WaifuAI – Free AI Companion with Live2D & Voice", "views": 763, "users": 419}, {"path": "/app/", "title": "WaifuAI – Free AI Companion with Live2D & Voice", "views": 17, "users": 7}, {"path": "/app/docs/help.html", "title": "Help & Tutorial - WaifuAI Docs", "views": 6, "users": 6}, {"path": "/search.html", "title": "Search | WaifuAI", "views": 5, "users": 1}, {"path": "/app/docs/index.html", "title": "WaifuAI Documentation", "views": 4, "users": 3}, {"path": "/research-text/consolidated-research/papers/07b-llm-rl.html", "title": "more examples", "views": 3, "users": 2}, {"path": "/research-text/consolidated-research/agent-chats/index.html", "title": "Agent Chats", "views": 3, "users": 1}, {"path": "/app/docs/troubleshooting.html", "title": "Troubleshooting Guide - WaifuAI Docs", "views": 3, "users": 3}, {"path": "/app/docs/voice.html", "title": "Voice & Audio Settings - WaifuAI Docs", "views": 2, "users": 1}, {"path": "/sim-airdrop/", "title": "Token Airdrop Strategy Simulator | WaifuAI", "views": 1, "users": 1}, {"path": "/hermes-waifu/", "title": "Hermes Waifu — Live2D Agent Display | WaifuAI", "views": 1, "users": 1}, {"path": "/app/docs/settings.html", "title": "Settings Panel Guide - WaifuAI Docs", "views": 1, "users": 1}, {"path": "/app/docs/providers.html", "title": "LLM Providers - WaifuAI Docs", "views": 1, "users": 1}], "traffic_sources": [{"channel": "(direct) / (none)", "sessions": 6289, "users": 5868}, {"channel": "chatgpt.com / ai-assistant", "sessions": 1614, "users": 1501}, {"channel": "google / organic", "sessions": 1410, "users": 1326}, {"channel": "(not set)", "sessions": 277, "users": 253}, {"channel": "bing / organic", "sessions": 104, "users": 95}, {"channel": "(data not available)", "sessions": 54, "users": 54}, {"channel": "message / (not set)", "sessions": 13, "users": 9}, {"channel": "github.com / referral", "sessions": 9, "users": 9}, {"channel": "chatgpt.com / (none)", "sessions": 6, "users": 5}, {"channel": "duckduckgo / organic", "sessions": 5, "users": 5}]}, "gsc": {"clicks": 3688, "impressions": 69231, "ctr": 0.0322, "average_position": 7.6, "date_range": ["2025-09-04", "2026-09-07"], "timeline": [{"date": "2026-08-09", "clicks": 0, "impressions": 4, "position": 14.0}, {"date": "2026-08-09", "clicks": 40, "impressions": 1214, "position": 6.2}, {"date": "2026-08-10", "clicks": 0, "impressions": 2, "position": 8.5}, {"date": "2026-08-10", "clicks": 29, "impressions": 714, "position": 6.8}, {"date": "2026-08-11", "clicks": 0, "impressions": 4, "position": 6.2}, {"date": "2026-08-11", "clicks": 35, "impressions": 736, "position": 6.4}, {"date": "2026-08-12", "clicks": 0, "impressions": 0, "position": 0.0}, {"date": "2026-08-12", "clicks": 28, "impressions": 721, "position": 6.4}, {"date": "2026-08-13", "clicks": 0, "impressions": 3, "position": 27.7}, {"date": "2026-08-13", "clicks": 31, "impressions": 796, "position": 5.8}, {"date": "2026-08-14", "clicks": 0, "impressions": 2, "position": 7.0}, {"date": "2026-08-14", "clicks": 38, "impressions": 724, "position": 5.0}, {"date": "2026-08-15", "clicks": 0, "impressions": 1, "position": 85.0}, {"date": "2026-08-15", "clicks": 55, "impressions": 833, "position": 6.0}, {"date": "2026-08-16", "clicks": 0, "impressions": 0, "position": 0.0}, {"date": "2026-08-16", "clicks": 29, "impressions": 831, "position": 6.2}, {"date": "2026-08-17", "clicks": 1, "impressions": 2, "position": 7.0}, {"date": "2026-08-17", "clicks": 32, "impressions": 710, "position": 5.7}, {"date": "2026-08-18", "clicks": 0, "impressions": 5, "position": 37.8}, {"date": "2026-08-18", "clicks": 38, "impressions": 761, "position": 6.5}, {"date": "2026-08-19", "clicks": 0, "impressions": 3, "position": 8.3}, {"date": "2026-08-19", "clicks": 42, "impressions": 741, "position": 5.1}, {"date": "2026-08-20", "clicks": 0, "impressions": 1, "position": 17.0}, {"date": "2026-08-20", "clicks": 41, "impressions": 783, "position": 6.1}, {"date": "2026-08-21", "clicks": 0, "impressions": 2, "position": 7.0}, {"date": "2026-08-21", "clicks": 43, "impressions": 814, "position": 5.3}, {"date": "2026-08-22", "clicks": 0, "impressions": 3, "position": 27.3}, {"date": "2026-08-22", "clicks": 50, "impressions": 865, "position": 6.0}, {"date": "2026-08-23", "clicks": 0, "impressions": 2, "position": 4.0}, {"date": "2026-08-23", "clicks": 54, "impressions": 958, "position": 5.4}, {"date": "2026-08-24", "clicks": 0, "impressions": 0, "position": 0.0}, {"date": "2026-08-24", "clicks": 64, "impressions": 1046, "position": 5.6}, {"date": "2026-08-25", "clicks": 0, "impressions": 3, "position": 5.7}, {"date": "2026-08-25", "clicks": 51, "impressions": 988, "position": 5.5}, {"date": "2026-08-26", "clicks": 0, "impressions": 3, "position": 5.0}, {"date": "2026-08-26", "clicks": 58, "impressions": 1025, "position": 5.2}, {"date": "2026-08-27", "clicks": 0, "impressions": 2, "position": 67.5}, {"date": "2026-08-27", "clicks": 57, "impressions": 1015, "position": 5.8}, {"date": "2026-08-28", "clicks": 0, "impressions": 7, "position": 6.0}, {"date": "2026-08-28", "clicks": 51, "impressions": 949, "position": 5.5}, {"date": "2026-08-29", "clicks": 0, "impressions": 2, "position": 44.5}, {"date": "2026-08-29", "clicks": 59, "impressions": 1017, "position": 5.8}, {"date": "2026-08-30", "clicks": 0, "impressions": 2, "position": 35.0}, {"date": "2026-08-30", "clicks": 49, "impressions": 1012, "position": 5.9}, {"date": "2026-08-31", "clicks": 0, "impressions": 0, "position": 0.0}, {"date": "2026-08-31", "clicks": 54, "impressions": 917, "position": 5.5}, {"date": "2026-09-01", "clicks": 0, "impressions": 3, "position": 8.0}, {"date": "2026-09-01", "clicks": 37, "impressions": 918, "position": 6.0}, {"date": "2026-09-02", "clicks": 0, "impressions": 0, "position": 0.0}, {"date": "2026-09-02", "clicks": 39, "impressions": 915, "position": 5.5}, {"date": "2026-09-03", "clicks": 0, "impressions": 0, "position": 0.0}, {"date": "2026-09-03", "clicks": 45, "impressions": 740, "position": 4.8}, {"date": "2026-09-04", "clicks": 0, "impressions": 2, "position": 8.5}, {"date": "2026-09-04", "clicks": 63, "impressions": 832, "position": 4.9}, {"date": "2026-09-05", "clicks": 0, "impressions": 3, "position": 9.0}, {"date": "2026-09-05", "clicks": 55, "impressions": 927, "position": 5.8}, {"date": "2026-09-06", "clicks": 0, "impressions": 1, "position": 7.0}, {"date": "2026-09-06", "clicks": 57, "impressions": 818, "position": 5.2}, {"date": "2026-09-07", "clicks": 0, "impressions": 0, "position": 0.0}, {"date": "2026-09-07", "clicks": 46, "impressions": 888, "position": 4.8}], "top_queries": [{"query": "waifu ai", "clicks": 1294, "impressions": 36529, "position": 12.7}, {"query": "waifuai", "clicks": 1025, "impressions": 2839, "position": 5.1}, {"query": "ai waifu", "clicks": 106, "impressions": 2418, "position": 26.1}, {"query": "weifu ai", "clicks": 76, "impressions": 865, "position": 10.3}, {"query": "waifu.ai", "clicks": 38, "impressions": 173, "position": 3.1}, {"query": "waifuai studio", "clicks": 33, "impressions": 280, "position": 5.1}, {"query": "wifu ai", "clicks": 31, "impressions": 170, "position": 3.7}, {"query": "waifu ai chat", "clicks": 30, "impressions": 360, "position": 30.7}, {"query": "ai waifu companion", "clicks": 21, "impressions": 51, "position": 3.2}, {"query": "waifu chat", "clicks": 15, "impressions": 62, "position": 37.2}, {"query": "weifu ai online", "clicks": 13, "impressions": 71, "position": 2.9}, {"query": "wafu ai", "clicks": 12, "impressions": 41, "position": 2.7}, {"query": "wifuai", "clicks": 10, "impressions": 16, "position": 1.9}, {"query": "ai waifu chat", "clicks": 6, "impressions": 117, "position": 39.1}, {"query": "waifu. ai", "clicks": 6, "impressions": 36, "position": 2.5}, {"query": "ai wifu", "clicks": 6, "impressions": 25, "position": 5.3}, {"query": "waif ai", "clicks": 6, "impressions": 19, "position": 3.7}, {"query": "live2d ai companion", "clicks": 6, "impressions": 13, "position": 6.4}, {"query": "waifu ai chatbot", "clicks": 5, "impressions": 92, "position": 46.5}, {"query": "free ai waifu", "clicks": 5, "impressions": 26, "position": 6.8}, {"query": "waifu ai free", "clicks": 5, "impressions": 12, "position": 2.9}, {"query": "live2d ai", "clicks": 5, "impressions": 10, "position": 8.2}, {"query": "wiefu ai", "clicks": 5, "impressions": 9, "position": 5.5}, {"query": "my waifu ai", "clicks": 4, "impressions": 33, "position": 7.5}, {"query": "wafiu ai", "clicks": 4, "impressions": 26, "position": 3.2}]}}, "websim": {"total_projects": 611, "total_views": 26464, "total_likes": 1099, "unique_projects_count": 553, "top_projects": [{"title": "Infinite Backrooms", "description": "A browser-based horror simulator that uses an llm for dynamic narrative generation. 🕹️ It features robust text-to-speech with voice selection and multi-language support including translation and transliteration. 🔊 Users can configure story tone, entity density, and procedural visual generation. ⚙️ Explorable zones are managed with a map system. 🗺️", "link": "https://websim.ai/p/egdopl9nz84hzobulyfw", "thumbnail": "https://project-screenshots.websim.com/0198f33b-9343-73d0-b13b-f162a5484bc2", "views": 1998, "likes": 58, "created": "2025-05-12T19:50:44.758784+00:00"}, {"title": "Anime Waifu Chatbot", "description": "mobile friendly version, image in background, separate box to describe image, also the image is pre-prompted so easier to describe with less words.", "link": "https://websim.ai/p/1e6f3t3kjkljhg18k6vl", "thumbnail": "https://project-screenshots.websim.com/0195a69e-ac7a-7c04-afea-a4695ecbd5a2", "views": 1479, "likes": 16, "created": "2025-03-18T00:16:09.093633+00:00"}, {"title": "Waifu Collector", "description": "Engage in exciting turn-based battles ⚔️ in the Waifu Collector Battle Arena! Watch your character fight 💪. Manage your collection 💖 and track coins 🪙. Check the battle log for damage details. Easily navigate 🗺️ to Adventure, Gallery 🖼️, Training, and Chat 💬. You can choose to Flee 🏃 the battle. Collect more characters! ✨", "link": "https://websim.ai/p/w1_qzykg8aiy33ltg9e6", "thumbnail": "https://project-screenshots.websim.com/0198fe17-2a41-7c4e-bda0-959da5c4b3a8", "views": 1241, "likes": 38, "created": "2025-04-06T13:33:12.079922+00:00"}, {"title": "animated chatbot live2d", "description": "Your interactive animated companion awaits! 💖 Chat with AI 💬, stream anime music 🎶, and tweak settings ✨. Adjust the character's position 🖱️, and check the time ⏰.", "link": "https://websim.ai/p/zix54kss8b0c3bs0jgmx", "thumbnail": "https://project-screenshots.websim.com/01984348-4a74-7003-898c-9a296a5925cc", "views": 1158, "likes": 41, "created": "2025-04-19T07:09:54.312613+00:00"}, {"title": "cat maze", "description": "collect all 🐟, use 🤿 to cross 💧 and use 🥾 to cross 🔥, 🔑 unlocks 🚪, reach the exit 🏁, and slide on 🧊 --- known bugs: exit doesn't appear on some devices, when you use toggle editor you need to add a player character for the export json to work because it doesn't add the player character by itself. map modes :full map (default) and player map (click player icon to center on player and zoom in/out of map and move map around).", "link": "https://websim.ai/p/ihv_wdb3ml28ym674a93", "thumbnail": "https://project-screenshots.websim.com/0198b712-108d-7df8-ba49-abad3325b9f6", "views": 755, "likes": 34, "created": "2025-04-22T20:47:15.726828+00:00"}, {"title": "Video Gallery", "description": "Browse videos in a neat gallery ✨. Tap thumbnails to watch them ▶️. Filter by landscape or portrait orientation 📐. Hit autoplay for continuous viewing ⏭️. Turn on optional TTS for title announcements 🔊. Listen to a background radio stream 🎵 and adjust its volume 🎚️.", "link": "https://websim.ai/p/21tsi_0jc61xx478svgz", "thumbnail": "https://project-screenshots.websim.com/0196894a-e451-7361-bd09-6a342f5393e9", "views": 694, "likes": 15, "created": "2025-04-30T10:45:50.63727+00:00"}, {"title": "Profile", "description": "This dynamic portfolio aggregates content from GitHub, YouTube, and an image gallery. ✨ It dynamically sorts and filters projects by views, likes, and recency. 💡 The interface includes a background video player, an integrated audio stream, and a fullscreen modal for images. 🚀 It also displays user statistics like total project views and likes. 🌟", "link": "https://websim.ai/p/5lipoik4gq5rfi4lpuc2", "thumbnail": "https://project-screenshots.websim.com/0198d5ae-4804-79f6-8db2-a4c0fa64143b", "views": 442, "likes": 4, "created": "2025-03-16T20:31:08.184405+00:00"}, {"title": "Infinite AI Tech Tree", "description": "Creates a dynamic and interactive tech tree visualization. 🌳 Users can explore nodes, view details, and see prerequisites for inventions. ✨ It allows for the addition of custom inventions to the tree. 💡 An image library displays generated images for each invention. 🖼️ Settings can be adjusted for a personalized experience. ⚙️", "link": "https://websim.ai/p/497vutj48h9hq3dvfhq3", "thumbnail": "https://project-screenshots.websim.com/0198ea76-4003-7cce-891f-9c4fbc711f6a", "views": 420, "likes": 15, "created": "2025-05-30T08:40:47.05763+00:00"}, {"title": "Advanced Equation Editor", "description": "Interactive equation editor ➕➖➗. Type or use LaTeX, copy in LaTeX, MathML, or AsciiMath formats. Zoom 🔍, pan, and use a minimap for navigation. Hover for formula explanations 💡. Font size controls. Copy to clipboard with toast confirmation ✅.", "link": "https://websim.ai/p/bt3gt7nwr7r7ct80_93d", "thumbnail": "https://project-screenshots.websim.com/019823b2-83a1-7287-96cf-e8247521f020", "views": 350, "likes": 17, "created": "2024-10-27T20:21:36.152333+00:00"}, {"title": "CatgirlChat - Your Anime Companion", "description": "This website is an interactive chat interface featuring an anime catgirl companion. ✨ It provides a real-time messaging experience with a predefined character persona. 💖 The front-end includes playful animations like a bouncing avatar and floating hearts on click. 💡 It communicates with a backend API to generate dynamic, in-character responses. 🎀", "link": "https://websim.ai/p/zs1_uiiavjnc0m98a0gz", "thumbnail": "https://project-screenshots.websim.com/0198bdbd-5572-7e44-b595-0d421b0b3e45", "views": 334, "likes": 4, "created": "2024-07-06T20:03:58.024559+00:00"}, {"title": "AI Waifu Chat Simulator", "description": "Chat with an AI waifu! 💬 Type your message and see her respond. Her image, dere type, emotion, and actions update. View the conversation history. 🥰✨ (Tsundere, etc). Info panel displays current prompt.", "link": "https://websim.ai/p/s_rc5ipg9udfp1suw7fj", "thumbnail": "https://project-screenshots.websim.com/0198b473-4607-7b4b-9388-bffa0bbd4037", "views": 298, "likes": 3, "created": "2025-01-22T02:10:53.515899+00:00"}, {"title": "Waifu Chat Simulator", "description": "It's a fun, interactive chat simulator! 💬 Choose a waifu personality (Tsundere, Yandere, etc.) and chat with her. 🌸 Features a dark mode toggle 🌙, clear chat 🗑️, and cute, animated background. ✨", "link": "https://websim.ai/p/va23vine2hb9r5zv8j8t", "thumbnail": "https://project-screenshots.websim.com/0196b4f8-fe7f-7db1-a8d2-fa0aec5669d1", "views": 289, "likes": 7, "created": "2025-01-21T21:59:30.346013+00:00"}, {"title": "visual novel", "description": "Experience a delightful Ghibli-esque visual novel ✨. Interact by clicking dialogue choices ✅ or typing your own input ⌨️. Watch the character 🌸 and lovely background scenes 🖼️ dynamically update based on your interactions. A heartwarming, AI-driven story awaits your touch 💖. Enjoy the gentle journey 🍃.", "link": "https://websim.ai/p/y12bs4ti0icj66v42icx", "thumbnail": "https://project-screenshots.websim.com/01970936-6009-7995-be88-db800ada90a4", "views": 274, "likes": 11, "created": "2025-04-23T00:02:14.864324+00:00"}, {"title": "Websim Profile Card Generator", "description": "View your unique Websim profile card! ✨ AI crafts a custom banner 🖼️, status, abilities, and stats based on your activity. Discover your influence score and card rarity. 🔢 Press the button 🖱️ to regenerate a fresh card anytime! 🌟 --- Known bugs: save as image does not save the pfp and banner image in the image.", "link": "https://websim.ai/p/esd3mxmqmbt8tpz5d4bi", "thumbnail": "https://project-screenshots.websim.com/0198b9b3-465f-7c79-8d46-bef2ffb75612", "views": 231, "likes": 13, "created": "2025-04-13T22:13:17.856007+00:00"}, {"title": "Digital Companion Waifu", "description": "Interact with a cute anime character! 🖼️ Choose from pre-set questions or type your own. 🤔 See the character's image change based on their emotions, and their responses displayed with a typing effect. 💬 Copy the chat log. 📝🔄 Regenerate the image.", "link": "https://websim.ai/p/gt_lxa10q_z2lv3kos51", "thumbnail": "https://project-screenshots.websim.com/0196b8f8-f19b-719c-8716-ab593564f7aa", "views": 205, "likes": 3, "created": "2024-12-10T19:11:11.989968+00:00"}, {"title": "Waifu Whispers: Endless Hearts", "description": "A procedurally generated romance adventure with dynamic story events. ✨ Interact with characters using both preset choices and free text input. 💬 Build affection to unlock memories and CGs for a gallery. ❤️ Manage your multiple relationships through a character roster. 💕 The game also supports voice-acted dialogue. 👍", "link": "https://websim.ai/p/8oturolsb778x9fkghg3", "thumbnail": "https://project-screenshots.websim.com/019708f2-366d-75bf-82e0-7a820ac725c2", "views": 170, "likes": 1, "created": "2025-05-24T21:00:08.3219+00:00"}, {"title": "animated background", "description": "Engage in real-time conversations with a visual AI character. ✨ The interface features a dynamic, animated environment with particle effects. 💡 AI responses appear in a speech bubble with a typing indicator for better user feedback. 👍 The application also tracks session stats like message count and time active. 🚀", "link": "https://websim.ai/p/3_2mbvr5g5sb2k2jod7n", "thumbnail": "https://project-screenshots.websim.com/0196fa90-d17b-7fac-8503-0c63e64ed129", "views": 138, "likes": 2, "created": "2025-05-19T01:47:30.930402+00:00"}, {"title": "Waifu Mobile", "description": "Chat with a cute anime waifu! 💬 Type your message and get a text response, along with an updated waifu image reflecting her mood. 😊 Text appears over image. The chat history and images are dynamic. Mobile-friendly. 📱", "link": "https://websim.ai/p/7gnepgq5d4uk6kylslpq", "thumbnail": "https://project-screenshots.websim.com/0196bba3-8950-7b5e-8aaa-a1f0058c73bc", "views": 123, "likes": 3, "created": "2025-03-01T14:53:08.126145+00:00"}, {"title": "TokenomicsChat 2 - Secure Communication for Crypto Enthusiasts", "description": "A crypto-themed chat app 💬. Users can send messages, see a list of active users, adjust font size/width, copy/clear chat history, select languages 🌍, and view a live token price ticker 📈📉. Basic chat simulation and local storage are present.", "link": "https://websim.ai/p/iq8d1dd_gii_89wbgtno", "thumbnail": "https://project-screenshots.websim.com/01967e1a-787c-7962-b38c-7d62641a55c8", "views": 112, "likes": 6, "created": "2024-07-11T23:58:02.3357+00:00"}, {"title": "Waifu Cursor", "description": "Interactive webpage where your cursor is replaced by a cute waifu 🥰. Moving the mouse creates a trailing star effect ⭐ and plays a soft sound. Clicking generates sparkling stars ✨ and a distinct click sound. The default cursor is hidden.", "link": "https://websim.ai/p/_k46x2ehd_qj6ajgugaq", "thumbnail": "https://project-screenshots.websim.com/0198b11d-3f3a-7777-aece-51922d231086", "views": 108, "likes": 3, "created": "2024-11-10T01:55:18.735162+00:00"}, {"title": "AI Book Generator", "description": "(broken) Create books with AI! 🤖 Enter a title/topic, get title suggestions, generate a table of contents, and then the full book content. Edit, pause, save, or copy the Markdown. Manage your creations in a library. 📚✍️✅", "link": "https://websim.ai/p/7sy94cwe3fl4hemna5mj", "thumbnail": "https://project-screenshots.websim.com/0196fa28-ede8-762e-9a74-23bedb207d84", "views": 85, "likes": 2, "created": "2025-01-22T00:26:12.988081+00:00"}, {"title": "Waifu Beast Fusion - Infinite Crafting", "description": "A fusion system for creating hybrid characters by combining anime personality archetypes and animal aspects 🎨. Supports both dual and multi-element crafting to generate results 🧪. Each fused creation comes with a unique image, a descriptive profile, and a special quirk ✨. Fusions can be saved into a personal collection and viewed in a gallery 🖼️.", "link": "https://websim.ai/p/c73uczijnkuf_b3h9140", "thumbnail": "https://project-screenshots.websim.com/01973e0a-0e83-7b92-9d1e-f3fbbd42ea15", "views": 84, "likes": 1, "created": "2025-06-03T06:21:22.689276+00:00"}, {"title": "Waifu AI RPG", "description": "infinite rpg. known bugs: when using fallback for the text the tts is mismatched to the text on screen. known bugs: when skip to latest is on only one tts should be playing at a time. if it wants to play a next tts (like when click a button while the old tts is playing) then it should stop the old tts. currently it doesn't stop the previous tts and plays in parallel. future todo: add navigation to go to different locations on a map at any time, the map should have multiple new locations", "link": "https://websim.ai/p/20uqf4na_w0dh994aabq", "thumbnail": "https://project-screenshots.websim.com/0198ddf2-d58e-7607-953c-874b848e27a8", "views": 83, "likes": 6, "created": "2025-05-07T07:57:09.722651+00:00"}, {"title": "Anime Waifu Image Generator - Ghibli Style", "description": "Design your perfect Ghibli waifu! 🎀 Select appearance and personality options using simple dropdowns. ✅ Press generate ⚙️ and watch your character magically appear! 🖼️ Get a cute profile description too. 📜 Save your creation 💾 or easily request a fun variation. ✨", "link": "https://websim.ai/p/lvjbhkgpdsvv_tx4fulx", "thumbnail": "https://project-screenshots.websim.com/0199114d-ef5b-743b-8319-c98d04dd807c", "views": 82, "likes": 1, "created": "2025-04-01T08:55:06.610036+00:00"}, {"title": "waifu os ui", "description": "Interactive terminal-style WaifuOS 🌸. Type commands (help, nyaa, lisp, clear) in a pink & black UI. Features a draggable terminal & AI assistant window with an animated 3D anime character 🎀, speech bubbles, and click-triggered sparkles ✨. Simulates a Lisp REPL and OS commands.", "link": "https://websim.ai/p/ym6m6qw5qpysy8ylc31v", "thumbnail": "https://project-screenshots.websim.com/01967dbe-e579-72ee-998e-d28c0d3d20ae", "views": 70, "likes": 2, "created": "2024-10-27T20:38:43.389948+00:00"}, {"title": "Crypto AI Arena - Live Simulation Feed with Charts", "description": "Real-time Crypto AI simulation! 🤖 Watch AI agents compete on Ethereum, Cardano & Polkadot. 📈 Live feed shows agent actions & results. 💸 Interactive charts track profit, gas usage, TVL, and transaction speed. ⏱️ Updated every 5 seconds. Explore blockchain dynamics! 🔗", "link": "https://websim.ai/p/k_p6kv47srd8xh_e60aa", "thumbnail": "https://project-screenshots.websim.com/01991012-05ae-71cd-aaef-567cb481f04f", "views": 61, "likes": 4, "created": "2024-07-06T20:20:15.771015+00:00"}, {"title": "The Waifu AI Project Showcase", "description": "Circular profile picture 🖼️ at the center. Surrounding it, a constellation of project previews 🌌 rotate. Hover over a project 🖱️ to reveal its title and stats (views/likes) ⭐. Projects are fetched and displayed dynamically 🔄. The background has a large username. Click a preview to open. 🎉", "link": "https://websim.ai/p/lz7l4stgy4v17knhnql9", "thumbnail": "https://project-screenshots.websim.com/01936cdd-6482-74f3-ac5a-7798b4b8c0d7", "views": 61, "likes": 1, "created": "2024-11-27T09:03:29.255861+00:00"}, {"title": "QuantumAI Physics - Live Data Dashboard", "description": "", "link": "https://websim.ai/p/r47dp0p1747q28wx2oxa", "thumbnail": "https://project-screenshots.websim.com/0198b4b3-5c62-7320-ab97-528cb77c6318", "views": 55, "likes": 3, "created": "2024-07-02T20:10:05.531689+00:00"}, {"title": "AI ad Studio (Ghibli Style)", "description": "Craft charming Ghibli-style characters! ✨ Use text prompts or upload images 🖼️. Instantly regenerate variations ✨. Experiment with different artistic styles 🎨, apply specific edits ✏️, or creatively merge two characters 🧬. Add text for memes ✍️ and receive AI design analysis 💡 for helpful tips. Simple controls, endless fun! 💖", "link": "https://websim.ai/p/1rvjkkh0cwamm_cb_v7w", "thumbnail": "https://project-screenshots.websim.com/01961e5d-d10d-789f-8184-d1c67e17fcb4", "views": 54, "likes": 1, "created": "2025-03-31T08:47:43.075802+00:00"}, {"title": "Solana Bonding Curve Token in Python", "description": "This webpage explains how to interact with a Solana bonding curve token using Python. 🐍 Users can learn to install libraries, initialize tokens, 💰 buy/sell tokens, and simulate product purchases. 🛒 Includes setup, code examples, usage instructions, and further learning links. It's a tutorial for developers, not a user-facing app. 👨‍💻", "link": "https://websim.ai/p/epul0qtw238rau94udk9", "thumbnail": "https://project-screenshots.websim.com/0198bbe2-edc1-7eb7-a746-ca32bd610c43", "views": 44, "likes": 2, "created": "2024-07-23T06:33:34.736793+00:00"}, {"title": "Waifu Slideshow Explainer", "description": "Explore topics visually! ✨ Input a subject, choose tone & art style 🎨. AI generates a step-by-step slideshow with images 🖼️ and text. Navigate manually ⏯️ or let it autoplay with optional TTS 🔊. Past lessons are saved! 📚", "link": "https://websim.ai/p/4d_e89krqr1eb9ab_wqj", "thumbnail": "https://project-screenshots.websim.com/01991061-5021-727a-bb34-2ce6a135a48d", "views": 42, "likes": 1, "created": "2025-04-25T10:01:00.720738+00:00"}, {"title": "3D Avatar Viewer", "description": "Interactive 3D avatar viewer. 🔄 Drag to rotate, pinch/scroll to zoom. Toggle auto-rotation, reset view, and switch to preset camera angles (front, side, top). Displays performance (high/med/low) and offers AR mode if supported. 📱 Shows a hotspot on the model and basic help.", "link": "https://websim.ai/p/xcx79uz7gbrjei2lwiv8", "thumbnail": "https://project-screenshots.websim.com/0195480b-ac56-7b47-aa6c-3c78a1cc7934", "views": 39, "likes": 2, "created": "2024-11-20T08:20:07.150979+00:00"}, {"title": "profile", "description": "View my profile! 🧠 See total views & likes.📊 Explore projects sorted by recent, views, or likes.🖱️ Click project thumbnails to view. 🖼️  Light/dark mode. 🌓 Responsive design. Links to socials. 🐦", "link": "https://websim.ai/p/o76ivpfd9qz0a99rqfjg", "thumbnail": "https://project-screenshots.websim.com/01966525-a3a7-7a38-b3f9-6146442db31d", "views": 38, "likes": 1, "created": "2025-03-15T02:09:06.054404+00:00"}, {"title": "Simulating Quantum Gravity Effects in Microtubules", "description": "This project explores consciousness via the Orch-OR theory with an interactive simulation. ✨ It features a 3D microtubule model with toggleable quantum gravity effects. 💡 A dynamic chart visualizes Planck scale fluctuations in real-time. 📈 The model simulates how these fundamental physical interactions could potentially give rise to consciousness. 🔬", "link": "https://websim.ai/p/tnw5fxlhaol60n3s54ta", "thumbnail": "https://project-screenshots.websim.com/0198b4b0-ff89-77b0-ad47-e23af432c7dd", "views": 36, "likes": 3, "created": "2024-09-21T00:36:05.709579+00:00"}, {"title": "Tariff Tycoon", "description": "Become a Tariff Tycoon! 💰 Adjust import tariffs for goods like 📱 and 🌾 using simple sliders 🎚️. Advance year by year ▶️ and watch your treasury 📈 change based on your decisions. Receive global feedback 🌍 and smart advice 💡. Aim for prosperity! ✨🏆", "link": "https://websim.ai/p/rjad0b9kjrk1w_payjqu", "thumbnail": "https://project-screenshots.websim.com/019700bf-d1c3-782a-8bbc-c8fa39e362d7", "views": 36, "likes": 2, "created": "2025-03-28T16:33:11.273549+00:00"}, {"title": "Dotted Effect App", "description": "Upload🖼️ or cycle through images. Adjust dot size with a slider🖱️. See the original image and a cool dotted effect version ✨ side-by-side. Get a new random image with a button press 🔄. Easy image manipulation! 🎉 Control dot size from 2-30px.", "link": "https://websim.ai/p/6a8kvbbt8_vczujmtygw", "thumbnail": "https://project-screenshots.websim.com/01953ce9-a865-78d2-b91a-3336f6d89e7e", "views": 35, "likes": 2, "created": "2025-02-10T16:04:26.642033+00:00"}, {"title": "Model Context Protocol (MCP) Interactive Documentation", "description": "Explore the Model Context Protocol (MCP) 💡 with an interactive guide. View a clear diagram of client-server interactions ↔️ and external resources. Click through tabs to see example JSON-RPC requests for resources, prompts, and tools ⚙️. Code snippets are syntax-highlighted. Security ✅ and development tools 🛠️ are also listed.", "link": "https://websim.ai/p/9eout34_2ghv_gdgcxbf", "thumbnail": "https://project-screenshots.websim.com/01937755-e76e-7eb7-aa0a-28e9e393185f", "views": 34, "likes": 2, "created": "2024-11-29T09:51:27.755346+00:00"}, {"title": "MCP Architecture Diagram Generator", "description": "Describe your software architecture ⌨️, click \"Generate Diagram\" 🖱️, and instantly see a visual representation! 📊 The page simulates an AI that creates interactive diagrams from your text input. Nodes and connecting lines appear. 🎉 View clear visuals of your system! 👓", "link": "https://websim.ai/p/yvxlw2rgviq9o17b4eto", "thumbnail": "https://project-screenshots.websim.com/0194c089-ff60-7ad3-8ec5-73d7eda35e13", "views": 31, "likes": 6, "created": "2025-02-01T08:03:37.207137+00:00"}, {"title": "Waifu Picture Quiz", "description": "Become a Waifu Whisperer! ✨ View an image 🖼️ and read its official log. Can you guess the real story from the choices ✅? Get instant feedback, grow your score 💯, and proceed to the next challenge ▶️. Toggle text-to-speech 🔊 for descriptions or enjoy background music 🎶. Fun and engaging quiz gameplay! 🌟 Play again anytime 🔁.", "link": "https://websim.ai/p/xc276y7i6v4258n6k8jn", "thumbnail": "https://project-screenshots.websim.com/01968e7a-bbe3-7fab-aec1-e6597015f764", "views": 31, "likes": 1, "created": "2025-04-23T06:07:09.658419+00:00"}, {"title": "AI Manga Guide Generator", "description": "(maybe broken) Create your own AI manga guide! ✨ Enter story 📝 and style prompts. See unique manga pages 🖼️ generated with a custom background 🎨. Navigate your story ➡️, listen with optional TTS 🔊, and enjoy anime radio 🎵. Control preloading ⚙️ and export your creation 💾!", "link": "https://websim.ai/p/3p8txe2g4a5ztgjnsvl1", "thumbnail": "https://project-screenshots.websim.com/0196fab6-de9c-7eb7-b0c7-bb6d1f10acaf", "views": 29, "likes": 1, "created": "2025-04-17T22:33:48.454082+00:00"}]}};
+window.WAIFU_STATS = {
+  "synced_at": "2026-09-10T12:37:26.788845",
+  "source": "all-db unified cross-database engine",
+  "macro_kpis": {
+    "total_projects": 663,
+    "github_repos_count": 52,
+    "websim_projects_count": 611,
+    "total_content_views": 53239,
+    "web_page_views": 26775,
+    "websim_views": 26464,
+    "total_stars_and_likes": 1262,
+    "github_stars": 163,
+    "websim_likes": 1099,
+    "total_web_users": 16647,
+    "total_search_impressions": 69231,
+    "total_search_clicks": 3688
+  },
+  "github": {
+    "repos_count": 52,
+    "total_stars": 163,
+    "total_forks": 18,
+    "total_open_issues": 3,
+    "total_views": 627,
+    "total_view_uniques": 413,
+    "total_clones": 687,
+    "total_clone_uniques": 566,
+    "views_timeline": [
+      {
+        "date": "2026-08-21",
+        "views": 0,
+        "uniques": 0
+      },
+      {
+        "date": "2026-08-22",
+        "views": 0,
+        "uniques": 0
+      },
+      {
+        "date": "2026-08-23",
+        "views": 27,
+        "uniques": 21
+      },
+      {
+        "date": "2026-08-24",
+        "views": 20,
+        "uniques": 18
+      },
+      {
+        "date": "2026-08-25",
+        "views": 55,
+        "uniques": 21
+      },
+      {
+        "date": "2026-08-26",
+        "views": 20,
+        "uniques": 15
+      },
+      {
+        "date": "2026-08-27",
+        "views": 27,
+        "uniques": 22
+      },
+      {
+        "date": "2026-08-28",
+        "views": 17,
+        "uniques": 15
+      },
+      {
+        "date": "2026-08-29",
+        "views": 55,
+        "uniques": 37
+      },
+      {
+        "date": "2026-08-30",
+        "views": 34,
+        "uniques": 30
+      },
+      {
+        "date": "2026-08-31",
+        "views": 43,
+        "uniques": 31
+      },
+      {
+        "date": "2026-09-01",
+        "views": 33,
+        "uniques": 22
+      },
+      {
+        "date": "2026-09-02",
+        "views": 20,
+        "uniques": 19
+      },
+      {
+        "date": "2026-09-03",
+        "views": 41,
+        "uniques": 22
+      },
+      {
+        "date": "2026-09-04",
+        "views": 32,
+        "uniques": 23
+      },
+      {
+        "date": "2026-09-05",
+        "views": 33,
+        "uniques": 27
+      },
+      {
+        "date": "2026-09-06",
+        "views": 53,
+        "uniques": 26
+      },
+      {
+        "date": "2026-09-07",
+        "views": 61,
+        "uniques": 23
+      },
+      {
+        "date": "2026-09-08",
+        "views": 23,
+        "uniques": 19
+      },
+      {
+        "date": "2026-09-09",
+        "views": 33,
+        "uniques": 22
+      }
+    ],
+    "clones_timeline": [
+      {
+        "date": "2026-08-21",
+        "clones": 2,
+        "uniques": 2
+      },
+      {
+        "date": "2026-08-22",
+        "clones": 0,
+        "uniques": 0
+      },
+      {
+        "date": "2026-08-23",
+        "clones": 29,
+        "uniques": 18
+      },
+      {
+        "date": "2026-08-24",
+        "clones": 17,
+        "uniques": 14
+      },
+      {
+        "date": "2026-08-25",
+        "clones": 14,
+        "uniques": 14
+      },
+      {
+        "date": "2026-08-26",
+        "clones": 23,
+        "uniques": 10
+      },
+      {
+        "date": "2026-08-27",
+        "clones": 30,
+        "uniques": 25
+      },
+      {
+        "date": "2026-08-28",
+        "clones": 55,
+        "uniques": 45
+      },
+      {
+        "date": "2026-08-29",
+        "clones": 25,
+        "uniques": 13
+      },
+      {
+        "date": "2026-08-30",
+        "clones": 23,
+        "uniques": 22
+      },
+      {
+        "date": "2026-08-31",
+        "clones": 70,
+        "uniques": 62
+      },
+      {
+        "date": "2026-09-01",
+        "clones": 33,
+        "uniques": 33
+      },
+      {
+        "date": "2026-09-02",
+        "clones": 55,
+        "uniques": 47
+      },
+      {
+        "date": "2026-09-03",
+        "clones": 62,
+        "uniques": 57
+      },
+      {
+        "date": "2026-09-04",
+        "clones": 78,
+        "uniques": 54
+      },
+      {
+        "date": "2026-09-05",
+        "clones": 37,
+        "uniques": 34
+      },
+      {
+        "date": "2026-09-06",
+        "clones": 35,
+        "uniques": 31
+      },
+      {
+        "date": "2026-09-07",
+        "clones": 19,
+        "uniques": 19
+      },
+      {
+        "date": "2026-09-08",
+        "clones": 46,
+        "uniques": 36
+      },
+      {
+        "date": "2026-09-09",
+        "clones": 34,
+        "uniques": 30
+      }
+    ],
+    "top_referrers": [
+      {
+        "referrer": "Google",
+        "count": 112,
+        "uniques": 65
+      },
+      {
+        "referrer": "github.com",
+        "count": 81,
+        "uniques": 58
+      },
+      {
+        "referrer": "waifuai.com",
+        "count": 79,
+        "uniques": 33
+      },
+      {
+        "referrer": "t.co",
+        "count": 33,
+        "uniques": 29
+      },
+      {
+        "referrer": "reddit.com",
+        "count": 12,
+        "uniques": 9
+      },
+      {
+        "referrer": "Bing",
+        "count": 8,
+        "uniques": 7
+      },
+      {
+        "referrer": "chatgpt.com",
+        "count": 7,
+        "uniques": 7
+      },
+      {
+        "referrer": "DuckDuckGo",
+        "count": 7,
+        "uniques": 6
+      },
+      {
+        "referrer": "doubao.com",
+        "count": 6,
+        "uniques": 2
+      },
+      {
+        "referrer": "yandex.ru",
+        "count": 3,
+        "uniques": 2
+      }
+    ],
+    "top_repos": [
+      {
+        "repo": "waifuai/waifu-companion",
+        "name": "waifu-companion",
+        "stars": 34,
+        "forks": 3,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Companion & VRM",
+        "url": "https://github.com/waifuai/waifu-companion"
+      },
+      {
+        "repo": "waifuai/hermes-waifu",
+        "name": "hermes-waifu",
+        "stars": 21,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Companion & VRM",
+        "url": "https://github.com/waifuai/hermes-waifu"
+      },
+      {
+        "repo": "waifuai/waifu-sprites",
+        "name": "waifu-sprites",
+        "stars": 21,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Companion & VRM",
+        "url": "https://github.com/waifuai/waifu-sprites"
+      },
+      {
+        "repo": "waifuai/llms-full-txt",
+        "name": "llms-full-txt",
+        "stars": 8,
+        "forks": 4,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Documentation & LLM Feeds",
+        "url": "https://github.com/waifuai/llms-full-txt"
+      },
+      {
+        "repo": "waifuai/waifu-llm-vrm",
+        "name": "waifu-llm-vrm",
+        "stars": 6,
+        "forks": 2,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Companion & VRM",
+        "url": "https://github.com/waifuai/waifu-llm-vrm"
+      },
+      {
+        "repo": "waifuai/web-apps",
+        "name": "web-apps",
+        "stars": 4,
+        "forks": 1,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/web-apps"
+      },
+      {
+        "repo": "waifuai/mcp-waifu-chat",
+        "name": "mcp-waifu-chat",
+        "stars": 4,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "MCP Server",
+        "url": "https://github.com/waifuai/mcp-waifu-chat"
+      },
+      {
+        "repo": "waifuai/waifuai",
+        "name": "waifuai",
+        "stars": 3,
+        "forks": 1,
+        "open_issues": 1,
+        "watchers": 1,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/waifuai"
+      },
+      {
+        "repo": "waifuai/book-generator",
+        "name": "book-generator",
+        "stars": 3,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/book-generator"
+      },
+      {
+        "repo": "waifuai/macro-language-model",
+        "name": "macro-language-model",
+        "stars": 3,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "AI Intelligence & Pricing",
+        "url": "https://github.com/waifuai/macro-language-model"
+      },
+      {
+        "repo": "waifuai/mcp-solana-ico",
+        "name": "mcp-solana-ico",
+        "stars": 3,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "MCP Server",
+        "url": "https://github.com/waifuai/mcp-solana-ico"
+      },
+      {
+        "repo": "waifuai/sim-mcp-token",
+        "name": "sim-mcp-token",
+        "stars": 3,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/sim-mcp-token"
+      },
+      {
+        "repo": "waifuai/solana-launchpad-ecosystem",
+        "name": "solana-launchpad-ecosystem",
+        "stars": 3,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/solana-launchpad-ecosystem"
+      },
+      {
+        "repo": "waifuai/mcp-waifu-queue",
+        "name": "mcp-waifu-queue",
+        "stars": 2,
+        "forks": 1,
+        "open_issues": 2,
+        "watchers": 0,
+        "category": "MCP Server",
+        "url": "https://github.com/waifuai/mcp-waifu-queue"
+      },
+      {
+        "repo": "waifuai/reasoning-pricer",
+        "name": "reasoning-pricer",
+        "stars": 2,
+        "forks": 1,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "AI Intelligence & Pricing",
+        "url": "https://github.com/waifuai/reasoning-pricer"
+      },
+      {
+        "repo": "waifuai/research-books",
+        "name": "research-books",
+        "stars": 2,
+        "forks": 1,
+        "open_issues": 0,
+        "watchers": 1,
+        "category": "AI Intelligence & Pricing",
+        "url": "https://github.com/waifuai/research-books"
+      },
+      {
+        "repo": "waifuai/research-text",
+        "name": "research-text",
+        "stars": 2,
+        "forks": 1,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "AI Intelligence & Pricing",
+        "url": "https://github.com/waifuai/research-text"
+      },
+      {
+        "repo": "waifuai/waifu-chat-api",
+        "name": "waifu-chat-api",
+        "stars": 2,
+        "forks": 1,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Companion & VRM",
+        "url": "https://github.com/waifuai/waifu-chat-api"
+      },
+      {
+        "repo": "waifuai/mcp-solana-dex",
+        "name": "mcp-solana-dex",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "MCP Server",
+        "url": "https://github.com/waifuai/mcp-solana-dex"
+      },
+      {
+        "repo": "waifuai/mcp-traits-matcher",
+        "name": "mcp-traits-matcher",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "MCP Server",
+        "url": "https://github.com/waifuai/mcp-traits-matcher"
+      },
+      {
+        "repo": "waifuai/quantum-circuit-optimization",
+        "name": "quantum-circuit-optimization",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Bio & Applied Science",
+        "url": "https://github.com/waifuai/quantum-circuit-optimization"
+      },
+      {
+        "repo": "waifuai/traits",
+        "name": "traits",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/traits"
+      },
+      {
+        "repo": "waifuai/waifu-constitution",
+        "name": "waifu-constitution",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/waifu-constitution"
+      },
+      {
+        "repo": "waifuai/biochem-framework",
+        "name": "biochem-framework",
+        "stars": 1,
+        "forks": 1,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Bio & Applied Science",
+        "url": "https://github.com/waifuai/biochem-framework"
+      },
+      {
+        "repo": "waifuai/launchpad-skill",
+        "name": "launchpad-skill",
+        "stars": 1,
+        "forks": 1,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/launchpad-skill"
+      }
+    ],
+    "all_repos": [
+      {
+        "repo": "waifuai/waifu-companion",
+        "name": "waifu-companion",
+        "stars": 34,
+        "forks": 3,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Companion & VRM",
+        "url": "https://github.com/waifuai/waifu-companion"
+      },
+      {
+        "repo": "waifuai/hermes-waifu",
+        "name": "hermes-waifu",
+        "stars": 21,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Companion & VRM",
+        "url": "https://github.com/waifuai/hermes-waifu"
+      },
+      {
+        "repo": "waifuai/waifu-sprites",
+        "name": "waifu-sprites",
+        "stars": 21,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Companion & VRM",
+        "url": "https://github.com/waifuai/waifu-sprites"
+      },
+      {
+        "repo": "waifuai/llms-full-txt",
+        "name": "llms-full-txt",
+        "stars": 8,
+        "forks": 4,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Documentation & LLM Feeds",
+        "url": "https://github.com/waifuai/llms-full-txt"
+      },
+      {
+        "repo": "waifuai/waifu-llm-vrm",
+        "name": "waifu-llm-vrm",
+        "stars": 6,
+        "forks": 2,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Companion & VRM",
+        "url": "https://github.com/waifuai/waifu-llm-vrm"
+      },
+      {
+        "repo": "waifuai/web-apps",
+        "name": "web-apps",
+        "stars": 4,
+        "forks": 1,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/web-apps"
+      },
+      {
+        "repo": "waifuai/mcp-waifu-chat",
+        "name": "mcp-waifu-chat",
+        "stars": 4,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "MCP Server",
+        "url": "https://github.com/waifuai/mcp-waifu-chat"
+      },
+      {
+        "repo": "waifuai/waifuai",
+        "name": "waifuai",
+        "stars": 3,
+        "forks": 1,
+        "open_issues": 1,
+        "watchers": 1,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/waifuai"
+      },
+      {
+        "repo": "waifuai/book-generator",
+        "name": "book-generator",
+        "stars": 3,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/book-generator"
+      },
+      {
+        "repo": "waifuai/macro-language-model",
+        "name": "macro-language-model",
+        "stars": 3,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "AI Intelligence & Pricing",
+        "url": "https://github.com/waifuai/macro-language-model"
+      },
+      {
+        "repo": "waifuai/mcp-solana-ico",
+        "name": "mcp-solana-ico",
+        "stars": 3,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "MCP Server",
+        "url": "https://github.com/waifuai/mcp-solana-ico"
+      },
+      {
+        "repo": "waifuai/sim-mcp-token",
+        "name": "sim-mcp-token",
+        "stars": 3,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/sim-mcp-token"
+      },
+      {
+        "repo": "waifuai/solana-launchpad-ecosystem",
+        "name": "solana-launchpad-ecosystem",
+        "stars": 3,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/solana-launchpad-ecosystem"
+      },
+      {
+        "repo": "waifuai/mcp-waifu-queue",
+        "name": "mcp-waifu-queue",
+        "stars": 2,
+        "forks": 1,
+        "open_issues": 2,
+        "watchers": 0,
+        "category": "MCP Server",
+        "url": "https://github.com/waifuai/mcp-waifu-queue"
+      },
+      {
+        "repo": "waifuai/reasoning-pricer",
+        "name": "reasoning-pricer",
+        "stars": 2,
+        "forks": 1,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "AI Intelligence & Pricing",
+        "url": "https://github.com/waifuai/reasoning-pricer"
+      },
+      {
+        "repo": "waifuai/research-books",
+        "name": "research-books",
+        "stars": 2,
+        "forks": 1,
+        "open_issues": 0,
+        "watchers": 1,
+        "category": "AI Intelligence & Pricing",
+        "url": "https://github.com/waifuai/research-books"
+      },
+      {
+        "repo": "waifuai/research-text",
+        "name": "research-text",
+        "stars": 2,
+        "forks": 1,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "AI Intelligence & Pricing",
+        "url": "https://github.com/waifuai/research-text"
+      },
+      {
+        "repo": "waifuai/waifu-chat-api",
+        "name": "waifu-chat-api",
+        "stars": 2,
+        "forks": 1,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Companion & VRM",
+        "url": "https://github.com/waifuai/waifu-chat-api"
+      },
+      {
+        "repo": "waifuai/mcp-solana-dex",
+        "name": "mcp-solana-dex",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "MCP Server",
+        "url": "https://github.com/waifuai/mcp-solana-dex"
+      },
+      {
+        "repo": "waifuai/mcp-traits-matcher",
+        "name": "mcp-traits-matcher",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "MCP Server",
+        "url": "https://github.com/waifuai/mcp-traits-matcher"
+      },
+      {
+        "repo": "waifuai/quantum-circuit-optimization",
+        "name": "quantum-circuit-optimization",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Bio & Applied Science",
+        "url": "https://github.com/waifuai/quantum-circuit-optimization"
+      },
+      {
+        "repo": "waifuai/traits",
+        "name": "traits",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/traits"
+      },
+      {
+        "repo": "waifuai/waifu-constitution",
+        "name": "waifu-constitution",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/waifu-constitution"
+      },
+      {
+        "repo": "waifuai/biochem-framework",
+        "name": "biochem-framework",
+        "stars": 1,
+        "forks": 1,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Bio & Applied Science",
+        "url": "https://github.com/waifuai/biochem-framework"
+      },
+      {
+        "repo": "waifuai/launchpad-skill",
+        "name": "launchpad-skill",
+        "stars": 1,
+        "forks": 1,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/launchpad-skill"
+      },
+      {
+        "repo": "waifuai/.github",
+        "name": ".github",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/.github"
+      },
+      {
+        "repo": "waifuai/ai-benchmarks",
+        "name": "ai-benchmarks",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "AI Intelligence & Pricing",
+        "url": "https://github.com/waifuai/ai-benchmarks"
+      },
+      {
+        "repo": "waifuai/anime-subtitle-chatbot",
+        "name": "anime-subtitle-chatbot",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/anime-subtitle-chatbot"
+      },
+      {
+        "repo": "waifuai/blog-posts",
+        "name": "blog-posts",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/blog-posts"
+      },
+      {
+        "repo": "waifuai/crypto-simulation",
+        "name": "crypto-simulation",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/crypto-simulation"
+      },
+      {
+        "repo": "waifuai/function-graph-generator",
+        "name": "function-graph-generator",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/function-graph-generator"
+      },
+      {
+        "repo": "waifuai/llm-text-queue",
+        "name": "llm-text-queue",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/llm-text-queue"
+      },
+      {
+        "repo": "waifuai/llms-full-html",
+        "name": "llms-full-html",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Documentation & LLM Feeds",
+        "url": "https://github.com/waifuai/llms-full-html"
+      },
+      {
+        "repo": "waifuai/mcp-solana-affiliate",
+        "name": "mcp-solana-affiliate",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "MCP Server",
+        "url": "https://github.com/waifuai/mcp-solana-affiliate"
+      },
+      {
+        "repo": "waifuai/mcp-solana-internet",
+        "name": "mcp-solana-internet",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "MCP Server",
+        "url": "https://github.com/waifuai/mcp-solana-internet"
+      },
+      {
+        "repo": "waifuai/paraphrase-back-translate",
+        "name": "paraphrase-back-translate",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/paraphrase-back-translate"
+      },
+      {
+        "repo": "waifuai/paraphrase-gan",
+        "name": "paraphrase-gan",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/paraphrase-gan"
+      },
+      {
+        "repo": "waifuai/paraphrase-gan-utils",
+        "name": "paraphrase-gan-utils",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/paraphrase-gan-utils"
+      },
+      {
+        "repo": "waifuai/paraphrase-human-sentence-classifier",
+        "name": "paraphrase-human-sentence-classifier",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/paraphrase-human-sentence-classifier"
+      },
+      {
+        "repo": "waifuai/paraphrase-neural-machine-translation",
+        "name": "paraphrase-neural-machine-translation",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/paraphrase-neural-machine-translation"
+      },
+      {
+        "repo": "waifuai/projects-assets",
+        "name": "projects-assets",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/projects-assets"
+      },
+      {
+        "repo": "waifuai/projects-data",
+        "name": "projects-data",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/projects-data"
+      },
+      {
+        "repo": "waifuai/ransoc",
+        "name": "ransoc",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/ransoc"
+      },
+      {
+        "repo": "waifuai/sim-affiliate",
+        "name": "sim-affiliate",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/sim-affiliate"
+      },
+      {
+        "repo": "waifuai/sim-airdrop",
+        "name": "sim-airdrop",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/sim-airdrop"
+      },
+      {
+        "repo": "waifuai/sim-bonding-curve",
+        "name": "sim-bonding-curve",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/sim-bonding-curve"
+      },
+      {
+        "repo": "waifuai/solana-ico",
+        "name": "solana-ico",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/solana-ico"
+      },
+      {
+        "repo": "waifuai/street-lines",
+        "name": "street-lines",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/street-lines"
+      },
+      {
+        "repo": "waifuai/waifu",
+        "name": "waifu",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/waifu"
+      },
+      {
+        "repo": "waifuai/waifu-layer",
+        "name": "waifu-layer",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/waifu-layer"
+      },
+      {
+        "repo": "waifuai/paraphrase-generation",
+        "name": "paraphrase-generation",
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/paraphrase-generation"
+      },
+      {
+        "repo": "waifuai/waifuai.github.io",
+        "name": "waifuai.github.io",
+        "stars": 0,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "category": "Core Web Portal",
+        "url": "https://github.com/waifuai/waifuai.github.io"
+      }
+    ]
+  },
+  "analytics": {
+    "ga4": {
+      "active_users": 16647,
+      "new_users": 15806,
+      "sessions": 17974,
+      "page_views": 26775,
+      "avg_engagement_time_sec": 164.1,
+      "bounce_rate": 0.429,
+      "date_range": [
+        "2026-02-22",
+        "2026-09-09"
+      ],
+      "timeline": [
+        {
+          "date": "2026-07-12",
+          "active_users": 149,
+          "sessions": 157,
+          "page_views": 218
+        },
+        {
+          "date": "2026-07-13",
+          "active_users": 151,
+          "sessions": 163,
+          "page_views": 196
+        },
+        {
+          "date": "2026-07-14",
+          "active_users": 144,
+          "sessions": 150,
+          "page_views": 199
+        },
+        {
+          "date": "2026-07-15",
+          "active_users": 126,
+          "sessions": 132,
+          "page_views": 215
+        },
+        {
+          "date": "2026-07-16",
+          "active_users": 138,
+          "sessions": 145,
+          "page_views": 234
+        },
+        {
+          "date": "2026-07-17",
+          "active_users": 132,
+          "sessions": 143,
+          "page_views": 194
+        },
+        {
+          "date": "2026-07-18",
+          "active_users": 139,
+          "sessions": 149,
+          "page_views": 222
+        },
+        {
+          "date": "2026-07-19",
+          "active_users": 126,
+          "sessions": 134,
+          "page_views": 191
+        },
+        {
+          "date": "2026-07-20",
+          "active_users": 138,
+          "sessions": 152,
+          "page_views": 212
+        },
+        {
+          "date": "2026-07-21",
+          "active_users": 124,
+          "sessions": 139,
+          "page_views": 184
+        },
+        {
+          "date": "2026-07-22",
+          "active_users": 104,
+          "sessions": 113,
+          "page_views": 151
+        },
+        {
+          "date": "2026-07-23",
+          "active_users": 114,
+          "sessions": 128,
+          "page_views": 182
+        },
+        {
+          "date": "2026-07-24",
+          "active_users": 105,
+          "sessions": 115,
+          "page_views": 162
+        },
+        {
+          "date": "2026-07-25",
+          "active_users": 107,
+          "sessions": 112,
+          "page_views": 195
+        },
+        {
+          "date": "2026-07-26",
+          "active_users": 110,
+          "sessions": 116,
+          "page_views": 161
+        },
+        {
+          "date": "2026-07-27",
+          "active_users": 134,
+          "sessions": 139,
+          "page_views": 175
+        },
+        {
+          "date": "2026-07-28",
+          "active_users": 108,
+          "sessions": 116,
+          "page_views": 168
+        },
+        {
+          "date": "2026-07-29",
+          "active_users": 111,
+          "sessions": 119,
+          "page_views": 159
+        },
+        {
+          "date": "2026-07-30",
+          "active_users": 131,
+          "sessions": 135,
+          "page_views": 162
+        },
+        {
+          "date": "2026-07-31",
+          "active_users": 142,
+          "sessions": 157,
+          "page_views": 229
+        },
+        {
+          "date": "2026-08-01",
+          "active_users": 90,
+          "sessions": 100,
+          "page_views": 124
+        },
+        {
+          "date": "2026-08-02",
+          "active_users": 102,
+          "sessions": 109,
+          "page_views": 142
+        },
+        {
+          "date": "2026-08-03",
+          "active_users": 101,
+          "sessions": 108,
+          "page_views": 145
+        },
+        {
+          "date": "2026-08-04",
+          "active_users": 136,
+          "sessions": 144,
+          "page_views": 192
+        },
+        {
+          "date": "2026-08-05",
+          "active_users": 97,
+          "sessions": 112,
+          "page_views": 161
+        },
+        {
+          "date": "2026-08-06",
+          "active_users": 81,
+          "sessions": 85,
+          "page_views": 115
+        },
+        {
+          "date": "2026-08-07",
+          "active_users": 99,
+          "sessions": 115,
+          "page_views": 166
+        },
+        {
+          "date": "2026-08-08",
+          "active_users": 103,
+          "sessions": 109,
+          "page_views": 149
+        },
+        {
+          "date": "2026-08-09",
+          "active_users": 130,
+          "sessions": 137,
+          "page_views": 188
+        },
+        {
+          "date": "2026-08-10",
+          "active_users": 110,
+          "sessions": 120,
+          "page_views": 166
+        },
+        {
+          "date": "2026-08-11",
+          "active_users": 108,
+          "sessions": 119,
+          "page_views": 157
+        },
+        {
+          "date": "2026-08-12",
+          "active_users": 122,
+          "sessions": 131,
+          "page_views": 193
+        },
+        {
+          "date": "2026-08-13",
+          "active_users": 130,
+          "sessions": 142,
+          "page_views": 209
+        },
+        {
+          "date": "2026-08-14",
+          "active_users": 172,
+          "sessions": 188,
+          "page_views": 302
+        },
+        {
+          "date": "2026-08-15",
+          "active_users": 257,
+          "sessions": 278,
+          "page_views": 493
+        },
+        {
+          "date": "2026-08-16",
+          "active_users": 129,
+          "sessions": 142,
+          "page_views": 202
+        },
+        {
+          "date": "2026-08-17",
+          "active_users": 151,
+          "sessions": 167,
+          "page_views": 241
+        },
+        {
+          "date": "2026-08-18",
+          "active_users": 148,
+          "sessions": 159,
+          "page_views": 239
+        },
+        {
+          "date": "2026-08-19",
+          "active_users": 156,
+          "sessions": 169,
+          "page_views": 234
+        },
+        {
+          "date": "2026-08-20",
+          "active_users": 168,
+          "sessions": 180,
+          "page_views": 269
+        },
+        {
+          "date": "2026-08-21",
+          "active_users": 158,
+          "sessions": 171,
+          "page_views": 242
+        },
+        {
+          "date": "2026-08-22",
+          "active_users": 294,
+          "sessions": 327,
+          "page_views": 465
+        },
+        {
+          "date": "2026-08-23",
+          "active_users": 304,
+          "sessions": 335,
+          "page_views": 466
+        },
+        {
+          "date": "2026-08-24",
+          "active_users": 299,
+          "sessions": 323,
+          "page_views": 493
+        },
+        {
+          "date": "2026-08-25",
+          "active_users": 327,
+          "sessions": 352,
+          "page_views": 657
+        },
+        {
+          "date": "2026-08-26",
+          "active_users": 299,
+          "sessions": 330,
+          "page_views": 477
+        },
+        {
+          "date": "2026-08-27",
+          "active_users": 268,
+          "sessions": 282,
+          "page_views": 420
+        },
+        {
+          "date": "2026-08-28",
+          "active_users": 290,
+          "sessions": 319,
+          "page_views": 500
+        },
+        {
+          "date": "2026-08-29",
+          "active_users": 295,
+          "sessions": 313,
+          "page_views": 492
+        },
+        {
+          "date": "2026-08-30",
+          "active_users": 235,
+          "sessions": 255,
+          "page_views": 363
+        },
+        {
+          "date": "2026-08-31",
+          "active_users": 242,
+          "sessions": 251,
+          "page_views": 384
+        },
+        {
+          "date": "2026-09-01",
+          "active_users": 190,
+          "sessions": 200,
+          "page_views": 314
+        },
+        {
+          "date": "2026-09-02",
+          "active_users": 181,
+          "sessions": 196,
+          "page_views": 303
+        },
+        {
+          "date": "2026-09-03",
+          "active_users": 210,
+          "sessions": 222,
+          "page_views": 353
+        },
+        {
+          "date": "2026-09-04",
+          "active_users": 207,
+          "sessions": 215,
+          "page_views": 306
+        },
+        {
+          "date": "2026-09-05",
+          "active_users": 207,
+          "sessions": 213,
+          "page_views": 263
+        },
+        {
+          "date": "2026-09-06",
+          "active_users": 0,
+          "sessions": 1,
+          "page_views": 1
+        },
+        {
+          "date": "2026-09-07",
+          "active_users": 207,
+          "sessions": 216,
+          "page_views": 305
+        },
+        {
+          "date": "2026-09-08",
+          "active_users": 213,
+          "sessions": 220,
+          "page_views": 306
+        },
+        {
+          "date": "2026-09-09",
+          "active_users": 185,
+          "sessions": 197,
+          "page_views": 255
+        }
+      ],
+      "top_pages": [
+        {
+          "path": "/",
+          "title": "WaifuAI — Free AI Companion with Live2D & Voice",
+          "views": 7762,
+          "users": 5244
+        },
+        {
+          "path": "/app/index.html",
+          "title": "WaifuAI – Free AI Companion with Live2D & Voice",
+          "views": 1050,
+          "users": 664
+        },
+        {
+          "path": "/live2d/index.html",
+          "title": "WaifuAI – Free AI Companion with Live2D & Voice",
+          "views": 763,
+          "users": 419
+        },
+        {
+          "path": "/app/",
+          "title": "WaifuAI – Free AI Companion with Live2D & Voice",
+          "views": 17,
+          "users": 7
+        },
+        {
+          "path": "/app/docs/help.html",
+          "title": "Help & Tutorial - WaifuAI Docs",
+          "views": 6,
+          "users": 6
+        },
+        {
+          "path": "/search.html",
+          "title": "Search | WaifuAI",
+          "views": 5,
+          "users": 1
+        },
+        {
+          "path": "/app/docs/index.html",
+          "title": "WaifuAI Documentation",
+          "views": 4,
+          "users": 3
+        },
+        {
+          "path": "/research-text/consolidated-research/papers/07b-llm-rl.html",
+          "title": "more examples",
+          "views": 3,
+          "users": 2
+        },
+        {
+          "path": "/research-text/consolidated-research/agent-chats/index.html",
+          "title": "Agent Chats",
+          "views": 3,
+          "users": 1
+        },
+        {
+          "path": "/app/docs/troubleshooting.html",
+          "title": "Troubleshooting Guide - WaifuAI Docs",
+          "views": 3,
+          "users": 3
+        },
+        {
+          "path": "/app/docs/voice.html",
+          "title": "Voice & Audio Settings - WaifuAI Docs",
+          "views": 2,
+          "users": 1
+        },
+        {
+          "path": "/sim-airdrop/",
+          "title": "Token Airdrop Strategy Simulator | WaifuAI",
+          "views": 1,
+          "users": 1
+        },
+        {
+          "path": "/hermes-waifu/",
+          "title": "Hermes Waifu — Live2D Agent Display | WaifuAI",
+          "views": 1,
+          "users": 1
+        },
+        {
+          "path": "/app/docs/settings.html",
+          "title": "Settings Panel Guide - WaifuAI Docs",
+          "views": 1,
+          "users": 1
+        },
+        {
+          "path": "/app/docs/providers.html",
+          "title": "LLM Providers - WaifuAI Docs",
+          "views": 1,
+          "users": 1
+        }
+      ],
+      "traffic_sources": [
+        {
+          "channel": "(direct) / (none)",
+          "sessions": 6289,
+          "users": 5868
+        },
+        {
+          "channel": "chatgpt.com / ai-assistant",
+          "sessions": 1614,
+          "users": 1501
+        },
+        {
+          "channel": "google / organic",
+          "sessions": 1410,
+          "users": 1326
+        },
+        {
+          "channel": "(not set)",
+          "sessions": 277,
+          "users": 253
+        },
+        {
+          "channel": "bing / organic",
+          "sessions": 104,
+          "users": 95
+        },
+        {
+          "channel": "(data not available)",
+          "sessions": 54,
+          "users": 54
+        },
+        {
+          "channel": "message / (not set)",
+          "sessions": 13,
+          "users": 9
+        },
+        {
+          "channel": "github.com / referral",
+          "sessions": 9,
+          "users": 9
+        },
+        {
+          "channel": "chatgpt.com / (none)",
+          "sessions": 6,
+          "users": 5
+        },
+        {
+          "channel": "duckduckgo / organic",
+          "sessions": 5,
+          "users": 5
+        }
+      ]
+    },
+    "gsc": {
+      "clicks": 3688,
+      "impressions": 69231,
+      "ctr": 0.0322,
+      "average_position": 7.6,
+      "date_range": [
+        "2025-09-04",
+        "2026-09-07"
+      ],
+      "timeline": [
+        {
+          "date": "2026-08-09",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 14.0
+        },
+        {
+          "date": "2026-08-09",
+          "clicks": 40,
+          "impressions": 1214,
+          "position": 6.2
+        },
+        {
+          "date": "2026-08-10",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 8.5
+        },
+        {
+          "date": "2026-08-10",
+          "clicks": 29,
+          "impressions": 714,
+          "position": 6.8
+        },
+        {
+          "date": "2026-08-11",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 6.2
+        },
+        {
+          "date": "2026-08-11",
+          "clicks": 35,
+          "impressions": 736,
+          "position": 6.4
+        },
+        {
+          "date": "2026-08-12",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-08-12",
+          "clicks": 28,
+          "impressions": 721,
+          "position": 6.4
+        },
+        {
+          "date": "2026-08-13",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 27.7
+        },
+        {
+          "date": "2026-08-13",
+          "clicks": 31,
+          "impressions": 796,
+          "position": 5.8
+        },
+        {
+          "date": "2026-08-14",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 7.0
+        },
+        {
+          "date": "2026-08-14",
+          "clicks": 38,
+          "impressions": 724,
+          "position": 5.0
+        },
+        {
+          "date": "2026-08-15",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 85.0
+        },
+        {
+          "date": "2026-08-15",
+          "clicks": 55,
+          "impressions": 833,
+          "position": 6.0
+        },
+        {
+          "date": "2026-08-16",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-08-16",
+          "clicks": 29,
+          "impressions": 831,
+          "position": 6.2
+        },
+        {
+          "date": "2026-08-17",
+          "clicks": 1,
+          "impressions": 2,
+          "position": 7.0
+        },
+        {
+          "date": "2026-08-17",
+          "clicks": 32,
+          "impressions": 710,
+          "position": 5.7
+        },
+        {
+          "date": "2026-08-18",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 37.8
+        },
+        {
+          "date": "2026-08-18",
+          "clicks": 38,
+          "impressions": 761,
+          "position": 6.5
+        },
+        {
+          "date": "2026-08-19",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 8.3
+        },
+        {
+          "date": "2026-08-19",
+          "clicks": 42,
+          "impressions": 741,
+          "position": 5.1
+        },
+        {
+          "date": "2026-08-20",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 17.0
+        },
+        {
+          "date": "2026-08-20",
+          "clicks": 41,
+          "impressions": 783,
+          "position": 6.1
+        },
+        {
+          "date": "2026-08-21",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 7.0
+        },
+        {
+          "date": "2026-08-21",
+          "clicks": 43,
+          "impressions": 814,
+          "position": 5.3
+        },
+        {
+          "date": "2026-08-22",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 27.3
+        },
+        {
+          "date": "2026-08-22",
+          "clicks": 50,
+          "impressions": 865,
+          "position": 6.0
+        },
+        {
+          "date": "2026-08-23",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 4.0
+        },
+        {
+          "date": "2026-08-23",
+          "clicks": 54,
+          "impressions": 958,
+          "position": 5.4
+        },
+        {
+          "date": "2026-08-24",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-08-24",
+          "clicks": 64,
+          "impressions": 1046,
+          "position": 5.6
+        },
+        {
+          "date": "2026-08-25",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 5.7
+        },
+        {
+          "date": "2026-08-25",
+          "clicks": 51,
+          "impressions": 988,
+          "position": 5.5
+        },
+        {
+          "date": "2026-08-26",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 5.0
+        },
+        {
+          "date": "2026-08-26",
+          "clicks": 58,
+          "impressions": 1025,
+          "position": 5.2
+        },
+        {
+          "date": "2026-08-27",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 67.5
+        },
+        {
+          "date": "2026-08-27",
+          "clicks": 57,
+          "impressions": 1015,
+          "position": 5.8
+        },
+        {
+          "date": "2026-08-28",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 6.0
+        },
+        {
+          "date": "2026-08-28",
+          "clicks": 51,
+          "impressions": 949,
+          "position": 5.5
+        },
+        {
+          "date": "2026-08-29",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 44.5
+        },
+        {
+          "date": "2026-08-29",
+          "clicks": 59,
+          "impressions": 1017,
+          "position": 5.8
+        },
+        {
+          "date": "2026-08-30",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 35.0
+        },
+        {
+          "date": "2026-08-30",
+          "clicks": 49,
+          "impressions": 1012,
+          "position": 5.9
+        },
+        {
+          "date": "2026-08-31",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-08-31",
+          "clicks": 54,
+          "impressions": 917,
+          "position": 5.5
+        },
+        {
+          "date": "2026-09-01",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 8.0
+        },
+        {
+          "date": "2026-09-01",
+          "clicks": 37,
+          "impressions": 918,
+          "position": 6.0
+        },
+        {
+          "date": "2026-09-02",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-09-02",
+          "clicks": 39,
+          "impressions": 915,
+          "position": 5.5
+        },
+        {
+          "date": "2026-09-03",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-09-03",
+          "clicks": 45,
+          "impressions": 740,
+          "position": 4.8
+        },
+        {
+          "date": "2026-09-04",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 8.5
+        },
+        {
+          "date": "2026-09-04",
+          "clicks": 63,
+          "impressions": 832,
+          "position": 4.9
+        },
+        {
+          "date": "2026-09-05",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 9.0
+        },
+        {
+          "date": "2026-09-05",
+          "clicks": 55,
+          "impressions": 927,
+          "position": 5.8
+        },
+        {
+          "date": "2026-09-06",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 7.0
+        },
+        {
+          "date": "2026-09-06",
+          "clicks": 57,
+          "impressions": 818,
+          "position": 5.2
+        },
+        {
+          "date": "2026-09-07",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-09-07",
+          "clicks": 46,
+          "impressions": 888,
+          "position": 4.8
+        }
+      ],
+      "top_queries": [
+        {
+          "query": "waifu ai",
+          "clicks": 1294,
+          "impressions": 36529,
+          "position": 12.7
+        },
+        {
+          "query": "waifuai",
+          "clicks": 1025,
+          "impressions": 2839,
+          "position": 5.1
+        },
+        {
+          "query": "ai waifu",
+          "clicks": 106,
+          "impressions": 2418,
+          "position": 26.1
+        },
+        {
+          "query": "weifu ai",
+          "clicks": 76,
+          "impressions": 865,
+          "position": 10.3
+        },
+        {
+          "query": "waifu.ai",
+          "clicks": 38,
+          "impressions": 173,
+          "position": 3.1
+        },
+        {
+          "query": "waifuai studio",
+          "clicks": 33,
+          "impressions": 280,
+          "position": 5.1
+        },
+        {
+          "query": "wifu ai",
+          "clicks": 31,
+          "impressions": 170,
+          "position": 3.7
+        },
+        {
+          "query": "waifu ai chat",
+          "clicks": 30,
+          "impressions": 360,
+          "position": 30.7
+        },
+        {
+          "query": "ai waifu companion",
+          "clicks": 21,
+          "impressions": 51,
+          "position": 3.2
+        },
+        {
+          "query": "waifu chat",
+          "clicks": 15,
+          "impressions": 62,
+          "position": 37.2
+        },
+        {
+          "query": "weifu ai online",
+          "clicks": 13,
+          "impressions": 71,
+          "position": 2.9
+        },
+        {
+          "query": "wafu ai",
+          "clicks": 12,
+          "impressions": 41,
+          "position": 2.7
+        },
+        {
+          "query": "wifuai",
+          "clicks": 10,
+          "impressions": 16,
+          "position": 1.9
+        },
+        {
+          "query": "ai waifu chat",
+          "clicks": 6,
+          "impressions": 117,
+          "position": 39.1
+        },
+        {
+          "query": "waifu. ai",
+          "clicks": 6,
+          "impressions": 36,
+          "position": 2.5
+        },
+        {
+          "query": "ai wifu",
+          "clicks": 6,
+          "impressions": 25,
+          "position": 5.3
+        },
+        {
+          "query": "waif ai",
+          "clicks": 6,
+          "impressions": 19,
+          "position": 3.7
+        },
+        {
+          "query": "live2d ai companion",
+          "clicks": 6,
+          "impressions": 13,
+          "position": 6.4
+        },
+        {
+          "query": "waifu ai chatbot",
+          "clicks": 5,
+          "impressions": 92,
+          "position": 46.5
+        },
+        {
+          "query": "free ai waifu",
+          "clicks": 5,
+          "impressions": 26,
+          "position": 6.8
+        },
+        {
+          "query": "waifu ai free",
+          "clicks": 5,
+          "impressions": 12,
+          "position": 2.9
+        },
+        {
+          "query": "live2d ai",
+          "clicks": 5,
+          "impressions": 10,
+          "position": 8.2
+        },
+        {
+          "query": "wiefu ai",
+          "clicks": 5,
+          "impressions": 9,
+          "position": 5.5
+        },
+        {
+          "query": "my waifu ai",
+          "clicks": 4,
+          "impressions": 33,
+          "position": 7.5
+        },
+        {
+          "query": "wafiu ai",
+          "clicks": 4,
+          "impressions": 26,
+          "position": 3.2
+        }
+      ]
+    }
+  },
+  "websim": {
+    "total_projects": 611,
+    "total_views": 26464,
+    "total_likes": 1099,
+    "unique_projects_count": 553,
+    "top_projects": [
+      {
+        "title": "Infinite Backrooms",
+        "description": "A browser-based horror simulator that uses an llm for dynamic narrative generation. 🕹️ It features robust text-to-speech with voice selection and multi-language support including translation and transliteration. 🔊 Users can configure story tone, entity density, and procedural visual generation. ⚙️ Explorable zones are managed with a map system. 🗺️",
+        "link": "https://websim.ai/p/egdopl9nz84hzobulyfw",
+        "thumbnail": "https://project-screenshots.websim.com/0198f33b-9343-73d0-b13b-f162a5484bc2",
+        "views": 1998,
+        "likes": 58,
+        "created": "2025-05-12T19:50:44.758784+00:00"
+      },
+      {
+        "title": "animated chatbot live2d",
+        "description": "Your interactive animated companion awaits! 💖 Chat with AI 💬, stream anime music 🎶, and tweak settings ✨. Adjust the character's position 🖱️, and check the time ⏰.",
+        "link": "https://websim.ai/p/zix54kss8b0c3bs0jgmx",
+        "thumbnail": "https://project-screenshots.websim.com/01984348-4a74-7003-898c-9a296a5925cc",
+        "views": 1158,
+        "likes": 41,
+        "created": "2025-04-19T07:09:54.312613+00:00"
+      },
+      {
+        "title": "Waifu Collector",
+        "description": "Engage in exciting turn-based battles ⚔️ in the Waifu Collector Battle Arena! Watch your character fight 💪. Manage your collection 💖 and track coins 🪙. Check the battle log for damage details. Easily navigate 🗺️ to Adventure, Gallery 🖼️, Training, and Chat 💬. You can choose to Flee 🏃 the battle. Collect more characters! ✨",
+        "link": "https://websim.ai/p/w1_qzykg8aiy33ltg9e6",
+        "thumbnail": "https://project-screenshots.websim.com/0198fe17-2a41-7c4e-bda0-959da5c4b3a8",
+        "views": 1241,
+        "likes": 38,
+        "created": "2025-04-06T13:33:12.079922+00:00"
+      },
+      {
+        "title": "cat maze",
+        "description": "collect all 🐟, use 🤿 to cross 💧 and use 🥾 to cross 🔥, 🔑 unlocks 🚪, reach the exit 🏁, and slide on 🧊 --- known bugs: exit doesn't appear on some devices, when you use toggle editor you need to add a player character for the export json to work because it doesn't add the player character by itself. map modes :full map (default) and player map (click player icon to center on player and zoom in/out of map and move map around).",
+        "link": "https://websim.ai/p/ihv_wdb3ml28ym674a93",
+        "thumbnail": "https://project-screenshots.websim.com/0198b712-108d-7df8-ba49-abad3325b9f6",
+        "views": 755,
+        "likes": 34,
+        "created": "2025-04-22T20:47:15.726828+00:00"
+      },
+      {
+        "title": "Advanced Equation Editor",
+        "description": "Interactive equation editor ➕➖➗. Type or use LaTeX, copy in LaTeX, MathML, or AsciiMath formats. Zoom 🔍, pan, and use a minimap for navigation. Hover for formula explanations 💡. Font size controls. Copy to clipboard with toast confirmation ✅.",
+        "link": "https://websim.ai/p/bt3gt7nwr7r7ct80_93d",
+        "thumbnail": "https://project-screenshots.websim.com/019823b2-83a1-7287-96cf-e8247521f020",
+        "views": 350,
+        "likes": 17,
+        "created": "2024-10-27T20:21:36.152333+00:00"
+      },
+      {
+        "title": "Anime Waifu Chatbot",
+        "description": "mobile friendly version, image in background, separate box to describe image, also the image is pre-prompted so easier to describe with less words.",
+        "link": "https://websim.ai/p/1e6f3t3kjkljhg18k6vl",
+        "thumbnail": "https://project-screenshots.websim.com/0195a69e-ac7a-7c04-afea-a4695ecbd5a2",
+        "views": 1479,
+        "likes": 16,
+        "created": "2025-03-18T00:16:09.093633+00:00"
+      },
+      {
+        "title": "Video Gallery",
+        "description": "Browse videos in a neat gallery ✨. Tap thumbnails to watch them ▶️. Filter by landscape or portrait orientation 📐. Hit autoplay for continuous viewing ⏭️. Turn on optional TTS for title announcements 🔊. Listen to a background radio stream 🎵 and adjust its volume 🎚️.",
+        "link": "https://websim.ai/p/21tsi_0jc61xx478svgz",
+        "thumbnail": "https://project-screenshots.websim.com/0196894a-e451-7361-bd09-6a342f5393e9",
+        "views": 694,
+        "likes": 15,
+        "created": "2025-04-30T10:45:50.63727+00:00"
+      },
+      {
+        "title": "Infinite AI Tech Tree",
+        "description": "Creates a dynamic and interactive tech tree visualization. 🌳 Users can explore nodes, view details, and see prerequisites for inventions. ✨ It allows for the addition of custom inventions to the tree. 💡 An image library displays generated images for each invention. 🖼️ Settings can be adjusted for a personalized experience. ⚙️",
+        "link": "https://websim.ai/p/497vutj48h9hq3dvfhq3",
+        "thumbnail": "https://project-screenshots.websim.com/0198ea76-4003-7cce-891f-9c4fbc711f6a",
+        "views": 420,
+        "likes": 15,
+        "created": "2025-05-30T08:40:47.05763+00:00"
+      },
+      {
+        "title": "Websim Profile Card Generator",
+        "description": "View your unique Websim profile card! ✨ AI crafts a custom banner 🖼️, status, abilities, and stats based on your activity. Discover your influence score and card rarity. 🔢 Press the button 🖱️ to regenerate a fresh card anytime! 🌟 --- Known bugs: save as image does not save the pfp and banner image in the image.",
+        "link": "https://websim.ai/p/esd3mxmqmbt8tpz5d4bi",
+        "thumbnail": "https://project-screenshots.websim.com/0198b9b3-465f-7c79-8d46-bef2ffb75612",
+        "views": 231,
+        "likes": 13,
+        "created": "2025-04-13T22:13:17.856007+00:00"
+      },
+      {
+        "title": "visual novel",
+        "description": "Experience a delightful Ghibli-esque visual novel ✨. Interact by clicking dialogue choices ✅ or typing your own input ⌨️. Watch the character 🌸 and lovely background scenes 🖼️ dynamically update based on your interactions. A heartwarming, AI-driven story awaits your touch 💖. Enjoy the gentle journey 🍃.",
+        "link": "https://websim.ai/p/y12bs4ti0icj66v42icx",
+        "thumbnail": "https://project-screenshots.websim.com/01970936-6009-7995-be88-db800ada90a4",
+        "views": 274,
+        "likes": 11,
+        "created": "2025-04-23T00:02:14.864324+00:00"
+      },
+      {
+        "title": "Waifu Chat Simulator",
+        "description": "It's a fun, interactive chat simulator! 💬 Choose a waifu personality (Tsundere, Yandere, etc.) and chat with her. 🌸 Features a dark mode toggle 🌙, clear chat 🗑️, and cute, animated background. ✨",
+        "link": "https://websim.ai/p/va23vine2hb9r5zv8j8t",
+        "thumbnail": "https://project-screenshots.websim.com/0196b4f8-fe7f-7db1-a8d2-fa0aec5669d1",
+        "views": 289,
+        "likes": 7,
+        "created": "2025-01-21T21:59:30.346013+00:00"
+      },
+      {
+        "title": "TokenomicsChat 2 - Secure Communication for Crypto Enthusiasts",
+        "description": "A crypto-themed chat app 💬. Users can send messages, see a list of active users, adjust font size/width, copy/clear chat history, select languages 🌍, and view a live token price ticker 📈📉. Basic chat simulation and local storage are present.",
+        "link": "https://websim.ai/p/iq8d1dd_gii_89wbgtno",
+        "thumbnail": "https://project-screenshots.websim.com/01967e1a-787c-7962-b38c-7d62641a55c8",
+        "views": 112,
+        "likes": 6,
+        "created": "2024-07-11T23:58:02.3357+00:00"
+      },
+      {
+        "title": "Waifu AI RPG",
+        "description": "infinite rpg. known bugs: when using fallback for the text the tts is mismatched to the text on screen. known bugs: when skip to latest is on only one tts should be playing at a time. if it wants to play a next tts (like when click a button while the old tts is playing) then it should stop the old tts. currently it doesn't stop the previous tts and plays in parallel. future todo: add navigation to go to different locations on a map at any time, the map should have multiple new locations",
+        "link": "https://websim.ai/p/20uqf4na_w0dh994aabq",
+        "thumbnail": "https://project-screenshots.websim.com/0198ddf2-d58e-7607-953c-874b848e27a8",
+        "views": 83,
+        "likes": 6,
+        "created": "2025-05-07T07:57:09.722651+00:00"
+      },
+      {
+        "title": "MCP Architecture Diagram Generator",
+        "description": "Describe your software architecture ⌨️, click \"Generate Diagram\" 🖱️, and instantly see a visual representation! 📊 The page simulates an AI that creates interactive diagrams from your text input. Nodes and connecting lines appear. 🎉 View clear visuals of your system! 👓",
+        "link": "https://websim.ai/p/yvxlw2rgviq9o17b4eto",
+        "thumbnail": "https://project-screenshots.websim.com/0194c089-ff60-7ad3-8ec5-73d7eda35e13",
+        "views": 31,
+        "likes": 6,
+        "created": "2025-02-01T08:03:37.207137+00:00"
+      },
+      {
+        "title": "Profile",
+        "description": "This dynamic portfolio aggregates content from GitHub, YouTube, and an image gallery. ✨ It dynamically sorts and filters projects by views, likes, and recency. 💡 The interface includes a background video player, an integrated audio stream, and a fullscreen modal for images. 🚀 It also displays user statistics like total project views and likes. 🌟",
+        "link": "https://websim.ai/p/5lipoik4gq5rfi4lpuc2",
+        "thumbnail": "https://project-screenshots.websim.com/0198d5ae-4804-79f6-8db2-a4c0fa64143b",
+        "views": 442,
+        "likes": 4,
+        "created": "2025-03-16T20:31:08.184405+00:00"
+      },
+      {
+        "title": "CatgirlChat - Your Anime Companion",
+        "description": "This website is an interactive chat interface featuring an anime catgirl companion. ✨ It provides a real-time messaging experience with a predefined character persona. 💖 The front-end includes playful animations like a bouncing avatar and floating hearts on click. 💡 It communicates with a backend API to generate dynamic, in-character responses. 🎀",
+        "link": "https://websim.ai/p/zs1_uiiavjnc0m98a0gz",
+        "thumbnail": "https://project-screenshots.websim.com/0198bdbd-5572-7e44-b595-0d421b0b3e45",
+        "views": 334,
+        "likes": 4,
+        "created": "2024-07-06T20:03:58.024559+00:00"
+      },
+      {
+        "title": "Crypto AI Arena - Live Simulation Feed with Charts",
+        "description": "Real-time Crypto AI simulation! 🤖 Watch AI agents compete on Ethereum, Cardano & Polkadot. 📈 Live feed shows agent actions & results. 💸 Interactive charts track profit, gas usage, TVL, and transaction speed. ⏱️ Updated every 5 seconds. Explore blockchain dynamics! 🔗",
+        "link": "https://websim.ai/p/k_p6kv47srd8xh_e60aa",
+        "thumbnail": "https://project-screenshots.websim.com/01991012-05ae-71cd-aaef-567cb481f04f",
+        "views": 61,
+        "likes": 4,
+        "created": "2024-07-06T20:20:15.771015+00:00"
+      },
+      {
+        "title": "AI Waifu Chat Simulator",
+        "description": "Chat with an AI waifu! 💬 Type your message and see her respond. Her image, dere type, emotion, and actions update. View the conversation history. 🥰✨ (Tsundere, etc). Info panel displays current prompt.",
+        "link": "https://websim.ai/p/s_rc5ipg9udfp1suw7fj",
+        "thumbnail": "https://project-screenshots.websim.com/0198b473-4607-7b4b-9388-bffa0bbd4037",
+        "views": 298,
+        "likes": 3,
+        "created": "2025-01-22T02:10:53.515899+00:00"
+      },
+      {
+        "title": "Digital Companion Waifu",
+        "description": "Interact with a cute anime character! 🖼️ Choose from pre-set questions or type your own. 🤔 See the character's image change based on their emotions, and their responses displayed with a typing effect. 💬 Copy the chat log. 📝🔄 Regenerate the image.",
+        "link": "https://websim.ai/p/gt_lxa10q_z2lv3kos51",
+        "thumbnail": "https://project-screenshots.websim.com/0196b8f8-f19b-719c-8716-ab593564f7aa",
+        "views": 205,
+        "likes": 3,
+        "created": "2024-12-10T19:11:11.989968+00:00"
+      },
+      {
+        "title": "Waifu Mobile",
+        "description": "Chat with a cute anime waifu! 💬 Type your message and get a text response, along with an updated waifu image reflecting her mood. 😊 Text appears over image. The chat history and images are dynamic. Mobile-friendly. 📱",
+        "link": "https://websim.ai/p/7gnepgq5d4uk6kylslpq",
+        "thumbnail": "https://project-screenshots.websim.com/0196bba3-8950-7b5e-8aaa-a1f0058c73bc",
+        "views": 123,
+        "likes": 3,
+        "created": "2025-03-01T14:53:08.126145+00:00"
+      },
+      {
+        "title": "Waifu Cursor",
+        "description": "Interactive webpage where your cursor is replaced by a cute waifu 🥰. Moving the mouse creates a trailing star effect ⭐ and plays a soft sound. Clicking generates sparkling stars ✨ and a distinct click sound. The default cursor is hidden.",
+        "link": "https://websim.ai/p/_k46x2ehd_qj6ajgugaq",
+        "thumbnail": "https://project-screenshots.websim.com/0198b11d-3f3a-7777-aece-51922d231086",
+        "views": 108,
+        "likes": 3,
+        "created": "2024-11-10T01:55:18.735162+00:00"
+      },
+      {
+        "title": "QuantumAI Physics - Live Data Dashboard",
+        "description": "",
+        "link": "https://websim.ai/p/r47dp0p1747q28wx2oxa",
+        "thumbnail": "https://project-screenshots.websim.com/0198b4b3-5c62-7320-ab97-528cb77c6318",
+        "views": 55,
+        "likes": 3,
+        "created": "2024-07-02T20:10:05.531689+00:00"
+      },
+      {
+        "title": "Simulating Quantum Gravity Effects in Microtubules",
+        "description": "This project explores consciousness via the Orch-OR theory with an interactive simulation. ✨ It features a 3D microtubule model with toggleable quantum gravity effects. 💡 A dynamic chart visualizes Planck scale fluctuations in real-time. 📈 The model simulates how these fundamental physical interactions could potentially give rise to consciousness. 🔬",
+        "link": "https://websim.ai/p/tnw5fxlhaol60n3s54ta",
+        "thumbnail": "https://project-screenshots.websim.com/0198b4b0-ff89-77b0-ad47-e23af432c7dd",
+        "views": 36,
+        "likes": 3,
+        "created": "2024-09-21T00:36:05.709579+00:00"
+      },
+      {
+        "title": "animated background",
+        "description": "Engage in real-time conversations with a visual AI character. ✨ The interface features a dynamic, animated environment with particle effects. 💡 AI responses appear in a speech bubble with a typing indicator for better user feedback. 👍 The application also tracks session stats like message count and time active. 🚀",
+        "link": "https://websim.ai/p/3_2mbvr5g5sb2k2jod7n",
+        "thumbnail": "https://project-screenshots.websim.com/0196fa90-d17b-7fac-8503-0c63e64ed129",
+        "views": 138,
+        "likes": 2,
+        "created": "2025-05-19T01:47:30.930402+00:00"
+      },
+      {
+        "title": "AI Book Generator",
+        "description": "(broken) Create books with AI! 🤖 Enter a title/topic, get title suggestions, generate a table of contents, and then the full book content. Edit, pause, save, or copy the Markdown. Manage your creations in a library. 📚✍️✅",
+        "link": "https://websim.ai/p/7sy94cwe3fl4hemna5mj",
+        "thumbnail": "https://project-screenshots.websim.com/0196fa28-ede8-762e-9a74-23bedb207d84",
+        "views": 85,
+        "likes": 2,
+        "created": "2025-01-22T00:26:12.988081+00:00"
+      },
+      {
+        "title": "waifu os ui",
+        "description": "Interactive terminal-style WaifuOS 🌸. Type commands (help, nyaa, lisp, clear) in a pink & black UI. Features a draggable terminal & AI assistant window with an animated 3D anime character 🎀, speech bubbles, and click-triggered sparkles ✨. Simulates a Lisp REPL and OS commands.",
+        "link": "https://websim.ai/p/ym6m6qw5qpysy8ylc31v",
+        "thumbnail": "https://project-screenshots.websim.com/01967dbe-e579-72ee-998e-d28c0d3d20ae",
+        "views": 70,
+        "likes": 2,
+        "created": "2024-10-27T20:38:43.389948+00:00"
+      },
+      {
+        "title": "Solana Bonding Curve Token in Python",
+        "description": "This webpage explains how to interact with a Solana bonding curve token using Python. 🐍 Users can learn to install libraries, initialize tokens, 💰 buy/sell tokens, and simulate product purchases. 🛒 Includes setup, code examples, usage instructions, and further learning links. It's a tutorial for developers, not a user-facing app. 👨‍💻",
+        "link": "https://websim.ai/p/epul0qtw238rau94udk9",
+        "thumbnail": "https://project-screenshots.websim.com/0198bbe2-edc1-7eb7-a746-ca32bd610c43",
+        "views": 44,
+        "likes": 2,
+        "created": "2024-07-23T06:33:34.736793+00:00"
+      },
+      {
+        "title": "3D Avatar Viewer",
+        "description": "Interactive 3D avatar viewer. 🔄 Drag to rotate, pinch/scroll to zoom. Toggle auto-rotation, reset view, and switch to preset camera angles (front, side, top). Displays performance (high/med/low) and offers AR mode if supported. 📱 Shows a hotspot on the model and basic help.",
+        "link": "https://websim.ai/p/xcx79uz7gbrjei2lwiv8",
+        "thumbnail": "https://project-screenshots.websim.com/0195480b-ac56-7b47-aa6c-3c78a1cc7934",
+        "views": 39,
+        "likes": 2,
+        "created": "2024-11-20T08:20:07.150979+00:00"
+      },
+      {
+        "title": "Tariff Tycoon",
+        "description": "Become a Tariff Tycoon! 💰 Adjust import tariffs for goods like 📱 and 🌾 using simple sliders 🎚️. Advance year by year ▶️ and watch your treasury 📈 change based on your decisions. Receive global feedback 🌍 and smart advice 💡. Aim for prosperity! ✨🏆",
+        "link": "https://websim.ai/p/rjad0b9kjrk1w_payjqu",
+        "thumbnail": "https://project-screenshots.websim.com/019700bf-d1c3-782a-8bbc-c8fa39e362d7",
+        "views": 36,
+        "likes": 2,
+        "created": "2025-03-28T16:33:11.273549+00:00"
+      },
+      {
+        "title": "Dotted Effect App",
+        "description": "Upload🖼️ or cycle through images. Adjust dot size with a slider🖱️. See the original image and a cool dotted effect version ✨ side-by-side. Get a new random image with a button press 🔄. Easy image manipulation! 🎉 Control dot size from 2-30px.",
+        "link": "https://websim.ai/p/6a8kvbbt8_vczujmtygw",
+        "thumbnail": "https://project-screenshots.websim.com/01953ce9-a865-78d2-b91a-3336f6d89e7e",
+        "views": 35,
+        "likes": 2,
+        "created": "2025-02-10T16:04:26.642033+00:00"
+      },
+      {
+        "title": "Model Context Protocol (MCP) Interactive Documentation",
+        "description": "Explore the Model Context Protocol (MCP) 💡 with an interactive guide. View a clear diagram of client-server interactions ↔️ and external resources. Click through tabs to see example JSON-RPC requests for resources, prompts, and tools ⚙️. Code snippets are syntax-highlighted. Security ✅ and development tools 🛠️ are also listed.",
+        "link": "https://websim.ai/p/9eout34_2ghv_gdgcxbf",
+        "thumbnail": "https://project-screenshots.websim.com/01937755-e76e-7eb7-aa0a-28e9e393185f",
+        "views": 34,
+        "likes": 2,
+        "created": "2024-11-29T09:51:27.755346+00:00"
+      },
+      {
+        "title": "Waifu Whispers: Endless Hearts",
+        "description": "A procedurally generated romance adventure with dynamic story events. ✨ Interact with characters using both preset choices and free text input. 💬 Build affection to unlock memories and CGs for a gallery. ❤️ Manage your multiple relationships through a character roster. 💕 The game also supports voice-acted dialogue. 👍",
+        "link": "https://websim.ai/p/8oturolsb778x9fkghg3",
+        "thumbnail": "https://project-screenshots.websim.com/019708f2-366d-75bf-82e0-7a820ac725c2",
+        "views": 170,
+        "likes": 1,
+        "created": "2025-05-24T21:00:08.3219+00:00"
+      },
+      {
+        "title": "Waifu Beast Fusion - Infinite Crafting",
+        "description": "A fusion system for creating hybrid characters by combining anime personality archetypes and animal aspects 🎨. Supports both dual and multi-element crafting to generate results 🧪. Each fused creation comes with a unique image, a descriptive profile, and a special quirk ✨. Fusions can be saved into a personal collection and viewed in a gallery 🖼️.",
+        "link": "https://websim.ai/p/c73uczijnkuf_b3h9140",
+        "thumbnail": "https://project-screenshots.websim.com/01973e0a-0e83-7b92-9d1e-f3fbbd42ea15",
+        "views": 84,
+        "likes": 1,
+        "created": "2025-06-03T06:21:22.689276+00:00"
+      },
+      {
+        "title": "Anime Waifu Image Generator - Ghibli Style",
+        "description": "Design your perfect Ghibli waifu! 🎀 Select appearance and personality options using simple dropdowns. ✅ Press generate ⚙️ and watch your character magically appear! 🖼️ Get a cute profile description too. 📜 Save your creation 💾 or easily request a fun variation. ✨",
+        "link": "https://websim.ai/p/lvjbhkgpdsvv_tx4fulx",
+        "thumbnail": "https://project-screenshots.websim.com/0199114d-ef5b-743b-8319-c98d04dd807c",
+        "views": 82,
+        "likes": 1,
+        "created": "2025-04-01T08:55:06.610036+00:00"
+      },
+      {
+        "title": "The Waifu AI Project Showcase",
+        "description": "Circular profile picture 🖼️ at the center. Surrounding it, a constellation of project previews 🌌 rotate. Hover over a project 🖱️ to reveal its title and stats (views/likes) ⭐. Projects are fetched and displayed dynamically 🔄. The background has a large username. Click a preview to open. 🎉",
+        "link": "https://websim.ai/p/lz7l4stgy4v17knhnql9",
+        "thumbnail": "https://project-screenshots.websim.com/01936cdd-6482-74f3-ac5a-7798b4b8c0d7",
+        "views": 61,
+        "likes": 1,
+        "created": "2024-11-27T09:03:29.255861+00:00"
+      },
+      {
+        "title": "AI ad Studio (Ghibli Style)",
+        "description": "Craft charming Ghibli-style characters! ✨ Use text prompts or upload images 🖼️. Instantly regenerate variations ✨. Experiment with different artistic styles 🎨, apply specific edits ✏️, or creatively merge two characters 🧬. Add text for memes ✍️ and receive AI design analysis 💡 for helpful tips. Simple controls, endless fun! 💖",
+        "link": "https://websim.ai/p/1rvjkkh0cwamm_cb_v7w",
+        "thumbnail": "https://project-screenshots.websim.com/01961e5d-d10d-789f-8184-d1c67e17fcb4",
+        "views": 54,
+        "likes": 1,
+        "created": "2025-03-31T08:47:43.075802+00:00"
+      },
+      {
+        "title": "Waifu Slideshow Explainer",
+        "description": "Explore topics visually! ✨ Input a subject, choose tone & art style 🎨. AI generates a step-by-step slideshow with images 🖼️ and text. Navigate manually ⏯️ or let it autoplay with optional TTS 🔊. Past lessons are saved! 📚",
+        "link": "https://websim.ai/p/4d_e89krqr1eb9ab_wqj",
+        "thumbnail": "https://project-screenshots.websim.com/01991061-5021-727a-bb34-2ce6a135a48d",
+        "views": 42,
+        "likes": 1,
+        "created": "2025-04-25T10:01:00.720738+00:00"
+      },
+      {
+        "title": "profile",
+        "description": "View my profile! 🧠 See total views & likes.📊 Explore projects sorted by recent, views, or likes.🖱️ Click project thumbnails to view. 🖼️  Light/dark mode. 🌓 Responsive design. Links to socials. 🐦",
+        "link": "https://websim.ai/p/o76ivpfd9qz0a99rqfjg",
+        "thumbnail": "https://project-screenshots.websim.com/01966525-a3a7-7a38-b3f9-6146442db31d",
+        "views": 38,
+        "likes": 1,
+        "created": "2025-03-15T02:09:06.054404+00:00"
+      },
+      {
+        "title": "Waifu Picture Quiz",
+        "description": "Become a Waifu Whisperer! ✨ View an image 🖼️ and read its official log. Can you guess the real story from the choices ✅? Get instant feedback, grow your score 💯, and proceed to the next challenge ▶️. Toggle text-to-speech 🔊 for descriptions or enjoy background music 🎶. Fun and engaging quiz gameplay! 🌟 Play again anytime 🔁.",
+        "link": "https://websim.ai/p/xc276y7i6v4258n6k8jn",
+        "thumbnail": "https://project-screenshots.websim.com/01968e7a-bbe3-7fab-aec1-e6597015f764",
+        "views": 31,
+        "likes": 1,
+        "created": "2025-04-23T06:07:09.658419+00:00"
+      },
+      {
+        "title": "AI Manga Guide Generator",
+        "description": "(maybe broken) Create your own AI manga guide! ✨ Enter story 📝 and style prompts. See unique manga pages 🖼️ generated with a custom background 🎨. Navigate your story ➡️, listen with optional TTS 🔊, and enjoy anime radio 🎵. Control preloading ⚙️ and export your creation 💾!",
+        "link": "https://websim.ai/p/3p8txe2g4a5ztgjnsvl1",
+        "thumbnail": "https://project-screenshots.websim.com/0196fab6-de9c-7eb7-b0c7-bb6d1f10acaf",
+        "views": 29,
+        "likes": 1,
+        "created": "2025-04-17T22:33:48.454082+00:00"
+      }
+    ]
+  }
+};
