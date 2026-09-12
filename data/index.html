@@ -93,10 +93,47 @@
   }
   .kpi-card.websim::before { background: linear-gradient(90deg, #ec4899, #f59e0b); }
   .kpi-card.traffic::before { background: linear-gradient(90deg, #3b82f6, #10b981); }
+  .kpi-card.attention::before { background: linear-gradient(90deg, #f59e0b, #10b981); }
+  .kpi-card.countries::before { background: linear-gradient(90deg, #06b6d4, #3b82f6); }
+  .kpi-card.clones::before { background: linear-gradient(90deg, #8b5cf6, #ec4899); }
   .kpi-card.chats::before { background: linear-gradient(90deg, #10b981, #06b6d4); }
   .kpi-card.models::before { background: linear-gradient(90deg, #a855f7, #ec4899); }
   .kpi-card.search::before { background: linear-gradient(90deg, #8b5cf6, #ec4899); }
   .kpi-card.stars::before { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+
+  /* Device & OS breakdown styles */
+  .stat-progress-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    margin-top: 1.25rem;
+  }
+  .stat-progress-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .stat-progress-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.88rem;
+  }
+  .stat-progress-track {
+    height: 7px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .stat-progress-bar {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent3));
+  }
+  .stat-progress-bar.blue { background: linear-gradient(90deg, #3b82f6, #06b6d4); }
+  .stat-progress-bar.green { background: linear-gradient(90deg, #10b981, #34d399); }
+  .stat-progress-bar.amber { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+  .stat-progress-bar.purple { background: linear-gradient(90deg, #a855f7, #c084fc); }
+
 
   .kpi-label {
     font-size: 0.82rem;
@@ -513,8 +550,8 @@
         <span>Total Projects</span>
         <span>📦</span>
       </div>
-      <div class="kpi-value" id="kpi-total-projects">663</div>
-      <div class="kpi-sub">52 GitHub &bull; 611 WebSim</div>
+      <div class="kpi-value" id="kpi-total-projects">670</div>
+      <div class="kpi-sub">52 GitHub &bull; 618 WebSim</div>
     </div>
 
     <div class="kpi-card traffic">
@@ -522,8 +559,17 @@
         <span>Content Views</span>
         <span>👁️</span>
       </div>
-      <div class="kpi-value" id="kpi-total-views">53.2K</div>
-      <div class="kpi-sub">26.8K Web &bull; 26.5K WebSim</div>
+      <div class="kpi-value" id="kpi-total-views">57.2K</div>
+      <div class="kpi-sub">26.8K Web &bull; 30.4K WebSim</div>
+    </div>
+
+    <div class="kpi-card attention">
+      <div class="kpi-label">
+        <span>Attention Dwell Time</span>
+        <span>⏱️</span>
+      </div>
+      <div class="kpi-value" id="kpi-total-attention">740h+</div>
+      <div class="kpi-sub">44,428 Mins Cumulative</div>
     </div>
 
     <div class="kpi-card websim">
@@ -533,6 +579,24 @@
       </div>
       <div class="kpi-value" id="kpi-total-users">16.6K</div>
       <div class="kpi-sub">GA4 Unique User Sessions</div>
+    </div>
+
+    <div class="kpi-card countries">
+      <div class="kpi-label">
+        <span>Global Footprint</span>
+        <span>🗺️</span>
+      </div>
+      <div class="kpi-value" id="kpi-total-countries">171</div>
+      <div class="kpi-sub">Countries Worldwide</div>
+    </div>
+
+    <div class="kpi-card clones">
+      <div class="kpi-label">
+        <span>Devs Cloned Repos</span>
+        <span>💻</span>
+      </div>
+      <div class="kpi-value" id="kpi-total-clones">566</div>
+      <div class="kpi-sub">687 Total Git Clones</div>
     </div>
 
     <div class="kpi-card chats">
@@ -558,8 +622,8 @@
         <span>Stars &amp; Likes</span>
         <span>⭐</span>
       </div>
-      <div class="kpi-value" id="kpi-total-stars">1,262</div>
-      <div class="kpi-sub">163 Stars &bull; 1,099 Likes</div>
+      <div class="kpi-value" id="kpi-total-stars">1,313</div>
+      <div class="kpi-sub">163 Stars &bull; 1,150 Likes</div>
     </div>
 
     <div class="kpi-card search">
@@ -709,6 +773,8 @@
             <th data-sort="name" data-type="string">Repository</th>
             <th data-sort="category" data-type="string">Category</th>
             <th data-sort="stars" data-type="number" style="text-align: right;">Stars</th>
+            <th data-sort="clones" data-type="number" style="text-align: right;">Clones</th>
+            <th data-sort="views" data-type="number" style="text-align: right;">Views</th>
             <th data-sort="forks" data-type="number" style="text-align: right;">Forks</th>
             <th data-sort="open_issues" data-type="number" style="text-align: right;">Open Issues</th>
             <th style="text-align: right;">Link</th>
@@ -765,6 +831,50 @@
           <!-- Populated via JS -->
         </tbody>
       </table>
+    </div>
+
+    <!-- Global Geographic Reach Table -->
+    <div class="data-table-container" style="margin-bottom: 2rem;">
+      <div class="table-header-box">
+        <div>
+          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">Worldwide Geographic Reach</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Active users, sessions, and pageviews across 171 countries worldwide.</div>
+        </div>
+        <input type="text" id="countries-search" class="search-input" placeholder="Search countries...">
+      </div>
+      <table class="data-table" id="table-countries">
+        <thead>
+          <tr>
+            <th data-sort="country" data-type="string">Country</th>
+            <th data-sort="users" data-type="number" style="text-align: right;">Active Users</th>
+            <th data-sort="sessions" data-type="number" style="text-align: right;">Sessions</th>
+            <th data-sort="views" data-type="number" style="text-align: right;">Page Views</th>
+            <th style="text-align: right;">Audience Share</th>
+          </tr>
+        </thead>
+        <tbody id="ga4-countries-body">
+          <!-- Populated via JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Platform & Hardware Architecture (Devices & Operating Systems) -->
+    <div class="grid-2col" style="margin-bottom: 2rem;">
+      <div class="data-table-container" style="padding: 1.25rem 1.5rem;">
+        <div style="font-weight: 700; font-size: 1.1rem; font-family: 'Outfit', sans-serif;">Device Category Distribution</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Hardware categories accessing documentation and tools</div>
+        <div class="stat-progress-box" id="devices-progress-container">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+
+      <div class="data-table-container" style="padding: 1.25rem 1.5rem;">
+        <div style="font-weight: 700; font-size: 1.1rem; font-family: 'Outfit', sans-serif;">Operating System Ecosystem</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Operating systems running across desktop, mobile, and tablets</div>
+        <div class="stat-progress-box" id="os-progress-container">
+          <!-- Populated via JS -->
+        </div>
+      </div>
     </div>
 
     <div class="grid-2col">
@@ -986,7 +1096,7 @@ function renderOverviewChart(timeline, rangeOption = '30') {
     const group = document.createElement('div');
     group.className = 'bar-group';
     group.innerHTML = `
-      <div class="chart-tooltip">${d.date}: ${d.active_users} users / ${d.page_views} views</div>
+      <div class="chart-tooltip">${d.date}: ${d.active_users} users / ${d.page_views} views (${d.attention_hours || 0}h dwell)</div>
       <div class="bar-fill users" style="height: ${uHeight}px;"></div>
     `;
     chartEl.appendChild(group);
@@ -1004,8 +1114,18 @@ function renderOverview(data) {
   const k = data.macro_kpis || {};
   document.getElementById('kpi-total-projects').textContent = (k.total_projects || 670).toLocaleString();
   document.getElementById('kpi-total-views').textContent = `${Math.round((k.total_content_views || 57153) / 1000 * 10) / 10}K`;
+  
+  const elAtt = document.getElementById('kpi-total-attention');
+  if (elAtt) elAtt.textContent = `${Math.round(k.total_attention_hours || 740.5)}h+`;
+
   document.getElementById('kpi-total-users').textContent = `${Math.round((k.total_web_users || 16647) / 1000 * 10) / 10}K`;
   
+  const elCnt = document.getElementById('kpi-total-countries');
+  if (elCnt) elCnt.textContent = (k.total_countries_count || 171).toLocaleString();
+
+  const elClones = document.getElementById('kpi-total-clones');
+  if (elClones) elClones.textContent = (k.total_clone_uniques || 566).toLocaleString();
+
   const elChats = document.getElementById('kpi-total-chats');
   if (elChats) elChats.textContent = `${Math.round((k.total_chat_messages || 5109) / 1000 * 10) / 10}K`;
 
@@ -1114,6 +1234,8 @@ function renderGitHubFull(repos) {
       </td>
       <td><span class="badge-tag ${getBadgeClass(r.category)}">${r.category}</span></td>
       <td style="text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f59e0b;">★ ${r.stars}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: #c084fc; font-weight: 600;">${r.clones ? r.clones.toLocaleString() : '—'}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: #38bdf8;">${r.views ? r.views.toLocaleString() : '—'}</td>
       <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${r.forks}</td>
       <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">${r.open_issues}</td>
       <td style="text-align: right;">
@@ -1139,6 +1261,71 @@ function renderEventsTable(events) {
     `;
     tbody.appendChild(tr);
   });
+}
+
+function renderCountriesTable(countries) {
+  const tbody = document.getElementById('ga4-countries-body');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  const totalUsers = countries.reduce((acc, c) => acc + (c.users || 0), 0) || 1;
+  countries.forEach(c => {
+    const sharePct = ((c.users / totalUsers) * 100).toFixed(1);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight: 600; color: #ffffff;">${c.country}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: #34d399; font-weight: 600;">${c.users.toLocaleString()}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${c.sessions.toLocaleString()}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${c.views.toLocaleString()}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">${sharePct}%</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function renderDeviceOs(analytics) {
+  const devContainer = document.getElementById('devices-progress-container');
+  const osContainer = document.getElementById('os-progress-container');
+  if (!devContainer || !osContainer) return;
+
+  const devices = analytics.ga4?.devices || [];
+  const devTotal = devices.reduce((sum, d) => sum + d.users, 0) || 1;
+  const devColors = ['blue', 'green', 'amber', 'purple'];
+
+  devContainer.innerHTML = devices.map((d, i) => {
+    const pct = ((d.users / devTotal) * 100).toFixed(1);
+    const colorClass = devColors[i % devColors.length];
+    return `
+      <div class="stat-progress-row">
+        <div class="stat-progress-header">
+          <span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">${d.category}</span>
+          <span style="font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">${d.users.toLocaleString()} users (${pct}%)</span>
+        </div>
+        <div class="stat-progress-track">
+          <div class="stat-progress-bar ${colorClass}" style="width: ${pct}%;"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  const osList = analytics.ga4?.operating_systems || [];
+  const osTotal = osList.reduce((sum, o) => sum + o.users, 0) || 1;
+  const osColors = ['green', 'blue', 'purple', 'amber', 'blue', 'green'];
+
+  osContainer.innerHTML = osList.slice(0, 6).map((o, i) => {
+    const pct = ((o.users / osTotal) * 100).toFixed(1);
+    const colorClass = osColors[i % osColors.length];
+    return `
+      <div class="stat-progress-row">
+        <div class="stat-progress-header">
+          <span style="font-weight: 600; color: #ffffff;">${o.os}</span>
+          <span style="font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">${o.users.toLocaleString()} users (${pct}%)</span>
+        </div>
+        <div class="stat-progress-track">
+          <div class="stat-progress-bar ${colorClass}" style="width: ${pct}%;"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
 }
 
 function renderPagesTable(pages) {
@@ -1178,6 +1365,12 @@ function renderTraffic(analytics) {
     category: getEventCategory(e.event)
   }));
   renderEventsTable(events);
+
+  // Worldwide Countries
+  renderCountriesTable(analytics.ga4?.countries || []);
+
+  // Device & OS Distributions
+  renderDeviceOs(analytics);
 
   // Pages
   renderPagesTable(analytics.ga4?.top_pages || []);
@@ -1252,6 +1445,7 @@ function initTelemetry(data) {
   makeTableSortable('table-github', () => STATS_DATA.github?.all_repos || [], renderGitHubFull);
   makeTableSortable('table-referrers', () => STATS_DATA.github?.top_referrers || [], renderReferrers);
   makeTableSortable('table-events', () => (STATS_DATA.analytics?.ga4?.events_summary || []).map(e => ({ ...e, category: getEventCategory(e.event) })), renderEventsTable);
+  makeTableSortable('table-countries', () => STATS_DATA.analytics?.ga4?.countries || [], renderCountriesTable);
   makeTableSortable('table-ga4-pages', () => STATS_DATA.analytics?.ga4?.top_pages || [], renderPagesTable);
   makeTableSortable('table-ga4-sources', () => STATS_DATA.analytics?.ga4?.traffic_sources || [], renderSourcesTable);
   makeTableSortable('table-gsc', () => STATS_DATA.analytics?.gsc?.top_queries || [], renderQueriesTable);
@@ -1294,6 +1488,14 @@ document.getElementById('events-search')?.addEventListener('input', e => {
   const all = (STATS_DATA.analytics?.ga4?.events_summary || []).map(e => ({ ...e, category: getEventCategory(e.event) }));
   const filtered = all.filter(ev => ev.event.toLowerCase().includes(q) || ev.category.toLowerCase().includes(q));
   renderEventsTable(filtered);
+});
+
+document.getElementById('countries-search')?.addEventListener('input', e => {
+  if (!STATS_DATA) return;
+  const q = e.target.value.toLowerCase().trim();
+  const all = STATS_DATA.analytics?.ga4?.countries || [];
+  const filtered = all.filter(c => c.country.toLowerCase().includes(q));
+  renderCountriesTable(filtered);
 });
 
 document.getElementById('gsc-search')?.addEventListener('input', e => {
