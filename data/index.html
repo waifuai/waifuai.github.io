@@ -93,6 +93,8 @@
   }
   .kpi-card.websim::before { background: linear-gradient(90deg, #ec4899, #f59e0b); }
   .kpi-card.traffic::before { background: linear-gradient(90deg, #3b82f6, #10b981); }
+  .kpi-card.chats::before { background: linear-gradient(90deg, #10b981, #06b6d4); }
+  .kpi-card.models::before { background: linear-gradient(90deg, #a855f7, #ec4899); }
   .kpi-card.search::before { background: linear-gradient(90deg, #8b5cf6, #ec4899); }
   .kpi-card.stars::before { background: linear-gradient(90deg, #f59e0b, #ef4444); }
 
@@ -315,6 +317,27 @@
     letter-spacing: 0.05em;
     border-bottom: 1px solid var(--border);
   }
+  table.data-table th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  table.data-table th.sortable:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+  }
+  .sort-icon {
+    display: inline-block;
+    margin-left: 0.35rem;
+    font-size: 0.72rem;
+    opacity: 0.35;
+    transition: opacity 0.15s ease, color 0.15s ease;
+  }
+  table.data-table th.sort-asc .sort-icon,
+  table.data-table th.sort-desc .sort-icon {
+    opacity: 1;
+    color: var(--accent);
+  }
   table.data-table td {
     padding: 0.95rem 1.25rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
@@ -322,6 +345,35 @@
   }
   table.data-table tr:hover td {
     background: var(--card-hover);
+  }
+
+  /* Range Selector Pills */
+  .chart-range-pills {
+    display: inline-flex;
+    gap: 0.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 3px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+  .range-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .range-btn:hover {
+    color: var(--text);
+  }
+  .range-btn.active {
+    background: var(--border);
+    color: #ffffff;
+    font-weight: 600;
   }
 
   /* WebSim Project Cards Grid */
@@ -483,6 +535,24 @@
       <div class="kpi-sub">GA4 Unique User Sessions</div>
     </div>
 
+    <div class="kpi-card chats">
+      <div class="kpi-label">
+        <span>Chat Messages</span>
+        <span>💬</span>
+      </div>
+      <div class="kpi-value" id="kpi-total-chats">5.1K</div>
+      <div class="kpi-sub">5,109 Multi-Turn LLM Chats</div>
+    </div>
+
+    <div class="kpi-card models">
+      <div class="kpi-label">
+        <span>Model Switches</span>
+        <span>🔄</span>
+      </div>
+      <div class="kpi-value" id="kpi-total-switches">3.0K</div>
+      <div class="kpi-sub">1,024 Active Experimenters</div>
+    </div>
+
     <div class="kpi-card stars">
       <div class="kpi-label">
         <span>Stars &amp; Likes</span>
@@ -509,14 +579,14 @@
     </button>
     <button class="telemetry-tab-btn" data-tab="tab-websim">
       <span>WebSim Lab</span>
-      <span class="badge-pill" id="tab-pill-websim">611</span>
+      <span class="badge-pill" id="tab-pill-websim">618</span>
     </button>
     <button class="telemetry-tab-btn" data-tab="tab-github">
       <span>GitHub Repos</span>
       <span class="badge-pill" id="tab-pill-github">52</span>
     </button>
     <button class="telemetry-tab-btn" data-tab="tab-traffic">
-      <span>Web Traffic (GA4)</span>
+      <span>Traffic &amp; AI Events (GA4)</span>
     </button>
     <button class="telemetry-tab-btn" data-tab="tab-search">
       <span>Search Reach (GSC)</span>
@@ -529,17 +599,24 @@
     <div class="chart-card">
       <div class="chart-header">
         <div>
-          <div class="chart-title">30-Day Platform Engagement Timeline</div>
+          <div class="chart-title">Platform Engagement Timeline</div>
           <div style="font-size: 0.85rem; color: var(--text-muted);">Daily active users visiting documentation, web companion, and developer tools.</div>
         </div>
-        <div class="chart-legend">
-          <div class="legend-item">
-            <span class="legend-dot" style="background: #38bdf8;"></span>
-            <span>Active Users</span>
+        <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+          <div class="chart-range-pills" id="overview-range-pills">
+            <button class="range-btn active" data-days="30">30D</button>
+            <button class="range-btn" data-days="90">90D</button>
+            <button class="range-btn" data-days="all">All (200D)</button>
           </div>
-          <div class="legend-item">
-            <span class="legend-dot" style="background: #f472b6;"></span>
-            <span>Page Views</span>
+          <div class="chart-legend">
+            <div class="legend-item">
+              <span class="legend-dot" style="background: #38bdf8;"></span>
+              <span>Active Users</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background: #f472b6;"></span>
+              <span>Page Views</span>
+            </div>
           </div>
         </div>
       </div>
@@ -626,14 +703,14 @@
         </div>
         <input type="text" id="github-search" class="search-input" placeholder="Search repositories...">
       </div>
-      <table class="data-table">
+      <table class="data-table" id="table-github">
         <thead>
           <tr>
-            <th>Repository</th>
-            <th>Category</th>
-            <th style="text-align: right;">Stars</th>
-            <th style="text-align: right;">Forks</th>
-            <th style="text-align: right;">Open Issues</th>
+            <th data-sort="name" data-type="string">Repository</th>
+            <th data-sort="category" data-type="string">Category</th>
+            <th data-sort="stars" data-type="number" style="text-align: right;">Stars</th>
+            <th data-sort="forks" data-type="number" style="text-align: right;">Forks</th>
+            <th data-sort="open_issues" data-type="number" style="text-align: right;">Open Issues</th>
             <th style="text-align: right;">Link</th>
           </tr>
         </thead>
@@ -649,12 +726,12 @@
         <div style="font-weight: 700; font-family: 'Outfit', sans-serif;">Top Inbound GitHub Referrers</div>
         <div style="font-size: 0.85rem; color: var(--text-muted);">External sources sending developers to our repositories</div>
       </div>
-      <table class="data-table">
+      <table class="data-table" id="table-referrers">
         <thead>
           <tr>
-            <th>Referrer Domain</th>
-            <th style="text-align: right;">Total Views</th>
-            <th style="text-align: right;">Unique Visitors</th>
+            <th data-sort="referrer" data-type="string">Referrer Domain</th>
+            <th data-sort="count" data-type="number" style="text-align: right;">Total Views</th>
+            <th data-sort="uniques" data-type="number" style="text-align: right;">Unique Visitors</th>
           </tr>
         </thead>
         <tbody id="github-referrers-body">
@@ -664,19 +741,43 @@
     </div>
   </div>
 
-  <!-- TAB 4: WEB TRAFFIC (GA4) -->
+  <!-- TAB 4: WEB TRAFFIC & AI EVENTS (GA4) -->
   <div class="tab-panel" id="tab-traffic">
+    <!-- AI Companion Interactive Events Table -->
+    <div class="data-table-container" style="margin-bottom: 2rem;">
+      <div class="table-header-box">
+        <div>
+          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">AI Companion Interactive Event Telemetry</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Granular user engagement: multi-turn AI chat messages, model rotations, and voice interactions.</div>
+        </div>
+        <input type="text" id="events-search" class="search-input" placeholder="Filter events...">
+      </div>
+      <table class="data-table" id="table-events">
+        <thead>
+          <tr>
+            <th data-sort="event" data-type="string">Event Name</th>
+            <th data-sort="category" data-type="string">Category</th>
+            <th data-sort="count" data-type="number" style="text-align: right;">Total Events</th>
+            <th data-sort="users" data-type="number" style="text-align: right;">Unique Active Users</th>
+          </tr>
+        </thead>
+        <tbody id="ga4-events-body">
+          <!-- Populated via JS -->
+        </tbody>
+      </table>
+    </div>
+
     <div class="grid-2col">
       <div class="data-table-container">
         <div class="table-header-box">
           <div style="font-weight: 700; font-family: 'Outfit', sans-serif;">Most Visited Documentation &amp; Tools</div>
         </div>
-        <table class="data-table">
+        <table class="data-table" id="table-ga4-pages">
           <thead>
             <tr>
-              <th>Page Path</th>
-              <th style="text-align: right;">Views</th>
-              <th style="text-align: right;">Users</th>
+              <th data-sort="path" data-type="string">Page Path</th>
+              <th data-sort="views" data-type="number" style="text-align: right;">Views</th>
+              <th data-sort="users" data-type="number" style="text-align: right;">Users</th>
             </tr>
           </thead>
           <tbody id="ga4-pages-body">
@@ -689,12 +790,12 @@
         <div class="table-header-box">
           <div style="font-weight: 700; font-family: 'Outfit', sans-serif;">Traffic Acquisition Channels</div>
         </div>
-        <table class="data-table">
+        <table class="data-table" id="table-ga4-sources">
           <thead>
             <tr>
-              <th>Source / Medium</th>
-              <th style="text-align: right;">Sessions</th>
-              <th style="text-align: right;">Active Users</th>
+              <th data-sort="channel" data-type="string">Source / Medium</th>
+              <th data-sort="sessions" data-type="number" style="text-align: right;">Sessions</th>
+              <th data-sort="users" data-type="number" style="text-align: right;">Active Users</th>
             </tr>
           </thead>
           <tbody id="ga4-sources-body">
@@ -711,19 +812,43 @@
       <div class="table-header-box">
         <div>
           <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">Google Search Discovery Keywords</div>
-          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">High-intent search queries leading developers and users to the WaifuAI platform.</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">High-intent search queries leading developers and users to the WaifuAI platform (filtered &amp; clean).</div>
         </div>
+        <input type="text" id="gsc-search" class="search-input" placeholder="Filter search queries...">
       </div>
-      <table class="data-table">
+      <table class="data-table" id="table-gsc">
         <thead>
           <tr>
-            <th>Search Query</th>
-            <th style="text-align: right;">Clicks</th>
-            <th style="text-align: right;">Impressions</th>
-            <th style="text-align: right;">Average Position</th>
+            <th data-sort="query" data-type="string">Search Query</th>
+            <th data-sort="clicks" data-type="number" style="text-align: right;">Clicks</th>
+            <th data-sort="impressions" data-type="number" style="text-align: right;">Impressions</th>
+            <th data-sort="position" data-type="number" style="text-align: right;">Average Position</th>
           </tr>
         </thead>
         <tbody id="gsc-queries-body">
+          <!-- Populated via JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Top Landing Pages -->
+    <div class="data-table-container" style="margin-top: 2rem;">
+      <div class="table-header-box">
+        <div>
+          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">Top Search Landing Pages</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Platform pages attracting Google search impressions and clicks.</div>
+        </div>
+      </div>
+      <table class="data-table" id="table-gsc-pages">
+        <thead>
+          <tr>
+            <th data-sort="page" data-type="string">Landing Page URL</th>
+            <th data-sort="clicks" data-type="number" style="text-align: right;">Clicks</th>
+            <th data-sort="impressions" data-type="number" style="text-align: right;">Impressions</th>
+            <th data-sort="position" data-type="number" style="text-align: right;">Average Position</th>
+          </tr>
+        </thead>
+        <tbody id="gsc-pages-body">
           <!-- Populated via JS -->
         </tbody>
       </table>
@@ -777,6 +902,97 @@ function getBadgeClass(cat) {
   return 'intel';
 }
 
+function getEventCategory(eventName) {
+  if (eventName.includes('chat') || eventName.includes('stream') || eventName.includes('message')) return 'AI Chat';
+  if (eventName.includes('model') || eventName.includes('provider')) return 'Model Routing';
+  if (eventName.includes('tts') || eventName.includes('voice')) return 'Voice & Audio';
+  if (eventName.includes('persona') || eventName.includes('settings') || eventName.includes('visual') || eventName.includes('context')) return 'Customization';
+  if (eventName.includes('radio')) return 'Radio Player';
+  return 'Platform';
+}
+
+function getEventBadgeClass(category) {
+  if (category === 'AI Chat') return 'companion';
+  if (category === 'Model Routing') return 'mcp';
+  if (category === 'Voice & Audio') return 'web3';
+  return 'intel';
+}
+
+// Universal table sort engine
+function makeTableSortable(tableId, getData, renderFn) {
+  const table = document.getElementById(tableId);
+  if (!table) return;
+  const headers = table.querySelectorAll('th[data-sort]');
+  let currentSort = { col: null, dir: 'desc' };
+
+  headers.forEach(th => {
+    th.classList.add('sortable');
+    if (!th.querySelector('.sort-icon')) {
+      th.innerHTML += ' <span class="sort-icon">⇅</span>';
+    }
+    th.addEventListener('click', () => {
+      const col = th.getAttribute('data-sort');
+      const type = th.getAttribute('data-type') || 'number';
+      if (currentSort.col === col) {
+        currentSort.dir = currentSort.dir === 'desc' ? 'asc' : 'desc';
+      } else {
+        currentSort.col = col;
+        currentSort.dir = type === 'number' ? 'desc' : 'asc';
+      }
+
+      headers.forEach(h => {
+        h.classList.remove('sort-asc', 'sort-desc');
+        const icon = h.querySelector('.sort-icon');
+        if (icon) icon.textContent = '⇅';
+      });
+
+      th.classList.add(currentSort.dir === 'asc' ? 'sort-asc' : 'sort-desc');
+      const activeIcon = th.querySelector('.sort-icon');
+      if (activeIcon) activeIcon.textContent = currentSort.dir === 'asc' ? '▲' : '▼';
+
+      const data = [...getData()];
+      data.sort((a, b) => {
+        let valA = a[col] ?? (type === 'number' ? 0 : '');
+        let valB = b[col] ?? (type === 'number' ? 0 : '');
+        if (type === 'number') {
+          return currentSort.dir === 'asc' ? valA - valB : valB - valA;
+        } else {
+          return currentSort.dir === 'asc'
+            ? String(valA).localeCompare(String(valB))
+            : String(valB).localeCompare(String(valA));
+        }
+      });
+      renderFn(data);
+    });
+  });
+}
+
+function renderOverviewChart(timeline, rangeOption = '30') {
+  const chartEl = document.getElementById('overview-chart');
+  if (!chartEl) return;
+  chartEl.innerHTML = '';
+  if (!timeline || timeline.length === 0) return;
+
+  let sliced = timeline;
+  if (rangeOption === '30') sliced = timeline.slice(-30);
+  else if (rangeOption === '90') sliced = timeline.slice(-90);
+
+  document.getElementById('chart-date-start').textContent = sliced[0].date;
+  document.getElementById('chart-date-end').textContent = sliced[sliced.length - 1].date;
+
+  const maxVal = Math.max(...sliced.map(d => d.page_views || d.active_users || 1), 50);
+  sliced.forEach(d => {
+    const uHeight = Math.max(8, Math.round((d.active_users / maxVal) * 140));
+    const group = document.createElement('div');
+    group.className = 'bar-group';
+    group.innerHTML = `
+      <div class="chart-tooltip">${d.date}: ${d.active_users} users / ${d.page_views} views</div>
+      <div class="bar-fill users" style="height: ${uHeight}px;"></div>
+    `;
+    chartEl.appendChild(group);
+  });
+}
+
 function renderOverview(data) {
   // Sync status
   if (data.synced_at) {
@@ -786,32 +1002,33 @@ function renderOverview(data) {
 
   // KPIs
   const k = data.macro_kpis || {};
-  document.getElementById('kpi-total-projects').textContent = (k.total_projects || 663).toLocaleString();
-  document.getElementById('kpi-total-views').textContent = `${Math.round((k.total_content_views || 53239) / 1000 * 10) / 10}K`;
+  document.getElementById('kpi-total-projects').textContent = (k.total_projects || 670).toLocaleString();
+  document.getElementById('kpi-total-views').textContent = `${Math.round((k.total_content_views || 57153) / 1000 * 10) / 10}K`;
   document.getElementById('kpi-total-users').textContent = `${Math.round((k.total_web_users || 16647) / 1000 * 10) / 10}K`;
-  document.getElementById('kpi-total-stars').textContent = (k.total_stars_and_likes || 1262).toLocaleString();
+  
+  const elChats = document.getElementById('kpi-total-chats');
+  if (elChats) elChats.textContent = `${Math.round((k.total_chat_messages || 5109) / 1000 * 10) / 10}K`;
+
+  const elSwitches = document.getElementById('kpi-total-switches');
+  if (elSwitches) elSwitches.textContent = `${Math.round((k.total_model_changes || 3026) / 1000 * 10) / 10}K`;
+
+  document.getElementById('kpi-total-stars').textContent = (k.total_stars_and_likes || 1313).toLocaleString();
   document.getElementById('kpi-search-impressions').textContent = `${Math.round((k.total_search_impressions || 69231) / 1000 * 10) / 10}K`;
 
-  // Activity Chart
+  // Activity Chart default 30D
   const timeline = data.analytics?.ga4?.timeline || [];
-  const chartEl = document.getElementById('overview-chart');
-  chartEl.innerHTML = '';
-  if (timeline.length > 0) {
-    document.getElementById('chart-date-start').textContent = timeline[0].date;
-    document.getElementById('chart-date-end').textContent = timeline[timeline.length - 1].date;
+  renderOverviewChart(timeline, '30');
 
-    const maxVal = Math.max(...timeline.map(d => d.page_views || d.active_users || 1), 50);
-    timeline.forEach(d => {
-      const uHeight = Math.max(8, Math.round((d.active_users / maxVal) * 140));
-      const group = document.createElement('div');
-      group.className = 'bar-group';
-      group.innerHTML = `
-        <div class="chart-tooltip">${d.date}: ${d.active_users} users / ${d.page_views} views</div>
-        <div class="bar-fill users" style="height: ${uHeight}px;"></div>
-      `;
-      chartEl.appendChild(group);
+  // Chart range selector buttons
+  const pills = document.querySelectorAll('#overview-range-pills .range-btn');
+  pills.forEach(btn => {
+    btn.addEventListener('click', () => {
+      pills.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const days = btn.getAttribute('data-days');
+      renderOverviewChart(timeline, days);
     });
-  }
+  });
 
   // Top Repos Table (Top 7)
   const reposBody = document.getElementById('overview-repos-body');
@@ -855,6 +1072,7 @@ function renderOverview(data) {
 
 function renderWebSimCards(projects) {
   const container = document.getElementById('websim-cards-container');
+  if (!container) return;
   container.innerHTML = '';
   const sorted = [...projects].sort((a, b) => (b.likes || 0) - (a.likes || 0) || (b.views || 0) - (a.views || 0));
   sorted.forEach(p => {
@@ -884,6 +1102,7 @@ function renderWebSimCards(projects) {
 
 function renderGitHubFull(repos) {
   const tbody = document.getElementById('github-full-table-body');
+  if (!tbody) return;
   tbody.innerHTML = '';
   repos.forEach(r => {
     const tr = document.createElement('tr');
@@ -905,11 +1124,28 @@ function renderGitHubFull(repos) {
   });
 }
 
-function renderTraffic(analytics) {
-  // Pages
+function renderEventsTable(events) {
+  const tbody = document.getElementById('ga4-events-body');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  events.forEach(e => {
+    const category = getEventCategory(e.event);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">${e.event}</code></td>
+      <td><span class="badge-tag ${getEventBadgeClass(category)}">${category}</span></td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #34d399;">${e.count.toLocaleString()}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${e.users.toLocaleString()}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function renderPagesTable(pages) {
   const pagesBody = document.getElementById('ga4-pages-body');
+  if (!pagesBody) return;
   pagesBody.innerHTML = '';
-  (analytics.ga4?.top_pages || []).forEach(p => {
+  pages.forEach(p => {
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td><code style="color: var(--accent3); font-size: 0.85rem;">${p.path}</code></td>
@@ -918,11 +1154,13 @@ function renderTraffic(analytics) {
     `;
     pagesBody.appendChild(tr);
   });
+}
 
-  // Sources
+function renderSourcesTable(sources) {
   const sourcesBody = document.getElementById('ga4-sources-body');
+  if (!sourcesBody) return;
   sourcesBody.innerHTML = '';
-  (analytics.ga4?.traffic_sources || []).forEach(s => {
+  sources.forEach(s => {
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td style="font-weight: 500;">${s.channel}</td>
@@ -933,10 +1171,26 @@ function renderTraffic(analytics) {
   });
 }
 
-function renderSearch(analytics) {
+function renderTraffic(analytics) {
+  // AI Events
+  const events = (analytics.ga4?.events_summary || []).map(e => ({
+    ...e,
+    category: getEventCategory(e.event)
+  }));
+  renderEventsTable(events);
+
+  // Pages
+  renderPagesTable(analytics.ga4?.top_pages || []);
+
+  // Sources
+  renderSourcesTable(analytics.ga4?.traffic_sources || []);
+}
+
+function renderQueriesTable(queries) {
   const gscBody = document.getElementById('gsc-queries-body');
+  if (!gscBody) return;
   gscBody.innerHTML = '';
-  (analytics.gsc?.top_queries || []).forEach(q => {
+  queries.forEach(q => {
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td style="font-weight: 600; color: var(--text);">${q.query}</td>
@@ -948,8 +1202,30 @@ function renderSearch(analytics) {
   });
 }
 
+function renderGscPagesTable(pages) {
+  const gscPagesBody = document.getElementById('gsc-pages-body');
+  if (!gscPagesBody) return;
+  gscPagesBody.innerHTML = '';
+  pages.forEach(p => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><a href="${p.page}" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">${p.page.replace('https://waifuai.github.io', '') || '/'}</a></td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: #34d399; font-weight: 600;">${p.clicks.toLocaleString()}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${p.impressions.toLocaleString()}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">#${p.position}</td>
+    `;
+    gscPagesBody.appendChild(tr);
+  });
+}
+
+function renderSearch(analytics) {
+  renderQueriesTable(analytics.gsc?.top_queries || []);
+  renderGscPagesTable(analytics.gsc?.top_pages || []);
+}
+
 function renderReferrers(github) {
   const refBody = document.getElementById('github-referrers-body');
+  if (!refBody) return;
   refBody.innerHTML = '';
   (github.top_referrers || []).forEach(ref => {
     const tr = document.createElement('tr');
@@ -971,6 +1247,15 @@ function initTelemetry(data) {
   renderTraffic(data.analytics || {});
   renderSearch(data.analytics || {});
   renderReferrers(data.github || {});
+
+  // Setup click-to-sort on every table
+  makeTableSortable('table-github', () => STATS_DATA.github?.all_repos || [], renderGitHubFull);
+  makeTableSortable('table-referrers', () => STATS_DATA.github?.top_referrers || [], renderReferrers);
+  makeTableSortable('table-events', () => (STATS_DATA.analytics?.ga4?.events_summary || []).map(e => ({ ...e, category: getEventCategory(e.event) })), renderEventsTable);
+  makeTableSortable('table-ga4-pages', () => STATS_DATA.analytics?.ga4?.top_pages || [], renderPagesTable);
+  makeTableSortable('table-ga4-sources', () => STATS_DATA.analytics?.ga4?.traffic_sources || [], renderSourcesTable);
+  makeTableSortable('table-gsc', () => STATS_DATA.analytics?.gsc?.top_queries || [], renderQueriesTable);
+  makeTableSortable('table-gsc-pages', () => STATS_DATA.analytics?.gsc?.top_pages || [], renderGscPagesTable);
 }
 
 // 1. Instant offline / file:// protocol initialization from stats.js
@@ -986,8 +1271,8 @@ if (window.location.protocol.startsWith('http')) {
     .catch(err => console.log('HTTP stats fetch note:', err));
 }
 
-// WebSim Search filter
-document.getElementById('websim-search').addEventListener('input', e => {
+// Live Search Filters
+document.getElementById('websim-search')?.addEventListener('input', e => {
   if (!STATS_DATA) return;
   const q = e.target.value.toLowerCase().trim();
   const all = [...(STATS_DATA.websim?.top_projects || [])].sort((a, b) => (b.likes || 0) - (a.likes || 0) || (b.views || 0) - (a.views || 0));
@@ -995,13 +1280,28 @@ document.getElementById('websim-search').addEventListener('input', e => {
   renderWebSimCards(filtered);
 });
 
-// GitHub Search filter
-document.getElementById('github-search').addEventListener('input', e => {
+document.getElementById('github-search')?.addEventListener('input', e => {
   if (!STATS_DATA) return;
   const q = e.target.value.toLowerCase().trim();
   const all = STATS_DATA.github?.all_repos || [];
   const filtered = all.filter(r => r.name.toLowerCase().includes(q) || r.category.toLowerCase().includes(q));
   renderGitHubFull(filtered);
+});
+
+document.getElementById('events-search')?.addEventListener('input', e => {
+  if (!STATS_DATA) return;
+  const q = e.target.value.toLowerCase().trim();
+  const all = (STATS_DATA.analytics?.ga4?.events_summary || []).map(e => ({ ...e, category: getEventCategory(e.event) }));
+  const filtered = all.filter(ev => ev.event.toLowerCase().includes(q) || ev.category.toLowerCase().includes(q));
+  renderEventsTable(filtered);
+});
+
+document.getElementById('gsc-search')?.addEventListener('input', e => {
+  if (!STATS_DATA) return;
+  const q = e.target.value.toLowerCase().trim();
+  const all = STATS_DATA.analytics?.gsc?.top_queries || [];
+  const filtered = all.filter(item => item.query.toLowerCase().includes(q));
+  renderQueriesTable(filtered);
 });
 </script>
 

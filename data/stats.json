@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-11T18:00:17.479710",
+  "synced_at": "2026-09-12T10:56:38.095079",
   "source": "all-db unified cross-database engine",
   "macro_kpis": {
     "total_projects": 670,
@@ -13,7 +13,10 @@
     "websim_likes": 1150,
     "total_web_users": 16647,
     "total_search_impressions": 69231,
-    "total_search_clicks": 3688
+    "total_search_clicks": 3688,
+    "total_chat_messages": 5109,
+    "total_model_changes": 3026,
+    "total_voice_actions": 809
   },
   "github": {
     "repos_count": 52,
@@ -1069,6 +1072,846 @@
       ],
       "timeline": [
         {
+          "date": "2026-02-22",
+          "active_users": 17,
+          "sessions": 17,
+          "page_views": 25
+        },
+        {
+          "date": "2026-02-23",
+          "active_users": 25,
+          "sessions": 27,
+          "page_views": 51
+        },
+        {
+          "date": "2026-02-24",
+          "active_users": 7,
+          "sessions": 8,
+          "page_views": 12
+        },
+        {
+          "date": "2026-02-25",
+          "active_users": 10,
+          "sessions": 13,
+          "page_views": 18
+        },
+        {
+          "date": "2026-02-26",
+          "active_users": 20,
+          "sessions": 23,
+          "page_views": 49
+        },
+        {
+          "date": "2026-02-27",
+          "active_users": 9,
+          "sessions": 11,
+          "page_views": 12
+        },
+        {
+          "date": "2026-02-28",
+          "active_users": 7,
+          "sessions": 7,
+          "page_views": 14
+        },
+        {
+          "date": "2026-03-01",
+          "active_users": 5,
+          "sessions": 6,
+          "page_views": 6
+        },
+        {
+          "date": "2026-03-02",
+          "active_users": 20,
+          "sessions": 24,
+          "page_views": 46
+        },
+        {
+          "date": "2026-03-03",
+          "active_users": 58,
+          "sessions": 61,
+          "page_views": 142
+        },
+        {
+          "date": "2026-03-04",
+          "active_users": 14,
+          "sessions": 14,
+          "page_views": 28
+        },
+        {
+          "date": "2026-03-05",
+          "active_users": 11,
+          "sessions": 12,
+          "page_views": 15
+        },
+        {
+          "date": "2026-03-06",
+          "active_users": 7,
+          "sessions": 7,
+          "page_views": 7
+        },
+        {
+          "date": "2026-03-07",
+          "active_users": 24,
+          "sessions": 25,
+          "page_views": 45
+        },
+        {
+          "date": "2026-03-08",
+          "active_users": 18,
+          "sessions": 23,
+          "page_views": 37
+        },
+        {
+          "date": "2026-03-09",
+          "active_users": 12,
+          "sessions": 14,
+          "page_views": 26
+        },
+        {
+          "date": "2026-03-10",
+          "active_users": 17,
+          "sessions": 17,
+          "page_views": 29
+        },
+        {
+          "date": "2026-03-11",
+          "active_users": 16,
+          "sessions": 20,
+          "page_views": 37
+        },
+        {
+          "date": "2026-03-12",
+          "active_users": 21,
+          "sessions": 26,
+          "page_views": 42
+        },
+        {
+          "date": "2026-03-13",
+          "active_users": 20,
+          "sessions": 23,
+          "page_views": 45
+        },
+        {
+          "date": "2026-03-14",
+          "active_users": 13,
+          "sessions": 16,
+          "page_views": 23
+        },
+        {
+          "date": "2026-03-15",
+          "active_users": 23,
+          "sessions": 25,
+          "page_views": 39
+        },
+        {
+          "date": "2026-03-16",
+          "active_users": 19,
+          "sessions": 20,
+          "page_views": 22
+        },
+        {
+          "date": "2026-03-17",
+          "active_users": 10,
+          "sessions": 11,
+          "page_views": 11
+        },
+        {
+          "date": "2026-03-18",
+          "active_users": 20,
+          "sessions": 20,
+          "page_views": 28
+        },
+        {
+          "date": "2026-03-19",
+          "active_users": 7,
+          "sessions": 10,
+          "page_views": 15
+        },
+        {
+          "date": "2026-03-20",
+          "active_users": 18,
+          "sessions": 18,
+          "page_views": 19
+        },
+        {
+          "date": "2026-03-21",
+          "active_users": 13,
+          "sessions": 18,
+          "page_views": 22
+        },
+        {
+          "date": "2026-03-22",
+          "active_users": 18,
+          "sessions": 25,
+          "page_views": 57
+        },
+        {
+          "date": "2026-03-23",
+          "active_users": 46,
+          "sessions": 54,
+          "page_views": 184
+        },
+        {
+          "date": "2026-03-24",
+          "active_users": 21,
+          "sessions": 30,
+          "page_views": 37
+        },
+        {
+          "date": "2026-03-25",
+          "active_users": 16,
+          "sessions": 23,
+          "page_views": 42
+        },
+        {
+          "date": "2026-03-26",
+          "active_users": 15,
+          "sessions": 24,
+          "page_views": 38
+        },
+        {
+          "date": "2026-03-27",
+          "active_users": 17,
+          "sessions": 30,
+          "page_views": 41
+        },
+        {
+          "date": "2026-03-28",
+          "active_users": 34,
+          "sessions": 48,
+          "page_views": 92
+        },
+        {
+          "date": "2026-03-29",
+          "active_users": 31,
+          "sessions": 40,
+          "page_views": 85
+        },
+        {
+          "date": "2026-03-30",
+          "active_users": 41,
+          "sessions": 56,
+          "page_views": 100
+        },
+        {
+          "date": "2026-03-31",
+          "active_users": 31,
+          "sessions": 47,
+          "page_views": 93
+        },
+        {
+          "date": "2026-04-01",
+          "active_users": 23,
+          "sessions": 28,
+          "page_views": 42
+        },
+        {
+          "date": "2026-04-02",
+          "active_users": 33,
+          "sessions": 39,
+          "page_views": 71
+        },
+        {
+          "date": "2026-04-03",
+          "active_users": 24,
+          "sessions": 28,
+          "page_views": 37
+        },
+        {
+          "date": "2026-04-04",
+          "active_users": 13,
+          "sessions": 14,
+          "page_views": 17
+        },
+        {
+          "date": "2026-04-05",
+          "active_users": 22,
+          "sessions": 26,
+          "page_views": 27
+        },
+        {
+          "date": "2026-04-06",
+          "active_users": 22,
+          "sessions": 26,
+          "page_views": 36
+        },
+        {
+          "date": "2026-04-07",
+          "active_users": 24,
+          "sessions": 27,
+          "page_views": 28
+        },
+        {
+          "date": "2026-04-08",
+          "active_users": 22,
+          "sessions": 23,
+          "page_views": 33
+        },
+        {
+          "date": "2026-04-09",
+          "active_users": 18,
+          "sessions": 21,
+          "page_views": 26
+        },
+        {
+          "date": "2026-04-10",
+          "active_users": 20,
+          "sessions": 21,
+          "page_views": 27
+        },
+        {
+          "date": "2026-04-11",
+          "active_users": 21,
+          "sessions": 21,
+          "page_views": 23
+        },
+        {
+          "date": "2026-04-12",
+          "active_users": 17,
+          "sessions": 18,
+          "page_views": 21
+        },
+        {
+          "date": "2026-04-13",
+          "active_users": 22,
+          "sessions": 23,
+          "page_views": 31
+        },
+        {
+          "date": "2026-04-14",
+          "active_users": 28,
+          "sessions": 29,
+          "page_views": 33
+        },
+        {
+          "date": "2026-04-15",
+          "active_users": 25,
+          "sessions": 27,
+          "page_views": 35
+        },
+        {
+          "date": "2026-04-16",
+          "active_users": 19,
+          "sessions": 22,
+          "page_views": 35
+        },
+        {
+          "date": "2026-04-17",
+          "active_users": 20,
+          "sessions": 21,
+          "page_views": 25
+        },
+        {
+          "date": "2026-04-18",
+          "active_users": 17,
+          "sessions": 19,
+          "page_views": 27
+        },
+        {
+          "date": "2026-04-19",
+          "active_users": 23,
+          "sessions": 23,
+          "page_views": 29
+        },
+        {
+          "date": "2026-04-20",
+          "active_users": 29,
+          "sessions": 30,
+          "page_views": 37
+        },
+        {
+          "date": "2026-04-21",
+          "active_users": 22,
+          "sessions": 23,
+          "page_views": 30
+        },
+        {
+          "date": "2026-04-22",
+          "active_users": 39,
+          "sessions": 42,
+          "page_views": 79
+        },
+        {
+          "date": "2026-04-23",
+          "active_users": 51,
+          "sessions": 51,
+          "page_views": 83
+        },
+        {
+          "date": "2026-04-24",
+          "active_users": 26,
+          "sessions": 26,
+          "page_views": 40
+        },
+        {
+          "date": "2026-04-25",
+          "active_users": 20,
+          "sessions": 23,
+          "page_views": 30
+        },
+        {
+          "date": "2026-04-26",
+          "active_users": 32,
+          "sessions": 32,
+          "page_views": 37
+        },
+        {
+          "date": "2026-04-27",
+          "active_users": 20,
+          "sessions": 21,
+          "page_views": 24
+        },
+        {
+          "date": "2026-04-28",
+          "active_users": 26,
+          "sessions": 28,
+          "page_views": 37
+        },
+        {
+          "date": "2026-04-29",
+          "active_users": 24,
+          "sessions": 26,
+          "page_views": 35
+        },
+        {
+          "date": "2026-04-30",
+          "active_users": 26,
+          "sessions": 26,
+          "page_views": 41
+        },
+        {
+          "date": "2026-05-01",
+          "active_users": 31,
+          "sessions": 32,
+          "page_views": 44
+        },
+        {
+          "date": "2026-05-02",
+          "active_users": 32,
+          "sessions": 32,
+          "page_views": 42
+        },
+        {
+          "date": "2026-05-03",
+          "active_users": 34,
+          "sessions": 37,
+          "page_views": 67
+        },
+        {
+          "date": "2026-05-04",
+          "active_users": 37,
+          "sessions": 39,
+          "page_views": 53
+        },
+        {
+          "date": "2026-05-05",
+          "active_users": 38,
+          "sessions": 44,
+          "page_views": 55
+        },
+        {
+          "date": "2026-05-06",
+          "active_users": 41,
+          "sessions": 42,
+          "page_views": 70
+        },
+        {
+          "date": "2026-05-07",
+          "active_users": 39,
+          "sessions": 42,
+          "page_views": 57
+        },
+        {
+          "date": "2026-05-08",
+          "active_users": 37,
+          "sessions": 40,
+          "page_views": 59
+        },
+        {
+          "date": "2026-05-09",
+          "active_users": 38,
+          "sessions": 38,
+          "page_views": 51
+        },
+        {
+          "date": "2026-05-10",
+          "active_users": 53,
+          "sessions": 57,
+          "page_views": 83
+        },
+        {
+          "date": "2026-05-11",
+          "active_users": 72,
+          "sessions": 78,
+          "page_views": 119
+        },
+        {
+          "date": "2026-05-12",
+          "active_users": 65,
+          "sessions": 69,
+          "page_views": 96
+        },
+        {
+          "date": "2026-05-13",
+          "active_users": 76,
+          "sessions": 79,
+          "page_views": 118
+        },
+        {
+          "date": "2026-05-14",
+          "active_users": 42,
+          "sessions": 48,
+          "page_views": 58
+        },
+        {
+          "date": "2026-05-15",
+          "active_users": 56,
+          "sessions": 58,
+          "page_views": 91
+        },
+        {
+          "date": "2026-05-16",
+          "active_users": 57,
+          "sessions": 60,
+          "page_views": 100
+        },
+        {
+          "date": "2026-05-17",
+          "active_users": 72,
+          "sessions": 81,
+          "page_views": 113
+        },
+        {
+          "date": "2026-05-18",
+          "active_users": 80,
+          "sessions": 85,
+          "page_views": 135
+        },
+        {
+          "date": "2026-05-19",
+          "active_users": 56,
+          "sessions": 59,
+          "page_views": 78
+        },
+        {
+          "date": "2026-05-20",
+          "active_users": 123,
+          "sessions": 127,
+          "page_views": 188
+        },
+        {
+          "date": "2026-05-21",
+          "active_users": 48,
+          "sessions": 54,
+          "page_views": 201
+        },
+        {
+          "date": "2026-05-22",
+          "active_users": 176,
+          "sessions": 185,
+          "page_views": 332
+        },
+        {
+          "date": "2026-05-23",
+          "active_users": 60,
+          "sessions": 61,
+          "page_views": 84
+        },
+        {
+          "date": "2026-05-24",
+          "active_users": 40,
+          "sessions": 41,
+          "page_views": 62
+        },
+        {
+          "date": "2026-05-25",
+          "active_users": 38,
+          "sessions": 41,
+          "page_views": 54
+        },
+        {
+          "date": "2026-05-26",
+          "active_users": 36,
+          "sessions": 38,
+          "page_views": 61
+        },
+        {
+          "date": "2026-05-27",
+          "active_users": 58,
+          "sessions": 63,
+          "page_views": 96
+        },
+        {
+          "date": "2026-05-28",
+          "active_users": 53,
+          "sessions": 54,
+          "page_views": 63
+        },
+        {
+          "date": "2026-05-29",
+          "active_users": 52,
+          "sessions": 58,
+          "page_views": 107
+        },
+        {
+          "date": "2026-05-30",
+          "active_users": 78,
+          "sessions": 84,
+          "page_views": 109
+        },
+        {
+          "date": "2026-05-31",
+          "active_users": 94,
+          "sessions": 98,
+          "page_views": 164
+        },
+        {
+          "date": "2026-06-01",
+          "active_users": 89,
+          "sessions": 92,
+          "page_views": 128
+        },
+        {
+          "date": "2026-06-02",
+          "active_users": 71,
+          "sessions": 72,
+          "page_views": 98
+        },
+        {
+          "date": "2026-06-03",
+          "active_users": 56,
+          "sessions": 61,
+          "page_views": 83
+        },
+        {
+          "date": "2026-06-04",
+          "active_users": 55,
+          "sessions": 59,
+          "page_views": 80
+        },
+        {
+          "date": "2026-06-05",
+          "active_users": 66,
+          "sessions": 69,
+          "page_views": 131
+        },
+        {
+          "date": "2026-06-06",
+          "active_users": 70,
+          "sessions": 72,
+          "page_views": 98
+        },
+        {
+          "date": "2026-06-07",
+          "active_users": 93,
+          "sessions": 98,
+          "page_views": 117
+        },
+        {
+          "date": "2026-06-08",
+          "active_users": 92,
+          "sessions": 98,
+          "page_views": 129
+        },
+        {
+          "date": "2026-06-09",
+          "active_users": 71,
+          "sessions": 81,
+          "page_views": 117
+        },
+        {
+          "date": "2026-06-10",
+          "active_users": 203,
+          "sessions": 209,
+          "page_views": 296
+        },
+        {
+          "date": "2026-06-11",
+          "active_users": 69,
+          "sessions": 72,
+          "page_views": 103
+        },
+        {
+          "date": "2026-06-12",
+          "active_users": 100,
+          "sessions": 108,
+          "page_views": 156
+        },
+        {
+          "date": "2026-06-13",
+          "active_users": 97,
+          "sessions": 104,
+          "page_views": 157
+        },
+        {
+          "date": "2026-06-14",
+          "active_users": 120,
+          "sessions": 126,
+          "page_views": 180
+        },
+        {
+          "date": "2026-06-15",
+          "active_users": 89,
+          "sessions": 94,
+          "page_views": 140
+        },
+        {
+          "date": "2026-06-16",
+          "active_users": 71,
+          "sessions": 74,
+          "page_views": 110
+        },
+        {
+          "date": "2026-06-17",
+          "active_users": 74,
+          "sessions": 81,
+          "page_views": 235
+        },
+        {
+          "date": "2026-06-18",
+          "active_users": 82,
+          "sessions": 90,
+          "page_views": 118
+        },
+        {
+          "date": "2026-06-19",
+          "active_users": 72,
+          "sessions": 79,
+          "page_views": 105
+        },
+        {
+          "date": "2026-06-20",
+          "active_users": 59,
+          "sessions": 68,
+          "page_views": 122
+        },
+        {
+          "date": "2026-06-21",
+          "active_users": 79,
+          "sessions": 88,
+          "page_views": 138
+        },
+        {
+          "date": "2026-06-22",
+          "active_users": 71,
+          "sessions": 79,
+          "page_views": 112
+        },
+        {
+          "date": "2026-06-23",
+          "active_users": 73,
+          "sessions": 77,
+          "page_views": 100
+        },
+        {
+          "date": "2026-06-24",
+          "active_users": 79,
+          "sessions": 92,
+          "page_views": 117
+        },
+        {
+          "date": "2026-06-25",
+          "active_users": 69,
+          "sessions": 78,
+          "page_views": 98
+        },
+        {
+          "date": "2026-06-26",
+          "active_users": 105,
+          "sessions": 111,
+          "page_views": 136
+        },
+        {
+          "date": "2026-06-27",
+          "active_users": 92,
+          "sessions": 97,
+          "page_views": 121
+        },
+        {
+          "date": "2026-06-28",
+          "active_users": 78,
+          "sessions": 80,
+          "page_views": 233
+        },
+        {
+          "date": "2026-06-29",
+          "active_users": 69,
+          "sessions": 85,
+          "page_views": 135
+        },
+        {
+          "date": "2026-06-30",
+          "active_users": 66,
+          "sessions": 71,
+          "page_views": 82
+        },
+        {
+          "date": "2026-07-01",
+          "active_users": 90,
+          "sessions": 93,
+          "page_views": 140
+        },
+        {
+          "date": "2026-07-02",
+          "active_users": 106,
+          "sessions": 116,
+          "page_views": 179
+        },
+        {
+          "date": "2026-07-03",
+          "active_users": 85,
+          "sessions": 88,
+          "page_views": 109
+        },
+        {
+          "date": "2026-07-04",
+          "active_users": 105,
+          "sessions": 113,
+          "page_views": 185
+        },
+        {
+          "date": "2026-07-05",
+          "active_users": 97,
+          "sessions": 108,
+          "page_views": 147
+        },
+        {
+          "date": "2026-07-06",
+          "active_users": 97,
+          "sessions": 100,
+          "page_views": 141
+        },
+        {
+          "date": "2026-07-07",
+          "active_users": 115,
+          "sessions": 122,
+          "page_views": 202
+        },
+        {
+          "date": "2026-07-08",
+          "active_users": 113,
+          "sessions": 121,
+          "page_views": 183
+        },
+        {
+          "date": "2026-07-09",
+          "active_users": 90,
+          "sessions": 98,
+          "page_views": 145
+        },
+        {
+          "date": "2026-07-10",
+          "active_users": 93,
+          "sessions": 106,
+          "page_views": 138
+        },
+        {
+          "date": "2026-07-11",
+          "active_users": 171,
+          "sessions": 177,
+          "page_views": 250
+        },
+        {
           "date": "2026-07-12",
           "active_users": 149,
           "sessions": 157,
@@ -1519,6 +2362,18 @@
           "title": "LLM Providers - WaifuAI Docs",
           "views": 1,
           "users": 1
+        },
+        {
+          "path": "/app/docs/memory.html",
+          "title": "Memory & Context Settings - WaifuAI Docs",
+          "views": 1,
+          "users": 1
+        },
+        {
+          "path": "/research-text/",
+          "title": "Research Documentation Hub | WaifuAI",
+          "views": 0,
+          "users": 1
         }
       ],
       "traffic_sources": [
@@ -1571,8 +2426,442 @@
           "channel": "duckduckgo / organic",
           "sessions": 5,
           "users": 5
+        },
+        {
+          "channel": "yandex.ru / referral",
+          "sessions": 3,
+          "users": 3
+        },
+        {
+          "channel": "t.co / referral",
+          "sessions": 3,
+          "users": 3
+        },
+        {
+          "channel": "html-classic.itch.zone / referral",
+          "sessions": 3,
+          "users": 3
+        },
+        {
+          "channel": "cn.bing.com / referral",
+          "sessions": 2,
+          "users": 2
+        },
+        {
+          "channel": "yandex.com.tr / referral",
+          "sessions": 1,
+          "users": 1
+        },
+        {
+          "channel": "yandex / organic",
+          "sessions": 1,
+          "users": 1
+        },
+        {
+          "channel": "yahoo / organic",
+          "sessions": 1,
+          "users": 1
+        },
+        {
+          "channel": "y8l.com / referral",
+          "sessions": 1,
+          "users": 1
+        },
+        {
+          "channel": "search.brave.com / referral",
+          "sessions": 1,
+          "users": 1
+        },
+        {
+          "channel": "message / ",
+          "sessions": 1,
+          "users": 1
+        },
+        {
+          "channel": "id.search.yahoo.com / referral",
+          "sessions": 1,
+          "users": 1
         }
-      ]
+      ],
+      "events_summary": [
+        {
+          "event": "page_view",
+          "count": 11363,
+          "users": 6828
+        },
+        {
+          "event": "chat_message_sent",
+          "count": 5109,
+          "users": 924
+        },
+        {
+          "event": "session_start",
+          "count": 4397,
+          "users": 4077
+        },
+        {
+          "event": "first_visit",
+          "count": 3705,
+          "users": 3690
+        },
+        {
+          "event": "scroll",
+          "count": 3460,
+          "users": 1968
+        },
+        {
+          "event": "settings_submenu_opened",
+          "count": 3364,
+          "users": 807
+        },
+        {
+          "event": "user_engagement",
+          "count": 3050,
+          "users": 2044
+        },
+        {
+          "event": "model_changed",
+          "count": 3026,
+          "users": 1024
+        },
+        {
+          "event": "llm_stream_completed",
+          "count": 845,
+          "users": 30
+        },
+        {
+          "event": "tts_action",
+          "count": 666,
+          "users": 54
+        },
+        {
+          "event": "cta_click",
+          "count": 535,
+          "users": 298
+        },
+        {
+          "event": "click",
+          "count": 529,
+          "users": 296
+        },
+        {
+          "event": "llm_request_started",
+          "count": 447,
+          "users": 1
+        },
+        {
+          "event": "llm_stream_started",
+          "count": 440,
+          "users": 1
+        },
+        {
+          "event": "message_deleted",
+          "count": 360,
+          "users": 11
+        },
+        {
+          "event": "app_error",
+          "count": 101,
+          "users": 58
+        },
+        {
+          "event": "voice_input_used",
+          "count": 100,
+          "users": 35
+        },
+        {
+          "event": "settings_opened",
+          "count": 81,
+          "users": 40
+        },
+        {
+          "event": "voice_enabled_toggle",
+          "count": 65,
+          "users": 18
+        },
+        {
+          "event": "visual_settings_updated",
+          "count": 56,
+          "users": 23
+        },
+        {
+          "event": "tts_played",
+          "count": 43,
+          "users": 12
+        },
+        {
+          "event": "radio_volume_changed",
+          "count": 25,
+          "users": 9
+        },
+        {
+          "event": "languages_reset",
+          "count": 24,
+          "users": 13
+        },
+        {
+          "event": "radio_toggle",
+          "count": 23,
+          "users": 9
+        },
+        {
+          "event": "automation_settings_updated",
+          "count": 22,
+          "users": 7
+        },
+        {
+          "event": "voice_changed",
+          "count": 21,
+          "users": 12
+        },
+        {
+          "event": "message_copied",
+          "count": 18,
+          "users": 13
+        },
+        {
+          "event": "auto_offline_tripped",
+          "count": 17,
+          "users": 10
+        },
+        {
+          "event": "persona_updated",
+          "count": 16,
+          "users": 11
+        },
+        {
+          "event": "llm_model_changed",
+          "count": 10,
+          "users": 3
+        },
+        {
+          "event": "context_settings_updated",
+          "count": 10,
+          "users": 5
+        },
+        {
+          "event": "background_changed",
+          "count": 9,
+          "users": 1
+        },
+        {
+          "event": "llm_provider_changed",
+          "count": 8,
+          "users": 4
+        },
+        {
+          "event": "model_gallery_opened",
+          "count": 4,
+          "users": 4
+        },
+        {
+          "event": "persona_reset",
+          "count": 2,
+          "users": 2
+        },
+        {
+          "event": "external_link_clicked",
+          "count": 1,
+          "users": 1
+        }
+      ],
+      "events_daily": [
+        {
+          "date": "2026-05-11",
+          "event": "tts_action",
+          "count": 329,
+          "users": 5
+        },
+        {
+          "date": "2026-05-22",
+          "event": "model_changed",
+          "count": 239,
+          "users": 49
+        },
+        {
+          "date": "2026-06-10",
+          "event": "model_changed",
+          "count": 228,
+          "users": 75
+        },
+        {
+          "date": "2026-07-23",
+          "event": "chat_message_sent",
+          "count": 284,
+          "users": 27
+        },
+        {
+          "date": "2026-08-22",
+          "event": "model_changed",
+          "count": 281,
+          "users": 105
+        },
+        {
+          "date": "2026-08-22",
+          "event": "chat_message_sent",
+          "count": 234,
+          "users": 82
+        },
+        {
+          "date": "2026-08-23",
+          "event": "model_changed",
+          "count": 285,
+          "users": 107
+        },
+        {
+          "date": "2026-08-23",
+          "event": "chat_message_sent",
+          "count": 229,
+          "users": 61
+        },
+        {
+          "date": "2026-08-24",
+          "event": "chat_message_sent",
+          "count": 267,
+          "users": 75
+        },
+        {
+          "date": "2026-08-25",
+          "event": "model_changed",
+          "count": 435,
+          "users": 108
+        },
+        {
+          "date": "2026-08-25",
+          "event": "chat_message_sent",
+          "count": 313,
+          "users": 73
+        },
+        {
+          "date": "2026-08-26",
+          "event": "model_changed",
+          "count": 283,
+          "users": 116
+        },
+        {
+          "date": "2026-08-26",
+          "event": "chat_message_sent",
+          "count": 225,
+          "users": 78
+        },
+        {
+          "date": "2026-08-27",
+          "event": "chat_message_sent",
+          "count": 244,
+          "users": 62
+        },
+        {
+          "date": "2026-08-28",
+          "event": "chat_message_sent",
+          "count": 634,
+          "users": 69
+        },
+        {
+          "date": "2026-08-28",
+          "event": "model_changed",
+          "count": 286,
+          "users": 101
+        },
+        {
+          "date": "2026-08-29",
+          "event": "chat_message_sent",
+          "count": 498,
+          "users": 63
+        },
+        {
+          "date": "2026-08-29",
+          "event": "model_changed",
+          "count": 292,
+          "users": 97
+        },
+        {
+          "date": "2026-08-30",
+          "event": "chat_message_sent",
+          "count": 697,
+          "users": 50
+        },
+        {
+          "date": "2026-08-31",
+          "event": "chat_message_sent",
+          "count": 589,
+          "users": 65
+        },
+        {
+          "date": "2026-08-31",
+          "event": "model_changed",
+          "count": 246,
+          "users": 82
+        },
+        {
+          "date": "2026-09-01",
+          "event": "chat_message_sent",
+          "count": 207,
+          "users": 47
+        },
+        {
+          "date": "2026-09-02",
+          "event": "chat_message_sent",
+          "count": 205,
+          "users": 37
+        },
+        {
+          "date": "2026-09-07",
+          "event": "chat_message_sent",
+          "count": 173,
+          "users": 42
+        },
+        {
+          "date": "2026-09-07",
+          "event": "model_changed",
+          "count": 143,
+          "users": 64
+        },
+        {
+          "date": "2026-09-07",
+          "event": "tts_action",
+          "count": 122,
+          "users": 17
+        },
+        {
+          "date": "2026-09-08",
+          "event": "chat_message_sent",
+          "count": 179,
+          "users": 54
+        },
+        {
+          "date": "2026-09-08",
+          "event": "model_changed",
+          "count": 138,
+          "users": 69
+        },
+        {
+          "date": "2026-09-08",
+          "event": "tts_action",
+          "count": 134,
+          "users": 17
+        },
+        {
+          "date": "2026-09-09",
+          "event": "model_changed",
+          "count": 170,
+          "users": 51
+        },
+        {
+          "date": "2026-09-09",
+          "event": "chat_message_sent",
+          "count": 131,
+          "users": 39
+        },
+        {
+          "date": "2026-09-09",
+          "event": "tts_action",
+          "count": 81,
+          "users": 15
+        }
+      ],
+      "total_chat_messages": 5109,
+      "total_model_changes": 3026,
+      "total_voice_actions": 809
     },
     "gsc": {
       "clicks": 3688,
@@ -1584,6 +2873,2490 @@
         "2026-09-07"
       ],
       "timeline": [
+        {
+          "date": "2025-09-04",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-05",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-06",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-07",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-08",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-09",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-10",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-11",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-12",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-13",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-14",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-15",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-16",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-17",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-18",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-19",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-20",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-21",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-22",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-23",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-24",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-25",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-26",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-27",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-28",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-29",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-09-30",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-01",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-02",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-03",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-04",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-05",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-06",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-07",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-08",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-09",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-10",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-11",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-12",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-13",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-14",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-15",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-16",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-17",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-18",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-19",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-20",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-21",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-22",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-23",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-24",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-25",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-26",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-27",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-28",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-29",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-30",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-10-31",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-01",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-02",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-03",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-04",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-05",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-06",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-07",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-08",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-09",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-10",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-11",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-12",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-13",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-14",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-15",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-16",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-17",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-18",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-19",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-20",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-21",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-22",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-23",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-24",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-25",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-26",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-27",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-28",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-29",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-11-30",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-01",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-02",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-03",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-04",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-05",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-06",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-07",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-08",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-09",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-10",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-11",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-12",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-13",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-14",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-15",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-16",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-17",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-18",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-19",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-20",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-21",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-22",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-23",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-24",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-25",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-26",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-27",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-28",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 84.0
+        },
+        {
+          "date": "2025-12-29",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2025-12-30",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 6.0
+        },
+        {
+          "date": "2025-12-31",
+          "clicks": 1,
+          "impressions": 2,
+          "position": 3.0
+        },
+        {
+          "date": "2026-01-01",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-01-02",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 1.0
+        },
+        {
+          "date": "2026-01-03",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 1.0
+        },
+        {
+          "date": "2026-01-04",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 94.0
+        },
+        {
+          "date": "2026-01-05",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-01-06",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-01-07",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 6.0
+        },
+        {
+          "date": "2026-01-08",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 50.5
+        },
+        {
+          "date": "2026-01-09",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-01-10",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 9.0
+        },
+        {
+          "date": "2026-01-11",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 21.2
+        },
+        {
+          "date": "2026-01-12",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 7.3
+        },
+        {
+          "date": "2026-01-13",
+          "clicks": 1,
+          "impressions": 2,
+          "position": 5.0
+        },
+        {
+          "date": "2026-01-14",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 8.5
+        },
+        {
+          "date": "2026-01-15",
+          "clicks": 1,
+          "impressions": 9,
+          "position": 13.3
+        },
+        {
+          "date": "2026-01-16",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 3.5
+        },
+        {
+          "date": "2026-01-17",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 8.0
+        },
+        {
+          "date": "2026-01-18",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 26.0
+        },
+        {
+          "date": "2026-01-19",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 3.2
+        },
+        {
+          "date": "2026-01-20",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 10.0
+        },
+        {
+          "date": "2026-01-21",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 10.5
+        },
+        {
+          "date": "2026-01-22",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 28.5
+        },
+        {
+          "date": "2026-01-23",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 10.0
+        },
+        {
+          "date": "2026-01-24",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 13.1
+        },
+        {
+          "date": "2026-01-25",
+          "clicks": 0,
+          "impressions": 8,
+          "position": 9.4
+        },
+        {
+          "date": "2026-01-26",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-01-27",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 6.0
+        },
+        {
+          "date": "2026-01-28",
+          "clicks": 1,
+          "impressions": 8,
+          "position": 9.6
+        },
+        {
+          "date": "2026-01-29",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 9.1
+        },
+        {
+          "date": "2026-01-30",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 42.4
+        },
+        {
+          "date": "2026-01-31",
+          "clicks": 1,
+          "impressions": 15,
+          "position": 17.6
+        },
+        {
+          "date": "2026-02-01",
+          "clicks": 0,
+          "impressions": 19,
+          "position": 13.5
+        },
+        {
+          "date": "2026-02-02",
+          "clicks": 1,
+          "impressions": 13,
+          "position": 7.0
+        },
+        {
+          "date": "2026-02-03",
+          "clicks": 0,
+          "impressions": 21,
+          "position": 41.3
+        },
+        {
+          "date": "2026-02-04",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 32.6
+        },
+        {
+          "date": "2026-02-05",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 37.0
+        },
+        {
+          "date": "2026-02-06",
+          "clicks": 0,
+          "impressions": 8,
+          "position": 31.9
+        },
+        {
+          "date": "2026-02-07",
+          "clicks": 0,
+          "impressions": 16,
+          "position": 6.8
+        },
+        {
+          "date": "2026-02-08",
+          "clicks": 2,
+          "impressions": 17,
+          "position": 30.5
+        },
+        {
+          "date": "2026-02-09",
+          "clicks": 0,
+          "impressions": 8,
+          "position": 18.4
+        },
+        {
+          "date": "2026-02-10",
+          "clicks": 0,
+          "impressions": 12,
+          "position": 10.9
+        },
+        {
+          "date": "2026-02-11",
+          "clicks": 0,
+          "impressions": 20,
+          "position": 29.5
+        },
+        {
+          "date": "2026-02-12",
+          "clicks": 1,
+          "impressions": 13,
+          "position": 21.0
+        },
+        {
+          "date": "2026-02-13",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 6.8
+        },
+        {
+          "date": "2026-02-14",
+          "clicks": 0,
+          "impressions": 11,
+          "position": 27.9
+        },
+        {
+          "date": "2026-02-15",
+          "clicks": 2,
+          "impressions": 15,
+          "position": 20.2
+        },
+        {
+          "date": "2026-02-16",
+          "clicks": 2,
+          "impressions": 20,
+          "position": 12.2
+        },
+        {
+          "date": "2026-02-17",
+          "clicks": 1,
+          "impressions": 15,
+          "position": 34.9
+        },
+        {
+          "date": "2026-02-18",
+          "clicks": 0,
+          "impressions": 13,
+          "position": 13.2
+        },
+        {
+          "date": "2026-02-19",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 7.0
+        },
+        {
+          "date": "2026-02-20",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-02-21",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-02-22",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-02-23",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-02-24",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-02-25",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-02-26",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-02-27",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-02-28",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-01",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-02",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-03",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-04",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-05",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-06",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-07",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-08",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-09",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-10",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-11",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-12",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-13",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-14",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-15",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-16",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-17",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-18",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-19",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-20",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-21",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-22",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-23",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-24",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-25",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-03-26",
+          "clicks": 1,
+          "impressions": 22,
+          "position": 21.4
+        },
+        {
+          "date": "2026-03-27",
+          "clicks": 1,
+          "impressions": 23,
+          "position": 41.5
+        },
+        {
+          "date": "2026-03-28",
+          "clicks": 2,
+          "impressions": 32,
+          "position": 32.6
+        },
+        {
+          "date": "2026-03-29",
+          "clicks": 2,
+          "impressions": 132,
+          "position": 12.6
+        },
+        {
+          "date": "2026-03-30",
+          "clicks": 10,
+          "impressions": 121,
+          "position": 8.7
+        },
+        {
+          "date": "2026-03-31",
+          "clicks": 8,
+          "impressions": 111,
+          "position": 13.6
+        },
+        {
+          "date": "2026-04-01",
+          "clicks": 2,
+          "impressions": 99,
+          "position": 10.9
+        },
+        {
+          "date": "2026-04-02",
+          "clicks": 4,
+          "impressions": 64,
+          "position": 12.6
+        },
+        {
+          "date": "2026-04-03",
+          "clicks": 3,
+          "impressions": 69,
+          "position": 6.5
+        },
+        {
+          "date": "2026-04-04",
+          "clicks": 4,
+          "impressions": 45,
+          "position": 10.4
+        },
+        {
+          "date": "2026-04-05",
+          "clicks": 7,
+          "impressions": 41,
+          "position": 14.0
+        },
+        {
+          "date": "2026-04-06",
+          "clicks": 2,
+          "impressions": 58,
+          "position": 8.2
+        },
+        {
+          "date": "2026-04-07",
+          "clicks": 5,
+          "impressions": 51,
+          "position": 10.4
+        },
+        {
+          "date": "2026-04-08",
+          "clicks": 5,
+          "impressions": 37,
+          "position": 16.3
+        },
+        {
+          "date": "2026-04-09",
+          "clicks": 3,
+          "impressions": 43,
+          "position": 13.9
+        },
+        {
+          "date": "2026-04-10",
+          "clicks": 2,
+          "impressions": 26,
+          "position": 20.1
+        },
+        {
+          "date": "2026-04-11",
+          "clicks": 4,
+          "impressions": 49,
+          "position": 12.1
+        },
+        {
+          "date": "2026-04-12",
+          "clicks": 6,
+          "impressions": 51,
+          "position": 15.4
+        },
+        {
+          "date": "2026-04-13",
+          "clicks": 6,
+          "impressions": 91,
+          "position": 12.0
+        },
+        {
+          "date": "2026-04-14",
+          "clicks": 8,
+          "impressions": 62,
+          "position": 9.8
+        },
+        {
+          "date": "2026-04-15",
+          "clicks": 6,
+          "impressions": 50,
+          "position": 13.5
+        },
+        {
+          "date": "2026-04-16",
+          "clicks": 0,
+          "impressions": 33,
+          "position": 14.0
+        },
+        {
+          "date": "2026-04-17",
+          "clicks": 3,
+          "impressions": 40,
+          "position": 14.8
+        },
+        {
+          "date": "2026-04-18",
+          "clicks": 2,
+          "impressions": 69,
+          "position": 17.0
+        },
+        {
+          "date": "2026-04-19",
+          "clicks": 4,
+          "impressions": 65,
+          "position": 20.1
+        },
+        {
+          "date": "2026-04-20",
+          "clicks": 8,
+          "impressions": 63,
+          "position": 15.4
+        },
+        {
+          "date": "2026-04-21",
+          "clicks": 11,
+          "impressions": 74,
+          "position": 19.9
+        },
+        {
+          "date": "2026-04-22",
+          "clicks": 6,
+          "impressions": 78,
+          "position": 19.5
+        },
+        {
+          "date": "2026-04-23",
+          "clicks": 14,
+          "impressions": 85,
+          "position": 19.0
+        },
+        {
+          "date": "2026-04-24",
+          "clicks": 8,
+          "impressions": 68,
+          "position": 16.8
+        },
+        {
+          "date": "2026-04-25",
+          "clicks": 4,
+          "impressions": 70,
+          "position": 19.7
+        },
+        {
+          "date": "2026-04-26",
+          "clicks": 10,
+          "impressions": 81,
+          "position": 16.9
+        },
+        {
+          "date": "2026-04-27",
+          "clicks": 6,
+          "impressions": 92,
+          "position": 14.0
+        },
+        {
+          "date": "2026-04-28",
+          "clicks": 6,
+          "impressions": 64,
+          "position": 16.5
+        },
+        {
+          "date": "2026-04-29",
+          "clicks": 8,
+          "impressions": 75,
+          "position": 16.6
+        },
+        {
+          "date": "2026-04-30",
+          "clicks": 10,
+          "impressions": 54,
+          "position": 10.7
+        },
+        {
+          "date": "2026-05-01",
+          "clicks": 12,
+          "impressions": 69,
+          "position": 12.7
+        },
+        {
+          "date": "2026-05-02",
+          "clicks": 9,
+          "impressions": 57,
+          "position": 17.6
+        },
+        {
+          "date": "2026-05-03",
+          "clicks": 15,
+          "impressions": 71,
+          "position": 19.1
+        },
+        {
+          "date": "2026-05-04",
+          "clicks": 9,
+          "impressions": 85,
+          "position": 13.6
+        },
+        {
+          "date": "2026-05-05",
+          "clicks": 16,
+          "impressions": 78,
+          "position": 13.7
+        },
+        {
+          "date": "2026-05-06",
+          "clicks": 13,
+          "impressions": 75,
+          "position": 15.4
+        },
+        {
+          "date": "2026-05-07",
+          "clicks": 6,
+          "impressions": 51,
+          "position": 19.6
+        },
+        {
+          "date": "2026-05-08",
+          "clicks": 7,
+          "impressions": 75,
+          "position": 14.0
+        },
+        {
+          "date": "2026-05-09",
+          "clicks": 11,
+          "impressions": 120,
+          "position": 16.0
+        },
+        {
+          "date": "2026-05-10",
+          "clicks": 15,
+          "impressions": 91,
+          "position": 14.7
+        },
+        {
+          "date": "2026-05-11",
+          "clicks": 9,
+          "impressions": 69,
+          "position": 13.0
+        },
+        {
+          "date": "2026-05-12",
+          "clicks": 10,
+          "impressions": 78,
+          "position": 13.8
+        },
+        {
+          "date": "2026-05-13",
+          "clicks": 8,
+          "impressions": 79,
+          "position": 13.9
+        },
+        {
+          "date": "2026-05-14",
+          "clicks": 6,
+          "impressions": 84,
+          "position": 13.7
+        },
+        {
+          "date": "2026-05-15",
+          "clicks": 7,
+          "impressions": 71,
+          "position": 10.7
+        },
+        {
+          "date": "2026-05-16",
+          "clicks": 8,
+          "impressions": 94,
+          "position": 12.0
+        },
+        {
+          "date": "2026-05-17",
+          "clicks": 12,
+          "impressions": 84,
+          "position": 12.8
+        },
+        {
+          "date": "2026-05-18",
+          "clicks": 6,
+          "impressions": 49,
+          "position": 14.8
+        },
+        {
+          "date": "2026-05-19",
+          "clicks": 4,
+          "impressions": 71,
+          "position": 14.1
+        },
+        {
+          "date": "2026-05-20",
+          "clicks": 5,
+          "impressions": 94,
+          "position": 17.8
+        },
+        {
+          "date": "2026-05-21",
+          "clicks": 6,
+          "impressions": 76,
+          "position": 16.2
+        },
+        {
+          "date": "2026-05-22",
+          "clicks": 7,
+          "impressions": 74,
+          "position": 12.2
+        },
+        {
+          "date": "2026-05-23",
+          "clicks": 7,
+          "impressions": 77,
+          "position": 20.2
+        },
+        {
+          "date": "2026-05-24",
+          "clicks": 2,
+          "impressions": 59,
+          "position": 18.2
+        },
+        {
+          "date": "2026-05-25",
+          "clicks": 5,
+          "impressions": 63,
+          "position": 15.7
+        },
+        {
+          "date": "2026-05-26",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-05-26",
+          "clicks": 4,
+          "impressions": 48,
+          "position": 18.2
+        },
+        {
+          "date": "2026-05-27",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-05-27",
+          "clicks": 8,
+          "impressions": 123,
+          "position": 9.0
+        },
+        {
+          "date": "2026-05-28",
+          "clicks": 0,
+          "impressions": 16,
+          "position": 9.9
+        },
+        {
+          "date": "2026-05-28",
+          "clicks": 15,
+          "impressions": 224,
+          "position": 7.7
+        },
+        {
+          "date": "2026-05-29",
+          "clicks": 0,
+          "impressions": 16,
+          "position": 7.5
+        },
+        {
+          "date": "2026-05-29",
+          "clicks": 11,
+          "impressions": 289,
+          "position": 6.9
+        },
+        {
+          "date": "2026-05-30",
+          "clicks": 0,
+          "impressions": 15,
+          "position": 9.2
+        },
+        {
+          "date": "2026-05-30",
+          "clicks": 21,
+          "impressions": 316,
+          "position": 7.7
+        },
+        {
+          "date": "2026-05-31",
+          "clicks": 0,
+          "impressions": 19,
+          "position": 9.4
+        },
+        {
+          "date": "2026-05-31",
+          "clicks": 20,
+          "impressions": 348,
+          "position": 6.9
+        },
+        {
+          "date": "2026-06-01",
+          "clicks": 0,
+          "impressions": 20,
+          "position": 7.8
+        },
+        {
+          "date": "2026-06-01",
+          "clicks": 21,
+          "impressions": 314,
+          "position": 7.8
+        },
+        {
+          "date": "2026-06-02",
+          "clicks": 0,
+          "impressions": 22,
+          "position": 11.6
+        },
+        {
+          "date": "2026-06-02",
+          "clicks": 17,
+          "impressions": 275,
+          "position": 6.2
+        },
+        {
+          "date": "2026-06-03",
+          "clicks": 0,
+          "impressions": 26,
+          "position": 10.0
+        },
+        {
+          "date": "2026-06-03",
+          "clicks": 14,
+          "impressions": 141,
+          "position": 7.8
+        },
+        {
+          "date": "2026-06-04",
+          "clicks": 1,
+          "impressions": 24,
+          "position": 11.0
+        },
+        {
+          "date": "2026-06-04",
+          "clicks": 16,
+          "impressions": 280,
+          "position": 6.6
+        },
+        {
+          "date": "2026-06-05",
+          "clicks": 0,
+          "impressions": 27,
+          "position": 8.5
+        },
+        {
+          "date": "2026-06-05",
+          "clicks": 15,
+          "impressions": 258,
+          "position": 5.4
+        },
+        {
+          "date": "2026-06-06",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 17.7
+        },
+        {
+          "date": "2026-06-06",
+          "clicks": 18,
+          "impressions": 264,
+          "position": 9.2
+        },
+        {
+          "date": "2026-06-07",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-06-07",
+          "clicks": 12,
+          "impressions": 243,
+          "position": 7.5
+        },
+        {
+          "date": "2026-06-08",
+          "clicks": 1,
+          "impressions": 2,
+          "position": 1.0
+        },
+        {
+          "date": "2026-06-08",
+          "clicks": 17,
+          "impressions": 280,
+          "position": 8.3
+        },
+        {
+          "date": "2026-06-09",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 5.8
+        },
+        {
+          "date": "2026-06-09",
+          "clicks": 18,
+          "impressions": 267,
+          "position": 7.2
+        },
+        {
+          "date": "2026-06-10",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 6.7
+        },
+        {
+          "date": "2026-06-10",
+          "clicks": 18,
+          "impressions": 208,
+          "position": 7.2
+        },
+        {
+          "date": "2026-06-11",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 8.2
+        },
+        {
+          "date": "2026-06-11",
+          "clicks": 15,
+          "impressions": 186,
+          "position": 6.3
+        },
+        {
+          "date": "2026-06-12",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 5.6
+        },
+        {
+          "date": "2026-06-12",
+          "clicks": 25,
+          "impressions": 302,
+          "position": 6.1
+        },
+        {
+          "date": "2026-06-13",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 8.4
+        },
+        {
+          "date": "2026-06-13",
+          "clicks": 23,
+          "impressions": 422,
+          "position": 6.1
+        },
+        {
+          "date": "2026-06-14",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 9.3
+        },
+        {
+          "date": "2026-06-14",
+          "clicks": 28,
+          "impressions": 435,
+          "position": 6.4
+        },
+        {
+          "date": "2026-06-15",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 5.8
+        },
+        {
+          "date": "2026-06-15",
+          "clicks": 24,
+          "impressions": 435,
+          "position": 6.6
+        },
+        {
+          "date": "2026-06-16",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 6.2
+        },
+        {
+          "date": "2026-06-16",
+          "clicks": 22,
+          "impressions": 479,
+          "position": 6.5
+        },
+        {
+          "date": "2026-06-17",
+          "clicks": 0,
+          "impressions": 8,
+          "position": 11.9
+        },
+        {
+          "date": "2026-06-17",
+          "clicks": 25,
+          "impressions": 509,
+          "position": 7.5
+        },
+        {
+          "date": "2026-06-18",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 9.2
+        },
+        {
+          "date": "2026-06-18",
+          "clicks": 29,
+          "impressions": 515,
+          "position": 6.5
+        },
+        {
+          "date": "2026-06-19",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 8.7
+        },
+        {
+          "date": "2026-06-19",
+          "clicks": 24,
+          "impressions": 526,
+          "position": 6.7
+        },
+        {
+          "date": "2026-06-20",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 9.0
+        },
+        {
+          "date": "2026-06-20",
+          "clicks": 15,
+          "impressions": 508,
+          "position": 7.9
+        },
+        {
+          "date": "2026-06-21",
+          "clicks": 1,
+          "impressions": 4,
+          "position": 8.2
+        },
+        {
+          "date": "2026-06-21",
+          "clicks": 25,
+          "impressions": 452,
+          "position": 6.0
+        },
+        {
+          "date": "2026-06-22",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 9.5
+        },
+        {
+          "date": "2026-06-22",
+          "clicks": 25,
+          "impressions": 470,
+          "position": 6.5
+        },
+        {
+          "date": "2026-06-23",
+          "clicks": 0,
+          "impressions": 11,
+          "position": 6.5
+        },
+        {
+          "date": "2026-06-23",
+          "clicks": 24,
+          "impressions": 585,
+          "position": 7.8
+        },
+        {
+          "date": "2026-06-24",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 7.2
+        },
+        {
+          "date": "2026-06-24",
+          "clicks": 27,
+          "impressions": 495,
+          "position": 5.8
+        },
+        {
+          "date": "2026-06-25",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 9.3
+        },
+        {
+          "date": "2026-06-25",
+          "clicks": 23,
+          "impressions": 545,
+          "position": 6.5
+        },
+        {
+          "date": "2026-06-26",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 7.8
+        },
+        {
+          "date": "2026-06-26",
+          "clicks": 37,
+          "impressions": 649,
+          "position": 5.9
+        },
+        {
+          "date": "2026-06-27",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 5.9
+        },
+        {
+          "date": "2026-06-27",
+          "clicks": 28,
+          "impressions": 599,
+          "position": 7.5
+        },
+        {
+          "date": "2026-06-28",
+          "clicks": 1,
+          "impressions": 3,
+          "position": 5.3
+        },
+        {
+          "date": "2026-06-28",
+          "clicks": 20,
+          "impressions": 497,
+          "position": 6.8
+        },
+        {
+          "date": "2026-06-29",
+          "clicks": 0,
+          "impressions": 8,
+          "position": 9.8
+        },
+        {
+          "date": "2026-06-29",
+          "clicks": 33,
+          "impressions": 532,
+          "position": 7.3
+        },
+        {
+          "date": "2026-06-30",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 10.8
+        },
+        {
+          "date": "2026-06-30",
+          "clicks": 20,
+          "impressions": 474,
+          "position": 7.1
+        },
+        {
+          "date": "2026-07-01",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 9.8
+        },
+        {
+          "date": "2026-07-01",
+          "clicks": 37,
+          "impressions": 559,
+          "position": 7.0
+        },
+        {
+          "date": "2026-07-02",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 8.2
+        },
+        {
+          "date": "2026-07-02",
+          "clicks": 33,
+          "impressions": 488,
+          "position": 6.5
+        },
+        {
+          "date": "2026-07-03",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 7.3
+        },
+        {
+          "date": "2026-07-03",
+          "clicks": 29,
+          "impressions": 391,
+          "position": 5.6
+        },
+        {
+          "date": "2026-07-04",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 6.8
+        },
+        {
+          "date": "2026-07-04",
+          "clicks": 27,
+          "impressions": 498,
+          "position": 7.8
+        },
+        {
+          "date": "2026-07-05",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 9.0
+        },
+        {
+          "date": "2026-07-05",
+          "clicks": 23,
+          "impressions": 427,
+          "position": 6.5
+        },
+        {
+          "date": "2026-07-06",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 6.0
+        },
+        {
+          "date": "2026-07-06",
+          "clicks": 24,
+          "impressions": 489,
+          "position": 6.2
+        },
+        {
+          "date": "2026-07-07",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 8.3
+        },
+        {
+          "date": "2026-07-07",
+          "clicks": 30,
+          "impressions": 489,
+          "position": 6.9
+        },
+        {
+          "date": "2026-07-08",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 8.0
+        },
+        {
+          "date": "2026-07-08",
+          "clicks": 30,
+          "impressions": 415,
+          "position": 6.7
+        },
+        {
+          "date": "2026-07-09",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 7.0
+        },
+        {
+          "date": "2026-07-09",
+          "clicks": 27,
+          "impressions": 462,
+          "position": 7.1
+        },
+        {
+          "date": "2026-07-10",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 18.8
+        },
+        {
+          "date": "2026-07-10",
+          "clicks": 30,
+          "impressions": 568,
+          "position": 6.9
+        },
+        {
+          "date": "2026-07-11",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 10.5
+        },
+        {
+          "date": "2026-07-11",
+          "clicks": 34,
+          "impressions": 633,
+          "position": 8.8
+        },
+        {
+          "date": "2026-07-12",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 7.0
+        },
+        {
+          "date": "2026-07-12",
+          "clicks": 30,
+          "impressions": 600,
+          "position": 7.0
+        },
+        {
+          "date": "2026-07-13",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 18.3
+        },
+        {
+          "date": "2026-07-13",
+          "clicks": 28,
+          "impressions": 605,
+          "position": 5.7
+        },
+        {
+          "date": "2026-07-14",
+          "clicks": 1,
+          "impressions": 4,
+          "position": 13.2
+        },
+        {
+          "date": "2026-07-14",
+          "clicks": 38,
+          "impressions": 649,
+          "position": 6.8
+        },
+        {
+          "date": "2026-07-15",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 7.5
+        },
+        {
+          "date": "2026-07-15",
+          "clicks": 32,
+          "impressions": 564,
+          "position": 6.1
+        },
+        {
+          "date": "2026-07-16",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 5.0
+        },
+        {
+          "date": "2026-07-16",
+          "clicks": 28,
+          "impressions": 504,
+          "position": 6.2
+        },
+        {
+          "date": "2026-07-17",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 6.7
+        },
+        {
+          "date": "2026-07-17",
+          "clicks": 28,
+          "impressions": 445,
+          "position": 6.2
+        },
+        {
+          "date": "2026-07-18",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 29.5
+        },
+        {
+          "date": "2026-07-18",
+          "clicks": 27,
+          "impressions": 511,
+          "position": 7.0
+        },
+        {
+          "date": "2026-07-19",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-07-19",
+          "clicks": 26,
+          "impressions": 622,
+          "position": 6.4
+        },
+        {
+          "date": "2026-07-20",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 6.2
+        },
+        {
+          "date": "2026-07-20",
+          "clicks": 33,
+          "impressions": 593,
+          "position": 6.0
+        },
+        {
+          "date": "2026-07-21",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 5.6
+        },
+        {
+          "date": "2026-07-21",
+          "clicks": 30,
+          "impressions": 722,
+          "position": 7.4
+        },
+        {
+          "date": "2026-07-22",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 5.5
+        },
+        {
+          "date": "2026-07-22",
+          "clicks": 29,
+          "impressions": 693,
+          "position": 6.4
+        },
+        {
+          "date": "2026-07-23",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-07-23",
+          "clicks": 32,
+          "impressions": 665,
+          "position": 7.3
+        },
+        {
+          "date": "2026-07-24",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 10.0
+        },
+        {
+          "date": "2026-07-24",
+          "clicks": 27,
+          "impressions": 718,
+          "position": 6.4
+        },
+        {
+          "date": "2026-07-25",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 4.3
+        },
+        {
+          "date": "2026-07-25",
+          "clicks": 30,
+          "impressions": 716,
+          "position": 6.7
+        },
+        {
+          "date": "2026-07-26",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 7.0
+        },
+        {
+          "date": "2026-07-26",
+          "clicks": 32,
+          "impressions": 665,
+          "position": 7.0
+        },
+        {
+          "date": "2026-07-27",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 6.5
+        },
+        {
+          "date": "2026-07-27",
+          "clicks": 30,
+          "impressions": 716,
+          "position": 7.2
+        },
+        {
+          "date": "2026-07-28",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 12.0
+        },
+        {
+          "date": "2026-07-28",
+          "clicks": 26,
+          "impressions": 708,
+          "position": 7.0
+        },
+        {
+          "date": "2026-07-29",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 7.0
+        },
+        {
+          "date": "2026-07-29",
+          "clicks": 26,
+          "impressions": 725,
+          "position": 7.3
+        },
+        {
+          "date": "2026-07-30",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 15.0
+        },
+        {
+          "date": "2026-07-30",
+          "clicks": 31,
+          "impressions": 750,
+          "position": 6.5
+        },
+        {
+          "date": "2026-07-31",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 6.5
+        },
+        {
+          "date": "2026-07-31",
+          "clicks": 29,
+          "impressions": 741,
+          "position": 7.1
+        },
+        {
+          "date": "2026-08-01",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 5.5
+        },
+        {
+          "date": "2026-08-01",
+          "clicks": 23,
+          "impressions": 822,
+          "position": 8.5
+        },
+        {
+          "date": "2026-08-02",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-08-02",
+          "clicks": 27,
+          "impressions": 774,
+          "position": 6.9
+        },
+        {
+          "date": "2026-08-03",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 11.0
+        },
+        {
+          "date": "2026-08-03",
+          "clicks": 25,
+          "impressions": 739,
+          "position": 6.9
+        },
+        {
+          "date": "2026-08-04",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-08-04",
+          "clicks": 47,
+          "impressions": 782,
+          "position": 5.6
+        },
+        {
+          "date": "2026-08-05",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-08-05",
+          "clicks": 30,
+          "impressions": 800,
+          "position": 6.9
+        },
+        {
+          "date": "2026-08-06",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 1.0
+        },
+        {
+          "date": "2026-08-06",
+          "clicks": 22,
+          "impressions": 675,
+          "position": 7.0
+        },
+        {
+          "date": "2026-08-07",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 5.2
+        },
+        {
+          "date": "2026-08-07",
+          "clicks": 36,
+          "impressions": 787,
+          "position": 5.7
+        },
+        {
+          "date": "2026-08-08",
+          "clicks": 0,
+          "impressions": 0,
+          "position": 0.0
+        },
+        {
+          "date": "2026-08-08",
+          "clicks": 29,
+          "impressions": 790,
+          "position": 6.6
+        },
         {
           "date": "2026-08-09",
           "clicks": 0,
@@ -2095,6 +5868,1058 @@
           "clicks": 4,
           "impressions": 26,
           "position": 3.2
+        },
+        {
+          "query": "wefu ai",
+          "clicks": 4,
+          "impressions": 14,
+          "position": 3.4
+        },
+        {
+          "query": "wafui ai",
+          "clicks": 4,
+          "impressions": 11,
+          "position": 3.1
+        },
+        {
+          "query": "waifu companion",
+          "clicks": 4,
+          "impressions": 9,
+          "position": 2.8
+        },
+        {
+          "query": "wiafu ai",
+          "clicks": 4,
+          "impressions": 8,
+          "position": 2.4
+        },
+        {
+          "query": "waifu chat ai",
+          "clicks": 3,
+          "impressions": 28,
+          "position": 20.9
+        },
+        {
+          "query": "wefui ai",
+          "clicks": 3,
+          "impressions": 21,
+          "position": 5.1
+        },
+        {
+          "query": "aiwaifu",
+          "clicks": 3,
+          "impressions": 16,
+          "position": 13.5
+        },
+        {
+          "query": "waifu ai character companion",
+          "clicks": 3,
+          "impressions": 9,
+          "position": 12.0
+        },
+        {
+          "query": "ai waif",
+          "clicks": 3,
+          "impressions": 8,
+          "position": 5.1
+        },
+        {
+          "query": "waifu ai companion",
+          "clicks": 3,
+          "impressions": 7,
+          "position": 3.3
+        },
+        {
+          "query": "waifu ia",
+          "clicks": 3,
+          "impressions": 6,
+          "position": 3.0
+        },
+        {
+          "query": "waifi ai",
+          "clicks": 3,
+          "impressions": 5,
+          "position": 3.6
+        },
+        {
+          "query": "weifi ai",
+          "clicks": 3,
+          "impressions": 5,
+          "position": 2.0
+        },
+        {
+          "query": "weifu ai free",
+          "clicks": 3,
+          "impressions": 3,
+          "position": 7.3
+        },
+        {
+          "query": "waifu ai app",
+          "clicks": 2,
+          "impressions": 32,
+          "position": 3.1
+        },
+        {
+          "query": "ai waifu free",
+          "clicks": 2,
+          "impressions": 11,
+          "position": 5.1
+        },
+        {
+          "query": "ai waify",
+          "clicks": 2,
+          "impressions": 7,
+          "position": 6.1
+        },
+        {
+          "query": "free waifu ai",
+          "clicks": 2,
+          "impressions": 7,
+          "position": 8.8
+        },
+        {
+          "query": "chat ai waifu",
+          "clicks": 2,
+          "impressions": 4,
+          "position": 14.0
+        },
+        {
+          "query": "weifu ai website",
+          "clicks": 2,
+          "impressions": 4,
+          "position": 4.5
+        },
+        {
+          "query": "your waifu ai",
+          "clicks": 2,
+          "impressions": 4,
+          "position": 2.7
+        },
+        {
+          "query": "live2d waifu",
+          "clicks": 2,
+          "impressions": 3,
+          "position": 2.7
+        },
+        {
+          "query": "waifu ia chat",
+          "clicks": 2,
+          "impressions": 2,
+          "position": 12.0
+        },
+        {
+          "query": "waifuly",
+          "clicks": 2,
+          "impressions": 2,
+          "position": 5.0
+        },
+        {
+          "query": "ai chat waifu",
+          "clicks": 1,
+          "impressions": 36,
+          "position": 45.0
+        },
+        {
+          "query": "waifucharlii",
+          "clicks": 1,
+          "impressions": 26,
+          "position": 8.4
+        },
+        {
+          "query": "weifu al",
+          "clicks": 1,
+          "impressions": 21,
+          "position": 9.1
+        },
+        {
+          "query": "ad waifuai studio",
+          "clicks": 1,
+          "impressions": 20,
+          "position": 5.6
+        },
+        {
+          "query": "ai waifu chat free",
+          "clicks": 1,
+          "impressions": 18,
+          "position": 10.5
+        },
+        {
+          "query": "desktop waifu ai",
+          "clicks": 1,
+          "impressions": 12,
+          "position": 8.0
+        },
+        {
+          "query": "is waifu ai free",
+          "clicks": 1,
+          "impressions": 12,
+          "position": 5.8
+        },
+        {
+          "query": "waifu chatbot",
+          "clicks": 1,
+          "impressions": 11,
+          "position": 38.6
+        },
+        {
+          "query": "waifus ai",
+          "clicks": 1,
+          "impressions": 10,
+          "position": 15.7
+        },
+        {
+          "query": "haifu ai",
+          "clicks": 1,
+          "impressions": 5,
+          "position": 6.0
+        },
+        {
+          "query": "wafi ai",
+          "clicks": 1,
+          "impressions": 3,
+          "position": 6.8
+        },
+        {
+          "query": "waifu free",
+          "clicks": 1,
+          "impressions": 3,
+          "position": 11.5
+        },
+        {
+          "query": "webwaifu",
+          "clicks": 1,
+          "impressions": 3,
+          "position": 10.5
+        },
+        {
+          "query": "wifeu ai",
+          "clicks": 1,
+          "impressions": 3,
+          "position": 1.0
+        },
+        {
+          "query": "desktop ai waifu",
+          "clicks": 1,
+          "impressions": 2,
+          "position": 8.5
+        },
+        {
+          "query": "iviwaifu",
+          "clicks": 1,
+          "impressions": 2,
+          "position": 7.0
+        },
+        {
+          "query": "live2d companion",
+          "clicks": 1,
+          "impressions": 2,
+          "position": 4.5
+        },
+        {
+          "query": "waifufaee",
+          "clicks": 1,
+          "impressions": 2,
+          "position": 20.0
+        },
+        {
+          "query": "waifupervai",
+          "clicks": 1,
+          "impressions": 2,
+          "position": 8.0
+        },
+        {
+          "query": "200",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 36.0
+        },
+        {
+          "query": "ai wafu",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 5.0
+        },
+        {
+          "query": "are any of these free?",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 1.0
+        },
+        {
+          "query": "for oppo",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 1.0
+        },
+        {
+          "query": "free ai waifu chat",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 5.0
+        },
+        {
+          "query": "like websites",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 1.0
+        },
+        {
+          "query": "more",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 2.0
+        },
+        {
+          "query": "more free",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 1.0
+        },
+        {
+          "query": "nein das andere",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 1.0
+        },
+        {
+          "query": "waife ai",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 2.0
+        },
+        {
+          "query": "waiflow ai",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 9.0
+        },
+        {
+          "query": "waifu a",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 3.0
+        },
+        {
+          "query": "waifu desktop",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 26.0
+        },
+        {
+          "query": "we need free",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 3.0
+        },
+        {
+          "query": "wefiu ai",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 2.0
+        },
+        {
+          "query": "wifu chat",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 39.0
+        },
+        {
+          "query": "فارسی",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 1.0
+        },
+        {
+          "query": "waifucharli",
+          "clicks": 0,
+          "impressions": 31,
+          "position": 7.9
+        },
+        {
+          "query": "ai waifu chatbot",
+          "clicks": 0,
+          "impressions": 21,
+          "position": 57.2
+        },
+        {
+          "query": "ai waifu app",
+          "clicks": 0,
+          "impressions": 20,
+          "position": 10.9
+        },
+        {
+          "query": "вайфу аи",
+          "clicks": 0,
+          "impressions": 17,
+          "position": 5.1
+        },
+        {
+          "query": "iawaifu",
+          "clicks": 0,
+          "impressions": 13,
+          "position": 8.0
+        },
+        {
+          "query": "anime chat ai waifu chatbot",
+          "clicks": 0,
+          "impressions": 12,
+          "position": 26.7
+        },
+        {
+          "query": "waifu login",
+          "clicks": 0,
+          "impressions": 11,
+          "position": 11.0
+        },
+        {
+          "query": "waifu talk",
+          "clicks": 0,
+          "impressions": 11,
+          "position": 42.3
+        },
+        {
+          "query": "waiifuaya",
+          "clicks": 0,
+          "impressions": 11,
+          "position": 4.1
+        },
+        {
+          "query": "weifu ai official website",
+          "clicks": 0,
+          "impressions": 11,
+          "position": 5.8
+        },
+        {
+          "query": "waifu website",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 17.6
+        },
+        {
+          "query": "вайфу ai",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 30.7
+        },
+        {
+          "query": "anime waifu ai",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 26.5
+        },
+        {
+          "query": "аи вайфу",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 6.2
+        },
+        {
+          "query": "ai waifus",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 25.0
+        },
+        {
+          "query": "soul of waifu github ai companion",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 8.6
+        },
+        {
+          "query": "ai anime waifu",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 37.3
+        },
+        {
+          "query": "waifulacie",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 4.7
+        },
+        {
+          "query": "waifusai",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 12.7
+        },
+        {
+          "query": "ai.waifu",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 3.7
+        },
+        {
+          "query": "weifu",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 21.9
+        },
+        {
+          "query": "live2d anime ai companion market",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 13.5
+        },
+        {
+          "query": "my ai waifu",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 6.3
+        },
+        {
+          "query": "waifu ai code",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 8.0
+        },
+        {
+          "query": "waify ai",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 4.7
+        },
+        {
+          "query": "what is waifu ai",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 9.2
+        },
+        {
+          "query": "ai waifu pc",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 3.8
+        },
+        {
+          "query": "ivewaifu",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 4.0
+        },
+        {
+          "query": "site:github.io \"blink\"",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 9.0
+        },
+        {
+          "query": "waifu character ai",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 10.7
+        },
+        {
+          "query": "waifu.ia",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 2.5
+        },
+        {
+          "query": "waifudai",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 22.0
+        },
+        {
+          "query": "waifunai",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 6.2
+        },
+        {
+          "query": "wiwaifu",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 8.0
+        },
+        {
+          "query": "чат ии чат вайфу",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 25.3
+        },
+        {
+          "query": "чат с вайфу",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 30.0
+        },
+        {
+          "query": "ai desktop waifu",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 9.0
+        },
+        {
+          "query": "i waifu ai",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 6.0
+        },
+        {
+          "query": "ivuwaiifu",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 7.5
+        },
+        {
+          "query": "open source ai waifu",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 4.0
+        },
+        {
+          "query": "waificharlii",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 3.5
+        },
+        {
+          "query": "waifu 2d",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 18.0
+        },
+        {
+          "query": "waifu ai chat bot",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 13.0
+        },
+        {
+          "query": "waifu app",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 17.5
+        },
+        {
+          "query": "waifu chat bot",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 41.0
+        },
+        {
+          "query": "waifu site",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 18.0
+        },
+        {
+          "query": "waifu social",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 14.0
+        },
+        {
+          "query": "waifu2k",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 10.0
+        },
+        {
+          "query": "waifuchari",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 6.5
+        },
+        {
+          "query": "waifudai free",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 9.0
+        },
+        {
+          "query": "wefui",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 4.0
+        },
+        {
+          "query": "znáš waifu ai",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 1.0
+        },
+        {
+          "query": "аниме вайфу ai",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 41.5
+        },
+        {
+          "query": "ии вайфу",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 29.0
+        },
+        {
+          "query": "2d waifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 11.0
+        },
+        {
+          "query": "ai chat anime",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 82.0
+        },
+        {
+          "query": "ai waifi",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 6.0
+        },
+        {
+          "query": "ai waifu app review",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 20.0
+        },
+        {
+          "query": "ai waifu chat bot",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 71.0
+        },
+        {
+          "query": "ai waifu desktop",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 5.0
+        },
+        {
+          "query": "ai waifus character",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 12.0
+        },
+        {
+          "query": "aifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 66.0
+        },
+        {
+          "query": "anime waifu ai chat",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 7.0
+        },
+        {
+          "query": "awaifuu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 6.0
+        },
+        {
+          "query": "chatwaifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 46.0
+        },
+        {
+          "query": "do i have to download it",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 3.0
+        },
+        {
+          "query": "evawaifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 21.0
+        },
+        {
+          "query": "howaifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 9.0
+        },
+        {
+          "query": "ia waifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 6.0
+        },
+        {
+          "query": "ivywaiifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 18.0
+        },
+        {
+          "query": "iwai",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 62.0
+        },
+        {
+          "query": "mywaifu ai",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 2.0
+        },
+        {
+          "query": "mywaifuai",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 4.0
+        },
+        {
+          "query": "soul of waifu ai companion github",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 10.0
+        },
+        {
+          "query": "vantawaifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 37.0
+        },
+        {
+          "query": "virtual waifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 23.0
+        },
+        {
+          "query": "waifii",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 5.0
+        },
+        {
+          "query": "waifu ai anime",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 9.0
+        },
+        {
+          "query": "waifu ai game",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 6.0
+        },
+        {
+          "query": "waifu ai studio",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 6.0
+        },
+        {
+          "query": "waifu al",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 96.0
+        },
+        {
+          "query": "waifu api",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 63.0
+        },
+        {
+          "query": "waifu engine",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 11.0
+        },
+        {
+          "query": "waifu github",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 22.0
+        },
+        {
+          "query": "waifu it",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 26.0
+        },
+        {
+          "query": "waifu2",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 41.0
+        },
+        {
+          "query": "waifucarlii",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 1.0
+        },
+        {
+          "query": "waifuchaii",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 5.0
+        },
+        {
+          "query": "waifufae",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 1.0
+        },
+        {
+          "query": "waifuuriavip",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 8.0
+        },
+        {
+          "query": "waifuzonga",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 9.0
+        },
+        {
+          "query": "weifu ai chat",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 43.0
+        },
+        {
+          "query": "weifu ia",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 6.0
+        },
+        {
+          "query": "whifu ai",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 4.0
+        },
+        {
+          "query": "wifau",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 2.0
+        },
+        {
+          "query": "wifu ia",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 3.0
+        }
+      ],
+      "top_pages": [
+        {
+          "page": "https://waifuai.com/",
+          "clicks": 3675,
+          "impressions": 68153,
+          "position": 11.3
+        },
+        {
+          "page": "https://waifuai.github.io/",
+          "clicks": 6,
+          "impressions": 483,
+          "position": 11.5
+        },
+        {
+          "page": "https://waifuai.com/app/docs/help.html",
+          "clicks": 3,
+          "impressions": 163,
+          "position": 4.9
+        },
+        {
+          "page": "https://waifuai.com/app/docs/index.html",
+          "clicks": 2,
+          "impressions": 103,
+          "position": 5.7
+        },
+        {
+          "page": "http://waifuai.com/",
+          "clicks": 2,
+          "impressions": 20,
+          "position": 24.0
+        },
+        {
+          "page": "https://waifuai.com/docs/openrouter.html",
+          "clicks": 1,
+          "impressions": 99,
+          "position": 6.2
+        },
+        {
+          "page": "https://waifuai.com/app/docs/voice.html",
+          "clicks": 1,
+          "impressions": 34,
+          "position": 7.6
+        },
+        {
+          "page": "https://waifuai.com/app/docs/models.html",
+          "clicks": 1,
+          "impressions": 22,
+          "position": 11.5
+        },
+        {
+          "page": "https://waifuai.com/app/docs/memory.html",
+          "clicks": 0,
+          "impressions": 100,
+          "position": 7.9
+        },
+        {
+          "page": "https://waifuai.com/app/docs/openrouter.html",
+          "clicks": 0,
+          "impressions": 98,
+          "position": 7.8
+        },
+        {
+          "page": "https://waifuai.com/app/index.html",
+          "clicks": 0,
+          "impressions": 67,
+          "position": 9.0
+        },
+        {
+          "page": "https://waifuai.com/app/docs/",
+          "clicks": 0,
+          "impressions": 48,
+          "position": 5.1
+        },
+        {
+          "page": "https://waifuai.com/app/docs/providers.html",
+          "clicks": 0,
+          "impressions": 46,
+          "position": 5.4
+        },
+        {
+          "page": "https://waifuai.com/docs/voice.html",
+          "clicks": 0,
+          "impressions": 44,
+          "position": 3.7
+        },
+        {
+          "page": "https://waifuai.com/app/docs/troubleshooting.html",
+          "clicks": 0,
+          "impressions": 29,
+          "position": 7.3
+        },
+        {
+          "page": "https://waifuai.com/docs/settings.html",
+          "clicks": 0,
+          "impressions": 24,
+          "position": 5.5
+        },
+        {
+          "page": "https://waifuai.com/app/docs/settings.html",
+          "clicks": 0,
+          "impressions": 8,
+          "position": 6.7
+        },
+        {
+          "page": "https://waifuai.com/docs/troubleshooting.html",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 5.0
+        },
+        {
+          "page": "https://www.waifuai.com/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 3.0
         }
       ]
     }
