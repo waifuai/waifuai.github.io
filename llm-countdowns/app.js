@@ -7,27 +7,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 function setupEventListeners() {
-  // Recalculate / Reset Timers Button
-  const refreshBtns = [
-    document.getElementById("btn-refresh-header"),
-    document.getElementById("btn-refresh-fab")
-  ];
-  refreshBtns.forEach(btn => {
-    if (btn) {
-      btn.addEventListener("click", () => {
-        const icon = btn.querySelector("svg");
-        if (icon) icon.classList.add("spinning");
-        if (window.countdownsEngine) {
-          window.countdownsEngine.render();
-        }
-        setTimeout(() => {
-          if (icon) icon.classList.remove("spinning");
-          showToast("Timers recalculated");
-        }, 500);
-      });
-    }
-  });
-
   // Header Add Custom Countdown Button
   const headerAddBtn = document.getElementById("btn-add-countdown-header");
   if (headerAddBtn) {
