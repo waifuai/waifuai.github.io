@@ -55,6 +55,13 @@ function setupEventListeners() {
     if (e.key === "Escape") closeModals();
   });
 
+  // Listen for browser hashtag changes (e.g. #xai-grok-4-7)
+  window.addEventListener("hashchange", () => {
+    if (window.countdownsEngine) {
+      window.countdownsEngine.handleUrlHash();
+    }
+  });
+
   // Add Custom Countdown Form Submit
   const addCountdownForm = document.getElementById("form-add-countdown");
   if (addCountdownForm) {
@@ -115,6 +122,9 @@ async function initRadar() {
   }
 
   window.countdownsEngine.render();
+
+  // Handle deep-link hashtag on initial load
+  window.countdownsEngine.handleUrlHash();
 }
 
 function closeModals() {

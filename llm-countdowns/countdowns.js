@@ -558,18 +558,23 @@ class CountdownsEngine {
     }
   }
 
-  // Share or copy countdown info
+  // Share or copy countdown info with hashtag anchor
   async shareCountdown(model) {
     const rem = this.getTimeRemaining(model.targetDate);
     const intelSnippet = model.analysis?.projectedIntel ? ` (Proj. Intel: ~${model.analysis.projectedIntel})` : "";
-    const text = `⏳ ${model.name}${intelSnippet} by ${model.creator} is estimated to drop in ~${rem.days}d ${rem.hours}h! Track live on LLM Rank.`;
+    const directUrl = `${window.location.origin}${window.location.pathname}#${model.id}`;
+    const text = `⏳ ${model.name}${intelSnippet} by ${model.creator} is estimated to drop in ~${rem.days}d ${rem.hours}h! Track live on LLM Countdowns: ${directUrl}`;
+
+    try {
+      history.replaceState(null, null, `#${model.id}`);
+    } catch (e) {}
 
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `Countdown: ${model.name}`,
+          title: `LLM Countdown: ${model.name}`,
           text: text,
-          url: window.location.href
+          url: directUrl
         });
         return;
       } catch (err) {
@@ -579,14 +584,61 @@ class CountdownsEngine {
 
     // Fallback: clipboard copy
     try {
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(directUrl);
       if (window.showToast) {
-        window.showToast("Countdown copied to clipboard!");
+        window.showToast(`Link copied: #${model.id}`);
       }
     } catch (e) {
       console.warn("Clipboard copy failed", e);
     }
   }
+
+  // Handle URL hash navigation (e.g. #xai-grok-4-7, #claude-6, #gpt-7)
+  handleUrlHash() {
+    const rawHash = (window.location.hash || "").replace(/^#/, "").trim().toLowerCase();
+    if (!rawHash) return;
+
+    const all = this.getAllModels();
+    // Match by exact ID, or substring match
+    const matched = all.find(m => 
+      m.id.toLowerCase() === rawHash ||
+      (m.id && m.id.toLowerCase().includes(rawHash)) ||
+      (rawHash.length >= 4 && m.id && rawHash.includes(m.id.toLowerCase())) ||
+      (m.name && m.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").includes(rawHash))
+    );
+
+    if (!matched) return;
+
+    // Reset filters if they would hide this model
+    let needsRerender = false;
+    if (this.activeFilter !== "ALL" && this.activeFilter.toLowerCase() !== matched.creatorSlug) {
+      this.activeFilter = "ALL";
+      needsRerender = true;
+    }
+    if (this.activeTier !== "ALL" && this.activeTier.toLowerCase() !== (matched.category || "").toLowerCase()) {
+      this.activeTier = "ALL";
+      needsRerender = true;
+    }
+    if (this.activeHorizon !== "ALL") {
+      this.activeHorizon = "ALL";
+      needsRerender = true;
+    }
+
+    if (needsRerender) {
+      this.render();
+    }
+
+    // Smooth scroll and pulse highlight
+    setTimeout(() => {
+      const card = document.getElementById(matched.id) || document.querySelector(`[data-card-id="${matched.id}"]`);
+      if (card) {
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+        card.classList.add("hash-highlight");
+        setTimeout(() => card.classList.remove("hash-highlight"), 2500);
+      }
+    }, 150);
+  }
+
 
   // Render main countdowns tab
   render() {
@@ -814,7 +866,7 @@ class CountdownsEngine {
         const isStarred = Boolean(heroModel && heroModel.id === model.id);
 
         return `
-          <div class="countdown-card ${isStarred ? 'is-main-spotlight' : ''}" data-card-id="${model.id}" data-target-date="${model.targetDate}">
+          <div class="countdown-card ${isStarred ? 'is-main-spotlight' : ''}" id="${model.id}" data-card-id="${model.id}" data-target-date="${model.targetDate}">
             <div class="card-top-row">
               <div>
                 <div class="card-creator-line">
@@ -823,7 +875,12 @@ class CountdownsEngine {
                     ${model.category === 'light' ? '⚡ LIGHT / FLASH' : model.category === 'reasoning' ? '🧠 REASONING' : '👑 FRONTIER'}
                   </span>
                 </div>
-                <h3 class="card-model-title">${model.name}</h3>
+                <h3 class="card-model-title">
+                  <a href="#${model.id}" class="card-anchor-link" title="Direct link to #${model.id}">
+                    ${model.name}
+                    <span class="anchor-symbol">#</span>
+                  </a>
+                </h3>
               </div>
               <div class="card-badges-col">
                 <button class="btn-star-spotlight ${isStarred ? 'starred' : ''}" data-star-id="${model.id}" title="${isStarred ? 'Current Main Spotlight at top' : 'Star to set as Main Spotlight at top'}">
