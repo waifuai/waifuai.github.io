@@ -605,7 +605,7 @@
         <span>💬</span>
       </div>
       <div class="kpi-value" id="kpi-total-chats">5.1K</div>
-      <div class="kpi-sub">5,109 Multi-Turn LLM Chats</div>
+      <div class="kpi-sub" id="kpi-chats-sub">5,109 Multi-Turn LLM Chats</div>
     </div>
 
     <div class="kpi-card models">
@@ -614,7 +614,7 @@
         <span>🔄</span>
       </div>
       <div class="kpi-value" id="kpi-total-switches">3.0K</div>
-      <div class="kpi-sub">1,024 Active Experimenters</div>
+      <div class="kpi-sub" id="kpi-switches-sub">1,024 Active Experimenters</div>
     </div>
 
     <div class="kpi-card stars">
@@ -650,7 +650,8 @@
       <span class="badge-pill" id="tab-pill-github">52</span>
     </button>
     <button class="telemetry-tab-btn" data-tab="tab-traffic">
-      <span>Traffic &amp; AI Events (GA4)</span>
+      <span>AI Models &amp; Traffic</span>
+      <span class="badge-pill" id="tab-pill-models" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">3 Models</span>
     </button>
     <button class="telemetry-tab-btn" data-tab="tab-search">
       <span>Search Reach (GSC)</span>
@@ -809,6 +810,52 @@
 
   <!-- TAB 4: WEB TRAFFIC & AI EVENTS (GA4) -->
   <div class="tab-panel" id="tab-traffic">
+    <!-- AI Companion LLM Inference & Model Telemetry -->
+    <div class="data-table-container" style="margin-bottom: 2.5rem;">
+      <div class="table-header-box" style="flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">Production Companion LLM Invocations &amp; Models</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.35rem;">
+            Edge gateway conversation logs across production AI models • Turn volume, traffic share, and inference turnaround latency.
+          </div>
+        </div>
+        <div>
+          <a href="https://openrouter.ai/apps/url/https%3A%2F%2Fwaifuai.com%2F" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.9rem; border-radius: 8px; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); color: #38bdf8; font-size: 0.83rem; font-weight: 600; text-decoration: none;">
+            <span>OpenRouter App Dashboard</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Segmented Model Usage Progress Bar -->
+      <div style="padding: 0 1.25rem 1.25rem;">
+        <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.5rem; font-family: 'JetBrains Mono', monospace;">
+          <span>Model Invocations Share</span>
+          <span id="chats-total-summary">1,981 Turns Across 3 Models</span>
+        </div>
+        <div class="model-distribution-bar" id="chats-model-bar" style="display: flex; height: 10px; border-radius: 6px; overflow: hidden; gap: 2px; background: rgba(255,255,255,0.05);">
+          <!-- Populated via JS -->
+        </div>
+        <div id="chats-model-legend" style="display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 0.75rem; font-size: 0.82rem;">
+          <!-- Legend populated via JS -->
+        </div>
+      </div>
+
+      <table class="data-table" id="table-chats-models">
+        <thead>
+          <tr>
+            <th data-sort="model" data-type="string">Model Name</th>
+            <th data-sort="count" data-type="number" style="text-align: right;">Invocations (Turns)</th>
+            <th data-sort="share_pct" data-type="number" style="text-align: right;">Traffic Share</th>
+            <th data-sort="median_latency_ms" data-type="number" style="text-align: right;">Median Latency</th>
+          </tr>
+        </thead>
+        <tbody id="chats-models-body">
+          <!-- Populated via JS -->
+        </tbody>
+      </table>
+    </div>
+
     <!-- AI Companion Interactive Events Table -->
     <div class="data-table-container" style="margin-bottom: 2rem;">
       <div class="table-header-box">
@@ -1127,7 +1174,13 @@ function renderOverview(data) {
   if (elClones) elClones.textContent = (k.total_clone_uniques || 566).toLocaleString();
 
   const elChats = document.getElementById('kpi-total-chats');
-  if (elChats) elChats.textContent = `${Math.round((k.total_chat_messages || 5109) / 1000 * 10) / 10}K`;
+  if (elChats) elChats.textContent = `${Math.round((k.companion_turns || k.total_chat_messages || 5109) / 1000 * 10) / 10}K`;
+  const elChatsSub = document.getElementById('kpi-chats-sub');
+  if (elChatsSub && (k.companion_turns || data.chats?.total_turns)) {
+    const turns = k.companion_turns || data.chats?.total_turns;
+    const modelsCount = k.companion_models_count || data.chats?.models?.length || 3;
+    elChatsSub.textContent = `${turns.toLocaleString()} Synced Turns (${modelsCount} Models)`;
+  }
 
   const elSwitches = document.getElementById('kpi-total-switches');
   if (elSwitches) elSwitches.textContent = `${Math.round((k.total_model_changes || 3026) / 1000 * 10) / 10}K`;
@@ -1358,7 +1411,84 @@ function renderSourcesTable(sources) {
   });
 }
 
-function renderTraffic(analytics) {
+function renderChatsTableOnly(models) {
+  const tbody = document.getElementById('chats-models-body');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  (models || []).forEach(m => {
+    const medLat = m.median_latency_ms ?? m.avg_latency_ms ?? 0;
+    const latSec = (medLat / 1000).toFixed(2);
+    const latColor = medLat < 1000 ? '#34d399' : (medLat < 4000 ? '#38bdf8' : '#fbbf24');
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>
+        <code style="color: #ffffff; font-weight: 700; font-size: 0.9rem; font-family: 'JetBrains Mono', monospace;">${m.model}</code>
+      </td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #34d399;">${m.count.toLocaleString()}</td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 600;">
+        <span style="display: inline-block; min-width: 48px;">${m.share_pct}%</span>
+      </td>
+      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: ${latColor};">
+        ${medLat.toLocaleString()} ms <span style="font-size: 0.78rem; color: var(--text-muted);">(${latSec}s)</span>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function renderChatsModels(chats) {
+  const tbody = document.getElementById('chats-models-body');
+  const barContainer = document.getElementById('chats-model-bar');
+  const legendContainer = document.getElementById('chats-model-legend');
+  const summaryEl = document.getElementById('chats-total-summary');
+  const pillModels = document.getElementById('tab-pill-models');
+  if (!tbody || !chats) return;
+
+  const models = chats.models || [];
+  const totalTurns = chats.total_turns || 0;
+  if (summaryEl) {
+    summaryEl.textContent = `${totalTurns.toLocaleString()} Invocations across ${models.length} Models`;
+  }
+  if (pillModels) {
+    pillModels.textContent = `${models.length} Models`;
+  }
+
+  const modelColors = {
+    'deepseek-v4.1-flash': { bar: 'linear-gradient(90deg, #3b82f6, #06b6d4)', dot: '#38bdf8' },
+    'qwen3.8-27b': { bar: 'linear-gradient(90deg, #10b981, #34d399)', dot: '#34d399' },
+    'glm-5.3': { bar: 'linear-gradient(90deg, #a855f7, #ec4899)', dot: '#c084fc' },
+  };
+
+  // Render segmented bar
+  if (barContainer) {
+    barContainer.innerHTML = models.map(m => {
+      const col = modelColors[m.model] || { bar: 'linear-gradient(90deg, #f59e0b, #fbbf24)' };
+      return `<div style="width: ${m.share_pct}%; background: ${col.bar}; height: 100%;" title="${m.model}: ${m.count.toLocaleString()} turns (${m.share_pct}%)"></div>`;
+    }).join('');
+  }
+
+  // Render legend
+  if (legendContainer) {
+    legendContainer.innerHTML = models.map(m => {
+      const col = modelColors[m.model] || { dot: '#fbbf24' };
+      return `
+        <div style="display: flex; align-items: center; gap: 0.4rem;">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: ${col.dot}; display: inline-block;"></span>
+          <span style="color: #ffffff; font-weight: 600; font-family: 'JetBrains Mono', monospace;">${m.model}</span>
+          <span style="color: var(--text-muted);">(${m.count.toLocaleString()} &bull; ${m.share_pct}%)</span>
+        </div>
+      `;
+    }).join('');
+  }
+
+  renderChatsTableOnly(models);
+}
+
+function renderTraffic(analytics, chats) {
+  // Companion LLM telemetry from chats-sync
+  renderChatsModels(chats || {});
+
   // AI Events
   const events = (analytics.ga4?.events_summary || []).map(e => ({
     ...e,
@@ -1437,11 +1567,12 @@ function initTelemetry(data) {
   renderOverview(data);
   renderWebSimCards(data.websim?.top_projects || []);
   renderGitHubFull(data.github?.all_repos || []);
-  renderTraffic(data.analytics || {});
+  renderTraffic(data.analytics || {}, data.chats || {});
   renderSearch(data.analytics || {});
   renderReferrers(data.github || {});
 
   // Setup click-to-sort on every table
+  makeTableSortable('table-chats-models', () => STATS_DATA.chats?.models || [], renderChatsTableOnly);
   makeTableSortable('table-github', () => STATS_DATA.github?.all_repos || [], renderGitHubFull);
   makeTableSortable('table-referrers', () => STATS_DATA.github?.top_referrers || [], renderReferrers);
   makeTableSortable('table-events', () => (STATS_DATA.analytics?.ga4?.events_summary || []).map(e => ({ ...e, category: getEventCategory(e.event) })), renderEventsTable);

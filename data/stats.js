@@ -1,23 +1,25 @@
 window.WAIFU_STATS = {
-  "synced_at": "2026-09-12T11:12:16.850476",
+  "synced_at": "2026-09-16T09:40:23.046292",
   "source": "all-db unified cross-database engine",
   "macro_kpis": {
     "total_projects": 670,
     "github_repos_count": 52,
     "websim_projects_count": 618,
-    "total_content_views": 57153,
-    "web_page_views": 26775,
+    "total_content_views": 59181,
+    "web_page_views": 28803,
     "websim_views": 30378,
     "total_stars_and_likes": 1313,
     "github_stars": 163,
     "websim_likes": 1150,
-    "total_web_users": 16647,
-    "total_search_impressions": 69231,
-    "total_search_clicks": 3688,
-    "total_chat_messages": 5109,
-    "total_model_changes": 3026,
-    "total_voice_actions": 809,
-    "total_attention_hours": 740.5,
+    "total_web_users": 17772,
+    "total_search_impressions": 74070,
+    "total_search_clicks": 3989,
+    "total_chat_messages": 6614,
+    "companion_turns": 1981,
+    "companion_models_count": 3,
+    "total_model_changes": 4143,
+    "total_voice_actions": 1695,
+    "total_attention_hours": 852.5,
     "total_countries_count": 171,
     "total_clones": 687,
     "total_clone_uniques": 566
@@ -1372,16 +1374,16 @@ window.WAIFU_STATS = {
   },
   "analytics": {
     "ga4": {
-      "active_users": 16647,
-      "new_users": 15806,
-      "sessions": 17974,
-      "page_views": 26775,
-      "avg_engagement_time_sec": 164.9,
-      "total_attention_hours": 740.5,
-      "bounce_rate": 0.848,
+      "active_users": 17772,
+      "new_users": 16876,
+      "sessions": 19195,
+      "page_views": 28803,
+      "avg_engagement_time_sec": 171.0,
+      "total_attention_hours": 852.5,
+      "bounce_rate": 0.675,
       "date_range": [
         "2026-02-22",
-        "2026-09-09"
+        "2026-09-14"
       ],
       "timeline": [
         {
@@ -2978,25 +2980,65 @@ window.WAIFU_STATS = {
         },
         {
           "date": "2026-09-09",
-          "active_users": 185,
-          "sessions": 197,
-          "page_views": 255,
-          "avg_engagement_time": 355.5,
-          "attention_hours": 18.27
+          "active_users": 197,
+          "sessions": 210,
+          "page_views": 343,
+          "avg_engagement_time": 140.8,
+          "attention_hours": 7.71
+        },
+        {
+          "date": "2026-09-10",
+          "active_users": 222,
+          "sessions": 240,
+          "page_views": 332,
+          "avg_engagement_time": 138.9,
+          "attention_hours": 8.56
+        },
+        {
+          "date": "2026-09-11",
+          "active_users": 307,
+          "sessions": 333,
+          "page_views": 478,
+          "avg_engagement_time": 179.9,
+          "attention_hours": 15.34
+        },
+        {
+          "date": "2026-09-12",
+          "active_users": 248,
+          "sessions": 263,
+          "page_views": 455,
+          "avg_engagement_time": 228.3,
+          "attention_hours": 15.73
+        },
+        {
+          "date": "2026-09-13",
+          "active_users": 220,
+          "sessions": 246,
+          "page_views": 436,
+          "avg_engagement_time": 951.4,
+          "attention_hours": 58.14
+        },
+        {
+          "date": "2026-09-14",
+          "active_users": 116,
+          "sessions": 126,
+          "page_views": 239,
+          "avg_engagement_time": 770.2,
+          "attention_hours": 24.82
         }
       ],
       "top_pages": [
         {
           "path": "/",
           "title": "WaifuAI — Free AI Companion with Live2D & Voice",
-          "views": 7762,
-          "users": 5244
+          "views": 7769,
+          "users": 5246
         },
         {
           "path": "/app/index.html",
           "title": "WaifuAI – Free AI Companion with Live2D & Voice",
-          "views": 1050,
-          "users": 664
+          "views": 1233,
+          "users": 800
         },
         {
           "path": "/live2d/index.html",
@@ -3007,14 +3049,38 @@ window.WAIFU_STATS = {
         {
           "path": "/app/",
           "title": "WaifuAI – Free AI Companion with Live2D & Voice",
-          "views": 17,
-          "users": 7
+          "views": 380,
+          "users": 254
         },
         {
           "path": "/app/docs/help.html",
           "title": "Help & Tutorial - WaifuAI Docs",
+          "views": 13,
+          "users": 12
+        },
+        {
+          "path": "/waifu-companion/index.html",
+          "title": "WaifuAI – Free AI Companion with Live2D & Voice",
+          "views": 9,
+          "users": 2
+        },
+        {
+          "path": "/cat-maze/",
+          "title": "Cat Maze — Retro Puzzle Web Game | WaifuAI",
+          "views": 7,
+          "users": 3
+        },
+        {
+          "path": "/app/docs/troubleshooting.html",
+          "title": "Troubleshooting Guide - WaifuAI Docs",
           "views": 6,
           "users": 6
+        },
+        {
+          "path": "/app/docs/index.html",
+          "title": "WaifuAI Documentation",
+          "views": 6,
+          "users": 4
         },
         {
           "path": "/search.html",
@@ -3023,8 +3089,20 @@ window.WAIFU_STATS = {
           "users": 1
         },
         {
-          "path": "/app/docs/index.html",
-          "title": "WaifuAI Documentation",
+          "path": "/data/",
+          "title": "WaifuAI Open Data & Ecosystem Telemetry — Live Analytics",
+          "views": 5,
+          "users": 4
+        },
+        {
+          "path": "/app/docs/voice.html",
+          "title": "Voice & Audio Settings - WaifuAI Docs",
+          "views": 5,
+          "users": 4
+        },
+        {
+          "path": "/research-text/",
+          "title": "Research Documentation Hub | WaifuAI",
           "views": 4,
           "users": 3
         },
@@ -3035,26 +3113,110 @@ window.WAIFU_STATS = {
           "users": 2
         },
         {
+          "path": "/research-text/consolidated-research/ico-sol/index.html",
+          "title": "ICO-Solana Research Repository",
+          "views": 3,
+          "users": 1
+        },
+        {
           "path": "/research-text/consolidated-research/agent-chats/index.html",
           "title": "Agent Chats",
           "views": 3,
           "users": 1
         },
         {
-          "path": "/app/docs/troubleshooting.html",
-          "title": "Troubleshooting Guide - WaifuAI Docs",
+          "path": "/app/docs/providers.html",
+          "title": "LLM Providers - WaifuAI Docs",
           "views": 3,
           "users": 3
         },
         {
-          "path": "/app/docs/voice.html",
-          "title": "Voice & Audio Settings - WaifuAI Docs",
+          "path": "/app/docs/models.html",
+          "title": "Models & Visuals - WaifuAI Docs",
+          "views": 3,
+          "users": 3
+        },
+        {
+          "path": "/research-text/web3-research/index.html",
+          "title": "Web3 & On-Chain Agent Research Hub | WaifuAI",
           "views": 2,
+          "users": 2
+        },
+        {
+          "path": "/research-text/web3-research/01-base-uniswapv4-refactor.html",
+          "title": "Solana to Base Uniswap v4 Refactor | WaifuAI Research",
+          "views": 2,
+          "users": 2
+        },
+        {
+          "path": "/research-books/",
+          "title": "Research Books Library — 14 Academic Volumes | WaifuAI",
+          "views": 2,
+          "users": 1
+        },
+        {
+          "path": "/app/docs/settings.html",
+          "title": "Settings Panel Guide - WaifuAI Docs",
+          "views": 2,
+          "users": 2
+        },
+        {
+          "path": "/app/docs/memory.html",
+          "title": "Memory & Context Settings - WaifuAI Docs",
+          "views": 2,
+          "users": 2
+        },
+        {
+          "path": "/web-apps/bonding-curves.html",
+          "title": "Bonding Curves & AMMs (26 Apps) | WaifuAI Web Apps",
+          "views": 1,
+          "users": 1
+        },
+        {
+          "path": "/web-apps/",
+          "title": "Web Apps Collection — 449+ Interactive Tools | WaifuAI",
+          "views": 1,
+          "users": 1
+        },
+        {
+          "path": "/waifu/app/",
+          "title": "WaifuAI – Free AI Companion with Live2D & Voice",
+          "views": 1,
+          "users": 1
+        },
+        {
+          "path": "/waifu/",
+          "title": "WaifuAI — Free AI Companion with Live2D & Voice",
+          "views": 1,
           "users": 1
         },
         {
           "path": "/sim-airdrop/",
           "title": "Token Airdrop Strategy Simulator | WaifuAI",
+          "views": 1,
+          "users": 1
+        },
+        {
+          "path": "/research-text/index.html",
+          "title": "Research Documentation Hub | WaifuAI",
+          "views": 1,
+          "users": 1
+        },
+        {
+          "path": "/research-books/index.html",
+          "title": "Research Books — 14+ Academic Volumes | WaifuAI",
+          "views": 1,
+          "users": 1
+        },
+        {
+          "path": "/reasoning-pricer/",
+          "title": "Reasoning Pricer — Solana Token AI Pricing | WaifuAI",
+          "views": 1,
+          "users": 1
+        },
+        {
+          "path": "/index.html",
+          "title": "WaifuAI — Free AI Companion with Live2D & Voice",
           "views": 1,
           "users": 1
         },
@@ -3065,95 +3227,131 @@ window.WAIFU_STATS = {
           "users": 1
         },
         {
-          "path": "/app/docs/settings.html",
-          "title": "Settings Panel Guide - WaifuAI Docs",
+          "path": "/data/index.html",
+          "title": "WaifuAI Open Data & Ecosystem Telemetry — Live Analytics",
           "views": 1,
           "users": 1
         },
         {
-          "path": "/app/docs/providers.html",
-          "title": "LLM Providers - WaifuAI Docs",
+          "path": "/blog-posts/index.html",
+          "title": "WaifuAI Blog | WaifuAI",
           "views": 1,
           "users": 1
         },
         {
-          "path": "/app/docs/memory.html",
-          "title": "Memory & Context Settings - WaifuAI Docs",
+          "path": "/blog-posts/14-complete-settings-guide-every-option.html",
+          "title": "Complete Settings Guide: Every Option Explained | WaifuAI",
           "views": 1,
           "users": 1
         },
         {
-          "path": "/research-text/",
-          "title": "Research Documentation Hub | WaifuAI",
-          "views": 0,
+          "path": "/blog-posts/11-how-to-add-your-own-live2d-avatar.html",
+          "title": "How to Add Your Own Live2D Avatar: A Complete Guide | WaifuAI",
+          "views": 1,
+          "users": 1
+        },
+        {
+          "path": "/app/docs/openrouter.html",
+          "title": "OpenRouter Integration - WaifuAI Docs",
+          "views": 1,
           "users": 1
         }
       ],
       "traffic_sources": [
         {
           "channel": "(direct) / (none)",
-          "sessions": 6289,
-          "users": 5868
+          "sessions": 6773,
+          "users": 6313
         },
         {
           "channel": "chatgpt.com / ai-assistant",
-          "sessions": 1614,
-          "users": 1501
+          "sessions": 1936,
+          "users": 1799
         },
         {
           "channel": "google / organic",
-          "sessions": 1410,
-          "users": 1326
+          "sessions": 1655,
+          "users": 1562
         },
         {
           "channel": "(not set)",
-          "sessions": 277,
-          "users": 253
-        },
-        {
-          "channel": "bing / organic",
-          "sessions": 104,
-          "users": 95
+          "sessions": 484,
+          "users": 438
         },
         {
           "channel": "(data not available)",
-          "sessions": 54,
-          "users": 54
+          "sessions": 162,
+          "users": 161
         },
         {
-          "channel": "message / (not set)",
-          "sessions": 13,
-          "users": 9
-        },
-        {
-          "channel": "github.com / referral",
-          "sessions": 9,
-          "users": 9
+          "channel": "bing / organic",
+          "sessions": 160,
+          "users": 146
         },
         {
           "channel": "chatgpt.com / (none)",
-          "sessions": 6,
-          "users": 5
+          "sessions": 54,
+          "users": 52
+        },
+        {
+          "channel": "github.com / referral",
+          "sessions": 23,
+          "users": 23
+        },
+        {
+          "channel": "message / (not set)",
+          "sessions": 22,
+          "users": 18
+        },
+        {
+          "channel": "yandex.ru / referral",
+          "sessions": 15,
+          "users": 15
+        },
+        {
+          "channel": "t.co / referral",
+          "sessions": 15,
+          "users": 10
         },
         {
           "channel": "duckduckgo / organic",
+          "sessions": 12,
+          "users": 12
+        },
+        {
+          "channel": "html-classic.itch.zone / referral",
+          "sessions": 8,
+          "users": 8
+        },
+        {
+          "channel": "yandex / organic",
           "sessions": 5,
           "users": 5
         },
         {
-          "channel": "yandex.ru / referral",
-          "sessions": 3,
+          "channel": "yahoo / organic",
+          "sessions": 5,
+          "users": 5
+        },
+        {
+          "channel": "ecosia.org / organic",
+          "sessions": 5,
+          "users": 5
+        },
+        {
+          "channel": "message / ",
+          "sessions": 4,
           "users": 3
         },
         {
-          "channel": "t.co / referral",
-          "sessions": 3,
-          "users": 3
+          "channel": "yandex.com.tr / referral",
+          "sessions": 2,
+          "users": 2
         },
         {
-          "channel": "html-classic.itch.zone / referral",
-          "sessions": 3,
-          "users": 3
+          "channel": "search.brave.com / referral",
+          "sessions": 2,
+          "users": 2
         },
         {
           "channel": "cn.bing.com / referral",
@@ -3161,17 +3359,7 @@ window.WAIFU_STATS = {
           "users": 2
         },
         {
-          "channel": "yandex.com.tr / referral",
-          "sessions": 1,
-          "users": 1
-        },
-        {
-          "channel": "yandex / organic",
-          "sessions": 1,
-          "users": 1
-        },
-        {
-          "channel": "yahoo / organic",
+          "channel": "yandex.uz / referral",
           "sessions": 1,
           "users": 1
         },
@@ -3181,17 +3369,17 @@ window.WAIFU_STATS = {
           "users": 1
         },
         {
-          "channel": "search.brave.com / referral",
+          "channel": "waifuai.github.io / referral",
           "sessions": 1,
           "users": 1
         },
         {
-          "channel": "message / ",
+          "channel": "startpage.com / referral",
           "sessions": 1,
           "users": 1
         },
         {
-          "channel": "id.search.yahoo.com / referral",
+          "channel": "openai / referral",
           "sessions": 1,
           "users": 1
         }
@@ -4302,178 +4490,203 @@ window.WAIFU_STATS = {
       "events_summary": [
         {
           "event": "page_view",
-          "count": 11363,
-          "users": 6828
+          "count": 13391,
+          "users": 7966
         },
         {
           "event": "chat_message_sent",
-          "count": 5109,
-          "users": 924
+          "count": 6614,
+          "users": 1261
         },
         {
           "event": "session_start",
-          "count": 4397,
-          "users": 4077
-        },
-        {
-          "event": "first_visit",
-          "count": 3705,
-          "users": 3690
-        },
-        {
-          "event": "scroll",
-          "count": 3460,
-          "users": 1968
+          "count": 5606,
+          "users": 5187
         },
         {
           "event": "settings_submenu_opened",
-          "count": 3364,
-          "users": 807
+          "count": 4826,
+          "users": 1152
         },
         {
-          "event": "user_engagement",
-          "count": 3050,
-          "users": 2044
+          "event": "first_visit",
+          "count": 4775,
+          "users": 4746
+        },
+        {
+          "event": "scroll",
+          "count": 4403,
+          "users": 2519
         },
         {
           "event": "model_changed",
-          "count": 3026,
-          "users": 1024
+          "count": 4143,
+          "users": 1489
+        },
+        {
+          "event": "user_engagement",
+          "count": 4128,
+          "users": 2752
         },
         {
           "event": "llm_stream_completed",
-          "count": 845,
-          "users": 30
-        },
-        {
-          "event": "tts_action",
-          "count": 666,
-          "users": 54
-        },
-        {
-          "event": "cta_click",
-          "count": 535,
-          "users": 298
-        },
-        {
-          "event": "click",
-          "count": 529,
-          "users": 296
+          "count": 1770,
+          "users": 221
         },
         {
           "event": "llm_request_started",
-          "count": 447,
-          "users": 1
+          "count": 1309,
+          "users": 169
+        },
+        {
+          "event": "tts_action",
+          "count": 1276,
+          "users": 156
+        },
+        {
+          "event": "cta_click",
+          "count": 1235,
+          "users": 749
         },
         {
           "event": "llm_stream_started",
-          "count": 440,
-          "users": 1
+          "count": 1211,
+          "users": 156
+        },
+        {
+          "event": "click",
+          "count": 935,
+          "users": 542
         },
         {
           "event": "message_deleted",
-          "count": 360,
-          "users": 11
-        },
-        {
-          "event": "app_error",
-          "count": 101,
-          "users": 58
-        },
-        {
-          "event": "voice_input_used",
-          "count": 100,
-          "users": 35
+          "count": 577,
+          "users": 31
         },
         {
           "event": "settings_opened",
-          "count": 81,
-          "users": 40
+          "count": 236,
+          "users": 101
         },
         {
-          "event": "voice_enabled_toggle",
-          "count": 65,
-          "users": 18
+          "event": "voice_input_used",
+          "count": 233,
+          "users": 76
         },
         {
           "event": "visual_settings_updated",
-          "count": 56,
-          "users": 23
+          "count": 220,
+          "users": 65
         },
         {
           "event": "tts_played",
-          "count": 43,
-          "users": 12
+          "count": 186,
+          "users": 32
+        },
+        {
+          "event": "app_error",
+          "count": 185,
+          "users": 110
+        },
+        {
+          "event": "persona_updated",
+          "count": 143,
+          "users": 38
+        },
+        {
+          "event": "voice_enabled_toggle",
+          "count": 131,
+          "users": 42
+        },
+        {
+          "event": "radio_toggle",
+          "count": 45,
+          "users": 17
         },
         {
           "event": "radio_volume_changed",
+          "count": 42,
+          "users": 18
+        },
+        {
+          "event": "message_copied",
+          "count": 39,
+          "users": 28
+        },
+        {
+          "event": "languages_reset",
+          "count": 36,
+          "users": 24
+        },
+        {
+          "event": "voice_changed",
+          "count": 31,
+          "users": 17
+        },
+        {
+          "event": "context_settings_updated",
+          "count": 30,
+          "users": 14
+        },
+        {
+          "event": "automation_settings_updated",
           "count": 25,
           "users": 9
         },
         {
-          "event": "languages_reset",
-          "count": 24,
-          "users": 13
-        },
-        {
-          "event": "radio_toggle",
-          "count": 23,
-          "users": 9
-        },
-        {
-          "event": "automation_settings_updated",
+          "event": "level_loaded",
           "count": 22,
-          "users": 7
-        },
-        {
-          "event": "voice_changed",
-          "count": 21,
-          "users": 12
-        },
-        {
-          "event": "message_copied",
-          "count": 18,
-          "users": 13
+          "users": 2
         },
         {
           "event": "auto_offline_tripped",
-          "count": 17,
-          "users": 10
-        },
-        {
-          "event": "persona_updated",
-          "count": 16,
-          "users": 11
-        },
-        {
-          "event": "llm_model_changed",
-          "count": 10,
-          "users": 3
-        },
-        {
-          "event": "context_settings_updated",
-          "count": 10,
-          "users": 5
+          "count": 20,
+          "users": 12
         },
         {
           "event": "background_changed",
-          "count": 9,
-          "users": 1
+          "count": 15,
+          "users": 3
         },
         {
-          "event": "llm_provider_changed",
-          "count": 8,
-          "users": 4
+          "event": "llm_model_changed",
+          "count": 13,
+          "users": 6
         },
         {
           "event": "model_gallery_opened",
-          "count": 4,
-          "users": 4
+          "count": 12,
+          "users": 12
+        },
+        {
+          "event": "llm_provider_changed",
+          "count": 10,
+          "users": 6
         },
         {
           "event": "persona_reset",
-          "count": 2,
-          "users": 2
+          "count": 9,
+          "users": 6
+        },
+        {
+          "event": "game_started",
+          "count": 6,
+          "users": 3
+        },
+        {
+          "event": "editor_mode_toggled",
+          "count": 4,
+          "users": 1
+        },
+        {
+          "event": "openrouter_first_success",
+          "count": 1,
+          "users": 1
+        },
+        {
+          "event": "map_view_toggled",
+          "count": 1,
+          "users": 1
         },
         {
           "event": "external_link_clicked",
@@ -4659,34 +4872,118 @@ window.WAIFU_STATS = {
         {
           "date": "2026-09-09",
           "event": "model_changed",
-          "count": 170,
-          "users": 51
+          "count": 203,
+          "users": 58
         },
         {
           "date": "2026-09-09",
           "event": "chat_message_sent",
-          "count": 131,
-          "users": 39
+          "count": 162,
+          "users": 43
         },
         {
           "date": "2026-09-09",
           "event": "tts_action",
-          "count": 81,
+          "count": 86,
           "users": 15
+        },
+        {
+          "date": "2026-09-10",
+          "event": "chat_message_sent",
+          "count": 161,
+          "users": 44
+        },
+        {
+          "date": "2026-09-10",
+          "event": "model_changed",
+          "count": 158,
+          "users": 70
+        },
+        {
+          "date": "2026-09-10",
+          "event": "tts_action",
+          "count": 125,
+          "users": 19
+        },
+        {
+          "date": "2026-09-11",
+          "event": "chat_message_sent",
+          "count": 328,
+          "users": 71
+        },
+        {
+          "date": "2026-09-11",
+          "event": "model_changed",
+          "count": 177,
+          "users": 104
+        },
+        {
+          "date": "2026-09-11",
+          "event": "tts_action",
+          "count": 137,
+          "users": 18
+        },
+        {
+          "date": "2026-09-12",
+          "event": "chat_message_sent",
+          "count": 336,
+          "users": 74
+        },
+        {
+          "date": "2026-09-12",
+          "event": "model_changed",
+          "count": 301,
+          "users": 106
+        },
+        {
+          "date": "2026-09-12",
+          "event": "tts_action",
+          "count": 208,
+          "users": 33
+        },
+        {
+          "date": "2026-09-13",
+          "event": "chat_message_sent",
+          "count": 444,
+          "users": 92
+        },
+        {
+          "date": "2026-09-13",
+          "event": "model_changed",
+          "count": 312,
+          "users": 118
+        },
+        {
+          "date": "2026-09-13",
+          "event": "tts_action",
+          "count": 135,
+          "users": 32
+        },
+        {
+          "date": "2026-09-14",
+          "event": "chat_message_sent",
+          "count": 205,
+          "users": 52
+        },
+        {
+          "date": "2026-09-14",
+          "event": "model_changed",
+          "count": 136,
+          "users": 60
         }
       ],
-      "total_chat_messages": 5109,
-      "total_model_changes": 3026,
-      "total_voice_actions": 809
+      "total_chat_messages": 6614,
+      "total_model_changes": 4143,
+      "total_voice_actions": 1695
     },
     "gsc": {
-      "clicks": 3688,
-      "impressions": 69231,
-      "ctr": 0.0322,
-      "average_position": 7.6,
+      "clicks": 3989,
+      "impressions": 74070,
+      "ctr": 0.0323,
+      "average_position": 7.5,
       "date_range": [
         "2025-09-04",
-        "2026-09-07"
+        "2026-09-12"
       ],
       "timeline": [
         {
@@ -7532,158 +7829,230 @@ window.WAIFU_STATS = {
           "clicks": 46,
           "impressions": 888,
           "position": 4.8
+        },
+        {
+          "date": "2026-09-08",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 5.0
+        },
+        {
+          "date": "2026-09-08",
+          "clicks": 63,
+          "impressions": 963,
+          "position": 5.3
+        },
+        {
+          "date": "2026-09-09",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 8.0
+        },
+        {
+          "date": "2026-09-09",
+          "clicks": 41,
+          "impressions": 822,
+          "position": 5.7
+        },
+        {
+          "date": "2026-09-10",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 8.3
+        },
+        {
+          "date": "2026-09-10",
+          "clicks": 51,
+          "impressions": 970,
+          "position": 5.2
+        },
+        {
+          "date": "2026-09-11",
+          "clicks": 82,
+          "impressions": 1001,
+          "position": 4.6
+        },
+        {
+          "date": "2026-09-12",
+          "clicks": 64,
+          "impressions": 1078,
+          "position": 5.6
         }
       ],
       "top_queries": [
         {
           "query": "waifu ai",
-          "clicks": 1294,
-          "impressions": 36529,
-          "position": 12.7
+          "clicks": 1372,
+          "impressions": 38502,
+          "position": 12.4
         },
         {
           "query": "waifuai",
-          "clicks": 1025,
-          "impressions": 2839,
-          "position": 5.1
+          "clicks": 1098,
+          "impressions": 2982,
+          "position": 5.0
         },
         {
           "query": "ai waifu",
-          "clicks": 106,
-          "impressions": 2418,
-          "position": 26.1
+          "clicks": 131,
+          "impressions": 3006,
+          "position": 25.1
         },
         {
           "query": "weifu ai",
-          "clicks": 76,
-          "impressions": 865,
-          "position": 10.3
+          "clicks": 90,
+          "impressions": 951,
+          "position": 9.8
         },
         {
           "query": "waifu.ai",
           "clicks": 38,
-          "impressions": 173,
-          "position": 3.1
+          "impressions": 194,
+          "position": 3.0
         },
         {
           "query": "waifuai studio",
-          "clicks": 33,
-          "impressions": 280,
+          "clicks": 36,
+          "impressions": 313,
           "position": 5.1
         },
         {
-          "query": "wifu ai",
-          "clicks": 31,
-          "impressions": 170,
-          "position": 3.7
+          "query": "waifu ai chat",
+          "clicks": 35,
+          "impressions": 443,
+          "position": 28.7
         },
         {
-          "query": "waifu ai chat",
-          "clicks": 30,
-          "impressions": 360,
-          "position": 30.7
+          "query": "wifu ai",
+          "clicks": 35,
+          "impressions": 207,
+          "position": 3.6
         },
         {
           "query": "ai waifu companion",
-          "clicks": 21,
-          "impressions": 51,
+          "clicks": 24,
+          "impressions": 71,
           "position": 3.2
         },
         {
           "query": "waifu chat",
           "clicks": 15,
-          "impressions": 62,
-          "position": 37.2
+          "impressions": 83,
+          "position": 32.6
         },
         {
           "query": "weifu ai online",
           "clicks": 13,
-          "impressions": 71,
-          "position": 2.9
+          "impressions": 87,
+          "position": 2.8
         },
         {
           "query": "wafu ai",
-          "clicks": 12,
-          "impressions": 41,
-          "position": 2.7
+          "clicks": 13,
+          "impressions": 60,
+          "position": 2.5
         },
         {
           "query": "wifuai",
-          "clicks": 10,
-          "impressions": 16,
-          "position": 1.9
+          "clicks": 11,
+          "impressions": 20,
+          "position": 2.0
         },
         {
           "query": "ai waifu chat",
-          "clicks": 6,
-          "impressions": 117,
-          "position": 39.1
+          "clicks": 9,
+          "impressions": 176,
+          "position": 32.7
         },
         {
           "query": "waifu. ai",
           "clicks": 6,
-          "impressions": 36,
-          "position": 2.5
+          "impressions": 51,
+          "position": 2.7
+        },
+        {
+          "query": "free ai waifu",
+          "clicks": 6,
+          "impressions": 46,
+          "position": 6.4
         },
         {
           "query": "ai wifu",
           "clicks": 6,
-          "impressions": 25,
+          "impressions": 42,
+          "position": 5.4
+        },
+        {
+          "query": "live2d ai companion",
+          "clicks": 6,
+          "impressions": 21,
           "position": 5.3
         },
         {
           "query": "waif ai",
           "clicks": 6,
-          "impressions": 19,
-          "position": 3.7
-        },
-        {
-          "query": "live2d ai companion",
-          "clicks": 6,
-          "impressions": 13,
-          "position": 6.4
+          "impressions": 20,
+          "position": 3.5
         },
         {
           "query": "waifu ai chatbot",
           "clicks": 5,
-          "impressions": 92,
-          "position": 46.5
+          "impressions": 128,
+          "position": 41.3
         },
         {
-          "query": "free ai waifu",
+          "query": "waifu ai app",
           "clicks": 5,
-          "impressions": 26,
-          "position": 6.8
+          "impressions": 76,
+          "position": 2.9
         },
         {
-          "query": "waifu ai free",
+          "query": "wafiu ai",
           "clicks": 5,
-          "impressions": 12,
+          "impressions": 43,
           "position": 2.9
         },
         {
           "query": "live2d ai",
           "clicks": 5,
-          "impressions": 10,
-          "position": 8.2
+          "impressions": 18,
+          "position": 9.1
+        },
+        {
+          "query": "waifu companion",
+          "clicks": 5,
+          "impressions": 14,
+          "position": 2.4
+        },
+        {
+          "query": "waifu ai free",
+          "clicks": 5,
+          "impressions": 13,
+          "position": 2.7
         },
         {
           "query": "wiefu ai",
           "clicks": 5,
-          "impressions": 9,
-          "position": 5.5
+          "impressions": 11,
+          "position": 5.6
         },
         {
           "query": "my waifu ai",
           "clicks": 4,
-          "impressions": 33,
-          "position": 7.5
+          "impressions": 67,
+          "position": 5.3
         },
         {
-          "query": "wafiu ai",
+          "query": "ai waifu free",
           "clicks": 4,
-          "impressions": 26,
-          "position": 3.2
+          "impressions": 21,
+          "position": 4.8
+        },
+        {
+          "query": "wafui ai",
+          "clicks": 4,
+          "impressions": 14,
+          "position": 2.8
         },
         {
           "query": "wefu ai",
@@ -7692,28 +8061,22 @@ window.WAIFU_STATS = {
           "position": 3.4
         },
         {
-          "query": "wafui ai",
+          "query": "waifu ia",
           "clicks": 4,
           "impressions": 11,
-          "position": 3.1
-        },
-        {
-          "query": "waifu companion",
-          "clicks": 4,
-          "impressions": 9,
-          "position": 2.8
+          "position": 8.3
         },
         {
           "query": "wiafu ai",
           "clicks": 4,
-          "impressions": 8,
+          "impressions": 11,
           "position": 2.4
         },
         {
           "query": "waifu chat ai",
           "clicks": 3,
-          "impressions": 28,
-          "position": 20.9
+          "impressions": 40,
+          "position": 16.7
         },
         {
           "query": "wefui ai",
@@ -7724,14 +8087,20 @@ window.WAIFU_STATS = {
         {
           "query": "aiwaifu",
           "clicks": 3,
-          "impressions": 16,
-          "position": 13.5
+          "impressions": 18,
+          "position": 15.7
         },
         {
           "query": "waifu ai character companion",
           "clicks": 3,
+          "impressions": 13,
+          "position": 9.3
+        },
+        {
+          "query": "waifu ai companion",
+          "clicks": 3,
           "impressions": 9,
-          "position": 12.0
+          "position": 3.2
         },
         {
           "query": "ai waif",
@@ -7740,22 +8109,10 @@ window.WAIFU_STATS = {
           "position": 5.1
         },
         {
-          "query": "waifu ai companion",
-          "clicks": 3,
-          "impressions": 7,
-          "position": 3.3
-        },
-        {
-          "query": "waifu ia",
-          "clicks": 3,
-          "impressions": 6,
-          "position": 3.0
-        },
-        {
           "query": "waifi ai",
           "clicks": 3,
-          "impressions": 5,
-          "position": 3.6
+          "impressions": 8,
+          "position": 3.2
         },
         {
           "query": "weifi ai",
@@ -7770,16 +8127,22 @@ window.WAIFU_STATS = {
           "position": 7.3
         },
         {
-          "query": "waifu ai app",
+          "query": "ai waifu chat free",
           "clicks": 2,
-          "impressions": 32,
-          "position": 3.1
+          "impressions": 35,
+          "position": 8.5
         },
         {
-          "query": "ai waifu free",
+          "query": "waifus ai",
           "clicks": 2,
-          "impressions": 11,
-          "position": 5.1
+          "impressions": 19,
+          "position": 11.6
+        },
+        {
+          "query": "chat ai waifu",
+          "clicks": 2,
+          "impressions": 13,
+          "position": 9.9
         },
         {
           "query": "ai waify",
@@ -7794,10 +8157,16 @@ window.WAIFU_STATS = {
           "position": 8.8
         },
         {
-          "query": "chat ai waifu",
+          "query": "live2d waifu",
           "clicks": 2,
-          "impressions": 4,
-          "position": 14.0
+          "impressions": 6,
+          "position": 2.4
+        },
+        {
+          "query": "your waifu ai",
+          "clicks": 2,
+          "impressions": 5,
+          "position": 3.2
         },
         {
           "query": "weifu ai website",
@@ -7806,22 +8175,16 @@ window.WAIFU_STATS = {
           "position": 4.5
         },
         {
-          "query": "your waifu ai",
-          "clicks": 2,
-          "impressions": 4,
-          "position": 2.7
-        },
-        {
-          "query": "live2d waifu",
-          "clicks": 2,
-          "impressions": 3,
-          "position": 2.7
-        },
-        {
           "query": "waifu ia chat",
           "clicks": 2,
+          "impressions": 3,
+          "position": 9.0
+        },
+        {
+          "query": "waifu a",
+          "clicks": 2,
           "impressions": 2,
-          "position": 12.0
+          "position": 2.5
         },
         {
           "query": "waifuly",
@@ -7832,8 +8195,20 @@ window.WAIFU_STATS = {
         {
           "query": "ai chat waifu",
           "clicks": 1,
+          "impressions": 50,
+          "position": 38.4
+        },
+        {
+          "query": "ad waifuai studio",
+          "clicks": 1,
           "impressions": 36,
-          "position": 45.0
+          "position": 5.5
+        },
+        {
+          "query": "weifu al",
+          "clicks": 1,
+          "impressions": 28,
+          "position": 9.0
         },
         {
           "query": "waifucharlii",
@@ -7842,28 +8217,22 @@ window.WAIFU_STATS = {
           "position": 8.4
         },
         {
-          "query": "weifu al",
+          "query": "waifu chatbot",
           "clicks": 1,
-          "impressions": 21,
-          "position": 9.1
-        },
-        {
-          "query": "ad waifuai studio",
-          "clicks": 1,
-          "impressions": 20,
-          "position": 5.6
-        },
-        {
-          "query": "ai waifu chat free",
-          "clicks": 1,
-          "impressions": 18,
-          "position": 10.5
+          "impressions": 16,
+          "position": 34.4
         },
         {
           "query": "desktop waifu ai",
           "clicks": 1,
-          "impressions": 12,
-          "position": 8.0
+          "impressions": 13,
+          "position": 8.2
+        },
+        {
+          "query": "haifu ai",
+          "clicks": 1,
+          "impressions": 13,
+          "position": 5.3
         },
         {
           "query": "is waifu ai free",
@@ -7872,22 +8241,40 @@ window.WAIFU_STATS = {
           "position": 5.8
         },
         {
-          "query": "waifu chatbot",
-          "clicks": 1,
-          "impressions": 11,
-          "position": 38.6
-        },
-        {
-          "query": "waifus ai",
-          "clicks": 1,
-          "impressions": 10,
-          "position": 15.7
-        },
-        {
-          "query": "haifu ai",
+          "query": "desktop ai waifu",
           "clicks": 1,
           "impressions": 5,
-          "position": 6.0
+          "position": 8.2
+        },
+        {
+          "query": "webwaifu",
+          "clicks": 1,
+          "impressions": 5,
+          "position": 9.0
+        },
+        {
+          "query": "anime ai waifu",
+          "clicks": 1,
+          "impressions": 4,
+          "position": 34.5
+        },
+        {
+          "query": "free ai waifu chat",
+          "clicks": 1,
+          "impressions": 4,
+          "position": 4.7
+        },
+        {
+          "query": "waifu free",
+          "clicks": 1,
+          "impressions": 4,
+          "position": 9.3
+        },
+        {
+          "query": "ai waifu desktop",
+          "clicks": 1,
+          "impressions": 3,
+          "position": 4.7
         },
         {
           "query": "wafi ai",
@@ -7896,16 +8283,10 @@ window.WAIFU_STATS = {
           "position": 6.8
         },
         {
-          "query": "waifu free",
+          "query": "waifufaee",
           "clicks": 1,
           "impressions": 3,
-          "position": 11.5
-        },
-        {
-          "query": "webwaifu",
-          "clicks": 1,
-          "impressions": 3,
-          "position": 10.5
+          "position": 19.0
         },
         {
           "query": "wifeu ai",
@@ -7914,10 +8295,10 @@ window.WAIFU_STATS = {
           "position": 1.0
         },
         {
-          "query": "desktop ai waifu",
+          "query": "chat waifu",
           "clicks": 1,
           "impressions": 2,
-          "position": 8.5
+          "position": 7.0
         },
         {
           "query": "iviwaifu",
@@ -7930,12 +8311,6 @@ window.WAIFU_STATS = {
           "clicks": 1,
           "impressions": 2,
           "position": 4.5
-        },
-        {
-          "query": "waifufaee",
-          "clicks": 1,
-          "impressions": 2,
-          "position": 20.0
         },
         {
           "query": "waifupervai",
@@ -7956,7 +8331,19 @@ window.WAIFU_STATS = {
           "position": 5.0
         },
         {
+          "query": "anime waifu ai assistant",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 6.0
+        },
+        {
           "query": "are any of these free?",
+          "clicks": 1,
+          "impressions": 1,
+          "position": 1.0
+        },
+        {
+          "query": "c’est quoi le site ?",
           "clicks": 1,
           "impressions": 1,
           "position": 1.0
@@ -7966,12 +8353,6 @@ window.WAIFU_STATS = {
           "clicks": 1,
           "impressions": 1,
           "position": 1.0
-        },
-        {
-          "query": "free ai waifu chat",
-          "clicks": 1,
-          "impressions": 1,
-          "position": 5.0
         },
         {
           "query": "like websites",
@@ -8010,12 +8391,6 @@ window.WAIFU_STATS = {
           "position": 9.0
         },
         {
-          "query": "waifu a",
-          "clicks": 1,
-          "impressions": 1,
-          "position": 3.0
-        },
-        {
           "query": "waifu desktop",
           "clicks": 1,
           "impressions": 1,
@@ -8046,52 +8421,106 @@ window.WAIFU_STATS = {
           "position": 1.0
         },
         {
+          "query": "ai waifu app",
+          "clicks": 0,
+          "impressions": 49,
+          "position": 10.0
+        },
+        {
+          "query": "ai waifu chatbot",
+          "clicks": 0,
+          "impressions": 38,
+          "position": 45.5
+        },
+        {
+          "query": "waifu website",
+          "clicks": 0,
+          "impressions": 34,
+          "position": 12.1
+        },
+        {
           "query": "waifucharli",
           "clicks": 0,
           "impressions": 31,
           "position": 7.9
         },
         {
-          "query": "ai waifu chatbot",
+          "query": "anime waifu ai",
           "clicks": 0,
-          "impressions": 21,
-          "position": 57.2
-        },
-        {
-          "query": "ai waifu app",
-          "clicks": 0,
-          "impressions": 20,
-          "position": 10.9
+          "impressions": 26,
+          "position": 24.4
         },
         {
           "query": "вайфу аи",
           "clicks": 0,
-          "impressions": 17,
-          "position": 5.1
-        },
-        {
-          "query": "iawaifu",
-          "clicks": 0,
-          "impressions": 13,
-          "position": 8.0
+          "impressions": 26,
+          "position": 4.7
         },
         {
           "query": "anime chat ai waifu chatbot",
           "clicks": 0,
-          "impressions": 12,
-          "position": 26.7
+          "impressions": 25,
+          "position": 24.3
+        },
+        {
+          "query": "аи вайфу",
+          "clicks": 0,
+          "impressions": 25,
+          "position": 5.9
+        },
+        {
+          "query": "ai anime waifu",
+          "clicks": 0,
+          "impressions": 23,
+          "position": 33.8
         },
         {
           "query": "waifu login",
           "clicks": 0,
-          "impressions": 11,
-          "position": 11.0
+          "impressions": 19,
+          "position": 10.9
+        },
+        {
+          "query": "iawaifu",
+          "clicks": 0,
+          "impressions": 18,
+          "position": 8.0
+        },
+        {
+          "query": "ai waifus",
+          "clicks": 0,
+          "impressions": 16,
+          "position": 17.4
+        },
+        {
+          "query": "вайфу ai",
+          "clicks": 0,
+          "impressions": 16,
+          "position": 24.7
+        },
+        {
+          "query": "ai.waifu",
+          "clicks": 0,
+          "impressions": 15,
+          "position": 4.8
         },
         {
           "query": "waifu talk",
           "clicks": 0,
-          "impressions": 11,
-          "position": 42.3
+          "impressions": 15,
+          "position": 26.0
+        },
+        {
+          "query": "waify ai",
+          "clicks": 0,
+          "impressions": 14,
+          "position": 3.3
+        },
+        {
+          "query": "ai chatbot waifu",
+          "clicks": 0,
+          "impressions": 12,
+          "position": 11.6
         },
         {
           "query": "waiifuaya",
@@ -8106,34 +8535,58 @@ window.WAIFU_STATS = {
           "position": 5.8
         },
         {
-          "query": "waifu website",
+          "query": "ai waifu chat bot",
           "clicks": 0,
           "impressions": 10,
-          "position": 17.6
+          "position": 27.7
         },
         {
-          "query": "вайфу ai",
+          "query": "mywaifu ai",
           "clicks": 0,
           "impressions": 10,
-          "position": 30.7
+          "position": 3.5
         },
         {
-          "query": "anime waifu ai",
+          "query": "waifu.ia",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 2.7
+        },
+        {
+          "query": "weifu",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 20.1
+        },
+        {
+          "query": "evowaifucompanions",
           "clicks": 0,
           "impressions": 9,
-          "position": 26.5
+          "position": 8.4
         },
         {
-          "query": "аи вайфу",
+          "query": "чат с вайфу",
           "clicks": 0,
           "impressions": 9,
-          "position": 6.2
+          "position": 23.5
         },
         {
-          "query": "ai waifus",
+          "query": "live2d anime ai companion market",
           "clicks": 0,
-          "impressions": 7,
-          "position": 25.0
+          "impressions": 8,
+          "position": 12.8
+        },
+        {
+          "query": "my ai waifu",
+          "clicks": 0,
+          "impressions": 8,
+          "position": 6.7
+        },
+        {
+          "query": "waifusai",
+          "clicks": 0,
+          "impressions": 8,
+          "position": 10.6
         },
         {
           "query": "soul of waifu github ai companion",
@@ -8142,10 +8595,40 @@ window.WAIFU_STATS = {
           "position": 8.6
         },
         {
-          "query": "ai anime waifu",
+          "query": "2d waifu",
           "clicks": 0,
           "impressions": 6,
-          "position": 37.3
+          "position": 9.0
+        },
+        {
+          "query": "local ai waifu",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 7.7
+        },
+        {
+          "query": "waifu ai chat bot",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 9.0
+        },
+        {
+          "query": "waifu ai studio",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 6.1
+        },
+        {
+          "query": "waifu chat bot",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 25.2
+        },
+        {
+          "query": "waifudai",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 12.7
         },
         {
           "query": "waifulacie",
@@ -8154,34 +8637,76 @@ window.WAIFU_STATS = {
           "position": 4.7
         },
         {
-          "query": "waifusai",
+          "query": "waifunai",
           "clicks": 0,
           "impressions": 6,
-          "position": 12.7
+          "position": 7.1
         },
         {
-          "query": "ai.waifu",
+          "query": "wiwaifu",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 7.7
+        },
+        {
+          "query": "аниме вайфу ai",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 24.8
+        },
+        {
+          "query": "ии вайфу",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 28.1
+        },
+        {
+          "query": "чат ии чат вайфу",
+          "clicks": 0,
+          "impressions": 6,
+          "position": 20.7
+        },
+        {
+          "query": "ai waifu app review",
           "clicks": 0,
           "impressions": 5,
-          "position": 3.7
+          "position": 19.4
         },
         {
-          "query": "weifu",
+          "query": "ivywaiifu",
           "clicks": 0,
           "impressions": 5,
-          "position": 21.9
+          "position": 17.0
         },
         {
-          "query": "live2d anime ai companion market",
+          "query": "waifudai free",
           "clicks": 0,
-          "impressions": 4,
-          "position": 13.5
+          "impressions": 5,
+          "position": 7.0
         },
         {
-          "query": "my ai waifu",
+          "query": "aiwaifuhub",
           "clicks": 0,
           "impressions": 4,
           "position": 6.3
+        },
+        {
+          "query": "i waifu ai",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 5.0
+        },
+        {
+          "query": "ivewaifu",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 3.7
+        },
+        {
+          "query": "waifii",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 8.7
         },
         {
           "query": "waifu ai code",
@@ -8190,10 +8715,10 @@ window.WAIFU_STATS = {
           "position": 8.0
         },
         {
-          "query": "waify ai",
+          "query": "waifu app",
           "clicks": 0,
           "impressions": 4,
-          "position": 4.7
+          "position": 20.5
         },
         {
           "query": "what is waifu ai",
@@ -8202,16 +8727,28 @@ window.WAIFU_STATS = {
           "position": 9.2
         },
         {
+          "query": "вайфу чат",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 9.5
+        },
+        {
+          "query": "ai desktop waifu",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 8.0
+        },
+        {
           "query": "ai waifu pc",
           "clicks": 0,
           "impressions": 3,
           "position": 3.8
         },
         {
-          "query": "ivewaifu",
+          "query": "ivuwaiifu",
           "clicks": 0,
           "impressions": 3,
-          "position": 4.0
+          "position": 8.2
         },
         {
           "query": "site:github.io \"blink\"",
@@ -8220,64 +8757,100 @@ window.WAIFU_STATS = {
           "position": 9.0
         },
         {
+          "query": "waiflow",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 8.3
+        },
+        {
+          "query": "waifu 2d",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 13.5
+        },
+        {
+          "query": "waifu bot",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 29.0
+        },
+        {
           "query": "waifu character ai",
           "clicks": 0,
           "impressions": 3,
           "position": 10.7
         },
         {
-          "query": "waifu.ia",
+          "query": "waifubear (stream or content or unlocked or pack)",
           "clicks": 0,
           "impressions": 3,
-          "position": 2.5
+          "position": 28.2
         },
         {
-          "query": "waifudai",
+          "query": "waifufae",
           "clicks": 0,
           "impressions": 3,
-          "position": 22.0
+          "position": 1.0
         },
         {
-          "query": "waifunai",
-          "clicks": 0,
-          "impressions": 3,
-          "position": 6.2
-        },
-        {
-          "query": "wiwaifu",
+          "query": "waifuzonga",
           "clicks": 0,
           "impressions": 3,
           "position": 8.0
         },
         {
-          "query": "чат ии чат вайфу",
+          "query": "wefui",
           "clicks": 0,
           "impressions": 3,
-          "position": 25.3
+          "position": 4.0
         },
         {
-          "query": "чат с вайфу",
+          "query": "wifu ia",
           "clicks": 0,
           "impressions": 3,
-          "position": 30.0
+          "position": 2.3
         },
         {
-          "query": "ai desktop waifu",
+          "query": "вайфу ии",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 6.0
+        },
+        {
+          "query": "ai waifi",
           "clicks": 0,
           "impressions": 2,
-          "position": 9.0
+          "position": 5.0
         },
         {
-          "query": "i waifu ai",
+          "query": "aiwi",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 33.5
+        },
+        {
+          "query": "chat ia waifu",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 25.0
+        },
+        {
+          "query": "chat with ai waifu",
           "clicks": 0,
           "impressions": 2,
           "position": 6.0
         },
         {
-          "query": "ivuwaiifu",
+          "query": "iwai",
           "clicks": 0,
           "impressions": 2,
-          "position": 7.5
+          "position": 62.5
+        },
+        {
+          "query": "my waifu ai chat",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 2.5
         },
         {
           "query": "open source ai waifu",
@@ -8292,28 +8865,28 @@ window.WAIFU_STATS = {
           "position": 3.5
         },
         {
-          "query": "waifu 2d",
+          "query": "waifu ai assistant",
           "clicks": 0,
           "impressions": 2,
-          "position": 18.0
+          "position": 5.5
         },
         {
-          "query": "waifu ai chat bot",
+          "query": "waifu live",
           "clicks": 0,
           "impressions": 2,
-          "position": 13.0
+          "position": 7.0
         },
         {
-          "query": "waifu app",
+          "query": "waifu messenger",
           "clicks": 0,
           "impressions": 2,
-          "position": 17.5
+          "position": 15.5
         },
         {
-          "query": "waifu chat bot",
+          "query": "waifu mode",
           "clicks": 0,
           "impressions": 2,
-          "position": 41.0
+          "position": 25.5
         },
         {
           "query": "waifu site",
@@ -8328,10 +8901,22 @@ window.WAIFU_STATS = {
           "position": 14.0
         },
         {
+          "query": "waifu2",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 41.5
+        },
+        {
           "query": "waifu2k",
           "clicks": 0,
           "impressions": 2,
           "position": 10.0
+        },
+        {
+          "query": "waifualien_ free",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 9.0
         },
         {
           "query": "waifuchari",
@@ -8340,16 +8925,10 @@ window.WAIFU_STATS = {
           "position": 6.5
         },
         {
-          "query": "waifudai free",
+          "query": "waifudai videos",
           "clicks": 0,
           "impressions": 2,
-          "position": 9.0
-        },
-        {
-          "query": "wefui",
-          "clicks": 0,
-          "impressions": 2,
-          "position": 4.0
+          "position": 14.5
         },
         {
           "query": "znáš waifu ai",
@@ -8358,19 +8937,7 @@ window.WAIFU_STATS = {
           "position": 1.0
         },
         {
-          "query": "аниме вайфу ai",
-          "clicks": 0,
-          "impressions": 2,
-          "position": 41.5
-        },
-        {
-          "query": "ии вайфу",
-          "clicks": 0,
-          "impressions": 2,
-          "position": 29.0
-        },
-        {
-          "query": "2d waifu",
+          "query": "2d waifus",
           "clicks": 0,
           "impressions": 1,
           "position": 11.0
@@ -8382,28 +8949,16 @@ window.WAIFU_STATS = {
           "position": 82.0
         },
         {
-          "query": "ai waifi",
+          "query": "ai waifu assistant",
           "clicks": 0,
           "impressions": 1,
-          "position": 6.0
+          "position": 9.0
         },
         {
-          "query": "ai waifu app review",
+          "query": "ai waifu den",
           "clicks": 0,
           "impressions": 1,
-          "position": 20.0
-        },
-        {
-          "query": "ai waifu chat bot",
-          "clicks": 0,
-          "impressions": 1,
-          "position": 71.0
-        },
-        {
-          "query": "ai waifu desktop",
-          "clicks": 0,
-          "impressions": 1,
-          "position": 5.0
+          "position": 24.0
         },
         {
           "query": "ai waifus character",
@@ -8418,10 +8973,28 @@ window.WAIFU_STATS = {
           "position": 66.0
         },
         {
+          "query": "animate waifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 10.0
+        },
+        {
+          "query": "anime ai chat free no sign up",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 20.0
+        },
+        {
           "query": "anime waifu ai chat",
           "clicks": 0,
           "impressions": 1,
           "position": 7.0
+        },
+        {
+          "query": "ava waifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 39.0
         },
         {
           "query": "awaifuu",
@@ -8430,10 +9003,22 @@ window.WAIFU_STATS = {
           "position": 6.0
         },
         {
+          "query": "better waifu ai",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 19.0
+        },
+        {
           "query": "chatwaifu",
           "clicks": 0,
           "impressions": 1,
           "position": 46.0
+        },
+        {
+          "query": "co to robi?",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 1.0
         },
         {
           "query": "do i have to download it",
@@ -8448,6 +9033,12 @@ window.WAIFU_STATS = {
           "position": 21.0
         },
         {
+          "query": "hermes waifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 4.0
+        },
+        {
           "query": "howaifu",
           "clicks": 0,
           "impressions": 1,
@@ -8460,28 +9051,76 @@ window.WAIFU_STATS = {
           "position": 6.0
         },
         {
-          "query": "ivywaiifu",
+          "query": "interactive waifu",
           "clicks": 0,
           "impressions": 1,
-          "position": 18.0
+          "position": 10.0
         },
         {
-          "query": "iwai",
+          "query": "ivewaiifu",
           "clicks": 0,
           "impressions": 1,
-          "position": 62.0
+          "position": 7.0
         },
         {
-          "query": "mywaifu ai",
+          "query": "iviwaiifu",
           "clicks": 0,
           "impressions": 1,
-          "position": 2.0
+          "position": 10.0
+        },
+        {
+          "query": "iwywaifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 10.0
+        },
+        {
+          "query": "live 2d ai",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 5.0
+        },
+        {
+          "query": "live waifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 6.0
+        },
+        {
+          "query": "live2d ai assistant",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 5.0
+        },
+        {
+          "query": "live2d anime ai companion apps market",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 7.0
+        },
+        {
+          "query": "live2d anime companion apps trend",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 5.0
         },
         {
           "query": "mywaifuai",
           "clicks": 0,
           "impressions": 1,
           "position": 4.0
+        },
+        {
+          "query": "mywaifuai69",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 8.0
+        },
+        {
+          "query": "project waifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 18.0
         },
         {
           "query": "soul of waifu ai companion github",
@@ -8502,10 +9141,10 @@ window.WAIFU_STATS = {
           "position": 23.0
         },
         {
-          "query": "waifii",
+          "query": "waefi",
           "clicks": 0,
           "impressions": 1,
-          "position": 5.0
+          "position": 19.0
         },
         {
           "query": "waifu ai anime",
@@ -8520,10 +9159,16 @@ window.WAIFU_STATS = {
           "position": 6.0
         },
         {
-          "query": "waifu ai studio",
+          "query": "waifu ai girlfriend",
           "clicks": 0,
           "impressions": 1,
-          "position": 6.0
+          "position": 10.0
+        },
+        {
+          "query": "waifu ai pc",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 5.0
         },
         {
           "query": "waifu al",
@@ -8538,10 +9183,40 @@ window.WAIFU_STATS = {
           "position": 63.0
         },
         {
+          "query": "waifu ari",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 1.0
+        },
+        {
+          "query": "waifu au",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 8.0
+        },
+        {
+          "query": "waifu chat anime ai",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 18.0
+        },
+        {
           "query": "waifu engine",
           "clicks": 0,
           "impressions": 1,
           "position": 11.0
+        },
+        {
+          "query": "waifu evaa",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 17.0
+        },
+        {
+          "query": "waifu express",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 18.0
         },
         {
           "query": "waifu github",
@@ -8556,10 +9231,40 @@ window.WAIFU_STATS = {
           "position": 26.0
         },
         {
-          "query": "waifu2",
+          "query": "waifu online",
           "clicks": 0,
           "impressions": 1,
-          "position": 41.0
+          "position": 10.0
+        },
+        {
+          "query": "waifu simulator online",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 44.0
+        },
+        {
+          "query": "waifu waifu",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 27.0
+        },
+        {
+          "query": "waifu2c",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 25.0
+        },
+        {
+          "query": "waifu_amai",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 10.0
+        },
+        {
+          "query": "waifuaddictai",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 9.0
         },
         {
           "query": "waifucarlii",
@@ -8574,22 +9279,58 @@ window.WAIFU_STATS = {
           "position": 5.0
         },
         {
-          "query": "waifufae",
+          "query": "waifuchat: ai anime girlfriend",
           "clicks": 0,
           "impressions": 1,
-          "position": 1.0
+          "position": 58.0
+        },
+        {
+          "query": "waifudai (4k or hd or hq or 720p or share)",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 19.0
+        },
+        {
+          "query": "waifudai (online or full or torrent or siterip)",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 40.0
+        },
+        {
+          "query": "waifudai (stream or content or unlocked or pack)",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 19.0
+        },
+        {
+          "query": "waifudai (webcam or cam or live or collection or recordings)",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 10.0
+        },
+        {
+          "query": "waifudai download",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 46.0
+        },
+        {
+          "query": "waifujulie",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 19.0
+        },
+        {
+          "query": "waifunow",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 40.0
         },
         {
           "query": "waifuuriavip",
           "clicks": 0,
           "impressions": 1,
           "position": 8.0
-        },
-        {
-          "query": "waifuzonga",
-          "clicks": 0,
-          "impressions": 1,
-          "position": 9.0
         },
         {
           "query": "weifu ai chat",
@@ -8616,36 +9357,42 @@ window.WAIFU_STATS = {
           "position": 2.0
         },
         {
-          "query": "wifu ia",
+          "query": "your-waifus-ai",
           "clicks": 0,
           "impressions": 1,
-          "position": 3.0
+          "position": 16.0
         }
       ],
       "top_pages": [
         {
           "page": "https://waifuai.com/",
-          "clicks": 3675,
-          "impressions": 68153,
-          "position": 11.3
+          "clicks": 3974,
+          "impressions": 72965,
+          "position": 11.2
         },
         {
           "page": "https://waifuai.github.io/",
           "clicks": 6,
-          "impressions": 483,
-          "position": 11.5
+          "impressions": 488,
+          "position": 11.4
         },
         {
           "page": "https://waifuai.com/app/docs/help.html",
           "clicks": 3,
-          "impressions": 163,
+          "impressions": 177,
           "position": 4.9
         },
         {
           "page": "https://waifuai.com/app/docs/index.html",
+          "clicks": 3,
+          "impressions": 123,
+          "position": 5.3
+        },
+        {
+          "page": "https://waifuai.com/app/docs/models.html",
           "clicks": 2,
-          "impressions": 103,
-          "position": 5.7
+          "impressions": 25,
+          "position": 11.1
         },
         {
           "page": "http://waifuai.com/",
@@ -8662,26 +9409,26 @@ window.WAIFU_STATS = {
         {
           "page": "https://waifuai.com/app/docs/voice.html",
           "clicks": 1,
-          "impressions": 34,
-          "position": 7.6
+          "impressions": 36,
+          "position": 7.3
         },
         {
-          "page": "https://waifuai.com/app/docs/models.html",
+          "page": "https://waifuai.com/?utm_source=chatgpt.com",
           "clicks": 1,
-          "impressions": 22,
-          "position": 11.5
+          "impressions": 1,
+          "position": 1.0
         },
         {
           "page": "https://waifuai.com/app/docs/memory.html",
           "clicks": 0,
-          "impressions": 100,
+          "impressions": 106,
           "position": 7.9
         },
         {
           "page": "https://waifuai.com/app/docs/openrouter.html",
           "clicks": 0,
-          "impressions": 98,
-          "position": 7.8
+          "impressions": 99,
+          "position": 7.7
         },
         {
           "page": "https://waifuai.com/app/index.html",
@@ -8698,8 +9445,8 @@ window.WAIFU_STATS = {
         {
           "page": "https://waifuai.com/app/docs/providers.html",
           "clicks": 0,
-          "impressions": 46,
-          "position": 5.4
+          "impressions": 48,
+          "position": 5.5
         },
         {
           "page": "https://waifuai.com/docs/voice.html",
@@ -8710,7 +9457,7 @@ window.WAIFU_STATS = {
         {
           "page": "https://waifuai.com/app/docs/troubleshooting.html",
           "clicks": 0,
-          "impressions": 29,
+          "impressions": 30,
           "position": 7.3
         },
         {
@@ -8722,8 +9469,8 @@ window.WAIFU_STATS = {
         {
           "page": "https://waifuai.com/app/docs/settings.html",
           "clicks": 0,
-          "impressions": 8,
-          "position": 6.7
+          "impressions": 10,
+          "position": 6.4
         },
         {
           "page": "https://waifuai.com/docs/troubleshooting.html",
@@ -9105,6 +9852,68 @@ window.WAIFU_STATS = {
         "views": 125,
         "likes": 2,
         "created": "2025-06-10T07:47:37.028182+00:00"
+      }
+    ]
+  },
+  "chats": {
+    "total_turns": 1981,
+    "unique_users": 333,
+    "unique_sessions": 6,
+    "overall_median_latency_ms": 2402,
+    "date_range": [
+      "2026-09-12",
+      "2026-09-16"
+    ],
+    "models": [
+      {
+        "model": "deepseek-v4.1-flash",
+        "count": 1210,
+        "share_pct": 61.1,
+        "median_latency_ms": 3072
+      },
+      {
+        "model": "qwen3.8-27b",
+        "count": 693,
+        "share_pct": 35.0,
+        "median_latency_ms": 786
+      },
+      {
+        "model": "glm-5.3",
+        "count": 78,
+        "share_pct": 3.9,
+        "median_latency_ms": 8315
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2026-09-12",
+        "turns": 34,
+        "active_users": 8,
+        "median_latency_ms": 3470
+      },
+      {
+        "date": "2026-09-13",
+        "turns": 680,
+        "active_users": 107,
+        "median_latency_ms": 2012
+      },
+      {
+        "date": "2026-09-14",
+        "turns": 721,
+        "active_users": 120,
+        "median_latency_ms": 2718
+      },
+      {
+        "date": "2026-09-15",
+        "turns": 441,
+        "active_users": 86,
+        "median_latency_ms": 2690
+      },
+      {
+        "date": "2026-09-16",
+        "turns": 105,
+        "active_users": 22,
+        "median_latency_ms": 1747
       }
     ]
   }
