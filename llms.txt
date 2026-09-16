@@ -17,6 +17,7 @@
 
 ## AI / LLM Infrastructure
 
+- [LLM Countdowns](https://waifuai.github.io/llm-countdowns/) — Real-time launch countdowns, lab shipment cadences, and intelligence forecasts for upcoming frontier models
 - [AI Benchmarks](https://waifuai.github.io/ai-benchmarks/) — LLM spatial reasoning evaluation (Maze Gauntlet) with leaderboard and OpenRouter multi-model testing
 - [LLM Text Queue GPU](https://waifuai.github.io/llm-text-queue-gpu/) — Redis-backed async text generation queue for LLM inference via OpenRouter
 - [Macro Language Model](https://waifuai.github.io/macro-language-model/) — CLI chatbot with modular personality system (tsundere, deredere, etc.)

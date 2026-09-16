@@ -1,0 +1,534 @@
+{
+  "lastUpdated": "2026-09-12",
+  "researchBaselines": {
+    "openai": { "name": "GPT-6 Astra (Looped Transformers)", "intel": 54.7, "daysSince": 8 },
+    "google": { "name": "Gemini 3.8 Flash (Reasoning Steps)", "intel": 50.4, "daysSince": 8 },
+    "anthropic": { "name": "Claude 5.1 / Mythos 5.1", "intel": 57.0, "daysSince": 9 },
+    "meta": { "name": "Muse Spark 1.3 (Parity Claim)", "intel": 53.0, "daysSince": 8 },
+    "spacexai": { "name": "Grok 4.6 (1.5T Params)", "intel": 50.6, "daysSince": 29 },
+    "alibaba": { "name": "Qwen3.8-Flash-Next / 3.8 Max", "intel": 48.3, "daysSince": 16 },
+    "deepseek": { "name": "DeepSeek V4.1 Flash (Native Multimodal)", "intel": 47.6, "daysSince": 2 },
+    "mistral": { "name": "Mistral Large 3 / Mistral Vibe", "intel": 41.0, "daysSince": 142 },
+    "kimi": { "name": "Kimi K3 Long-Context", "intel": 50.2, "daysSince": 42 },
+    "xiaomi": { "name": "MiMo-V2.5 Standard (Full-Modal)", "intel": 44.0, "daysSince": 52 },
+    "minimax": { "name": "MiniMax M3 (427B MoE / MSA) & H3 Omni", "intel": 43.5, "daysSince": 42 }
+  },
+  "defaultCadences": {
+    "google": 21,
+    "alibaba": 25,
+    "meta": 28,
+    "openai": 30,
+    "spacexai": 32,
+    "anthropic": 33,
+    "deepseek": 40,
+    "mistral": 52,
+    "kimi": 52,
+    "xiaomi": 40,
+    "minimax": 45
+  },
+  "defaultIntel": {
+    "anthropic": 60.5,
+    "openai": 58.5,
+    "meta": 56.3,
+    "spacexai": 53.8,
+    "google": 54.0,
+    "alibaba": 51.2,
+    "deepseek": 50.4,
+    "mistral": 44.5,
+    "kimi": 53.2,
+    "xiaomi": 46.1,
+    "minimax": 44.8
+  },
+  "labs": {
+    "spacexai": {
+      "name": "xAI",
+      "matchSlugs": ["spacexai", "xai"],
+      "models": {
+        "frontier": {
+          "id": "xai-grok-4-7",
+          "predictedName": "Grok 4.7 (SpaceX Telemetry) / Grok 5",
+          "category": "frontier",
+          "icon": "🟠",
+          "stageColor": "#ffb300",
+          "status": "Delayed a Few Days • RL Response Length & Rigor Tuning",
+          "confidence": "High",
+          "confidenceScore": 98,
+          "hypeScore": 99,
+          "expectedGain": 3.2,
+          "explicitTargetDate": "2026-09-16T17:00:00.000Z",
+          "explicitWindowLabel": "Mid Sept 2026 (Needs a few days to cook)",
+          "cadenceDays": 32,
+          "baseline": { "name": "Grok 4.6 (1.5T Params)", "intel": 50.6, "daysSince": 29, "speed": 135 },
+          "features": [
+            "Needs 'a few more days to cook' per Elon Musk (Sept 12): fixing RL response length over-penalization where model gave up on hard tasks too early and lacked rigor checking work",
+            "2.1 trillion parameter model trained on Memphis Colossus supercomputer expanding from 555k towards 1 million GPUs (2 GW capacity)",
+            "Supplemental training using proprietary SpaceX telemetry and engineering data for SOTA real-world reasoning",
+            "Stepping stone to Grok 5 (6T-10T parameters unified multimodal architecture) targeted for End of 2026"
+          ],
+          "source": "Elon Musk tweet (Sept 12, 2026): RL response length tuning delay & 2.1T SpaceX telemetry"
+        }
+      }
+    },
+    "google": {
+      "name": "Google DeepMind",
+      "matchSlugs": ["google", "deepmind"],
+      "models": {
+        "light": {
+          "id": "google-gemini-3-9-flash",
+          "predictedName": "Gemini 3.9 Flash / Gemini 4 Flash-Lite",
+          "category": "light",
+          "icon": "⚡",
+          "stageColor": "#4facfe",
+          "status": "3-Week Rapid Iteration Cycle • Agent Coding Engine",
+          "confidence": "High",
+          "confidenceScore": 95,
+          "hypeScore": 97,
+          "expectedGain": 2.4,
+          "explicitTargetDate": "2026-09-23T17:00:00.000Z",
+          "explicitWindowLabel": "Late Sept 2026 (~21d Rapid Flash Cycle)",
+          "cadenceDays": 21,
+          "baseline": { "name": "Gemini 3.8 Flash (Reasoning Steps)", "intel": 50.4, "daysSince": 6, "speed": 175 },
+          "features": [
+            "Continuing Google's rapid 3-week cadence (Gemini 3.6 July 21, 3.7 Aug 13, 3.8 Sept 2)",
+            "Workhorse engine optimized for high-volume, low-latency autonomous agentic coding",
+            "Customizable thinking levels (low, medium, high) paired with a 1M token context window",
+            "Specialized Cyber defense variant integration for real-time security vulnerability detection"
+          ],
+          "source": "Google DeepMind 3-week Flash cadence & 3.8 Flash release disclosures (Sept 2026)"
+        },
+        "frontier": {
+          "id": "google-gemini-4-0",
+          "predictedName": "Gemini 4.0 (Horizon Alpha) / Gemini 4 Ultra",
+          "category": "frontier",
+          "icon": "🔵",
+          "stageColor": "#4facfe",
+          "status": "Pre-Training Underway (Since July 21) • Selective Activation",
+          "confidence": "High",
+          "confidenceScore": 94,
+          "hypeScore": 98,
+          "expectedGain": 3.6,
+          "explicitTargetDate": "2026-11-28T17:00:00.000Z",
+          "explicitWindowLabel": "Late 2026 (Nov/Dec 2026 - Q2 2027)",
+          "features": [
+            "Multi-trillion parameter base model featuring dynamic 'Selective Activation' compute allocation (eval codenames 'Ajax', 'Hercules', 'Hector', 'Orpheus')",
+            "Pre-training officially commenced July 21, 2026; targeting Late 2026 to Q2 2027 window as predecessor to 'Apollo' class leap",
+            "Successor to Gemini 3.8 Flash (Sept 2026) and 3.1 Pro; designed to leapfrog GPT-6 Astra with DeepMind AI Control safety architecture",
+            "Native 3D simulations, real-time spatial world models, and deep Antigravity autonomous agentic coding capabilities"
+          ],
+          "source": "Google DeepMind pre-training disclosures & prediction market consensus (Sept 2026)"
+        }
+      }
+    },
+    "anthropic": {
+      "name": "Anthropic",
+      "matchSlugs": ["anthropic"],
+      "models": {
+        "light": {
+          "id": "anthropic-claude-5-haiku",
+          "predictedName": "Claude 5 Haiku (1M Context & Adaptive Thinking)",
+          "category": "light",
+          "icon": "⚡",
+          "stageColor": "#00f2fe",
+          "status": "4-8 Wk Cadence • 20x Lighter & 1M Window",
+          "confidence": "High",
+          "confidenceScore": 92,
+          "hypeScore": 96,
+          "expectedGain": 2.3,
+          "explicitTargetDate": "2026-09-24T17:00:00.000Z",
+          "explicitWindowLabel": "Late Sept 2026 (Imminent 4-8 Wk Cadence)",
+          "cadenceDays": 35,
+          "baseline": { "name": "Claude Haiku 4.5", "intel": 44.5, "daysSince": 25, "speed": 210 },
+          "features": [
+            "Anthropic's fastest & most cost-effective tier succeeding Claude Haiku 4.5 (October 2025)",
+            "1-million-token context window inheriting the adaptive thinking architecture of Sonnet 5",
+            "Reported up to 20x lighter and cheaper than flagship models with performance nearing Sonnet 4.x / Opus 5",
+            "Engineered as high-throughput sub-agent in complex workflows orchestrated by Sonnet or Opus"
+          ],
+          "source": "Anthropic 4-8 week release cadence & Claude 5 architectural roadmaps (Sept 2026)"
+        },
+        "frontier": {
+          "id": "anthropic-claude-6",
+          "predictedName": "Claude 6 (Mythos-Class) / Opus 6",
+          "category": "frontier",
+          "icon": "🟣",
+          "stageColor": "#9d4edd",
+          "status": "Adaptive Thinking Evolution • Safety Guardrail Scaling",
+          "confidence": "High",
+          "confidenceScore": 93,
+          "hypeScore": 98,
+          "expectedGain": 3.5,
+          "explicitTargetDate": "2026-12-15T17:00:00.000Z",
+          "explicitWindowLabel": "Late 2026 / Early 2027 (67% < Feb 2027)",
+          "features": [
+            "Generational leap following Claude Fable 5.1 & Claude Mythos 5.1 (released Sept 1, 2026)",
+            "Evolution of 'adaptive thinking': autonomous agents dynamically self-managing reasoning budgets",
+            "Minimized error propagation across ultra-long horizon multi-step autonomous agent workflows",
+            "Project Glasswing trusted access expansion for cybersecurity and life sciences research"
+          ],
+          "source": "Anthropic research cadence & prediction market consensus (67% probability before Feb 2027)"
+        }
+      }
+    },
+    "alibaba": {
+      "name": "Alibaba",
+      "matchSlugs": ["alibaba", "qwen"],
+      "models": {
+        "frontier": {
+          "id": "alibaba-qwen-4-max",
+          "predictedName": "Qwen 4 Max / Qwen 4 (Gated DeltaNet MoE)",
+          "category": "frontier",
+          "icon": "🌐",
+          "stageColor": "#00f2fe",
+          "status": "Architectural Preview Validated • Imminent Fall Launch",
+          "confidence": "High",
+          "confidenceScore": 92,
+          "hypeScore": 94,
+          "expectedGain": 2.9,
+          "explicitTargetDate": "2026-09-28T17:00:00.000Z",
+          "explicitWindowLabel": "Fall 2026 (Late Sept / Oct 2026)",
+          "features": [
+            "Full Qwen 4 suite succeeding Qwen 3.8 Max (2.4T params) and Qwen3.8-Flash-Next preview (late Aug 2026)",
+            "Lean-activation sparse MoE architecture with native multimodality and 1M token context window",
+            "Hybrid attention mechanism: Gated DeltaNet history compression paired with Qwen Sparse Attention",
+            "Dual rollout strategy: flagship high-performance Max API plus open-weight community checkpoints"
+          ],
+          "source": "Alibaba Cloud Qwen3.8-Flash-Next architecture preview & Fall 2026 roadmap"
+        },
+        "light": {
+          "id": "alibaba-qwen-4-flash",
+          "predictedName": "Qwen 4 Flash (6B Active Sparse MoE)",
+          "category": "light",
+          "icon": "⚡",
+          "stageColor": "#00f2fe",
+          "status": "Previewed by Qwen3.8-Flash-Next • 125B/6B Sparse MoE",
+          "confidence": "High",
+          "confidenceScore": 94,
+          "hypeScore": 93,
+          "expectedGain": 2.5,
+          "explicitTargetDate": "2026-09-30T17:00:00.000Z",
+          "explicitWindowLabel": "Early Fall 2026 (Late Sept / Oct 2026)",
+          "cadenceDays": 25,
+          "baseline": { "name": "Qwen3.8-Flash-Next (Architecture Preview)", "intel": 48.3, "daysSince": 14, "speed": 195 },
+          "features": [
+            "Ultra-sparse MoE architecture previewed by Qwen3.8-Flash-Next (late Aug 2026)",
+            "125B total parameters activating only ~6B per token for lightning-fast edge & API throughput",
+            "Hybrid attention: Gated DeltaNet (GDN) history compression paired with Qwen Sparse Attention (QSA)",
+            "Supplemental 51-billion-parameter N-gram embedding layer for instant local pattern retrieval"
+          ],
+          "source": "Alibaba Cloud Qwen3.8-Flash-Next architecture preview disclosure (Sept 2026)"
+        }
+      }
+    },
+    "mistral": {
+      "name": "Mistral AI",
+      "matchSlugs": ["mistral"],
+      "models": {
+        "frontier": {
+          "id": "mistral-large-4",
+          "predictedName": "Mistral Large 4 / Mistral Vibe 2",
+          "category": "frontier",
+          "icon": "🔴",
+          "stageColor": "#ff5722",
+          "status": "€4B European Sovereign AI Cluster Scaling",
+          "confidence": "Medium",
+          "confidenceScore": 85,
+          "hypeScore": 90,
+          "expectedGain": 3.5,
+          "explicitTargetDate": "2026-10-05T17:00:00.000Z",
+          "explicitWindowLabel": "Imminent • Fall 2026 (Oct 2026)",
+          "features": [
+            "European sovereign AI flagship powered by Mistral's €4B pan-European data center initiative",
+            "Successor to Mistral Large 3, Medium 3.5, and Mistral Vibe (upgraded multimodal LeChat platform)",
+            "Targeting 200MW sovereign computing capacity by end of 2027 and 1GW by 2030",
+            "Advanced multilingual reasoning, agentic tool execution, and Apache 2.0 open-weight checkpoints"
+          ],
+          "source": "Mistral AI European sovereignty infrastructure disclosures & 2026 roadmap"
+        },
+        "light": {
+          "id": "mistral-ministral-4",
+          "predictedName": "Codestral 25.10 / Ministral 4 (Edge Agent)",
+          "category": "light",
+          "icon": "🔴",
+          "stageColor": "#ff5722",
+          "status": "Sub-8B Edge Coding & Multimodal Agent",
+          "confidence": "Medium",
+          "confidenceScore": 84,
+          "hypeScore": 87,
+          "expectedGain": 2.2,
+          "explicitTargetDate": "2026-10-30T17:00:00.000Z",
+          "explicitWindowLabel": "Late Fall 2026 (Oct / Nov 2026)",
+          "cadenceDays": 45,
+          "baseline": { "name": "Codestral 25.08", "intel": 43.1, "daysSince": 45, "speed": 170 },
+          "features": [
+            "Compact, ultra-low latency code generation model following Codestral 25.01 and 25.08",
+            "Sub-8B parameter footprint designed for local IDE completion, on-device compute, and edge robotics",
+            "256k context window with native multimodal document understanding",
+            "Sub-agent orchestrator for Mistral LeChat workspace workflows"
+          ],
+          "source": "Mistral AI Codestral cadence & Ministral architecture disclosures"
+        }
+      }
+    },
+    "openai": {
+      "name": "OpenAI",
+      "matchSlugs": ["openai"],
+      "models": {
+        "light": {
+          "id": "openai-gpt-5-6-luna",
+          "predictedName": "GPT-5.6 Luna / GPT-6 Luna (Fast Agent Tier)",
+          "category": "light",
+          "icon": "🌙",
+          "stageColor": "#10a37f",
+          "status": "$1/$6 Pricing Tier • Low Latency Workhorse",
+          "confidence": "High",
+          "confidenceScore": 90,
+          "hypeScore": 92,
+          "expectedGain": 2.1,
+          "explicitTargetDate": "2026-10-09T17:00:00.000Z",
+          "explicitWindowLabel": "Early Fall 2026 (Oct 2026)",
+          "cadenceDays": 30,
+          "baseline": { "name": "GPT-5.6 Luna ($1/$6 Tier)", "intel": 46.8, "daysSince": 30, "speed": 180 },
+          "features": [
+            "OpenAI's fastest and most economical tier in the Sol/Terra/Luna architectural structure (July 2026)",
+            "Disruptive pricing at $1 per million input tokens and $6 per million output tokens",
+            "Optimized for high-volume drafting, summarization, and ultra-low latency real-time agent execution",
+            "Leverages silent thinking in latent space from looped transformer research"
+          ],
+          "source": "OpenAI GPT-5.6 Sol/Terra/Luna tiered release & API roadmap (Sept 2026)"
+        },
+        "frontier": {
+          "id": "openai-gpt-7",
+          "predictedName": "GPT-7 (Modular Expert Cores) / GPT-6.5 Orion",
+          "category": "frontier",
+          "icon": "🟢",
+          "stageColor": "#10a37f",
+          "status": "Stargate Abilene 1.2GW Cluster • Simulation Checks",
+          "confidence": "High",
+          "confidenceScore": 89,
+          "hypeScore": 99,
+          "expectedGain": 3.8,
+          "explicitTargetDate": "2027-01-25T17:00:00.000Z",
+          "explicitWindowLabel": "Projected 2027 (GPT-6.5 Late '26 / GPT-7 '27)",
+          "features": [
+            "Successor to GPT-6 Astra (released Sept 2026 via largest-ever 100k+ GPU run at Stargate) integrating Project Orion architecture",
+            "Mixture of Agents (MoA) framework with modular expert cores, delivering 10M token context and 40% inference cost reduction",
+            "Internal simulation checks running multi-pass reasoning trees and outputting self-verifying confidence intervals",
+            "Backed by the $500B / 10 GW Stargate network (450k GB200 GPUs in Abilene, transitioning to NVIDIA Vera Rubin in H2 2026/2027)"
+          ],
+          "source": "OpenAI Stargate supercomputer buildout & GPT-7 architectural roadmap (Sept 2026)"
+        }
+      }
+    },
+    "meta": {
+      "name": "Meta",
+      "matchSlugs": ["meta"],
+      "models": {
+        "light": {
+          "id": "meta-muse-glimmer-2",
+          "predictedName": "Muse Glimmer 2 (30B Distilled Open Agent)",
+          "category": "light",
+          "icon": "🟦",
+          "stageColor": "#00e676",
+          "status": "Distilled from Muse Spark • Apache 2.0 Edge Agent",
+          "confidence": "High",
+          "confidenceScore": 89,
+          "hypeScore": 91,
+          "expectedGain": 2.3,
+          "explicitTargetDate": "2026-10-14T17:00:00.000Z",
+          "explicitWindowLabel": "Mid Fall 2026 (Oct 2026)",
+          "cadenceDays": 28,
+          "baseline": { "name": "Muse Glimmer 30B (Distilled Open)", "intel": 45.2, "daysSince": 35, "speed": 160 },
+          "features": [
+            "Successor to Muse Glimmer 30B (released August 2026 under Apache 2.0 license)",
+            "Explicitly distilled from Meta Superintelligence Labs' proprietary Muse Spark system",
+            "Dense multimodal agent model optimized for edge devices, local servers, and developer tooling",
+            "Native early-fusion multimodal understanding rooted in Chameleon research architecture"
+          ],
+          "source": "Meta Superintelligence Labs distilled open-weight strategy (Sept 2026)"
+        },
+        "frontier": {
+          "id": "meta-muse-spark-avocado",
+          "predictedName": "Muse Spark 2.0 / Codename 'Avocado'",
+          "category": "frontier",
+          "icon": "🟦",
+          "stageColor": "#00e676",
+          "status": "Prometheus Supercluster • MTIA Silicon Generation",
+          "confidence": "High",
+          "confidenceScore": 90,
+          "hypeScore": 95,
+          "expectedGain": 3.3,
+          "explicitTargetDate": "2026-10-18T17:00:00.000Z",
+          "explicitWindowLabel": "Mid Fall 2026 (Oct / Nov 2026)",
+          "features": [
+            "Successor to Muse Spark 1.3 (released Sept 2, 2026, claiming frontier parity) and Muse Glimmer (30B open weights)",
+            "Codename 'Avocado' flagship advancing Meta Superintelligence Labs (MSL) personal superintelligence roadmap",
+            "Powered by Meta's custom MTIA silicon (production Sept 2026) and Prometheus/Hyperion superclusters (7 GW -> 14 GW)",
+            "Parallel sub-agent orchestration, context compaction, and native multimodal computer use"
+          ],
+          "source": "Meta Superintelligence Labs roadmap & custom MTIA production disclosures (Sept 2026)"
+        }
+      }
+    },
+    "kimi": {
+      "name": "Kimi / Moonshot",
+      "matchSlugs": ["kimi", "moonshot"],
+      "models": {
+        "frontier": {
+          "id": "kimi-k3-5",
+          "predictedName": "Kimi K3.5 / K4 Ultra-Long Context Flagship",
+          "category": "frontier",
+          "icon": "🌙",
+          "stageColor": "#a855f7",
+          "status": "Ultra-Long Context RL Alignment",
+          "confidence": "High",
+          "confidenceScore": 85,
+          "hypeScore": 90,
+          "expectedGain": 3.0,
+          "explicitTargetDate": "2026-10-22T17:00:00.000Z",
+          "explicitWindowLabel": "Late Fall 2026 (Oct / Nov 2026)",
+          "features": [
+            "Generational advancement beyond Kimi K3 (50.2 intelligence index)",
+            "Extended 10M+ token continuous context window with instant zero-loss retrieval",
+            "Specialized Chinese-English academic, mathematical, and autonomous document synthesis",
+            "Autonomous long-document research synthesis and multi-step code generation"
+          ],
+          "source": "Moonshot AI research publications & Kimi developer platform"
+        }
+      }
+    },
+    "deepseek": {
+      "name": "DeepSeek",
+      "matchSlugs": ["deepseek"],
+      "models": {
+        "frontier": {
+          "id": "deepseek-v4-1-pro",
+          "predictedName": "DeepSeek V4.1 Pro (Full Frontier MoE)",
+          "category": "frontier",
+          "icon": "👑",
+          "stageColor": "#ff007a",
+          "status": "V4 Pro Traffic Routed to V4.1 Flash • Full Pro MoE Imminent",
+          "confidence": "High",
+          "confidenceScore": 92,
+          "hypeScore": 96,
+          "expectedGain": 2.8,
+          "explicitTargetDate": "2026-10-22T17:00:00.000Z",
+          "explicitWindowLabel": "Late Oct 2026 (~40d Post-Flash)",
+          "cadenceDays": 40,
+          "baseline": { "name": "DeepSeek V4.1 Flash (Native Multimodal)", "intel": 47.6, "daysSince": 0, "speed": 427 },
+          "features": [
+            "High-capability frontier flagship counterpart to the Sept 10, 2026 DeepSeek V4.1 Flash release",
+            "Replaces legacy V4 Pro with full 1.6T parameter MoE architecture utilizing V4.1's native multimodal stack",
+            "Upgraded Multi-Head Latent Attention (MLA v2) with KV cache compression for complex codebase refactoring and math proofs",
+            "Zero-latency multi-modal vision and spatial reasoning at radical open-weight and API price points"
+          ],
+          "source": "DeepSeek V4.1 Flash release notes & API V4 Pro migration disclosures (Sept 10, 2026)"
+        },
+        "light": {
+          "id": "deepseek-v4-2-flash",
+          "predictedName": "DeepSeek-V4.2 Flash (Ascend 950DT / Distilled Edge)",
+          "category": "light",
+          "icon": "⚡",
+          "stageColor": "#ff007a",
+          "status": "Next Flash Iteration • Ascend 950DT & Ultra-Low Latency Distillation",
+          "confidence": "Medium",
+          "confidenceScore": 82,
+          "hypeScore": 90,
+          "expectedGain": 1.8,
+          "explicitTargetDate": "2026-11-05T17:00:00.000Z",
+          "explicitWindowLabel": "Early Nov 2026 (~55d Cadence)",
+          "cadenceDays": 55,
+          "baseline": { "name": "DeepSeek V4.1 Flash (Native Multimodal)", "intel": 47.6, "daysSince": 0, "speed": 427 },
+          "features": [
+            "Incremental successor to V4.1 Flash (released Sept 10, 2026), targeting next-generation Ascend 950DT compute clusters",
+            "Sub-100ms first-token latency with distilled multi-modal reasoning and ultra-compact KV cache footprints",
+            "Tailored for high-frequency agentic loops, IDE completions, and edge runtime deployments",
+            "Continues DeepSeek's open-weights strategy with unrestricted commercial licensing"
+          ],
+          "source": "Hardware cluster adoption roadmaps & DeepSeek incremental Flash release tracking"
+        },
+        "reasoning": {
+          "id": "deepseek-v5-r3",
+          "predictedName": "DeepSeek V5 / DeepSeek-R3 (Personal Agent Core)",
+          "category": "reasoning",
+          "icon": "🧠",
+          "stageColor": "#ff007a",
+          "status": "MLA v2 & Test-Time Compute RL Proof Scaling",
+          "confidence": "High",
+          "confidenceScore": 89,
+          "hypeScore": 98,
+          "expectedGain": 3.4,
+          "explicitTargetDate": "2026-11-20T17:00:00.000Z",
+          "explicitWindowLabel": "Late 2026 (Nov / Dec 2026)",
+          "cadenceDays": 70,
+          "baseline": { "name": "DeepSeek V4.1 Flash (Native Multimodal)", "intel": 47.6, "daysSince": 0, "speed": 427 },
+          "features": [
+            "Successor to the DeepSeek V4 generation following V4.1 Flash (released Sept 10, 2026) and upcoming V4.1 Pro",
+            "Foundational architectural leap engineered for personal autonomous agents, long-horizon tool execution, and code synthesis",
+            "Multi-Head Latent Attention (MLA v2) paired with DeepSeekMoE delivering unprecedented inference throughput (>400 tok/s)",
+            "Deep test-time compute scaling and self-verifying reinforcement learning (RL) reasoning engines at open-source commodity pricing"
+          ],
+          "source": "DeepSeek community tracking & open-source roadmap leaks"
+        }
+      }
+    },
+    "xiaomi": {
+      "name": "Xiaomi AI",
+      "matchSlugs": ["xiaomi", "mimo"],
+      "models": {
+        "light": {
+          "id": "xiaomi-mimo-v2-5-flash",
+          "predictedName": "MiMo-V2.5 Flash / Standard (Full-Modal MIT Agent)",
+          "category": "light",
+          "icon": "🧡",
+          "stageColor": "#ff7043",
+          "status": "Native Full-Modal • MIT License Commercial Open Source",
+          "confidence": "High",
+          "confidenceScore": 86,
+          "hypeScore": 88,
+          "expectedGain": 2.1,
+          "explicitTargetDate": "2026-11-04T17:00:00.000Z",
+          "explicitWindowLabel": "Fall 2026 (Nov 2026)",
+          "cadenceDays": 40,
+          "baseline": { "name": "MiMo-V2.5 Standard", "intel": 44.0, "daysSince": 50, "speed": 165 },
+          "features": [
+            "Lightweight native full-modal agent model processing text, vision, audio, and video simultaneously",
+            "Released under permissive MIT license for open commercial use and secondary training",
+            "Key pillar of Xiaomi's $8.7B AI investment and 'Human x Car x Home' edge ecosystem",
+            "Optimized for edge robotics, Kingsoft Office automation, and personal mobile agents"
+          ],
+          "source": "Xiaomi MiMo ecosystem announcements & MIT open-source releases (Sept 2026)"
+        }
+      }
+    },
+    "minimax": {
+      "name": "MiniMax",
+      "matchSlugs": ["minimax", "hailuo"],
+      "models": {
+        "frontier": {
+          "id": "minimax-m3-pro-next",
+          "predictedName": "MiniMax M3 Pro (Codename 'Next') / 2.7T Flagship",
+          "category": "frontier",
+          "icon": "🪐",
+          "stageColor": "#00b4d8",
+          "status": "2.7T Params MoE • MSA & Lightning Attention • RL Reasoning",
+          "confidence": "High",
+          "confidenceScore": 92,
+          "hypeScore": 95,
+          "expectedGain": 3.2,
+          "explicitTargetDate": "2026-11-12T17:00:00.000Z",
+          "explicitWindowLabel": "Fall 2026 (Q3/Q4 2026)",
+          "cadenceDays": 45,
+          "baseline": { "name": "MiniMax M3 (427B MoE / MSA)", "intel": 43.5, "daysSince": 40, "speed": 185 },
+          "features": [
+            "2.7-trillion-parameter sparse MoE next-generation flagship (codename 'Next') succeeding 427B MiniMax M3",
+            "Blockwise MiniMax Sparse Attention (MSA) and hybrid Lightning Attention delivering 9x faster prefill and 15x faster decode",
+            "Advanced mathematical and agentic reasoning tuned via large-scale Reinforcement Learning with self-verifying reward models",
+            "Unified omnimodal co-generation inheriting MiniMax H3's interleaved 2K video and synchronized stereo audio architecture",
+            "Aggressive sub-$0.30/M token API economics powered by $1.2B Alibaba Cloud computing partnership and HKEX capital"
+          ],
+          "source": "MiniMax M3 Pro disclosures, H3 Omnimodal release & HKEX filings (Aug/Sept 2026)"
+        }
+      }
+    }
+  }
+}
