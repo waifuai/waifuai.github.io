@@ -793,7 +793,7 @@ class CountdownsEngine {
       { id: "OPENAI", label: "🟢 OpenAI" },
       { id: "GOOGLE", label: "🔵 Google" },
       { id: "META", label: "🟦 Meta" },
-      { id: "SPACEXAI", label: "🟠 xAI" },
+      { id: "XAI", label: "🟠 xAI" },
       { id: "DEEPSEEK", label: "⚡ DeepSeek" },
       { id: "ALIBABA", label: "🌐 Alibaba" },
       { id: "MISTRAL", label: "🔴 Mistral" },

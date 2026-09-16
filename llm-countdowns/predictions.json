@@ -5,7 +5,7 @@
     "google": { "name": "Gemini 3.8 Flash (Reasoning Steps)", "intel": 50.4, "daysSince": 8 },
     "anthropic": { "name": "Claude 5.1 / Mythos 5.1", "intel": 57.0, "daysSince": 9 },
     "meta": { "name": "Muse Spark 1.3 (Parity Claim)", "intel": 53.0, "daysSince": 8 },
-    "spacexai": { "name": "Grok 4.6 (1.5T Params)", "intel": 50.6, "daysSince": 29 },
+    "xai": { "name": "Grok 4.6 (1.5T Params)", "intel": 50.6, "daysSince": 29 },
     "alibaba": { "name": "Qwen3.8-Flash-Next / 3.8 Max", "intel": 48.3, "daysSince": 16 },
     "deepseek": { "name": "DeepSeek V4.1 Flash (Native Multimodal)", "intel": 47.6, "daysSince": 2 },
     "mistral": { "name": "Mistral Large 3 / Mistral Vibe", "intel": 41.0, "daysSince": 142 },
@@ -18,7 +18,7 @@
     "alibaba": 25,
     "meta": 28,
     "openai": 30,
-    "spacexai": 32,
+    "xai": 32,
     "anthropic": 33,
     "deepseek": 40,
     "mistral": 52,
@@ -30,7 +30,7 @@
     "anthropic": 60.5,
     "openai": 58.5,
     "meta": 56.3,
-    "spacexai": 53.8,
+    "xai": 53.8,
     "google": 54.0,
     "alibaba": 51.2,
     "deepseek": 50.4,
@@ -40,13 +40,13 @@
     "minimax": 44.8
   },
   "labs": {
-    "spacexai": {
+    "xai": {
       "name": "xAI",
-      "matchSlugs": ["spacexai", "xai"],
+      "matchSlugs": ["xai"],
       "models": {
         "frontier": {
           "id": "xai-grok-4-7",
-          "predictedName": "Grok 4.7 (SpaceX Telemetry) / Grok 5",
+          "predictedName": "Grok 4.7 / Grok 5",
           "category": "frontier",
           "icon": "🟠",
           "stageColor": "#ffb300",
@@ -65,7 +65,7 @@
             "Supplemental training using proprietary SpaceX telemetry and engineering data for SOTA real-world reasoning",
             "Stepping stone to Grok 5 (6T-10T parameters unified multimodal architecture) targeted for End of 2026"
           ],
-          "source": "Elon Musk tweet (Sept 12, 2026): RL response length tuning delay & 2.1T SpaceX telemetry"
+          "source": "Elon Musk tweet (Sept 12, 2026): RL response length tuning delay & 2.1T parameter model"
         }
       }
     },
