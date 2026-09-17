@@ -810,44 +810,32 @@
 
   <!-- TAB 4: WEB TRAFFIC & AI EVENTS (GA4) -->
   <div class="tab-panel" id="tab-traffic">
-    <!-- AI Companion Chat Messages & Performance -->
-    <div class="data-table-container" style="margin-bottom: 2.5rem;">
-      <div class="table-header-box" style="flex-wrap: wrap; gap: 1rem;">
-        <div>
-          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">AI Companion Chat Messages &amp; Performance</div>
-          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.35rem;">
-            Waifu Cloud conversation logs • Multi-turn chat message volume and response latency.
-          </div>
-        </div>
-      </div>
-
-      <!-- Segmented Model Usage Progress Bar -->
-      <div style="padding: 0 1.25rem 1.25rem;">
-        <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.5rem; font-family: 'JetBrains Mono', monospace;">
+    <!-- AI Companion Chat Messages & Performance Overview Cards -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+      <div class="kpi-card chats">
+        <div class="kpi-label">
           <span>Chat Messages</span>
-          <span id="chats-total-summary">2,698 Chat Messages</span>
+          <span>💬</span>
         </div>
-        <div class="model-distribution-bar" id="chats-model-bar" style="display: flex; height: 10px; border-radius: 6px; overflow: hidden; gap: 2px; background: rgba(255,255,255,0.05);">
-          <!-- Populated via JS -->
-        </div>
-        <div id="chats-model-legend" style="display: flex; gap: 1.25rem; flex-wrap: wrap; margin-top: 0.75rem; font-size: 0.82rem;">
-          <!-- Legend populated via JS -->
-        </div>
+        <div class="kpi-value" id="chats-stat-total">2,698</div>
+        <div class="kpi-sub">Multi-Turn Conversations</div>
       </div>
-
-      <table class="data-table" id="table-chats-models">
-        <thead>
-          <tr>
-            <th data-sort="model" data-type="string">Engine</th>
-            <th data-sort="count" data-type="number" style="text-align: right;">Chat Messages (Turns)</th>
-            <th data-sort="share_pct" data-type="number" style="text-align: right;">Traffic Share</th>
-            <th data-sort="median_latency_ms" data-type="number" style="text-align: right;">Median Latency</th>
-          </tr>
-        </thead>
-        <tbody id="chats-models-body">
-          <!-- Populated via JS -->
-        </tbody>
-      </table>
+      <div class="kpi-card users">
+        <div class="kpi-label">
+          <span>Unique Chat Visitors</span>
+          <span>👥</span>
+        </div>
+        <div class="kpi-value" id="chats-stat-users">422</div>
+        <div class="kpi-sub">Anonymous Companion Users</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">
+          <span>Response Speed</span>
+          <span>⚡</span>
+        </div>
+        <div class="kpi-value" id="chats-stat-speed" style="color: #34d399;">2.55s</div>
+        <div class="kpi-sub">Median Response Latency</div>
+      </div>
     </div>
 
     <!-- AI Companion Interactive Events Table -->
@@ -1404,83 +1392,25 @@ function renderSourcesTable(sources) {
   });
 }
 
-function renderChatsTableOnly(models) {
-  const tbody = document.getElementById('chats-models-body');
-  if (!tbody) return;
-  tbody.innerHTML = '';
-  (models || []).forEach(m => {
-    const medLat = m.median_latency_ms ?? m.avg_latency_ms ?? 0;
-    const latSec = (medLat / 1000).toFixed(2);
-    const latColor = medLat < 1000 ? '#34d399' : (medLat < 4000 ? '#38bdf8' : '#fbbf24');
-
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>
-        <code style="color: #ffffff; font-weight: 700; font-size: 0.9rem; font-family: 'JetBrains Mono', monospace;">${m.model}</code>
-      </td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #34d399;">${m.count.toLocaleString()}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 600;">
-        <span style="display: inline-block; min-width: 48px;">${m.share_pct}%</span>
-      </td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: ${latColor};">
-        ${medLat.toLocaleString()} ms <span style="font-size: 0.78rem; color: var(--text-muted);">(${latSec}s)</span>
-      </td>
-    `;
-    tbody.appendChild(tr);
-  });
-}
-
-function renderChatsModels(chats) {
-  const tbody = document.getElementById('chats-models-body');
-  const barContainer = document.getElementById('chats-model-bar');
-  const legendContainer = document.getElementById('chats-model-legend');
-  const summaryEl = document.getElementById('chats-total-summary');
-  const pillModels = document.getElementById('tab-pill-models');
-  if (!tbody || !chats) return;
-
-  const models = chats.models || [];
+function renderChatsSummary(chats) {
+  if (!chats) return;
   const totalTurns = chats.total_turns || 0;
+  const uniqueUsers = chats.unique_users || 0;
   const medLat = chats.overall_median_latency_ms || 0;
   const medLatSec = (medLat / 1000).toFixed(2);
-  if (summaryEl) {
-    summaryEl.textContent = `${totalTurns.toLocaleString()} Chat Messages • ${medLatSec}s Median Speed`;
-  }
-  if (pillModels) {
-    pillModels.textContent = `Waifu Cloud`;
-  }
 
-  const modelColors = {
-    'Waifu Cloud': { bar: 'linear-gradient(90deg, #3b82f6, #10b981)', dot: '#34d399' },
-  };
+  const elTotal = document.getElementById('chats-stat-total');
+  const elUsers = document.getElementById('chats-stat-users');
+  const elSpeed = document.getElementById('chats-stat-speed');
 
-  // Render segmented bar
-  if (barContainer) {
-    barContainer.innerHTML = models.map(m => {
-      const col = modelColors[m.model] || { bar: 'linear-gradient(90deg, #3b82f6, #10b981)' };
-      return `<div style="width: ${m.share_pct}%; background: ${col.bar}; height: 100%;" title="${m.model}: ${m.count.toLocaleString()} turns (${m.share_pct}%)"></div>`;
-    }).join('');
-  }
-
-  // Render legend
-  if (legendContainer) {
-    legendContainer.innerHTML = models.map(m => {
-      const col = modelColors[m.model] || { dot: '#34d399' };
-      return `
-        <div style="display: flex; align-items: center; gap: 0.4rem;">
-          <span style="width: 8px; height: 8px; border-radius: 50%; background: ${col.dot}; display: inline-block;"></span>
-          <span style="color: #ffffff; font-weight: 600; font-family: 'JetBrains Mono', monospace;">${m.model}</span>
-          <span style="color: var(--text-muted);">(${m.count.toLocaleString()} &bull; ${m.share_pct}%)</span>
-        </div>
-      `;
-    }).join('');
-  }
-
-  renderChatsTableOnly(models);
+  if (elTotal) elTotal.textContent = totalTurns.toLocaleString();
+  if (elUsers) elUsers.textContent = uniqueUsers.toLocaleString();
+  if (elSpeed) elSpeed.textContent = `${medLatSec}s`;
 }
 
 function renderTraffic(analytics, chats) {
-  // Companion LLM telemetry from chats-sync
-  renderChatsModels(chats || {});
+  // Companion telemetry from chats-sync
+  renderChatsSummary(chats || {});
 
   // AI Events
   const events = (analytics.ga4?.events_summary || []).map(e => ({
@@ -1565,7 +1495,6 @@ function initTelemetry(data) {
   renderReferrers(data.github || {});
 
   // Setup click-to-sort on every table
-  makeTableSortable('table-chats-models', () => STATS_DATA.chats?.models || [], renderChatsTableOnly);
   makeTableSortable('table-github', () => STATS_DATA.github?.all_repos || [], renderGitHubFull);
   makeTableSortable('table-referrers', () => STATS_DATA.github?.top_referrers || [], renderReferrers);
   makeTableSortable('table-events', () => (STATS_DATA.analytics?.ga4?.events_summary || []).map(e => ({ ...e, category: getEventCategory(e.event) })), renderEventsTable);

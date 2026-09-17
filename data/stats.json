@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-17T15:48:43.629300",
+  "synced_at": "2026-09-17T15:55:40.405021",
   "source": "all-db unified cross-database engine",
   "macro_kpis": {
     "total_projects": 670,
@@ -16,7 +16,6 @@
     "total_search_clicks": 3989,
     "total_chat_messages": 6614,
     "companion_turns": 2698,
-    "companion_models_count": 1,
     "total_model_changes": 4143,
     "total_voice_actions": 1695,
     "total_attention_hours": 852.5,
@@ -9856,60 +9855,8 @@
     ]
   },
   "chats": {
-    "service_name": "Waifu Cloud",
     "total_turns": 2698,
     "unique_users": 422,
-    "unique_sessions": 7,
-    "overall_median_latency_ms": 2552,
-    "date_range": [
-      "2026-09-12",
-      "2026-09-17"
-    ],
-    "models": [
-      {
-        "model": "Waifu Cloud",
-        "count": 2698,
-        "share_pct": 100.0,
-        "median_latency_ms": 2552
-      }
-    ],
-    "timeline": [
-      {
-        "date": "2026-09-12",
-        "turns": 55,
-        "active_users": 11,
-        "median_latency_ms": 4402
-      },
-      {
-        "date": "2026-09-13",
-        "turns": 709,
-        "active_users": 108,
-        "median_latency_ms": 2121
-      },
-      {
-        "date": "2026-09-14",
-        "turns": 758,
-        "active_users": 121,
-        "median_latency_ms": 2805
-      },
-      {
-        "date": "2026-09-15",
-        "turns": 465,
-        "active_users": 87,
-        "median_latency_ms": 2812
-      },
-      {
-        "date": "2026-09-16",
-        "turns": 351,
-        "active_users": 59,
-        "median_latency_ms": 1959
-      },
-      {
-        "date": "2026-09-17",
-        "turns": 360,
-        "active_users": 48,
-        "median_latency_ms": 3278
-      }
-    ]
+    "overall_median_latency_ms": 2552
   }
 }
