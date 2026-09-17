@@ -62,10 +62,11 @@ def build_lab_subpage_html(lab_slug, lab_info, primary_model, all_lab_models, da
             break
     if not spec_snippet and features:
         spec_snippet = features[0]
-    if len(spec_snippet) > 95:
-        spec_snippet = spec_snippet[:92] + "..."
+    if len(spec_snippet) > 140:
+        spec_snippet = spec_snippet[:137] + "..."
 
-    desc = f"⏳ Expected: {date_display} • Status: {status}. {spec_snippet} Track the official {creator} launch radar on WaifuAI!"
+    spec_part = f" • {spec_snippet}" if spec_snippet else ""
+    desc = f"⏳ Expected: {date_display} • Status: {status}{spec_part}"
     if len(desc) > 280:
         desc = desc[:277] + "..."
 
