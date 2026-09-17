@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-09-16T09:40:23.046292",
+  "synced_at": "2026-09-17T15:48:43.629300",
   "source": "all-db unified cross-database engine",
   "macro_kpis": {
     "total_projects": 670,
@@ -15,8 +15,8 @@
     "total_search_impressions": 74070,
     "total_search_clicks": 3989,
     "total_chat_messages": 6614,
-    "companion_turns": 1981,
-    "companion_models_count": 3,
+    "companion_turns": 2698,
+    "companion_models_count": 1,
     "total_model_changes": 4143,
     "total_voice_actions": 1695,
     "total_attention_hours": 852.5,
@@ -9856,64 +9856,59 @@
     ]
   },
   "chats": {
-    "total_turns": 1981,
-    "unique_users": 333,
-    "unique_sessions": 6,
-    "overall_median_latency_ms": 2402,
+    "service_name": "Waifu Cloud",
+    "total_turns": 2698,
+    "unique_users": 422,
+    "unique_sessions": 7,
+    "overall_median_latency_ms": 2552,
     "date_range": [
       "2026-09-12",
-      "2026-09-16"
+      "2026-09-17"
     ],
     "models": [
       {
-        "model": "deepseek-v4.1-flash",
-        "count": 1210,
-        "share_pct": 61.1,
-        "median_latency_ms": 3072
-      },
-      {
-        "model": "qwen3.8-27b",
-        "count": 693,
-        "share_pct": 35.0,
-        "median_latency_ms": 786
-      },
-      {
-        "model": "glm-5.3",
-        "count": 78,
-        "share_pct": 3.9,
-        "median_latency_ms": 8315
+        "model": "Waifu Cloud",
+        "count": 2698,
+        "share_pct": 100.0,
+        "median_latency_ms": 2552
       }
     ],
     "timeline": [
       {
         "date": "2026-09-12",
-        "turns": 34,
-        "active_users": 8,
-        "median_latency_ms": 3470
+        "turns": 55,
+        "active_users": 11,
+        "median_latency_ms": 4402
       },
       {
         "date": "2026-09-13",
-        "turns": 680,
-        "active_users": 107,
-        "median_latency_ms": 2012
+        "turns": 709,
+        "active_users": 108,
+        "median_latency_ms": 2121
       },
       {
         "date": "2026-09-14",
-        "turns": 721,
-        "active_users": 120,
-        "median_latency_ms": 2718
+        "turns": 758,
+        "active_users": 121,
+        "median_latency_ms": 2805
       },
       {
         "date": "2026-09-15",
-        "turns": 441,
-        "active_users": 86,
-        "median_latency_ms": 2690
+        "turns": 465,
+        "active_users": 87,
+        "median_latency_ms": 2812
       },
       {
         "date": "2026-09-16",
-        "turns": 105,
-        "active_users": 22,
-        "median_latency_ms": 1747
+        "turns": 351,
+        "active_users": 59,
+        "median_latency_ms": 1959
+      },
+      {
+        "date": "2026-09-17",
+        "turns": 360,
+        "active_users": 48,
+        "median_latency_ms": 3278
       }
     ]
   }

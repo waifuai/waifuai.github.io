@@ -601,11 +601,11 @@
 
     <div class="kpi-card chats">
       <div class="kpi-label">
-        <span>Chat Messages</span>
+        <span>Waifu Invocations</span>
         <span>💬</span>
       </div>
-      <div class="kpi-value" id="kpi-total-chats">5.1K</div>
-      <div class="kpi-sub" id="kpi-chats-sub">5,109 Multi-Turn LLM Chats</div>
+      <div class="kpi-value" id="kpi-total-chats">2.7K</div>
+      <div class="kpi-sub" id="kpi-chats-sub">2,698 Waifu Invocations</div>
     </div>
 
     <div class="kpi-card models">
@@ -810,28 +810,22 @@
 
   <!-- TAB 4: WEB TRAFFIC & AI EVENTS (GA4) -->
   <div class="tab-panel" id="tab-traffic">
-    <!-- AI Companion LLM Inference & Model Telemetry -->
+    <!-- Waifu Invocations & Performance -->
     <div class="data-table-container" style="margin-bottom: 2.5rem;">
       <div class="table-header-box" style="flex-wrap: wrap; gap: 1rem;">
         <div>
-          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">Production Companion LLM Invocations &amp; Models</div>
+          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">Waifu Invocations &amp; Performance</div>
           <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.35rem;">
-            Edge gateway conversation logs across production AI models • Turn volume, traffic share, and inference turnaround latency.
+            Waifu Cloud conversation logs • Turn volume and turnaround latency.
           </div>
-        </div>
-        <div>
-          <a href="https://openrouter.ai/apps/url/https%3A%2F%2Fwaifuai.com%2F" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.9rem; border-radius: 8px; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); color: #38bdf8; font-size: 0.83rem; font-weight: 600; text-decoration: none;">
-            <span>OpenRouter App Dashboard</span>
-            <span>↗</span>
-          </a>
         </div>
       </div>
 
       <!-- Segmented Model Usage Progress Bar -->
       <div style="padding: 0 1.25rem 1.25rem;">
         <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.5rem; font-family: 'JetBrains Mono', monospace;">
-          <span>Model Invocations Share</span>
-          <span id="chats-total-summary">1,981 Turns Across 3 Models</span>
+          <span>Waifu Invocations</span>
+          <span id="chats-total-summary">2,698 Invocations</span>
         </div>
         <div class="model-distribution-bar" id="chats-model-bar" style="display: flex; height: 10px; border-radius: 6px; overflow: hidden; gap: 2px; background: rgba(255,255,255,0.05);">
           <!-- Populated via JS -->
@@ -844,7 +838,7 @@
       <table class="data-table" id="table-chats-models">
         <thead>
           <tr>
-            <th data-sort="model" data-type="string">Model Name</th>
+            <th data-sort="model" data-type="string">Engine</th>
             <th data-sort="count" data-type="number" style="text-align: right;">Invocations (Turns)</th>
             <th data-sort="share_pct" data-type="number" style="text-align: right;">Traffic Share</th>
             <th data-sort="median_latency_ms" data-type="number" style="text-align: right;">Median Latency</th>
@@ -1178,8 +1172,7 @@ function renderOverview(data) {
   const elChatsSub = document.getElementById('kpi-chats-sub');
   if (elChatsSub && (k.companion_turns || data.chats?.total_turns)) {
     const turns = k.companion_turns || data.chats?.total_turns;
-    const modelsCount = k.companion_models_count || data.chats?.models?.length || 3;
-    elChatsSub.textContent = `${turns.toLocaleString()} Synced Turns (${modelsCount} Models)`;
+    elChatsSub.textContent = `${turns.toLocaleString()} Waifu Invocations`;
   }
 
   const elSwitches = document.getElementById('kpi-total-switches');
@@ -1447,23 +1440,23 @@ function renderChatsModels(chats) {
 
   const models = chats.models || [];
   const totalTurns = chats.total_turns || 0;
+  const medLat = chats.overall_median_latency_ms || 0;
+  const medLatSec = (medLat / 1000).toFixed(2);
   if (summaryEl) {
-    summaryEl.textContent = `${totalTurns.toLocaleString()} Invocations across ${models.length} Models`;
+    summaryEl.textContent = `${totalTurns.toLocaleString()} Invocations • ${medLatSec}s Median Speed`;
   }
   if (pillModels) {
-    pillModels.textContent = `${models.length} Models`;
+    pillModels.textContent = `Waifu Cloud`;
   }
 
   const modelColors = {
-    'deepseek-v4.1-flash': { bar: 'linear-gradient(90deg, #3b82f6, #06b6d4)', dot: '#38bdf8' },
-    'qwen3.8-27b': { bar: 'linear-gradient(90deg, #10b981, #34d399)', dot: '#34d399' },
-    'glm-5.3': { bar: 'linear-gradient(90deg, #a855f7, #ec4899)', dot: '#c084fc' },
+    'Waifu Cloud': { bar: 'linear-gradient(90deg, #3b82f6, #10b981)', dot: '#34d399' },
   };
 
   // Render segmented bar
   if (barContainer) {
     barContainer.innerHTML = models.map(m => {
-      const col = modelColors[m.model] || { bar: 'linear-gradient(90deg, #f59e0b, #fbbf24)' };
+      const col = modelColors[m.model] || { bar: 'linear-gradient(90deg, #3b82f6, #10b981)' };
       return `<div style="width: ${m.share_pct}%; background: ${col.bar}; height: 100%;" title="${m.model}: ${m.count.toLocaleString()} turns (${m.share_pct}%)"></div>`;
     }).join('');
   }
@@ -1471,7 +1464,7 @@ function renderChatsModels(chats) {
   // Render legend
   if (legendContainer) {
     legendContainer.innerHTML = models.map(m => {
-      const col = modelColors[m.model] || { dot: '#fbbf24' };
+      const col = modelColors[m.model] || { dot: '#34d399' };
       return `
         <div style="display: flex; align-items: center; gap: 0.4rem;">
           <span style="width: 8px; height: 8px; border-radius: 50%; background: ${col.dot}; display: inline-block;"></span>
