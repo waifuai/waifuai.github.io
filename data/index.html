@@ -650,8 +650,8 @@
       <span class="badge-pill" id="tab-pill-github">52</span>
     </button>
     <button class="telemetry-tab-btn" data-tab="tab-traffic">
-      <span>AI Models &amp; Traffic</span>
-      <span class="badge-pill" id="tab-pill-models" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">3 Models</span>
+      <span>Chat &amp; Traffic</span>
+      <span class="badge-pill" id="tab-pill-chats" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">2.7K</span>
     </button>
     <button class="telemetry-tab-btn" data-tab="tab-search">
       <span>Search Reach (GSC)</span>
@@ -1328,10 +1328,14 @@ function renderChatsSummary(chats) {
   const elTotal = document.getElementById('chats-stat-total');
   const elUsers = document.getElementById('chats-stat-users');
   const elSpeed = document.getElementById('chats-stat-speed');
+  const pillChats = document.getElementById('tab-pill-chats');
 
   if (elTotal) elTotal.textContent = totalTurns.toLocaleString();
   if (elUsers) elUsers.textContent = uniqueUsers.toLocaleString();
   if (elSpeed) elSpeed.textContent = `${medLatSec}s`;
+  if (pillChats && totalTurns) {
+    pillChats.textContent = `${Math.round(totalTurns / 1000 * 10) / 10}K`;
+  }
 }
 
 function renderTraffic(analytics, chats) {
