@@ -558,12 +558,17 @@ class CountdownsEngine {
     }
   }
 
-  // Share or copy countdown info with hashtag anchor
+  // Share or copy countdown info with dedicated subpage URL for rich Discord previews
   async shareCountdown(model) {
     const rem = this.getTimeRemaining(model.targetDate);
     const intelSnippet = model.analysis?.projectedIntel ? ` (Proj. Intel: ~${model.analysis.projectedIntel})` : "";
-    const directUrl = `${window.location.origin}${window.location.pathname}#${model.id}`;
-    const text = `⏳ ${model.name}${intelSnippet} by ${model.creator} is estimated to drop in ~${rem.days}d ${rem.hours}h! Track live on LLM Countdowns: ${directUrl}`;
+    
+    // Construct clean evergreen lab subpage URL for permanent SEO authority and Discord previews
+    const origin = window.location.origin;
+    const basePath = window.location.pathname.replace(/\/(index\.html)?$/, "").replace(/\/+$/, "");
+    const labSlug = (model.creatorSlug || "xai").toLowerCase();
+    const directUrl = `${origin}${basePath}/${labSlug}/`;
+    const text = `⏳ ${model.name}${intelSnippet} by ${model.creator} is estimated to drop in ~${rem.days}d ${rem.hours}h (${model.targetWindowLabel})! Track live on LLM Countdowns: ${directUrl}`;
 
     try {
       history.replaceState(null, null, `#${model.id}`);
@@ -572,7 +577,7 @@ class CountdownsEngine {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `LLM Countdown: ${model.name}`,
+          title: `⏳ ${model.name} Countdown (${model.creator})`,
           text: text,
           url: directUrl
         });
@@ -582,11 +587,11 @@ class CountdownsEngine {
       }
     }
 
-    // Fallback: clipboard copy
+    // Fallback: clipboard copy (copies rich Discord-compatible URL)
     try {
       await navigator.clipboard.writeText(directUrl);
       if (window.showToast) {
-        window.showToast(`Link copied: #${model.id}`);
+        window.showToast(`Discord preview link copied: ${model.name} 🚀`);
       }
     } catch (e) {
       console.warn("Clipboard copy failed", e);

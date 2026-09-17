@@ -9,6 +9,18 @@
   gtag('js', new Date());
   gtag('config', 'G-EP9DHGYS02');
 </script>
+<script>
+  // Automatic fallback redirect for llm-countdowns deep-links
+  (function() {
+    var path = window.location.pathname;
+    if (path.indexOf('/llm-countdowns/') !== -1) {
+      var slug = path.split('/llm-countdowns/')[1].replace(/\/+$/, '').trim();
+      if (slug && slug !== 'index.html') {
+        window.location.replace('/llm-countdowns/#' + slug);
+      }
+    }
+  })();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, follow">
