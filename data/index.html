@@ -601,11 +601,11 @@
 
     <div class="kpi-card chats">
       <div class="kpi-label">
-        <span>Waifu Invocations</span>
+        <span>Chat Messages</span>
         <span>💬</span>
       </div>
       <div class="kpi-value" id="kpi-total-chats">2.7K</div>
-      <div class="kpi-sub" id="kpi-chats-sub">2,698 Waifu Invocations</div>
+      <div class="kpi-sub" id="kpi-chats-sub">2,698 Chat Messages</div>
     </div>
 
     <div class="kpi-card models">
@@ -810,13 +810,13 @@
 
   <!-- TAB 4: WEB TRAFFIC & AI EVENTS (GA4) -->
   <div class="tab-panel" id="tab-traffic">
-    <!-- Waifu Invocations & Performance -->
+    <!-- AI Companion Chat Messages & Performance -->
     <div class="data-table-container" style="margin-bottom: 2.5rem;">
       <div class="table-header-box" style="flex-wrap: wrap; gap: 1rem;">
         <div>
-          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">Waifu Invocations &amp; Performance</div>
+          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">AI Companion Chat Messages &amp; Performance</div>
           <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.35rem;">
-            Waifu Cloud conversation logs • Turn volume and turnaround latency.
+            Waifu Cloud conversation logs • Multi-turn chat message volume and response latency.
           </div>
         </div>
       </div>
@@ -824,8 +824,8 @@
       <!-- Segmented Model Usage Progress Bar -->
       <div style="padding: 0 1.25rem 1.25rem;">
         <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.5rem; font-family: 'JetBrains Mono', monospace;">
-          <span>Waifu Invocations</span>
-          <span id="chats-total-summary">2,698 Invocations</span>
+          <span>Chat Messages</span>
+          <span id="chats-total-summary">2,698 Chat Messages</span>
         </div>
         <div class="model-distribution-bar" id="chats-model-bar" style="display: flex; height: 10px; border-radius: 6px; overflow: hidden; gap: 2px; background: rgba(255,255,255,0.05);">
           <!-- Populated via JS -->
@@ -839,7 +839,7 @@
         <thead>
           <tr>
             <th data-sort="model" data-type="string">Engine</th>
-            <th data-sort="count" data-type="number" style="text-align: right;">Invocations (Turns)</th>
+            <th data-sort="count" data-type="number" style="text-align: right;">Chat Messages (Turns)</th>
             <th data-sort="share_pct" data-type="number" style="text-align: right;">Traffic Share</th>
             <th data-sort="median_latency_ms" data-type="number" style="text-align: right;">Median Latency</th>
           </tr>
@@ -1172,7 +1172,7 @@ function renderOverview(data) {
   const elChatsSub = document.getElementById('kpi-chats-sub');
   if (elChatsSub && (k.companion_turns || data.chats?.total_turns)) {
     const turns = k.companion_turns || data.chats?.total_turns;
-    elChatsSub.textContent = `${turns.toLocaleString()} Waifu Invocations`;
+    elChatsSub.textContent = `${turns.toLocaleString()} Chat Messages`;
   }
 
   const elSwitches = document.getElementById('kpi-total-switches');
@@ -1443,7 +1443,7 @@ function renderChatsModels(chats) {
   const medLat = chats.overall_median_latency_ms || 0;
   const medLatSec = (medLat / 1000).toFixed(2);
   if (summaryEl) {
-    summaryEl.textContent = `${totalTurns.toLocaleString()} Invocations • ${medLatSec}s Median Speed`;
+    summaryEl.textContent = `${totalTurns.toLocaleString()} Chat Messages • ${medLatSec}s Median Speed`;
   }
   if (pillModels) {
     pillModels.textContent = `Waifu Cloud`;
