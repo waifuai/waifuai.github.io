@@ -44,7 +44,17 @@ def build_lab_subpage_html(lab_slug, lab_info, primary_model, all_lab_models, da
     
     title = f"⏳ {creator} Launch Countdown — Next: {name}"
     
-    # Spec snippet for Discord description
+    # Format static expected date so meta description never goes stale
+    date_display = window_label
+    if target_iso:
+        try:
+            dt = datetime.datetime.fromisoformat(target_iso.replace("Z", "+00:00"))
+            month_names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+            d_str = f"{month_names[dt.month - 1]} {dt.day}, {dt.year}"
+            date_display = f"{d_str} ({window_label})"
+        except Exception:
+            date_display = window_label
+    # Pick spec snippet for Discord description
     spec_snippet = ""
     for feat in features:
         if any(k in feat.lower() for k in ["parameter", "params", "context", "gpu", "cluster", "moe", "swe-bench", "agent"]):
@@ -52,10 +62,10 @@ def build_lab_subpage_html(lab_slug, lab_info, primary_model, all_lab_models, da
             break
     if not spec_snippet and features:
         spec_snippet = features[0]
-    if len(spec_snippet) > 105:
-        spec_snippet = spec_snippet[:102] + "..."
-        
-    desc = f"⏳ Next {creator} Model: {name} ({window_label}, {days_str}) • Status: {status}. {spec_snippet} Track the official {creator} launch radar on WaifuAI!"
+    if len(spec_snippet) > 95:
+        spec_snippet = spec_snippet[:92] + "..."
+
+    desc = f"⏳ Expected: {date_display} • Status: {status}. {spec_snippet} Track the official {creator} launch radar on WaifuAI!"
     if len(desc) > 280:
         desc = desc[:277] + "..."
 
