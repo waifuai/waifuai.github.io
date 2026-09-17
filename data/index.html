@@ -660,39 +660,6 @@
 
   <!-- TAB 1: OVERVIEW -->
   <div class="tab-panel active" id="tab-overview">
-    <!-- Activity Chart Card -->
-    <div class="chart-card">
-      <div class="chart-header">
-        <div>
-          <div class="chart-title">Platform Engagement Timeline</div>
-          <div style="font-size: 0.85rem; color: var(--text-muted);">Daily active users visiting documentation, web companion, and developer tools.</div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-          <div class="chart-range-pills" id="overview-range-pills">
-            <button class="range-btn active" data-days="30">30D</button>
-            <button class="range-btn" data-days="90">90D</button>
-            <button class="range-btn" data-days="all">All (200D)</button>
-          </div>
-          <div class="chart-legend">
-            <div class="legend-item">
-              <span class="legend-dot" style="background: #38bdf8;"></span>
-              <span>Active Users</span>
-            </div>
-            <div class="legend-item">
-              <span class="legend-dot" style="background: #f472b6;"></span>
-              <span>Page Views</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="bar-chart-container" id="overview-chart">
-        <!-- Bars dynamically populated via JS -->
-      </div>
-      <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; font-family: 'JetBrains Mono', monospace;">
-        <span id="chart-date-start">30 days ago</span>
-        <span id="chart-date-end">Today</span>
-      </div>
-    </div>
 
     <!-- 2 Column Side-by-Side Highlights -->
     <div class="grid-2col">
@@ -1106,32 +1073,6 @@ function makeTableSortable(tableId, getData, renderFn) {
   });
 }
 
-function renderOverviewChart(timeline, rangeOption = '30') {
-  const chartEl = document.getElementById('overview-chart');
-  if (!chartEl) return;
-  chartEl.innerHTML = '';
-  if (!timeline || timeline.length === 0) return;
-
-  let sliced = timeline;
-  if (rangeOption === '30') sliced = timeline.slice(-30);
-  else if (rangeOption === '90') sliced = timeline.slice(-90);
-
-  document.getElementById('chart-date-start').textContent = sliced[0].date;
-  document.getElementById('chart-date-end').textContent = sliced[sliced.length - 1].date;
-
-  const maxVal = Math.max(...sliced.map(d => d.page_views || d.active_users || 1), 50);
-  sliced.forEach(d => {
-    const uHeight = Math.max(8, Math.round((d.active_users / maxVal) * 140));
-    const group = document.createElement('div');
-    group.className = 'bar-group';
-    group.innerHTML = `
-      <div class="chart-tooltip">${d.date}: ${d.active_users} users / ${d.page_views} views (${d.attention_hours || 0}h dwell)</div>
-      <div class="bar-fill users" style="height: ${uHeight}px;"></div>
-    `;
-    chartEl.appendChild(group);
-  });
-}
-
 function renderOverview(data) {
   // Sync status
   if (data.synced_at) {
@@ -1168,21 +1109,6 @@ function renderOverview(data) {
 
   document.getElementById('kpi-total-stars').textContent = (k.total_stars_and_likes || 1313).toLocaleString();
   document.getElementById('kpi-search-impressions').textContent = `${Math.round((k.total_search_impressions || 69231) / 1000 * 10) / 10}K`;
-
-  // Activity Chart default 30D
-  const timeline = data.analytics?.ga4?.timeline || [];
-  renderOverviewChart(timeline, '30');
-
-  // Chart range selector buttons
-  const pills = document.querySelectorAll('#overview-range-pills .range-btn');
-  pills.forEach(btn => {
-    btn.addEventListener('click', () => {
-      pills.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const days = btn.getAttribute('data-days');
-      renderOverviewChart(timeline, days);
-    });
-  });
 
   // Top Repos Table (Top 7)
   const reposBody = document.getElementById('overview-repos-body');
