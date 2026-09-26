@@ -1,57 +1,57 @@
 window.WAIFU_STATS = {
-  "synced_at": "2026-09-17T16:00:12.013258",
+  "synced_at": "2026-09-26T10:07:38.129561",
   "source": "all-db unified cross-database engine",
   "macro_kpis": {
     "total_projects": 670,
     "github_repos_count": 52,
     "websim_projects_count": 618,
-    "total_content_views": 59181,
-    "web_page_views": 28803,
+    "total_content_views": 64138,
+    "web_page_views": 33760,
     "websim_views": 30378,
-    "total_stars_and_likes": 1313,
-    "github_stars": 163,
+    "total_stars_and_likes": 1318,
+    "github_stars": 168,
     "websim_likes": 1150,
-    "total_web_users": 17772,
-    "total_search_impressions": 74070,
-    "total_search_clicks": 3989,
-    "total_chat_messages": 6614,
-    "companion_turns": 2698,
-    "total_model_changes": 4143,
-    "total_voice_actions": 1695,
-    "total_attention_hours": 852.5,
+    "total_web_users": 20238,
+    "total_search_impressions": 83819,
+    "total_search_clicks": 4613,
+    "total_chat_messages": 10831,
+    "companion_turns": 7755,
+    "total_model_changes": 6663,
+    "total_voice_actions": 5115,
+    "total_attention_hours": 1156.3,
     "total_countries_count": 50,
-    "total_clones": 687,
-    "total_clone_uniques": 566
+    "total_clones": 2082,
+    "total_clone_uniques": 1548
   },
   "github": {
     "repos_count": 52,
-    "total_stars": 163,
-    "total_forks": 18,
-    "total_open_issues": 3,
-    "total_views": 627,
-    "total_view_uniques": 413,
-    "total_clones": 687,
-    "total_clone_uniques": 566,
+    "total_stars": 168,
+    "total_forks": 19,
+    "total_open_issues": 4,
+    "total_views": 1120,
+    "total_view_uniques": 722,
+    "total_clones": 2082,
+    "total_clone_uniques": 1548,
     "top_referrers": [
       {
-        "referrer": "Google",
-        "count": 112,
-        "uniques": 65
+        "referrer": "github.com",
+        "count": 100,
+        "uniques": 81
       },
       {
-        "referrer": "github.com",
-        "count": 81,
-        "uniques": 58
+        "referrer": "Google",
+        "count": 96,
+        "uniques": 68
       },
       {
         "referrer": "waifuai.com",
-        "count": 79,
-        "uniques": 33
+        "count": 60,
+        "uniques": 36
       },
       {
-        "referrer": "t.co",
-        "count": 33,
-        "uniques": 29
+        "referrer": "Bing",
+        "count": 19,
+        "uniques": 13
       },
       {
         "referrer": "reddit.com",
@@ -59,73 +59,73 @@ window.WAIFU_STATS = {
         "uniques": 9
       },
       {
-        "referrer": "Bing",
-        "count": 8,
+        "referrer": "yandex.ru",
+        "count": 10,
         "uniques": 7
       },
       {
-        "referrer": "chatgpt.com",
-        "count": 7,
-        "uniques": 7
-      },
-      {
-        "referrer": "DuckDuckGo",
+        "referrer": "search.brave.com",
         "count": 7,
         "uniques": 6
       },
       {
         "referrer": "doubao.com",
-        "count": 6,
-        "uniques": 2
+        "count": 7,
+        "uniques": 3
       },
       {
-        "referrer": "yandex.ru",
-        "count": 3,
-        "uniques": 2
+        "referrer": "chatgpt.com",
+        "count": 6,
+        "uniques": 3
+      },
+      {
+        "referrer": "DuckDuckGo",
+        "count": 5,
+        "uniques": 5
       }
     ],
     "top_repos": [
       {
         "repo": "waifuai/waifu-companion",
         "name": "waifu-companion",
-        "stars": 34,
+        "stars": 37,
         "forks": 3,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 63,
-        "clone_uniques": 36,
-        "views": 368,
-        "view_uniques": 220,
+        "clones": 251,
+        "clone_uniques": 146,
+        "views": 571,
+        "view_uniques": 344,
         "category": "Companion & VRM",
         "url": "https://github.com/waifuai/waifu-companion"
+      },
+      {
+        "repo": "waifuai/hermes-waifu",
+        "name": "hermes-waifu",
+        "stars": 23,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 35,
+        "clone_uniques": 30,
+        "views": 194,
+        "view_uniques": 120,
+        "category": "Companion & VRM",
+        "url": "https://github.com/waifuai/hermes-waifu"
       },
       {
         "repo": "waifuai/waifu-sprites",
         "name": "waifu-sprites",
         "stars": 21,
-        "forks": 0,
-        "open_issues": 0,
+        "forks": 1,
+        "open_issues": 1,
         "watchers": 0,
-        "clones": 24,
-        "clone_uniques": 18,
-        "views": 32,
-        "view_uniques": 28,
+        "clones": 56,
+        "clone_uniques": 45,
+        "views": 67,
+        "view_uniques": 54,
         "category": "Companion & VRM",
         "url": "https://github.com/waifuai/waifu-sprites"
-      },
-      {
-        "repo": "waifuai/hermes-waifu",
-        "name": "hermes-waifu",
-        "stars": 21,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 15,
-        "clone_uniques": 12,
-        "views": 75,
-        "view_uniques": 57,
-        "category": "Companion & VRM",
-        "url": "https://github.com/waifuai/hermes-waifu"
       },
       {
         "repo": "waifuai/llms-full-txt",
@@ -134,10 +134,10 @@ window.WAIFU_STATS = {
         "forks": 4,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 12,
-        "clone_uniques": 9,
-        "views": 30,
-        "view_uniques": 19,
+        "clones": 28,
+        "clone_uniques": 23,
+        "views": 65,
+        "view_uniques": 35,
         "category": "Documentation & LLM Feeds",
         "url": "https://github.com/waifuai/llms-full-txt"
       },
@@ -148,10 +148,10 @@ window.WAIFU_STATS = {
         "forks": 2,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 8,
-        "clone_uniques": 8,
-        "views": 13,
-        "view_uniques": 7,
+        "clones": 18,
+        "clone_uniques": 17,
+        "views": 30,
+        "view_uniques": 21,
         "category": "Companion & VRM",
         "url": "https://github.com/waifuai/waifu-llm-vrm"
       },
@@ -162,10 +162,10 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 32,
-        "clone_uniques": 20,
-        "views": 16,
-        "view_uniques": 10,
+        "clones": 80,
+        "clone_uniques": 52,
+        "views": 25,
+        "view_uniques": 17,
         "category": "MCP Server",
         "url": "https://github.com/waifuai/mcp-waifu-chat"
       },
@@ -176,26 +176,12 @@ window.WAIFU_STATS = {
         "forks": 1,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 6,
-        "clone_uniques": 6,
-        "views": 0,
-        "view_uniques": 0,
+        "clones": 15,
+        "clone_uniques": 14,
+        "views": 3,
+        "view_uniques": 1,
         "category": "Open Source Project",
         "url": "https://github.com/waifuai/web-apps"
-      },
-      {
-        "repo": "waifuai/solana-launchpad-ecosystem",
-        "name": "solana-launchpad-ecosystem",
-        "stars": 3,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 24,
-        "clone_uniques": 22,
-        "views": 4,
-        "view_uniques": 4,
-        "category": "Web3 Simulation",
-        "url": "https://github.com/waifuai/solana-launchpad-ecosystem"
       },
       {
         "repo": "waifuai/mcp-solana-ico",
@@ -204,26 +190,12 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 20,
-        "clone_uniques": 17,
+        "clones": 95,
+        "clone_uniques": 75,
         "views": 0,
         "view_uniques": 0,
         "category": "MCP Server",
         "url": "https://github.com/waifuai/mcp-solana-ico"
-      },
-      {
-        "repo": "waifuai/sim-mcp-token",
-        "name": "sim-mcp-token",
-        "stars": 3,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 11,
-        "clone_uniques": 11,
-        "views": 0,
-        "view_uniques": 0,
-        "category": "Web3 Simulation",
-        "url": "https://github.com/waifuai/sim-mcp-token"
       },
       {
         "repo": "waifuai/macro-language-model",
@@ -232,26 +204,40 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 11,
-        "clone_uniques": 11,
-        "views": 2,
-        "view_uniques": 2,
+        "clones": 46,
+        "clone_uniques": 38,
+        "views": 7,
+        "view_uniques": 6,
         "category": "AI Intelligence & Pricing",
         "url": "https://github.com/waifuai/macro-language-model"
       },
       {
-        "repo": "waifuai/waifuai",
-        "name": "waifuai",
+        "repo": "waifuai/solana-launchpad-ecosystem",
+        "name": "solana-launchpad-ecosystem",
         "stars": 3,
-        "forks": 1,
-        "open_issues": 1,
-        "watchers": 1,
-        "clones": 7,
-        "clone_uniques": 6,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 41,
+        "clone_uniques": 36,
+        "views": 6,
+        "view_uniques": 6,
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/solana-launchpad-ecosystem"
+      },
+      {
+        "repo": "waifuai/sim-mcp-token",
+        "name": "sim-mcp-token",
+        "stars": 3,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 24,
+        "clone_uniques": 22,
         "views": 1,
         "view_uniques": 1,
-        "category": "Open Source Project",
-        "url": "https://github.com/waifuai/waifuai"
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/sim-mcp-token"
       },
       {
         "repo": "waifuai/book-generator",
@@ -260,12 +246,26 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 6,
-        "clone_uniques": 6,
-        "views": 2,
-        "view_uniques": 1,
+        "clones": 15,
+        "clone_uniques": 14,
+        "views": 3,
+        "view_uniques": 2,
         "category": "Open Source Project",
         "url": "https://github.com/waifuai/book-generator"
+      },
+      {
+        "repo": "waifuai/waifuai",
+        "name": "waifuai",
+        "stars": 3,
+        "forks": 1,
+        "open_issues": 1,
+        "watchers": 1,
+        "clones": 13,
+        "clone_uniques": 11,
+        "views": 2,
+        "view_uniques": 2,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/waifuai"
       },
       {
         "repo": "waifuai/mcp-waifu-queue",
@@ -274,10 +274,10 @@ window.WAIFU_STATS = {
         "forks": 1,
         "open_issues": 2,
         "watchers": 0,
-        "clones": 42,
-        "clone_uniques": 32,
-        "views": 4,
-        "view_uniques": 3,
+        "clones": 93,
+        "clone_uniques": 66,
+        "views": 8,
+        "view_uniques": 7,
         "category": "MCP Server",
         "url": "https://github.com/waifuai/mcp-waifu-queue"
       },
@@ -288,40 +288,12 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 32,
-        "clone_uniques": 20,
-        "views": 2,
-        "view_uniques": 1,
+        "clones": 62,
+        "clone_uniques": 44,
+        "views": 3,
+        "view_uniques": 2,
         "category": "MCP Server",
         "url": "https://github.com/waifuai/mcp-solana-dex"
-      },
-      {
-        "repo": "waifuai/reasoning-pricer",
-        "name": "reasoning-pricer",
-        "stars": 2,
-        "forks": 1,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 30,
-        "clone_uniques": 24,
-        "views": 6,
-        "view_uniques": 4,
-        "category": "AI Intelligence & Pricing",
-        "url": "https://github.com/waifuai/reasoning-pricer"
-      },
-      {
-        "repo": "waifuai/mcp-traits-matcher",
-        "name": "mcp-traits-matcher",
-        "stars": 2,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 20,
-        "clone_uniques": 17,
-        "views": 3,
-        "view_uniques": 3,
-        "category": "MCP Server",
-        "url": "https://github.com/waifuai/mcp-traits-matcher"
       },
       {
         "repo": "waifuai/quantum-circuit-optimization",
@@ -330,26 +302,40 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 20,
-        "clone_uniques": 20,
+        "clones": 58,
+        "clone_uniques": 49,
         "views": 1,
         "view_uniques": 1,
         "category": "Bio & Applied Science",
         "url": "https://github.com/waifuai/quantum-circuit-optimization"
       },
       {
-        "repo": "waifuai/research-books",
-        "name": "research-books",
+        "repo": "waifuai/mcp-traits-matcher",
+        "name": "mcp-traits-matcher",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 51,
+        "clone_uniques": 34,
+        "views": 3,
+        "view_uniques": 3,
+        "category": "MCP Server",
+        "url": "https://github.com/waifuai/mcp-traits-matcher"
+      },
+      {
+        "repo": "waifuai/reasoning-pricer",
+        "name": "reasoning-pricer",
         "stars": 2,
         "forks": 1,
         "open_issues": 0,
-        "watchers": 1,
-        "clones": 14,
-        "clone_uniques": 10,
-        "views": 1,
-        "view_uniques": 1,
+        "watchers": 0,
+        "clones": 46,
+        "clone_uniques": 39,
+        "views": 6,
+        "view_uniques": 4,
         "category": "AI Intelligence & Pricing",
-        "url": "https://github.com/waifuai/research-books"
+        "url": "https://github.com/waifuai/reasoning-pricer"
       },
       {
         "repo": "waifuai/research-text",
@@ -358,40 +344,26 @@ window.WAIFU_STATS = {
         "forks": 1,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 13,
-        "clone_uniques": 9,
-        "views": 0,
-        "view_uniques": 0,
+        "clones": 25,
+        "clone_uniques": 20,
+        "views": 1,
+        "view_uniques": 1,
         "category": "AI Intelligence & Pricing",
         "url": "https://github.com/waifuai/research-text"
       },
       {
-        "repo": "waifuai/traits",
-        "name": "traits",
+        "repo": "waifuai/research-books",
+        "name": "research-books",
         "stars": 2,
-        "forks": 0,
+        "forks": 1,
         "open_issues": 0,
-        "watchers": 0,
-        "clones": 7,
-        "clone_uniques": 7,
-        "views": 1,
-        "view_uniques": 1,
-        "category": "Open Source Project",
-        "url": "https://github.com/waifuai/traits"
-      },
-      {
-        "repo": "waifuai/waifu-constitution",
-        "name": "waifu-constitution",
-        "stars": 2,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 7,
-        "clone_uniques": 7,
-        "views": 2,
-        "view_uniques": 2,
-        "category": "Open Source Project",
-        "url": "https://github.com/waifuai/waifu-constitution"
+        "watchers": 1,
+        "clones": 25,
+        "clone_uniques": 20,
+        "views": 6,
+        "view_uniques": 6,
+        "category": "AI Intelligence & Pricing",
+        "url": "https://github.com/waifuai/research-books"
       },
       {
         "repo": "waifuai/waifu-chat-api",
@@ -400,12 +372,40 @@ window.WAIFU_STATS = {
         "forks": 1,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 3,
-        "clone_uniques": 3,
-        "views": 0,
-        "view_uniques": 0,
+        "clones": 23,
+        "clone_uniques": 19,
+        "views": 3,
+        "view_uniques": 3,
         "category": "Companion & VRM",
         "url": "https://github.com/waifuai/waifu-chat-api"
+      },
+      {
+        "repo": "waifuai/waifu-constitution",
+        "name": "waifu-constitution",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 14,
+        "clone_uniques": 13,
+        "views": 3,
+        "view_uniques": 3,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/waifu-constitution"
+      },
+      {
+        "repo": "waifuai/traits",
+        "name": "traits",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 13,
+        "clone_uniques": 12,
+        "views": 1,
+        "view_uniques": 1,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/traits"
       },
       {
         "repo": "waifuai/mcp-solana-internet",
@@ -414,10 +414,10 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 35,
-        "clone_uniques": 22,
-        "views": 2,
-        "view_uniques": 2,
+        "clones": 96,
+        "clone_uniques": 63,
+        "views": 3,
+        "view_uniques": 3,
         "category": "MCP Server",
         "url": "https://github.com/waifuai/mcp-solana-internet"
       },
@@ -428,10 +428,10 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 21,
-        "clone_uniques": 18,
-        "views": 0,
-        "view_uniques": 0,
+        "clones": 59,
+        "clone_uniques": 50,
+        "views": 3,
+        "view_uniques": 2,
         "category": "MCP Server",
         "url": "https://github.com/waifuai/mcp-solana-affiliate"
       }
@@ -440,44 +440,44 @@ window.WAIFU_STATS = {
       {
         "repo": "waifuai/waifu-companion",
         "name": "waifu-companion",
-        "stars": 34,
+        "stars": 37,
         "forks": 3,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 63,
-        "clone_uniques": 36,
-        "views": 368,
-        "view_uniques": 220,
+        "clones": 251,
+        "clone_uniques": 146,
+        "views": 571,
+        "view_uniques": 344,
         "category": "Companion & VRM",
         "url": "https://github.com/waifuai/waifu-companion"
+      },
+      {
+        "repo": "waifuai/hermes-waifu",
+        "name": "hermes-waifu",
+        "stars": 23,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 35,
+        "clone_uniques": 30,
+        "views": 194,
+        "view_uniques": 120,
+        "category": "Companion & VRM",
+        "url": "https://github.com/waifuai/hermes-waifu"
       },
       {
         "repo": "waifuai/waifu-sprites",
         "name": "waifu-sprites",
         "stars": 21,
-        "forks": 0,
-        "open_issues": 0,
+        "forks": 1,
+        "open_issues": 1,
         "watchers": 0,
-        "clones": 24,
-        "clone_uniques": 18,
-        "views": 32,
-        "view_uniques": 28,
+        "clones": 56,
+        "clone_uniques": 45,
+        "views": 67,
+        "view_uniques": 54,
         "category": "Companion & VRM",
         "url": "https://github.com/waifuai/waifu-sprites"
-      },
-      {
-        "repo": "waifuai/hermes-waifu",
-        "name": "hermes-waifu",
-        "stars": 21,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 15,
-        "clone_uniques": 12,
-        "views": 75,
-        "view_uniques": 57,
-        "category": "Companion & VRM",
-        "url": "https://github.com/waifuai/hermes-waifu"
       },
       {
         "repo": "waifuai/llms-full-txt",
@@ -486,10 +486,10 @@ window.WAIFU_STATS = {
         "forks": 4,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 12,
-        "clone_uniques": 9,
-        "views": 30,
-        "view_uniques": 19,
+        "clones": 28,
+        "clone_uniques": 23,
+        "views": 65,
+        "view_uniques": 35,
         "category": "Documentation & LLM Feeds",
         "url": "https://github.com/waifuai/llms-full-txt"
       },
@@ -500,10 +500,10 @@ window.WAIFU_STATS = {
         "forks": 2,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 8,
-        "clone_uniques": 8,
-        "views": 13,
-        "view_uniques": 7,
+        "clones": 18,
+        "clone_uniques": 17,
+        "views": 30,
+        "view_uniques": 21,
         "category": "Companion & VRM",
         "url": "https://github.com/waifuai/waifu-llm-vrm"
       },
@@ -514,10 +514,10 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 32,
-        "clone_uniques": 20,
-        "views": 16,
-        "view_uniques": 10,
+        "clones": 80,
+        "clone_uniques": 52,
+        "views": 25,
+        "view_uniques": 17,
         "category": "MCP Server",
         "url": "https://github.com/waifuai/mcp-waifu-chat"
       },
@@ -528,26 +528,12 @@ window.WAIFU_STATS = {
         "forks": 1,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 6,
-        "clone_uniques": 6,
-        "views": 0,
-        "view_uniques": 0,
+        "clones": 15,
+        "clone_uniques": 14,
+        "views": 3,
+        "view_uniques": 1,
         "category": "Open Source Project",
         "url": "https://github.com/waifuai/web-apps"
-      },
-      {
-        "repo": "waifuai/solana-launchpad-ecosystem",
-        "name": "solana-launchpad-ecosystem",
-        "stars": 3,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 24,
-        "clone_uniques": 22,
-        "views": 4,
-        "view_uniques": 4,
-        "category": "Web3 Simulation",
-        "url": "https://github.com/waifuai/solana-launchpad-ecosystem"
       },
       {
         "repo": "waifuai/mcp-solana-ico",
@@ -556,26 +542,12 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 20,
-        "clone_uniques": 17,
+        "clones": 95,
+        "clone_uniques": 75,
         "views": 0,
         "view_uniques": 0,
         "category": "MCP Server",
         "url": "https://github.com/waifuai/mcp-solana-ico"
-      },
-      {
-        "repo": "waifuai/sim-mcp-token",
-        "name": "sim-mcp-token",
-        "stars": 3,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 11,
-        "clone_uniques": 11,
-        "views": 0,
-        "view_uniques": 0,
-        "category": "Web3 Simulation",
-        "url": "https://github.com/waifuai/sim-mcp-token"
       },
       {
         "repo": "waifuai/macro-language-model",
@@ -584,26 +556,40 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 11,
-        "clone_uniques": 11,
-        "views": 2,
-        "view_uniques": 2,
+        "clones": 46,
+        "clone_uniques": 38,
+        "views": 7,
+        "view_uniques": 6,
         "category": "AI Intelligence & Pricing",
         "url": "https://github.com/waifuai/macro-language-model"
       },
       {
-        "repo": "waifuai/waifuai",
-        "name": "waifuai",
+        "repo": "waifuai/solana-launchpad-ecosystem",
+        "name": "solana-launchpad-ecosystem",
         "stars": 3,
-        "forks": 1,
-        "open_issues": 1,
-        "watchers": 1,
-        "clones": 7,
-        "clone_uniques": 6,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 41,
+        "clone_uniques": 36,
+        "views": 6,
+        "view_uniques": 6,
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/solana-launchpad-ecosystem"
+      },
+      {
+        "repo": "waifuai/sim-mcp-token",
+        "name": "sim-mcp-token",
+        "stars": 3,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 24,
+        "clone_uniques": 22,
         "views": 1,
         "view_uniques": 1,
-        "category": "Open Source Project",
-        "url": "https://github.com/waifuai/waifuai"
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/sim-mcp-token"
       },
       {
         "repo": "waifuai/book-generator",
@@ -612,12 +598,26 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 6,
-        "clone_uniques": 6,
-        "views": 2,
-        "view_uniques": 1,
+        "clones": 15,
+        "clone_uniques": 14,
+        "views": 3,
+        "view_uniques": 2,
         "category": "Open Source Project",
         "url": "https://github.com/waifuai/book-generator"
+      },
+      {
+        "repo": "waifuai/waifuai",
+        "name": "waifuai",
+        "stars": 3,
+        "forks": 1,
+        "open_issues": 1,
+        "watchers": 1,
+        "clones": 13,
+        "clone_uniques": 11,
+        "views": 2,
+        "view_uniques": 2,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/waifuai"
       },
       {
         "repo": "waifuai/mcp-waifu-queue",
@@ -626,10 +626,10 @@ window.WAIFU_STATS = {
         "forks": 1,
         "open_issues": 2,
         "watchers": 0,
-        "clones": 42,
-        "clone_uniques": 32,
-        "views": 4,
-        "view_uniques": 3,
+        "clones": 93,
+        "clone_uniques": 66,
+        "views": 8,
+        "view_uniques": 7,
         "category": "MCP Server",
         "url": "https://github.com/waifuai/mcp-waifu-queue"
       },
@@ -640,40 +640,12 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 32,
-        "clone_uniques": 20,
-        "views": 2,
-        "view_uniques": 1,
+        "clones": 62,
+        "clone_uniques": 44,
+        "views": 3,
+        "view_uniques": 2,
         "category": "MCP Server",
         "url": "https://github.com/waifuai/mcp-solana-dex"
-      },
-      {
-        "repo": "waifuai/reasoning-pricer",
-        "name": "reasoning-pricer",
-        "stars": 2,
-        "forks": 1,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 30,
-        "clone_uniques": 24,
-        "views": 6,
-        "view_uniques": 4,
-        "category": "AI Intelligence & Pricing",
-        "url": "https://github.com/waifuai/reasoning-pricer"
-      },
-      {
-        "repo": "waifuai/mcp-traits-matcher",
-        "name": "mcp-traits-matcher",
-        "stars": 2,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 20,
-        "clone_uniques": 17,
-        "views": 3,
-        "view_uniques": 3,
-        "category": "MCP Server",
-        "url": "https://github.com/waifuai/mcp-traits-matcher"
       },
       {
         "repo": "waifuai/quantum-circuit-optimization",
@@ -682,26 +654,40 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 20,
-        "clone_uniques": 20,
+        "clones": 58,
+        "clone_uniques": 49,
         "views": 1,
         "view_uniques": 1,
         "category": "Bio & Applied Science",
         "url": "https://github.com/waifuai/quantum-circuit-optimization"
       },
       {
-        "repo": "waifuai/research-books",
-        "name": "research-books",
+        "repo": "waifuai/mcp-traits-matcher",
+        "name": "mcp-traits-matcher",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 51,
+        "clone_uniques": 34,
+        "views": 3,
+        "view_uniques": 3,
+        "category": "MCP Server",
+        "url": "https://github.com/waifuai/mcp-traits-matcher"
+      },
+      {
+        "repo": "waifuai/reasoning-pricer",
+        "name": "reasoning-pricer",
         "stars": 2,
         "forks": 1,
         "open_issues": 0,
-        "watchers": 1,
-        "clones": 14,
-        "clone_uniques": 10,
-        "views": 1,
-        "view_uniques": 1,
+        "watchers": 0,
+        "clones": 46,
+        "clone_uniques": 39,
+        "views": 6,
+        "view_uniques": 4,
         "category": "AI Intelligence & Pricing",
-        "url": "https://github.com/waifuai/research-books"
+        "url": "https://github.com/waifuai/reasoning-pricer"
       },
       {
         "repo": "waifuai/research-text",
@@ -710,40 +696,26 @@ window.WAIFU_STATS = {
         "forks": 1,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 13,
-        "clone_uniques": 9,
-        "views": 0,
-        "view_uniques": 0,
+        "clones": 25,
+        "clone_uniques": 20,
+        "views": 1,
+        "view_uniques": 1,
         "category": "AI Intelligence & Pricing",
         "url": "https://github.com/waifuai/research-text"
       },
       {
-        "repo": "waifuai/traits",
-        "name": "traits",
+        "repo": "waifuai/research-books",
+        "name": "research-books",
         "stars": 2,
-        "forks": 0,
+        "forks": 1,
         "open_issues": 0,
-        "watchers": 0,
-        "clones": 7,
-        "clone_uniques": 7,
-        "views": 1,
-        "view_uniques": 1,
-        "category": "Open Source Project",
-        "url": "https://github.com/waifuai/traits"
-      },
-      {
-        "repo": "waifuai/waifu-constitution",
-        "name": "waifu-constitution",
-        "stars": 2,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 7,
-        "clone_uniques": 7,
-        "views": 2,
-        "view_uniques": 2,
-        "category": "Open Source Project",
-        "url": "https://github.com/waifuai/waifu-constitution"
+        "watchers": 1,
+        "clones": 25,
+        "clone_uniques": 20,
+        "views": 6,
+        "view_uniques": 6,
+        "category": "AI Intelligence & Pricing",
+        "url": "https://github.com/waifuai/research-books"
       },
       {
         "repo": "waifuai/waifu-chat-api",
@@ -752,12 +724,40 @@ window.WAIFU_STATS = {
         "forks": 1,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 3,
-        "clone_uniques": 3,
-        "views": 0,
-        "view_uniques": 0,
+        "clones": 23,
+        "clone_uniques": 19,
+        "views": 3,
+        "view_uniques": 3,
         "category": "Companion & VRM",
         "url": "https://github.com/waifuai/waifu-chat-api"
+      },
+      {
+        "repo": "waifuai/waifu-constitution",
+        "name": "waifu-constitution",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 14,
+        "clone_uniques": 13,
+        "views": 3,
+        "view_uniques": 3,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/waifu-constitution"
+      },
+      {
+        "repo": "waifuai/traits",
+        "name": "traits",
+        "stars": 2,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 13,
+        "clone_uniques": 12,
+        "views": 1,
+        "view_uniques": 1,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/traits"
       },
       {
         "repo": "waifuai/mcp-solana-internet",
@@ -766,10 +766,10 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 35,
-        "clone_uniques": 22,
-        "views": 2,
-        "view_uniques": 2,
+        "clones": 96,
+        "clone_uniques": 63,
+        "views": 3,
+        "view_uniques": 3,
         "category": "MCP Server",
         "url": "https://github.com/waifuai/mcp-solana-internet"
       },
@@ -780,10 +780,10 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 21,
-        "clone_uniques": 18,
-        "views": 0,
-        "view_uniques": 0,
+        "clones": 59,
+        "clone_uniques": 50,
+        "views": 3,
+        "view_uniques": 2,
         "category": "MCP Server",
         "url": "https://github.com/waifuai/mcp-solana-affiliate"
       },
@@ -794,12 +794,26 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 17,
-        "clone_uniques": 15,
+        "clones": 48,
+        "clone_uniques": 43,
         "views": 0,
         "view_uniques": 0,
         "category": "Web3 Simulation",
         "url": "https://github.com/waifuai/solana-ico"
+      },
+      {
+        "repo": "waifuai/paraphrase-back-translate",
+        "name": "paraphrase-back-translate",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 35,
+        "clone_uniques": 28,
+        "views": 0,
+        "view_uniques": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/paraphrase-back-translate"
       },
       {
         "repo": "waifuai/launchpad-skill",
@@ -808,12 +822,54 @@ window.WAIFU_STATS = {
         "forks": 1,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 14,
-        "clone_uniques": 13,
-        "views": 1,
-        "view_uniques": 1,
+        "clones": 31,
+        "clone_uniques": 29,
+        "views": 3,
+        "view_uniques": 3,
         "category": "Web3 Simulation",
         "url": "https://github.com/waifuai/launchpad-skill"
+      },
+      {
+        "repo": "waifuai/paraphrase-gan-utils",
+        "name": "paraphrase-gan-utils",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 31,
+        "clone_uniques": 24,
+        "views": 0,
+        "view_uniques": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/paraphrase-gan-utils"
+      },
+      {
+        "repo": "waifuai/llm-text-queue",
+        "name": "llm-text-queue",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 31,
+        "clone_uniques": 28,
+        "views": 1,
+        "view_uniques": 1,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/llm-text-queue"
+      },
+      {
+        "repo": "waifuai/paraphrase-human-sentence-classifier",
+        "name": "paraphrase-human-sentence-classifier",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 30,
+        "clone_uniques": 22,
+        "views": 0,
+        "view_uniques": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/paraphrase-human-sentence-classifier"
       },
       {
         "repo": "waifuai/waifu-layer",
@@ -822,10 +878,10 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 12,
-        "clone_uniques": 12,
-        "views": 2,
-        "view_uniques": 1,
+        "clones": 27,
+        "clone_uniques": 26,
+        "views": 4,
+        "view_uniques": 2,
         "category": "Open Source Project",
         "url": "https://github.com/waifuai/waifu-layer"
       },
@@ -836,54 +892,12 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 11,
-        "clone_uniques": 10,
+        "clones": 25,
+        "clone_uniques": 21,
         "views": 1,
         "view_uniques": 1,
         "category": "Documentation & LLM Feeds",
         "url": "https://github.com/waifuai/llms-full-html"
-      },
-      {
-        "repo": "waifuai/llm-text-queue",
-        "name": "llm-text-queue",
-        "stars": 1,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 10,
-        "clone_uniques": 10,
-        "views": 0,
-        "view_uniques": 0,
-        "category": "Open Source Project",
-        "url": "https://github.com/waifuai/llm-text-queue"
-      },
-      {
-        "repo": "waifuai/paraphrase-back-translate",
-        "name": "paraphrase-back-translate",
-        "stars": 1,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 9,
-        "clone_uniques": 9,
-        "views": 0,
-        "view_uniques": 0,
-        "category": "Open Source Project",
-        "url": "https://github.com/waifuai/paraphrase-back-translate"
-      },
-      {
-        "repo": "waifuai/function-graph-generator",
-        "name": "function-graph-generator",
-        "stars": 1,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 8,
-        "clone_uniques": 8,
-        "views": 1,
-        "view_uniques": 1,
-        "category": "Open Source Project",
-        "url": "https://github.com/waifuai/function-graph-generator"
       },
       {
         "repo": "waifuai/paraphrase-gan",
@@ -892,12 +906,40 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 8,
-        "clone_uniques": 8,
+        "clones": 24,
+        "clone_uniques": 21,
         "views": 2,
         "view_uniques": 2,
         "category": "Open Source Project",
         "url": "https://github.com/waifuai/paraphrase-gan"
+      },
+      {
+        "repo": "waifuai/sim-bonding-curve",
+        "name": "sim-bonding-curve",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 18,
+        "clone_uniques": 17,
+        "views": 2,
+        "view_uniques": 2,
+        "category": "Web3 Simulation",
+        "url": "https://github.com/waifuai/sim-bonding-curve"
+      },
+      {
+        "repo": "waifuai/paraphrase-neural-machine-translation",
+        "name": "paraphrase-neural-machine-translation",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 17,
+        "clone_uniques": 14,
+        "views": 1,
+        "view_uniques": 1,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/paraphrase-neural-machine-translation"
       },
       {
         "repo": "waifuai/anime-subtitle-chatbot",
@@ -906,8 +948,8 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 8,
-        "clone_uniques": 6,
+        "clones": 17,
+        "clone_uniques": 14,
         "views": 1,
         "view_uniques": 1,
         "category": "Open Source Project",
@@ -920,40 +962,26 @@ window.WAIFU_STATS = {
         "forks": 1,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 7,
-        "clone_uniques": 7,
-        "views": 10,
-        "view_uniques": 5,
+        "clones": 15,
+        "clone_uniques": 14,
+        "views": 12,
+        "view_uniques": 7,
         "category": "Bio & Applied Science",
         "url": "https://github.com/waifuai/biochem-framework"
       },
       {
-        "repo": "waifuai/paraphrase-human-sentence-classifier",
-        "name": "paraphrase-human-sentence-classifier",
+        "repo": "waifuai/function-graph-generator",
+        "name": "function-graph-generator",
         "stars": 1,
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 6,
-        "clone_uniques": 6,
-        "views": 0,
-        "view_uniques": 0,
-        "category": "Open Source Project",
-        "url": "https://github.com/waifuai/paraphrase-human-sentence-classifier"
-      },
-      {
-        "repo": "waifuai/crypto-simulation",
-        "name": "crypto-simulation",
-        "stars": 1,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 6,
-        "clone_uniques": 6,
+        "clones": 15,
+        "clone_uniques": 14,
         "views": 2,
         "view_uniques": 2,
-        "category": "Web3 Simulation",
-        "url": "https://github.com/waifuai/crypto-simulation"
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/function-graph-generator"
       },
       {
         "repo": "waifuai/sim-airdrop",
@@ -962,26 +990,12 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 5,
-        "clone_uniques": 5,
+        "clones": 15,
+        "clone_uniques": 14,
         "views": 0,
         "view_uniques": 0,
         "category": "Web3 Simulation",
         "url": "https://github.com/waifuai/sim-airdrop"
-      },
-      {
-        "repo": "waifuai/paraphrase-gan-utils",
-        "name": "paraphrase-gan-utils",
-        "stars": 1,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 5,
-        "clone_uniques": 5,
-        "views": 0,
-        "view_uniques": 0,
-        "category": "Open Source Project",
-        "url": "https://github.com/waifuai/paraphrase-gan-utils"
       },
       {
         "repo": "waifuai/ai-benchmarks",
@@ -990,40 +1004,26 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 5,
-        "clone_uniques": 5,
-        "views": 1,
-        "view_uniques": 1,
+        "clones": 15,
+        "clone_uniques": 14,
+        "views": 3,
+        "view_uniques": 3,
         "category": "AI Intelligence & Pricing",
         "url": "https://github.com/waifuai/ai-benchmarks"
       },
       {
-        "repo": "waifuai/sim-bonding-curve",
-        "name": "sim-bonding-curve",
+        "repo": "waifuai/crypto-simulation",
+        "name": "crypto-simulation",
         "stars": 1,
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 5,
-        "clone_uniques": 5,
-        "views": 1,
-        "view_uniques": 1,
+        "clones": 14,
+        "clone_uniques": 13,
+        "views": 4,
+        "view_uniques": 4,
         "category": "Web3 Simulation",
-        "url": "https://github.com/waifuai/sim-bonding-curve"
-      },
-      {
-        "repo": "waifuai/ransoc",
-        "name": "ransoc",
-        "stars": 1,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 5,
-        "clone_uniques": 5,
-        "views": 0,
-        "view_uniques": 0,
-        "category": "Open Source Project",
-        "url": "https://github.com/waifuai/ransoc"
+        "url": "https://github.com/waifuai/crypto-simulation"
       },
       {
         "repo": "waifuai/street-lines",
@@ -1032,26 +1032,12 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 4,
-        "clone_uniques": 4,
+        "clones": 13,
+        "clone_uniques": 12,
         "views": 0,
         "view_uniques": 0,
         "category": "Open Source Project",
         "url": "https://github.com/waifuai/street-lines"
-      },
-      {
-        "repo": "waifuai/blog-posts",
-        "name": "blog-posts",
-        "stars": 1,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 4,
-        "clone_uniques": 4,
-        "views": 20,
-        "view_uniques": 16,
-        "category": "Open Source Project",
-        "url": "https://github.com/waifuai/blog-posts"
       },
       {
         "repo": "waifuai/sim-affiliate",
@@ -1060,12 +1046,54 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 3,
-        "clone_uniques": 3,
-        "views": 2,
-        "view_uniques": 2,
+        "clones": 12,
+        "clone_uniques": 11,
+        "views": 3,
+        "view_uniques": 3,
         "category": "Web3 Simulation",
         "url": "https://github.com/waifuai/sim-affiliate"
+      },
+      {
+        "repo": "waifuai/blog-posts",
+        "name": "blog-posts",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 12,
+        "clone_uniques": 11,
+        "views": 29,
+        "view_uniques": 24,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/blog-posts"
+      },
+      {
+        "repo": "waifuai/ransoc",
+        "name": "ransoc",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 12,
+        "clone_uniques": 11,
+        "views": 0,
+        "view_uniques": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/ransoc"
+      },
+      {
+        "repo": "waifuai/projects-assets",
+        "name": "projects-assets",
+        "stars": 1,
+        "forks": 0,
+        "open_issues": 0,
+        "watchers": 0,
+        "clones": 11,
+        "clone_uniques": 10,
+        "views": 0,
+        "view_uniques": 0,
+        "category": "Open Source Project",
+        "url": "https://github.com/waifuai/projects-assets"
       },
       {
         "repo": "waifuai/.github",
@@ -1074,10 +1102,10 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 3,
-        "clone_uniques": 3,
-        "views": 0,
-        "view_uniques": 0,
+        "clones": 10,
+        "clone_uniques": 9,
+        "views": 1,
+        "view_uniques": 1,
         "category": "Open Source Project",
         "url": "https://github.com/waifuai/.github"
       },
@@ -1088,40 +1116,12 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 3,
-        "clone_uniques": 3,
+        "clones": 9,
+        "clone_uniques": 8,
         "views": 1,
         "view_uniques": 1,
         "category": "Open Source Project",
         "url": "https://github.com/waifuai/projects-data"
-      },
-      {
-        "repo": "waifuai/paraphrase-neural-machine-translation",
-        "name": "paraphrase-neural-machine-translation",
-        "stars": 1,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 2,
-        "clone_uniques": 2,
-        "views": 1,
-        "view_uniques": 1,
-        "category": "Open Source Project",
-        "url": "https://github.com/waifuai/paraphrase-neural-machine-translation"
-      },
-      {
-        "repo": "waifuai/projects-assets",
-        "name": "projects-assets",
-        "stars": 1,
-        "forks": 0,
-        "open_issues": 0,
-        "watchers": 0,
-        "clones": 2,
-        "clone_uniques": 2,
-        "views": 0,
-        "view_uniques": 0,
-        "category": "Open Source Project",
-        "url": "https://github.com/waifuai/projects-assets"
       },
       {
         "repo": "waifuai/waifu",
@@ -1130,8 +1130,8 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 2,
-        "clone_uniques": 2,
+        "clones": 7,
+        "clone_uniques": 6,
         "views": 1,
         "view_uniques": 1,
         "category": "Open Source Project",
@@ -1144,10 +1144,10 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 38,
-        "clone_uniques": 35,
-        "views": 15,
-        "view_uniques": 9,
+        "clones": 296,
+        "clone_uniques": 153,
+        "views": 34,
+        "view_uniques": 18,
         "category": "Core Web Portal",
         "url": "https://github.com/waifuai/waifuai.github.io"
       },
@@ -1158,8 +1158,8 @@ window.WAIFU_STATS = {
         "forks": 0,
         "open_issues": 0,
         "watchers": 0,
-        "clones": 2,
-        "clone_uniques": 2,
+        "clones": 10,
+        "clone_uniques": 9,
         "views": 0,
         "view_uniques": 0,
         "category": "Open Source Project",
@@ -1169,29 +1169,35 @@ window.WAIFU_STATS = {
   },
   "analytics": {
     "ga4": {
-      "active_users": 17772,
-      "new_users": 16876,
-      "sessions": 19195,
-      "page_views": 28803,
-      "avg_engagement_time_sec": 171.0,
-      "total_attention_hours": 852.5,
-      "bounce_rate": 0.675,
+      "active_users": 20238,
+      "new_users": 19115,
+      "sessions": 21883,
+      "page_views": 33760,
+      "avg_engagement_time_sec": 185.6,
+      "total_attention_hours": 1156.3,
+      "bounce_rate": 0.706,
       "date_range": [
         "2026-02-22",
-        "2026-09-14"
+        "2026-09-26"
       ],
       "top_pages": [
         {
           "path": "/",
           "title": "WaifuAI — Free AI Companion with Live2D & Voice",
-          "views": 7769,
-          "users": 5246
+          "views": 7787,
+          "users": 5276
+        },
+        {
+          "path": "/app/",
+          "title": "WaifuAI – Free AI Companion with Live2D & Voice",
+          "views": 1411,
+          "users": 900
         },
         {
           "path": "/app/index.html",
           "title": "WaifuAI – Free AI Companion with Live2D & Voice",
-          "views": 1233,
-          "users": 800
+          "views": 1315,
+          "users": 864
         },
         {
           "path": "/live2d/index.html",
@@ -1200,22 +1206,52 @@ window.WAIFU_STATS = {
           "users": 419
         },
         {
-          "path": "/app/",
-          "title": "WaifuAI – Free AI Companion with Live2D & Voice",
-          "views": 380,
-          "users": 254
-        },
-        {
           "path": "/app/docs/help.html",
           "title": "Help & Tutorial - WaifuAI Docs",
+          "views": 27,
+          "users": 26
+        },
+        {
+          "path": "/llm-countdowns/",
+          "title": "LLM Countdowns — Upcoming AI Models & Frontier Launch Dates | WaifuAI",
+          "views": 18,
+          "users": 11
+        },
+        {
+          "path": "/llm-countdowns/index.html",
+          "title": "LLM Countdowns — Upcoming AI Models & Frontier Launch Dates | WaifuAI",
           "views": 13,
-          "users": 12
+          "users": 11
+        },
+        {
+          "path": "/data/",
+          "title": "WaifuAI Open Data & Ecosystem Telemetry — Live Analytics",
+          "views": 13,
+          "users": 7
+        },
+        {
+          "path": "/app/docs/index.html",
+          "title": "WaifuAI Documentation",
+          "views": 13,
+          "users": 9
+        },
+        {
+          "path": "/app/docs/voice.html",
+          "title": "Voice & Audio Settings - WaifuAI Docs",
+          "views": 10,
+          "users": 8
         },
         {
           "path": "/waifu-companion/index.html",
           "title": "WaifuAI – Free AI Companion with Live2D & Voice",
           "views": 9,
           "users": 2
+        },
+        {
+          "path": "/app/docs/openrouter.html",
+          "title": "OpenRouter Integration - WaifuAI Docs",
+          "views": 8,
+          "users": 6
         },
         {
           "path": "/cat-maze/",
@@ -1226,38 +1262,50 @@ window.WAIFU_STATS = {
         {
           "path": "/app/docs/troubleshooting.html",
           "title": "Troubleshooting Guide - WaifuAI Docs",
-          "views": 6,
-          "users": 6
+          "views": 7,
+          "users": 7
         },
         {
-          "path": "/app/docs/index.html",
-          "title": "WaifuAI Documentation",
-          "views": 6,
-          "users": 4
+          "path": "/app/docs/providers.html",
+          "title": "LLM Providers - WaifuAI Docs",
+          "views": 7,
+          "users": 7
         },
         {
           "path": "/search.html",
           "title": "Search | WaifuAI",
-          "views": 5,
-          "users": 1
+          "views": 6,
+          "users": 2
         },
         {
-          "path": "/data/",
-          "title": "WaifuAI Open Data & Ecosystem Telemetry — Live Analytics",
-          "views": 5,
-          "users": 4
+          "path": "/app/docs/models.html",
+          "title": "Models & Visuals - WaifuAI Docs",
+          "views": 6,
+          "users": 6
         },
         {
-          "path": "/app/docs/voice.html",
-          "title": "Voice & Audio Settings - WaifuAI Docs",
-          "views": 5,
-          "users": 4
+          "path": "/app/docs/memory.html",
+          "title": "Memory & Context Settings - WaifuAI Docs",
+          "views": 6,
+          "users": 6
         },
         {
           "path": "/research-text/",
           "title": "Research Documentation Hub | WaifuAI",
-          "views": 4,
+          "views": 5,
+          "users": 4
+        },
+        {
+          "path": "/llm-countdowns/xai/",
+          "title": "⏳ xAI Launch Countdown — Next: Grok 4.7 / Grok 5 | WaifuAI",
+          "views": 5,
           "users": 3
+        },
+        {
+          "path": "/data/index.html",
+          "title": "WaifuAI Open Data & Ecosystem Telemetry — Live Analytics",
+          "views": 5,
+          "users": 5
         },
         {
           "path": "/research-text/consolidated-research/papers/07b-llm-rl.html",
@@ -1278,16 +1326,28 @@ window.WAIFU_STATS = {
           "users": 1
         },
         {
-          "path": "/app/docs/providers.html",
-          "title": "LLM Providers - WaifuAI Docs",
+          "path": "/research-books/index.html",
+          "title": "Research Books — 14+ Academic Volumes | WaifuAI",
+          "views": 3,
+          "users": 2
+        },
+        {
+          "path": "/app/docs/settings.html",
+          "title": "Settings Panel Guide - WaifuAI Docs",
           "views": 3,
           "users": 3
         },
         {
-          "path": "/app/docs/models.html",
-          "title": "Models & Visuals - WaifuAI Docs",
+          "path": "/app",
+          "title": "WaifuAI – Free AI Companion with Live2D & Voice",
           "views": 3,
-          "users": 3
+          "users": 1
+        },
+        {
+          "path": "/sim-airdrop/",
+          "title": "Token Airdrop Strategy Simulator | WaifuAI",
+          "views": 2,
+          "users": 2
         },
         {
           "path": "/research-text/web3-research/index.html",
@@ -1302,22 +1362,70 @@ window.WAIFU_STATS = {
           "users": 2
         },
         {
+          "path": "/research-text/index.html",
+          "title": "Research Documentation Hub | WaifuAI",
+          "views": 2,
+          "users": 2
+        },
+        {
           "path": "/research-books/",
           "title": "Research Books Library — 14 Academic Volumes | WaifuAI",
           "views": 2,
           "users": 1
         },
         {
-          "path": "/app/docs/settings.html",
-          "title": "Settings Panel Guide - WaifuAI Docs",
+          "path": "/reasoning-pricer/",
+          "title": "Reasoning Pricer — Solana Token AI Pricing | WaifuAI",
           "views": 2,
           "users": 2
         },
         {
-          "path": "/app/docs/memory.html",
-          "title": "Memory & Context Settings - WaifuAI Docs",
+          "path": "/index.html",
+          "title": "WaifuAI — Free AI Companion with Live2D & Voice",
           "views": 2,
           "users": 2
+        },
+        {
+          "path": "/hermes-waifu/index.html",
+          "title": "Hermes Waifu — Live2D Agent Display | WaifuAI",
+          "views": 2,
+          "users": 2
+        },
+        {
+          "path": "/hermes-waifu/",
+          "title": "Hermes Waifu — Live2D Agent Display | WaifuAI",
+          "views": 2,
+          "users": 2
+        },
+        {
+          "path": "/blog-posts/index.html",
+          "title": "WaifuAI Blog | WaifuAI",
+          "views": 2,
+          "users": 2
+        },
+        {
+          "path": "/blog-posts/11-how-to-add-your-own-live2d-avatar.html",
+          "title": "How to Add Your Own Live2D Avatar: A Complete Guide | WaifuAI",
+          "views": 2,
+          "users": 2
+        },
+        {
+          "path": "/web-apps/src/webapps/quantum-consciousness/236-quantum-entanglement-and-non-locality-the-building-blocks-of-consciousness.html",
+          "title": "Quantum Entanglement and Non-Locality: The Building Blocks of Consciousness",
+          "views": 1,
+          "users": 1
+        },
+        {
+          "path": "/web-apps/src/webapps/ai-os/273-lispos-explorer.html",
+          "title": "LispOS Explorer",
+          "views": 1,
+          "users": 1
+        },
+        {
+          "path": "/web-apps/index.html",
+          "title": "Web Apps Collection — 449+ Interactive Tools | WaifuAI",
+          "views": 1,
+          "users": 1
         },
         {
           "path": "/web-apps/bonding-curves.html",
@@ -1344,68 +1452,32 @@ window.WAIFU_STATS = {
           "users": 1
         },
         {
-          "path": "/sim-airdrop/",
-          "title": "Token Airdrop Strategy Simulator | WaifuAI",
+          "path": "/waifu-llm-vrm/index.html",
+          "title": "PyWaifu — Godot AI Waifu with VRM | WaifuAI",
           "views": 1,
           "users": 1
         },
         {
-          "path": "/research-text/index.html",
-          "title": "Research Documentation Hub | WaifuAI",
+          "path": "/waifu-layer/index.html",
+          "title": "Waifu Layer — L1 Blockchain for AI | WaifuAI",
           "views": 1,
           "users": 1
         },
         {
-          "path": "/research-books/index.html",
-          "title": "Research Books — 14+ Academic Volumes | WaifuAI",
+          "path": "/waifu-chat-api/index.html",
+          "title": "Waifu Chat REST API | WaifuAI",
           "views": 1,
           "users": 1
         },
         {
-          "path": "/reasoning-pricer/",
-          "title": "Reasoning Pricer — Solana Token AI Pricing | WaifuAI",
+          "path": "/street-lines/index.html",
+          "title": "Street Lines — Proofs & Derivations | WaifuAI",
           "views": 1,
           "users": 1
         },
         {
-          "path": "/index.html",
-          "title": "WaifuAI — Free AI Companion with Live2D & Voice",
-          "views": 1,
-          "users": 1
-        },
-        {
-          "path": "/hermes-waifu/",
-          "title": "Hermes Waifu — Live2D Agent Display | WaifuAI",
-          "views": 1,
-          "users": 1
-        },
-        {
-          "path": "/data/index.html",
-          "title": "WaifuAI Open Data & Ecosystem Telemetry — Live Analytics",
-          "views": 1,
-          "users": 1
-        },
-        {
-          "path": "/blog-posts/index.html",
-          "title": "WaifuAI Blog | WaifuAI",
-          "views": 1,
-          "users": 1
-        },
-        {
-          "path": "/blog-posts/14-complete-settings-guide-every-option.html",
-          "title": "Complete Settings Guide: Every Option Explained | WaifuAI",
-          "views": 1,
-          "users": 1
-        },
-        {
-          "path": "/blog-posts/11-how-to-add-your-own-live2d-avatar.html",
-          "title": "How to Add Your Own Live2D Avatar: A Complete Guide | WaifuAI",
-          "views": 1,
-          "users": 1
-        },
-        {
-          "path": "/app/docs/openrouter.html",
-          "title": "OpenRouter Integration - WaifuAI Docs",
+          "path": "/solana-launchpad-ecosystem/index.html",
+          "title": "Solana Launchpad Ecosystem — AI Edition | WaifuAI",
           "views": 1,
           "users": 1
         }
@@ -1413,78 +1485,103 @@ window.WAIFU_STATS = {
       "traffic_sources": [
         {
           "channel": "(direct) / (none)",
-          "sessions": 6773,
-          "users": 6313
+          "sessions": 7599,
+          "users": 7091
         },
         {
           "channel": "chatgpt.com / ai-assistant",
-          "sessions": 1936,
-          "users": 1799
+          "sessions": 2631,
+          "users": 2431
         },
         {
           "channel": "google / organic",
-          "sessions": 1655,
-          "users": 1562
+          "sessions": 2112,
+          "users": 1988
         },
         {
           "channel": "(not set)",
-          "sessions": 484,
-          "users": 438
+          "sessions": 961,
+          "users": 888
         },
         {
           "channel": "(data not available)",
-          "sessions": 162,
-          "users": 161
+          "sessions": 404,
+          "users": 401
         },
         {
           "channel": "bing / organic",
-          "sessions": 160,
-          "users": 146
+          "sessions": 260,
+          "users": 241
         },
         {
           "channel": "chatgpt.com / (none)",
-          "sessions": 54,
-          "users": 52
-        },
-        {
-          "channel": "github.com / referral",
-          "sessions": 23,
-          "users": 23
+          "sessions": 78,
+          "users": 76
         },
         {
           "channel": "message / (not set)",
-          "sessions": 22,
-          "users": 18
+          "sessions": 55,
+          "users": 40
+        },
+        {
+          "channel": "github.com / referral",
+          "sessions": 48,
+          "users": 47
         },
         {
           "channel": "yandex.ru / referral",
-          "sessions": 15,
-          "users": 15
+          "sessions": 46,
+          "users": 45
         },
         {
           "channel": "t.co / referral",
-          "sessions": 15,
-          "users": 10
+          "sessions": 34,
+          "users": 26
         },
         {
           "channel": "duckduckgo / organic",
-          "sessions": 12,
-          "users": 12
+          "sessions": 29,
+          "users": 29
         },
         {
           "channel": "html-classic.itch.zone / referral",
-          "sessions": 8,
-          "users": 8
+          "sessions": 18,
+          "users": 18
         },
         {
           "channel": "yandex / organic",
+          "sessions": 14,
+          "users": 14
+        },
+        {
+          "channel": "yahoo / organic",
+          "sessions": 14,
+          "users": 14
+        },
+        {
+          "channel": "message / ",
+          "sessions": 13,
+          "users": 9
+        },
+        {
+          "channel": "waifuai.com / referral",
+          "sessions": 11,
+          "users": 7
+        },
+        {
+          "channel": "global / (not set)",
+          "sessions": 10,
+          "users": 6
+        },
+        {
+          "channel": "search.brave.com / referral",
           "sessions": 5,
           "users": 5
         },
         {
-          "channel": "yahoo / organic",
+          "channel": "message / (none)",
           "sessions": 5,
-          "users": 5
+          "users": 3
         },
         {
           "channel": "ecosia.org / organic",
@@ -1492,49 +1589,24 @@ window.WAIFU_STATS = {
           "users": 5
         },
         {
-          "channel": "message / ",
+          "channel": "l.facebook.com / referral",
           "sessions": 4,
           "users": 3
         },
         {
-          "channel": "yandex.com.tr / referral",
-          "sessions": 2,
-          "users": 2
-        },
-        {
-          "channel": "search.brave.com / referral",
-          "sessions": 2,
-          "users": 2
-        },
-        {
-          "channel": "cn.bing.com / referral",
-          "sessions": 2,
-          "users": 2
+          "channel": "facebook.com / referral",
+          "sessions": 4,
+          "users": 4
         },
         {
           "channel": "yandex.uz / referral",
-          "sessions": 1,
-          "users": 1
+          "sessions": 3,
+          "users": 3
         },
         {
-          "channel": "y8l.com / referral",
-          "sessions": 1,
-          "users": 1
-        },
-        {
-          "channel": "waifuai.github.io / referral",
-          "sessions": 1,
-          "users": 1
-        },
-        {
-          "channel": "startpage.com / referral",
-          "sessions": 1,
-          "users": 1
-        },
-        {
-          "channel": "openai / referral",
-          "sessions": 1,
-          "users": 1
+          "channel": "yandex.kz / referral",
+          "sessions": 3,
+          "users": 3
         }
       ],
       "countries": [
@@ -1917,143 +1989,143 @@ window.WAIFU_STATS = {
       "events_summary": [
         {
           "event": "page_view",
-          "count": 13391,
-          "users": 7966
+          "count": 18348,
+          "users": 10372
         },
         {
           "event": "chat_message_sent",
-          "count": 6614,
-          "users": 1261
+          "count": 10831,
+          "users": 2102
         },
         {
           "event": "session_start",
-          "count": 5606,
-          "users": 5187
+          "count": 8181,
+          "users": 7511
         },
         {
           "event": "settings_submenu_opened",
-          "count": 4826,
-          "users": 1152
+          "count": 7249,
+          "users": 1660
         },
         {
           "event": "first_visit",
-          "count": 4775,
-          "users": 4746
-        },
-        {
-          "event": "scroll",
-          "count": 4403,
-          "users": 2519
+          "count": 7014,
+          "users": 6958
         },
         {
           "event": "model_changed",
-          "count": 4143,
-          "users": 1489
-        },
-        {
-          "event": "user_engagement",
-          "count": 4128,
-          "users": 2752
+          "count": 6663,
+          "users": 2584
         },
         {
           "event": "llm_stream_completed",
-          "count": 1770,
-          "users": 221
+          "count": 6117,
+          "users": 1034
+        },
+        {
+          "event": "user_engagement",
+          "count": 6098,
+          "users": 3990
+        },
+        {
+          "event": "scroll",
+          "count": 6016,
+          "users": 3494
         },
         {
           "event": "llm_request_started",
-          "count": 1309,
-          "users": 169
-        },
-        {
-          "event": "tts_action",
-          "count": 1276,
-          "users": 156
-        },
-        {
-          "event": "cta_click",
-          "count": 1235,
-          "users": 749
+          "count": 5607,
+          "users": 995
         },
         {
           "event": "llm_stream_started",
-          "count": 1211,
-          "users": 156
+          "count": 5356,
+          "users": 954
         },
         {
-          "event": "click",
-          "count": 935,
-          "users": 542
+          "event": "tts_action",
+          "count": 3642,
+          "users": 476
         },
         {
-          "event": "message_deleted",
-          "count": 577,
-          "users": 31
+          "event": "cta_click",
+          "count": 2740,
+          "users": 1754
         },
         {
           "event": "settings_opened",
-          "count": 236,
-          "users": 101
+          "count": 1356,
+          "users": 546
         },
         {
-          "event": "voice_input_used",
-          "count": 233,
-          "users": 76
+          "event": "message_deleted",
+          "count": 1276,
+          "users": 98
         },
         {
-          "event": "visual_settings_updated",
-          "count": 220,
-          "users": 65
+          "event": "click",
+          "count": 953,
+          "users": 556
         },
         {
           "event": "tts_played",
-          "count": 186,
-          "users": 32
+          "count": 945,
+          "users": 121
         },
         {
-          "event": "app_error",
-          "count": 185,
-          "users": 110
+          "event": "voice_input_used",
+          "count": 528,
+          "users": 134
         },
         {
-          "event": "persona_updated",
-          "count": 143,
-          "users": 38
+          "event": "visual_settings_updated",
+          "count": 496,
+          "users": 133
         },
         {
           "event": "voice_enabled_toggle",
-          "count": 131,
-          "users": 42
+          "count": 478,
+          "users": 142
         },
         {
-          "event": "radio_toggle",
-          "count": 45,
-          "users": 17
+          "event": "app_error",
+          "count": 225,
+          "users": 129
         },
         {
-          "event": "radio_volume_changed",
-          "count": 42,
-          "users": 18
-        },
-        {
-          "event": "message_copied",
-          "count": 39,
-          "users": 28
-        },
-        {
-          "event": "languages_reset",
-          "count": 36,
-          "users": 24
-        },
-        {
-          "event": "voice_changed",
-          "count": 31,
-          "users": 17
+          "event": "persona_updated",
+          "count": 172,
+          "users": 51
         },
         {
           "event": "context_settings_updated",
-          "count": 30,
-          "users": 14
+          "count": 155,
+          "users": 37
+        },
+        {
+          "event": "voice_changed",
+          "count": 117,
+          "users": 48
+        },
+        {
+          "event": "message_copied",
+          "count": 114,
+          "users": 74
+        },
+        {
+          "event": "radio_volume_changed",
+          "count": 99,
+          "users": 44
+        },
+        {
+          "event": "radio_toggle",
+          "count": 92,
+          "users": 38
+        },
+        {
+          "event": "languages_reset",
+          "count": 54,
+          "users": 32
         },
         {
           "event": "automation_settings_updated",
@@ -2061,9 +2133,24 @@ window.WAIFU_STATS = {
           "users": 9
         },
         {
+          "event": "llm_model_changed",
+          "count": 24,
+          "users": 9
+        },
+        {
+          "event": "background_changed",
+          "count": 24,
+          "users": 6
+        },
+        {
           "event": "level_loaded",
           "count": 22,
           "users": 2
+        },
+        {
+          "event": "model_gallery_opened",
+          "count": 20,
+          "users": 16
         },
         {
           "event": "auto_offline_tripped",
@@ -2071,24 +2158,9 @@ window.WAIFU_STATS = {
           "users": 12
         },
         {
-          "event": "background_changed",
-          "count": 15,
-          "users": 3
-        },
-        {
-          "event": "llm_model_changed",
-          "count": 13,
-          "users": 6
-        },
-        {
-          "event": "model_gallery_opened",
-          "count": 12,
-          "users": 12
-        },
-        {
           "event": "llm_provider_changed",
-          "count": 10,
-          "users": 6
+          "count": 18,
+          "users": 9
         },
         {
           "event": "persona_reset",
@@ -2116,197 +2188,249 @@ window.WAIFU_STATS = {
           "users": 1
         },
         {
+          "event": "llm_summarize_started",
+          "count": 1,
+          "users": 1
+        },
+        {
+          "event": "llm_summarize_completed",
+          "count": 1,
+          "users": 1
+        },
+        {
           "event": "external_link_clicked",
           "count": 1,
           "users": 1
         }
       ],
-      "total_chat_messages": 6614,
-      "total_model_changes": 4143,
-      "total_voice_actions": 1695
+      "total_chat_messages": 10831,
+      "total_model_changes": 6663,
+      "total_voice_actions": 5115
     },
     "gsc": {
-      "clicks": 3989,
-      "impressions": 74070,
-      "ctr": 0.0323,
+      "clicks": 4613,
+      "impressions": 83819,
+      "ctr": 0.0322,
       "average_position": 7.5,
       "date_range": [
         "2025-09-04",
-        "2026-09-12"
+        "2026-09-23"
       ],
       "top_queries": [
         {
           "query": "waifu ai",
-          "clicks": 1372,
-          "impressions": 38502,
-          "position": 12.4
+          "clicks": 1529,
+          "impressions": 42810,
+          "position": 11.7
         },
         {
           "query": "waifuai",
-          "clicks": 1098,
-          "impressions": 2982,
-          "position": 5.0
+          "clicks": 1304,
+          "impressions": 3468,
+          "position": 4.8
         },
         {
           "query": "ai waifu",
-          "clicks": 131,
-          "impressions": 3006,
-          "position": 25.1
+          "clicks": 158,
+          "impressions": 4080,
+          "position": 23.2
         },
         {
           "query": "weifu ai",
-          "clicks": 90,
-          "impressions": 951,
-          "position": 9.8
+          "clicks": 102,
+          "impressions": 1113,
+          "position": 9.1
+        },
+        {
+          "query": "waifu ai chat",
+          "clicks": 41,
+          "impressions": 597,
+          "position": 25.2
+        },
+        {
+          "query": "wifu ai",
+          "clicks": 41,
+          "impressions": 271,
+          "position": 3.4
+        },
+        {
+          "query": "waifuai studio",
+          "clicks": 39,
+          "impressions": 373,
+          "position": 5.2
         },
         {
           "query": "waifu.ai",
           "clicks": 38,
-          "impressions": 194,
-          "position": 3.0
-        },
-        {
-          "query": "waifuai studio",
-          "clicks": 36,
-          "impressions": 313,
-          "position": 5.1
-        },
-        {
-          "query": "waifu ai chat",
-          "clicks": 35,
-          "impressions": 443,
-          "position": 28.7
-        },
-        {
-          "query": "wifu ai",
-          "clicks": 35,
-          "impressions": 207,
-          "position": 3.6
+          "impressions": 234,
+          "position": 2.9
         },
         {
           "query": "ai waifu companion",
-          "clicks": 24,
-          "impressions": 71,
-          "position": 3.2
+          "clicks": 29,
+          "impressions": 93,
+          "position": 3.0
         },
         {
           "query": "waifu chat",
-          "clicks": 15,
-          "impressions": 83,
-          "position": 32.6
+          "clicks": 18,
+          "impressions": 122,
+          "position": 27.5
         },
         {
           "query": "weifu ai online",
           "clicks": 13,
-          "impressions": 87,
-          "position": 2.8
+          "impressions": 94,
+          "position": 2.7
         },
         {
           "query": "wafu ai",
           "clicks": 13,
-          "impressions": 60,
-          "position": 2.5
+          "impressions": 68,
+          "position": 2.7
         },
         {
           "query": "wifuai",
-          "clicks": 11,
-          "impressions": 20,
-          "position": 2.0
+          "clicks": 13,
+          "impressions": 24,
+          "position": 1.9
         },
         {
           "query": "ai waifu chat",
-          "clicks": 9,
-          "impressions": 176,
-          "position": 32.7
+          "clicks": 12,
+          "impressions": 271,
+          "position": 25.6
         },
         {
-          "query": "waifu. ai",
+          "query": "my waifu ai",
+          "clicks": 7,
+          "impressions": 180,
+          "position": 4.1
+        },
+        {
+          "query": "ai wifu",
+          "clicks": 7,
+          "impressions": 69,
+          "position": 5.8
+        },
+        {
+          "query": "waifu ai app",
           "clicks": 6,
-          "impressions": 51,
-          "position": 2.7
+          "impressions": 142,
+          "position": 2.8
+        },
+        {
+          "query": "wafiu ai",
+          "clicks": 6,
+          "impressions": 80,
+          "position": 3.0
         },
         {
           "query": "free ai waifu",
           "clicks": 6,
-          "impressions": 46,
-          "position": 6.4
+          "impressions": 73,
+          "position": 6.7
         },
         {
-          "query": "ai wifu",
+          "query": "waifu. ai",
           "clicks": 6,
-          "impressions": 42,
-          "position": 5.4
+          "impressions": 70,
+          "position": 2.7
         },
         {
           "query": "live2d ai companion",
           "clicks": 6,
-          "impressions": 21,
-          "position": 5.3
+          "impressions": 33,
+          "position": 5.5
         },
         {
           "query": "waif ai",
           "clicks": 6,
-          "impressions": 20,
-          "position": 3.5
+          "impressions": 29,
+          "position": 3.1
+        },
+        {
+          "query": "live2d ai",
+          "clicks": 6,
+          "impressions": 27,
+          "position": 9.3
+        },
+        {
+          "query": "waifu companion",
+          "clicks": 6,
+          "impressions": 21,
+          "position": 2.5
+        },
+        {
+          "query": "waifu ai free",
+          "clicks": 6,
+          "impressions": 15,
+          "position": 3.0
+        },
+        {
+          "query": "wiefu ai",
+          "clicks": 6,
+          "impressions": 14,
+          "position": 5.6
         },
         {
           "query": "waifu ai chatbot",
           "clicks": 5,
-          "impressions": 128,
-          "position": 41.3
+          "impressions": 172,
+          "position": 34.1
         },
         {
-          "query": "waifu ai app",
+          "query": "waifu chat ai",
           "clicks": 5,
-          "impressions": 76,
-          "position": 2.9
+          "impressions": 58,
+          "position": 13.5
         },
         {
-          "query": "wafiu ai",
+          "query": "waifus ai",
           "clicks": 5,
-          "impressions": 43,
-          "position": 2.9
-        },
-        {
-          "query": "live2d ai",
-          "clicks": 5,
-          "impressions": 18,
+          "impressions": 37,
           "position": 9.1
         },
         {
-          "query": "waifu companion",
-          "clicks": 5,
-          "impressions": 14,
-          "position": 2.4
-        },
-        {
-          "query": "waifu ai free",
-          "clicks": 5,
-          "impressions": 13,
-          "position": 2.7
-        },
-        {
-          "query": "wiefu ai",
-          "clicks": 5,
-          "impressions": 11,
-          "position": 5.6
-        },
-        {
-          "query": "my waifu ai",
-          "clicks": 4,
-          "impressions": 67,
-          "position": 5.3
-        },
-        {
           "query": "ai waifu free",
-          "clicks": 4,
+          "clicks": 5,
+          "impressions": 26,
+          "position": 5.0
+        },
+        {
+          "query": "wiafu ai",
+          "clicks": 5,
+          "impressions": 24,
+          "position": 2.5
+        },
+        {
+          "query": "waifi ai",
+          "clicks": 5,
           "impressions": 21,
-          "position": 4.8
+          "position": 3.0
+        },
+        {
+          "query": "waifu ai character companion",
+          "clicks": 5,
+          "impressions": 19,
+          "position": 6.5
+        },
+        {
+          "query": "waifu ai companion",
+          "clicks": 5,
+          "impressions": 15,
+          "position": 3.3
+        },
+        {
+          "query": "waifu ia",
+          "clicks": 4,
+          "impressions": 32,
+          "position": 5.5
         },
         {
           "query": "wafui ai",
           "clicks": 4,
-          "impressions": 14,
+          "impressions": 18,
           "position": 2.8
         },
         {
@@ -2316,22 +2440,16 @@ window.WAIFU_STATS = {
           "position": 3.4
         },
         {
-          "query": "waifu ia",
+          "query": "ai waif",
           "clicks": 4,
-          "impressions": 11,
-          "position": 8.3
+          "impressions": 13,
+          "position": 4.6
         },
         {
-          "query": "wiafu ai",
-          "clicks": 4,
-          "impressions": 11,
-          "position": 2.4
-        },
-        {
-          "query": "waifu chat ai",
+          "query": "ai waifu app",
           "clicks": 3,
-          "impressions": 40,
-          "position": 16.7
+          "impressions": 105,
+          "position": 10.2
         },
         {
           "query": "wefui ai",
@@ -2342,32 +2460,20 @@ window.WAIFU_STATS = {
         {
           "query": "aiwaifu",
           "clicks": 3,
-          "impressions": 18,
-          "position": 15.7
+          "impressions": 20,
+          "position": 16.8
         },
         {
-          "query": "waifu ai character companion",
+          "query": "waifu a",
           "clicks": 3,
-          "impressions": 13,
-          "position": 9.3
+          "impressions": 6,
+          "position": 3.0
         },
         {
-          "query": "waifu ai companion",
+          "query": "waifu chat anime ai girlfriend",
           "clicks": 3,
-          "impressions": 9,
-          "position": 3.2
-        },
-        {
-          "query": "ai waif",
-          "clicks": 3,
-          "impressions": 8,
-          "position": 5.1
-        },
-        {
-          "query": "waifi ai",
-          "clicks": 3,
-          "impressions": 8,
-          "position": 3.2
+          "impressions": 6,
+          "position": 46.0
         },
         {
           "query": "weifi ai",
@@ -2382,90 +2488,66 @@ window.WAIFU_STATS = {
           "position": 7.3
         },
         {
-          "query": "ai waifu chat free",
+          "query": "ai chat waifu",
           "clicks": 2,
-          "impressions": 35,
-          "position": 8.5
+          "impressions": 77,
+          "position": 28.9
         },
         {
-          "query": "waifus ai",
+          "query": "ai waifu chat free",
           "clicks": 2,
-          "impressions": 19,
-          "position": 11.6
+          "impressions": 52,
+          "position": 8.6
         },
         {
           "query": "chat ai waifu",
           "clicks": 2,
-          "impressions": 13,
-          "position": 9.9
+          "impressions": 22,
+          "position": 9.5
         },
         {
           "query": "ai waify",
           "clicks": 2,
-          "impressions": 7,
-          "position": 6.1
-        },
-        {
-          "query": "free waifu ai",
-          "clicks": 2,
-          "impressions": 7,
-          "position": 8.8
-        },
-        {
-          "query": "live2d waifu",
-          "clicks": 2,
-          "impressions": 6,
-          "position": 2.4
+          "impressions": 9,
+          "position": 6.0
         },
         {
           "query": "your waifu ai",
           "clicks": 2,
-          "impressions": 5,
-          "position": 3.2
-        },
-        {
-          "query": "weifu ai website",
-          "clicks": 2,
-          "impressions": 4,
-          "position": 4.5
-        },
-        {
-          "query": "waifu ia chat",
-          "clicks": 2,
-          "impressions": 3,
-          "position": 9.0
+          "impressions": 8,
+          "position": 5.1
         }
       ],
       "top_pages": [
         {
           "page": "https://waifuai.com/",
-          "clicks": 3974,
-          "impressions": 72965,
-          "position": 11.2
+          "clicks": 4596,
+          "impressions": 82619,
+          "position": 10.9
         },
         {
           "page": "https://waifuai.github.io/",
           "clicks": 6,
-          "impressions": 488,
-          "position": 11.4
+          "impressions": 528,
+          "position": 10.9
         },
         {
           "page": "https://waifuai.com/app/docs/help.html",
-          "clicks": 3,
-          "impressions": 177,
+          "clicks": 4,
+          "impressions": 209,
           "position": 4.9
         },
         {
           "page": "https://waifuai.com/app/docs/index.html",
-          "clicks": 3,
-          "impressions": 123,
-          "position": 5.3
+          "clicks": 4,
+          "impressions": 205,
+          "position": 4.6
         },
         {
           "page": "https://waifuai.com/app/docs/models.html",
           "clicks": 2,
-          "impressions": 25,
-          "position": 11.1
+          "impressions": 32,
+          "position": 10.5
         },
         {
           "page": "http://waifuai.com/",
@@ -2480,10 +2562,16 @@ window.WAIFU_STATS = {
           "position": 6.2
         },
         {
+          "page": "https://waifuai.com/app/docs/providers.html",
+          "clicks": 1,
+          "impressions": 53,
+          "position": 5.3
+        },
+        {
           "page": "https://waifuai.com/app/docs/voice.html",
           "clicks": 1,
-          "impressions": 36,
-          "position": 7.3
+          "impressions": 41,
+          "position": 7.8
         },
         {
           "page": "https://waifuai.com/?utm_source=chatgpt.com",
@@ -2494,14 +2582,14 @@ window.WAIFU_STATS = {
         {
           "page": "https://waifuai.com/app/docs/memory.html",
           "clicks": 0,
-          "impressions": 106,
-          "position": 7.9
+          "impressions": 124,
+          "position": 7.7
         },
         {
           "page": "https://waifuai.com/app/docs/openrouter.html",
           "clicks": 0,
-          "impressions": 99,
-          "position": 7.7
+          "impressions": 102,
+          "position": 7.5
         },
         {
           "page": "https://waifuai.com/app/index.html",
@@ -2516,10 +2604,10 @@ window.WAIFU_STATS = {
           "position": 5.1
         },
         {
-          "page": "https://waifuai.com/app/docs/providers.html",
+          "page": "https://waifuai.com/app/",
           "clicks": 0,
-          "impressions": 48,
-          "position": 5.5
+          "impressions": 45,
+          "position": 6.0
         },
         {
           "page": "https://waifuai.com/docs/voice.html",
@@ -2542,14 +2630,20 @@ window.WAIFU_STATS = {
         {
           "page": "https://waifuai.com/app/docs/settings.html",
           "clicks": 0,
-          "impressions": 10,
-          "position": 6.4
+          "impressions": 14,
+          "position": 6.2
         },
         {
           "page": "https://waifuai.com/docs/troubleshooting.html",
           "clicks": 0,
           "impressions": 2,
           "position": 5.0
+        },
+        {
+          "page": "https://waifuai.github.io/sim-airdrop/",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 9.0
         },
         {
           "page": "https://www.waifuai.com/",
@@ -2929,8 +3023,8 @@ window.WAIFU_STATS = {
     ]
   },
   "chats": {
-    "total_turns": 2698,
-    "unique_users": 422,
-    "overall_median_latency_ms": 2552
+    "total_turns": 7755,
+    "unique_users": 1323,
+    "overall_median_latency_ms": 1991
   }
 };
