@@ -686,7 +686,7 @@ class CountdownsEngine {
             <div class="radar-insight-lbl">Tracked Launches</div>
           </div>
           <div class="radar-insight-box">
-            <div class="radar-insight-num" style="color: var(--accent-green);">57.0 (Claude 5.1)</div>
+            <div class="radar-insight-num" style="color: var(--accent-green);">58.0 (Claude Opus 5.5)</div>
             <div class="radar-insight-lbl">Current Benchmark Frontier</div>
           </div>
           <div class="radar-insight-box">
