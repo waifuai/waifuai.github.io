@@ -98,6 +98,104 @@
     white-space: nowrap;
   }
   section { scroll-margin-top: 4.5rem; }
+  html { scroll-behavior: smooth; }
+  .toc-card, .chart-card[id], .data-table-container[id] { scroll-margin-top: 4.5rem; }
+
+  .toc-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.4rem 1.6rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .toc-heading {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 1rem;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.1rem 1.75rem;
+  }
+  .toc-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .toc-main:hover { color: var(--accent3); }
+  .toc-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.45rem;
+    height: 1.45rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--accent3);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .toc-desc {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    margin: 0.3rem 0 0.45rem;
+  }
+  .toc-subs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+  }
+  .toc-subs a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+  }
+  .toc-subs a:hover { color: var(--accent3); text-decoration: underline; }
+
+  .back-toc {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 0.45rem;
+    transition: color 0.15s ease;
+  }
+  .back-toc:hover { color: var(--accent3); }
+
+  .anchor-link {
+    color: var(--accent3);
+    text-decoration: none;
+    font-size: 0.72em;
+    font-weight: 600;
+    margin-left: 0.45rem;
+    opacity: 0.4;
+    transition: opacity 0.15s ease;
+  }
+  .anchor-link:hover { opacity: 1; text-decoration: none; }
+  @media (hover: hover) {
+    .anchor-link { opacity: 0; }
+    .section-title:hover .anchor-link,
+    .chart-title:hover .anchor-link,
+    .anchor-link:focus-visible { opacity: 1; }
+  }
+
   .section-title {
     font-family: 'Outfit', sans-serif;
     font-size: 1.5rem;
@@ -418,6 +516,7 @@
   </div>
 
   <nav class="anchor-nav">
+    <a href="#toc">&#9776; Contents</a>
     <a href="#websim">WebSim Lab</a>
     <a href="#github">GitHub Repos</a>
     <a href="#traffic">Chat &amp; Traffic</a>
@@ -439,6 +538,47 @@
     </div>
   </header>
 
+  <nav class="toc-card" id="toc" aria-label="Table of contents">
+    <div class="toc-heading">Table of Contents</div>
+    <div class="toc-grid">
+      <div class="toc-group">
+        <a class="toc-main" href="#websim"><span class="toc-num">1</span>WebSim Lab</a>
+        <p class="toc-desc">618 generative simulations sorted by community likes.</p>
+        <ul class="toc-subs">
+          <li><a href="#websim-showcase">Project Showcase</a></li>
+        </ul>
+      </div>
+      <div class="toc-group">
+        <a class="toc-main" href="#github"><span class="toc-num">2</span>GitHub Repositories</a>
+        <p class="toc-desc">52 repositories with stars, clones, views, and forks.</p>
+        <ul class="toc-subs">
+          <li><a href="#repo-directory">Repository Directory</a></li>
+          <li><a href="#github-referrers">Top Inbound Referrers</a></li>
+        </ul>
+      </div>
+      <div class="toc-group">
+        <a class="toc-main" href="#traffic"><span class="toc-num">3</span>Chat &amp; Traffic (GA4)</a>
+        <p class="toc-desc">Companion conversation volume and visitor telemetry.</p>
+        <ul class="toc-subs">
+          <li><a href="#companion-events">Event Telemetry</a></li>
+          <li><a href="#geo-reach">Geographic Reach</a></li>
+          <li><a href="#device-split">Device Distribution</a></li>
+          <li><a href="#os-ecosystem">Operating Systems</a></li>
+          <li><a href="#top-pages">Most Visited Pages</a></li>
+          <li><a href="#acquisition">Acquisition Channels</a></li>
+        </ul>
+      </div>
+      <div class="toc-group">
+        <a class="toc-main" href="#search"><span class="toc-num">4</span>Search Reach (GSC)</a>
+        <p class="toc-desc">Google search queries and landing pages bringing visitors in.</p>
+        <ul class="toc-subs">
+          <li><a href="#search-keywords">Discovery Keywords</a></li>
+          <li><a href="#search-landing">Top Landing Pages</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <div class="kpi-grid">
 <div class="kpi-card"><div class="kpi-label"><span>Total Projects</span><span>📦</span></div><div class="kpi-value">670</div><div class="kpi-sub">52 GitHub • 618 WebSim</div></div>
 <div class="kpi-card traffic"><div class="kpi-label"><span>Content Views</span><span>👁️</span></div><div class="kpi-value">66.2K</div><div class="kpi-sub">35.9K Web • 30.4K WebSim</div></div>
@@ -453,11 +593,12 @@
   </div>
 
   <section id="websim">
-    <h2 class="section-title">WebSim Lab</h2>
+    <h2 class="section-title">WebSim Lab <a class="anchor-link" href="#websim" title="Link to this section" aria-label="Link to this section">#</a></h2>
+    <a class="back-toc" href="#toc">&uarr; Back to contents</a>
     <p class="section-desc">618 generative simulations &bull; Curated selection of top interactive experiences, 3D VRM visualizers, games, and chatbot experiments, sorted by community likes.</p>
-    <div class="chart-card" style="margin-bottom: 1.5rem; padding: 1.1rem 1.5rem;">
+    <div class="chart-card" id="websim-showcase" style="margin-bottom: 1.5rem; padding: 1.1rem 1.5rem;">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-        <div class="chart-title" style="margin: 0;">WebSim Generative Project Showcase</div>
+        <div class="chart-title" style="margin: 0;">WebSim Generative Project Showcase <a class="anchor-link" href="#websim-showcase" title="Link to this part" aria-label="Link to this part">#</a></div>
         <input type="text" class="search-input" data-filter="#websim-cards-container" placeholder="Filter simulations...">
       </div>
     </div>
@@ -510,11 +651,12 @@ s</h3><div class="websim-desc">A blog post 📑 about designing AI-friendly web 
   </section>
 
   <section id="github">
-    <h2 class="section-title">GitHub Repositories</h2>
+    <h2 class="section-title">GitHub Repositories <a class="anchor-link" href="#github" title="Link to this section" aria-label="Link to this section">#</a></h2>
+    <a class="back-toc" href="#toc">&uarr; Back to contents</a>
     <p class="section-desc">52 repositories covering FastMCP, Live2D companion engines, tokenomics simulations, and research.</p>
-    <div class="data-table-container">
+    <div class="data-table-container" id="repo-directory">
       <div class="table-header-box">
-        <div class="chart-title" style="font-size: 1.15rem;">Repository Directory</div>
+        <div class="chart-title" style="font-size: 1.15rem;">Repository Directory <a class="anchor-link" href="#repo-directory" title="Link to this part" aria-label="Link to this part">#</a></div>
         <input type="text" class="search-input" data-filter="#table-github" placeholder="Search repositories...">
       </div>
       <table class="data-table" id="table-github">
@@ -587,9 +729,9 @@ s</h3><div class="websim-desc">A blog post 📑 about designing AI-friendly web 
       </table>
     </div>
 
-    <div class="data-table-container">
+    <div class="data-table-container" id="github-referrers">
       <div class="table-header-box">
-        <div class="chart-title">Top Inbound GitHub Referrers</div>
+        <div class="chart-title">Top Inbound GitHub Referrers <a class="anchor-link" href="#github-referrers" title="Link to this part" aria-label="Link to this part">#</a></div>
         <div style="font-size: 0.85rem; color: var(--text-muted);">External sources sending developers to our repositories</div>
       </div>
       <table class="data-table">
@@ -617,7 +759,8 @@ s</h3><div class="websim-desc">A blog post 📑 about designing AI-friendly web 
   </section>
 
   <section id="traffic">
-    <h2 class="section-title">Chat &amp; Traffic <span class="mono" style="font-size: 0.9rem; color: var(--text-muted);">(GA4)</span></h2>
+    <h2 class="section-title">Chat &amp; Traffic <span class="mono" style="font-size: 0.9rem; color: var(--text-muted);">(GA4)</span> <a class="anchor-link" href="#traffic" title="Link to this section" aria-label="Link to this section">#</a></h2>
+    <a class="back-toc" href="#toc">&uarr; Back to contents</a>
     <p class="section-desc">Companion conversation volume, interactive event telemetry, and where visitors come from.</p>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
@@ -647,10 +790,10 @@ s</h3><div class="websim-desc">A blog post 📑 about designing AI-friendly web 
       </div>
     </div>
 
-    <div class="data-table-container" style="margin-bottom: 2rem;">
+    <div class="data-table-container" id="companion-events" style="margin-bottom: 2rem;">
       <div class="table-header-box">
         <div>
-          <div class="chart-title" style="font-size: 1.15rem;">AI Companion Interactive Event Telemetry</div>
+          <div class="chart-title" style="font-size: 1.15rem;">AI Companion Interactive Event Telemetry <a class="anchor-link" href="#companion-events" title="Link to this part" aria-label="Link to this part">#</a></div>
           <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Granular user engagement: multi-turn AI chat messages, model rotations, and voice interactions.</div>
         </div>
         <input type="text" class="search-input" data-filter="#table-events" placeholder="Filter events...">
@@ -730,10 +873,10 @@ s</h3><div class="websim-desc">A blog post 📑 about designing AI-friendly web 
       </table>
     </div>
 
-    <div class="data-table-container" style="margin-bottom: 2rem;">
+    <div class="data-table-container" id="geo-reach" style="margin-bottom: 2rem;">
       <div class="table-header-box">
         <div>
-          <div class="chart-title" style="font-size: 1.15rem;">Worldwide Geographic Reach</div>
+          <div class="chart-title" style="font-size: 1.15rem;">Worldwide Geographic Reach <a class="anchor-link" href="#geo-reach" title="Link to this part" aria-label="Link to this part">#</a></div>
           <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Active users, sessions, and pageviews across 50 countries worldwide.</div>
         </div>
         <input type="text" class="search-input" data-filter="#table-countries" placeholder="Search countries...">
@@ -804,8 +947,8 @@ s</h3><div class="websim-desc">A blog post 📑 about designing AI-friendly web 
     </div>
 
     <div class="grid-2col" style="margin-bottom: 2rem;">
-      <div class="data-table-container" style="padding: 1.25rem 1.5rem;">
-        <div class="chart-title" style="font-size: 1.1rem;">Device Category Distribution</div>
+      <div class="data-table-container" id="device-split" style="padding: 1.25rem 1.5rem;">
+        <div class="chart-title" style="font-size: 1.1rem;">Device Category Distribution <a class="anchor-link" href="#device-split" title="Link to this part" aria-label="Link to this part">#</a></div>
         <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Hardware categories accessing documentation and tools</div>
         <div class="stat-progress-box">
 <div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">mobile</span><span class="mono c-muted">8,320 users (50.0%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar blue" style="width: 50.0%;"></div></div></div>
@@ -815,8 +958,8 @@ s</h3><div class="websim-desc">A blog post 📑 about designing AI-friendly web 
         </div>
       </div>
 
-      <div class="data-table-container" style="padding: 1.25rem 1.5rem;">
-        <div class="chart-title" style="font-size: 1.1rem;">Operating System Ecosystem</div>
+      <div class="data-table-container" id="os-ecosystem" style="padding: 1.25rem 1.5rem;">
+        <div class="chart-title" style="font-size: 1.1rem;">Operating System Ecosystem <a class="anchor-link" href="#os-ecosystem" title="Link to this part" aria-label="Link to this part">#</a></div>
         <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Operating systems running across desktop, mobile, and tablets</div>
         <div class="stat-progress-box">
 <div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">Android</span><span class="mono c-muted">6,599 users (39.6%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar blue" style="width: 39.6%;"></div></div></div>
@@ -834,10 +977,10 @@ s</h3><div class="websim-desc">A blog post 📑 about designing AI-friendly web 
     </div>
 
     <div class="grid-2col" style="grid-template-columns: 1fr;">
-      <div class="data-table-container">
+      <div class="data-table-container" id="top-pages">
         <div class="table-header-box">
           <div>
-            <div class="chart-title">Most Visited Pages</div>
+            <div class="chart-title">Most Visited Pages <a class="anchor-link" href="#top-pages" title="Link to this part" aria-label="Link to this part">#</a></div>
             <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">The website's own pages across waifuai.com, waifuai.github.io, and the blog &bull; /index.html pages are merged into their directory paths &bull; WebSim projects have their own section above.</div>
           </div>
         </div>
@@ -873,9 +1016,9 @@ s</h3><div class="websim-desc">A blog post 📑 about designing AI-friendly web 
         </table>
       </div>
 
-      <div class="data-table-container">
+      <div class="data-table-container" id="acquisition">
         <div class="table-header-box">
-          <div class="chart-title">Traffic Acquisition Channels</div>
+          <div class="chart-title">Traffic Acquisition Channels <a class="anchor-link" href="#acquisition" title="Link to this part" aria-label="Link to this part">#</a></div>
         </div>
         <table class="data-table">
           <thead>
@@ -918,11 +1061,12 @@ s</h3><div class="websim-desc">A blog post 📑 about designing AI-friendly web 
   </section>
 
   <section id="search">
-    <h2 class="section-title">Search Reach <span class="mono" style="font-size: 0.9rem; color: var(--text-muted);">(GSC)</span></h2>
+    <h2 class="section-title">Search Reach <span class="mono" style="font-size: 0.9rem; color: var(--text-muted);">(GSC)</span> <a class="anchor-link" href="#search" title="Link to this section" aria-label="Link to this section">#</a></h2>
+    <a class="back-toc" href="#toc">&uarr; Back to contents</a>
     <p class="section-desc">High-intent search queries leading developers and users to the WaifuAI platform (filtered &amp; clean).</p>
-    <div class="data-table-container">
+    <div class="data-table-container" id="search-keywords">
       <div class="table-header-box">
-        <div class="chart-title" style="font-size: 1.15rem;">Google Search Discovery Keywords</div>
+        <div class="chart-title" style="font-size: 1.15rem;">Google Search Discovery Keywords <a class="anchor-link" href="#search-keywords" title="Link to this part" aria-label="Link to this part">#</a></div>
         <input type="text" class="search-input" data-filter="#table-gsc" placeholder="Filter search queries...">
       </div>
       <table class="data-table" id="table-gsc">
@@ -989,9 +1133,9 @@ s</h3><div class="websim-desc">A blog post 📑 about designing AI-friendly web 
       </table>
     </div>
 
-    <div class="data-table-container" style="margin-top: 2rem;">
+    <div class="data-table-container" id="search-landing" style="margin-top: 2rem;">
       <div class="table-header-box">
-        <div class="chart-title" style="font-size: 1.15rem;">Top Search Landing Pages</div>
+        <div class="chart-title" style="font-size: 1.15rem;">Top Search Landing Pages <a class="anchor-link" href="#search-landing" title="Link to this part" aria-label="Link to this part">#</a></div>
         <div style="font-size: 0.85rem; color: var(--text-muted);">Platform pages attracting Google search impressions and clicks.</div>
       </div>
       <table class="data-table">
