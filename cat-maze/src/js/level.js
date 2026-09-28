@@ -56,7 +56,7 @@ export async function loadLevel(levelIndex) {
     if (!state.levelsLoaded) {
         trackEvent('game_started');
     }
-    trackEvent('level_loaded', { level: levelNum });
+    trackEvent('level_loaded', { level: levelIndex + 1 });
 
     state.setCurrentLevelIndex(levelIndex);
     state.resetView(); // Reset view to full map mode
