@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -11,13 +10,13 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Live open telemetry and ecosystem analytics for WaifuAI: GitHub repositories, 600+ generative WebSim simulations, GA4 traffic, and Google search reach.">
+<meta name="description" content="Live open telemetry and ecosystem analytics for WaifuAI: GitHub repositories, 618 generative WebSim simulations, GA4 traffic, and Google search reach.">
 <meta name="keywords" content="waifu ai data, waifuai analytics, websim projects, open telemetry, github stars, live2d companion stats">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/data/">
 <title>WaifuAI Open Data &amp; Ecosystem Telemetry — Live Analytics</title>
 <meta property="og:title" content="WaifuAI Open Data &amp; Ecosystem Telemetry — Live Analytics">
-<meta property="og:description" content="Transparent metrics across 52 GitHub repos, 611 WebSim generative simulations, 53K+ content views, and 16.6K+ web visitors.">
+<meta property="og:description" content="Transparent metrics across 52 GitHub repos, 618 WebSim generative simulations, 66.2K content views, and 21.2K web visitors.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/data/">
 <meta property="og:type" content="website">
@@ -62,7 +61,56 @@
     50% { opacity: 0.4; transform: scale(0.8); }
   }
 
-  /* Macro KPI Cards Grid */
+  .anchor-nav {
+    position: sticky;
+    top: 0.5rem;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.45rem 0.55rem;
+    margin-bottom: 1.25rem;
+    background: rgba(11, 15, 22, 0.92);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow-x: auto;
+  }
+  .anchor-nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.4rem 0.9rem;
+    border-radius: 7px;
+    white-space: nowrap;
+  }
+  .anchor-nav a:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .anchor-nav .nav-meta {
+    margin-left: auto;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    padding-right: 0.5rem;
+    white-space: nowrap;
+  }
+  section { scroll-margin-top: 4.5rem; }
+  .section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 2.6rem 0 0.3rem;
+  }
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin: 0 0 1.4rem;
+  }
+
   .kpi-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -101,7 +149,31 @@
   .kpi-card.search::before { background: linear-gradient(90deg, #8b5cf6, #ec4899); }
   .kpi-card.stars::before { background: linear-gradient(90deg, #f59e0b, #ef4444); }
 
-  /* Device & OS breakdown styles */
+  .kpi-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .kpi-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+  }
+  .kpi-sub {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
   .stat-progress-box {
     display: flex;
     flex-direction: column;
@@ -134,81 +206,6 @@
   .stat-progress-bar.amber { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
   .stat-progress-bar.purple { background: linear-gradient(90deg, #a855f7, #c084fc); }
 
-
-  .kpi-label {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-weight: 600;
-    margin-bottom: 0.35rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .kpi-value {
-    font-family: 'Outfit', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: #ffffff;
-    line-height: 1.1;
-    margin-bottom: 0.4rem;
-  }
-  .kpi-sub {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  /* Tab Navigation */
-  .telemetry-tabs {
-    display: flex;
-    gap: 0.5rem;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 2rem;
-    overflow-x: auto;
-    padding-bottom: 0.25rem;
-  }
-  .telemetry-tab-btn {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    padding: 0.65rem 1.25rem;
-    border-radius: 8px 8px 0 0;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    white-space: nowrap;
-    position: relative;
-  }
-  .telemetry-tab-btn:hover {
-    color: var(--text);
-    background: rgba(255, 255, 255, 0.03);
-  }
-  .telemetry-tab-btn.active {
-    color: var(--accent);
-    background: rgba(255, 107, 157, 0.06);
-    border-bottom: 2px solid var(--accent);
-  }
-  .telemetry-tab-btn .badge-pill {
-    font-size: 0.75rem;
-    padding: 0.15rem 0.45rem;
-    border-radius: 12px;
-    background: var(--border);
-    color: var(--text);
-  }
-
-  /* Panels */
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; animation: fadeIn 0.25s ease; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-
-  /* Charts & Graphs */
   .chart-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
@@ -230,76 +227,7 @@
     font-weight: 700;
     color: var(--text);
   }
-  .chart-legend {
-    display: flex;
-    gap: 1rem;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-  }
-  .legend-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 2px;
-  }
 
-  .bar-chart-container {
-    display: flex;
-    align-items: flex-end;
-    gap: 4px;
-    height: 160px;
-    padding-top: 10px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 6px;
-    overflow-x: auto;
-  }
-  .bar-group {
-    flex: 1;
-    min-width: 10px;
-    max-width: 24px;
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
-    position: relative;
-    cursor: pointer;
-  }
-  .bar-group:hover .bar-fill {
-    filter: brightness(1.25);
-  }
-  .bar-fill {
-    width: 100%;
-    border-radius: 3px 3px 0 0;
-    transition: height 0.4s ease, filter 0.15s ease;
-  }
-  .bar-fill.users { background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%); }
-  .bar-fill.views { background: linear-gradient(180deg, #f472b6 0%, #db2777 100%); }
-
-  /* Tooltip */
-  .chart-tooltip {
-    position: absolute;
-    bottom: 105%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #000000;
-    border: 1px solid var(--border-light);
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-family: 'JetBrains Mono', monospace;
-    white-space: nowrap;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.15s ease;
-    z-index: 10;
-  }
-  .bar-group:hover .chart-tooltip { opacity: 1; }
-
-  /* Grid lists */
   .grid-2col {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -307,12 +235,11 @@
     margin-bottom: 2rem;
   }
 
-  /* Data Table */
   .data-table-container {
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 12px;
-    overflow: hidden;
+    overflow-x: auto;
     margin-bottom: 2rem;
   }
   .table-header-box {
@@ -337,7 +264,7 @@
     transition: border-color 0.2s ease;
   }
   .search-input:focus { border-color: var(--accent3); }
-  
+
   table.data-table {
     width: 100%;
     border-collapse: collapse;
@@ -354,26 +281,21 @@
     letter-spacing: 0.05em;
     border-bottom: 1px solid var(--border);
   }
-  table.data-table th.sortable {
+  table.data-table th[data-sort] {
     cursor: pointer;
     user-select: none;
     transition: background 0.15s ease, color 0.15s ease;
   }
-  table.data-table th.sortable:hover {
+  table.data-table th[data-sort]:hover {
     background: rgba(255, 255, 255, 0.05);
     color: #ffffff;
   }
+  table.data-table th.sorted-asc, table.data-table th.sorted-desc { color: var(--accent); }
   .sort-icon {
     display: inline-block;
     margin-left: 0.35rem;
     font-size: 0.72rem;
     opacity: 0.35;
-    transition: opacity 0.15s ease, color 0.15s ease;
-  }
-  table.data-table th.sort-asc .sort-icon,
-  table.data-table th.sort-desc .sort-icon {
-    opacity: 1;
-    color: var(--accent);
   }
   table.data-table td {
     padding: 0.95rem 1.25rem;
@@ -384,36 +306,16 @@
     background: var(--card-hover);
   }
 
-  /* Range Selector Pills */
-  .chart-range-pills {
-    display: inline-flex;
-    gap: 0.25rem;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 3px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-  }
-  .range-btn {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 0.78rem;
-    font-family: 'JetBrains Mono', monospace;
-    padding: 0.25rem 0.65rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-  .range-btn:hover {
-    color: var(--text);
-  }
-  .range-btn.active {
-    background: var(--border);
-    color: #ffffff;
-    font-weight: 600;
-  }
+  .td-num { text-align: right; font-family: 'JetBrains Mono', monospace; }
+  .b { font-weight: 600; }
+  .c-green { color: #34d399; }
+  .c-amber { color: #f59e0b; font-weight: 600; }
+  .c-purple { color: #c084fc; font-weight: 600; }
+  .c-blue { color: #38bdf8; }
+  .c-muted { color: var(--text-muted); }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .page-code { color: var(--accent3); font-size: 0.85rem; }
 
-  /* WebSim Project Cards Grid */
   .websim-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -504,19 +406,6 @@
   .badge-tag.companion { border-color: rgba(244, 114, 182, 0.4); color: #f472b6; background: rgba(244, 114, 182, 0.08); }
   .badge-tag.web3 { border-color: rgba(192, 132, 252, 0.4); color: #c084fc; background: rgba(192, 132, 252, 0.08); }
   .badge-tag.intel { border-color: rgba(52, 211, 153, 0.4); color: #34d399; background: rgba(52, 211, 153, 0.08); }
-
-  .raw-export-banner {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
 </style>
 </head>
 <body>
@@ -528,271 +417,224 @@
     </a>
   </div>
 
+  <nav class="anchor-nav">
+    <a href="#websim">WebSim Lab</a>
+    <a href="#github">GitHub Repos</a>
+    <a href="#traffic">Chat &amp; Traffic</a>
+    <a href="#search">Search Reach (GSC)</a>
+    <span class="nav-meta">synced 2026-09-28</span>
+  </nav>
+
   <header class="telemetry-header">
     <div class="pulse-badge">
       <span class="pulse-dot"></span>
-      <span id="sync-status">Live Telemetry &bull; all-db engine</span>
+      <span>Live Telemetry &bull; Synced 2026-09-28</span>
     </div>
     <h1>WaifuAI Open Data &amp; Telemetry</h1>
-    <p>Real-time transparency across 52 open-source repositories, 600+ generative web simulations, and multi-channel traffic.</p>
+    <p>Real-time transparency across 52 open-source repositories, 618 generative web simulations, and multi-channel traffic.</p>
     <div class="links" style="margin-top: 1.25rem;">
       <a href="../index.html" title="Documentation Hub">Docs Hub</a>
       <a href="https://waifuai.com/" target="_blank" rel="noopener" class="link-app">✨ Companion App</a>
       <a href="https://github.com/waifuai" target="_blank" rel="noopener">GitHub Org</a>
-      <a href="stats.json" target="_blank" title="Raw JSON Data Feed" style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; border-color: var(--accent);">[stats.json]</a>
     </div>
   </header>
 
-  <!-- Macro KPI Hero Grid -->
   <div class="kpi-grid">
-    <div class="kpi-card">
-      <div class="kpi-label">
-        <span>Total Projects</span>
-        <span>📦</span>
-      </div>
-      <div class="kpi-value" id="kpi-total-projects">670</div>
-      <div class="kpi-sub">52 GitHub &bull; 618 WebSim</div>
-    </div>
-
-    <div class="kpi-card traffic">
-      <div class="kpi-label">
-        <span>Content Views</span>
-        <span>👁️</span>
-      </div>
-      <div class="kpi-value" id="kpi-total-views">57.2K</div>
-      <div class="kpi-sub">26.8K Web &bull; 30.4K WebSim</div>
-    </div>
-
-    <div class="kpi-card attention">
-      <div class="kpi-label">
-        <span>Attention Dwell Time</span>
-        <span>⏱️</span>
-      </div>
-      <div class="kpi-value" id="kpi-total-attention">740h+</div>
-      <div class="kpi-sub">44,428 Mins Cumulative</div>
-    </div>
-
-    <div class="kpi-card websim">
-      <div class="kpi-label">
-        <span>Active Web Visitors</span>
-        <span>🌐</span>
-      </div>
-      <div class="kpi-value" id="kpi-total-users">16.6K</div>
-      <div class="kpi-sub">GA4 Unique User Sessions</div>
-    </div>
-
-    <div class="kpi-card countries">
-      <div class="kpi-label">
-        <span>Global Footprint</span>
-        <span>🗺️</span>
-      </div>
-      <div class="kpi-value" id="kpi-total-countries">171</div>
-      <div class="kpi-sub">Countries Worldwide</div>
-    </div>
-
-    <div class="kpi-card clones">
-      <div class="kpi-label">
-        <span>Devs Cloned Repos</span>
-        <span>💻</span>
-      </div>
-      <div class="kpi-value" id="kpi-total-clones">566</div>
-      <div class="kpi-sub">687 Total Git Clones</div>
-    </div>
-
-    <div class="kpi-card chats">
-      <div class="kpi-label">
-        <span>Chat Messages</span>
-        <span>💬</span>
-      </div>
-      <div class="kpi-value" id="kpi-total-chats">2.7K</div>
-      <div class="kpi-sub" id="kpi-chats-sub">2,698 Chat Messages</div>
-    </div>
-
-    <div class="kpi-card models">
-      <div class="kpi-label">
-        <span>Model Switches</span>
-        <span>🔄</span>
-      </div>
-      <div class="kpi-value" id="kpi-total-switches">3.0K</div>
-      <div class="kpi-sub" id="kpi-switches-sub">1,024 Active Experimenters</div>
-    </div>
-
-    <div class="kpi-card stars">
-      <div class="kpi-label">
-        <span>Stars &amp; Likes</span>
-        <span>⭐</span>
-      </div>
-      <div class="kpi-value" id="kpi-total-stars">1,313</div>
-      <div class="kpi-sub">163 Stars &bull; 1,150 Likes</div>
-    </div>
-
-    <div class="kpi-card search">
-      <div class="kpi-label">
-        <span>Search Impressions</span>
-        <span>🔍</span>
-      </div>
-      <div class="kpi-value" id="kpi-search-impressions">69.2K</div>
-      <div class="kpi-sub">Google Search Console</div>
-    </div>
+<div class="kpi-card"><div class="kpi-label"><span>Total Projects</span><span>📦</span></div><div class="kpi-value">670</div><div class="kpi-sub">52 GitHub • 618 WebSim</div></div>
+<div class="kpi-card traffic"><div class="kpi-label"><span>Content Views</span><span>👁️</span></div><div class="kpi-value">66.2K</div><div class="kpi-sub">35.9K Web • 30.4K WebSim</div></div>
+<div class="kpi-card attention"><div class="kpi-label"><span>Attention Dwell Time</span><span>⏱️</span></div><div class="kpi-value">991h+</div><div class="kpi-sub">59,454 Mins Cumulative</div></div>
+<div class="kpi-card websim"><div class="kpi-label"><span>Active Web Visitors</span><span>🌐</span></div><div class="kpi-value">21.2K</div><div class="kpi-sub">GA4 Unique User Sessions</div></div>
+<div class="kpi-card countries"><div class="kpi-label"><span>Global Footprint</span><span>🗺️</span></div><div class="kpi-value">50</div><div class="kpi-sub">Countries Worldwide</div></div>
+<div class="kpi-card clones"><div class="kpi-label"><span>Devs Cloned Repos</span><span>💻</span></div><div class="kpi-value">1,548</div><div class="kpi-sub">2,082 Total Git Clones</div></div>
+<div class="kpi-card chats"><div class="kpi-label"><span>Chat Messages</span><span>💬</span></div><div class="kpi-value">9.3K</div><div class="kpi-sub">9,271 Chat Messages</div></div>
+<div class="kpi-card models"><div class="kpi-label"><span>Model Switches</span><span>🔄</span></div><div class="kpi-value">19.3K</div><div class="kpi-sub">7,379 Switching Users</div></div>
+<div class="kpi-card stars"><div class="kpi-label"><span>Stars &amp; Likes</span><span>⭐</span></div><div class="kpi-value">1,318</div><div class="kpi-sub">168 Stars • 1,150 Likes</div></div>
+<div class="kpi-card search"><div class="kpi-label"><span>Search Impressions</span><span>🔍</span></div><div class="kpi-value">83.8K</div><div class="kpi-sub">Google Search Console</div></div>
   </div>
 
-  <!-- Tab Switcher -->
-  <div class="telemetry-tabs">
-    <button class="telemetry-tab-btn active" data-tab="tab-overview">
-      <span>Overview &amp; Trends</span>
-    </button>
-    <button class="telemetry-tab-btn" data-tab="tab-websim">
-      <span>WebSim Lab</span>
-      <span class="badge-pill" id="tab-pill-websim">618</span>
-    </button>
-    <button class="telemetry-tab-btn" data-tab="tab-github">
-      <span>GitHub Repos</span>
-      <span class="badge-pill" id="tab-pill-github">52</span>
-    </button>
-    <button class="telemetry-tab-btn" data-tab="tab-traffic">
-      <span>Chat &amp; Traffic</span>
-      <span class="badge-pill" id="tab-pill-chats" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">2.7K</span>
-    </button>
-    <button class="telemetry-tab-btn" data-tab="tab-search">
-      <span>Search Reach (GSC)</span>
-    </button>
-  </div>
-
-  <!-- TAB 1: OVERVIEW -->
-  <div class="tab-panel active" id="tab-overview">
-
-    <!-- 2 Column Side-by-Side Highlights -->
-    <div class="grid-2col">
-      <!-- Top Repos Highlight -->
-      <div class="data-table-container">
-        <div class="table-header-box">
-          <div style="font-weight: 700; font-family: 'Outfit', sans-serif;">Top GitHub Repositories</div>
-          <a href="#" class="view-all-link" data-target="tab-github" style="color: var(--accent3); font-size: 0.85rem; text-decoration: none;">View All 52 &rarr;</a>
-        </div>
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Repository</th>
-              <th>Category</th>
-              <th style="text-align: right;">Stars</th>
-            </tr>
-          </thead>
-          <tbody id="overview-repos-body">
-            <!-- Populated via JS -->
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Top WebSim Apps Highlight -->
-      <div class="data-table-container">
-        <div class="table-header-box">
-          <div style="font-weight: 700; font-family: 'Outfit', sans-serif;">Top WebSim Generative Apps</div>
-          <a href="#" class="view-all-link" data-target="tab-websim" style="color: var(--accent); font-size: 0.85rem; text-decoration: none;">View All 611 &rarr;</a>
-        </div>
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Project Title</th>
-              <th style="text-align: right;">Likes</th>
-              <th style="text-align: right;">Views</th>
-              <th style="text-align: right;">Action</th>
-            </tr>
-          </thead>
-          <tbody id="overview-websim-body">
-            <!-- Populated via JS -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- TAB 2: WEBSIM LAB -->
-  <div class="tab-panel" id="tab-websim">
-    <div class="chart-card" style="margin-bottom: 1.5rem;">
+  <section id="websim">
+    <h2 class="section-title">WebSim Lab</h2>
+    <p class="section-desc">618 generative simulations &bull; Curated selection of top interactive experiences, 3D VRM visualizers, games, and chatbot experiments, sorted by community likes.</p>
+    <div class="chart-card" style="margin-bottom: 1.5rem; padding: 1.1rem 1.5rem;">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-        <div>
-          <div class="chart-title" style="margin-bottom: 0.25rem;">WebSim Generative Project Showcase</div>
-          <div style="font-size: 0.88rem; color: var(--text-muted);">
-            Curated selection of top interactive generative simulations, 3D VRM visualizers, games, and chatbot experiments &bull; Sorted by community likes.
-          </div>
-        </div>
-        <input type="text" id="websim-search" class="search-input" placeholder="Filter simulations...">
+        <div class="chart-title" style="margin: 0;">WebSim Generative Project Showcase</div>
+        <input type="text" class="search-input" data-filter="#websim-cards-container" placeholder="Filter simulations...">
       </div>
     </div>
-
     <div class="websim-grid" id="websim-cards-container">
-      <!-- Populated via JS -->
-    </div>
-  </div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0198f33b-9343-73d0-b13b-f162a5484bc2" alt="Infinite Backrooms" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Infinite Backrooms</h3><div class="websim-desc">A browser-based horror simulator that uses an llm for dynamic narrative generation. 🕹️ It features robust text-to-speech with voice selection and multi-language support including translation and transliteration. 🔊 Users can configure story tone, entity density, and procedural visual generation. ⚙️ Explorable zones are managed with a map system. 🗺️</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 58</span><span>👁️ 2,213</span></div><a href="https://websim.ai/p/egdopl9nz84hzobulyfw" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/01984348-4a74-7003-898c-9a296a5925cc" alt="Waifu Companion" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Waifu Companion</h3><div class="websim-desc">Your interactive animated waifu companion awaits! 💖 Chat with your waifu 💬, tweak settings ✨, and adjust your waifu&#x27;s position 🖱️. Also supports OpenRouter API for custom LLMs.</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 41</span><span>👁️ 1,158</span></div><a href="https://websim.ai/p/zix54kss8b0c3bs0jgmx" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/019a756f-88be-7dca-869b-55045aa4385d" alt="Waifu Collector" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Waifu Collector</h3><div class="websim-desc">Engage in exciting turn-based battles ⚔️ in the Waifu Collector Battle Arena! Watch your character fight 💪. Manage your collection 💖 and track coins 🪙. Check the battle log for damage details. Easily navigate 🗺️ to Adventure, Gallery 🖼️, Training, and Chat 💬. You can choose to Flee 🏃 the battle. Collect more characters! ✨</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 40</span><span>👁️ 1,410</span></div><a href="https://websim.ai/p/w1_qzykg8aiy33ltg9e6" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0198b712-108d-7df8-ba49-abad3325b9f6" alt="cat maze" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">cat maze</h3><div class="websim-desc">collect all 🐟, use 🤿 to cross 💧 and use 🥾 to cross 🔥, 🔑 unlocks 🚪, reach the exit 🏁, and slide on 🧊 --- known bugs: exit doesn&#x27;t appear on some devices, when you use toggle editor you need to add a player character for the export json to work because it doesn&#x27;t add the player character by itself. map modes :full map (default) and player map (click player icon to center on player and zoom in/out of map and move map around).</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 34</span><span>👁️ 760</span></div><a href="https://websim.ai/p/ihv_wdb3ml28ym674a93" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/019cb3c2-9af4-7cf1-a9d8-c5452647cdd7" alt="Websim Profile Card Generator" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Websim Profile Card Generator</h3><div class="websim-desc">View your unique Websim profile card! ✨ AI crafts a custom banner 🖼️, status, abilities, and stats based on your activity. Discover your influence score and card rarity. 🔢 Press the button 🖱️ to regenerate a fresh card anytime! 🌟</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 18</span><span>👁️ 468</span></div><a href="https://websim.ai/p/esd3mxmqmbt8tpz5d4bi" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/019cb3e0-e596-7116-9144-ecad854f6b87" alt="Advanced Equation Editor" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Advanced Equation Editor</h3><div class="websim-desc">Interactive equation editor ➕➖➗. Type or use LaTeX, copy in LaTeX, MathML, or AsciiMath formats. Zoom 🔍, pan, and use a minimap for navigation. Hover for formula explanations 💡. Font size controls. Copy to clipboard with toast confirmation ✅.</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 18</span><span>👁️ 418</span></div><a href="https://websim.ai/p/bt3gt7nwr7r7ct80_93d" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/019cb3bd-74fb-76da-840a-3543dc297bb5" alt="Video Gallery" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Video Gallery</h3><div class="websim-desc">Browse videos in a neat gallery ✨. Tap thumbnails to watch them ▶️. Filter by landscape or portrait orientation 📐. Hit autoplay for continuous viewing ⏭️. Turn on optional TTS for title announcements 🔊. Listen to a background radio stream 🎵 and adjust its volume 🎚️.</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 17</span><span>👁️ 806</span></div><a href="https://websim.ai/p/21tsi_0jc61xx478svgz" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0198becc-9d9c-75c9-9c6d-a80b7078ee54" alt="Anime Waifu Chatbot" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Anime Waifu Chatbot</h3><div class="websim-desc">Chat with a customizable anime waifu! 💬✨ Describe your ideal waifu to generate an image, then chat. Send messages, copy the conversation, and regenerate the image. Includes loading indicators. 🔄🖼️</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 16</span><span>👁️ 1,494</span></div><a href="https://websim.ai/p/l_nxytirzupugycr5sk0" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/019cb3bf-1eea-7a57-aa86-cd6db61cfc49" alt="Infinite AI Tech Tree" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Infinite AI Tech Tree</h3><div class="websim-desc">Creates a dynamic and interactive tech tree visualization. 🌳 Users can explore nodes, view details, and see prerequisites for inventions. ✨ It allows for the addition of custom inventions to the tree. 💡 An image library displays generated images for each invention. 🖼️ Settings can be adjusted for a personalized experience. ⚙️</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 16</span><span>👁️ 465</span></div><a href="https://websim.ai/p/497vutj48h9hq3dvfhq3" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/019cb3c4-ac0c-77dc-b8e8-7579e1fff24c" alt="visual novel" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">visual novel</h3><div class="websim-desc">Experience a delightful Ghibli-esque visual novel ✨. Interact by clicking dialogue choices ✅ or typing your own input ⌨️. Watch the character 🌸 and lovely background scenes 🖼️ dynamically update based on your interactions. A heartwarming, AI-driven story awaits your touch 💖. Enjoy the gentle journey 🍃.</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 12</span><span>👁️ 329</span></div><a href="https://websim.ai/p/y12bs4ti0icj66v42icx" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/019cb3dc-e3c4-7229-a8cd-4d3ee990959c" alt="Waifu Chat Simulator" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Waifu Chat Simulator</h3><div class="websim-desc">It&#x27;s a fun, interactive chat simulator! 💬 Choose a waifu personality (Tsundere, Yandere, etc.) and chat with her. 🌸 Features a dark mode toggle 🌙, clear chat 🗑️, and cute, animated background. ✨</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 7</span><span>👁️ 312</span></div><a href="https://websim.ai/p/va23vine2hb9r5zv8j8t" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/01967e1a-787c-7962-b38c-7d62641a55c8" alt="TokenomicsChat 2 - Secure Communication for Crypto Enthusiasts" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">TokenomicsChat 2 - Secure Communication for Crypto Enthusiasts</h3><div class="websim-desc">A crypto-themed chat app 💬. Users can send messages, see a list of active users, adjust font size/width, copy/clear chat history, select languages 🌍, and view a live token price ticker 📈📉. Basic chat simulation and local storage are present.</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 6</span><span>👁️ 112</span></div><a href="https://websim.ai/p/iq8d1dd_gii_89wbgtno" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0198ddf2-d58e-7607-953c-874b848e27a8" alt="Waifu AI RPG" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Waifu AI RPG</h3><div class="websim-desc">infinite rpg. known bugs: when using fallback for the text the tts is mismatched to the text on screen. known bugs: when skip to latest is on only one tts should be playing at a time. if it wants to play a next tts (like when click a button while the old tts is playing) then it should stop the old tts. currently it doesn&#x27;t stop the previous tts and plays in parallel. future todo: add navigation to go to different locations on a map at any time, the map should have multiple new locations</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 6</span><span>👁️ 108</span></div><a href="https://websim.ai/p/20uqf4na_w0dh994aabq" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0194c089-ff60-7ad3-8ec5-73d7eda35e13" alt="MCP Architecture Diagram Generator" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">MCP Architecture Diagram Generator</h3><div class="websim-desc">Describe your software architecture ⌨️, click &quot;Generate Diagram&quot; 🖱️, and instantly see a visual representation! 📊 The page simulates an AI that creates interactive diagrams from your text input. Nodes and connecting lines appear. 🎉 View clear visuals of your system! 👓</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 6</span><span>👁️ 31</span></div><a href="https://websim.ai/p/yvxlw2rgviq9o17b4eto" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0198b473-4607-7b4b-9388-bffa0bbd4037" alt="AI Waifu Chat Simulator" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">AI Waifu Chat Simulator</h3><div class="websim-desc">Chat with an AI waifu! 💬 Type your message and see her respond. Her image, dere type, emotion, and actions update. View the conversation history. 🥰✨ (Tsundere, etc). Info panel displays current prompt.</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 5</span><span>👁️ 326</span></div><a href="https://websim.ai/p/s_rc5ipg9udfp1suw7fj" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/019cb4fe-54f7-77e9-848a-04fc1b6a5026" alt="Custom Waifu Robots - Build Your Perfect Companion" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Custom Waifu Robots - Build Your Perfect Companion</h3><div class="websim-desc">Design your own waifu robot companion! 🤖 Choose personality, color, hair, and voice. 🔈 Preview your creation in real-time as you customize. 🎨 See the updated price and add your unique robot to your cart with a click! 🛒💖 Animation makes it interactive.✨ Get your perfect companion! 💯</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 5</span><span>👁️ 106</span></div><a href="https://websim.ai/p/ji3syfl62jrayaibn0fr" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/01a00556-3328-79a2-9935-98a245476505" alt="Profile" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Profile</h3><div class="websim-desc">This dynamic portfolio aggregates content from GitHub, YouTube, and an image gallery. ✨ It dynamically sorts and filters projects by views, likes, and recency. 💡 The interface includes a background video player, an integrated audio stream, and a fullscreen modal for images. 🚀 It also displays user statistics like total project views and likes. 🌟</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 4</span><span>👁️ 758</span></div><a href="https://websim.ai/p/5lipoik4gq5rfi4lpuc2" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0196be07-dce0-7d46-b165-acb64e7752e0" alt="CatgirlChat - Your Anime Companion" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">CatgirlChat - Your Anime Companion</h3><div class="websim-desc">Chat with an anime catgirl! 💬 Type your message, send, and receive a response. The interface features a pink theme, bouncing catgirl avatar, floating hearts on click, and a Nyan Cat animation. It&#x27;s a kawaii interactive chat experience! 😻💖✨</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 4</span><span>👁️ 340</span></div><a href="https://websim.ai/p/0dh32xkcwm3uzfpr35kq" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/019cb3dd-b505-724a-b331-e7fbaa2c7aff" alt="Waifu Beast Fusion - Infinite Crafting" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Waifu Beast Fusion - Infinite Crafting</h3><div class="websim-desc">A fusion system for creating hybrid characters by combining anime personality archetypes and animal aspects 🎨. Supports both dual and multi-element crafting to generate results 🧪. Each fused creation comes with a unique image, a descriptive profile, and a special quirk ✨. Fusions can be saved into a personal collection and viewed in a gallery 🖼️.</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 4</span><span>👁️ 256</span></div><a href="https://websim.ai/p/c73uczijnkuf_b3h9140" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0196b8f8-f19b-719c-8716-ab593564f7aa" alt="Digital Companion Waifu" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Digital Companion Waifu</h3><div class="websim-desc">Interact with a cute anime character! 🖼️ Choose from pre-set questions or type your own. 🤔 See the character&#x27;s image change based on their emotions, and their responses displayed with a typing effect. 💬 Copy the chat log. 📝🔄 Regenerate the image.</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 4</span><span>👁️ 241</span></div><a href="https://websim.ai/p/gt_lxa10q_z2lv3kos51" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/019cb4e8-5d91-7ac5-82f8-dbbe6d4aa99f" alt="Waifu Cursor" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Waifu Cursor</h3><div class="websim-desc">Interactive webpage where your cursor is replaced by a cute waifu 🥰. Moving the mouse creates a trailing star effect ⭐ and plays a soft sound. Clicking generates sparkling stars ✨ and a distinct click sound. The default cursor is hidden.</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 4</span><span>👁️ 116</span></div><a href="https://websim.ai/p/_k46x2ehd_qj6ajgugaq" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/01991012-05ae-71cd-aaef-567cb481f04f" alt="Crypto AI Arena - Live Simulation Feed with Charts" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Crypto AI Arena - Live Simulation Feed with Charts</h3><div class="websim-desc">Real-time Crypto AI simulation! 🤖 Watch AI agents compete on Ethereum, Cardano &amp; Polkadot. 📈 Live feed shows agent actions &amp; results. 💸 Interactive charts track profit, gas usage, TVL, and transaction speed. ⏱️ Updated every 5 seconds. Explore blockchain dynamics! 🔗</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 4</span><span>👁️ 61</span></div><a href="https://websim.ai/p/k_p6kv47srd8xh_e60aa" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0198b4b0-ff89-77b0-ad47-e23af432c7dd" alt="Simulating Quantum Gravity Effects in Microtubules" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Simulating Quantum Gravity Effects in Microtubules</h3><div class="websim-desc">This project explores consciousness via the Orch-OR theory with an interactive simulation. ✨ It features a 3D microtubule model with toggleable quantum gravity effects. 💡 A dynamic chart visualizes Planck scale fluctuations in real-time. 📈 The model simulates how these fundamental physical interactions could potentially give rise to consciousness. 🔬</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 4</span><span>👁️ 46</span></div><a href="https://websim.ai/p/tnw5fxlhaol60n3s54ta" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0198b4c8-b90b-777f-b421-fc9be204a382" alt="mcp gen graph + mermaid" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">mcp gen graph + mermaid</h3><div class="websim-desc">Interactive MCP architecture diagram generator! ✍️ Input a prompt, generate, and visualize diagrams. 🔍 Zoom, 💾 save (SVG, PNG, JPG), and copy code. Features D3.js &amp; Mermaid.js diagrams! Includes a chat to ask questions. 📜 View diagram history &amp; clear it. 🔄 Interact, explore, and understand MCP!
 
-  <!-- TAB 3: GITHUB REPOSITORIES -->
-  <div class="tab-panel" id="tab-github">
+todo: fix save png/jpg is hard to click, fix the format of generated mermaid, save icon when save as svg</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 4</span><span>👁️ 27</span></div><a href="https://websim.ai/p/7pvdtxxz6hus2ys3l3s0" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/019f6f47-eac4-7992-a016-aedd9ed8a32c" alt="Voices Showcase (text to speech/tts)" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Voices Showcase (text to speech/tts)</h3><div class="websim-desc">Generate audio from text inputs using selectable languages or custom voice identifiers for rapid testing ✨. The system outputs playable audio and provides ready-to-use code snippets for integrating speech synthesis into external applications 🚀. Detailed documentation and debug tools assist in verifying voice configurations 💡.</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 3</span><span>👁️ 131</span></div><a href="https://websim.ai/p/uel52vkhdq2bpcon5_nf" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0196e31b-5d24-752d-a8eb-3be147ef15f7" alt="Animation Generator" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Animation Generator</h3><div class="websim-desc">This tool generates custom title animations. ✨ Customize the main title&#x27;s text, font size, and color. 🎨 Control the background with adjustable color gradients and a dynamic list of animated words. 💡 You can change the quantity, color, and size of the background text. ✍️ Export your final creation as a standalone HTML file. 🚀</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 3</span><span>👁️ 125</span></div><a href="https://websim.ai/p/73cmho87rr_73p4i_lta" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0196bba3-8950-7b5e-8aaa-a1f0058c73bc" alt="Waifu Mobile" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Waifu Mobile</h3><div class="websim-desc">Chat with a cute anime waifu! 💬 Type your message and get a text response, along with an updated waifu image reflecting her mood. 😊 Text appears over image. The chat history and images are dynamic. Mobile-friendly. 📱</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 3</span><span>👁️ 124</span></div><a href="https://websim.ai/p/7gnepgq5d4uk6kylslpq" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0197292c-54f4-7a1b-86e5-068fe53e31f9" alt="Waifu Chess" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Waifu Chess</h3><div class="websim-desc">Engage in a strategic match against an AI opponent. ✨ Utilize the built-in hint system for move suggestions and track captured pieces. 💡 The game features sound controls and a visual character guide for the custom anime-themed pieces. 💖 A new game button allows for quick restarts. 👍</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 3</span><span>👁️ 116</span></div><a href="https://websim.ai/p/t86fwq2shk4ndq9r7w5a" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0199110c-1d79-7594-8cc1-e3622242af35" alt="Seam Carving App" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Seam Carving App</h3><div class="websim-desc">Upload 🖼️ an image and interactively reduce its width and/or height using sliders 🎚️. The app displays both the original and the seam-carved image side-by-side ↔️. View previous and next images. ⏪⏩</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 3</span><span>👁️ 108</span></div><a href="https://websim.ai/p/0ozdbeb_xebf0c_4f7k5" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0198b4b3-5c62-7320-ab97-528cb77c6318" alt="QuantumAI Physics - Live Data Dashboard" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">QuantumAI Physics - Live Data Dashboard</h3><div class="websim-desc">Interactive autonomous AI application built with WebSim.</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 3</span><span>👁️ 55</span></div><a href="https://websim.ai/p/r47dp0p1747q28wx2oxa" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0198b4af-b250-7c7c-9395-d3f2b14457d9" alt="Quantum Computing Progress: Bar Chart Race (Updated)" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Quantum Computing Progress: Bar Chart Race (Updated)</h3><div class="websim-desc">An animated bar chart race visualizing the qubit count growth of major quantum computing firms. ⚛️ It interactively displays data from 2000 to 2025 using a user-controlled slider. 💡 The visualization dynamically re-ranks companies over time on a logarithmic scale to show progress. ✨</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 3</span><span>👁️ 50</span></div><a href="https://websim.ai/p/clcuu2kzghq7i0adgo0k" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/019cb516-92bd-7f87-b8c7-8282a2b0d3e3" alt="WebSim AI Documentation" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">WebSim AI Documentation</h3><div class="websim-desc">Engage with language models for context-aware chat completions and receive structured JSON output. 💡 The API processes text and image inputs for multimodal analysis. 🖼️ Generate images from prompts with fine-grained controls like seed, aspect ratio, and transparency. ✨ Convert text to speech with various voices, including custom IDs. 🔊</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 3</span><span>👁️ 48</span></div><a href="https://websim.ai/p/onwe2q7io_gu42drbf82" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/01991023-0727-7e99-bfb6-fa982923f06f" alt="Websim Database 2.1 Documentation" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Websim Database 2.1 Documentation</h3><div class="websim-desc">Provides a powerful database solution for web-based simulations and applications. ✨ Integrate and manage data directly within your browser environment. 💡 Features comprehensive documentation for seamless implementation. 👍</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 3</span><span>👁️ 32</span></div><a href="https://websim.ai/p/lr8pir3wc3esig80c5o3" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0198b487-5d67-7617-9810-afa634f3c53b" alt="StringChat - Vibrating Communication Across 11 Dimensions" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">StringChat - Vibrating Communication Across 11 Dimensions</h3><div class="websim-desc">A multi-dimensional chat application allowing users to communicate across 11 selectable dimensions. ✨ Features a context-aware AI that processes chat logs and dimensional states for coherent responses. 💡 Includes a simulation mode for autonomous chat and an educational gallery with detailed diagrams on string theory concepts. 🚀</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 3</span><span>👁️ 30</span></div><a href="https://websim.ai/p/a0ziuipswpve557rxro0" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0195bb4b-2e52-78c7-a700-ce54f4eeb382" alt="AIAgentForge - Collaborative AI Agent Development Hub" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">AIAgentForge - Collaborative AI Agent Development Hub</h3><div class="websim-desc">A collaborative AI agent development platform. 🤖 Users can chat, share code snippets (with code block formatting ✨), and discuss AI. A live user list is displayed. 🧑‍💻 Multi-language support is available via a dropdown. 🌐 Simulated AI and user messages appear in the chat window. 💬 Input text and &quot;Deploy&quot; messages. 🚀 Encrypted and secure.🔒</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 3</span><span>👁️ 25</span></div><a href="https://websim.ai/p/v79kcq47natfa4cw9q0w" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/019902d3-b64a-711d-8660-c72fea320d70" alt="WebSim Metadata API Documentation" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">WebSim Metadata API Documentation</h3><div class="websim-desc">Access projects, sites, users, and detailed analytics. ✨ Manage social interactions like follows, likes, comments, and reactions. 👍 Offers advanced HTML transformation, asset management, and screenshot tools. 💡 Discover content via personalized feeds and a powerful search system. 🚀</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 3</span><span>👁️ 23</span></div><a href="https://websim.ai/p/k30oe5_pmbppmt183gyp" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/01990340-d37b-7a85-baf3-bc4eb6e1a523" alt="Designing AI-Agent Compatible Web Services
+s" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Designing AI-Agent Compatible Web Services
+s</h3><div class="websim-desc">A blog post 📑 about designing AI-friendly web services. It features a pulsing, clickable header icon ➕. Code blocks are highlighted 💡 and become interactive: click to copy 🖱️ the code snippets. Content includes API design, metadata, errors, rate limiting, and hypermedia. Easy to read and navigate.</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 3</span><span>👁️ 12</span></div><a href="https://websim.ai/p/6antxsf84ewbecge77l0" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/019cb4e8-d998-7e95-85cf-6375907007d5" alt="Waifu Whispers: Endless Hearts" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">Waifu Whispers: Endless Hearts</h3><div class="websim-desc">A procedurally generated romance adventure with dynamic story events. ✨ Interact with characters using both preset choices and free text input. 💬 Build affection to unlock memories and CGs for a gallery. ❤️ Manage your multiple relationships through a character roster. 💕 The game also supports voice-acted dialogue. 👍</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 2</span><span>👁️ 221</span></div><a href="https://websim.ai/p/8oturolsb778x9fkghg3" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0196fa90-d17b-7fac-8503-0c63e64ed129" alt="animated background" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">animated background</h3><div class="websim-desc">Engage in real-time conversations with a visual AI character. ✨ The interface features a dynamic, animated environment with particle effects. 💡 AI responses appear in a speech bubble with a typing indicator for better user feedback. 👍 The application also tracks session stats like message count and time active. 🚀</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 2</span><span>👁️ 185</span></div><a href="https://websim.ai/p/3_2mbvr5g5sb2k2jod7n" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+<div class="websim-card" data-card><img src="https://project-screenshots.websim.com/0199033b-5591-7104-b8b6-468a7bc7c69b" alt="WebSim Text-to-Speech Demo" class="websim-thumb" loading="lazy" onerror="this.style.display='none'"><div class="websim-body"><h3 class="websim-title">WebSim Text-to-Speech Demo</h3><div class="websim-desc">An interactive demo for text-to-speech synthesis with diverse voice options. ✨ Test male and female voices across multiple languages including English, Japanese, and Tagalog. 🗣️ Features controls to test all voices sequentially and provides a code example for easy integration. 💡 Includes visual diagrams of the TTS pipeline and UI concepts. 👍</div><div class="websim-footer"><div class="websim-stats"><span style="color: #ec4899; font-weight: 600;">♥ 2</span><span>👁️ 125</span></div><a href="https://websim.ai/p/f23mmyg_qwvcw932bx9c" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a></div></div></div>
+    </div>
+  </section>
+
+  <section id="github">
+    <h2 class="section-title">GitHub Repositories</h2>
+    <p class="section-desc">52 repositories covering FastMCP, Live2D companion engines, tokenomics simulations, and research.</p>
     <div class="data-table-container">
       <div class="table-header-box">
-        <div>
-          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">GitHub Repository Directory</div>
-          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">52 repositories covering FastMCP, Live2D companion engines, tokenomics simulations, and research.</div>
-        </div>
-        <input type="text" id="github-search" class="search-input" placeholder="Search repositories...">
+        <div class="chart-title" style="font-size: 1.15rem;">Repository Directory</div>
+        <input type="text" class="search-input" data-filter="#table-github" placeholder="Search repositories...">
       </div>
       <table class="data-table" id="table-github">
         <thead>
           <tr>
-            <th data-sort="name" data-type="string">Repository</th>
-            <th data-sort="category" data-type="string">Category</th>
-            <th data-sort="stars" data-type="number" style="text-align: right;">Stars</th>
-            <th data-sort="clones" data-type="number" style="text-align: right;">Clones</th>
-            <th data-sort="views" data-type="number" style="text-align: right;">Views</th>
-            <th data-sort="forks" data-type="number" style="text-align: right;">Forks</th>
-            <th data-sort="open_issues" data-type="number" style="text-align: right;">Open Issues</th>
+            <th data-sort="string">Repository <span class="sort-icon">⇅</span></th>
+            <th data-sort="string">Category <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Stars <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Clones <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Views <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Forks <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Open Issues <span class="sort-icon">⇅</span></th>
             <th style="text-align: right;">Link</th>
           </tr>
         </thead>
-        <tbody id="github-full-table-body">
-          <!-- Populated via JS -->
+        <tbody>
+<tr data-row><td><a href="https://github.com/waifuai/waifu-companion" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">waifu-companion</a></td><td><span class="badge-tag companion">Companion &amp; VRM</span></td><td class="td-num c-amber">★ 37</td><td class="td-num c-purple">251</td><td class="td-num c-blue">571</td><td class="td-num">3</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/waifu-companion" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/hermes-waifu" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">hermes-waifu</a></td><td><span class="badge-tag companion">Companion &amp; VRM</span></td><td class="td-num c-amber">★ 23</td><td class="td-num c-purple">35</td><td class="td-num c-blue">194</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/hermes-waifu" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/waifu-sprites" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">waifu-sprites</a></td><td><span class="badge-tag companion">Companion &amp; VRM</span></td><td class="td-num c-amber">★ 21</td><td class="td-num c-purple">56</td><td class="td-num c-blue">67</td><td class="td-num">1</td><td class="td-num c-muted">1</td><td class="td-num"><a href="https://github.com/waifuai/waifu-sprites" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/llms-full-txt" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">llms-full-txt</a></td><td><span class="badge-tag intel">Documentation &amp; LLM Feeds</span></td><td class="td-num c-amber">★ 8</td><td class="td-num c-purple">28</td><td class="td-num c-blue">65</td><td class="td-num">4</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/llms-full-txt" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/waifu-llm-vrm" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">waifu-llm-vrm</a></td><td><span class="badge-tag companion">Companion &amp; VRM</span></td><td class="td-num c-amber">★ 6</td><td class="td-num c-purple">18</td><td class="td-num c-blue">30</td><td class="td-num">2</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/waifu-llm-vrm" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/mcp-waifu-chat" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">mcp-waifu-chat</a></td><td><span class="badge-tag mcp">MCP Server</span></td><td class="td-num c-amber">★ 4</td><td class="td-num c-purple">80</td><td class="td-num c-blue">25</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/mcp-waifu-chat" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/web-apps" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">web-apps</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 4</td><td class="td-num c-purple">15</td><td class="td-num c-blue">3</td><td class="td-num">1</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/web-apps" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/mcp-solana-ico" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">mcp-solana-ico</a></td><td><span class="badge-tag mcp">MCP Server</span></td><td class="td-num c-amber">★ 3</td><td class="td-num c-purple">95</td><td class="td-num c-blue">0</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/mcp-solana-ico" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/macro-language-model" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">macro-language-model</a></td><td><span class="badge-tag intel">AI Intelligence &amp; Pricing</span></td><td class="td-num c-amber">★ 3</td><td class="td-num c-purple">46</td><td class="td-num c-blue">7</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/macro-language-model" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/solana-launchpad-ecosystem" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">solana-launchpad-ecosystem</a></td><td><span class="badge-tag web3">Web3 Simulation</span></td><td class="td-num c-amber">★ 3</td><td class="td-num c-purple">41</td><td class="td-num c-blue">6</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/solana-launchpad-ecosystem" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/sim-mcp-token" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">sim-mcp-token</a></td><td><span class="badge-tag web3">Web3 Simulation</span></td><td class="td-num c-amber">★ 3</td><td class="td-num c-purple">24</td><td class="td-num c-blue">1</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/sim-mcp-token" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/book-generator" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">book-generator</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 3</td><td class="td-num c-purple">15</td><td class="td-num c-blue">3</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/book-generator" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/waifuai" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">waifuai</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 3</td><td class="td-num c-purple">13</td><td class="td-num c-blue">2</td><td class="td-num">1</td><td class="td-num c-muted">1</td><td class="td-num"><a href="https://github.com/waifuai/waifuai" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/mcp-waifu-queue" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">mcp-waifu-queue</a></td><td><span class="badge-tag mcp">MCP Server</span></td><td class="td-num c-amber">★ 2</td><td class="td-num c-purple">93</td><td class="td-num c-blue">8</td><td class="td-num">1</td><td class="td-num c-muted">2</td><td class="td-num"><a href="https://github.com/waifuai/mcp-waifu-queue" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/mcp-solana-dex" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">mcp-solana-dex</a></td><td><span class="badge-tag mcp">MCP Server</span></td><td class="td-num c-amber">★ 2</td><td class="td-num c-purple">62</td><td class="td-num c-blue">3</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/mcp-solana-dex" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/quantum-circuit-optimization" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">quantum-circuit-optimization</a></td><td><span class="badge-tag intel">Bio &amp; Applied Science</span></td><td class="td-num c-amber">★ 2</td><td class="td-num c-purple">58</td><td class="td-num c-blue">1</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/quantum-circuit-optimization" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/mcp-traits-matcher" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">mcp-traits-matcher</a></td><td><span class="badge-tag mcp">MCP Server</span></td><td class="td-num c-amber">★ 2</td><td class="td-num c-purple">51</td><td class="td-num c-blue">3</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/mcp-traits-matcher" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/reasoning-pricer" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">reasoning-pricer</a></td><td><span class="badge-tag intel">AI Intelligence &amp; Pricing</span></td><td class="td-num c-amber">★ 2</td><td class="td-num c-purple">46</td><td class="td-num c-blue">6</td><td class="td-num">1</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/reasoning-pricer" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/research-text" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">research-text</a></td><td><span class="badge-tag intel">AI Intelligence &amp; Pricing</span></td><td class="td-num c-amber">★ 2</td><td class="td-num c-purple">25</td><td class="td-num c-blue">1</td><td class="td-num">1</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/research-text" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/research-books" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">research-books</a></td><td><span class="badge-tag intel">AI Intelligence &amp; Pricing</span></td><td class="td-num c-amber">★ 2</td><td class="td-num c-purple">25</td><td class="td-num c-blue">6</td><td class="td-num">1</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/research-books" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/waifu-chat-api" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">waifu-chat-api</a></td><td><span class="badge-tag companion">Companion &amp; VRM</span></td><td class="td-num c-amber">★ 2</td><td class="td-num c-purple">23</td><td class="td-num c-blue">3</td><td class="td-num">1</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/waifu-chat-api" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/waifu-constitution" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">waifu-constitution</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 2</td><td class="td-num c-purple">14</td><td class="td-num c-blue">3</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/waifu-constitution" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/traits" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">traits</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 2</td><td class="td-num c-purple">13</td><td class="td-num c-blue">1</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/traits" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/mcp-solana-internet" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">mcp-solana-internet</a></td><td><span class="badge-tag mcp">MCP Server</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">96</td><td class="td-num c-blue">3</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/mcp-solana-internet" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/mcp-solana-affiliate" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">mcp-solana-affiliate</a></td><td><span class="badge-tag mcp">MCP Server</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">59</td><td class="td-num c-blue">3</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/mcp-solana-affiliate" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/solana-ico" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">solana-ico</a></td><td><span class="badge-tag web3">Web3 Simulation</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">48</td><td class="td-num c-blue">0</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/solana-ico" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/paraphrase-back-translate" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">paraphrase-back-translate</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">35</td><td class="td-num c-blue">0</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/paraphrase-back-translate" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/launchpad-skill" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">launchpad-skill</a></td><td><span class="badge-tag web3">Web3 Simulation</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">31</td><td class="td-num c-blue">3</td><td class="td-num">1</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/launchpad-skill" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/paraphrase-gan-utils" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">paraphrase-gan-utils</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">31</td><td class="td-num c-blue">0</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/paraphrase-gan-utils" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/llm-text-queue" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">llm-text-queue</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">31</td><td class="td-num c-blue">1</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/llm-text-queue" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/paraphrase-human-sentence-classifier" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">paraphrase-human-sentence-classifier</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">30</td><td class="td-num c-blue">0</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/paraphrase-human-sentence-classifier" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/waifu-layer" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">waifu-layer</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">27</td><td class="td-num c-blue">4</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/waifu-layer" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/llms-full-html" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">llms-full-html</a></td><td><span class="badge-tag intel">Documentation &amp; LLM Feeds</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">25</td><td class="td-num c-blue">1</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/llms-full-html" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/paraphrase-gan" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">paraphrase-gan</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">24</td><td class="td-num c-blue">2</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/paraphrase-gan" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/sim-bonding-curve" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">sim-bonding-curve</a></td><td><span class="badge-tag web3">Web3 Simulation</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">18</td><td class="td-num c-blue">2</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/sim-bonding-curve" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/paraphrase-neural-machine-translation" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">paraphrase-neural-machine-translation</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">17</td><td class="td-num c-blue">1</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/paraphrase-neural-machine-translation" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/anime-subtitle-chatbot" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">anime-subtitle-chatbot</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">17</td><td class="td-num c-blue">1</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/anime-subtitle-chatbot" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/biochem-framework" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">biochem-framework</a></td><td><span class="badge-tag intel">Bio &amp; Applied Science</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">15</td><td class="td-num c-blue">12</td><td class="td-num">1</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/biochem-framework" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/function-graph-generator" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">function-graph-generator</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">15</td><td class="td-num c-blue">2</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/function-graph-generator" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/sim-airdrop" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">sim-airdrop</a></td><td><span class="badge-tag web3">Web3 Simulation</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">15</td><td class="td-num c-blue">0</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/sim-airdrop" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/ai-benchmarks" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">ai-benchmarks</a></td><td><span class="badge-tag intel">AI Intelligence &amp; Pricing</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">15</td><td class="td-num c-blue">3</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/ai-benchmarks" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/crypto-simulation" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">crypto-simulation</a></td><td><span class="badge-tag web3">Web3 Simulation</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">14</td><td class="td-num c-blue">4</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/crypto-simulation" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/street-lines" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">street-lines</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">13</td><td class="td-num c-blue">0</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/street-lines" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/sim-affiliate" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">sim-affiliate</a></td><td><span class="badge-tag web3">Web3 Simulation</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">12</td><td class="td-num c-blue">3</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/sim-affiliate" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/blog-posts" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">blog-posts</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">12</td><td class="td-num c-blue">29</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/blog-posts" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/ransoc" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">ransoc</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">12</td><td class="td-num c-blue">0</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/ransoc" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/projects-assets" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">projects-assets</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">11</td><td class="td-num c-blue">0</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/projects-assets" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/.github" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">.github</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">10</td><td class="td-num c-blue">1</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/.github" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/projects-data" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">projects-data</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">9</td><td class="td-num c-blue">1</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/projects-data" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/waifu" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">waifu</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 1</td><td class="td-num c-purple">7</td><td class="td-num c-blue">1</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/waifu" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/waifuai.github.io" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">waifuai.github.io</a></td><td><span class="badge-tag intel">Core Web Portal</span></td><td class="td-num c-amber">★ 0</td><td class="td-num c-purple">296</td><td class="td-num c-blue">34</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/waifuai.github.io" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
+<tr data-row><td><a href="https://github.com/waifuai/paraphrase-generation" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">paraphrase-generation</a></td><td><span class="badge-tag intel">Open Source Project</span></td><td class="td-num c-amber">★ 0</td><td class="td-num c-purple">10</td><td class="td-num c-blue">0</td><td class="td-num">0</td><td class="td-num c-muted">0</td><td class="td-num"><a href="https://github.com/waifuai/paraphrase-generation" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a></td></tr>
         </tbody>
       </table>
     </div>
 
-    <!-- Referrers Box -->
     <div class="data-table-container">
       <div class="table-header-box">
-        <div style="font-weight: 700; font-family: 'Outfit', sans-serif;">Top Inbound GitHub Referrers</div>
+        <div class="chart-title">Top Inbound GitHub Referrers</div>
         <div style="font-size: 0.85rem; color: var(--text-muted);">External sources sending developers to our repositories</div>
       </div>
-      <table class="data-table" id="table-referrers">
+      <table class="data-table">
         <thead>
           <tr>
-            <th data-sort="referrer" data-type="string">Referrer Domain</th>
-            <th data-sort="count" data-type="number" style="text-align: right;">Total Views</th>
-            <th data-sort="uniques" data-type="number" style="text-align: right;">Unique Visitors</th>
+            <th data-sort="string">Referrer Domain <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Total Views <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Unique Visitors <span class="sort-icon">⇅</span></th>
           </tr>
         </thead>
-        <tbody id="github-referrers-body">
-          <!-- Populated via JS -->
+        <tbody>
+<tr data-row><td class="b">github.com</td><td class="td-num">100</td><td class="td-num">81</td></tr>
+<tr data-row><td class="b">Google</td><td class="td-num">96</td><td class="td-num">68</td></tr>
+<tr data-row><td class="b">waifuai.com</td><td class="td-num">60</td><td class="td-num">36</td></tr>
+<tr data-row><td class="b">Bing</td><td class="td-num">19</td><td class="td-num">13</td></tr>
+<tr data-row><td class="b">reddit.com</td><td class="td-num">12</td><td class="td-num">9</td></tr>
+<tr data-row><td class="b">yandex.ru</td><td class="td-num">10</td><td class="td-num">7</td></tr>
+<tr data-row><td class="b">search.brave.com</td><td class="td-num">7</td><td class="td-num">6</td></tr>
+<tr data-row><td class="b">doubao.com</td><td class="td-num">7</td><td class="td-num">3</td></tr>
+<tr data-row><td class="b">chatgpt.com</td><td class="td-num">6</td><td class="td-num">3</td></tr>
+<tr data-row><td class="b">DuckDuckGo</td><td class="td-num">5</td><td class="td-num">5</td></tr>
         </tbody>
       </table>
     </div>
-  </div>
+  </section>
 
-  <!-- TAB 4: WEB TRAFFIC & AI EVENTS (GA4) -->
-  <div class="tab-panel" id="tab-traffic">
-    <!-- AI Companion Chat Messages & Performance Overview Cards -->
+  <section id="traffic">
+    <h2 class="section-title">Chat &amp; Traffic <span class="mono" style="font-size: 0.9rem; color: var(--text-muted);">(GA4)</span></h2>
+    <p class="section-desc">Companion conversation volume, interactive event telemetry, and where visitors come from.</p>
+
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
       <div class="kpi-card chats">
         <div class="kpi-label">
           <span>Chat Messages</span>
           <span>💬</span>
         </div>
-        <div class="kpi-value" id="chats-stat-total">2,698</div>
+        <div class="kpi-value">9,271</div>
         <div class="kpi-sub">Multi-Turn Conversations</div>
       </div>
-      <div class="kpi-card users">
+      <div class="kpi-card">
         <div class="kpi-label">
           <span>Unique Chat Visitors</span>
           <span>👥</span>
         </div>
-        <div class="kpi-value" id="chats-stat-users">422</div>
+        <div class="kpi-value">1,561</div>
         <div class="kpi-sub">Anonymous Companion Users</div>
       </div>
       <div class="kpi-card">
@@ -800,693 +642,436 @@
           <span>Response Speed</span>
           <span>⚡</span>
         </div>
-        <div class="kpi-value" id="chats-stat-speed" style="color: #34d399;">2.55s</div>
+        <div class="kpi-value" style="color: #34d399;">1.98s</div>
         <div class="kpi-sub">Median Response Latency</div>
       </div>
     </div>
 
-    <!-- AI Companion Interactive Events Table -->
     <div class="data-table-container" style="margin-bottom: 2rem;">
       <div class="table-header-box">
         <div>
-          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">AI Companion Interactive Event Telemetry</div>
+          <div class="chart-title" style="font-size: 1.15rem;">AI Companion Interactive Event Telemetry</div>
           <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Granular user engagement: multi-turn AI chat messages, model rotations, and voice interactions.</div>
         </div>
-        <input type="text" id="events-search" class="search-input" placeholder="Filter events...">
+        <input type="text" class="search-input" data-filter="#table-events" placeholder="Filter events...">
       </div>
       <table class="data-table" id="table-events">
         <thead>
           <tr>
-            <th data-sort="event" data-type="string">Event Name</th>
-            <th data-sort="category" data-type="string">Category</th>
-            <th data-sort="count" data-type="number" style="text-align: right;">Total Events</th>
-            <th data-sort="users" data-type="number" style="text-align: right;">Unique Active Users</th>
+            <th data-sort="string">Event Name <span class="sort-icon">⇅</span></th>
+            <th data-sort="string">Category <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Total Events <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Unique Active Users <span class="sort-icon">⇅</span></th>
           </tr>
         </thead>
-        <tbody id="ga4-events-body">
-          <!-- Populated via JS -->
+        <tbody>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">page_view</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">35,863</td><td class="td-num">21,078</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">session_start</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">22,827</td><td class="td-num">21,033</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">chat_message_sent</code></td><td><span class="badge-tag companion">AI Chat</span></td><td class="td-num c-green b">21,510</td><td class="td-num">4,784</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">first_visit</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">20,096</td><td class="td-num">20,004</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">settings_submenu_opened</code></td><td><span class="badge-tag intel">Customization</span></td><td class="td-num c-green b">19,674</td><td class="td-num">4,578</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">model_changed</code></td><td><span class="badge-tag mcp">Model Routing</span></td><td class="td-num c-green b">19,258</td><td class="td-num">7,379</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">scroll</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">18,533</td><td class="td-num">11,470</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">user_engagement</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">18,512</td><td class="td-num">12,410</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">llm_stream_completed</code></td><td><span class="badge-tag companion">AI Chat</span></td><td class="td-num c-green b">12,456</td><td class="td-num">2,223</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">tts_action</code></td><td><span class="badge-tag web3">Voice &amp; Audio</span></td><td class="td-num c-green b">10,079</td><td class="td-num">1,541</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">llm_request_started</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">8,428</td><td class="td-num">1,315</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">click</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">7,950</td><td class="td-num">4,906</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">llm_stream_started</code></td><td><span class="badge-tag companion">AI Chat</span></td><td class="td-num c-green b">7,886</td><td class="td-num">1,257</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">cta_click</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">5,639</td><td class="td-num">3,522</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">visual_settings_updated</code></td><td><span class="badge-tag intel">Customization</span></td><td class="td-num c-green b">4,966</td><td class="td-num">838</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">settings_opened</code></td><td><span class="badge-tag intel">Customization</span></td><td class="td-num c-green b">4,473</td><td class="td-num">1,803</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">message_deleted</code></td><td><span class="badge-tag companion">AI Chat</span></td><td class="td-num c-green b">3,220</td><td class="td-num">421</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">radio_volume_changed</code></td><td><span class="badge-tag intel">Radio Player</span></td><td class="td-num c-green b">2,410</td><td class="td-num">259</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">voice_input_used</code></td><td><span class="badge-tag web3">Voice &amp; Audio</span></td><td class="td-num c-green b">2,390</td><td class="td-num">919</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">voice_enabled_toggle</code></td><td><span class="badge-tag web3">Voice &amp; Audio</span></td><td class="td-num c-green b">1,923</td><td class="td-num">586</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">context_settings_updated</code></td><td><span class="badge-tag intel">Customization</span></td><td class="td-num c-green b">1,854</td><td class="td-num">327</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">tts_played</code></td><td><span class="badge-tag web3">Voice &amp; Audio</span></td><td class="td-num c-green b">1,807</td><td class="td-num">243</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">app_error</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">1,484</td><td class="td-num">810</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">persona_updated</code></td><td><span class="badge-tag intel">Customization</span></td><td class="td-num c-green b">964</td><td class="td-num">430</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">voice_changed</code></td><td><span class="badge-tag web3">Voice &amp; Audio</span></td><td class="td-num c-green b">875</td><td class="td-num">323</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">message_copied</code></td><td><span class="badge-tag companion">AI Chat</span></td><td class="td-num c-green b">770</td><td class="td-num">402</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">radio_toggle</code></td><td><span class="badge-tag intel">Radio Player</span></td><td class="td-num c-green b">572</td><td class="td-num">240</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">languages_reset</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">571</td><td class="td-num">375</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">llm_model_changed</code></td><td><span class="badge-tag mcp">Model Routing</span></td><td class="td-num c-green b">429</td><td class="td-num">124</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">background_changed</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">425</td><td class="td-num">102</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">model_gallery_opened</code></td><td><span class="badge-tag mcp">Model Routing</span></td><td class="td-num c-green b">366</td><td class="td-num">262</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">llm_provider_changed</code></td><td><span class="badge-tag mcp">Model Routing</span></td><td class="td-num c-green b">286</td><td class="td-num">143</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">persona_reset</code></td><td><span class="badge-tag intel">Customization</span></td><td class="td-num c-green b">154</td><td class="td-num">81</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">debug_panel_toggled</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">138</td><td class="td-num">56</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">automation_settings_updated</code></td><td><span class="badge-tag intel">Customization</span></td><td class="td-num c-green b">127</td><td class="td-num">48</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">auto_offline_tripped</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">82</td><td class="td-num">44</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">external_link_clicked</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">78</td><td class="td-num">48</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">llm_summarize_started</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">57</td><td class="td-num">35</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">llm_summarize_completed</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">57</td><td class="td-num">35</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">offline_mode_toggled</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">54</td><td class="td-num">24</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">llm_transliteration_started</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">29</td><td class="td-num">7</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">llm_transliteration_completed</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">29</td><td class="td-num">7</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">debug_log_cleared</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">29</td><td class="td-num">18</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">manual_summary_triggered</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">27</td><td class="td-num">18</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">level_loaded</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">25</td><td class="td-num">2</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">custom_model_added</code></td><td><span class="badge-tag mcp">Model Routing</span></td><td class="td-num c-green b">24</td><td class="td-num">9</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">video_progress</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">20</td><td class="td-num">4</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">video_start</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">10</td><td class="td-num">4</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">file_download</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">10</td><td class="td-num">9</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">custom_model_removed</code></td><td><span class="badge-tag mcp">Model Routing</span></td><td class="td-num c-green b">9</td><td class="td-num">6</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">view_search_results</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">7</td><td class="td-num">3</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">game_started</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">7</td><td class="td-num">3</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">power_toggled</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">4</td><td class="td-num">1</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">editor_mode_toggled</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">4</td><td class="td-num">1</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">avatar_power_toggled</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">4</td><td class="td-num">1</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">video_complete</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">3</td><td class="td-num">2</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">openrouter_first_success</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">3</td><td class="td-num">3</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">avatar_malfunction_triggered</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">3</td><td class="td-num">1</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">map_view_toggled</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">2</td><td class="td-num">1</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">form_start</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">2</td><td class="td-num">2</td></tr>
+<tr data-row><td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">malfunction_triggered</code></td><td><span class="badge-tag intel">Platform</span></td><td class="td-num c-green b">1</td><td class="td-num">1</td></tr>
         </tbody>
       </table>
     </div>
 
-    <!-- Global Geographic Reach Table -->
     <div class="data-table-container" style="margin-bottom: 2rem;">
       <div class="table-header-box">
         <div>
-          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">Worldwide Geographic Reach</div>
-          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Active users, sessions, and pageviews across 171 countries worldwide.</div>
+          <div class="chart-title" style="font-size: 1.15rem;">Worldwide Geographic Reach</div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Active users, sessions, and pageviews across 50 countries worldwide.</div>
         </div>
-        <input type="text" id="countries-search" class="search-input" placeholder="Search countries...">
+        <input type="text" class="search-input" data-filter="#table-countries" placeholder="Search countries...">
       </div>
       <table class="data-table" id="table-countries">
         <thead>
           <tr>
-            <th data-sort="country" data-type="string">Country</th>
-            <th data-sort="users" data-type="number" style="text-align: right;">Active Users</th>
-            <th data-sort="sessions" data-type="number" style="text-align: right;">Sessions</th>
-            <th data-sort="views" data-type="number" style="text-align: right;">Page Views</th>
+            <th data-sort="string">Country <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Active Users <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Sessions <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Page Views <span class="sort-icon">⇅</span></th>
             <th style="text-align: right;">Audience Share</th>
           </tr>
         </thead>
-        <tbody id="ga4-countries-body">
-          <!-- Populated via JS -->
+        <tbody>
+<tr data-row><td class="b" style="color: #ffffff;">United States</td><td class="td-num c-green b">3,675</td><td class="td-num">4,223</td><td class="td-num">6,001</td><td class="td-num c-muted">24.0%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">India</td><td class="td-num c-green b">1,286</td><td class="td-num">1,357</td><td class="td-num">2,020</td><td class="td-num c-muted">8.4%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Vietnam</td><td class="td-num c-green b">712</td><td class="td-num">759</td><td class="td-num">1,323</td><td class="td-num c-muted">4.7%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Russia</td><td class="td-num c-green b">604</td><td class="td-num">672</td><td class="td-num">972</td><td class="td-num c-muted">4.0%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">United Kingdom</td><td class="td-num c-green b">548</td><td class="td-num">659</td><td class="td-num">1,066</td><td class="td-num c-muted">3.6%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Germany</td><td class="td-num c-green b">547</td><td class="td-num">620</td><td class="td-num">871</td><td class="td-num c-muted">3.6%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Brazil</td><td class="td-num c-green b">532</td><td class="td-num">699</td><td class="td-num">970</td><td class="td-num c-muted">3.5%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Japan</td><td class="td-num c-green b">482</td><td class="td-num">546</td><td class="td-num">818</td><td class="td-num c-muted">3.2%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">France</td><td class="td-num c-green b">475</td><td class="td-num">532</td><td class="td-num">770</td><td class="td-num c-muted">3.1%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Indonesia</td><td class="td-num c-green b">457</td><td class="td-num">510</td><td class="td-num">756</td><td class="td-num c-muted">3.0%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Canada</td><td class="td-num c-green b">417</td><td class="td-num">442</td><td class="td-num">608</td><td class="td-num c-muted">2.7%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Singapore</td><td class="td-num c-green b">390</td><td class="td-num">398</td><td class="td-num">448</td><td class="td-num c-muted">2.6%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">China</td><td class="td-num c-green b">360</td><td class="td-num">385</td><td class="td-num">498</td><td class="td-num c-muted">2.4%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Netherlands</td><td class="td-num c-green b">257</td><td class="td-num">274</td><td class="td-num">387</td><td class="td-num c-muted">1.7%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Poland</td><td class="td-num c-green b">247</td><td class="td-num">296</td><td class="td-num">428</td><td class="td-num c-muted">1.6%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Australia</td><td class="td-num c-green b">239</td><td class="td-num">261</td><td class="td-num">400</td><td class="td-num c-muted">1.6%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Mexico</td><td class="td-num c-green b">222</td><td class="td-num">256</td><td class="td-num">366</td><td class="td-num c-muted">1.5%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Philippines</td><td class="td-num c-green b">220</td><td class="td-num">245</td><td class="td-num">377</td><td class="td-num c-muted">1.4%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Spain</td><td class="td-num c-green b">216</td><td class="td-num">231</td><td class="td-num">313</td><td class="td-num c-muted">1.4%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Italy</td><td class="td-num c-green b">208</td><td class="td-num">252</td><td class="td-num">363</td><td class="td-num c-muted">1.4%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">South Korea</td><td class="td-num c-green b">196</td><td class="td-num">225</td><td class="td-num">332</td><td class="td-num c-muted">1.3%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Iran</td><td class="td-num c-green b">195</td><td class="td-num">208</td><td class="td-num">325</td><td class="td-num c-muted">1.3%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Ukraine</td><td class="td-num c-green b">192</td><td class="td-num">216</td><td class="td-num">310</td><td class="td-num c-muted">1.3%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Pakistan</td><td class="td-num c-green b">168</td><td class="td-num">180</td><td class="td-num">276</td><td class="td-num c-muted">1.1%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Türkiye</td><td class="td-num c-green b">165</td><td class="td-num">178</td><td class="td-num">274</td><td class="td-num c-muted">1.1%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Argentina</td><td class="td-num c-green b">159</td><td class="td-num">175</td><td class="td-num">230</td><td class="td-num c-muted">1.0%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Bangladesh</td><td class="td-num c-green b">158</td><td class="td-num">167</td><td class="td-num">231</td><td class="td-num c-muted">1.0%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Malaysia</td><td class="td-num c-green b">151</td><td class="td-num">411</td><td class="td-num">1,184</td><td class="td-num c-muted">1.0%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Egypt</td><td class="td-num c-green b">130</td><td class="td-num">141</td><td class="td-num">229</td><td class="td-num c-muted">0.9%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Saudi Arabia</td><td class="td-num c-green b">128</td><td class="td-num">139</td><td class="td-num">205</td><td class="td-num c-muted">0.8%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Sweden</td><td class="td-num c-green b">120</td><td class="td-num">129</td><td class="td-num">155</td><td class="td-num c-muted">0.8%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Algeria</td><td class="td-num c-green b">92</td><td class="td-num">115</td><td class="td-num">203</td><td class="td-num c-muted">0.6%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Hong Kong</td><td class="td-num c-green b">92</td><td class="td-num">99</td><td class="td-num">123</td><td class="td-num c-muted">0.6%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">South Africa</td><td class="td-num c-green b">91</td><td class="td-num">120</td><td class="td-num">207</td><td class="td-num c-muted">0.6%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Taiwan</td><td class="td-num c-green b">90</td><td class="td-num">103</td><td class="td-num">135</td><td class="td-num c-muted">0.6%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Thailand</td><td class="td-num c-green b">85</td><td class="td-num">98</td><td class="td-num">143</td><td class="td-num c-muted">0.6%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Peru</td><td class="td-num c-green b">84</td><td class="td-num">100</td><td class="td-num">143</td><td class="td-num c-muted">0.5%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Chile</td><td class="td-num c-green b">83</td><td class="td-num">92</td><td class="td-num">124</td><td class="td-num c-muted">0.5%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Iraq</td><td class="td-num c-green b">83</td><td class="td-num">90</td><td class="td-num">118</td><td class="td-num c-muted">0.5%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">United Arab Emirates</td><td class="td-num c-green b">79</td><td class="td-num">86</td><td class="td-num">111</td><td class="td-num c-muted">0.5%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Nigeria</td><td class="td-num c-green b">75</td><td class="td-num">80</td><td class="td-num">87</td><td class="td-num c-muted">0.5%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Switzerland</td><td class="td-num c-green b">70</td><td class="td-num">75</td><td class="td-num">111</td><td class="td-num c-muted">0.5%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Morocco</td><td class="td-num c-green b">69</td><td class="td-num">73</td><td class="td-num">95</td><td class="td-num c-muted">0.5%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Romania</td><td class="td-num c-green b">69</td><td class="td-num">71</td><td class="td-num">96</td><td class="td-num c-muted">0.5%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Uzbekistan</td><td class="td-num c-green b">66</td><td class="td-num">73</td><td class="td-num">96</td><td class="td-num c-muted">0.4%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Belgium</td><td class="td-num c-green b">65</td><td class="td-num">76</td><td class="td-num">97</td><td class="td-num c-muted">0.4%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Austria</td><td class="td-num c-green b">62</td><td class="td-num">72</td><td class="td-num">112</td><td class="td-num c-muted">0.4%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Norway</td><td class="td-num c-green b">62</td><td class="td-num">72</td><td class="td-num">118</td><td class="td-num c-muted">0.4%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Kazakhstan</td><td class="td-num c-green b">60</td><td class="td-num">62</td><td class="td-num">73</td><td class="td-num c-muted">0.4%</td></tr>
+<tr data-row><td class="b" style="color: #ffffff;">Finland</td><td class="td-num c-green b">55</td><td class="td-num">60</td><td class="td-num">78</td><td class="td-num c-muted">0.4%</td></tr>
         </tbody>
       </table>
     </div>
 
-    <!-- Platform & Hardware Architecture (Devices & Operating Systems) -->
     <div class="grid-2col" style="margin-bottom: 2rem;">
       <div class="data-table-container" style="padding: 1.25rem 1.5rem;">
-        <div style="font-weight: 700; font-size: 1.1rem; font-family: 'Outfit', sans-serif;">Device Category Distribution</div>
+        <div class="chart-title" style="font-size: 1.1rem;">Device Category Distribution</div>
         <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Hardware categories accessing documentation and tools</div>
-        <div class="stat-progress-box" id="devices-progress-container">
-          <!-- Populated via JS -->
+        <div class="stat-progress-box">
+<div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">mobile</span><span class="mono c-muted">8,320 users (50.0%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar blue" style="width: 50.0%;"></div></div></div>
+<div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">desktop</span><span class="mono c-muted">7,567 users (45.5%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar green" style="width: 45.5%;"></div></div></div>
+<div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">tablet</span><span class="mono c-muted">706 users (4.2%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar amber" style="width: 4.2%;"></div></div></div>
+<div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">smart tv</span><span class="mono c-muted">50 users (0.3%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar purple" style="width: 0.3%;"></div></div></div>
         </div>
       </div>
 
       <div class="data-table-container" style="padding: 1.25rem 1.5rem;">
-        <div style="font-weight: 700; font-size: 1.1rem; font-family: 'Outfit', sans-serif;">Operating System Ecosystem</div>
+        <div class="chart-title" style="font-size: 1.1rem;">Operating System Ecosystem</div>
         <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Operating systems running across desktop, mobile, and tablets</div>
-        <div class="stat-progress-box" id="os-progress-container">
-          <!-- Populated via JS -->
+        <div class="stat-progress-box">
+<div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">Android</span><span class="mono c-muted">6,599 users (39.6%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar blue" style="width: 39.6%;"></div></div></div>
+<div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">Windows</span><span class="mono c-muted">5,835 users (35.0%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar green" style="width: 35.0%;"></div></div></div>
+<div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">iOS</span><span class="mono c-muted">2,418 users (14.5%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar amber" style="width: 14.5%;"></div></div></div>
+<div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">Macintosh</span><span class="mono c-muted">947 users (5.7%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar purple" style="width: 5.7%;"></div></div></div>
+<div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">Linux</span><span class="mono c-muted">533 users (3.2%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar blue" style="width: 3.2%;"></div></div></div>
+<div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">Chrome OS</span><span class="mono c-muted">288 users (1.7%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar green" style="width: 1.7%;"></div></div></div>
+<div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">(not set)</span><span class="mono c-muted">45 users (0.3%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar amber" style="width: 0.3%;"></div></div></div>
+<div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">Playstation 4</span><span class="mono c-muted">7 users (0.0%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar purple" style="width: 0.0%;"></div></div></div>
+<div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">Tizen</span><span class="mono c-muted">5 users (0.0%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar blue" style="width: 0.0%;"></div></div></div>
+<div class="stat-progress-row"><div class="stat-progress-header"><span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">Firefox OS</span><span class="mono c-muted">1 users (0.0%)</span></div><div class="stat-progress-track"><div class="stat-progress-bar green" style="width: 0.0%;"></div></div></div>
         </div>
       </div>
     </div>
 
-    <div class="grid-2col">
+    <div class="grid-2col" style="grid-template-columns: 1fr;">
       <div class="data-table-container">
         <div class="table-header-box">
-          <div style="font-weight: 700; font-family: 'Outfit', sans-serif;">Most Visited Documentation &amp; Tools</div>
+          <div>
+            <div class="chart-title">Most Visited Pages</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">The website's own pages across waifuai.com, waifuai.github.io, and the blog &bull; /index.html pages are merged into their directory paths &bull; WebSim projects have their own section above.</div>
+          </div>
         </div>
-        <table class="data-table" id="table-ga4-pages">
+        <table class="data-table">
           <thead>
             <tr>
-              <th data-sort="path" data-type="string">Page Path</th>
-              <th data-sort="views" data-type="number" style="text-align: right;">Views</th>
-              <th data-sort="users" data-type="number" style="text-align: right;">Users</th>
+              <th data-sort="string">Page <span class="sort-icon">⇅</span></th>
+              <th data-sort="number" style="text-align: right;">Views <span class="sort-icon">⇅</span></th>
+              <th data-sort="number" style="text-align: right;">Users <span class="sort-icon">⇅</span></th>
             </tr>
           </thead>
-          <tbody id="ga4-pages-body">
-            <!-- Populated via JS -->
+          <tbody>
+<tr data-row><td><a href="https://waifuai.com/app/" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.com/app/</code></a></td><td class="td-num">506</td><td class="td-num">337</td></tr>
+<tr data-row><td><a href="https://waifuai.com/" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.com</code></a></td><td class="td-num">468</td><td class="td-num">345</td></tr>
+<tr data-row><td><a href="https://waifuai.github.io/" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.github.io</code></a></td><td class="td-num">135</td><td class="td-num">112</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/help.html" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.com/app/docs/help.html</code></a></td><td class="td-num">70</td><td class="td-num">69</td></tr>
+<tr data-row><td><a href="https://waifuai.github.io/llm-countdowns/" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.github.io/llm-countdowns/</code></a></td><td class="td-num">42</td><td class="td-num">32</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.com/app/docs/</code></a></td><td class="td-num">41</td><td class="td-num">35</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/troubleshooting.html" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.com/app/docs/troubleshooting.html</code></a></td><td class="td-num">34</td><td class="td-num">34</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/openrouter.html" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.com/app/docs/openrouter.html</code></a></td><td class="td-num">32</td><td class="td-num">30</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/models.html" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.com/app/docs/models.html</code></a></td><td class="td-num">25</td><td class="td-num">25</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/settings.html" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.com/app/docs/settings.html</code></a></td><td class="td-num">24</td><td class="td-num">23</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/voice.html" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.com/app/docs/voice.html</code></a></td><td class="td-num">21</td><td class="td-num">19</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/memory.html" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.com/app/docs/memory.html</code></a></td><td class="td-num">17</td><td class="td-num">17</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/providers.html" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.com/app/docs/providers.html</code></a></td><td class="td-num">17</td><td class="td-num">17</td></tr>
+<tr data-row><td><a href="https://waifuai.blogspot.com/" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.blogspot.com</code></a></td><td class="td-num">14</td><td class="td-num">10</td></tr>
+<tr data-row><td><a href="https://waifuai.github.io/data/" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.github.io/data/</code></a></td><td class="td-num">12</td><td class="td-num">6</td></tr>
+<tr data-row><td><a href="https://waifuai.github.io/research-books/" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.github.io/research-books/</code></a></td><td class="td-num">12</td><td class="td-num">11</td></tr>
+<tr data-row><td><a href="https://waifuai.github.io/waifu-llm-vrm/" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.github.io/waifu-llm-vrm/</code></a></td><td class="td-num">12</td><td class="td-num">12</td></tr>
+<tr data-row><td><a href="https://waifuai.github.io/hermes-waifu/" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.github.io/hermes-waifu/</code></a></td><td class="td-num">11</td><td class="td-num">9</td></tr>
+<tr data-row><td><a href="https://waifuai.com/docs/" target="_blank" rel="noopener" style="text-decoration: none;"><code class="page-code">waifuai.com/docs/</code></a></td><td class="td-num">10</td><td class="td-num">9</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="data-table-container">
         <div class="table-header-box">
-          <div style="font-weight: 700; font-family: 'Outfit', sans-serif;">Traffic Acquisition Channels</div>
+          <div class="chart-title">Traffic Acquisition Channels</div>
         </div>
-        <table class="data-table" id="table-ga4-sources">
+        <table class="data-table">
           <thead>
             <tr>
-              <th data-sort="channel" data-type="string">Source / Medium</th>
-              <th data-sort="sessions" data-type="number" style="text-align: right;">Sessions</th>
-              <th data-sort="users" data-type="number" style="text-align: right;">Active Users</th>
+              <th data-sort="string">Source / Medium <span class="sort-icon">⇅</span></th>
+              <th data-sort="number" style="text-align: right;">Sessions <span class="sort-icon">⇅</span></th>
+              <th data-sort="number" style="text-align: right;">Active Users <span class="sort-icon">⇅</span></th>
             </tr>
           </thead>
-          <tbody id="ga4-sources-body">
-            <!-- Populated via JS -->
+          <tbody>
+<tr data-row><td style="font-weight: 500;">(direct) / (none)</td><td class="td-num">10,581</td><td class="td-num">9,791</td></tr>
+<tr data-row><td style="font-weight: 500;">google / organic</td><td class="td-num">4,594</td><td class="td-num">4,357</td></tr>
+<tr data-row><td style="font-weight: 500;">chatgpt.com / ai-assistant</td><td class="td-num">3,679</td><td class="td-num">3,411</td></tr>
+<tr data-row><td style="font-weight: 500;">bing / organic</td><td class="td-num">1,077</td><td class="td-num">1,030</td></tr>
+<tr data-row><td style="font-weight: 500;">(not set)</td><td class="td-num">609</td><td class="td-num">550</td></tr>
+<tr data-row><td style="font-weight: 500;">(data not available)</td><td class="td-num">480</td><td class="td-num">477</td></tr>
+<tr data-row><td style="font-weight: 500;">github.com / referral</td><td class="td-num">400</td><td class="td-num">374</td></tr>
+<tr data-row><td style="font-weight: 500;">yandex.ru / referral</td><td class="td-num">353</td><td class="td-num">339</td></tr>
+<tr data-row><td style="font-weight: 500;">duckduckgo / organic</td><td class="td-num">290</td><td class="td-num">284</td></tr>
+<tr data-row><td style="font-weight: 500;">message / (not set)</td><td class="td-num">255</td><td class="td-num">163</td></tr>
+<tr data-row><td style="font-weight: 500;">chatgpt.com / referral</td><td class="td-num">205</td><td class="td-num">188</td></tr>
+<tr data-row><td style="font-weight: 500;">html-classic.itch.zone / referral</td><td class="td-num">178</td><td class="td-num">172</td></tr>
+<tr data-row><td style="font-weight: 500;">chatgpt.com / (not set)</td><td class="td-num">157</td><td class="td-num">149</td></tr>
+<tr data-row><td style="font-weight: 500;">t.co / referral</td><td class="td-num">140</td><td class="td-num">119</td></tr>
+<tr data-row><td style="font-weight: 500;">yandex / organic</td><td class="td-num">78</td><td class="td-num">77</td></tr>
+<tr data-row><td style="font-weight: 500;">yahoo / organic</td><td class="td-num">73</td><td class="td-num">71</td></tr>
+<tr data-row><td style="font-weight: 500;">chatgpt.com / (none)</td><td class="td-num">72</td><td class="td-num">70</td></tr>
+<tr data-row><td style="font-weight: 500;">global / (not set)</td><td class="td-num">53</td><td class="td-num">34</td></tr>
+<tr data-row><td style="font-weight: 500;">characteraialternatives.my.canva.site / referral</td><td class="td-num">50</td><td class="td-num">47</td></tr>
+<tr data-row><td style="font-weight: 500;">ya.ru / referral</td><td class="td-num">45</td><td class="td-num">41</td></tr>
+<tr data-row><td style="font-weight: 500;">ig / social</td><td class="td-num">40</td><td class="td-num">35</td></tr>
+<tr data-row><td style="font-weight: 500;">cn.bing.com / referral</td><td class="td-num">38</td><td class="td-num">38</td></tr>
+<tr data-row><td style="font-weight: 500;">reddit.com / referral</td><td class="td-num">35</td><td class="td-num">32</td></tr>
+<tr data-row><td style="font-weight: 500;">facebook.com / referral</td><td class="td-num">33</td><td class="td-num">33</td></tr>
+<tr data-row><td style="font-weight: 500;">search.brave.com / referral</td><td class="td-num">27</td><td class="td-num">24</td></tr>
           </tbody>
         </table>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- TAB 5: SEARCH REACH (GSC) -->
-  <div class="tab-panel" id="tab-search">
+  <section id="search">
+    <h2 class="section-title">Search Reach <span class="mono" style="font-size: 0.9rem; color: var(--text-muted);">(GSC)</span></h2>
+    <p class="section-desc">High-intent search queries leading developers and users to the WaifuAI platform (filtered &amp; clean).</p>
     <div class="data-table-container">
       <div class="table-header-box">
-        <div>
-          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">Google Search Discovery Keywords</div>
-          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">High-intent search queries leading developers and users to the WaifuAI platform (filtered &amp; clean).</div>
-        </div>
-        <input type="text" id="gsc-search" class="search-input" placeholder="Filter search queries...">
+        <div class="chart-title" style="font-size: 1.15rem;">Google Search Discovery Keywords</div>
+        <input type="text" class="search-input" data-filter="#table-gsc" placeholder="Filter search queries...">
       </div>
       <table class="data-table" id="table-gsc">
         <thead>
           <tr>
-            <th data-sort="query" data-type="string">Search Query</th>
-            <th data-sort="clicks" data-type="number" style="text-align: right;">Clicks</th>
-            <th data-sort="impressions" data-type="number" style="text-align: right;">Impressions</th>
-            <th data-sort="position" data-type="number" style="text-align: right;">Average Position</th>
+            <th data-sort="string">Search Query <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Clicks <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Impressions <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Average Position <span class="sort-icon">⇅</span></th>
           </tr>
         </thead>
-        <tbody id="gsc-queries-body">
-          <!-- Populated via JS -->
+        <tbody>
+<tr data-row><td class="b" style="color: var(--text);">waifu ai</td><td class="td-num c-green b">1,529</td><td class="td-num">42,810</td><td class="td-num c-muted">#11.7</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifuai</td><td class="td-num c-green b">1,304</td><td class="td-num">3,468</td><td class="td-num c-muted">#4.8</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">ai waifu</td><td class="td-num c-green b">158</td><td class="td-num">4,080</td><td class="td-num c-muted">#23.2</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">weifu ai</td><td class="td-num c-green b">102</td><td class="td-num">1,113</td><td class="td-num c-muted">#9.1</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifu ai chat</td><td class="td-num c-green b">41</td><td class="td-num">597</td><td class="td-num c-muted">#25.2</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">wifu ai</td><td class="td-num c-green b">41</td><td class="td-num">271</td><td class="td-num c-muted">#3.4</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifuai studio</td><td class="td-num c-green b">39</td><td class="td-num">373</td><td class="td-num c-muted">#5.2</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifu.ai</td><td class="td-num c-green b">38</td><td class="td-num">234</td><td class="td-num c-muted">#2.9</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">ai waifu companion</td><td class="td-num c-green b">29</td><td class="td-num">93</td><td class="td-num c-muted">#3.0</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifu chat</td><td class="td-num c-green b">18</td><td class="td-num">122</td><td class="td-num c-muted">#27.5</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">weifu ai online</td><td class="td-num c-green b">13</td><td class="td-num">94</td><td class="td-num c-muted">#2.7</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">wafu ai</td><td class="td-num c-green b">13</td><td class="td-num">68</td><td class="td-num c-muted">#2.7</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">wifuai</td><td class="td-num c-green b">13</td><td class="td-num">24</td><td class="td-num c-muted">#1.9</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">ai waifu chat</td><td class="td-num c-green b">12</td><td class="td-num">271</td><td class="td-num c-muted">#25.6</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">my waifu ai</td><td class="td-num c-green b">7</td><td class="td-num">180</td><td class="td-num c-muted">#4.1</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">ai wifu</td><td class="td-num c-green b">7</td><td class="td-num">69</td><td class="td-num c-muted">#5.8</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifu ai app</td><td class="td-num c-green b">6</td><td class="td-num">142</td><td class="td-num c-muted">#2.8</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">wafiu ai</td><td class="td-num c-green b">6</td><td class="td-num">80</td><td class="td-num c-muted">#3.0</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">free ai waifu</td><td class="td-num c-green b">6</td><td class="td-num">73</td><td class="td-num c-muted">#6.7</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifu. ai</td><td class="td-num c-green b">6</td><td class="td-num">70</td><td class="td-num c-muted">#2.7</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">live2d ai companion</td><td class="td-num c-green b">6</td><td class="td-num">33</td><td class="td-num c-muted">#5.5</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waif ai</td><td class="td-num c-green b">6</td><td class="td-num">29</td><td class="td-num c-muted">#3.1</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">live2d ai</td><td class="td-num c-green b">6</td><td class="td-num">27</td><td class="td-num c-muted">#9.3</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifu companion</td><td class="td-num c-green b">6</td><td class="td-num">21</td><td class="td-num c-muted">#2.5</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifu ai free</td><td class="td-num c-green b">6</td><td class="td-num">15</td><td class="td-num c-muted">#3.0</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">wiefu ai</td><td class="td-num c-green b">6</td><td class="td-num">14</td><td class="td-num c-muted">#5.6</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifu ai chatbot</td><td class="td-num c-green b">5</td><td class="td-num">172</td><td class="td-num c-muted">#34.1</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifu chat ai</td><td class="td-num c-green b">5</td><td class="td-num">58</td><td class="td-num c-muted">#13.5</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifus ai</td><td class="td-num c-green b">5</td><td class="td-num">37</td><td class="td-num c-muted">#9.1</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">ai waifu free</td><td class="td-num c-green b">5</td><td class="td-num">26</td><td class="td-num c-muted">#5.0</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">wiafu ai</td><td class="td-num c-green b">5</td><td class="td-num">24</td><td class="td-num c-muted">#2.5</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifi ai</td><td class="td-num c-green b">5</td><td class="td-num">21</td><td class="td-num c-muted">#3.0</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifu ai character companion</td><td class="td-num c-green b">5</td><td class="td-num">19</td><td class="td-num c-muted">#6.5</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifu ai companion</td><td class="td-num c-green b">5</td><td class="td-num">15</td><td class="td-num c-muted">#3.3</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifu ia</td><td class="td-num c-green b">4</td><td class="td-num">32</td><td class="td-num c-muted">#5.5</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">wafui ai</td><td class="td-num c-green b">4</td><td class="td-num">18</td><td class="td-num c-muted">#2.8</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">wefu ai</td><td class="td-num c-green b">4</td><td class="td-num">14</td><td class="td-num c-muted">#3.4</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">ai waif</td><td class="td-num c-green b">4</td><td class="td-num">13</td><td class="td-num c-muted">#4.6</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">ai waifu app</td><td class="td-num c-green b">3</td><td class="td-num">105</td><td class="td-num c-muted">#10.2</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">wefui ai</td><td class="td-num c-green b">3</td><td class="td-num">21</td><td class="td-num c-muted">#5.1</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">aiwaifu</td><td class="td-num c-green b">3</td><td class="td-num">20</td><td class="td-num c-muted">#16.8</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifu a</td><td class="td-num c-green b">3</td><td class="td-num">6</td><td class="td-num c-muted">#3.0</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">waifu chat anime ai girlfriend</td><td class="td-num c-green b">3</td><td class="td-num">6</td><td class="td-num c-muted">#46.0</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">weifi ai</td><td class="td-num c-green b">3</td><td class="td-num">5</td><td class="td-num c-muted">#2.0</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">weifu ai free</td><td class="td-num c-green b">3</td><td class="td-num">3</td><td class="td-num c-muted">#7.3</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">ai chat waifu</td><td class="td-num c-green b">2</td><td class="td-num">77</td><td class="td-num c-muted">#28.9</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">ai waifu chat free</td><td class="td-num c-green b">2</td><td class="td-num">52</td><td class="td-num c-muted">#8.6</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">chat ai waifu</td><td class="td-num c-green b">2</td><td class="td-num">22</td><td class="td-num c-muted">#9.5</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">ai waify</td><td class="td-num c-green b">2</td><td class="td-num">9</td><td class="td-num c-muted">#6.0</td></tr>
+<tr data-row><td class="b" style="color: var(--text);">your waifu ai</td><td class="td-num c-green b">2</td><td class="td-num">8</td><td class="td-num c-muted">#5.1</td></tr>
         </tbody>
       </table>
     </div>
 
-    <!-- Top Landing Pages -->
     <div class="data-table-container" style="margin-top: 2rem;">
       <div class="table-header-box">
-        <div>
-          <div style="font-weight: 700; font-size: 1.15rem; font-family: 'Outfit', sans-serif;">Top Search Landing Pages</div>
-          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Platform pages attracting Google search impressions and clicks.</div>
-        </div>
+        <div class="chart-title" style="font-size: 1.15rem;">Top Search Landing Pages</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted);">Platform pages attracting Google search impressions and clicks.</div>
       </div>
-      <table class="data-table" id="table-gsc-pages">
+      <table class="data-table">
         <thead>
           <tr>
-            <th data-sort="page" data-type="string">Landing Page URL</th>
-            <th data-sort="clicks" data-type="number" style="text-align: right;">Clicks</th>
-            <th data-sort="impressions" data-type="number" style="text-align: right;">Impressions</th>
-            <th data-sort="position" data-type="number" style="text-align: right;">Average Position</th>
+            <th data-sort="string">Landing Page URL <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Clicks <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Impressions <span class="sort-icon">⇅</span></th>
+            <th data-sort="number" style="text-align: right;">Average Position <span class="sort-icon">⇅</span></th>
           </tr>
         </thead>
-        <tbody id="gsc-pages-body">
-          <!-- Populated via JS -->
+        <tbody>
+<tr data-row><td><a href="https://waifuai.com/" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/</a></td><td class="td-num c-green b">4,596</td><td class="td-num">82,619</td><td class="td-num c-muted">#10.9</td></tr>
+<tr data-row><td><a href="https://waifuai.github.io/" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">/</a></td><td class="td-num c-green b">6</td><td class="td-num">528</td><td class="td-num c-muted">#10.9</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/help.html" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/app/docs/help.html</a></td><td class="td-num c-green b">4</td><td class="td-num">209</td><td class="td-num c-muted">#4.9</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/index.html" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/app/docs/index.html</a></td><td class="td-num c-green b">4</td><td class="td-num">205</td><td class="td-num c-muted">#4.6</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/models.html" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/app/docs/models.html</a></td><td class="td-num c-green b">2</td><td class="td-num">32</td><td class="td-num c-muted">#10.5</td></tr>
+<tr data-row><td><a href="http://waifuai.com/" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">http://waifuai.com/</a></td><td class="td-num c-green b">2</td><td class="td-num">20</td><td class="td-num c-muted">#24.0</td></tr>
+<tr data-row><td><a href="https://waifuai.com/docs/openrouter.html" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/docs/openrouter.html</a></td><td class="td-num c-green b">1</td><td class="td-num">99</td><td class="td-num c-muted">#6.2</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/providers.html" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/app/docs/providers.html</a></td><td class="td-num c-green b">1</td><td class="td-num">53</td><td class="td-num c-muted">#5.3</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/voice.html" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/app/docs/voice.html</a></td><td class="td-num c-green b">1</td><td class="td-num">41</td><td class="td-num c-muted">#7.8</td></tr>
+<tr data-row><td><a href="https://waifuai.com/?utm_source=chatgpt.com" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/?utm_source=chatgpt.com</a></td><td class="td-num c-green b">1</td><td class="td-num">1</td><td class="td-num c-muted">#1.0</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/memory.html" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/app/docs/memory.html</a></td><td class="td-num c-green b">0</td><td class="td-num">124</td><td class="td-num c-muted">#7.7</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/openrouter.html" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/app/docs/openrouter.html</a></td><td class="td-num c-green b">0</td><td class="td-num">102</td><td class="td-num c-muted">#7.5</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/index.html" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/app/index.html</a></td><td class="td-num c-green b">0</td><td class="td-num">67</td><td class="td-num c-muted">#9.0</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/app/docs/</a></td><td class="td-num c-green b">0</td><td class="td-num">48</td><td class="td-num c-muted">#5.1</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/app/</a></td><td class="td-num c-green b">0</td><td class="td-num">45</td><td class="td-num c-muted">#6.0</td></tr>
+<tr data-row><td><a href="https://waifuai.com/docs/voice.html" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/docs/voice.html</a></td><td class="td-num c-green b">0</td><td class="td-num">44</td><td class="td-num c-muted">#3.7</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/troubleshooting.html" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/app/docs/troubleshooting.html</a></td><td class="td-num c-green b">0</td><td class="td-num">30</td><td class="td-num c-muted">#7.3</td></tr>
+<tr data-row><td><a href="https://waifuai.com/docs/settings.html" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/docs/settings.html</a></td><td class="td-num c-green b">0</td><td class="td-num">24</td><td class="td-num c-muted">#5.5</td></tr>
+<tr data-row><td><a href="https://waifuai.com/app/docs/settings.html" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/app/docs/settings.html</a></td><td class="td-num c-green b">0</td><td class="td-num">14</td><td class="td-num c-muted">#6.2</td></tr>
+<tr data-row><td><a href="https://waifuai.com/docs/troubleshooting.html" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://waifuai.com/docs/troubleshooting.html</a></td><td class="td-num c-green b">0</td><td class="td-num">2</td><td class="td-num c-muted">#5.0</td></tr>
+<tr data-row><td><a href="https://waifuai.github.io/sim-airdrop/" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">/sim-airdrop/</a></td><td class="td-num c-green b">0</td><td class="td-num">1</td><td class="td-num c-muted">#9.0</td></tr>
+<tr data-row><td><a href="https://www.waifuai.com/" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">https://www.waifuai.com/</a></td><td class="td-num c-green b">0</td><td class="td-num">1</td><td class="td-num c-muted">#3.0</td></tr>
         </tbody>
       </table>
     </div>
-  </div>
-
-  <!-- Raw Data Export Banner -->
-  <div class="raw-export-banner">
-    <div>
-      <div style="font-weight: 600; color: var(--text);">Open Telemetry JSON Feed</div>
-      <div style="font-size: 0.85rem; color: var(--text-muted);">
-        All data displayed above is exported from our local read-only SQLite intelligence hub (all-db) and published directly to GitHub Pages.
-      </div>
-    </div>
-    <a href="stats.json" target="_blank" class="link-app" style="font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; padding: 0.4rem 0.9rem; text-decoration: none;">
-      Download stats.json &darr;
-    </a>
-  </div>
+  </section>
 
 </div>
 
-<script src="stats.js"></script>
 <script>
-let STATS_DATA = null;
-
-// Tab switcher logic
-document.querySelectorAll('.telemetry-tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.telemetry-tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    const target = btn.getAttribute('data-tab');
-    document.getElementById(target).classList.add('active');
-  });
-});
-
-// View all links jump to tabs
-document.addEventListener('click', e => {
-  if (e.target.classList.contains('view-all-link')) {
-    e.preventDefault();
-    const tabId = e.target.getAttribute('data-target');
-    const btn = document.querySelector(`.telemetry-tab-btn[data-tab="${tabId}"]`);
-    if (btn) btn.click();
-  }
-});
-
-function getBadgeClass(cat) {
-  if (cat.includes('MCP')) return 'mcp';
-  if (cat.includes('Companion')) return 'companion';
-  if (cat.includes('Web3')) return 'web3';
-  return 'intel';
-}
-
-function getEventCategory(eventName) {
-  if (eventName.includes('chat') || eventName.includes('stream') || eventName.includes('message')) return 'AI Chat';
-  if (eventName.includes('model') || eventName.includes('provider')) return 'Model Routing';
-  if (eventName.includes('tts') || eventName.includes('voice')) return 'Voice & Audio';
-  if (eventName.includes('persona') || eventName.includes('settings') || eventName.includes('visual') || eventName.includes('context')) return 'Customization';
-  if (eventName.includes('radio')) return 'Radio Player';
-  return 'Platform';
-}
-
-function getEventBadgeClass(category) {
-  if (category === 'AI Chat') return 'companion';
-  if (category === 'Model Routing') return 'mcp';
-  if (category === 'Voice & Audio') return 'web3';
-  return 'intel';
-}
-
-// Universal table sort engine
-function makeTableSortable(tableId, getData, renderFn) {
-  const table = document.getElementById(tableId);
-  if (!table) return;
-  const headers = table.querySelectorAll('th[data-sort]');
-  let currentSort = { col: null, dir: 'desc' };
-
-  headers.forEach(th => {
-    th.classList.add('sortable');
-    if (!th.querySelector('.sort-icon')) {
-      th.innerHTML += ' <span class="sort-icon">⇅</span>';
-    }
-    th.addEventListener('click', () => {
-      const col = th.getAttribute('data-sort');
-      const type = th.getAttribute('data-type') || 'number';
-      if (currentSort.col === col) {
-        currentSort.dir = currentSort.dir === 'desc' ? 'asc' : 'desc';
-      } else {
-        currentSort.col = col;
-        currentSort.dir = type === 'number' ? 'desc' : 'asc';
-      }
-
-      headers.forEach(h => {
-        h.classList.remove('sort-asc', 'sort-desc');
-        const icon = h.querySelector('.sort-icon');
-        if (icon) icon.textContent = '⇅';
-      });
-
-      th.classList.add(currentSort.dir === 'asc' ? 'sort-asc' : 'sort-desc');
-      const activeIcon = th.querySelector('.sort-icon');
-      if (activeIcon) activeIcon.textContent = currentSort.dir === 'asc' ? '▲' : '▼';
-
-      const data = [...getData()];
-      data.sort((a, b) => {
-        let valA = a[col] ?? (type === 'number' ? 0 : '');
-        let valB = b[col] ?? (type === 'number' ? 0 : '');
-        if (type === 'number') {
-          return currentSort.dir === 'asc' ? valA - valB : valB - valA;
-        } else {
-          return currentSort.dir === 'asc'
-            ? String(valA).localeCompare(String(valB))
-            : String(valB).localeCompare(String(valA));
-        }
-      });
-      renderFn(data);
+document.querySelectorAll('input[data-filter]').forEach(inp => {
+  inp.addEventListener('input', () => {
+    const q = inp.value.toLowerCase().trim();
+    document.querySelectorAll(inp.dataset.filter + ' [data-row], ' + inp.dataset.filter + ' [data-card]').forEach(el => {
+      el.style.display = (!q || el.textContent.toLowerCase().includes(q)) ? '' : 'none';
     });
   });
-}
-
-function renderOverview(data) {
-  // Sync status
-  if (data.synced_at) {
-    const dt = new Date(data.synced_at);
-    document.getElementById('sync-status').textContent = `Live Telemetry • Synced ${dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
-  }
-
-  // KPIs
-  const k = data.macro_kpis || {};
-  document.getElementById('kpi-total-projects').textContent = (k.total_projects || 670).toLocaleString();
-  document.getElementById('kpi-total-views').textContent = `${Math.round((k.total_content_views || 57153) / 1000 * 10) / 10}K`;
-  
-  const elAtt = document.getElementById('kpi-total-attention');
-  if (elAtt) elAtt.textContent = `${Math.round(k.total_attention_hours || 740.5)}h+`;
-
-  document.getElementById('kpi-total-users').textContent = `${Math.round((k.total_web_users || 16647) / 1000 * 10) / 10}K`;
-  
-  const elCnt = document.getElementById('kpi-total-countries');
-  if (elCnt) elCnt.textContent = (k.total_countries_count || 171).toLocaleString();
-
-  const elClones = document.getElementById('kpi-total-clones');
-  if (elClones) elClones.textContent = (k.total_clone_uniques || 566).toLocaleString();
-
-  const elChats = document.getElementById('kpi-total-chats');
-  if (elChats) elChats.textContent = `${Math.round((k.companion_turns || k.total_chat_messages || 5109) / 1000 * 10) / 10}K`;
-  const elChatsSub = document.getElementById('kpi-chats-sub');
-  if (elChatsSub && (k.companion_turns || data.chats?.total_turns)) {
-    const turns = k.companion_turns || data.chats?.total_turns;
-    elChatsSub.textContent = `${turns.toLocaleString()} Chat Messages`;
-  }
-
-  const elSwitches = document.getElementById('kpi-total-switches');
-  if (elSwitches) elSwitches.textContent = `${Math.round((k.total_model_changes || 3026) / 1000 * 10) / 10}K`;
-
-  document.getElementById('kpi-total-stars').textContent = (k.total_stars_and_likes || 1313).toLocaleString();
-  document.getElementById('kpi-search-impressions').textContent = `${Math.round((k.total_search_impressions || 69231) / 1000 * 10) / 10}K`;
-
-  // Top Repos Table (Top 7)
-  const reposBody = document.getElementById('overview-repos-body');
-  reposBody.innerHTML = '';
-  const topRepos = (data.github?.all_repos || []).slice(0, 7);
-  topRepos.forEach(r => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>
-        <a href="${r.url}" target="_blank" rel="noopener" style="color: var(--text); font-weight: 600; text-decoration: none;">
-          ${r.name}
-        </a>
-      </td>
-      <td><span class="badge-tag ${getBadgeClass(r.category)}">${r.category}</span></td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f59e0b;">
-        ★ ${r.stars}
-      </td>
-    `;
-    reposBody.appendChild(tr);
-  });
-
-  // Top WebSim Table (Top 7 sorted by likes)
-  const wsBody = document.getElementById('overview-websim-body');
-  wsBody.innerHTML = '';
-  const topWs = [...(data.websim?.top_projects || [])]
-    .sort((a, b) => (b.likes || 0) - (a.likes || 0) || (b.views || 0) - (a.views || 0))
-    .slice(0, 7);
-  topWs.forEach(p => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td style="font-weight: 600; color: var(--text);">${p.title}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: #ec4899; font-weight: 600;">♥ ${p.likes}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${p.views.toLocaleString()}</td>
-      <td style="text-align: right;">
-        <a href="${p.link}" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a>
-      </td>
-    `;
-    wsBody.appendChild(tr);
-  });
-}
-
-function renderWebSimCards(projects) {
-  const container = document.getElementById('websim-cards-container');
-  if (!container) return;
-  container.innerHTML = '';
-  const sorted = [...projects].sort((a, b) => (b.likes || 0) - (a.likes || 0) || (b.views || 0) - (a.views || 0));
-  sorted.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'websim-card';
-    const thumbHtml = p.thumbnail 
-      ? `<img src="${p.thumbnail}" alt="${p.title}" class="websim-thumb" loading="lazy" onerror="this.style.display='none'">`
-      : `<div class="websim-thumb" style="display:flex;align-items:center;justify-content:center;color:#475569;font-size:2rem;">✨</div>`;
-
-    card.innerHTML = `
-      ${thumbHtml}
-      <div class="websim-body">
-        <h3 class="websim-title">${p.title}</h3>
-        <div class="websim-desc">${p.description || 'Interactive autonomous AI application built with WebSim.'}</div>
-        <div class="websim-footer">
-          <div class="websim-stats">
-            <span style="color: #ec4899; font-weight: 600;">♥ ${p.likes}</span>
-            <span>👁️ ${p.views.toLocaleString()}</span>
-          </div>
-          <a href="${p.link}" target="_blank" rel="noopener" class="websim-btn">Launch ↗</a>
-        </div>
-      </div>
-    `;
-    container.appendChild(card);
-  });
-}
-
-function renderGitHubFull(repos) {
-  const tbody = document.getElementById('github-full-table-body');
-  if (!tbody) return;
-  tbody.innerHTML = '';
-  repos.forEach(r => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>
-        <a href="${r.url}" target="_blank" rel="noopener" style="color: #ffffff; font-weight: 600; text-decoration: none;">
-          ${r.name}
-        </a>
-      </td>
-      <td><span class="badge-tag ${getBadgeClass(r.category)}">${r.category}</span></td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #f59e0b;">★ ${r.stars}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: #c084fc; font-weight: 600;">${r.clones ? r.clones.toLocaleString() : '—'}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: #38bdf8;">${r.views ? r.views.toLocaleString() : '—'}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${r.forks}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">${r.open_issues}</td>
-      <td style="text-align: right;">
-        <a href="${r.url}" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">View Repo ↗</a>
-      </td>
-    `;
-    tbody.appendChild(tr);
-  });
-}
-
-function renderEventsTable(events) {
-  const tbody = document.getElementById('ga4-events-body');
-  if (!tbody) return;
-  tbody.innerHTML = '';
-  events.forEach(e => {
-    const category = getEventCategory(e.event);
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td><code style="color: #ffffff; font-weight: 600; font-size: 0.88rem;">${e.event}</code></td>
-      <td><span class="badge-tag ${getEventBadgeClass(category)}">${category}</span></td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #34d399;">${e.count.toLocaleString()}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${e.users.toLocaleString()}</td>
-    `;
-    tbody.appendChild(tr);
-  });
-}
-
-function renderCountriesTable(countries) {
-  const tbody = document.getElementById('ga4-countries-body');
-  if (!tbody) return;
-  tbody.innerHTML = '';
-  const totalUsers = countries.reduce((acc, c) => acc + (c.users || 0), 0) || 1;
-  countries.forEach(c => {
-    const sharePct = ((c.users / totalUsers) * 100).toFixed(1);
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td style="font-weight: 600; color: #ffffff;">${c.country}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: #34d399; font-weight: 600;">${c.users.toLocaleString()}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${c.sessions.toLocaleString()}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${c.views.toLocaleString()}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">${sharePct}%</td>
-    `;
-    tbody.appendChild(tr);
-  });
-}
-
-function renderDeviceOs(analytics) {
-  const devContainer = document.getElementById('devices-progress-container');
-  const osContainer = document.getElementById('os-progress-container');
-  if (!devContainer || !osContainer) return;
-
-  const devices = analytics.ga4?.devices || [];
-  const devTotal = devices.reduce((sum, d) => sum + d.users, 0) || 1;
-  const devColors = ['blue', 'green', 'amber', 'purple'];
-
-  devContainer.innerHTML = devices.map((d, i) => {
-    const pct = ((d.users / devTotal) * 100).toFixed(1);
-    const colorClass = devColors[i % devColors.length];
-    return `
-      <div class="stat-progress-row">
-        <div class="stat-progress-header">
-          <span style="font-weight: 600; text-transform: capitalize; color: #ffffff;">${d.category}</span>
-          <span style="font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">${d.users.toLocaleString()} users (${pct}%)</span>
-        </div>
-        <div class="stat-progress-track">
-          <div class="stat-progress-bar ${colorClass}" style="width: ${pct}%;"></div>
-        </div>
-      </div>
-    `;
-  }).join('');
-
-  const osList = analytics.ga4?.operating_systems || [];
-  const osTotal = osList.reduce((sum, o) => sum + o.users, 0) || 1;
-  const osColors = ['green', 'blue', 'purple', 'amber', 'blue', 'green'];
-
-  osContainer.innerHTML = osList.slice(0, 6).map((o, i) => {
-    const pct = ((o.users / osTotal) * 100).toFixed(1);
-    const colorClass = osColors[i % osColors.length];
-    return `
-      <div class="stat-progress-row">
-        <div class="stat-progress-header">
-          <span style="font-weight: 600; color: #ffffff;">${o.os}</span>
-          <span style="font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">${o.users.toLocaleString()} users (${pct}%)</span>
-        </div>
-        <div class="stat-progress-track">
-          <div class="stat-progress-bar ${colorClass}" style="width: ${pct}%;"></div>
-        </div>
-      </div>
-    `;
-  }).join('');
-}
-
-function renderPagesTable(pages) {
-  const pagesBody = document.getElementById('ga4-pages-body');
-  if (!pagesBody) return;
-  pagesBody.innerHTML = '';
-  pages.forEach(p => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td><code style="color: var(--accent3); font-size: 0.85rem;">${p.path}</code></td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${p.views.toLocaleString()}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${p.users.toLocaleString()}</td>
-    `;
-    pagesBody.appendChild(tr);
-  });
-}
-
-function renderSourcesTable(sources) {
-  const sourcesBody = document.getElementById('ga4-sources-body');
-  if (!sourcesBody) return;
-  sourcesBody.innerHTML = '';
-  sources.forEach(s => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td style="font-weight: 500;">${s.channel}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${s.sessions.toLocaleString()}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${s.users.toLocaleString()}</td>
-    `;
-    sourcesBody.appendChild(tr);
-  });
-}
-
-function renderChatsSummary(chats) {
-  if (!chats) return;
-  const totalTurns = chats.total_turns || 0;
-  const uniqueUsers = chats.unique_users || 0;
-  const medLat = chats.overall_median_latency_ms || 0;
-  const medLatSec = (medLat / 1000).toFixed(2);
-
-  const elTotal = document.getElementById('chats-stat-total');
-  const elUsers = document.getElementById('chats-stat-users');
-  const elSpeed = document.getElementById('chats-stat-speed');
-  const pillChats = document.getElementById('tab-pill-chats');
-
-  if (elTotal) elTotal.textContent = totalTurns.toLocaleString();
-  if (elUsers) elUsers.textContent = uniqueUsers.toLocaleString();
-  if (elSpeed) elSpeed.textContent = `${medLatSec}s`;
-  if (pillChats && totalTurns) {
-    pillChats.textContent = `${Math.round(totalTurns / 1000 * 10) / 10}K`;
-  }
-}
-
-function renderTraffic(analytics, chats) {
-  // Companion telemetry from chats-sync
-  renderChatsSummary(chats || {});
-
-  // AI Events
-  const events = (analytics.ga4?.events_summary || []).map(e => ({
-    ...e,
-    category: getEventCategory(e.event)
-  }));
-  renderEventsTable(events);
-
-  // Worldwide Countries
-  renderCountriesTable(analytics.ga4?.countries || []);
-
-  // Device & OS Distributions
-  renderDeviceOs(analytics);
-
-  // Pages
-  renderPagesTable(analytics.ga4?.top_pages || []);
-
-  // Sources
-  renderSourcesTable(analytics.ga4?.traffic_sources || []);
-}
-
-function renderQueriesTable(queries) {
-  const gscBody = document.getElementById('gsc-queries-body');
-  if (!gscBody) return;
-  gscBody.innerHTML = '';
-  queries.forEach(q => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td style="font-weight: 600; color: var(--text);">${q.query}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: #34d399; font-weight: 600;">${q.clicks.toLocaleString()}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${q.impressions.toLocaleString()}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">#${q.position}</td>
-    `;
-    gscBody.appendChild(tr);
-  });
-}
-
-function renderGscPagesTable(pages) {
-  const gscPagesBody = document.getElementById('gsc-pages-body');
-  if (!gscPagesBody) return;
-  gscPagesBody.innerHTML = '';
-  pages.forEach(p => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td><a href="${p.page}" target="_blank" rel="noopener" style="color: var(--accent3); text-decoration: none; font-size: 0.85rem;">${p.page.replace('https://waifuai.github.io', '') || '/'}</a></td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: #34d399; font-weight: 600;">${p.clicks.toLocaleString()}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${p.impressions.toLocaleString()}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace; color: var(--text-muted);">#${p.position}</td>
-    `;
-    gscPagesBody.appendChild(tr);
-  });
-}
-
-function renderSearch(analytics) {
-  renderQueriesTable(analytics.gsc?.top_queries || []);
-  renderGscPagesTable(analytics.gsc?.top_pages || []);
-}
-
-function renderReferrers(github) {
-  const refBody = document.getElementById('github-referrers-body');
-  if (!refBody) return;
-  refBody.innerHTML = '';
-  (github.top_referrers || []).forEach(ref => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td style="font-weight: 600;">${ref.referrer}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${ref.count.toLocaleString()}</td>
-      <td style="text-align: right; font-family: 'JetBrains Mono', monospace;">${ref.uniques.toLocaleString()}</td>
-    `;
-    refBody.appendChild(tr);
-  });
-}
-
-function initTelemetry(data) {
-  if (!data) return;
-  STATS_DATA = data;
-  renderOverview(data);
-  renderWebSimCards(data.websim?.top_projects || []);
-  renderGitHubFull(data.github?.all_repos || []);
-  renderTraffic(data.analytics || {}, data.chats || {});
-  renderSearch(data.analytics || {});
-  renderReferrers(data.github || {});
-
-  // Setup click-to-sort on every table
-  makeTableSortable('table-github', () => STATS_DATA.github?.all_repos || [], renderGitHubFull);
-  makeTableSortable('table-referrers', () => STATS_DATA.github?.top_referrers || [], renderReferrers);
-  makeTableSortable('table-events', () => (STATS_DATA.analytics?.ga4?.events_summary || []).map(e => ({ ...e, category: getEventCategory(e.event) })), renderEventsTable);
-  makeTableSortable('table-countries', () => STATS_DATA.analytics?.ga4?.countries || [], renderCountriesTable);
-  makeTableSortable('table-ga4-pages', () => STATS_DATA.analytics?.ga4?.top_pages || [], renderPagesTable);
-  makeTableSortable('table-ga4-sources', () => STATS_DATA.analytics?.ga4?.traffic_sources || [], renderSourcesTable);
-  makeTableSortable('table-gsc', () => STATS_DATA.analytics?.gsc?.top_queries || [], renderQueriesTable);
-  makeTableSortable('table-gsc-pages', () => STATS_DATA.analytics?.gsc?.top_pages || [], renderGscPagesTable);
-}
-
-// 1. Instant offline / file:// protocol initialization from stats.js
-if (window.WAIFU_STATS) {
-  initTelemetry(window.WAIFU_STATS);
-}
-
-// 2. Fetch stats.json dynamically if accessed via HTTP / HTTPS
-if (window.location.protocol.startsWith('http')) {
-  fetch('stats.json')
-    .then(res => res.json())
-    .then(data => initTelemetry(data))
-    .catch(err => console.log('HTTP stats fetch note:', err));
-}
-
-// Live Search Filters
-document.getElementById('websim-search')?.addEventListener('input', e => {
-  if (!STATS_DATA) return;
-  const q = e.target.value.toLowerCase().trim();
-  const all = [...(STATS_DATA.websim?.top_projects || [])].sort((a, b) => (b.likes || 0) - (a.likes || 0) || (b.views || 0) - (a.views || 0));
-  const filtered = all.filter(p => p.title.toLowerCase().includes(q) || (p.description && p.description.toLowerCase().includes(q)));
-  renderWebSimCards(filtered);
 });
 
-document.getElementById('github-search')?.addEventListener('input', e => {
-  if (!STATS_DATA) return;
-  const q = e.target.value.toLowerCase().trim();
-  const all = STATS_DATA.github?.all_repos || [];
-  const filtered = all.filter(r => r.name.toLowerCase().includes(q) || r.category.toLowerCase().includes(q));
-  renderGitHubFull(filtered);
-});
-
-document.getElementById('events-search')?.addEventListener('input', e => {
-  if (!STATS_DATA) return;
-  const q = e.target.value.toLowerCase().trim();
-  const all = (STATS_DATA.analytics?.ga4?.events_summary || []).map(e => ({ ...e, category: getEventCategory(e.event) }));
-  const filtered = all.filter(ev => ev.event.toLowerCase().includes(q) || ev.category.toLowerCase().includes(q));
-  renderEventsTable(filtered);
-});
-
-document.getElementById('countries-search')?.addEventListener('input', e => {
-  if (!STATS_DATA) return;
-  const q = e.target.value.toLowerCase().trim();
-  const all = STATS_DATA.analytics?.ga4?.countries || [];
-  const filtered = all.filter(c => c.country.toLowerCase().includes(q));
-  renderCountriesTable(filtered);
-});
-
-document.getElementById('gsc-search')?.addEventListener('input', e => {
-  if (!STATS_DATA) return;
-  const q = e.target.value.toLowerCase().trim();
-  const all = STATS_DATA.analytics?.gsc?.top_queries || [];
-  const filtered = all.filter(item => item.query.toLowerCase().includes(q));
-  renderQueriesTable(filtered);
+document.querySelectorAll('th[data-sort]').forEach(th => {
+  th.addEventListener('click', () => {
+    const table = th.closest('table');
+    const tbody = table.querySelector('tbody');
+    if (!tbody) return;
+    const idx = Array.from(th.parentElement.children).indexOf(th);
+    const numeric = th.dataset.sort === 'number';
+    let desc;
+    if (th.classList.contains('sorted-desc')) {
+      desc = false;
+    } else if (th.classList.contains('sorted-asc')) {
+      desc = true;
+    } else {
+      desc = numeric; // first click: numbers biggest-first, text A→Z
+    }
+    table.querySelectorAll('th').forEach(h => h.classList.remove('sorted-asc', 'sorted-desc'));
+    th.classList.add(desc ? 'sorted-desc' : 'sorted-asc');
+    const rows = Array.from(tbody.querySelectorAll('tr[data-row]'));
+    rows.sort((a, b) => {
+      const clean = el => (el ? el.textContent.trim().replace(/[,#%]/g, '') : '');
+      const ca = clean(a.children[idx]);
+      const cb = clean(b.children[idx]);
+      const cmp = numeric
+        ? (parseFloat(ca) || 0) - (parseFloat(cb) || 0)
+        : ca.localeCompare(cb);
+      return desc ? -cmp : cmp;
+    });
+    rows.forEach(r => tbody.appendChild(r));
+  });
 });
 </script>
 
