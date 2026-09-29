@@ -650,6 +650,20 @@ class CountdownsEngine {
     const container = document.getElementById("tab-countdowns");
     if (!container) return;
 
+    if (container.getAttribute("data-static-rendered") === "true") {
+      container.removeAttribute("data-static-rendered");
+      let storedHero = null;
+      try { storedHero = localStorage.getItem(this.starredStorageKey); } catch (e) { /* private mode */ }
+      const staticHeroCard = container.querySelector(".countdown-hero-card");
+      const staticHeroId = staticHeroCard ? staticHeroCard.getAttribute("data-hero-id") : null;
+      const heroMatchesStatic = !storedHero || this.starredHeroId === staticHeroId;
+      if (this.getCustomModels().length === 0 && heroMatchesStatic) {
+        this.attachEventListeners(container);
+        this.startLiveTimer();
+        return;
+      }
+    }
+
     const liveModels = window.allModels || [];
     const allModels = this.getAllModels();
     const filtered = this.getFilteredModels();

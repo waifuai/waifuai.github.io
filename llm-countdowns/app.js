@@ -81,7 +81,8 @@ function setupEventListeners() {
 
 async function initRadar() {
   const container = document.getElementById("tab-countdowns");
-  if (container) {
+  const isStaticRendered = container && container.getAttribute("data-static-rendered") === "true";
+  if (container && !isStaticRendered) {
     container.innerHTML = `
       <div class="empty-state" style="text-align: center; padding: 60px 20px;">
         <div class="empty-icon" style="font-size: 36px; margin-bottom: 12px;">⏳</div>
