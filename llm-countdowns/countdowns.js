@@ -51,6 +51,7 @@ class CountdownsEngine {
         for (const [tier, model] of Object.entries(models)) {
           this.labDefinitions.push({
             id: model.id,
+            slug: model.slug || null,
             creator: lab.name,
             creatorSlug: labSlug,
             matchSlugs: lab.matchSlugs || [labSlug],
@@ -79,6 +80,16 @@ class CountdownsEngine {
       console.error("[countdowns.js] Failed to load predictions.json:", err);
       // Engine will work with empty predictions — custom countdowns still function
     }
+  }
+
+  // Days since a baseline shipped. releaseDate is absolute; daysSince is the legacy frozen field.
+  baselineDaysSince(info) {
+    if (!info) return 25;
+    if (info.releaseDate) {
+      const t = Date.parse(info.releaseDate + "T00:00:00Z");
+      if (!isNaN(t)) return Math.max(0, Math.floor((Date.now() - t) / 86400000));
+    }
+    return info.daysSince ?? 25;
   }
 
   // Analyze live benchmark models and dynamically generate data-driven predictions
@@ -137,13 +148,13 @@ class CountdownsEngine {
       // Merge with September 2026 research baseline if definition specifies one or live dataset is empty/stale
       const baselineInfo = def.baselineInfo || researchBaselines[def.creatorSlug];
       let finalLatestName = def.baselineInfo ? def.baselineInfo.name : (latestModel ? latestModel.name : (baselineInfo ? baselineInfo.name : "Latest Flagship"));
-      let finalDaysSince = def.baselineInfo ? def.baselineInfo.daysSince : (daysSinceLast !== 999 ? daysSinceLast : (baselineInfo ? baselineInfo.daysSince : 25));
+      let finalDaysSince = def.baselineInfo ? this.baselineDaysSince(def.baselineInfo) : (daysSinceLast !== 999 ? daysSinceLast : this.baselineDaysSince(baselineInfo));
       let finalIntel = def.baselineInfo ? def.baselineInfo.intel : ((currentIntel !== null && currentIntel > 0) ? currentIntel : (baselineInfo ? baselineInfo.intel : null));
       let finalSpeed = def.baselineInfo && def.baselineInfo.speed ? def.baselineInfo.speed : (currentSpeed || null);
 
       if (baselineInfo && !def.baselineInfo && (daysSinceLast === 999 || (latestDateStr && new Date(latestDateStr).getFullYear() < 2026))) {
         finalLatestName = baselineInfo.name;
-        finalDaysSince = baselineInfo.daysSince;
+        finalDaysSince = this.baselineDaysSince(baselineInfo);
         if (!finalIntel) finalIntel = baselineInfo.intel;
       }
 
@@ -217,6 +228,7 @@ class CountdownsEngine {
 
       return {
         id: def.id,
+        slug: def.slug,
         name: def.predictedName,
         creator: def.creator,
         creatorSlug: def.creatorSlug,
@@ -567,7 +579,7 @@ class CountdownsEngine {
     const origin = window.location.origin;
     const basePath = window.location.pathname.replace(/\/(index\.html)?$/, "").replace(/\/+$/, "");
     const labSlug = (model.creatorSlug || "xai").toLowerCase();
-    const directUrl = `${origin}${basePath}/${labSlug}/`;
+    const directUrl = model.slug ? `${origin}${basePath}/${labSlug}/${model.slug}/` : `${origin}${basePath}/${labSlug}/`;
     const text = `⏳ ${model.name}${intelSnippet} by ${model.creator} is estimated to drop in ~${rem.days}d ${rem.hours}h (${model.targetWindowLabel})! Track live on LLM Countdowns: ${directUrl}`;
 
     try {
@@ -685,6 +697,16 @@ class CountdownsEngine {
       topLiveModel = [...liveModels].sort((a, b) => (b.scores?.intelligence || 0) - (a.scores?.intelligence || 0))[0];
     }
 
+    const frontierBaseline = Object.values(this.researchBaselines)
+      .filter(b => b && b.intel)
+      .sort((a, b) => b.intel - a.intel)[0];
+    const frontierText = frontierBaseline
+      ? `${frontierBaseline.intel} (${frontierBaseline.name.split(" (")[0]})`
+      : "n/a";
+    const fastest = allModels
+      .filter(m => m.isPreset && m.analysis && m.analysis.avgCadenceDays)
+      .sort((a, b) => a.analysis.avgCadenceDays - b.analysis.avgCadenceDays)[0];
+
     // Static Analysis Overview Banner
     const bannerHtml = `
       <div class="radar-analytics-banner">
@@ -700,7 +722,7 @@ class CountdownsEngine {
             <div class="radar-insight-lbl">Tracked Launches</div>
           </div>
           <div class="radar-insight-box">
-            <div class="radar-insight-num" style="color: var(--accent-green);">58.0 (Claude Opus 5.5)</div>
+            <div class="radar-insight-num" style="color: var(--accent-green);">${frontierText}</div>
             <div class="radar-insight-lbl">Current Benchmark Frontier</div>
           </div>
           <div class="radar-insight-box">
@@ -708,8 +730,8 @@ class CountdownsEngine {
             <div class="radar-insight-lbl">Pipeline Breakdown</div>
           </div>
           <div class="radar-insight-box">
-            <div class="radar-insight-num" style="color: #ffb300;">~21 Days</div>
-            <div class="radar-insight-lbl">Fastest Lab Cycle (Google Flash)</div>
+            <div class="radar-insight-num" style="color: #ffb300;">${fastest ? `~${fastest.analysis.avgCadenceDays} Days` : "n/a"}</div>
+            <div class="radar-insight-lbl">Fastest Lab Cycle${fastest ? ` (${fastest.creator})` : ""}</div>
           </div>
         </div>
       </div>
@@ -747,7 +769,7 @@ class CountdownsEngine {
           </div>
 
           <div class="hero-title-group">
-            <h2 class="hero-model-name">${heroModel.name}</h2>
+            <h2 class="hero-model-name">${heroModel.slug ? `<a href="${heroModel.creatorSlug}/${heroModel.slug}/" style="color: inherit; text-decoration: none;">${heroModel.name} ↗</a>` : heroModel.name}</h2>
             <div class="hero-creator-name">${heroModel.creator} • <span style="color: var(--accent-cyan); font-weight: 600;">${heroModel.targetWindowLabel}</span> ${projBadge}</div>
           </div>
 
@@ -889,15 +911,15 @@ class CountdownsEngine {
             <div class="card-top-row">
               <div>
                 <div class="card-creator-line">
-                  <span class="card-creator-tag">${model.creator}</span>
+                  ${model.isPreset ? `<a class="card-creator-tag" href="${model.creatorSlug}/" style="text-decoration: none;">${model.creator}</a>` : `<span class="card-creator-tag">${model.creator}</span>`}
                   <span class="model-tier-badge ${model.category || 'frontier'}">
                     ${model.category === 'light' ? '⚡ LIGHT / FLASH' : model.category === 'reasoning' ? '🧠 REASONING' : '👑 FRONTIER'}
                   </span>
                 </div>
                 <h3 class="card-model-title">
-                  <a href="#${model.id}" class="card-anchor-link" title="Direct link to #${model.id}">
+                  <a href="${model.slug ? `${model.creatorSlug}/${model.slug}/` : `#${model.id}`}" class="card-anchor-link" title="${model.slug ? "Open the shareable page for this model" : `Direct link to #${model.id}`}">
                     ${model.name}
-                    <span class="anchor-symbol">#</span>
+                    <span class="anchor-symbol">${model.slug ? "↗" : "#"}</span>
                   </a>
                 </h3>
               </div>
