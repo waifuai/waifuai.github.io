@@ -1,60 +1,60 @@
 {
-  "lastUpdated": "2026-09-26",
+  "lastUpdated": "2026-09-30",
   "researchBaselines": {
     "openai": {
-      "name": "GPT-6 Sol / Luna (Half-Price Public Tier)",
-      "intel": 48.0,
-      "daysSince": 4
+      "name": "GPT-6.1 Sol (DevDay, 0.9 Under GPT-6 Astra)",
+      "intel": 51.8,
+      "daysSince": 1
     },
     "google": {
       "name": "Gemini 3.8 Flash (Reasoning Steps)",
-      "intel": 41.0,
-      "daysSince": 24
+      "intel": 40.9,
+      "daysSince": 28
     },
     "anthropic": {
-      "name": "Claude Opus 5.5 (AA Index Leader, 58)",
-      "intel": 58.0,
-      "daysSince": 4
+      "name": "Claude Opus 5.5 (AA Index Leader, 57.6)",
+      "intel": 57.6,
+      "daysSince": 8
     },
     "meta": {
       "name": "Muse Spark 1.3 (Frontier Coding, 20% Fewer Tool Calls)",
-      "intel": 48.0,
-      "daysSince": 24
+      "intel": 48.1,
+      "daysSince": 28
     },
     "xai": {
       "name": "Grok 4.7 (Larger Base, Longer RL Run)",
-      "intel": 52.0,
-      "daysSince": 5
+      "intel": 46.4,
+      "daysSince": 9
     },
     "alibaba": {
       "name": "Qwen3.8-Max-0902 (2.4T Params)",
-      "intel": 47.0,
-      "daysSince": 24
+      "intel": 45.4,
+      "daysSince": 28
     },
     "deepseek": {
       "name": "DeepSeek V4.1 Flash (552B MoE, Beats V4 Pro)",
-      "intel": 40.0,
-      "daysSince": 16
+      "intel": 39.5,
+      "daysSince": 20
     },
     "mistral": {
       "name": "Mistral Medium 3.5 (Remote Coding Agents)",
-      "intel": 38.0,
-      "daysSince": 18
+      "intel": 14.2,
+      "daysSince": 154
     },
     "kimi": {
       "name": "Kimi K3 (2.8T, 1M Context, Open-Weight)",
-      "intel": 60.0,
-      "daysSince": 72
+      "intel": 43.6,
+      "daysSince": 76
     },
     "xiaomi": {
       "name": "MiMo-V2.6-Pro (1.02T MoE, 42B Active)",
-      "intel": 45.0,
-      "daysSince": 4
+      "intel": 46.3,
+      "daysSince": 8
     },
     "minimax": {
       "name": "MiniMax M3 (427B MoE / MSA, 1M Context)",
-      "intel": 43.5,
-      "daysSince": 117
+      "intel": 29.2,
+      "daysSince": 121
     }
   },
   "defaultCadences": {
@@ -72,16 +72,16 @@
   },
   "defaultIntel": {
     "anthropic": 58.0,
-    "openai": 50.0,
+    "openai": 54.0,
     "meta": 50.0,
-    "xai": 54.0,
+    "xai": 49.0,
     "google": 44.0,
-    "alibaba": 49.0,
+    "alibaba": 48.0,
     "deepseek": 43.0,
-    "mistral": 40.0,
-    "kimi": 61.0,
+    "mistral": 17.0,
+    "kimi": 46.0,
     "xiaomi": 47.0,
-    "minimax": 46.0
+    "minimax": 32.0
   },
   "labs": {
     "xai": {
@@ -106,9 +106,9 @@
           "cadenceDays": 32,
           "baseline": {
             "name": "Grok 4.7 (Larger Base, Longer RL Run)",
-            "intel": 52.0,
-            "daysSince": 5,
-            "speed": 135
+            "intel": 46.4,
+            "daysSince": 9,
+            "speed": 83
           },
           "features": [
             "2.5 trillion parameter model on xAI's entirely new C++ training stack, pre-training completed week of Sept 14 and moving into reinforcement learning",
@@ -143,9 +143,9 @@
           "cadenceDays": 21,
           "baseline": {
             "name": "Gemini 3.8 Flash (Reasoning Steps)",
-            "intel": 41.0,
-            "daysSince": 24,
-            "speed": 293
+            "intel": 40.9,
+            "daysSince": 28,
+            "speed": 230
           },
           "features": [
             "Google shipped four Flash models in under four months (3.6 Jul 21, 3.7 Aug 13, 3.8 Sep 2) but has not cut another since Sept 2",
@@ -200,9 +200,9 @@
           "cadenceDays": 35,
           "baseline": {
             "name": "Claude Haiku 4.5",
-            "intel": 40.0,
-            "daysSince": 352,
-            "speed": 210
+            "intel": 16.9,
+            "daysSince": 356,
+            "speed": 120
           },
           "features": [
             "Anthropic's fastest and most cost-effective tier, still succeeding Claude Haiku 4.5",
@@ -214,7 +214,7 @@
         },
         "frontier": {
           "id": "anthropic-claude-6",
-          "predictedName": "Claude 6 (Mythos-Class) / Fable 5.2",
+          "predictedName": "Claude 6 (Mythos-Class) / Mythos 6",
           "category": "frontier",
           "icon": "🟣",
           "stageColor": "#9d4edd",
@@ -226,12 +226,40 @@
           "explicitTargetDate": "2026-12-08T17:00:00.000Z",
           "explicitWindowLabel": "Early Dec 2026 (Q4 Frontier Window)",
           "features": [
-            "Follows Claude Opus 5.5 (Sept 22, 2026), the first model in the Claude 5.5 family and the current Intelligence Index leader at 58",
+            "Follows Claude Opus 5.5 (Sept 22, 2026) and Sonnet 5.5 (Sept 28), with Opus 5.5 the current Intelligence Index leader at 57.6",
             "Escalation of adaptive thinking: agents self-managing reasoning budgets across ultra-long-horizon workflows",
             "Minimized error propagation across multi-step autonomous agent execution",
             "Project Glasswing trusted access expansion for cybersecurity and life sciences research"
           ],
-          "source": "Artificial Analysis Intelligence Index v4.3.2 & Anthropic Claude 5.5 launch (Sept 22, 2026)"
+          "source": "Artificial Analysis API v2 (Index v4.3.2) & Anthropic Claude 5.5 launches (Sept 22-28, 2026)"
+        },
+        "fable": {
+          "id": "anthropic-claude-fable-5-5",
+          "predictedName": "Claude Fable 5.5 / Mythos 5.5",
+          "category": "frontier",
+          "icon": "🟣",
+          "stageColor": "#9d4edd",
+          "status": "Opus 5.5 + Sonnet 5.5 Shipped • Fable Tier Next",
+          "confidence": "Medium",
+          "confidenceScore": 74,
+          "hypeScore": 96,
+          "expectedGain": 7.0,
+          "explicitTargetDate": "2026-11-05T17:00:00.000Z",
+          "explicitWindowLabel": "Early Nov 2026 (Claude 5.5 Family Rollout)",
+          "cadenceDays": 60,
+          "baseline": {
+            "name": "Claude Fable 5.1 (Max Effort)",
+            "intel": 53.4,
+            "daysSince": 29,
+            "speed": 69
+          },
+          "features": [
+            "Opus 5.5 (Sept 22, 57.6) and Sonnet 5.5 (Sept 28, 56) both already outscore Fable 5.1 (53.4), so Fable 5.5 is the missing top tier of the Claude 5.5 family",
+            "Would keep the Fable 5.1 pattern: one model with two safeguard tiers, generally available Fable plus Mythos behind trusted access",
+            "GPT-6.1 Sol (51.8, Sept 29) now sits under two points behind Fable 5.1 at a far lower price, so the pressure is on cost per task as well as score",
+            "Fable 5.1 cut cache-read prices 75% but still cost about 20% more per task than Fable 5; expect another round of efficiency work"
+          ],
+          "source": "Anthropic Fable 5.1 / Mythos 5.1 launch (Sept 1, 2026), Claude Opus 5.5 launch (Sept 22, 2026) & Artificial Analysis Index v4.3.2"
         }
       }
     },
@@ -258,9 +286,9 @@
           "cadenceDays": 25,
           "baseline": {
             "name": "Qwen3.8-Max-0902 (2.4T Params)",
-            "intel": 47.0,
-            "daysSince": 24,
-            "speed": 195
+            "intel": 45.4,
+            "daysSince": 28,
+            "speed": 40
           },
           "features": [
             "Alibaba confirmed at its full-stack AI conference that Qwen 4 is currently in training, with Qwen 4.5 and Qwen 5 on the published roadmap",
@@ -286,9 +314,9 @@
           "cadenceDays": 25,
           "baseline": {
             "name": "Qwen3.8-Flash-Next (Architecture Preview)",
-            "intel": 45.0,
-            "daysSince": 31,
-            "speed": 195
+            "intel": 39.8,
+            "daysSince": 35,
+            "speed": 53
           },
           "features": [
             "Ultra-sparse MoE tier succeeding the Qwen3.8-Flash-Next architecture preview of Aug 26, 2026",
@@ -322,9 +350,9 @@
           "cadenceDays": 52,
           "baseline": {
             "name": "Mistral Medium 3.5 (Remote Coding Agents)",
-            "intel": 38.0,
-            "daysSince": 18,
-            "speed": 170
+            "intel": 14.2,
+            "daysSince": 154,
+            "speed": 168
           },
           "features": [
             "European sovereign AI flagship powered by Mistral's €4B pan-European data center initiative",
@@ -351,7 +379,7 @@
           "baseline": {
             "name": "Codestral 25.08",
             "intel": 39.0,
-            "daysSince": 49,
+            "daysSince": 53,
             "speed": 170
           },
           "features": [
@@ -376,7 +404,7 @@
           "category": "frontier",
           "icon": "🟢",
           "stageColor": "#10a37f",
-          "status": "Internal Model Training Since Aug 28 • Navier-Stokes Claim",
+          "status": "GPT-6.1 Astra Scrapped • Internal Model Training Since Aug 28",
           "confidence": "High",
           "confidenceScore": 85,
           "hypeScore": 99,
@@ -387,9 +415,10 @@
             "OpenAI stated it has trained an internal model 'significantly more capable than GPT-6 Astra' since Aug 28, 2026",
             "That internal model has resolved 100+ open mathematics problems since training began, announced with a Navier-Stokes Millennium Prize result",
             "Mixture of Agents framework with modular expert cores, 10M token context, and 40% inference cost reduction",
-            "Public baseline is the half-price GPT-6 Sol / Luna tier that shipped Sept 22, 2026, plus GPT-6 Astra on the Coding Agent Index"
+            "OpenAI dropped the planned October GPT-6.1 Astra launch after the model regressed on internal alignment tests, so the next Astra-class step now points at GPT-7",
+            "Public baseline is now GPT-6.1 Sol (DevDay, Sept 29): 51.8 on the Intelligence Index, 0.9 under GPT-6 Astra (52.7), at $2/$10 per million tokens and ~1/5 of Astra's price"
           ],
-          "source": "OpenAI Navier-Stokes announcement (Sept 8, 2026) & Stargate buildout disclosures"
+          "source": "OpenAI DevDay GPT-6.1 Sol launch (Sept 29, 2026), Navier-Stokes announcement (Sept 8, 2026) & GPT-6.1 Astra cancellation reports"
         }
       }
     },
@@ -415,9 +444,9 @@
           "cadenceDays": 28,
           "baseline": {
             "name": "Muse Spark 1.3 (Frontier Coding)",
-            "intel": 48.0,
-            "daysSince": 24,
-            "speed": 204
+            "intel": 48.1,
+            "daysSince": 28,
+            "speed": 196
           },
           "features": [
             "Meta listed an open-weights release alongside Muse Spark 1.3 on Sept 2 and has not delivered it as of mid-Sept",
@@ -443,9 +472,9 @@
           "cadenceDays": 28,
           "baseline": {
             "name": "Muse Spark 1.3 (Frontier Coding)",
-            "intel": 48.0,
-            "daysSince": 24,
-            "speed": 204
+            "intel": 48.1,
+            "daysSince": 28,
+            "speed": 196
           },
           "features": [
             "Successor to Muse Spark 1.3 (Sept 2, 2026), the fourth Muse Spark release in five months",
@@ -480,14 +509,14 @@
           "cadenceDays": 52,
           "baseline": {
             "name": "Kimi K3 (2.8T, 1M Context)",
-            "intel": 60.0,
-            "daysSince": 72,
-            "speed": 200
+            "intel": 43.6,
+            "daysSince": 76,
+            "speed": 40
           },
           "features": [
             "No official K4 announcement from Moonshot AI as of late September 2026",
             "Kimi K3 became generally available on Amazon Bedrock on Sept 18, 2026 — the first open-weight 2.8T model on the platform, under a revenue-sharing deal",
-            "K3 scored 60 on the Artificial Analysis Intelligence Index, among the highest-scoring open-weight models measured",
+            "K3 (max) scores 43.6 on the Artificial Analysis Intelligence Index v4.3.2, still one of the strongest open-weight models measured",
             "K4 speculation traces to a single late-July investigation reporting Moonshot seeking additional Nvidia Blackwell-class capacity"
           ],
           "source": "Amazon Bedrock Kimi K3 GA (Sept 18, 2026) & Artificial Analysis Kimi K3 model page"
@@ -516,9 +545,9 @@
           "cadenceDays": 40,
           "baseline": {
             "name": "DeepSeek V4.1 Flash (552B MoE)",
-            "intel": 40.0,
-            "daysSince": 16,
-            "speed": 427
+            "intel": 39.5,
+            "daysSince": 20,
+            "speed": 220
           },
           "features": [
             "DeepSeek announced V4 Pro API retirement on Sept 14, then reversed it days later citing user demand — the flagship model ID stays live",
@@ -544,9 +573,9 @@
           "cadenceDays": 55,
           "baseline": {
             "name": "DeepSeek V4.1 Flash (552B MoE)",
-            "intel": 40.0,
-            "daysSince": 16,
-            "speed": 427
+            "intel": 39.5,
+            "daysSince": 20,
+            "speed": 220
           },
           "features": [
             "Incremental successor to V4.1 Flash, targeting next-generation Ascend 950DT compute clusters",
@@ -572,13 +601,13 @@
           "cadenceDays": 70,
           "baseline": {
             "name": "DeepSeek V4.1 Flash (552B MoE)",
-            "intel": 40.0,
-            "daysSince": 16,
-            "speed": 427
+            "intel": 39.5,
+            "daysSince": 20,
+            "speed": 220
           },
           "features": [
             "Foundational architectural leap engineered for personal autonomous agents and long-horizon tool execution",
-            "Multi-Head Latent Attention paired with DeepSeekMoE delivering inference throughput above 400 tok/s",
+            "Multi-Head Latent Attention paired with DeepSeekMoE delivering ~220 tok/s on V4.1 Flash (AA measured)",
             "Deep test-time compute scaling and self-verifying reinforcement learning at open-source commodity pricing",
             "890-byte KV cache footprint gives DeepSeek a structural cost advantage at long context"
           ],
@@ -609,9 +638,9 @@
           "cadenceDays": 40,
           "baseline": {
             "name": "MiMo-V2.6-Pro (1.02T MoE, 42B Active)",
-            "intel": 45.0,
-            "daysSince": 4,
-            "speed": 165
+            "intel": 46.3,
+            "daysSince": 8,
+            "speed": 45
           },
           "features": [
             "Follows MiMo-V2.6-Pro/Flash shipped Sept 22-23, 2026 — 1.02T total params with 42B active, 1M context, full multimodal",
@@ -646,9 +675,9 @@
           "cadenceDays": 45,
           "baseline": {
             "name": "MiniMax M3 (427B MoE / MSA, 1M Context)",
-            "intel": 43.5,
-            "daysSince": 117,
-            "speed": 185
+            "intel": 29.2,
+            "daysSince": 121,
+            "speed": 121
           },
           "features": [
             "2.7-trillion-parameter sparse MoE succeeding 427B MiniMax M3, reported by The Information on July 8, 2026 with a Q3 open-source target",
