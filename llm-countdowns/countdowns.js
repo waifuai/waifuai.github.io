@@ -17,7 +17,6 @@ class CountdownsEngine {
     const heroMigrationMap = {
       "anthropic-mythos-5-5": "anthropic-claude-6",
       "openai-gpt-6-5-orion": "openai-gpt-7",
-      "meta-muse-spark-1-4": "meta-muse-spark-avocado",
       "deepseek-v4-flash": "deepseek-v4-1-pro",
       "xai-grok-4-8": "xai-grok-4-7"
     };

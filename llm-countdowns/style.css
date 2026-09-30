@@ -37,6 +37,10 @@
   padding: 0;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Text stays selectable so people can copy names and dates; only controls opt out. */
+button, select, .filter-chip, .sub-pill, .tier-pill {
   user-select: none;
 }
 

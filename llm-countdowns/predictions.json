@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-30",
+  "lastUpdated": "2026-10-01",
   "researchBaselines": {
     "openai": {
       "name": "GPT-6.1 Sol (DevDay, 0.9 Under GPT-6 Astra)",
@@ -439,20 +439,20 @@
         "meta"
       ],
       "models": {
-        "light": {
-          "id": "meta-muse-glimmer-2",
-          "slug": "muse-glimmer-2",
-          "predictedName": "Muse Spark 1.3 Open Weights / Muse Glimmer 2",
-          "category": "light",
+        "spark": {
+          "id": "meta-muse-spark-1-4",
+          "slug": "muse-spark-1-4",
+          "predictedName": "Muse Spark 1.4",
+          "category": "frontier",
           "icon": "🟦",
           "stageColor": "#00e676",
-          "status": "Open Weights Promised 'Soon' • Still Unreleased (Sept 16)",
+          "status": "Teased 'Coming Soon' • OpenCode Listing Spotted",
           "confidence": "Medium",
-          "confidenceScore": 76,
-          "hypeScore": 90,
-          "expectedGain": 3.0,
-          "explicitTargetDate": "2026-10-20T17:00:00.000Z",
-          "explicitWindowLabel": "Late Oct 2026 (Overdue Open-Weights Drop)",
+          "confidenceScore": 72,
+          "hypeScore": 92,
+          "expectedGain": 5.0,
+          "explicitTargetDate": "2026-10-22T17:00:00.000Z",
+          "explicitWindowLabel": "Late Oct 2026 (Overdue Monthly Cycle)",
           "cadenceDays": 28,
           "baseline": {
             "name": "Muse Spark 1.3 (Frontier Coding)",
@@ -461,12 +461,12 @@
             "speed": 196
           },
           "features": [
-            "Meta listed an open-weights release alongside Muse Spark 1.3 on Sept 2 and has not delivered it as of mid-Sept",
-            "Community trackers publicly calling out the missing weights as a broken promise from the open-weight strategy",
-            "Muse Spark 1.3 reports 20% fewer tool calls than 1.2, trained to stop wasting tokens and ask for help more often",
-            "Would extend Meta's Apache 2.0 edge-agent line alongside the Muse Glimmer 30B family"
+            "Meta called its next major model 'coming soon' in a keynote, and a muse-spark-1.4-contributor entry has appeared on OpenCode's model data page",
+            "Muse Spark has shipped roughly monthly (1.1 Jul 9, 1.2 Aug 5, 1.3 Sep 2), so a ~28 day cycle put 1.4 due around Sept 30",
+            "Each point release added 6-9 points on the Intelligence Index (1.1 33.7, 1.2 39.6, 1.3 48.1)",
+            "Not confirmed by Meta: no model card, benchmarks, pricing or API docs yet; prediction markets put ~48% on release by Oct 21 and ~89% by Nov 1"
           ],
-          "source": "Meta AI Research Muse Spark 1.3 release (Sept 2, 2026) & open-weights delay tracking (Sept 16)"
+          "source": "OpenCode data page listing, Meta keynote 'coming soon' tease & Manifold Muse Spark 1.4 release-date market (Oct 2026)"
         },
         "frontier": {
           "id": "meta-muse-spark-avocado",
