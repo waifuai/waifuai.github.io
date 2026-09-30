@@ -93,6 +93,7 @@
         "frontier": {
           "id": "xai-grok-4-8",
           "slug": "grok-4-8",
+          "shortName": "Grok 4.8",
           "predictedName": "Grok 4.8 (2.5T C++ Stack) / Grok 4.9",
           "category": "frontier",
           "icon": "🟠",
@@ -131,6 +132,7 @@
         "light": {
           "id": "google-gemini-3-9-flash",
           "slug": "gemini-3-9-flash",
+          "shortName": "Gemini 3.9 Flash",
           "predictedName": "Gemini 3.9 Flash / Gemini 4 Flash-Lite",
           "category": "light",
           "icon": "⚡",
@@ -160,6 +162,7 @@
         "frontier": {
           "id": "google-gemini-4-0",
           "slug": "gemini-4",
+          "shortName": "Gemini 4",
           "predictedName": "Gemini 4.0 (Post-Training) / Gemini 4 Ultra",
           "category": "frontier",
           "icon": "🔵",
@@ -190,6 +193,7 @@
         "light": {
           "id": "anthropic-claude-5-haiku",
           "slug": "claude-haiku-5",
+          "shortName": "Claude Haiku 5",
           "predictedName": "Claude Haiku 5 (1M Context & Adaptive Thinking)",
           "category": "light",
           "icon": "⚡",
@@ -219,6 +223,7 @@
         "frontier": {
           "id": "anthropic-claude-6",
           "slug": "claude-6",
+          "shortName": "Claude 6",
           "predictedName": "Claude 6 (Mythos-Class) / Mythos 6",
           "category": "frontier",
           "icon": "🟣",
@@ -241,6 +246,7 @@
         "fable": {
           "id": "anthropic-claude-fable-5-5",
           "slug": "claude-fable-5-5",
+          "shortName": "Claude Fable 5.5",
           "predictedName": "Claude Fable 5.5 / Mythos 5.5",
           "category": "frontier",
           "icon": "🟣",
@@ -279,6 +285,7 @@
         "frontier": {
           "id": "alibaba-qwen-4-max",
           "slug": "qwen-4-max",
+          "shortName": "Qwen 4 Max",
           "predictedName": "Qwen 4 Max / Qwen 4 (Gated DeltaNet MoE)",
           "category": "frontier",
           "icon": "🌐",
@@ -308,6 +315,7 @@
         "light": {
           "id": "alibaba-qwen-4-flash",
           "slug": "qwen-4-flash",
+          "shortName": "Qwen 4 Flash",
           "predictedName": "Qwen 4 Flash (Sparse MoE, Ultra-Fast Edge)",
           "category": "light",
           "icon": "⚡",
@@ -345,6 +353,7 @@
         "frontier": {
           "id": "mistral-large-4",
           "slug": "mistral-large-4",
+          "shortName": "Mistral Large 4",
           "predictedName": "Mistral Large 4 / Mistral Vibe 2",
           "category": "frontier",
           "icon": "🔴",
@@ -374,6 +383,7 @@
         "light": {
           "id": "mistral-ministral-4",
           "slug": "ministral-4",
+          "shortName": "Codestral 25.10",
           "predictedName": "Codestral 25.10 / Ministral 4 (Edge Agent)",
           "category": "light",
           "icon": "🔴",
@@ -411,6 +421,7 @@
         "frontier": {
           "id": "openai-gpt-7",
           "slug": "gpt-7",
+          "shortName": "GPT-7",
           "predictedName": "GPT-7 (Modular Expert Cores) / Internal Math Model",
           "category": "frontier",
           "icon": "🟢",
@@ -442,6 +453,7 @@
         "spark": {
           "id": "meta-muse-spark-1-4",
           "slug": "muse-spark-1-4",
+          "shortName": "Muse Spark 1.4",
           "predictedName": "Muse Spark 1.4",
           "category": "frontier",
           "icon": "🟦",
@@ -471,6 +483,7 @@
         "frontier": {
           "id": "meta-muse-spark-avocado",
           "slug": "muse-spark-2",
+          "shortName": "Muse Spark 2",
           "predictedName": "Muse Spark 2.0 / Codename 'Avocado'",
           "category": "frontier",
           "icon": "🟦",
@@ -509,6 +522,7 @@
         "frontier": {
           "id": "kimi-k4",
           "slug": "kimi-k4",
+          "shortName": "Kimi K4",
           "predictedName": "Kimi K4 (Successor to 2.8T K3)",
           "category": "frontier",
           "icon": "🌙",
@@ -546,6 +560,7 @@
         "frontier": {
           "id": "deepseek-v4-1-pro",
           "slug": "deepseek-v4-1-pro",
+          "shortName": "DeepSeek V4.1 Pro",
           "predictedName": "DeepSeek V4.1 Pro (Full Frontier MoE)",
           "category": "frontier",
           "icon": "👑",
@@ -575,6 +590,7 @@
         "light": {
           "id": "deepseek-v4-2-flash",
           "slug": "deepseek-v4-2-flash",
+          "shortName": "DeepSeek V4.2 Flash",
           "predictedName": "DeepSeek-V4.2 Flash (Ascend 950DT / Distilled Edge)",
           "category": "light",
           "icon": "⚡",
@@ -604,6 +620,7 @@
         "reasoning": {
           "id": "deepseek-v5-r3",
           "slug": "deepseek-v5",
+          "shortName": "DeepSeek V5",
           "predictedName": "DeepSeek V5 / DeepSeek-R3 (Personal Agent Core)",
           "category": "reasoning",
           "icon": "🧠",
@@ -642,6 +659,7 @@
         "light": {
           "id": "xiaomi-mimo-v2-7",
           "slug": "mimo-v2-7",
+          "shortName": "MiMo-V2.7",
           "predictedName": "MiMo-V2.7 (Full-Modal, Open Commercial)",
           "category": "light",
           "icon": "🧡",
@@ -680,6 +698,7 @@
         "frontier": {
           "id": "minimax-m3-pro-next",
           "slug": "minimax-m3-pro",
+          "shortName": "MiniMax M3 Pro",
           "predictedName": "MiniMax M3 Pro (Codename 'Next') / 2.7T Flagship",
           "category": "frontier",
           "icon": "🪐",
