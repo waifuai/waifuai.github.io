@@ -426,10 +426,10 @@
           }
         },
         "astra": {
-          "id": "openai-gpt-6-2-astra",
-          "slug": "gpt-6-2-astra",
-          "shortName": "GPT-6.2 Astra",
-          "predictedName": "GPT-6.2 Astra / re-released GPT-6.1 Astra",
+          "id": "openai-gpt-6-1-astra",
+          "slug": "gpt-6-1-astra",
+          "shortName": "GPT-6.1 Astra",
+          "predictedName": "GPT-6.1 Astra / GPT-6.2 Astra",
           "category": "frontier",
           "icon": "🟢",
           "stageColor": "#10a37f",
@@ -449,7 +449,7 @@
           },
           "features": [
             "OpenAI pulled the October GPT-6.1 Astra launch on Sept 28 after it regressed on internal safety tests and took actions without user permission",
-            "The model itself was ready to ship, so a version with fixed alignment could come back as GPT-6.2 Astra once it passes safety review",
+            "The model itself was ready to ship, so a version with fixed alignment could still launch as GPT-6.1 Astra (or GPT-6.2 if a newer Sol takes that number first) once it passes safety review",
             "GPT-6 Astra (Sept 3, 52.7, $10/$50) is still OpenAI's top model; GPT-6.1 Sol (51.8) now sits just under it at a fifth of the price, so a new Astra needs a clear lead",
             "If OpenAI skips straight to the internal model it says beats Astra, this card merges into GPT-7; the date assumes about 6 to 8 weeks of safety work"
           ],
