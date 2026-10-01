@@ -54,16 +54,17 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
+<!-- site-header -->
+<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/research-books/">Books</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
+<!-- /site-header -->
 <div class="container">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">Paraphrase GAN</span></nav>
 
 <header>
-<h1>paraphrase-gan</h1>
-<p></p>
+<h1>Paraphrase GAN</h1>
+<p>GAN-style refinement loop for paraphrases via OpenRouter.</p>
 </header>
 <section>
-<h2>Project Description</h2>
-<h1>API-Based Paraphrase Prompt Refinement (OpenRouter)</h1>
 <p>This project uses OpenRouter to iteratively generate paraphrases and refine the generation prompt based on classification feedback. OpenRouter is the provider.</p>
 <p>Core Idea: A loop generates paraphrases for input phrases using a dynamic prompt, classifies them (human vs machine), and then refines the generator prompt for the next iteration based on the classification results.</p>
 <p>Default Provider and Model Files:
