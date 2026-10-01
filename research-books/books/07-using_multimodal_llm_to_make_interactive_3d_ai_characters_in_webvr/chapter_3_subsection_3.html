@@ -14,20 +14,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/research-books/books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/chapter_3_subsection_3.html">
-<meta name="description" content="Chapter 3 Subsection 3 | WaifuAI">
-<meta property="og:title" content="Chapter 3 Subsection 3">
-<meta property="og:description" content="Chapter 3 Subsection 3 | WaifuAI">
+<meta name="description" content="This section delves into the crucial aspect of crafting believable and engaging character responses within a webVR environment. Simply providing an LLM…">
+<meta property="og:title" content="3.3 Generating Realistic Character Responses based on Context | Interactive 3D Characters in WebVR">
+<meta property="og:description" content="This section delves into the crucial aspect of crafting believable and engaging character responses within a webVR environment. Simply providing an LLM…">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/research-books/books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/chapter_3_subsection_3.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Chapter 3 Subsection 3">
-<meta name="twitter:description" content="Chapter 3 Subsection 3 | WaifuAI">
+<meta name="twitter:title" content="3.3 Generating Realistic Character Responses based on Context | Interactive 3D Characters in WebVR">
+<meta name="twitter:description" content="This section delves into the crucial aspect of crafting believable and engaging character responses within a webVR environment. Simply providing an LLM…">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>Chapter 3 Subsection 3</title>
+<title>3.3 Generating Realistic Character Responses based on Context | Interactive 3D Characters in WebVR</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -42,8 +42,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "name": "Chapter 3 Subsection 3",
-  "description": "Chapter 3 Subsection 3 | WaifuAI",
+  "name": "3.3 Generating Realistic Character Responses based on Context | Interactive 3D Characters in WebVR",
+  "description": "This section delves into the crucial aspect of crafting believable and engaging character responses within a webVR environment. Simply providing an LLM…",
   "url": "https://waifuai.github.io/research-books/books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/chapter_3_subsection_3.html",
   "author": {
     "@type": "Organization",
@@ -190,7 +190,7 @@
 </details>
 <h1>3.3 Generating Realistic Character Responses based on Context</h1>
 <p>This section delves into the crucial aspect of crafting believable and engaging character responses within a webVR environment.  Simply providing an LLM with a prompt like "Describe how the character reacts to being attacked" is insufficient for realistic interaction.  A key challenge is ensuring the character's responses are contextualized within the current scene and their internal state.  This section outlines effective strategies for generating nuanced and adaptive character behavior, moving beyond generic reactions to truly dynamic interactions.</p>
-<p><strong>3.2.1 Contextualization: Beyond the Prompt</strong></p>
+<p><strong>3.3.1 Contextualization: Beyond the Prompt</strong></p>
 <p>A crucial element of realistic character behavior lies in understanding and leveraging the surrounding environment and the character's internal state.  We need to move beyond simple single-turn conversations and incorporate contextual information into the prompt for the LLM.  This includes:</p>
 <ul>
 <li><strong>Scene Description:</strong>  Provide the LLM with a detailed description of the environment (e.g., "The character is standing in a dimly lit, dusty library.  Bookshelves line the walls, and a single flickering candle illuminates a worn leather-bound book.").  This allows the LLM to draw upon visual cues and interpret the setting's impact on the character's behavior.</li>
@@ -199,14 +199,14 @@
 <li><strong>Emotional State:</strong>  Explicitly model the character's current emotional state.  For example, "The character is feeling anxious and overwhelmed."  LLMs are better equipped to produce nuanced reactions when provided with an explicit emotional context. This can be achieved by analyzing the character's recent actions and reactions.</li>
 <li><strong>Physical Condition:</strong>  Include information about the character's physical state, if relevant.  For example, "The character is injured and limping." This information can dramatically affect how the character responds to actions and situations.</li>
 </ul>
-<p><strong>3.2.2  Multimodal Integration for Enhanced Realism</strong></p>
+<p><strong>3.3.2  Multimodal Integration for Enhanced Realism</strong></p>
 <p>The power of multimodal LLMs extends beyond text-based interactions. Incorporating visual and auditory information allows for even more realistic character responses:</p>
 <ul>
 <li><strong>Visual Input:</strong> Allow the LLM to access a representation of the current scene or a particular object within it.  This could involve embedding images or descriptions of visual details within the prompt.  If the character sees a dangerous object, for instance, their response could be shaped accordingly.</li>
 <li><strong>Auditory Cues:</strong> Include auditory information in the prompt, such as sounds playing in the environment or noises made by other characters. This will greatly improve the character's ability to react realistically to sounds.</li>
 <li><strong>Embodied Actions:</strong> If the character's actions are being simulated, the LLM can be given an updated interpretation of the scene based on the character's physical actions.  A character running would react differently to the same stimulus than one standing still.</li>
 </ul>
-<p><strong>3.2.3 Prompt Engineering and Refinement</strong></p>
+<p><strong>3.3.3 Prompt Engineering and Refinement</strong></p>
 <p>Crafting effective prompts is crucial for eliciting the desired responses.</p>
 <ul>
 <li><strong>Iterative Refinement:</strong> Implement a system for iterative prompt refinement.  Analyzing initial responses and incorporating feedback will lead to more precise and consistent character behavior.  Using a testing environment within the webVR application for this is recommended.</li>

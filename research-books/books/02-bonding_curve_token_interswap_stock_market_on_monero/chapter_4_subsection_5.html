@@ -14,20 +14,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/research-books/books/02-bonding_curve_token_interswap_stock_market_on_monero/chapter_4_subsection_5.html">
-<meta name="description" content="Chapter 4 Subsection 5 | WaifuAI">
-<meta property="og:title" content="Chapter 4 Subsection 5">
-<meta property="og:description" content="Chapter 4 Subsection 5 | WaifuAI">
+<meta name="description" content="This section details the crucial considerations for selecting the appropriate Monero implementation stack when building a Monero-based bonding curve…">
+<meta property="og:title" content="4.5 Choosing the Right Monero Implementation Stack | Bonding Curve Token Interswap on Monero">
+<meta property="og:description" content="This section details the crucial considerations for selecting the appropriate Monero implementation stack when building a Monero-based bonding curve…">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/research-books/books/02-bonding_curve_token_interswap_stock_market_on_monero/chapter_4_subsection_5.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Chapter 4 Subsection 5">
-<meta name="twitter:description" content="Chapter 4 Subsection 5 | WaifuAI">
+<meta name="twitter:title" content="4.5 Choosing the Right Monero Implementation Stack | Bonding Curve Token Interswap on Monero">
+<meta name="twitter:description" content="This section details the crucial considerations for selecting the appropriate Monero implementation stack when building a Monero-based bonding curve…">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>Chapter 4 Subsection 5</title>
+<title>4.5 Choosing the Right Monero Implementation Stack | Bonding Curve Token Interswap on Monero</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -42,8 +42,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "name": "Chapter 4 Subsection 5",
-  "description": "Chapter 4 Subsection 5 | WaifuAI",
+  "name": "4.5 Choosing the Right Monero Implementation Stack | Bonding Curve Token Interswap on Monero",
+  "description": "This section details the crucial considerations for selecting the appropriate Monero implementation stack when building a Monero-based bonding curve…",
   "url": "https://waifuai.github.io/research-books/books/02-bonding_curve_token_interswap_stock_market_on_monero/chapter_4_subsection_5.html",
   "author": {
     "@type": "Organization",
@@ -89,9 +89,10 @@
       <div class="toc-links">
         <a href="chapter_2_subsection_0.html">2.0 Introduction</a>
         <a href="chapter_2_subsection_1.html">2.1 Defining Bonding Curves and Their Properties</a>
-        <a href="chapter_2_subsection_2.html">2.2 Types of Bonding Curves and Their Applications</a>
-        <a href="chapter_2_subsection_3.html">2.3 Bonding Curve Design Considerations for Robustness</a>
-        <a href="chapter_2_subsection_4.html">2.4 Analyzing the Dynamics of a Bonding Curve</a>
+        <a href="chapter_2_subsection_2.html">2.2 Mathematical Foundations of Bonding Curve Models</a>
+        <a href="chapter_2_subsection_3.html">2.3 Types of Bonding Curves and Their Applications</a>
+        <a href="chapter_2_subsection_4.html">2.4 Bonding Curve Design Considerations for Robustness</a>
+        <a href="chapter_2_subsection_5.html">2.5 Analyzing the Dynamics of a Bonding Curve</a>
       </div>
     </div>
     <div class="toc-chapter">
@@ -101,7 +102,8 @@
         <a href="chapter_3_subsection_1.html">3.1 Challenges of Token Interoperability</a>
         <a href="chapter_3_subsection_2.html">3.2 Overview of Existing Token Swap Protocols</a>
         <a href="chapter_3_subsection_3.html">3.3 Design Criteria for Cross-Chain Token Swaps</a>
-        <a href="chapter_3_subsection_4.html">3.4 Security Considerations for Token Swap Protocols</a>
+        <a href="chapter_3_subsection_4.html">3.4 Implementing Token Swap Functionality on Monero</a>
+        <a href="chapter_3_subsection_5.html">3.5 Security Considerations for Token Swap Protocols</a>
       </div>
     </div>
     <div class="toc-chapter">
@@ -166,12 +168,12 @@
         <a href="chapter_9_subsection_1.html">9.1 Summary of the Monero-based Bonding Curve InterSwap</a>
         <a href="chapter_9_subsection_2.html">9.2 Potential Improvements and Future Research Areas</a>
         <a href="chapter_9_subsection_3.html">9.3 The Impact of this Technology on the Future of Monero</a>
+        <a href="chapter_9_subsection_4.html">9.4 Further Expansion of DeFi Applications on Monero</a>
       </div>
     </div>
   </div>
 </details>
-<h3 id="choosing-the-right-monero-implementation-stack">Choosing the Right Monero Implementation Stack</h3>
-<h2 id="chapter-4-designing-a-monero-based-bonding-curve-interswap">Chapter 4: Designing a Monero-Based Bonding Curve InterSwap</h2>
+<h1>4.5 Choosing the Right Monero Implementation Stack</h1>
 <p>This section details the crucial considerations for selecting the appropriate Monero implementation stack when building a Monero-based bonding curve interswap.  A well-chosen stack will significantly impact the project's security, performance, maintainability, and scalability.  The ideal choice depends on the specific requirements of the interswap, including the desired level of privacy, transaction throughput, and potential future features.</p>
 <p><strong>1.  Core Monero Libraries:</strong></p>
 <p>The foundation of any Monero-based application is the Monero core libraries.  Choosing between the native Monero library and third-party implementations is paramount.</p>

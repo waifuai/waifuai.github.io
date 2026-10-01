@@ -14,20 +14,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/research-books/books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/chapter_5_subsection_4.html">
-<meta name="description" content="Chapter 5 Subsection 4 | WaifuAI">
-<meta property="og:title" content="Chapter 5 Subsection 4">
-<meta property="og:description" content="Chapter 5 Subsection 4 | WaifuAI">
+<meta name="description" content="This section details how to leverage conditional animations to make the AI character&#x27;s actions in WebVR more nuanced and responsive to the output of the…">
+<meta property="og:title" content="5.4 Implementing Conditional Animations Based on Character State | Interactive 3D Characters in WebVR">
+<meta property="og:description" content="This section details how to leverage conditional animations to make the AI character&#x27;s actions in WebVR more nuanced and responsive to the output of the…">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/research-books/books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/chapter_5_subsection_4.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Chapter 5 Subsection 4">
-<meta name="twitter:description" content="Chapter 5 Subsection 4 | WaifuAI">
+<meta name="twitter:title" content="5.4 Implementing Conditional Animations Based on Character State | Interactive 3D Characters in WebVR">
+<meta name="twitter:description" content="This section details how to leverage conditional animations to make the AI character&#x27;s actions in WebVR more nuanced and responsive to the output of the…">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>Chapter 5 Subsection 4</title>
+<title>5.4 Implementing Conditional Animations Based on Character State | Interactive 3D Characters in WebVR</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -42,8 +42,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "name": "Chapter 5 Subsection 4",
-  "description": "Chapter 5 Subsection 4 | WaifuAI",
+  "name": "5.4 Implementing Conditional Animations Based on Character State | Interactive 3D Characters in WebVR",
+  "description": "This section details how to leverage conditional animations to make the AI character's actions in WebVR more nuanced and responsive to the output of the…",
   "url": "https://waifuai.github.io/research-books/books/07-using_multimodal_llm_to_make_interactive_3d_ai_characters_in_webvr/chapter_5_subsection_4.html",
   "author": {
     "@type": "Organization",
@@ -190,7 +190,7 @@
 </details>
 <h1>5.4 Implementing Conditional Animations Based on Character State</h1>
 <p>This section details how to leverage conditional animations to make the AI character's actions in WebVR more nuanced and responsive to the output of the Large Language Models (LLMs).  Instead of a single animation for each action, we create a library of animations tied to specific character states, allowing for smoother transitions and more dynamic behavior.</p>
-<p><strong>5.3.1 Defining Character States</strong></p>
+<p><strong>5.4.1 Defining Character States</strong></p>
 <p>The first step is to meticulously define the character's possible states.  These states will directly influence the animations triggered.  Examples include:</p>
 <ul>
 <li><strong>Idle:</strong> The character is standing still, potentially looking around.</li>
@@ -207,7 +207,7 @@
 <li><strong>Threatened:</strong> The character anticipates an attack and adopts a defensive posture.</li>
 </ul>
 <p>These states can be further refined to create more sophisticated behaviors. For example, "Walking" could be broken down into "Walking Fast," "Walking Slow," or "Walking Toward Object."  Using a state machine can be immensely useful here.</p>
-<p><strong>5.3.2 Linking States to Animations</strong></p>
+<p><strong>5.4.2 Linking States to Animations</strong></p>
 <p>This section highlights the crucial bridge between the LLM's output and the character's animations. The LLM's responses must provide the context to trigger the relevant animation.</p>
 <ul>
 <li><strong>State Recognition:</strong> The LLM output will determine the state of the character.  For instance, a response like "Go get the book" would likely trigger a "Walking" state, while "Attack the monster" leads to an "Attacking" state.</li>
@@ -219,7 +219,7 @@
 </ul>
 </li>
 </ul>
-<p><strong>5.3.3  Example Code Snippet (Conceptual JavaScript):</strong></p>
+<p><strong>5.4.3  Example Code Snippet (Conceptual JavaScript):</strong></p>
 <pre><code class="language-javascript">// ... (other imports and character setup)
 
 function updateCharacterAnimation(llmOutput) {
@@ -240,7 +240,7 @@ function updateCharacterAnimation(llmOutput) {
 }
 </code></pre>
 <p>This example code snippet demonstrates the concept of updating the character's animation based on the parsed LLM output. This would require a <code>parseLLMOutput</code> function to transform the LLM's text response into a character state.</p>
-<p><strong>5.3.4 Considerations for WebVR</strong></p>
+<p><strong>5.4.4 Considerations for WebVR</strong></p>
 <ul>
 <li><strong>Performance:</strong>  Ensure animation updates are efficiently managed in a WebVR environment.  Consider using a performance profiler to identify and address any bottlenecks.</li>
 <li><strong>User Experience:</strong> The animations should be tailored to be intuitive and consistent with the overall user experience.  Avoid jarring or illogical transitions.</li>
