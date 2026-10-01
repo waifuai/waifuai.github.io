@@ -10,12 +10,13 @@
   gtag('config', 'G-EP9DHGYS02');
 </script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Technical documentation and open-source code for WaifuAI: Live2D companion engine, Soul of Waifu architecture, Base &amp; Solana MCP tools, and autonomous agent tokenomics.">
 <meta name="keywords" content="waifu ai, waifu ai code, soul of waifu, AI companion github, waifu engine, waifu chatbot, open source waifu, Live2D AI, Base Uniswap v4, Solana MCP, AI agents, waifuai.github.io">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/">
 <title>WaifuAI Docs Hub — Open-Source AI Companion Code, Agent Infrastructure &amp; Research</title>
+<meta name="theme-color" content="#0f0f10">
 <meta property="og:title" content="WaifuAI Docs Hub — Open-Source AI Companion Code &amp; Infrastructure">
 <meta property="og:description" content="Technical documentation and open-source code for WaifuAI: Live2D companion engine, Soul of Waifu architecture, Base &amp; Solana MCP tools, and on-chain agent economics.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
@@ -71,368 +72,353 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="theme.css">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --surface: #ffffff;
+    --text: #1a1a19;
+    --muted: #5f5f5b;
+    --faint: #8a8a85;
+    --line: #e4e4e0;
+    --row: #f0f0ec;
+    --accent: #2f5bd3;
+    --radius: 10px;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f0f10;
+      --surface: #17171a;
+      --text: #ececea;
+      --muted: #a3a39e;
+      --faint: #76766f;
+      --line: #2a2a2e;
+      --row: #1d1d21;
+      --accent: #8cabff;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 var(--font); font-variant-numeric: tabular-nums; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  input { font: inherit; }
+  [hidden] { display: none !important; }
+
+  .skip-link { position: absolute; left: -9999px; }
+  .skip-link:focus { left: 16px; top: 8px; z-index: 20; background: var(--surface); padding: 6px 10px; border-radius: 8px; }
+
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
+
+  .site-header { border-bottom: 1px solid var(--line); }
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 56px; }
+  .brand { color: var(--text); font-weight: 700; letter-spacing: -0.01em; }
+  .brand:hover { text-decoration: none; }
+  .site-header nav { display: flex; gap: 16px; font-size: 14px; }
+  .site-header nav a { color: var(--muted); }
+
+  main { padding: 40px 0 0; }
+  section, [id] { scroll-margin-top: 64px; }
+
+  h1 { font-size: 34px; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 12px; }
+  h2 { font-size: 22px; letter-spacing: -0.01em; margin: 0; }
+  .lede { font-size: 18px; color: var(--muted); margin: 0; max-width: 62ch; }
+
+  .start { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0 0; }
+  .start a { display: block; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 16px 18px; color: var(--text); }
+  .start a:hover { text-decoration: none; border-color: var(--faint); }
+  .start a.primary { border-color: var(--accent); }
+  .start strong { display: block; font-size: 16px; }
+  .start strong::after { content: " \2192"; color: var(--accent); }
+  .start span { display: block; font-size: 14px; color: var(--muted); margin-top: 2px; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin: 16px 0 0; }
+  .stat { background: var(--surface); padding: 14px 18px; color: var(--text); }
+  .stat:hover { text-decoration: none; background: var(--row); }
+  .stat-value { display: block; font-size: 24px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+  .stat-label { display: block; font-size: 13px; color: var(--muted); }
+  .stats-note { font-size: 13px; color: var(--faint); margin: 8px 0 0; }
+
+  .jump { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); margin-top: 40px; }
+  .jump .wrap { display: flex; align-items: center; gap: 12px; }
+  .jump .links { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; }
+  .jump .links a { color: var(--muted); font-size: 14px; padding: 12px 10px; white-space: nowrap; border-bottom: 2px solid transparent; }
+  .jump .links a:first-child { margin-left: -10px; }
+  .jump .links a:hover { color: var(--text); text-decoration: none; border-bottom-color: var(--line); }
+  .filter { width: 220px; flex: none; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 14px; }
+  .filter:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+
+  .filter-meta { font-size: 14px; color: var(--muted); margin: 16px 0 0; min-height: 0; }
+  .filter-meta:empty { display: none; }
+
+  .group { padding-top: 48px; }
+  .group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+  .group-head .count { font-size: 14px; color: var(--faint); }
+  .group-note { font-size: 15px; color: var(--muted); margin: 0 0 16px; max-width: 70ch; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  .card { display: flex; flex-direction: column; gap: 4px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 14px 16px; color: var(--text); }
+  .card:hover { text-decoration: none; border-color: var(--faint); }
+  .card-title { font-weight: 600; font-size: 15px; line-height: 1.3; }
+  .card-title .ext { color: var(--faint); font-weight: 400; }
+  .card-desc { font-size: 14px; color: var(--muted); }
+  .card-meta { font-size: 13px; color: var(--faint); margin-top: auto; padding-top: 4px; }
+
+  .site-footer { border-top: 1px solid var(--line); margin-top: 72px; padding: 24px 0 40px; font-size: 13px; color: var(--muted); }
+  .site-footer p { margin: 4px 0; }
+  .site-footer a { color: var(--muted); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 2px; }
+  .site-footer a:hover { color: var(--text); }
+
+  @media (max-width: 760px) {
+    .start { grid-template-columns: 1fr; gap: 10px; }
+    .stats { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    h1 { font-size: 28px; }
+    .lede { font-size: 16px; }
+    main { padding-top: 28px; }
+    .site-header nav { gap: 12px; }
+    .site-header nav .hide-sm { display: none; }
+    .stat { padding: 12px 14px; }
+    .stat-value { font-size: 20px; }
+    .jump .wrap { flex-direction: column-reverse; align-items: stretch; gap: 0; padding-top: 10px; }
+    .filter { width: 100%; }
+    .group { padding-top: 40px; }
+    .cards { grid-template-columns: 1fr; gap: 10px; }
+  }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#projects">Skip to projects</a>
-<div class="container">
-<header>
-  <div style="display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
-    <span class="badge badge-accent">Ecosystem Hub &bull; 2026</span>
-    <span class="badge">Open Source</span>
-    <span class="badge">Base &amp; Solana</span>
-  </div>
-  <h1>WaifuAI Docs Hub</h1>
-  <p>45+ open-source projects for autonomous AI agents, Live2D companions, and on-chain economies</p>
-  <div class="links">
-    <a href="https://waifuai.com/" class="link-app" target="_blank" rel="noopener" title="Launch Interactive Live2D Companion Web App">✨ Launch Web App (waifuai.com)</a>
-    <a href="llm-countdowns/index.html" style="color: #00f2fe; font-weight: 600;" title="Upcoming AI Models &amp; Launch Countdowns">⚡ LLM Countdowns</a>
-    <a href="data/index.html" style="color: #34d399; font-weight: 600;" title="Live Ecosystem Telemetry &amp; Open Analytics">📊 Open Data</a>
-    <a href="search.html">Search</a>
-    <a href="research-text/">All Research</a>
-    <a href="llms.txt">llms.txt</a>
-    <a href="sitemap.xml">Sitemap</a>
-    <a href="https://github.com/waifuai" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://x.com/thewaifuai" target="_blank" rel="noopener">Twitter</a>
-    <a href="https://www.youtube.com/@thewaifuai" target="_blank" rel="noopener">YouTube</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./">WaifuAI</a>
+    <nav>
+      <a href="search.html">Search</a>
+      <a href="research-text/">Research</a>
+      <a class="hide-sm" href="https://github.com/waifuai">GitHub</a>
+    </nav>
   </div>
 </header>
 
-<div class="ecosystem-callout" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(99, 102, 241, 0.08) 100%); border: 1px solid rgba(236, 72, 153, 0.25); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 2rem;">
-  <div style="display: flex; align-items: center; gap: 0.75rem;">
-    <span style="font-size: 1.5rem;">✨</span>
-    <div>
-      <div style="font-weight: 600; color: var(--text);">Looking for the interactive AI companion?</div>
-      <div style="font-size: 0.88rem; color: var(--text-muted);">Chat with our Live2D waifu companion in your browser with real-time voice synthesis and zero setup.</div>
-    </div>
+<main>
+<div class="wrap">
+  <h1>WaifuAI docs</h1>
+  <p class="lede">Documentation for the open-source side of WaifuAI: the Live2D companion, MCP servers, Solana and Base tools, token economy simulations, and research papers.</p>
+
+  <div class="start">
+    <a class="primary" href="https://waifuai.com/"><strong>Companion app</strong><span>Talk to a Live2D waifu in your browser, with voice and nothing to install.</span></a>
+    <a href="llm-countdowns/"><strong>LLM Countdowns</strong><span>Release forecasts for upcoming frontier models from each AI lab.</span></a>
+    <a href="data/"><strong>Open data</strong><span>Every public number: visitors, repositories, projects and search reach.</span></a>
   </div>
-  <a href="https://waifuai.com/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.1rem; border-radius: 6px; font-weight: 600; font-size: 0.92rem; background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%); color: #fff; text-decoration: none; box-shadow: 0 2px 10px rgba(236, 72, 153, 0.3); transition: all 0.2s ease;">Launch Web Companion &rarr;</a>
+
+  <div class="stats">
+    <a class="stat" href="data/#traffic"><span class="stat-value">16,643</span><span class="stat-label">Website visitors</span></a>
+    <a class="stat" href="data/#github"><span class="stat-value">52</span><span class="stat-label">GitHub repositories</span></a>
+    <a class="stat" href="data/#websim"><span class="stat-value">618</span><span class="stat-label">WebSim projects</span></a>
+    <a class="stat" href="data/#search"><span class="stat-value">83,819</span><span class="stat-label">Google Search appearances</span></a>
+  </div>
+  <p class="stats-note">From the <a href="data/">open data page</a>, updated October 1, 2026.</p>
 </div>
 
-<div class="stats-bar">
-  <a href="data/index.html" class="stat-item" style="text-decoration: none; color: inherit;" title="View live ecosystem telemetry">
-    <div class="stat-num">660+</div>
-    <div class="stat-label">Total Projects</div>
-  </a>
-  <a href="data/index.html" class="stat-item" style="text-decoration: none; color: inherit;" title="View live ecosystem telemetry">
-    <div class="stat-num">16.6K+</div>
-    <div class="stat-label">Web Visitors</div>
-  </a>
-  <a href="data/index.html" class="stat-item" style="text-decoration: none; color: inherit;" title="View live ecosystem telemetry">
-    <div class="stat-num">52</div>
-    <div class="stat-label">GitHub Repos</div>
-  </a>
-  <a href="data/index.html" class="stat-item" style="text-decoration: none; color: inherit;" title="View live ecosystem telemetry">
-    <div class="stat-num">1,260+</div>
-    <div class="stat-label">Stars &amp; Likes</div>
-  </a>
-  <a href="data/index.html" class="stat-item" style="text-decoration: none; color: inherit;" title="View live ecosystem telemetry">
-    <div class="stat-num">69K+</div>
-    <div class="stat-label">Search Reach</div>
-  </a>
-</div>
+<nav class="jump" aria-label="Project groups">
+  <div class="wrap">
+    <div class="links">
+      <a href="#companion">Companion</a>
+      <a href="#mcp">MCP servers</a>
+      <a href="#blockchain">Blockchain</a>
+      <a href="#infra">AI infrastructure</a>
+      <a href="#research">Research</a>
+      <a href="#tools">Tools &amp; games</a>
+      <a href="#guides">Guides</a>
+      <a href="#nlp">Paraphrase</a>
+      <a href="#agents">For agents</a>
+    </div>
+    <label class="skip-link" for="filter">Filter projects</label>
+    <input class="filter" id="filter" type="search" autocomplete="off" placeholder="Filter projects">
+  </div>
+</nav>
 
-<div class="search-box">
-  <label class="skip-link" for="filter">Filter projects</label>
-  <input id="filter" type="search" autocomplete="off" placeholder="Filter projects or search 160+ documents…">
-</div>
+<div class="wrap" id="projects">
+<p class="filter-meta" id="filter-meta" role="status" aria-live="polite"></p>
 
-<div class="filter-chips" id="category-chips">
-  <button type="button" class="chip active" data-cat="all">All (45+)</button>
-  <button type="button" class="chip" data-cat="waifu">Waifu / Companion</button>
-  <button type="button" class="chip" data-cat="mcp">MCP Servers</button>
-  <button type="button" class="chip" data-cat="blockchain">Blockchain &amp; Web3</button>
-  <button type="button" class="chip" data-cat="research">Research &amp; Theory</button>
-  <button type="button" class="chip" data-cat="infra">AI Infrastructure</button>
-  <button type="button" class="chip" data-cat="blog">Guides &amp; Blog</button>
-  <button type="button" class="chip" data-cat="tools">Tools &amp; Web Apps</button>
-  <button type="button" class="chip" data-cat="nlp">NLP &amp; Paraphrase</button>
-  <button type="button" class="chip" data-cat="resources">Agent Resources</button>
-</div>
-
-<p class="search-meta" id="filter-meta" role="status" aria-live="polite"></p>
-
-<div id="projects">
-
-<section data-cat="resources">
-<h2>Agent Resources</h2>
-<div class="link-list">
-<a href="llms-full-html/index.html"><h3>LLMS Full HTML</h3><p>Aggregated HTML documentation bundles optimized for LLM ingestion</p></a>
-<a href="llms-full-txt/index.html">
-  <span class="badge" style="margin-bottom: 0.35rem; display: inline-block;">8★ &bull; Markdown Bundler</span>
-  <h3>LLMS Full TXT</h3>
-  <p>Markdown code aggregation with TOC and line counting</p>
-</a>
-</div>
+<section class="group" id="companion">
+  <div class="group-head"><h2>Companion</h2><span class="count"></span></div>
+  <p class="group-note">The WaifuAI companion and the pieces around it: avatars, chat backends and character design.</p>
+  <div class="cards">
+    <a class="card" href="https://waifuai.com/"><span class="card-title">Waifu Companion <span class="ext">&#8599;</span></span><span class="card-desc">The browser companion at waifuai.com: Live2D animation, local Kokoro voice, OpenRouter models and memory kept in your browser.</span><span class="card-meta">34 stars</span></a>
+    <a class="card" href="https://github.com/waifuai/waifu-sprites"><span class="card-title">Waifu Sprites <span class="ext">&#8599;</span></span><span class="card-desc">Animated desktop sprites for Hermes Agent that react with different emotions and show a live dashboard.</span><span class="card-meta">21 stars</span></a>
+    <a class="card" href="hermes-waifu/"><span class="card-title">Hermes Waifu</span><span class="card-desc">Live2D widget for Hermes Agent with five built-in models and expression controls.</span><span class="card-meta">21 stars</span></a>
+    <a class="card" href="waifu-chat-api/"><span class="card-title">Waifu Chat API</span><span class="card-desc">REST API for waifu chatbot conversations with user management.</span></a>
+    <a class="card" href="waifu-constitution/"><span class="card-title">Waifu Constitution</span><span class="card-desc">Alignment constitution and behaviour guidelines for waifu agents.</span></a>
+    <a class="card" href="waifu-llm-vrm/"><span class="card-title">Waifu LLM VRM</span><span class="card-desc">Python library for AI waifus in the Godot engine, with VRM avatar support.</span></a>
+    <a class="card" href="anime-subtitle-chatbot/"><span class="card-title">Anime Subtitle Chatbot</span><span class="card-desc">Few-shot chatbot trained on anime subtitles.</span></a>
+    <a class="card" href="traits/"><span class="card-title">Traits</span><span class="card-desc">Character and agent trait system, with Manim animations.</span></a>
+  </div>
 </section>
 
-<section data-cat="research">
-<h2>Research &amp; Theory</h2>
-<div class="link-list">
-<a href="research-text/index.html">
-  <span class="badge" style="border-color: var(--accent2); color: var(--accent2); margin-bottom: 0.35rem; display: inline-block;">160+ Papers</span>
-  <h3>Research Hub (All Papers)</h3>
-  <p>Comprehensive repository: tokenomics, kinematics, quantum LLMs, and DSLs</p>
-</a>
-<a href="research-books/index.html">
-  <span class="badge" style="border-color: var(--accent3); color: var(--accent3); margin-bottom: 0.35rem; display: inline-block;">14 Volumes</span>
-  <h3>Research Books</h3>
-  <p>Academic research collection on AI, blockchain, quantum biology, and economics</p>
-</a>
-<a href="quantum-circuit-optimization/index.html">
-  <span class="badge" style="margin-bottom: 0.35rem; display: inline-block;">20 Clones</span>
-  <h3>Quantum Circuit Optimization</h3>
-  <p>Quantum circuit optimization library and simulation tools</p>
-</a>
-<a href="ransoc/index.html"><h3>RANSOC</h3><p>Real-time curiosity-driven search relevance algorithm</p></a>
-<a href="street-lines/index.html"><h3>Street Lines</h3><p>Mathematical proofs and geometric derivations</p></a>
-</div>
+<section class="group" id="mcp">
+  <div class="group-head"><h2>MCP servers</h2><span class="count"></span></div>
+  <p class="group-note">Model Context Protocol servers that give AI agents chat, job queues and Solana payments.</p>
+  <div class="cards">
+    <a class="card" href="mcp-waifu-queue/"><span class="card-title">MCP Waifu Queue</span><span class="card-desc">Redis-backed job queue for high-throughput text generation and agent workers.</span><span class="card-meta">42 clones</span></a>
+    <a class="card" href="mcp-solana-internet/"><span class="card-title">MCP Solana Internet</span><span class="card-desc">Pay-to-access micropayments with token expiry checks.</span><span class="card-meta">35 clones</span></a>
+    <a class="card" href="mcp-waifu-chat/"><span class="card-title">MCP Waifu Chat</span><span class="card-desc">Conversational waifu server built on FastMCP, with SQLite history and OpenRouter.</span><span class="card-meta">32 clones</span></a>
+    <a class="card" href="mcp-solana-dex/"><span class="card-title">MCP Solana DEX</span><span class="card-desc">On-chain order book management and automated trade routing.</span><span class="card-meta">32 clones</span></a>
+    <a class="card" href="mcp-solana-affiliate/"><span class="card-title">MCP Solana Affiliate</span><span class="card-desc">Affiliate program for a Solana ICO, with Blink URL generation.</span><span class="card-meta">21 clones</span></a>
+    <a class="card" href="mcp-traits-matcher/"><span class="card-title">MCP Traits Matcher</span><span class="card-desc">Personality analysis that matches profiles by Euclidean distance.</span><span class="card-meta">20 clones</span></a>
+    <a class="card" href="mcp-solana-ico/"><span class="card-title">MCP Solana ICO</span><span class="card-desc">Solana ICO with bonding curves, buying, selling and discounts.</span><span class="card-meta">20 clones</span></a>
+  </div>
 </section>
 
-<section data-cat="blockchain">
-<h2>Blockchain &amp; On-Chain Economy</h2>
-<div class="link-list">
-<a href="solana-launchpad-ecosystem/index.html">
-  <span class="badge" style="margin-bottom: 0.35rem; display: inline-block;">24 Clones</span>
-  <h3>Solana Launchpad Ecosystem</h3>
-  <p>AI-hybrid Solana ecosystem with autonomous Python bots and skill specs</p>
-</a>
-<a href="solana-ico/index.html"><h3>Solana ICO</h3><p>Python CLI for ContextCoin ICO with linear bonding curves</p></a>
-<a href="launchpad-skill/index.html"><h3>Launchpad Skill</h3><p>Python CLI for managing tokenized companies on Solana</p></a>
-<a href="waifu-layer/index.html">
-  <span class="badge" style="border-color: var(--accent); color: var(--accent); margin-bottom: 0.35rem; display: inline-block;">Agentic L1 &bull; PoI</span>
-  <h3>Waifu Layer</h3>
-  <p>The Agentic Layer 1 Blockchain: Proof-of-Intelligence consensus, lock-free DAG, and autonomous AI agents</p>
-</a>
-<a href="crypto-simulation/index.html"><h3>Crypto Simulation</h3><p>Unified mathematical theory of token economy simulations</p></a>
-<a href="sim-affiliate/index.html"><h3>Sim Affiliate</h3><p>Token economy simulation with affiliate dynamics</p></a>
-<a href="sim-airdrop/index.html"><h3>Sim Airdrop</h3><p>Airdrop strategy simulation with tiered/lottery/uniform distributions</p></a>
-<a href="sim-bonding-curve/index.html"><h3>Sim Bonding Curve</h3><p>Agent-based bonding curve token economy simulations</p></a>
-<a href="sim-mcp-token/index.html"><h3>Sim MCP Token</h3><p>Multi-agent economic simulation with resource ecosystems</p></a>
-</div>
+<section class="group" id="blockchain">
+  <div class="group-head"><h2>Blockchain</h2><span class="count"></span></div>
+  <p class="group-note">Solana tooling, the Waifu Layer chain design, and simulations of token economies.</p>
+  <div class="cards">
+    <a class="card" href="solana-launchpad-ecosystem/"><span class="card-title">Solana Launchpad Ecosystem</span><span class="card-desc">Solana launchpad run by autonomous Python bots, with skill specs for AI agents.</span><span class="card-meta">24 clones</span></a>
+    <a class="card" href="waifu-layer/"><span class="card-title">Waifu Layer</span><span class="card-desc">Layer 1 blockchain design for AI agents: proof-of-intelligence consensus and a lock-free DAG.</span></a>
+    <a class="card" href="solana-ico/"><span class="card-title">Solana ICO</span><span class="card-desc">Python CLI for the ContextCoin ICO with a linear bonding curve.</span></a>
+    <a class="card" href="launchpad-skill/"><span class="card-title">Launchpad Skill</span><span class="card-desc">Python CLI for managing tokenized companies on Solana.</span></a>
+    <a class="card" href="crypto-simulation/"><span class="card-title">Crypto Simulation</span><span class="card-desc">A unified mathematical model behind the token economy simulations.</span></a>
+    <a class="card" href="sim-bonding-curve/"><span class="card-title">Sim Bonding Curve</span><span class="card-desc">Agent-based simulations of bonding curve token economies.</span></a>
+    <a class="card" href="sim-airdrop/"><span class="card-title">Sim Airdrop</span><span class="card-desc">Compares tiered, lottery and uniform airdrop strategies.</span></a>
+    <a class="card" href="sim-affiliate/"><span class="card-title">Sim Affiliate</span><span class="card-desc">Token economy simulation with affiliate dynamics.</span></a>
+    <a class="card" href="sim-mcp-token/"><span class="card-title">Sim MCP Token</span><span class="card-desc">Multi-agent economic simulation with resource ecosystems.</span></a>
+  </div>
 </section>
 
-<section data-cat="waifu">
-<h2>Waifu / AI Companion</h2>
-<div class="link-list">
-<a href="https://waifuai.com/" target="_blank" rel="noopener" style="border-color: var(--accent);">
-  <span class="badge badge-accent" style="margin-bottom: 0.35rem; display: inline-block;">Flagship App &bull; 34★</span>
-  <h3>Waifu Companion (Live2D Engine)</h3>
-  <p>Flagship browser companion engine: Live2D animations, Kokoro local TTS, OpenRouter LLM, and browser memory (waifuai.com)</p>
-</a>
-<a href="https://github.com/waifuai/waifu-sprites" target="_blank" rel="noopener">
-  <span class="badge" style="border-color: var(--accent2); color: var(--accent2); margin-bottom: 0.35rem; display: inline-block;">Desktop Plugin &bull; 21★</span>
-  <h3>Waifu Sprites</h3>
-  <p>Animated desktop companion sprites for Hermes Agent with multi-emotion reactions and live dashboard integration</p>
-</a>
-<a href="hermes-waifu/index.html">
-  <span class="badge" style="border-color: var(--accent3); color: var(--accent3); margin-bottom: 0.35rem; display: inline-block;">Live2D Widget &bull; 21★</span>
-  <h3>Hermes Waifu</h3>
-  <p>Live2D animated waifu with 5 built-in models and expression controls for Hermes Agent</p>
-</a>
-<a href="waifu-chat-api/index.html"><h3>Waifu Chat API</h3><p>REST API for waifu chatbot conversations with user management</p></a>
-<a href="waifu-constitution/index.html"><h3>Waifu Constitution</h3><p>AI alignment constitution and behavioral guidelines for waifu agents</p></a>
-<a href="waifu-llm-vrm/index.html"><h3>Waifu LLM VRM</h3><p>Python library for Godot engine AI waifus with VRM support</p></a>
-<a href="anime-subtitle-chatbot/index.html"><h3>Anime Subtitle Chatbot</h3><p>Few-shot chatbot trained on anime subtitles</p></a>
-<a href="traits/index.html"><h3>Traits</h3><p>Character and agent trait system with Manim animations</p></a>
-</div>
+<section class="group" id="infra">
+  <div class="group-head"><h2>AI infrastructure</h2><span class="count"></span></div>
+  <p class="group-note">Benchmarks, generation pipelines and model tooling.</p>
+  <div class="cards">
+    <a class="card" href="reasoning-pricer/"><span class="card-title">Reasoning Pricer</span><span class="card-desc">Valuation reports for 150 tokens using reasoning models, with stress tests.</span><span class="card-meta">30 clones</span></a>
+    <a class="card" href="ai-benchmarks/"><span class="card-title">AI Benchmarks</span><span class="card-desc">Spatial reasoning tests for LLMs, with a multi-model leaderboard.</span></a>
+    <a class="card" href="book-generator/"><span class="card-title">Book Generator</span><span class="card-desc">Writes a full book from a title prompt using OpenRouter.</span></a>
+    <a class="card" href="macro-language-model/"><span class="card-title">Macro Language Model</span><span class="card-desc">CLI chatbot with swappable personalities such as tsundere and deredere.</span></a>
+    <a class="card" href="llm-text-queue-gpu/"><span class="card-title">LLM Text Queue GPU</span><span class="card-desc">GPU-accelerated text processing pipeline.</span></a>
+    <a class="card" href="biochem-framework/"><span class="card-title">Biochem Framework</span><span class="card-desc">Scores AI conversations by their effect on neurochemistry.</span></a>
+  </div>
 </section>
 
-<section data-cat="infra">
-<h2>AI / LLM Infrastructure</h2>
-<div class="link-list">
-<a href="ai-benchmarks/index.html"><h3>AI Benchmarks</h3><p>LLM spatial reasoning evaluation with leaderboard and multi-model testing</p></a>
-<a href="llm-text-queue-gpu/index.html"><h3>LLM Text Queue GPU</h3><p>GPU-accelerated text processing pipeline</p></a>
-<a href="macro-language-model/index.html"><h3>Macro Language Model</h3><p>CLI chatbot with modular personality system (tsundere, deredere, etc.)</p></a>
-<a href="book-generator/index.html"><h3>Book Generator</h3><p>Full book generator from a title prompt using OpenRouter</p></a>
-<a href="biochem-framework/index.html"><h3>Biochem Framework</h3><p>AI conversation benchmark scoring by neurochemical impact</p></a>
-<a href="reasoning-pricer/index.html">
-  <span class="badge" style="border-color: var(--accent3); color: var(--accent3); margin-bottom: 0.35rem; display: inline-block;">30 Clones &bull; 150 Tokens</span>
-  <h3>Reasoning Pricer</h3>
-  <p>Token valuation reports with AI-acceleration reasoning models and extreme stress testing</p>
-</a>
-</div>
+<section class="group" id="research">
+  <div class="group-head"><h2>Research</h2><span class="count"></span></div>
+  <p class="group-note">Papers and books on tokenomics, kinematics, quantum computing and AI.</p>
+  <div class="cards">
+    <a class="card" href="research-text/"><span class="card-title">Research papers</span><span class="card-desc">The full collection: tokenomics, kinematics, quantum LLMs and domain-specific languages.</span><span class="card-meta">160+ papers</span></a>
+    <a class="card" href="research-books/"><span class="card-title">Research books</span><span class="card-desc">Book-length studies on AI, blockchain, quantum biology and economics.</span><span class="card-meta">14 books</span></a>
+    <a class="card" href="quantum-circuit-optimization/"><span class="card-title">Quantum Circuit Optimization</span><span class="card-desc">Library and simulation tools for optimizing quantum circuits.</span><span class="card-meta">20 clones</span></a>
+    <a class="card" href="ransoc/"><span class="card-title">RANSOC</span><span class="card-desc">Real-time, curiosity-driven search ranking algorithm.</span></a>
+    <a class="card" href="street-lines/"><span class="card-title">Street Lines</span><span class="card-desc">Mathematical proofs and geometric derivations.</span></a>
+  </div>
 </section>
 
-<section data-cat="mcp">
-<h2>MCP Servers (Model Context Protocol)</h2>
-<div class="link-list">
-<a href="mcp-waifu-queue/index.html" style="border-color: var(--accent);">
-  <span class="badge badge-accent" style="margin-bottom: 0.35rem; display: inline-block;">High Demand &bull; 42 Clones</span>
-  <h3>MCP Waifu Queue</h3>
-  <p>Redis-backed async job queue for high-throughput text generation and agent workers</p>
-</a>
-<a href="mcp-waifu-chat/index.html">
-  <span class="badge" style="border-color: var(--accent2); color: var(--accent2); margin-bottom: 0.35rem; display: inline-block;">FastMCP &bull; 32 Clones</span>
-  <h3>MCP Waifu Chat</h3>
-  <p>Conversational AI waifu with SQLite history and OpenRouter integration</p>
-</a>
-<a href="mcp-solana-internet/index.html">
-  <span class="badge" style="border-color: var(--accent3); color: var(--accent3); margin-bottom: 0.35rem; display: inline-block;">35 Clones</span>
-  <h3>MCP Solana Internet</h3>
-  <p>Pay-to-access micropayment system with token expiry verification</p>
-</a>
-<a href="mcp-solana-dex/index.html">
-  <span class="badge" style="border-color: var(--accent3); color: var(--accent3); margin-bottom: 0.35rem; display: inline-block;">32 Clones</span>
-  <h3>MCP Solana DEX</h3>
-  <p>On-chain order book management and automated trade routing</p>
-</a>
-<a href="mcp-traits-matcher/index.html">
-  <span class="badge" style="margin-bottom: 0.35rem; display: inline-block;">20 Clones</span>
-  <h3>MCP Traits Matcher</h3>
-  <p>Personality analysis with Euclidean distance matching</p>
-</a>
-<a href="mcp-solana-affiliate/index.html">
-  <span class="badge" style="margin-bottom: 0.35rem; display: inline-block;">21 Clones</span>
-  <h3>MCP Solana Affiliate</h3>
-  <p>Solana ICO affiliate program with Blink URL generation</p>
-</a>
-<a href="mcp-solana-ico/index.html">
-  <span class="badge" style="margin-bottom: 0.35rem; display: inline-block;">20 Clones</span>
-  <h3>MCP Solana ICO</h3>
-  <p>Solana ICO with bonding curves, buy/sell, and discounts</p>
-</a>
-</div>
+<section class="group" id="tools">
+  <div class="group-head"><h2>Tools &amp; games</h2><span class="count"></span></div>
+  <p class="group-note">Things that run in the browser.</p>
+  <div class="cards">
+    <a class="card" href="llm-countdowns/"><span class="card-title">LLM Countdowns</span><span class="card-desc">Release forecasts and countdowns for upcoming frontier models, by lab.</span></a>
+    <a class="card" href="cat-maze/"><span class="card-title">Cat Maze</span><span class="card-desc">Retro puzzle maze with ice sliding, keys, 30 levels and a level editor.</span></a>
+    <a class="card" href="web-apps/"><span class="card-title">Web Apps</span><span class="card-desc">Browser apps: chat, guides, simulations and quantum consciousness.</span></a>
+    <a class="card" href="function-graph-generator/"><span class="card-title">Function Graph Generator</span><span class="card-desc">Plot mathematical functions in the browser.</span></a>
+  </div>
 </section>
 
-<section data-cat="nlp">
-<h2>NLP / Paraphrase</h2>
-<div class="link-list">
-<a href="paraphrase-generation/index.html"><h3>Paraphrase Generation</h3><p>NLP paraphrase generation suite overview</p></a>
-<a href="paraphrase-back-translate/index.html"><h3>Paraphrase Back Translate</h3><p>Back-translation paraphrase generation</p></a>
-<a href="paraphrase-gan/index.html"><h3>Paraphrase GAN</h3><p>GAN-style paraphrase refinement loop via OpenRouter</p></a>
-<a href="paraphrase-gan-utils/index.html"><h3>Paraphrase GAN Utils</h3><p>Production paraphrase system with caching and REST API</p></a>
-<a href="paraphrase-human-sentence-classifier/index.html"><h3>Human Sentence Classifier</h3><p>Human vs. AI sentence classifier</p></a>
-<a href="paraphrase-neural-machine-translation/index.html"><h3>Neural Machine Translation</h3><p>TensorFlow 2.x seq2seq NMT with Luong attention</p></a>
-</div>
+<section class="group" id="guides">
+  <div class="group-head"><h2>Guides</h2><span class="count"></span></div>
+  <p class="group-note">How the companion works and how to customize it.</p>
+  <div class="cards">
+    <a class="card" href="blog-posts/12-from-image-to-live2d-what-ai-can-and.html"><span class="card-title">From image to Live2D: what AI can do</span><span class="card-desc">Layer segmentation, mesh generation, PSD rigging and neural animation, explained.</span><span class="card-meta">Most read</span></a>
+    <a class="card" href="blog-posts/13-building-automated-image-to-live2d.html"><span class="card-title">An automated image-to-Live2D pipeline</span><span class="card-desc">From a prompt to a rigged WebGL Live2D model, end to end.</span></a>
+    <a class="card" href="blog-posts/11-how-to-add-your-own-live2d-avatar.html"><span class="card-title">Add your own Live2D avatar</span><span class="card-desc">Set up custom Cubism models, motion files, physics3.json and expression triggers.</span></a>
+    <a class="card" href="blog-posts/14-complete-settings-guide-every-option.html"><span class="card-title">Complete settings guide</span><span class="card-desc">Kokoro voice, OpenRouter API keys, system prompts and memory.</span></a>
+    <a class="card" href="blog-posts/"><span class="card-title">All articles</span><span class="card-desc">Token economy philosophy, WebSocket architecture, prompt engineering and more.</span><span class="card-meta">14 articles</span></a>
+  </div>
 </section>
 
-<section data-cat="tools">
-<h2>Tools &amp; Web Apps</h2>
-<div class="link-list">
-<a href="llm-countdowns/index.html" style="border-color: #00f2fe;">
-  <span class="badge" style="border-color: #00f2fe; color: #00f2fe; margin-bottom: 0.35rem; display: inline-block;">⚡ Launch Countdowns &bull; Radar</span>
-  <h3>LLM Countdowns</h3>
-  <p>Real-time launch countdowns, lab shipment cadences, and intelligence forecasts for upcoming frontier models</p>
-</a>
-<a href="function-graph-generator/index.html"><h3>Function Graph Generator</h3><p>Visualize mathematical functions and graphs</p></a>
-<a href="web-apps/index.html"><h3>Web Apps</h3><p>Browser-based AI applications: chat, guides, simulations, quantum consciousness</p></a>
-<a href="cat-maze/index.html" style="border-color: var(--accent);">
-  <span class="badge badge-accent" style="margin-bottom: 0.35rem; display: inline-block;">🎮 Game &bull; 30 Levels</span>
-  <h3>Cat Maze</h3>
-  <p>Retro puzzle maze game with ice sliding, keys, level editor, and dynamic sound</p>
-</a>
-</div>
+<section class="group" id="nlp">
+  <div class="group-head"><h2>Paraphrase</h2><span class="count"></span></div>
+  <p class="group-note">Earlier NLP projects for generating and detecting paraphrases.</p>
+  <div class="cards">
+    <a class="card" href="paraphrase-generation/"><span class="card-title">Paraphrase Generation</span><span class="card-desc">Overview of the paraphrase generation suite.</span></a>
+    <a class="card" href="paraphrase-back-translate/"><span class="card-title">Paraphrase Back Translate</span><span class="card-desc">Paraphrases by translating to another language and back.</span></a>
+    <a class="card" href="paraphrase-gan/"><span class="card-title">Paraphrase GAN</span><span class="card-desc">GAN-style refinement loop for paraphrases via OpenRouter.</span></a>
+    <a class="card" href="paraphrase-gan-utils/"><span class="card-title">Paraphrase GAN Utils</span><span class="card-desc">Production paraphrase system with caching and a REST API.</span></a>
+    <a class="card" href="paraphrase-human-sentence-classifier/"><span class="card-title">Human Sentence Classifier</span><span class="card-desc">Tells human-written sentences from AI-written ones.</span></a>
+    <a class="card" href="paraphrase-neural-machine-translation/"><span class="card-title">Neural Machine Translation</span><span class="card-desc">TensorFlow 2 seq2seq translation with Luong attention.</span></a>
+  </div>
 </section>
 
-<section data-cat="blog">
-<h2>Technical Guides &amp; Blog</h2>
-<div class="link-list">
-<a href="blog-posts/12-from-image-to-live2d-what-ai-can-and.html" style="border-color: var(--accent);">
-  <span class="badge badge-accent" style="margin-bottom: 0.35rem; display: inline-block;">🔥 Top Read Guide</span>
-  <h3>From Image to Live2D: AI Capabilities</h3>
-  <p>Technical breakdown of layer segmentation, mesh generation, PSD rigging, and neural animation</p>
-</a>
-<a href="blog-posts/13-building-automated-image-to-live2d.html">
-  <span class="badge" style="border-color: var(--accent2); color: var(--accent2); margin-bottom: 0.35rem; display: inline-block;">Architecture</span>
-  <h3>Automated Image-to-Live2D Pipeline</h3>
-  <p>Building an end-to-end automated character pipeline from prompt to rigged WebGL Live2D model</p>
-</a>
-<a href="blog-posts/11-how-to-add-your-own-live2d-avatar.html">
-  <span class="badge" style="border-color: var(--accent3); color: var(--accent3); margin-bottom: 0.35rem; display: inline-block;">Avatar Guide</span>
-  <h3>Add Your Own Live2D Avatar</h3>
-  <p>Step-by-step setup for custom Cubism models, motion files, physics3.json, and expression triggers</p>
-</a>
-<a href="blog-posts/14-complete-settings-guide-every-option.html">
-  <h3>Complete Settings &amp; TTS Guide</h3>
-  <p>Detailed reference for Kokoro TTS, OpenRouter API keys, system prompts, and memory persistence</p>
-</a>
-<a href="blog-posts/index.html">
-  <span class="badge" style="margin-bottom: 0.35rem; display: inline-block;">14 Articles</span>
-  <h3>All Articles &amp; Blog Posts</h3>
-  <p>Full collection: token economy philosophy, WebSocket architecture, and prompt engineering</p>
-</a>
-</div>
+<section class="group" id="agents">
+  <div class="group-head"><h2>For agents</h2><span class="count"></span></div>
+  <p class="group-note">The whole site packaged for LLMs to read.</p>
+  <div class="cards">
+    <a class="card" href="llms.txt"><span class="card-title">llms.txt</span><span class="card-desc">Short index of the site for language models.</span></a>
+    <a class="card" href="llms-full-html/"><span class="card-title">LLMS Full HTML</span><span class="card-desc">All documentation in bundled HTML files, ready for LLM context.</span></a>
+    <a class="card" href="llms-full-txt/"><span class="card-title">LLMS Full TXT</span><span class="card-desc">Bundles a codebase into one Markdown file with a table of contents and line counts.</span><span class="card-meta">8 stars</span></a>
+  </div>
 </section>
-
 </div>
+</main>
 
-<footer>
-<p>WaifuAI Docs Hub &mdash; Built for agents, by builders &bull; <a href="data/index.html">📊 Open Data</a> &bull; <a href="llms.txt">llms.txt</a> &bull; <a href="sitemap.xml">Sitemap</a> &bull; <a href="https://github.com/waifuai">GitHub</a></p>
+<footer class="site-footer">
+  <div class="wrap">
+    <p><a href="https://waifuai.com/">Companion app</a> &middot; <a href="search.html">Search</a> &middot; <a href="data/">Open data</a> &middot; <a href="links.html">Links</a> &middot; <a href="sitemap.xml">Sitemap</a></p>
+    <p><a href="https://github.com/waifuai">GitHub</a> &middot; <a href="https://x.com/thewaifuai">X</a> &middot; <a href="https://www.youtube.com/@thewaifuai">YouTube</a></p>
+  </div>
 </footer>
-</div>
 
 <script>
 (function () {
   var input = document.getElementById('filter');
   var meta = document.getElementById('filter-meta');
-  var chips = Array.prototype.slice.call(document.querySelectorAll('#category-chips .chip'));
-  var sections = Array.prototype.slice.call(document.querySelectorAll('#projects section'));
-  var cards = Array.prototype.slice.call(document.querySelectorAll('#projects .link-list a'));
-  var activeCategory = 'all';
+  var groups = Array.prototype.slice.call(document.querySelectorAll('#projects .group'));
+
+  function count(g, hits) {
+    var n = g.querySelectorAll('.card').length;
+    g.querySelector('.count').textContent = (hits < n ? hits + ' of ' : '') + n + (n === 1 ? ' project' : ' projects');
+  }
+  groups.forEach(function (g) { count(g, g.querySelectorAll('.card').length); });
+
+  function esc(s) {
+    return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+  }
 
   function run() {
-    var q = input.value.trim().toLowerCase();
-    var terms = q ? q.split(/\s+/) : [];
+    var raw = input.value.trim();
+    var terms = raw ? raw.toLowerCase().split(/\s+/) : [];
     var shown = 0;
-
-    sections.forEach(function (sec) {
-      var secCat = sec.getAttribute('data-cat') || '';
-      var catMatch = (activeCategory === 'all' || secCat === activeCategory);
-
-      if (!catMatch) {
-        sec.hidden = true;
-        return;
-      }
-
-      var secCards = Array.prototype.slice.call(sec.querySelectorAll('.link-list a'));
-      var secShown = 0;
-
-      secCards.forEach(function (c) {
-        if (!terms.length) {
-          c.hidden = false;
-          secShown++;
-          shown++;
-          return;
-        }
+    groups.forEach(function (g) {
+      var hits = 0;
+      g.querySelectorAll('.card').forEach(function (c) {
         var hay = (c.textContent + ' ' + c.getAttribute('href')).toLowerCase();
         var hit = terms.every(function (t) { return hay.indexOf(t) !== -1; });
         c.hidden = !hit;
-        if (hit) {
-          secShown++;
-          shown++;
-        }
+        if (hit) hits++;
       });
-
-      sec.hidden = (secShown === 0);
+      g.hidden = hits === 0;
+      count(g, hits);
+      shown += hits;
     });
-
-    if (!q && activeCategory === 'all') {
-      meta.textContent = '';
-    } else {
-      meta.innerHTML = shown + (shown === 1 ? ' project' : ' projects') +
-        ' found' + (q ? ' &middot; <a href="search.html?q=' + encodeURIComponent(input.value.trim()) + '">search all pages for &ldquo;' +
-        input.value.trim().replace(/[<>&]/g, '') + '&rdquo;</a>' : '');
-    }
+    if (!raw) { meta.innerHTML = ''; return; }
+    meta.innerHTML = shown + (shown === 1 ? ' project' : ' projects') + ' match &middot; ' +
+      '<a href="search.html?q=' + encodeURIComponent(raw) + '">Search every page for &ldquo;' + esc(raw) + '&rdquo;</a>';
   }
-
-  chips.forEach(function (chip) {
-    chip.addEventListener('click', function () {
-      chips.forEach(function (c) { c.classList.remove('active'); });
-      chip.classList.add('active');
-      activeCategory = chip.getAttribute('data-cat') || 'all';
-      run();
-    });
-  });
 
   input.addEventListener('input', run);
   input.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
-      var first = document.querySelector('#projects .link-list a:not([hidden])');
+      var first = document.querySelector('#projects .card:not([hidden])');
       if (first) location.href = first.getAttribute('href');
     }
+    if (e.key === 'Escape') { input.value = ''; run(); }
+  });
+  // jumping to a group clears the filter so the group is visible
+  document.querySelectorAll('.jump .links a').forEach(function (a) {
+    a.addEventListener('click', function () { if (input.value) { input.value = ''; run(); } });
   });
 })();
 </script>
