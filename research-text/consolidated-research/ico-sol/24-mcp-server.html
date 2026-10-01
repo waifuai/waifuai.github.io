@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Crafting Custodians: MCP Server Design for Decentralized ...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">22 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="23-mcp-readme.html" title="ContextCoin Chronicles: Tokenizing Access in the MCP Metropolis">&larr; Prev</a><a class="prevnext" rel="next" href="25-mcp-review.html" title="Fortifying Foundations: A Blueprint for Comprehensive ContextCoin Documentation 🌟">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>Model Context Protocol (MCP) Server Implementation</h1>
 <h2>Overview</h2>
 <p>The Model Context Protocol (MCP) server serves as the backbone for managing secure and scalable resource access within the ContextCoin (CTX) ecosystem on Solana. This server facilitates the integration between resource providers and consumers, enforcing micro-payments via CTX tokens to mitigate spam, DDoS threats, and ensure a decentralized, accountable network.</p>
@@ -86,5 +88,18 @@
 <p>By tying resource access directly to provable payments, the MCP server ensures that only legitimate users can interact with the system, fostering a sustainable decentralized marketplace.</p>
 <h2>Future Enhancements</h2>
 <p>Planned improvements include AI-driven fee adjustments, multi-chain support, and advanced analytics for resource usage patterns. The server aims to scale horizontally while maintaining the core principles of security and decentralization.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="23-mcp-readme.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">ContextCoin Chronicles: Tokenizing Access in the MCP Metropolis</span></a><a class="pager-card next" rel="next" href="25-mcp-review.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Fortifying Foundations: A Blueprint for Comprehensive ContextCoin Documentation 🌟</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

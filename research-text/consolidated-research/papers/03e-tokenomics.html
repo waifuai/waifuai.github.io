@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">11 of 16</span><span class="spacer"></span><a class="prevnext" rel="prev" href="03d-tokenomics.html" title="Answers">&larr; Prev</a><a class="prevnext" rel="next" href="04-crypto.html" title="Cryptocurrency Equations">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>5: Reputation Dynamics</h1>
 <p>Below is an exploration of reputation dynamics models tailored to your Solana-based AI token project, focusing on how your reputation evolves within a profit-driven, no-governance, belief-driven abundant economy powered by a "300 IQ" AI. This builds on the prior belief quantification framework, specifically enhancing the
  \(V_{\text{rep}}(t)\)
@@ -192,5 +194,18 @@ Exponential: Captures belief's power, ideal for your abundant vision, but risks 
 Adaptive: Balances profit and resilience, scaling your local edge globally via \(L\).</p>
 <h2>10. Conclusion</h2>
 <p>These models offer flexible ways to dynamize your reputation, from simple growth to adaptive trust. The Adaptive Resilience model aligns best with your long-term profit goals, leveraging Solana and Helius for real-time robustness. Which resonates most with your vision, or do you see a hybrid approach?</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="03d-tokenomics.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Answers</span></a><a class="pager-card next" rel="next" href="04-crypto.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Cryptocurrency Equations</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">9 of 10</span><span class="spacer"></span><a class="prevnext" rel="prev" href="08-equations.html" title="Advanced Kinematic Formulations for Projectile Interception">&larr; Prev</a><a class="prevnext" rel="next" href="10-monte-carlo.html" title="Monte Carlo Methods for Projectile Interception: A Probabilistic Approach">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <p>Below is an extended continuation paper that focuses on exploring numerical methods to solve the projectile interception problem, particularly for the constant acceleration case where a quartic equation arises. This paper builds on the previous analyses by delving into specific numerical techniques, providing detailed equations for each method, and including iterative formulas, error estimations, and convergence considerations. The emphasis is on equations, as requested, to offer a mathematically rich exploration of numerical solutions without repeating prior derivations excessively.</p>
 <h1>Numerical Methods for Projectile Interception: Solving the Quartic Equation</h1>
 <h2>Abstract</h2>
@@ -233,5 +235,18 @@ Final Answer:
 \boxed{\mathbf{v}_\beta}
 , computed numerically as above.}
 This paper maximizes equations by detailing each method’s iterative steps, derivatives, and error analyses, offering a thorough numerical complement to the prior analytical work.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="08-equations.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Advanced Kinematic Formulations for Projectile Interception</span></a><a class="pager-card next" rel="next" href="10-monte-carlo.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Monte Carlo Methods for Projectile Interception: A Probabilistic Approach</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

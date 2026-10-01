@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">TokenAffiliates: A Formal Mathematical Model</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">10 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="09-onboard-token.html" title="Frictionless Onboarding and Deferred Wallet Integration">&larr; Prev</a><a class="prevnext" rel="next" href="11-math-dynamic-commission.html" title="Adaptive Commissions: Strategic Flexibility in Multi-Token Affiliate Networks 🎯💸">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>TokenAffiliates: A Formal Mathematical Model</h1>
 <p>This paper presents a formal mathematical model of the TokenAffiliates program, analyzing its commission structure, payout mechanism, and impact on the token dynamics within a Tokenized Economy. We delve into the quantitative aspects of the program, providing a foundation for understanding its influence on token value, distribution, and overall market behavior.</p>
 <p><strong>1. Definitions and Notation:</strong></p>
@@ -127,5 +129,18 @@
 </ul>
 <p><strong>7. Conclusion:</strong></p>
 <p>This formal mathematical model provides a robust framework for understanding and analyzing the TokenAffiliates program. By quantifying the relationships between key variables, the model enables a deeper understanding of the program's impact on token dynamics and affiliate earnings. Future research will focus on expanding the model to incorporate more complex scenarios and explore advanced features, ultimately contributing to the development of a more sophisticated and efficient Tokenized Economy.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="09-onboard-token.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Frictionless Onboarding and Deferred Wallet Integration</span></a><a class="pager-card next" rel="next" href="11-math-dynamic-commission.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Adaptive Commissions: Strategic Flexibility in Multi-Token Affiliate Networks 🎯💸</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

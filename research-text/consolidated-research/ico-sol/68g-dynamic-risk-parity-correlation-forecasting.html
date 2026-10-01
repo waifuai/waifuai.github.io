@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Dynamic Risk Parity for RWA Portfolios with AI-Enhanced C...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">98 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="68f-adaptive-valuation-emerging-rwas.html" title="Adaptive Valuation Models for Emerging RWA Classes">&larr; Prev</a><a class="prevnext" rel="next" href="69a-stochastic-calculus-extensions.html" title="Feedback and Extensions for Stochastic Calculus in Project Genesis">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>6: Dynamic Risk Parity for RWA Portfolios with AI-Enhanced Correlation Forecasting</h1>
 <p>Key Points
 Designed a dynamic risk parity model for RWA portfolios, using AI to forecast time-varying correlations between traditional and tokenized assets.
@@ -179,5 +181,18 @@ Hourly Updates: Ensures responsiveness to correlation changes (e.g., intraday vo
 </tr>
 </tbody>
 </table>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="68f-adaptive-valuation-emerging-rwas.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Adaptive Valuation Models for Emerging RWA Classes</span></a><a class="pager-card next" rel="next" href="69a-stochastic-calculus-extensions.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Feedback and Extensions for Stochastic Calculus in Project Genesis</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

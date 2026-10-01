@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Advanced Models in Tokenized Ecosystems: Volatility, Arbi...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">107 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="74-leverage.html" title="Autonomous AI-Powered 100x Leveraged Trading on Intertoken Swaps">&larr; Prev</a><a class="prevnext" rel="next" href="75b-stochastic-models-tokenized-ecosystems.html" title="Stochastic Models in Tokenized Ecosystems">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>1: continuation paper</h1>
 <p>Below is a continuation of the paper you provided, focusing on expanding the mathematical frameworks introduced in the original problems while introducing new concepts and equations. This continuation avoids repetition of the original content, builds on its foundation, and incorporates a significant number of equations as requested. Each section is designed to be self-contained per your thinking process guidelines, redefining necessary variables and contexts where applicable.
 Continuation Paper: Advanced Models and Dynamics in Tokenized Ecosystems
@@ -246,5 +248,18 @@ R \cdot P_B(\(S\)_B)
 . Convert this to Token A using the exchange rate:</p>
 <p>\text{Value in Token A} = \frac{R \cdot P_B(\(S\)_B)}{P_A(\(S\)_A)} = \frac{r Q_A T (m_B \(S\)_B + b_B)}{m_A \(S\)_A + b_A}
 This continuation introduces volatility, arbitrage, and staking, enriching the original framework with dynamic and interdependent systems, all expressed through rigorous mathematical formulations. Each section stands alone, ready for further exploration or practical implementation. Let me know if you'd like deeper elaboration or additional sections!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="74-leverage.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Autonomous AI-Powered 100x Leveraged Trading on Intertoken Swaps</span></a><a class="pager-card next" rel="next" href="75b-stochastic-models-tokenized-ecosystems.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Stochastic Models in Tokenized Ecosystems</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

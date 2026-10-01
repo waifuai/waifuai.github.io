@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">5 of 10</span><span class="spacer"></span><a class="prevnext" rel="prev" href="04-math.html" title="Hitting a Moving Target: Accounting for Acceleration">&larr; Prev</a><a class="prevnext" rel="next" href="06-acceleration.html" title="Problem Statement">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>White Paper: Projectile Interception of Moving Targets: A Kinematic Analysis</h1>
 <p><strong>Abstract:</strong></p>
 <p>This paper explores the problem of determining the launch parameters of a projectile designed to intercept a moving target, both under conditions of constant velocity and constant acceleration. We employ a kinematic analysis, utilizing differential equations to model the motion of both the projectile and the target. We develop systems of equations describing the intersection conditions and provide closed-form solutions for the constant velocity case, while highlighting the need for numerical approaches for the acceleration scenario. Practical considerations and limitations in real-world applications are also discussed.</p>
@@ -135,5 +137,18 @@ This leads to three equations:</p>
 and
 \[D = (x_{a} - x_{b})^2 + (y_{a} - y_{b})^2 + (z_{a} - z_{b})^2\]</p>
 <p>This solution corresponds to the two possible trajectories for hitting the target, as given by the \(\pm\) sign.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="04-math.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Hitting a Moving Target: Accounting for Acceleration</span></a><a class="pager-card next" rel="next" href="06-acceleration.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Problem Statement</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

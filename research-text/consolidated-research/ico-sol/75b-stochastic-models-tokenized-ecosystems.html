@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Stochastic Models in Tokenized Ecosystems</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">108 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="75a-volatility-arbitrage-staking-models.html" title="Advanced Models in Tokenized Ecosystems: Volatility, Arbitrage, and Staking 🔄">&larr; Prev</a><a class="prevnext" rel="next" href="75c-bayesian-inference-tokenized-ecosystems.html" title="Bayesian Inference in Tokenized Ecosystems">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>2: stochastic examples</h1>
 <p>Below, I expand on the use of stochastic models in the context of tokenized ecosystems, building on the foundation laid in the previous continuation paper. This exploration introduces randomness and probabilistic behavior into the AbundanceCoin ICO, Tokenized Economy, and TokenAffiliates frameworks, emphasizing stochastic differential equations (SDEs), Markov processes, and Monte Carlo simulations. Each section is self-contained, adhering to the guidelines from your thinking process, redefining all variables and contexts within the problem statements, and incorporating a substantial number of equations as requested.
 Stochastic Models in Tokenized Ecosystems
@@ -292,5 +294,18 @@ E^{(k)} &gt; K
 \mathbb{I}
  is the indicator function.
 These stochastic models introduce randomness via SDEs for price dynamics, Markov chains for behavioral transitions, and Monte Carlo methods for earnings estimation, providing robust tools to analyze tokenized systems under uncertainty. Let me know if you'd like numerical examples or further extensions!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="75a-volatility-arbitrage-staking-models.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Advanced Models in Tokenized Ecosystems: Volatility, Arbitrage, and Staking 🔄</span></a><a class="pager-card next" rel="next" href="75c-bayesian-inference-tokenized-ecosystems.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Bayesian Inference in Tokenized Ecosystems</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

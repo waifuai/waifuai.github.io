@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">6 of 16</span><span class="spacer"></span><a class="prevnext" rel="prev" href="01e-string-theory-industries.html" title="Quantum Field Theory">&larr; Prev</a><a class="prevnext" rel="next" href="03a-tokenomics.html" title="Intro">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>Common Lisp Macros in DSLs, OS, and Quantum Computing</h1>
 <p>Your input provides an extensive exploration of macros in Common Lisp, particularly in the context of operating systems, quantum computing, device drivers, and domain-specific languages (DSLs). It seems like you've presented a detailed document or set of notes rather than posing a specific question. Since you haven't explicitly asked anything, I'll assume you're looking for feedback, clarification, or an extension of the concepts you've outlined. Here's how I’ll proceed:</p>
 <h2>1. Summary of Your Content</h2>
@@ -127,5 +129,18 @@ You’ve also contrasted Common Lisp with C, highlighting the advantages of macr
 </code></pre>
 <h2>3. Open-Ended Prompt</h2>
 <p>I’ve touched on your use of macros for OS development, quantum computing, and ASI integration. Is there a specific area—like a particular DSL, the ASI synergy, or a quantum driver example—you’d like me to expand on? Or would you prefer a deeper dive into implementation details (e.g., how to hook these macros into a real Common Lisp OS)? Let me know!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="01e-string-theory-industries.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Quantum Field Theory</span></a><a class="pager-card next" rel="next" href="03a-tokenomics.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Intro</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

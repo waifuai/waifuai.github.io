@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Scaling Tokenized Economies: Mastering Performance Challe...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">120 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="78-empirical-validation.html" title="Empirical Validation of Tokenized Economic Models: Testing Theory Against Reality 📊">&larr; Prev</a><a class="prevnext" rel="next" href="80-real-world-case-studies.html" title="80: Real-World Application Case Studies for Tokenized Economic Systems">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>79: Scalability and Performance Analysis of Tokenized Economic Systems</h1>
 <h2>Computational and Economic Constraints of Large-Scale Deployment</h2>
 <h3>Abstract</h3>
@@ -287,5 +289,18 @@ where sensitivity measured over agent interaction graphs.</p>
 <li>Edge computing integration patterns</li>
 </ul>
 <p>This analysis provides the essential roadmap for developing economically viable, computationally feasible tokenized economic systems capable of competing with traditional financial infrastructure at global scale.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="78-empirical-validation.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Empirical Validation of Tokenized Economic Models: Testing Theory Against Reality 📊</span></a><a class="pager-card next" rel="next" href="80-real-world-case-studies.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">80: Real-World Application Case Studies for Tokenized Economic Systems</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

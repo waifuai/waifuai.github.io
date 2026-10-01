@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Tokens to Treasure: Architecting a Prosperous Tokenized E...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">28 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="29-mcp-formal.html" title="Formal Essence of ContextCoin: Blueprint for Solana&#x27;s Tokenized Trust ⚖️">&larr; Prev</a><a class="prevnext" rel="next" href="31-synergy.html" title="MCP Synergy Symphony: AI Orchestra in Solana&#x27;s Decentralized Melody 🎶🚀">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>AbundanceCoin ICO &amp; The Tokenized Economy Vision</h1>
 <p>This repository houses the smart contract and related materials for the AbundanceCoin Initial Coin Offering (ICO) on the Solana blockchain. Beyond simply launching a token, this project embodies a larger vision: to foster a <strong>Tokenized Economy</strong>, a decentralized barter system where innovation is directly funded and rewarded through tokenized assets.</p>
 <h2>AbundanceCoin ICO: Technical Details</h2>
@@ -125,5 +127,18 @@
 <h2>Get Involved</h2>
 <p>We invite you to join us in building the Tokenized Economy. Participate in the AbundanceCoin ICO, explore the provided tools and resources, and contribute to this exciting vision of a decentralized and equitable financial future.</p>
 <p><strong>Disclaimer:</strong> This project is under development and for educational purposes. Please conduct thorough research before participating in any cryptocurrency investment.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="29-mcp-formal.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Formal Essence of ContextCoin: Blueprint for Solana's Tokenized Trust ⚖️</span></a><a class="pager-card next" rel="next" href="31-synergy.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">MCP Synergy Symphony: AI Orchestra in Solana's Decentralized Melody 🎶🚀</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

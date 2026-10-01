@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Bayesian Inference in Tokenized Ecosystems</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">109 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="75b-stochastic-models-tokenized-ecosystems.html" title="Stochastic Models in Tokenized Ecosystems">&larr; Prev</a><a class="prevnext" rel="next" href="75d-mcmc-tokenized-ecosystems.html" title="Markov Chain Monte Carlo in Tokenized Ecosystems">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>3: bayesian inference</h1>
 <p>Below, I extend the exploration of tokenized ecosystems by incorporating Bayesian inference into the models previously discussed, such as the AbundanceCoin ICO, Tokenized Economy, and TokenAffiliates program. Bayesian methods allow us to update our beliefs about parameters (e.g., bonding curve slopes, commission rates, or volatility) based on observed data, providing a probabilistic framework for decision-making under uncertainty. Each section is self-contained, redefines all variables and contexts, and includes numerous equations as requested, focusing on Bayesian updates rather than repeating prior stochastic models.
 Bayesian Inference in Tokenized Ecosystems
@@ -257,5 +259,18 @@ b) Optimal
 <p>\[\frac{d}{d\alpha} \left( \frac{\alpha}{k \alpha + l} \right) = \frac{l}{(k \alpha + l)^2} = 0\]</p>
 <p>No finite maximum; use posterior samples to balance earnings and investment volume.
 These Bayesian models refine parameter estimates and predictions, enhancing decision-making in tokenized systems. MCMC or numerical methods are recommended for practical implementation. Let me know if you'd like code snippets or deeper derivations!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="75b-stochastic-models-tokenized-ecosystems.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Stochastic Models in Tokenized Ecosystems</span></a><a class="pager-card next" rel="next" href="75d-mcmc-tokenized-ecosystems.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Markov Chain Monte Carlo in Tokenized Ecosystems</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

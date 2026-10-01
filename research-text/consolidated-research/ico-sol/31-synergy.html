@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">MCP Synergy Symphony: AI Orchestra in Solana's Decentrali...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">29 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="30-readme.html" title="Tokens to Treasure: Architecting a Prosperous Tokenized Economy on Solana 🌍🪙">&larr; Prev</a><a class="prevnext" rel="next" href="32-combined.html" title="AI Genesis Unleashed: Tokenized Economies Revolutionizing Solana&#x27;s Future 🌌🚀">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>MCP Synergy Symphony: AI Orchestra in Solana's Decentralized Melody 🎶🚀</h1>
 <p>Okay, let's integrate the Model Context Protocol (MCP) into the Project Synergy whitepaper, creating a more robust and practical solution. This will focus on enabling seamless interaction between AI agents and the decentralized ecosystem on Solana.</p>
 <p><strong>Whitepaper: Project "Synergy" - An AI-Driven Decentralized Industrial Ecosystem on Solana, Powered by MCP</strong></p>
@@ -146,5 +148,18 @@
 <p><strong>7. Conclusion</strong></p>
 <p>Project Synergy, powered by the Solana blockchain and MCP, represents a significant step towards a future where AI and decentralized technology are utilized to solve the most complex challenges facing humanity. By creating a secure, open, and highly efficient ecosystem, we can unlock the potential of scientific research, medical innovation, and engineering advancements, creating a more equitable and prosperous world.</p>
 <p>This whitepaper provides a foundational view of Project Synergy. We anticipate evolving these ideas further and incorporating feedback from the community, as we rapidly advance the core components of this groundbreaking initiative.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="30-readme.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Tokens to Treasure: Architecting a Prosperous Tokenized Economy on Solana 🌍🪙</span></a><a class="pager-card next" rel="next" href="32-combined.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">AI Genesis Unleashed: Tokenized Economies Revolutionizing Solana's Future 🌌🚀</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Algorithm for Dynamic Commission Rate Optimization in Tok...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">12 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="11-math-dynamic-commission.html" title="Adaptive Commissions: Strategic Flexibility in Multi-Token Affiliate Networks 🎯💸">&larr; Prev</a><a class="prevnext" rel="next" href="15-economics.html" title="Project Genesis: A Decentralized Zero-Capital Economic System">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>Algorithm for Dynamic Commission Rate Optimization in TokenAffiliates</h1>
 <p>This section outlines an algorithm designed to automatically calculate the optimal commission rate (α<sub>j</sub>) for a given token (j) within the TokenAffiliates ecosystem, considering various factors to maximize an affiliate's earnings and market impact.</p>
 <p><strong>1. Objective:</strong></p>
@@ -151,5 +153,18 @@
 <li><strong>Personalized Commission Rates:</strong> Develop models that personalize commission rates based on individual investor characteristics and behavior.</li>
 </ul>
 <p>This algorithm provides a robust framework for automatically calculating optimal commission rates in the TokenAffiliates ecosystem. By leveraging data-driven insights and optimization techniques, affiliates can enhance their earnings and contribute to a more efficient and dynamic tokenized economy. Remember to thoroughly test and validate the algorithm in a controlled environment before deploying it in a live system.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="11-math-dynamic-commission.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Adaptive Commissions: Strategic Flexibility in Multi-Token Affiliate Networks 🎯💸</span></a><a class="pager-card next" rel="next" href="15-economics.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Project Genesis: A Decentralized Zero-Capital Economic System</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

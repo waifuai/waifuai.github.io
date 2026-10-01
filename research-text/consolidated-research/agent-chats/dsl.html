@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">2 of 4</span><span class="spacer"></span><a class="prevnext" rel="prev" href="crypto.html" title="CryptoChat Discussion Insights: A Mathematical Framework for Decentralized Governance and Privacy">&larr; Prev</a><a class="prevnext" rel="next" href="quantum.html" title="Quantum Frontiers: Exploring the Convergence of Quantum Computing, Simulation, and Consciousness">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>Leveraging Common Lisp Macros for Quantum Operating System Development</h1>
 <h2>Abstract</h2>
 <p>This whitepaper explores the potential of Common Lisp macros for building a robust and adaptable operating system (OS) designed for quantum computing environments. We delve into the advantages of macros for creating Domain-Specific Languages (DSLs), optimizing quantum algorithms, managing quantum resources, and facilitating hot reloading. Furthermore, we examine the synergistic benefits of integrating an Artificial General Intelligence (AGI) or Artificial Super Intelligence (ASI) within such an OS. Finally, we discuss the potential challenges and future opportunities this approach presents.</p>
@@ -119,5 +121,18 @@
 </ul>
 <h2>Conclusion</h2>
 <p>Combining Common Lisp macros, hot reloading, and AGI/ASI integration in a quantum OS offers a powerful approach to address the complex challenges of quantum computing. By leveraging the flexibility and extensibility of Common Lisp, we can create an OS that adapts, optimizes, and heals itself in real-time, paving the way for revolutionary advancements in quantum software development. This synergy unlocks the potential for a truly intelligent and adaptable quantum computing platform.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="crypto.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">CryptoChat Discussion Insights: A Mathematical Framework for Decentralized Governance and Privacy</span></a><a class="pager-card next" rel="next" href="quantum.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Quantum Frontiers: Exploring the Convergence of Quantum Computing, Simulation, and Consciousness</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Mathematical Enhancements for Solana dApps</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">14 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="15-economics.html" title="Project Genesis: A Decentralized Zero-Capital Economic System">&larr; Prev</a><a class="prevnext" rel="next" href="17-dapp-math.html" title="Mathematical Optimizations for Solana dApps: Fueling the Supercycle">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>Mathematical Enhancements for Solana dApps</h1>
 <p>You've outlined some very interesting and potentially impactful ways Solana dApps could leverage mathematical concepts to enhance their functionality and potentially fuel the growth you're seeing in the "supercycle." Let's break down each of your ideas and explore the math behind them:</p>
 <p><strong>1. Dynamic Affiliate Commission Rates for Token Sales</strong></p>
@@ -129,5 +131,18 @@
 </ul>
 <p><strong>In conclusion, your suggestions highlight the potential for mathematics to significantly enhance the Solana ecosystem. By implementing these ideas, dApps can create more efficient, fair, and accessible platforms for token sales, trading, and fundraising. This, in turn, could contribute to the continued growth and success of the Solana "supercycle."</strong></p>
 <p>It's important to note that implementing these mathematical concepts requires careful consideration of security, scalability, and user experience. Furthermore, the specific mathematical models used will need to be tailored to the individual needs and goals of each project.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="15-economics.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Project Genesis: A Decentralized Zero-Capital Economic System</span></a><a class="pager-card next" rel="next" href="17-dapp-math.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Mathematical Optimizations for Solana dApps: Fueling the Supercycle</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

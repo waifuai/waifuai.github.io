@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">1 of 4</span><span class="spacer"></span><span class="prevnext disabled">&larr; Prev</span><a class="prevnext" rel="next" href="dsl.html" title="Leveraging Common Lisp Macros for Quantum Operating System Development">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <p>Absolutely! Let's distill the conversation into a mathematics-focused whitepaper highlighting the core concepts and innovations discussed.</p>
 <hr />
 <h1>CryptoChat Discussion Insights: A Mathematical Framework for Decentralized Governance and Privacy</h1>
@@ -161,5 +163,18 @@
 <p>The insights from the CryptoChat discussion provide a rich mathematical foundation for building secure, private, and scalable decentralized systems. By leveraging advanced cryptography, game theory, optimization techniques, and AI, we can address complex challenges in governance, scalability, and privacy. Future research should focus on developing more efficient algorithms, robust cryptographic primitives, and innovative governance models to realize the full potential of blockchain technology and decentralized finance.</p>
 <hr />
 <p>This whitepaper abstracts the core concepts into a mathematical framework, focusing on the technical underpinnings without attributing individual contributors. This allows for a clear, concise, and rigorous presentation of the valuable knowledge extracted from the discussion. Let me know if you'd like further elaboration on any specific section!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><span class="pager-card prev empty"></span><a class="pager-card next" rel="next" href="dsl.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Leveraging Common Lisp Macros for Quantum Operating System Development</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

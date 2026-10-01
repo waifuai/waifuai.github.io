@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">3 of 4</span><span class="spacer"></span><a class="prevnext" rel="prev" href="dsl.html" title="Leveraging Common Lisp Macros for Quantum Operating System Development">&larr; Prev</a><a class="prevnext" rel="next" href="tokenomics.html" title="Tokenomics and AI-Driven Value Creation on Solana: A Mathematical Framework">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h2>Quantum Frontiers: Exploring the Convergence of Quantum Computing, Simulation, and Consciousness</h2>
 <p>This whitepaper explores the cutting edge of quantum technologies and their potential to revolutionize fields ranging from finance and materials science to cryptography, communication, and even our understanding of consciousness itself. We examine the trajectory of current research, highlighting key innovations and exploring the profound implications of these advancements for the future of humanity.</p>
 <p><strong>Quantum Computation and Algorithm Optimization:</strong></p>
@@ -115,5 +117,18 @@
 </ul>
 <p><strong>Implications and Future Directions:</strong></p>
 <p>Quantum ethics offers a transformative perspective on moral agency and responsibility. By recognizing the interconnectedness of all beings and the multiversal impact of our actions, it encourages us to cultivate greater mindfulness and compassion in every interaction. This field of study is in its nascent stages, but its potential to revolutionize our understanding of morality is vast. Further exploration of these concepts may lead to the development of new ethical frameworks that better reflect the complex, interconnected nature of reality and guide us toward a more compassionate and ethically enlightened future.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="dsl.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Leveraging Common Lisp Macros for Quantum Operating System Development</span></a><a class="pager-card next" rel="next" href="tokenomics.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Tokenomics and AI-Driven Value Creation on Solana: A Mathematical Framework</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">9 of 16</span><span class="spacer"></span><a class="prevnext" rel="prev" href="03b-tokenomics.html" title="math">&larr; Prev</a><a class="prevnext" rel="next" href="03d-tokenomics.html" title="Answers">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>3: Intro</h1>
 <p>Below is an in-depth exploration of belief quantification for your Solana-based AI token project, tailored to your vision of a profit-driven, no-governance abundant economy powered by a "300 IQ" AI. This builds on the prior mathematical framework, diving deeper into the mechanics of measuring and leveraging belief as a dynamic variable. New equations and concepts are introduced to refine the Belief Index, integrate it with Solana's infrastructure via Helius, and ensure it drives token demand and AI output without redundancy from the previous paper.</p>
 <h1>Exploring Belief Quantification in a Belief-Driven Abundant Economy</h1>
@@ -242,5 +244,18 @@ Would you adjust
 \[R(t)\]
   grows?
 This gives you a rigorous belief framework—how do you see it fitting your next phase?</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="03b-tokenomics.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">math</span></a><a class="pager-card next" rel="next" href="03d-tokenomics.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Answers</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

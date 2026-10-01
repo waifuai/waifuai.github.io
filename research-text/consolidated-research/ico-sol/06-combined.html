@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Solana's Tokenized Odyssey: Weaving Economies with ICOs a...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">6 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="05-affiliate-contents.html" title="Affiliates Unleashed: Mechanics, Magic, and Momentum in Tokenized Economies 🚀">&larr; Prev</a><a class="prevnext" rel="next" href="07-affiliate-link.html" title="Solana Links Unleashed: Building Affiliate Bridges to Wealth">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>ICO-Sol: Revolutionizing Trade with the Tokenized Economy and TokenAffiliates</h1>
 <p><strong>Abstract:</strong></p>
 <p>This document outlines the ICO-Sol project, presenting the innovative concept of the Tokenized Economy built on the Solana blockchain. This model utilizes interconnected Initial Coin Offerings (ICOs) and utility tokens to facilitate a decentralized, efficient, and equitable economic system. We further introduce TokenAffiliates, a risk-free, high-reward affiliate program designed to incentivize participation and accelerate the growth of this new ecosystem.</p>
@@ -167,5 +169,18 @@
 <p>Moving forward, we will focus on expanding the ecosystem, integrating with existing DeFi protocols, building a strong community, and continuously adapting to the evolving regulatory landscape. Our long-term vision is to create a thriving Tokenized Economy that serves as a viable alternative to traditional financial systems, fostering financial inclusion and economic empowerment for all.</p>
 <p><strong>Community and Contributions:</strong></p>
 <p>We encourage community participation and contributions. We will establish clear guidelines for open-source development and feedback, fostering a collaborative environment for the continued evolution of the ICO-</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="05-affiliate-contents.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Affiliates Unleashed: Mechanics, Magic, and Momentum in Tokenized Economies 🚀</span></a><a class="pager-card next" rel="next" href="07-affiliate-link.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Solana Links Unleashed: Building Affiliate Bridges to Wealth</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

@@ -367,6 +367,57 @@ img { max-width: 100%; border-radius: 6px; }
 
 .katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.5em 0; }
 
+/* Prev/next navigation (research-text) */
+.pager-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5em 0.8em;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+}
+.pager-top .back-link { margin-bottom: 0; }
+.pager-top .pager-pos { color: var(--text-muted); font-size: 0.85em; }
+.pager-top .spacer { flex: 1 1 auto; }
+.pager-top .prevnext {
+  padding: 0.3em 0.8em;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--accent3);
+  white-space: nowrap;
+}
+.pager-top a.prevnext:hover { border-color: var(--accent3); text-decoration: none; }
+.pager-top .prevnext.disabled { opacity: 0.35; }
+
+.pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin: 3rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.pager-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.9rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  min-width: 0;
+}
+.pager-card.next { text-align: right; }
+.pager-card.empty { visibility: hidden; }
+a.pager-card:hover { border-color: var(--accent3); text-decoration: none; }
+.pager-dir { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.pager-title { color: var(--accent3); font-weight: 600; overflow-wrap: anywhere; }
+@media (max-width: 560px) {
+  .pager { grid-template-columns: 1fr; }
+  .pager-card.empty { display: none; }
+}
+
 /* Chapter navigation (research-books) */
 .topbar {
   display: flex;

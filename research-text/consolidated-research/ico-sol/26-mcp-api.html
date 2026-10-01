@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Solana APIAlchemy: Master the ContextCoin Program's Inner...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">24 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="25-mcp-review.html" title="Fortifying Foundations: A Blueprint for Comprehensive ContextCoin Documentation 🌟">&larr; Prev</a><a class="prevnext" rel="next" href="27-mcp-ai.html" title="AI&#x27;s Code Whisperer: Unraveling Smart Contracts Through MCP Documentation Wisdom">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <p>Okay, let's craft a detailed API Reference for your ContextCoin (CTX) program on Solana. This will be a markdown document (<code>API.md</code>) that provides developers with all the necessary information to interact with your smart contracts.</p>
 <h1>ContextCoin (CTX) Program API Reference</h1>
 <p>This document provides a detailed API reference for the ContextCoin (CTX) program on the Solana blockchain. It outlines all available instructions, account structures, error codes, and other essential information for developers who wish to interact with the program.</p>
@@ -432,5 +434,18 @@
 <li><strong>Host this Document:</strong> Place this <code>API.md</code> in your project repository or documentation website.</li>
 </ol>
 <p>This API reference should greatly help developers to interact with your ContextCoin program! Let me know if you need any further assistance.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="25-mcp-review.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Fortifying Foundations: A Blueprint for Comprehensive ContextCoin Documentation 🌟</span></a><a class="pager-card next" rel="next" href="27-mcp-ai.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">AI's Code Whisperer: Unraveling Smart Contracts Through MCP Documentation Wisdom</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

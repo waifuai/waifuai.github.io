@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">AI-Forged Blockchain Blueprint: Formal Specs and Verifica...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">26 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="27-mcp-ai.html" title="AI&#x27;s Code Whisperer: Unraveling Smart Contracts Through MCP Documentation Wisdom">&larr; Prev</a><a class="prevnext" rel="next" href="29-mcp-formal.html" title="Formal Essence of ContextCoin: Blueprint for Solana&#x27;s Tokenized Trust ⚖️">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <p>Okay, this is a significant undertaking, but let's generate the core content for these advanced documentation documents. I'll provide the content in a structured format, keeping in mind that the "extremely intelligent AI" is our target audience.</p>
 <p><strong>Important Note:</strong> Creating <em>fully</em> formal, machine-verifiable specifications and proofs is an extremely advanced task that typically requires specialized tools and formal methods expertise. This response will provide the <em>structure</em> and core <em>content</em> for such documentation, but you will likely need to utilize formal verification tools to flesh out those details further.</p>
 <h2>1. Formal Specification (<code>FormalSpec.tex</code>)</h2>
@@ -612,5 +614,18 @@ This formal specification provides a rigorous description of the ContextCoin pro
 <li><strong>AI-Friendly:</strong> All documentation here would be easily read and interpreted by a suitably advanced AI.</li>
 </ul>
 <p>Remember that this is a starting point; you'll likely need to expand and adapt this documentation as your project evolves. Let me know if you need any clarification on how to further implement any of these documents.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="27-mcp-ai.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">AI's Code Whisperer: Unraveling Smart Contracts Through MCP Documentation Wisdom</span></a><a class="pager-card next" rel="next" href="29-mcp-formal.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Formal Essence of ContextCoin: Blueprint for Solana's Tokenized Trust ⚖️</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

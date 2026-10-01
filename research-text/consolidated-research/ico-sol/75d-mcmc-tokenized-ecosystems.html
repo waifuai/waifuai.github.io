@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Markov Chain Monte Carlo in Tokenized Ecosystems</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">110 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="75c-bayesian-inference-tokenized-ecosystems.html" title="Bayesian Inference in Tokenized Ecosystems">&larr; Prev</a><a class="prevnext" rel="next" href="75e-hamiltonian-monte-carlo.html" title="Hamiltonian Monte Carlo in Tokenized Ecosystems">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>4: markov chain monte carlo</h1>
 <p>Below, I extend the exploration of tokenized ecosystems by applying Markov Chain Monte Carlo (MCMC) methods to perform Bayesian inference on the models introduced earlier, such as the AbundanceCoin ICO, Tokenized Economy, and TokenAffiliates program. MCMC is a powerful computational technique for sampling from complex posterior distributions when analytical solutions are intractable. Each section is self-contained, redefines all variables and contexts as per your thinking process guidelines, and includes numerous equations to illustrate the MCMC process, focusing on the Metropolis-Hastings algorithm.
 Markov Chain Monte Carlo in Tokenized Ecosystems
@@ -228,5 +230,18 @@ Optimization:
 MCMC provides a practical way to explore complex posteriors in tokenized systems. Tuning
 \(\Sigma_{\text{prop}}\)
  and diagnostics (e.g., convergence) are critical. Let me know if you'd like pseudo-code or results!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="75c-bayesian-inference-tokenized-ecosystems.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Bayesian Inference in Tokenized Ecosystems</span></a><a class="pager-card next" rel="next" href="75e-hamiltonian-monte-carlo.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Hamiltonian Monte Carlo in Tokenized Ecosystems</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

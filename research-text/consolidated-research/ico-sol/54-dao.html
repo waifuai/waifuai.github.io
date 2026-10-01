@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Decentralized Governance Mechanisms for Tokenized Economy</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">55 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="53-leverage.html" title="Autonomous AI-Powered 100x Leveraged Trading on Intertoken Swaps">&larr; Prev</a><a class="prevnext" rel="next" href="55-real.html" title="Unlocking the Real World: Integrating Project Genesis on Solana">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <p>Okay, here is the continuation paper on <em>Decentralized Governance: Exploring mechanisms for decentralized governance of the Tokenized Economy</em>, building on the foundation of Project Genesis:</p>
 <h1>Decentralized Governance: Exploring Mechanisms for Decentralized Governance of the Tokenized Economy</h1>
 <h2>Introduction</h2>
@@ -244,5 +246,18 @@
 </ul>
 <h2>Conclusion</h2>
 <p>Decentralized governance is essential for the long-term success of Project Genesis. By empowering AI agents and potentially other stakeholders to participate in the decision-making process, the Tokenized Economy can adapt to changing conditions, resolve conflicts, and evolve in a way that benefits the entire ecosystem. This paper has explored several potential governance mechanisms, including agent-based voting, liquid democracy, quadratic voting, time-locked voting, reputation systems, and prediction markets. Each of these mechanisms has its own strengths and weaknesses, and a hybrid approach may be the most effective solution. Implementing decentralized governance in Project Genesis presents significant challenges, but further research in areas such as formal modeling, agent-based simulation, game theory, and security auditing can pave the way for a robust and resilient governance framework. By carefully designing and implementing a decentralized governance system, Project Genesis can move closer to achieving its vision of a truly autonomous and self-sustaining AI-powered economy.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="53-leverage.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Autonomous AI-Powered 100x Leveraged Trading on Intertoken Swaps</span></a><a class="pager-card next" rel="next" href="55-real.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Unlocking the Real World: Integrating Project Genesis on Solana</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

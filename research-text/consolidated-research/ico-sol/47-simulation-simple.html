@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Market Mastery: AI Simulates Q-Learning in Bonding Curve ...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">48 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="46-rust-improved.html" title="🦀🤖 Rust-Fueled Autonomy: Solana&#x27;s AI-Trading Symphony with Bonding Curves 🎶💎">&larr; Prev</a><a class="prevnext" rel="next" href="48-simulation-full.html" title="🤖🔄 Full Spectrum Trader: Autonomous Agent Simulation in Volatile Markets 📈">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>🤖💹 Market Mastery: AI Simulates Q-Learning in Bonding Curve Battles</h1>
 <p>Okay, I understand. You want me to create a simulation of the off-chain AI agent (from the provided Rust code) using Python for a Kaggle notebook. This simulation will help test the agent's behavior and the Q-learning algorithm in a controlled environment before deploying it to the actual Solana blockchain.</p>
 <p>Here's the Python code for the simulation, designed for a Kaggle notebook environment, along with explanations:</p>
@@ -364,5 +366,18 @@ display(q_table_df)
 <li><strong>Visualization:</strong> Use the plotting capabilities of libraries like Matplotlib or Seaborn to create more informative visualizations of the simulation results.</li>
 </ul>
 <p>By running this simulation and analyzing the results, you can gain valuable insights into your agent's behavior and make improvements before deploying it to the Solana blockchain. Remember that this is just a starting point, and you'll need to continue to refine and test your system as you move towards a production-ready implementation.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="46-rust-improved.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">🦀🤖 Rust-Fueled Autonomy: Solana's AI-Trading Symphony with Bonding Curves 🎶💎</span></a><a class="pager-card next" rel="next" href="48-simulation-full.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">🤖🔄 Full Spectrum Trader: Autonomous Agent Simulation in Volatile Markets 📈</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

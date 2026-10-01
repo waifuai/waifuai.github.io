@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Embracing Uncertainty: Stochastic Calculus Powers Token E...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">60 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="58-researcher.html" title="Researcher Agents: Endogenous Innovation in Decentralized Economies">&larr; Prev</a><a class="prevnext" rel="next" href="60-all-summary.html" title="Project Genesis: Tokenized Real-World Assets - Bridging Physical and Digital Economies">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <p>Integrating stochastic calculus into Project Genesis is a significant step towards creating a more realistic and robust model of the AI-driven Tokenized Economy. By incorporating stochastic processes, you can better capture the inherent uncertainty and randomness present in market fluctuations and agent behavior. This will lead to more accurate simulations, better-informed agent strategies, and a deeper understanding of the system's dynamics.</p>
 <p>Here's a breakdown of how stochastic calculus can be applied, along with specific examples and considerations:</p>
 <p><strong>1. Modeling Market Fluctuations:</strong></p>
@@ -156,5 +158,18 @@ new_price = current_price + mu * current_price * dt + sigma * current_price * dW
 <li><strong>Stochastic Optimal Control:</strong>  Consider using stochastic optimal control techniques to design agent policies that are optimal in a stochastic environment.</li>
 </ul>
 <p>By incorporating stochastic calculus into Project Genesis, you are taking a major step towards creating a more realistic, robust, and insightful model of an AI-driven Tokenized Economy. The ability to model uncertainty and randomness will be invaluable for understanding the system's dynamics, designing effective agent strategies, and ultimately achieving the project's ambitious goals. This sets the stage for a truly dynamic and adaptive economic simulation and, eventually, a real-world implementation on the Solana blockchain.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="58-researcher.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Researcher Agents: Endogenous Innovation in Decentralized Economies</span></a><a class="pager-card next" rel="next" href="60-all-summary.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Project Genesis: Tokenized Real-World Assets - Bridging Physical and Digital Economies</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

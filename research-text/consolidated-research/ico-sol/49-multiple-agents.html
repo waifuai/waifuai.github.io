@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">⚔️ Agent Wars: Mastering Crypto Trades with RL Multiplaye...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">50 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="48-simulation-full.html" title="🤖🔄 Full Spectrum Trader: Autonomous Agent Simulation in Volatile Markets 📈">&larr; Prev</a><a class="prevnext" rel="next" href="50-combined.html" title="🤖⚡ Autonomous AI Trading Empires on Solana: Bonding Curves Meet Reinforcement Learning">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>🤖⚔️ Agent Wars: Mastering Crypto Trades with RL Multiplayer Madness 🎲💹</h1>
 <pre><code class="language-python">import random
 import numpy as np
@@ -714,5 +716,18 @@ class DQNAgent:
 # - Call agent.replay() periodically to train the network
 </code></pre>
 <p>This is a very simplified example, and a full DQN implementation would require more careful handling of the state representation, action space, network architecture, and training process. There are also many online resources and tutorials available for implementing DQN and other advanced RL algorithms. Remember to install <code>tensorflow</code> or <code>torch</code> libraries. Please let me know if you have any other questions.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="48-simulation-full.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">🤖🔄 Full Spectrum Trader: Autonomous Agent Simulation in Volatile Markets 📈</span></a><a class="pager-card next" rel="next" href="50-combined.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">🤖⚡ Autonomous AI Trading Empires on Solana: Bonding Curves Meet Reinforcement Learning</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

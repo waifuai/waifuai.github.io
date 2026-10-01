@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">12 of 16</span><span class="spacer"></span><a class="prevnext" rel="prev" href="03e-tokenomics.html" title="Reputation Dynamics">&larr; Prev</a><a class="prevnext" rel="next" href="05-quantum-computing-biology.html" title="Equations for Quantum Computing in Quantum Biology">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>Cryptocurrency Equations</h1>
 <p>It seems like you're asking me to "write the equations" for the complex discussion about DeFi, blockchain governance, and quantum-inspired systems presented in the CryptoChat conversation. However, the discussion is highly conceptual, spanning topics like yield optimization, smart contract auditing, privacy-preserving cryptography, quantum-resistant algorithms, ethical governance, and decentralized systems. It doesn't directly lend itself to a single set of mathematical equations in the traditional sense, as it involves a mix of cryptographic primitives, algorithmic processes, and system design principles.
 Instead, I’ll interpret your request as asking for a structured representation of key concepts from the conversation in the form of mathematical or pseudomathematical equations where applicable. These will abstractly model some of the critical ideas—like yield optimization in YieldMaster, zero-knowledge proofs for privacy, quantum-resistant governance, and reputation systems—while acknowledging that many aspects (e.g., ethical AI frameworks, meta-DAO structures) are more algorithmic or architectural than equation-based.
@@ -136,5 +138,18 @@ Where \(\lambda\) balances computational cost and ethical goals.</p>
 <h3>Image Generation:</h3>
 <p>If you’d like a diagram (e.g., Meta-DAO structure), please confirm.
 Would you like me to refine any of these equations further or focus on a particular part of the conversation?</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="03e-tokenomics.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Reputation Dynamics</span></a><a class="pager-card next" rel="next" href="05-quantum-computing-biology.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Equations for Quantum Computing in Quantum Biology</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

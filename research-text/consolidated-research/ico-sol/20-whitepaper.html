@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Enhanced Whitepaper for SOL ICO Token Sale</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">18 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="19-refactor.html" title="Building a Complete Solana ICO Program with Anchor Framework">&larr; Prev</a><a class="prevnext" rel="next" href="21-mcp-design.html" title="ContextCoin Chronicles: Shielding AI Resources with Blockchain Bindings">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>Enhanced Whitepaper for SOL ICO Token Sale</h1>
 <h2>Abstract</h2>
 <p>This whitepaper details the economic model underpinning the Initial Coin Offering (ICO) for SOL tokens. It focuses on a dynamic token pricing mechanism designed to align with supply and demand principles, fostering a transparent and equitable fundraising process. The model features a linearly increasing token price tied to the volume of tokens sold, influencing both early participant incentives and the overall market capitalization. Key metrics including token price evolution, total funds raised, and their interrelationship are mathematically defined and analyzed, offering participants comprehensive insight into the ICO structure.</p>
@@ -116,5 +118,18 @@
 <h2>Conclusion: Fostering Transparency and Strategic Engagement</h2>
 <p>The SOL ICO token sale model leverages a linear pricing mechanism to ensure transparency, predictability, and fairness. By aligning token price with sales volume, the model incentivizes early participation while ensuring a sustainable and equitable fundraising process. The mathematical rigor underpinning this model provides participants with a clear understanding of the economic dynamics at play, allowing for informed decision-making.</p>
 <p>This whitepaper has outlined the key components of the pricing model, demonstrating its effectiveness in achieving fundraising goals and fostering a vibrant ecosystem. The transparent and predictable nature of this ICO aims to build trust and ensure a successful launch, establishing a strong foundation for the SOL project's future. Participants are encouraged to review the model thoroughly, considering its implications for their investment strategy and the project's long-term potential.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="19-refactor.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Building a Complete Solana ICO Program with Anchor Framework</span></a><a class="pager-card next" rel="next" href="21-mcp-design.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">ContextCoin Chronicles: Shielding AI Resources with Blockchain Bindings</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

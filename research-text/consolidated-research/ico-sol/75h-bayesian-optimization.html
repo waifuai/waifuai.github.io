@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Bayesian Optimization in Tokenized Ecosystems</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">114 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="75g-laplace-approximation-bayesian.html" title="Laplace Approximation in Tokenized Ecosystems">&larr; Prev</a><a class="prevnext" rel="next" href="75i-stochastic-variational-inference.html" title="Stochastic Variational Inference">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>8: bayesian optimization</h1>
 <p>Below, I extend the exploration of tokenized ecosystems by applying Bayesian Optimization (BO) to optimize key parameters in the AbundanceCoin ICO, Tokenized Economy, and TokenAffiliates program. Unlike Bayesian inference, which focuses on estimating posterior distributions over parameters, Bayesian Optimization is a sequential, model-based approach to find the optimal settings of a black-box function (e.g., profit, exchange rate stability, or affiliate earnings) that is expensive to evaluate. Each section is self-contained, redefines all variables and contexts per your thinking process guidelines, and includes numerous equations to detail the BO process, emphasizing Gaussian Processes (GPs) and acquisition functions.
 Bayesian Optimization in Tokenized Ecosystems
@@ -241,5 +243,18 @@ Analytical Insight:
 \(\alpha^* = \alpha_{\text{max}}\)
  (BO confirms this).
 BO efficiently optimizes tokenized system parameters, leveraging GPs to guide exploration. Let me know if you'd like implementation details or multi-objective extensions!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="75g-laplace-approximation-bayesian.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Laplace Approximation in Tokenized Ecosystems</span></a><a class="pager-card next" rel="next" href="75i-stochastic-variational-inference.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Stochastic Variational Inference</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

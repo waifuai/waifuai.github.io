@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">High-Frequency Trading and Order Book Dynamics for Tokeni...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">83 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="67o-rwa-loan-liquidation-cascades.html" title="Comprehensive Framework for RWA-Backed Loan Liquidation with Cascading Effects">&larr; Prev</a><a class="prevnext" rel="next" href="67q-emergent-rwa-market-structures.html" title="Emergent Market Structures from Autonomous RWA Interactions">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>answer 16: q1-4 High-Frequency Trading and Order Book Dynamics for Tokenized RWAs</h1>
 <h2>Key Points</h2>
 <p><strong>HFT Strategy:</strong> An AI-driven HFT algorithm for tokenized RWAs leverages market making and arbitrage, tailored to thin order books, phantom liquidity, blockchain latency, and front-running risks.</p>
@@ -140,5 +142,18 @@ Execute if: \[|P_{\text{DEX}}(t) - P_{\text{external}}(t)| &gt; C_{\text{tx}} + 
 <p><strong>Risk:</strong> 40% chance of front-running, reducing fill rate.</p>
 <h2>Conclusion</h2>
 <p>The HFT algorithm profits by adapting to thin, discontinuous order books, countering phantom liquidity and latency with dynamic adjustments. Risks are managed via filters and limits, with flexibility across RWA liquidity levels ensured by tunable parameters. Frequent updates optimize performance in this challenging DEX environment.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="67o-rwa-loan-liquidation-cascades.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Comprehensive Framework for RWA-Backed Loan Liquidation with Cascading Effects</span></a><a class="pager-card next" rel="next" href="67q-emergent-rwa-market-structures.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Emergent Market Structures from Autonomous RWA Interactions</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

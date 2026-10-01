@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">8 of 10</span><span class="spacer"></span><a class="prevnext" rel="prev" href="07-continuation.html" title="Extended Kinematic Analysis of Projectile Interception: Constant Velocity and Beyond">&larr; Prev</a><a class="prevnext" rel="next" href="09-numerical-methods.html" title="Numerical Methods for Projectile Interception: Solving the Quartic Equation">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <p>Below is an extended continuation paper that builds further on the previous analysis, introducing even more equations by exploring additional mathematical perspectives, transformations, and detailed derivations. This version emphasizes a variety of new formulations, including coordinate transformations, parametric approaches, and energy-based considerations, all while maintaining the focus on the projectile interception problem and avoiding repetition of prior content. The goal is to saturate the discussion with equations as requested.</p>
 <h1>Advanced Kinematic Formulations for Projectile Interception</h1>
 <h2>Abstract</h2>
@@ -198,5 +200,18 @@ Final Answer:
 \boxed{\mathbf{v}_\beta}
 , as derived across multiple formulations.}
 This version is equation-heavy, introducing diverse mathematical techniques and ensuring a high density of formulas while advancing the analysis beyond prior content.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="07-continuation.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Extended Kinematic Analysis of Projectile Interception: Constant Velocity and Beyond</span></a><a class="pager-card next" rel="next" href="09-numerical-methods.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Numerical Methods for Projectile Interception: Solving the Quartic Equation</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

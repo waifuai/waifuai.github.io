@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">1 of 10</span><span class="spacer"></span><span class="prevnext disabled">&larr; Prev</span><a class="prevnext" rel="next" href="02-math.html" title="Hitting a Moving Target: The Math of Projectile Motion">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <p>Let the given vector be denoted by \(\mathbf{v}\):
 \[\mathbf{v} = \begin{pmatrix} v_1 \ v_2 \ v_3 \ v_4 \ v_5 \ v_6 \end{pmatrix}\]
 where
@@ -82,5 +84,18 @@ Since \(\mathbf{r} \times \mathbf{r} = \mathbf{0}\),
 Thus, we have
 \[\mathbf{v} = \begin{pmatrix} -\mathbf{r} \frac{\sqrt{\Delta}}{D} \ \mathbf{r} \frac{\sqrt{\Delta}}{D} \end{pmatrix} = \begin{pmatrix} -\mathbf{r} \frac{\sqrt{\Delta}}{|\mathbf{r}|^2} \ \mathbf{r} \frac{\sqrt{\Delta}}{|\mathbf{r}|^2} \end{pmatrix}\]</p>
 <p>Final Answer: The final answer is \(\boxed{\mathbf{v}}\)</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><span class="pager-card prev empty"></span><a class="pager-card next" rel="next" href="02-math.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Hitting a Moving Target: The Math of Projectile Motion</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

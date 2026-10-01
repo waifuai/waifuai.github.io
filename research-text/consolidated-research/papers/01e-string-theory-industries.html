@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">5 of 16</span><span class="spacer"></span><a class="prevnext" rel="prev" href="01d-string-theory-industries.html" title="equations for the paper">&larr; Prev</a><a class="prevnext" rel="next" href="02-dsl.html" title="Common Lisp Macros in DSLs, OS, and Quantum Computing">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>5: Quantum Field Theory</h1>
 <p>It seems you’d like me to focus specifically on equations from quantum field theory (QFT) that are relevant to the paper "String Theory Industries: The New Generation of Technologies that Become Possible After String Theory is Solved," perhaps because QFT serves as a foundational framework underlying string theory and many of the technologies envisioned in your outline. String theory extends and generalizes QFT, so QFT equations naturally play a critical role in the mathematical structure of your speculative technologies—especially those involving energy generation, particle interactions, and quantum computing.
 Below, I’ll provide key QFT equations that align with the concepts in your paper, explain their significance, and connect them to specific chapters or sections where they could underpin the described innovations. I’ll keep the explanations accessible while tying them to your futuristic narrative, focusing on how these equations could inspire or enable the "string-based" technologies you’ve envisioned.</p>
@@ -167,5 +169,18 @@ Medical Applications (Chapter 6): Interaction terms in QFT hint at detecting sub
 ). I’ve kept them in their QFT form for clarity, assuming string theory adapts them.
 Your speculative technologies assume practical control over these fields, which current QFT doesn’t achieve but string theory might theoretically enable.
 If you’d like deeper derivations, specific string theory extensions (e.g., supersymmetric QFT), or applications to a particular chapter, let me know!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="01d-string-theory-industries.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">equations for the paper</span></a><a class="pager-card next" rel="next" href="02-dsl.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Common Lisp Macros in DSLs, OS, and Quantum Computing</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

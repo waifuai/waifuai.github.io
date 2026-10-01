@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Enhanced Mathematical Framework for TokenAffiliates</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">104 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="71-rl.html" title="Reinforcement Learning Framework for Agent-Based Economic Systems with Dynamic Asset Pricing">&larr; Prev</a><a class="prevnext" rel="next" href="73-dynamic-bonding-curves.html" title="Adaptive Bonding Curves: Optimizing ICO Tokenomics on Solana with Dynamic Mechanisms">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>Enhanced Mathematical Framework for TokenAffiliates</h1>
 <p>To enhance the provided paper on the TokenAffiliates program within the ICO-Sol project and the Tokenized Economy, I’ll introduce a rigorous mathematical framework with equations, focusing on optimizing the commission structure, preventing abuse, and modeling player behavior using game theory. The goal is to elevate the analysis without repeating the original content verbatim, while adding depth through formal equations and novel insights.
 Enhanced Mathematical Framework for TokenAffiliates
@@ -234,5 +236,18 @@ This enhanced framework uses equations to formalize player incentives, optimize 
 \(P_T\)
 ) will further strengthen the system.
 Let me know if you'd like specific sections expanded or additional equations derived!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="71-rl.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Reinforcement Learning Framework for Agent-Based Economic Systems with Dynamic Asset Pricing</span></a><a class="pager-card next" rel="next" href="73-dynamic-bonding-curves.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Adaptive Bonding Curves: Optimizing ICO Tokenomics on Solana with Dynamic Mechanisms</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

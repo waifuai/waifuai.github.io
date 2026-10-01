@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">15 of 16</span><span class="spacer"></span><a class="prevnext" rel="prev" href="06-quantum-llm.html" title="Multimodal Quantum LLM Equations">&larr; Prev</a><a class="prevnext" rel="next" href="07b-llm-rl.html" title="more examples">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h2>1: Intro</h2>
 <p>Your request involves writing equations related to the integration of large multimodal transformer models with reinforcement learning (RL) techniques, based on the detailed chapter outline and content provided. While the provided text is rich in conceptual discussions, it does not explicitly define specific equations for every section. However, I can derive and propose representative equations for key concepts covered in the chapters, focusing on areas where mathematical formulations are implied or standard in the literature. These equations will align with the themes introduced (e.g., transformer architectures, RL algorithms, reward shaping, fine-tuning strategies) and reflect common practices in these fields, adapted to the multimodal context.
 Since the document spans multiple chapters and subchapters, I'll focus on providing equations for a selection of critical subchapters where mathematical formulations are most relevant and feasible, such as those involving transformer mechanics, RL optimization, loss functions, and reward design. I'll ensure the equations are grounded in the context of the provided content and are consistent with the described methodologies.
@@ -249,5 +251,18 @@ T
 <h3>Adaptation: Where specific equations aren't provided in the text, I've adapted standard formulations (e.g., PPO, A2C) to the multimodal context, reflecting the emphasis on cross-modal interactions and RL optimization.</h3>
 <h3>Further Customization: If you'd like equations for specific subchapters not covered or more detailed derivations, please let me know!</h3>
 <p>These equations provide a mathematical backbone to the conceptual framework outlined, bridging the theoretical discussions with actionable formulations for implementation. Let me know how you'd like to proceed or refine this further!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="06-quantum-llm.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Multimodal Quantum LLM Equations</span></a><a class="pager-card next" rel="next" href="07b-llm-rl.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">more examples</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

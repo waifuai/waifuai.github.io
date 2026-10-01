@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Alchemy of Tokens: Blending ICO Magic, Economic Visions, ...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">31 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="32-combined.html" title="AI Genesis Unleashed: Tokenized Economies Revolutionizing Solana&#x27;s Future 🌌🚀">&larr; Prev</a><a class="prevnext" rel="next" href="34-cpu-parameters.html" title="Commission Optimization Crusade: Maximizing Affiliate Earnings on a CPU Budget ⚡">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <p>My thinking process to generate the combined whitepaper involved several steps:</p>
 <ol>
 <li>
@@ -321,5 +323,18 @@
 <p>\[E = \sum_{j \in J} \sum_{i=1}^{n_j} \alpha_j \cdot I_{j,i} \quad (\text{Total earnings across all tokens})\]</p>
 <h2>10. Conclusion: Building a Decentralized and Equitable Future</h2>
 <p>The AbundanceCoin project, spearheading the vision of a Tokenized Economy on Solana, offers a compelling alternative to traditional financial systems. By leveraging blockchain technology, sophisticated mathematical models, and incentivizing community participation through TokenAffiliates, we are building a more transparent, equitable, and innovative economic future. This integrated system aims to empower individuals, foster innovation, and unlock unprecedented economic opportunities. We invite you to join us in building this future.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="32-combined.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">AI Genesis Unleashed: Tokenized Economies Revolutionizing Solana's Future 🌌🚀</span></a><a class="pager-card next" rel="next" href="34-cpu-parameters.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Commission Optimization Crusade: Maximizing Affiliate Earnings on a CPU Budget ⚡</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

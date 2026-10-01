@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Rust-Fueled Autonomy: Solana's AI-Trading Symphony with B...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">47 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="45-rust-sol.html" title="🧠💎 Solana Autonomy Unleashed: Rust-Rigged Bonding Curves &amp; AI Orchestration 🚀🔧">&larr; Prev</a><a class="prevnext" rel="next" href="47-simulation-simple.html" title="🤖💹 Market Mastery: AI Simulates Q-Learning in Bonding Curve Battles">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>🦀🤖 Rust-Fueled Autonomy: Solana's AI-Trading Symphony with Bonding Curves 🎶💎</h1>
 <p>Okay, here's the improved full Rust code for a fully autonomous system optimized for Solana, incorporating the feedback and suggestions from previous responses. This version includes a more robust on-chain bonding curve program, a more sophisticated off-chain AI agent with a better-defined state and action space, improved transaction handling, and error management.</p>
 <p><strong>Note:</strong> This code is still a simplified representation of a complex system. Building a production-ready autonomous system requires rigorous testing, security audits, and likely formal verification. Consider this a strong foundation to build upon, not a finished product.</p>
@@ -821,5 +823,18 @@ async fn main() -&gt; Result&lt;(), Box&lt;dyn std::error::Error&gt;&gt; {
 </li>
 </ol>
 <p>This improved code provides a solid foundation for building a sophisticated autonomous trading system on Solana. Remember to thoroughly test and secure your system before deploying it to a production environment.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="45-rust-sol.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">🧠💎 Solana Autonomy Unleashed: Rust-Rigged Bonding Curves &amp; AI Orchestration 🚀🔧</span></a><a class="pager-card next" rel="next" href="47-simulation-simple.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">🤖💹 Market Mastery: AI Simulates Q-Learning in Bonding Curve Battles</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

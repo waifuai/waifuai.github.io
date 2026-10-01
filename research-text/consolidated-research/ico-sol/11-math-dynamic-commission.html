@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Adaptive Commissions: Strategic Flexibility in Multi-Toke...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">11 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="10-math.html" title="TokenAffiliates: A Formal Mathematical Model">&larr; Prev</a><a class="prevnext" rel="next" href="12-rate-predictor.html" title="Algorithm for Dynamic Commission Rate Optimization in TokenAffiliates">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>TokenAffiliates: Dynamic Commission Model - A Mathematical Extension</h1>
 <p>This paper extends the previous formal mathematical model of TokenAffiliates by introducing the ability for affiliates to set custom commission rates for each token they promote. This dynamic commission structure adds complexity and strategic depth to the affiliate program, requiring a refined mathematical analysis to understand its implications on token dynamics and affiliate behavior.</p>
 <p><strong>1. Definitions and Updated Notation:</strong></p>
@@ -122,5 +124,18 @@
 </ul>
 <p><strong>8. Conclusion:</strong></p>
 <p>The extension of the TokenAffiliates model to incorporate dynamic commission rates adds significant complexity and strategic depth. This refined model provides a framework for understanding the intricate relationships between affiliate choices, token dynamics, and market behavior in a more flexible and nuanced setting. Further research into the strategic aspects and optimization challenges presented by this model will be crucial for developing robust and efficient TokenAffiliate systems in the evolving landscape of tokenized economies.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="10-math.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">TokenAffiliates: A Formal Mathematical Model</span></a><a class="pager-card next" rel="next" href="12-rate-predictor.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Algorithm for Dynamic Commission Rate Optimization in TokenAffiliates</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

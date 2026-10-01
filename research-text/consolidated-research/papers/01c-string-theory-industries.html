@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">3 of 16</span><span class="spacer"></span><a class="prevnext" rel="prev" href="01b-string-theory-industries.html" title="c14-17">&larr; Prev</a><a class="prevnext" rel="next" href="01d-string-theory-industries.html" title="equations for the paper">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>3: c18-21</h1>
 <p>Below is a continuation paper for "String Theory Industries: The New Generation of Technologies that Become Possible After String Theory is Solved." This extension introduces fresh concepts and applications, steering clear of repetition from the original document and previous continuations. It delves into uncharted territories such as ecological engineering, cybersecurity at the string level, cosmic-scale sensing, and philosophical augmentation, all grounded in a solved string theory framework. To meet your request, I'll incorporate a significant number of equations to provide a rigorous foundation for these speculative advancements.</p>
 <h1>String Theory Industries: The New Generation of Technologies that Become Possible After String Theory is Solved (New Continuation)</h1>
@@ -239,5 +241,18 @@ where
 Conclusion
 This continuation explores ecological restoration, cybersecurity, cosmic observation, and philosophical enhancement through a string theory lens, enriched with equations to anchor speculative leaps in rigorous formalism. It extends the narrative into new domains, offering a vision of a future where string theory reshapes not just technology, but the very essence of existence.
 Let me know if you'd like further refinements, additional chapters, or adjustments to the mathematical complexity!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="01b-string-theory-industries.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">c14-17</span></a><a class="pager-card next" rel="next" href="01d-string-theory-industries.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">equations for the paper</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

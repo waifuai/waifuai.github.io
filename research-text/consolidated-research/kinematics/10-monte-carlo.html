@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">10 of 10</span><span class="spacer"></span><a class="prevnext" rel="prev" href="09-numerical-methods.html" title="Numerical Methods for Projectile Interception: Solving the Quartic Equation">&larr; Prev</a><span class="prevnext disabled">Next &rarr;</span></nav>
+<!-- /pager-top -->
 <h1>Monte Carlo Methods for Projectile Interception: A Probabilistic Approach</h1>
 <p>Below is a continuation paper that explores the application of Monte Carlo methods to solve the projectile interception problem, specifically for determining the interception time \(t^*\) and the projectile velocity \(\mathbf{v}_\beta\) in the constant acceleration case. This approach introduces a probabilistic framework, contrasting with the deterministic numerical methods previously discussed. The paper is saturated with equations as requested, detailing the Monte Carlo process, statistical formulations, and error analysis, while building on the prior kinematic foundation without excessive repetition.</p>
 <h2>Abstract</h2>
@@ -185,5 +187,18 @@
 <p>\[\boxed{\mathbf{v}_\beta}\]</p>
 <p>estimated via Monte Carlo as above.</p>
 <p>This paper is equation-heavy, detailing every step of the Monte Carlo process with probabilistic and statistical formulations, advancing the kinematic analysis into a new domain.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="09-numerical-methods.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Numerical Methods for Projectile Interception: Solving the Quartic Equation</span></a><span class="pager-card next empty"></span></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">2 of 10</span><span class="spacer"></span><a class="prevnext" rel="prev" href="01-math.html" title="-math">&larr; Prev</a><a class="prevnext" rel="next" href="03-math.html" title="Hitting a Moving Target in Your Game: A Simple Guide">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h2>Hitting a Moving Target: The Math of Projectile Motion</h2>
 <p>Let's say you're building a computer game where you need to program a projectile to hit a moving target. Here's how you can figure out the right speed and direction to fire the projectile.</p>
 <p><strong>The Setup</strong></p>
@@ -146,5 +148,18 @@
 </li>
 </ol>
 <p>By doing this, you will have successfully calculated the projectile launch parameters for a guaranteed hit (assuming constant target velocity).</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="01-math.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">-math</span></a><a class="pager-card next" rel="next" href="03-math.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Hitting a Moving Target in Your Game: A Simple Guide</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

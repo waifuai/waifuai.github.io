@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">10: Mean-Field Approximation in Tokenized Ecosystems</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">116 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="75i-stochastic-variational-inference.html" title="Stochastic Variational Inference">&larr; Prev</a><a class="prevnext" rel="next" href="76-synthesis-integration.html" title="Unified Framework for Tokenized Economic Systems">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>10: mean-field approximation</h1>
 <p>Below, I extend the exploration of tokenized ecosystems by applying the Mean-Field Approximation within the context of variational inference to estimate posterior distributions for the AbundanceCoin ICO, Tokenized Economy, and TokenAffiliates program. The Mean-Field Approximation simplifies complex joint posteriors by assuming independence between variables, factorizing the variational distribution into a product of simpler distributions. Each section is self-contained, redefines all variables and contexts per your thinking process guidelines, and includes numerous equations to detail the mean-field approach, focusing on deriving the variational updates and optimizing the Evidence Lower Bound (ELBO).
 Mean-Field Approximation in Tokenized Ecosystems
@@ -222,5 +224,18 @@ Adjust for
 l &gt; 0
 : Use truncated Gaussian.
 The Mean-Field Approximation simplifies posterior inference, though non-linear models may require approximations. Let me know if you'd like numerical refinements!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="75i-stochastic-variational-inference.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Stochastic Variational Inference</span></a><a class="pager-card next" rel="next" href="76-synthesis-integration.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Unified Framework for Tokenized Economic Systems</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

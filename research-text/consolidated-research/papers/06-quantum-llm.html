@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">14 of 16</span><span class="spacer"></span><a class="prevnext" rel="prev" href="05-quantum-computing-biology.html" title="Equations for Quantum Computing in Quantum Biology">&larr; Prev</a><a class="prevnext" rel="next" href="07a-llm-rl.html" title="Intro">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>Multimodal Quantum LLM Equations</h1>
 <p>Creating a comprehensive set of equations for a multimodal quantum large language model (LLM) that integrates vision, audio, and text within the Qiskit Python framework involves translating quantum machine learning concepts into mathematical formulations. These equations must account for quantum state preparation, feature encoding, entanglement for multimodal fusion, quantum circuit operations, and measurement processes. Below, I outline key equations based on the structure and concepts detailed in your table of contents, focusing on foundational aspects from Chapters 3 and 4. Since the task is inherently interdisciplinary and speculative (given the nascent state of quantum multimodal LLMs), these equations are illustrative and grounded in quantum computing principles, adapted for the multimodal context.</p>
 <p>Given the extensive scope of your document, I'll focus on core equations that represent:</p>
@@ -134,5 +136,18 @@
 <p>Training: Leverage qiskit.algorithms.VQE or custom loops with AerSimulator and optimizers.</p>
 <h2>Summary</h2>
 <p>These equations provide a mathematical foundation for a multimodal quantum LLM in Qiskit, covering encoding, fusion, processing, and training. They are intentionally general, allowing adaptation to specific datasets or tasks (e.g., image captioning, sentiment analysis). For a full implementation, you’d need to specify feature extraction methods, circuit depths, and loss functions based on the application, as outlined in your table of contents. Would you like me to expand on a specific subchapter or provide a Qiskit code snippet for one of these equations?</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="05-quantum-computing-biology.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Equations for Quantum Computing in Quantum Biology</span></a><a class="pager-card next" rel="next" href="07a-llm-rl.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Intro</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

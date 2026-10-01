@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Solana Links Unleashed: Building Affiliate Bridges to Wealth</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">7 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="06-combined.html" title="Solana&#x27;s Tokenized Odyssey: Weaving Economies with ICOs and Affiliates 🌌🧶">&larr; Prev</a><a class="prevnext" rel="next" href="08-dynamic-commission.html" title="Dynamic Dreams: Empowering Affiliates with Tailored Commission Control in Token Worlds! 💹">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>Solana Links Unleashed: Building Affiliate Bridges to Wealth 🔗💎</h1>
 <p>Implementing an affiliate link system on Solana involves several key steps, focusing on smart contract development and user interaction. Here's a breakdown of the process:</p>
 <p><strong>1. Smart Contract Development</strong></p>
@@ -135,5 +137,18 @@ fn process_instruction(
 <li><strong>Legal Compliance:</strong> Ensure your affiliate program complies with relevant regulations and legal requirements.</li>
 </ul>
 <p>This detailed explanation provides a starting point for implementing an affiliate link system on Solana. Remember that this is a complex process requiring a solid understanding of smart contract development and the Solana ecosystem. It is recommended to consult with experienced developers and conduct thorough testing before deploying your program on the mainnet.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="06-combined.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Solana's Tokenized Odyssey: Weaving Economies with ICOs and Affiliates 🌌🧶</span></a><a class="pager-card next" rel="next" href="08-dynamic-commission.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Dynamic Dreams: Empowering Affiliates with Tailored Commission Control in Token Worlds! 💹</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

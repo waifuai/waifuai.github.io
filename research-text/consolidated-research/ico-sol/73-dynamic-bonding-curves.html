@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Adaptive Bonding Curves: Optimizing ICO Tokenomics on Sol...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">105 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="72-affiliate-game-theory.html" title="Enhanced Mathematical Framework for TokenAffiliates">&larr; Prev</a><a class="prevnext" rel="next" href="74-leverage.html" title="Autonomous AI-Powered 100x Leveraged Trading on Intertoken Swaps">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>1: intro</h1>
 <p>Below is an improved version of your research paper outline, enhanced with additional mathematical rigor, fresh perspectives, and a variety of equations to deepen the analysis. I’ve avoided simply repeating your content and instead focused on elevating the structure, introducing new concepts, and embedding equations where they add value. The result is a more robust framework suitable for an academic or technical audience interested in token economics on Solana.
 Title: Adaptive Bonding Curves: Optimizing ICO Tokenomics on Solana with Dynamic Mechanisms
@@ -286,5 +288,18 @@ S = np.linspace(0, 2e6, 1000)
 P = 1000 / (1 + np.exp(-0.1 * (S - 1e6))) * np.exp(0.001 * S)</p>
 <h2>Plot P(S) to visualize hybrid curve</h2>
 <p>This paper provides a comprehensive, equation-rich exploration of adaptive bonding curves, tailored to Solana’s capabilities. It balances theory, practical implementation, and future potential, making it a strong contribution to tokenomics research. Let me know if you’d like adjustments or expansions!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="72-affiliate-game-theory.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Enhanced Mathematical Framework for TokenAffiliates</span></a><a class="pager-card next" rel="next" href="74-leverage.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Autonomous AI-Powered 100x Leveraged Trading on Intertoken Swaps</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

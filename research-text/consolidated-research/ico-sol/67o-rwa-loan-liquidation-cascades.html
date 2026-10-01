@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Comprehensive Framework for RWA-Backed Loan Liquidation w...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">82 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="67n-technocapital-acceleration-equations.html" title="Technocapital Acceleration Equations for RWA Valuations">&larr; Prev</a><a class="prevnext" rel="next" href="67p-hft-order-book-tokenized-rwa.html" title="High-Frequency Trading and Order Book Dynamics for Tokenized RWAs">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>answer 15: q1-3 RWA-Backed Loan Liquidation with Cascading Effects</h1>
 <p>Key Points
 Cascading Effects Modeling: A mathematical model simulates how liquidations of RWA-collateralized loans depress prices via a dynamic bonding curve, triggering further liquidations in a feedback loop.
@@ -159,5 +161,18 @@ For each \(t\):
 </ul>
 <h2>Conclusion</h2>
 <p>The model captures cascading liquidations as a feedback loop between \(\text{LTV}_i(t)\) and \(P(t)\), with spirals driven by high LTVs and steep curves. Mitigation strategies temper this risk, balancing stability with trade-offs in cost and flexibility for other loans. Simulations confirm their efficacy, with dynamic thresholds offering the most immediate relief.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="67n-technocapital-acceleration-equations.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Technocapital Acceleration Equations for RWA Valuations</span></a><a class="pager-card next" rel="next" href="67p-hft-order-book-tokenized-rwa.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">High-Frequency Trading and Order Book Dynamics for Tokenized RWAs</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Reinforcement Learning Framework for Agent-Based Economic...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">103 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="70-hierarchical-rl.html" title="Project Genesis: Phase II - Unleashing Adaptive Intelligence in a Tokenized Economy">&larr; Prev</a><a class="prevnext" rel="next" href="72-affiliate-game-theory.html" title="Enhanced Mathematical Framework for TokenAffiliates">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>Reinforcement Learning Framework for Agent-Based Economic Systems with Dynamic Asset Pricing</h1>
 <p>Here’s an improved version of your paper, enhanced with additional mathematical rigor, new equations, and a focus on avoiding repetition while enriching the content. I’ve expanded the framework to include novel aspects like multi-agent interaction terms, stochastic processes, and stability analysis, while maintaining clarity and depth. The revised paper builds on your foundation but introduces fresh perspectives and a broader range of equations.
 Reinforcement Learning Framework for Agent-Based Economic Systems with Dynamic Asset Pricing
@@ -171,5 +173,18 @@ Non-Repetitive: Avoided restating original content verbatim, instead extending c
 Depth: Expanded RL methods (PPO, noise injection), optimization techniques, and evaluation metrics.
 Clarity: Balanced rigor with intuitive explanations (e.g., stability, cooperation).
 This version elevates the original paper into a more comprehensive and innovative contribution to the field. Let me know if you'd like further refinements!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="70-hierarchical-rl.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Project Genesis: Phase II - Unleashing Adaptive Intelligence in a Tokenized Economy</span></a><a class="pager-card next" rel="next" href="72-affiliate-game-theory.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Enhanced Mathematical Framework for TokenAffiliates</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

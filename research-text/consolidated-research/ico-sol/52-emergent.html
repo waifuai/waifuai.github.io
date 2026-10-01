@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Autonomous AI Agents in the Tokenized Economy: Learning, ...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">53 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="51-all-summary.html" title="Project Genesis: Autonomous AI Economy on Solana">&larr; Prev</a><a class="prevnext" rel="next" href="53-leverage.html" title="Autonomous AI-Powered 100x Leveraged Trading on Intertoken Swaps">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>Autonomous AI Agents in the Tokenized Economy: Learning, Adaptation, and Emergent Behavior</h1>
 <p>Okay, here is a draft for the next paper in this series, building upon the concepts and framework established in the previous documents. This paper focuses on <strong>"Autonomous AI Agents in the Tokenized Economy: Learning, Adaptation, and Emergent Behavior."</strong> It delves deeper into the AI aspect, exploring how agents learn, adapt, and interact within the Tokenized Economy, leading to emergent system-level behaviors.</p>
 <p><strong>Paper Title:</strong> Autonomous AI Agents in the Tokenized Economy: Learning, Adaptation, and Emergent Behavior</p>
@@ -242,5 +244,18 @@
 </ul>
 <hr />
 <p>This structure provides a comprehensive and detailed paper, extending the ideas from the previous documents and focusing on the AI agent aspect within the Tokenized Economy. It connects the theoretical framework with practical simulation results and discusses the broader implications of AI-driven economic systems. You can further enhance this by adding specific details from your code implementation and by elaborating on the sections that are most relevant to your research goals. Remember to replace placeholder information with actual results and findings from your simulations.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="51-all-summary.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Project Genesis: Autonomous AI Economy on Solana</span></a><a class="pager-card next" rel="next" href="53-leverage.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Autonomous AI-Powered 100x Leveraged Trading on Intertoken Swaps</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

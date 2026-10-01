@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">4 of 4</span><span class="spacer"></span><a class="prevnext" rel="prev" href="quantum.html" title="Quantum Frontiers: Exploring the Convergence of Quantum Computing, Simulation, and Consciousness">&larr; Prev</a><span class="prevnext disabled">Next &rarr;</span></nav>
+<!-- /pager-top -->
 <h1>Tokenomics and AI-Driven Value Creation on Solana: A Mathematical Framework</h1>
 <p>This whitepaper explores the mathematical foundations of a novel tokenomics model for an AI-driven digital inventions marketplace on the Solana blockchain. While the initial discussion explored a "belief-based" economy, this paper focuses on a more concrete and mathematically sound approach to value creation and token utility.</p>
 <h2>1. Introduction</h2>
@@ -120,5 +122,18 @@
 </ul>
 <h2>8. Conclusion</h2>
 <p>This mathematical framework provides a foundation for a sustainable and scalable tokenomics model for an AI-driven digital inventions marketplace on Solana. By linking token utility to the value created by the AI and implementing a deflationary mechanism, the model aims to create a thriving ecosystem that benefits both token holders and users of the platform.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="quantum.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Quantum Frontiers: Exploring the Convergence of Quantum Computing, Simulation, and Consciousness</span></a><span class="pager-card next empty"></span></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

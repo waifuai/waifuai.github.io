@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">A Unified Mathematical Framework for Agent-Based Economic...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">45 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="43-autonomous.html" title="AI-Driven Autonomy: Mastering Dynamic Economic Systems">&larr; Prev</a><a class="prevnext" rel="next" href="45-rust-sol.html" title="🧠💎 Solana Autonomy Unleashed: Rust-Rigged Bonding Curves &amp; AI Orchestration 🚀🔧">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <p>Here’s the revised version of the paper, incorporating the feedback and suggestions provided. The paper now includes concrete examples, expanded discussions on computational methods and agent behavior, validation and sensitivity analysis, intuitive explanations, and a more detailed conclusion.</p>
 <hr />
 <h1>A Unified Mathematical Framework for Agent-Based Economic Systems with Dynamic Asset Pricing</h1>
@@ -169,5 +171,18 @@ where ( \eta ) is the learning rate, and ( R_i(t) ) is the reward earned by agen
 <p>This unified mathematical framework provides a powerful tool for modeling and analyzing complex economic systems with interacting agents and dynamically priced assets. By integrating concepts from various areas, it offers a flexible and extensible foundation for understanding price formation, wealth distribution, and the impact of economic policies. The inclusion of concrete examples, computational details, and validation methods enhances its practical relevance. Future work will focus on refining the models of agent behavior, developing more sophisticated pricing mechanisms, and applying this framework to real-world economic systems.</p>
 <hr />
 <p>This revised version addresses the feedback by adding concrete examples, computational details, validation methods, and a discussion of limitations, making the paper more comprehensive and actionable.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="43-autonomous.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">AI-Driven Autonomy: Mastering Dynamic Economic Systems</span></a><a class="pager-card next" rel="next" href="45-rust-sol.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">🧠💎 Solana Autonomy Unleashed: Rust-Rigged Bonding Curves &amp; AI Orchestration 🚀🔧</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

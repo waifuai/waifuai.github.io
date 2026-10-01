@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">16 of 16</span><span class="spacer"></span><a class="prevnext" rel="prev" href="07a-llm-rl.html" title="Intro">&larr; Prev</a><span class="prevnext disabled">Next &rarr;</span></nav>
+<!-- /pager-top -->
 <h1>2: more examples</h1>
 <p>Below, I'll expand the set of equations by adding more examples across the previously covered chapters and subchapters, as well as including additional subchapters from your outline where equations can be meaningfully applied. These examples will provide a broader range of mathematical formulations, reflecting the diverse techniques and concepts discussed in the document. I'll maintain consistency with the multimodal transformer and reinforcement learning (RL) context, ensuring each equation ties directly to the text's themes.</p>
 <h3>Chapter 1: Introduction to Large Multimodal Transformer Models and Reinforcement Learning</h3>
@@ -241,5 +243,18 @@ Diversity of Examples: I've added equations for various techniques (e.g., PCA, u
 Contextual Fit: Each equation reflects the multimodal RL focus, such as modality-specific rewards or cross-modal attention, aligning with the document's emphasis on integrating diverse data types.
 Further Expansion: If you'd like more examples for specific subchapters (e.g., ethical considerations with fairness metrics, or video understanding with temporal models), please specify!
 These additional examples enhance the mathematical representation of the concepts, offering a richer toolkit for implementing and understanding the integration of large multimodal transformer models with RL. Let me know if you need further adjustments or specific focuses!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="07a-llm-rl.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Intro</span></a><span class="pager-card next empty"></span></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

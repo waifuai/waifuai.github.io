@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Closed-Loop Conundrums: Independent Problem Statements in...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">36 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="37-math-statement.html" title="Demystifying Tokenized Economies: Equations for Prosperity">&larr; Prev</a><a class="prevnext" rel="next" href="39a-token-economy-affiliate-math.html" title="Mathematical Formulation of Token Economy with Affiliates">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>🔒 Closed-Loop Conundrums: Independent Problem Statements in DeFi Dynamics 📈🧩</h1>
 <p>Here's a thinking process to make each problem statement self-contained:</p>
 <ol>
@@ -180,5 +182,18 @@ b) Formulate the model for a dynamic commission structure where the commission r
    *   The total earnings \(E_k\) for affiliate \(k\) across all investments in all tokens is:
        \[E_k = \sum_{j \in J} \sum_{i=1}^{n_{jk}} C_{j,i,k} = \sum_{j \in J} \sum_{i=1}^{n_{jk}} (\alpha_j(x_k) \cdot I_{j,i})\]
        where \(n_{jk}\) is the number of investments in token \(j\) through affiliate \(k\)'s link. Note that the commission rate depends on the affiliate \(k\)'s performance. A more granular model could have the commission rate depend on the specific investment event.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="37-math-statement.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Demystifying Tokenized Economies: Equations for Prosperity</span></a><a class="pager-card next" rel="next" href="39a-token-economy-affiliate-math.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Mathematical Formulation of Token Economy with Affiliates</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

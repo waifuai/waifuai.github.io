@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">6 of 10</span><span class="spacer"></span><a class="prevnext" rel="prev" href="05-physics.html" title="White Paper: Projectile Interception of Moving Targets: A Kinematic Analysis">&larr; Prev</a><a class="prevnext" rel="next" href="07-continuation.html" title="Extended Kinematic Analysis of Projectile Interception: Constant Velocity and Beyond">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>Problem Statement</h1>
 <p>Consider two particles, A and B, moving in \(\mathbb{R}^3\). Their position vectors, \(\mathbf{r}_A(t)\) and \(\mathbf{r}_B(t)\), respectively, are governed by the following second-order ordinary differential equations (ODEs):</p>
 <p>\(\frac{d^2 \mathbf{r}_A}{dt^2} = \mathbf{a}_A\)
@@ -93,5 +95,18 @@ Where: \(v_{b1}\), \(v_{b2}\), and \(v_{b3}\) are the components of \(\mathbf{v}
 </ul>
 <h1>Note</h1>
 <p>If closed-form solutions are not feasible, discuss methods to numerically approximate the solution to this problem.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="05-physics.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">White Paper: Projectile Interception of Moving Targets: A Kinematic Analysis</span></a><a class="pager-card next" rel="next" href="07-continuation.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Extended Kinematic Analysis of Projectile Interception: Constant Velocity and Beyond</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

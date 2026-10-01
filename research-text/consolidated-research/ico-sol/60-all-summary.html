@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Project Genesis: Tokenized Real-World Assets - Bridging P...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">61 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="59-stochastic-calc.html" title="Embracing Uncertainty: Stochastic Calculus Powers Token Economies 🎲">&larr; Prev</a><a class="prevnext" rel="next" href="61-black-swan.html" title="Impact of Black Swan Events on Real-World Asset Tokenization Systems: Resilience and Crisis Response">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <p>Let's get this done. Here is a draft for the next paper in the Project Genesis series, focusing on <strong>Tokenized Real-World Assets: Bridging Physical and Digital Economies</strong></p>
 <h1>Project Genesis: Tokenized Real-World Assets - Bridging Physical and Digital Economies</h1>
 <h2>Abstract</h2>
@@ -186,5 +188,18 @@
 <li><strong>RWA Risk Management Strategies:</strong> Develop AI-driven risk management strategies for RWA investments, taking into account factors like market volatility, asset-specific risks, and regulatory changes.</li>
 </ul>
 <p>This comprehensive framework provides a strong foundation for integrating tokenized real-world assets into Project Genesis. By continuing to research and develop these concepts, Project Genesis can create a truly groundbreaking ecosystem that bridges the physical and digital worlds, unlocking new economic opportunities and transforming the way we interact with real-world assets.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="59-stochastic-calc.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Embracing Uncertainty: Stochastic Calculus Powers Token Economies 🎲</span></a><a class="pager-card next" rel="next" href="61-black-swan.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Impact of Black Swan Events on Real-World Asset Tokenization Systems: Resilience and Crisis Response</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

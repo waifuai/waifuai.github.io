@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Stochastic Variational Inference</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">115 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="75h-bayesian-optimization.html" title="Bayesian Optimization in Tokenized Ecosystems">&larr; Prev</a><a class="prevnext" rel="next" href="75j-mean-field-approximation.html" title="10: Mean-Field Approximation in Tokenized Ecosystems">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>9: stochastic variational inference</h1>
 <p>Below, I extend the exploration of tokenized ecosystems by applying Stochastic Variational Inference (SVI) to perform Bayesian inference on the models from the AbundanceCoin ICO, Tokenized Economy, and TokenAffiliates program. SVI enhances traditional variational inference by using stochastic gradient optimization, making it scalable for large datasets where computing the full Evidence Lower Bound (ELBO) is impractical. Each section is self-contained, redefines all variables and contexts per your thinking process guidelines, and includes numerous equations to detail the SVI process, focusing on the mean-field approximation and noisy gradient updates.
 Stochastic Variational Inference in Tokenized Ecosystems
@@ -205,5 +207,18 @@ Stochastic Gradient:
 \(l &gt; 0\)
  using boundary constraints.
 SVI scales Bayesian inference for tokenized systems, leveraging stochasticity for efficiency. Let me know if you'd like pseudo-code or results!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="75h-bayesian-optimization.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Bayesian Optimization in Tokenized Ecosystems</span></a><a class="pager-card next" rel="next" href="75j-mean-field-approximation.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">10: Mean-Field Approximation in Tokenized Ecosystems</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">AI Genesis Unleashed: Tokenized Economies Revolutionizing...</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">30 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="31-synergy.html" title="MCP Synergy Symphony: AI Orchestra in Solana&#x27;s Decentralized Melody 🎶🚀">&larr; Prev</a><a class="prevnext" rel="next" href="33-combined-reasoning.html" title="Alchemy of Tokens: Blending ICO Magic, Economic Visions, and Affiliate Spells on Solana 🧙‍♂️🌟">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <p>Okay, here's a comprehensive whitepaper in GitHub Markdown, combining all the ideas from the previous documents and structuring it as a single project aimed at creating a truly interconnected, AI-powered tokenized economy on Solana. This will be a long document, but it aims to cover everything we've discussed:</p>
 <h1>Project Genesis: A Self-Sustaining, AI-Driven Tokenized Economy on Solana</h1>
 <p><strong>Abstract:</strong></p>
@@ -209,5 +211,18 @@
 <p><strong>Disclaimer:</strong> Project Genesis is an ongoing research and development effort. All information is subject to change as the project progresses. Participation in the ecosystem and related token offerings involves risks, including the potential loss of capital. Conduct thorough research and seek professional advice before making any investment decisions.</p>
 <p><strong>Github repository:</strong> [Insert Github link here]</p>
 <p>This is a detailed whitepaper designed to showcase the comprehensive vision of Project Genesis. It blends the technical details with a high-level overview of the system and how all the moving parts fit together. Feel free to ask if you have further questions.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="31-synergy.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">MCP Synergy Symphony: AI Orchestra in Solana's Decentralized Melody 🎶🚀</span></a><a class="pager-card next" rel="next" href="33-combined-reasoning.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Alchemy of Tokens: Blending ICO Magic, Economic Visions, and Affiliate Spells on Solana 🧙‍♂️🌟</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">1 of 16</span><span class="spacer"></span><span class="prevnext disabled">&larr; Prev</span><a class="prevnext" rel="next" href="01b-string-theory-industries.html" title="c14-17">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>1: c10-13</h1>
 <p>Below is a continuation of the paper "String Theory Industries: The New Generation of Technologies that Become Possible After String Theory is Solved." This extension builds on the existing framework, introducing new content and a substantial number of equations to explore the technological implications of a solved string theory without repeating the original material. Given the complexity and speculative nature of the subject, I'll focus on expanding key areas such as energy generation, materials science, computing, and space exploration with mathematical rigor, while maintaining a forward-looking narrative aligned with the book’s vision.</p>
 <h1>String Theory Industries: The New Generation of Technologies that Become Possible After String Theory is Solved (Continuation)</h1>
@@ -265,5 +267,18 @@ where
 <h3>Conclusion</h3>
 <p>This continuation integrates equations to ground speculative technologies in string theory’s formalism, offering a rigorous yet imaginative extension of the original paper. It explores new dimensions of energy, materials, computing, and space engineering, ensuring a fresh narrative that complements the existing chapters while pushing the boundaries of what a solved string theory might achieve.
 Let me know if you'd like to refine specific sections, adjust the level of mathematical detail, or explore additional topics!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><span class="pager-card prev empty"></span><a class="pager-card next" rel="next" href="01b-string-theory-industries.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">c14-17</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

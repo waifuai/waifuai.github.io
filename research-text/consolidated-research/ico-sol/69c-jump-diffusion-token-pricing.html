@@ -57,7 +57,9 @@
 </head>
 <body class="doc-page">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../">WaifuAI Docs</a><span class="sep">/</span><a href="../../index.html">Research Text</a><span class="sep">/</span><a href="index.html">ICO-Solana</a><span class="sep">/</span><span aria-current="page">Capturing Sudden Shocks: Jump-Diffusion in Token Pricing</span></nav>
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">101 of 121</span><span class="spacer"></span><a class="prevnext" rel="prev" href="69b-token-price-sde-dynamics.html" title="Stochastic Differential Equation for Token Price Dynamics in Tokenized Economies">&larr; Prev</a><a class="prevnext" rel="next" href="70-hierarchical-rl.html" title="Project Genesis: Phase II - Unleashing Adaptive Intelligence in a Tokenized Economy">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>3: add jumps</h1>
 <p>Let's extend the SDE we derived for the token price in Project Genesis by incorporating jumps to model sudden, discontinuous price changes. These jumps can represent events like unexpected news, regulatory shifts, or coordinated agent actions (e.g., a pump-and-dump), which are common in tokenized economies and crypto markets. I'll build on the previous SDE, adding a jump component via a compound Poisson process, and walk through the derivation and implementation.
 Starting Point: Previous SDE
@@ -185,5 +187,18 @@ State-Dependent Jumps: Make \(\lambda\) or \(\mu_J\) depend on \(P_t\) (e.g., mo
 Correlated Jumps: Introduce correlation between \(dW_t\) and \(J_t\) for more realistic event-driven volatility.
 Agent Triggers: Link jumps to aggregate agent actions (e.g., a threshold of buy/sell volume).
 This jump-diffusion SDE enriches your model with the ability to capture sudden shocks, making it more representative of tokenized economies. Let me know if you'd like to tweak the jump distribution, adjust parameters, or explore further refinements!</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="69b-token-price-sde-dynamics.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Stochastic Differential Equation for Token Price Dynamics in Tokenized Economies</span></a><a class="pager-card next" rel="next" href="70-hierarchical-rl.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Project Genesis: Phase II - Unleashing Adaptive Intelligence in a Tokenized Economy</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>

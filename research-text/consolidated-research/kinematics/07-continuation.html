@@ -56,7 +56,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body class="doc-page">
-<a class="back-link" href="index.html">&larr; Back to index</a>
+<!-- pager-top -->
+<nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">7 of 10</span><span class="spacer"></span><a class="prevnext" rel="prev" href="06-acceleration.html" title="Problem Statement">&larr; Prev</a><a class="prevnext" rel="next" href="08-equations.html" title="Advanced Kinematic Formulations for Projectile Interception">Next &rarr;</a></nav>
+<!-- /pager-top -->
 <h1>Extended Kinematic Analysis of Projectile Interception: Constant Velocity and Beyond</h1>
 <h2>Abstract</h2>
 <p>This paper extends the kinematic analysis of projectile interception by exploring the implications of the initial solution for a target moving with constant velocity and generalizing it to include scenarios with constant acceleration. We introduce a vector-based reformulation, derive alternative expressions for the projectile's velocity components, and address the challenges of solving the system when acceleration is present. The analysis incorporates a wealth of equations to provide a robust mathematical foundation, offering both analytical insights and numerical strategies for practical implementation.</p>
@@ -198,5 +200,18 @@ Final Answer: The generalized velocity is
 \(\boxed{\mathbf{v}_\beta}\)
 , with components derived as above.}
 This continuation introduces new derivations, avoids redundancy with the original paper, and fulfills the request for abundant equations while advancing the problem’s scope.</p>
+<!-- pager -->
+<nav class="pager" aria-label="Previous and next page"><a class="pager-card prev" rel="prev" href="06-acceleration.html"><span class="pager-dir">&larr; Previous</span><span class="pager-title">Problem Statement</span></a><a class="pager-card next" rel="next" href="08-equations.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Advanced Kinematic Formulations for Projectile Interception</span></a></nav>
+<script>
+document.addEventListener('keydown', function (e) {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  var t = e.target;
+  if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+  var rel = e.key === 'ArrowLeft' ? 'prev' : e.key === 'ArrowRight' ? 'next' : null;
+  var a = rel && document.querySelector('.pager a[rel="' + rel + '"]');
+  if (a) location.href = a.href;
+});
+</script>
+<!-- /pager -->
 </body>
 </html>
