@@ -88,7 +88,11 @@ Equation:</p>
 <ul>
   <li>\(b(t)\): Time-dependent elasticity</li>
   <li>\(b_0\): Baseline elasticity</li>
-  <li>\(\beta, \omega, \phi\): Amplitude, frequency, and phase of elasticity oscillation Application: Adapts to periodic market cycles or project milestones. 2.3 Multi-Stage Parametric Curve Concept: Use distinct functions across supply phases. Equation: \[P(S) = \begin{cases} c_1 S + d_1 &amp; \text{if } 0 \leq S &lt; S_1 \ c_2 \ln(S) + d_2 &amp; \text{if } S_1 \leq S &lt; S_2 \ \frac{c_3}{S - S_{\text{max}}} + d_3 &amp; \text{if } S_2 \leq S \leq S_{\text{max}} \end{cases}\] Benefit: Tailors pricing to adoption stages (linear, logarithmic, asymptotic). 3. Volatility Modeling 3.1 SOL Price Dynamics Model: Represent SOL price \((V_t)\) with a stochastic differential equation:</li>
+  <li>\(\beta, \omega, \phi\): Amplitude, frequency, and phase of elasticity oscillation Application: Adapts to periodic market cycles or project milestones. 2.3 Multi-Stage Parametric Curve Concept: Use distinct functions across supply phases. Equation: \[P(S) = \begin{cases}
+c_1 S + d_1 &amp; \text{if } 0 \leq S &lt; S_1 \\
+c_2 \ln(S) + d_2 &amp; \text{if } S_1 \leq S &lt; S_2 \\
+\frac{c_3}{S - S_{\text{max}}} + d_3 &amp; \text{if } S_2 \leq S \leq S_{\text{max}}
+\end{cases}\] Benefit: Tailors pricing to adoption stages (linear, logarithmic, asymptotic). 3. Volatility Modeling 3.1 SOL Price Dynamics Model: Represent SOL price \((V_t)\) with a stochastic differential equation:</li>
 </ul>
 <p>\[dV_t = \mu V_t dt + \sigma V_t dW_t\]</p>
 <p>where:</p>
@@ -192,8 +196,8 @@ To balance early adopter incentives with long-term stability, we propose a hybri
 </ul>
 <p>\[P(S) =
 \begin{cases}
-c_1 S + d_1 &amp; \text{if } 0 \leq S &lt; S_1 \
-c_2 \ln(S) + d_2 &amp; \text{if } S_1 \leq S &lt; S_2 \
+c_1 S + d_1 &amp; \text{if } 0 \leq S &lt; S_1 \\
+c_2 \ln(S) + d_2 &amp; \text{if } S_1 \leq S &lt; S_2 \\
 \frac{c_3}{S - S_{\text{max}}} + d_3 &amp; \text{if } S_2 \leq S \leq S_{\text{max}}
 \end{cases}\]</p>
 <p>where:</p>

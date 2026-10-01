@@ -137,7 +137,7 @@
    \[D_{ij}(t) = P_{ij} \cdot \left(1 - \frac{Pr_j(t)}{5 \cdot B}\right) \cdot \alpha_i(t)\]
    where \(B\) is the base resource cost, and \(\alpha_i(t)\) is a demand multiplier for agent \(i\) at time \(t\). The actual request is capped by resource availability and the agent's balance:
    \[R_{ij}(t) = \begin{cases}
-       \min\left(D_{ij}(t), C_j(t) - L_j(t)\right) &amp; \text{if } B_i(t) \ge Pr_j(t) \cdot D_{ij}(t) \text{ and } B_i(t) &gt; B_{min} \
+       \min\left(D_{ij}(t), C_j(t) - L_j(t)\right) &amp; \text{if } B_i(t) \ge Pr_j(t) \cdot D_{ij}(t) \text{ and } B_i(t) &gt; B_{min} \\
        0 &amp; \text{otherwise}
    \end{cases}\]
    where \(B_{min}\) is the minimum agent balance.</p>
@@ -204,7 +204,7 @@
 <li>
 <p><strong>Bankruptcy:</strong> An agent is declared bankrupt if their balance falls below a threshold \(B_{bankrupt}\):
     \[\text{Bankrupt}_i(t) = \begin{cases}
-        \text{True} &amp; \text{if } B_i(t) \le B_{bankrupt} \
+        \text{True} &amp; \text{if } B_i(t) \le B_{bankrupt} \\
         \text{False} &amp; \text{otherwise}
     \end{cases}\]
     Bankrupt agents are removed from the simulation.</p>

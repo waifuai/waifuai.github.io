@@ -134,7 +134,7 @@ b
 \(\sigma^2\)</p>
 <p>.
 Update equations:
-\[\Sigma_{\text{post}}^{-1} = \Sigma_{\text{prior}}^{-1} + \frac{1}{\sigma^2} \sum_{i=1}^n h(S_i)^T h(S_i) = \begin{bmatrix} 1/\sigma_m^2 + n/\sigma^2 &amp; 0 \ 0 &amp; 1/\sigma_b^2 + \sum S_i^2 / \sigma^2 \end{bmatrix}\]</p>
+\[\Sigma_{\text{post}}^{-1} = \Sigma_{\text{prior}}^{-1} + \frac{1}{\sigma^2} \sum_{i=1}^n h(S_i)^T h(S_i) = \begin{bmatrix} 1/\sigma_m^2 + n/\sigma^2 &amp; 0 \\ 0 &amp; 1/\sigma_b^2 + \sum S_i^2 / \sigma^2 \end{bmatrix}\]</p>
 <p>\[\mu_{\text{post}} = \Sigma_{\text{post}} \left( \Sigma_{\text{prior}}^{-1} \mu_{\text{prior}} + \frac{1}{\sigma^2} \sum_{i=1}^n h(S_i)^T P_i \right)\]</p>
 <p>Compute numerically with data.
    a) Posterior Distribution:

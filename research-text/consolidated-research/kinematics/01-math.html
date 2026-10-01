@@ -14,20 +14,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/research-text/consolidated-research/kinematics/01-math.html">
-<meta name="description" content="-math | WaifuAI">
-<meta property="og:title" content="-math">
-<meta property="og:description" content="-math | WaifuAI">
+<meta name="description" content="Step-by-step derivation of a kinematic velocity vector for two moving points, with the full component formulas and their simplification.">
+<meta property="og:title" content="Derivation of Kinematic Velocity Vector">
+<meta property="og:description" content="Step-by-step derivation of a kinematic velocity vector for two moving points, with the full component formulas and their simplification.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/research-text/consolidated-research/kinematics/01-math.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="-math">
-<meta name="twitter:description" content="-math | WaifuAI">
+<meta name="twitter:title" content="Derivation of Kinematic Velocity Vector">
+<meta name="twitter:description" content="Step-by-step derivation of a kinematic velocity vector for two moving points, with the full component formulas and their simplification.">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 
-<title>-math</title>
+<title>Derivation of Kinematic Velocity Vector | WaifuAI</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -37,8 +37,8 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "-math",
-  "description": "-math | WaifuAI",
+  "name": "Derivation of Kinematic Velocity Vector",
+  "description": "Step-by-step derivation of a kinematic velocity vector for two moving points, with the full component formulas and their simplification.",
   "url": "https://waifuai.github.io/research-text/consolidated-research/kinematics/01-math.html",
   "author": {
     "@type": "Organization",
@@ -59,30 +59,30 @@
 <!-- pager-top -->
 <nav class="pager-top" aria-label="Page navigation"><a class="back-link" href="index.html">&larr; Index</a><span class="pager-pos">1 of 10</span><span class="spacer"></span><span class="prevnext disabled">&larr; Prev</span><a class="prevnext" rel="next" href="02-math.html" title="Hitting a Moving Target: The Math of Projectile Motion">Next &rarr;</a></nav>
 <!-- /pager-top -->
-<p>Let the given vector be denoted by \(\mathbf{v}\):
-\[\mathbf{v} = \begin{pmatrix} v_1 \ v_2 \ v_3 \ v_4 \ v_5 \ v_6 \end{pmatrix}\]
-where
-\(v_1 = \frac{v_{\alpha x} (y_{\alpha} - y_{\beta})^2 + v_{\alpha x} (z_{\alpha} - z_{\beta})^2 - v_{\alpha y} (x_{\alpha} - x_{\beta})(y_{\alpha} - y_{\beta}) - v_{\alpha z} (x_{\alpha} - x_{\beta})(z_{\alpha} - z_{\beta}) - x_{\alpha} \sqrt{\Delta} + x_{\beta} \sqrt{\Delta}}{D}\)</p>
+<h1>Derivation of Kinematic Velocity Vector</h1>
+<p>Let the given vector be denoted by \(\mathbf{v}\):</p>
+\[ \mathbf{v} = \begin{pmatrix} v_1 \\ v_2 \\ v_3 \\ v_4 \\ v_5 \\ v_6 \end{pmatrix} \]
+<p>where \(v_1 = \frac{v_{\alpha x} (y_{\alpha} - y_{\beta})^2 + v_{\alpha x} (z_{\alpha} - z_{\beta})^2 - v_{\alpha y} (x_{\alpha} - x_{\beta})(y_{\alpha} - y_{\beta}) - v_{\alpha z} (x_{\alpha} - x_{\beta})(z_{\alpha} - z_{\beta}) - x_{\alpha} \sqrt{\Delta} + x_{\beta} \sqrt{\Delta}}{D}\)</p>
 <p>\(v_2 = \frac{-v_{\alpha x} (x_{\alpha} - x_{\beta})(y_{\alpha} - y_{\beta}) + v_{\alpha y} (x_{\alpha} - x_{\beta})^2 + v_{\alpha y} (z_{\alpha} - z_{\beta})^2 - v_{\alpha z} (y_{\alpha} - y_{\beta})(z_{\alpha} - z_{\beta}) - y_{\alpha} \sqrt{\Delta} + y_{\beta} \sqrt{\Delta}}{D}\)</p>
 <p>\(v_3 = \frac{- v_{\alpha x} (x_{\alpha} - x_{\beta})(z_{\alpha} - z_{\beta}) - v_{\alpha y} (y_{\alpha} - y_{\beta})(z_{\alpha} - z_{\beta}) + v_{\alpha z} (x_{\alpha} - x_{\beta})^2 + v_{\alpha z} (y_{\alpha} - y_{\beta})^2 - (z_{\alpha} - z_{\beta})\sqrt{\Delta}}{D}\)</p>
 <p>\(v_4 = \frac{v_{\alpha x} (y_{\alpha} - y_{\beta})^2 + v_{\alpha x} (z_{\alpha} - z_{\beta})^2 - v_{\alpha y} (x_{\alpha} - x_{\beta})(y_{\alpha} - y_{\beta}) - v_{\alpha z} (x_{\alpha} - x_{\beta})(z_{\alpha} - z_{\beta}) + x_{\alpha} \sqrt{\Delta} - x_{\beta} \sqrt{\Delta}}{D}\)</p>
 <p>\(v_5 = \frac{-v_{\alpha x} (x_{\alpha} - x_{\beta})(y_{\alpha} - y_{\beta}) + v_{\alpha y} (x_{\alpha} - x_{\beta})^2 + v_{\alpha y} (z_{\alpha} - z_{\beta})^2 - v_{\alpha z} (y_{\alpha} - y_{\beta})(z_{\alpha} - z_{\beta}) + y_{\alpha} \sqrt{\Delta} - y_{\beta} \sqrt{\Delta}}{D}\)</p>
 <p>\(v_6 = \frac{- v_{\alpha x} (x_{\alpha} - x_{\beta})(z_{\alpha} - z_{\beta}) - v_{\alpha y} (y_{\alpha} - y_{\beta})(z_{\alpha} - z_{\beta}) + v_{\alpha z} (x_{\alpha} - x_{\beta})^2 + v_{\alpha z} (y_{\alpha} - y_{\beta})^2 + (z_{\alpha} - z_{\beta}) \sqrt{\Delta}}{D}\)</p>
-<p>where
-\[\Delta = s_{\beta}^{2} ((x_{\alpha} - x_{\beta})^2 + (y_{\alpha} - y_{\beta})^2 + (z_{\alpha} - z_{\beta})^2) - (v_{\alpha x} (y_{\alpha} - y_{\beta}) + v_{\alpha y} (x_{\alpha} - x_{\beta}) + v_{\alpha z} (z_{\alpha} - z_{\beta}))^2\]
-and
-\[D = (x_{\alpha} - x_{\beta})^2 + (y_{\alpha} - y_{\beta})^2 + (z_{\alpha} - z_{\beta})^2\]</p>
-<p>We can simplify this further. Let \(\mathbf{r} = (x_{\alpha} - x_{\beta}, y_{\alpha} - y_{\beta}, z_{\alpha} - z_{\beta})\) and \(\mathbf{v}_{\alpha} = (v_{\alpha x}, v_{\alpha y}, v_{\alpha z})\). Then, 
-\[D = |\mathbf{r}|^2 = r_x^2 + r_y^2 + r_z^2\]
-\[\Delta = s_{\beta}^2 |\mathbf{r}|^2 - (\mathbf{v}_{\alpha} \cdot (\mathbf{r} \times \mathbf{e}))^2\]
-where \(\mathbf{e} = (1,1,1)\).</p>
+<p>where</p>
+\[ \Delta = s_{\beta}^{2} ((x_{\alpha} - x_{\beta})^2 + (y_{\alpha} - y_{\beta})^2 + (z_{\alpha} - z_{\beta})^2) - (v_{\alpha x} (y_{\alpha} - y_{\beta}) + v_{\alpha y} (x_{\alpha} - x_{\beta}) + v_{\alpha z} (z_{\alpha} - z_{\beta}))^2 \]
+<p>and</p>
+\[ D = (x_{\alpha} - x_{\beta})^2 + (y_{\alpha} - y_{\beta})^2 + (z_{\alpha} - z_{\beta})^2 \]
+<p>We can simplify this further. Let \(\mathbf{r} = (x_{\alpha} - x_{\beta}, y_{\alpha} - y_{\beta}, z_{\alpha} - z_{\beta})\) and \(\mathbf{v}_{\alpha} = (v_{\alpha x}, v_{\alpha y}, v_{\alpha z})\). Then,</p>
+\[ D = \|\mathbf{r}\|^2 = r_x^2 + r_y^2 + r_z^2 \]
+\[ \Delta = s_{\beta}^2 \|\mathbf{r}\|^2 - (\mathbf{v}_{\alpha} \cdot (\mathbf{r} \times \mathbf{e}))^2 \]
+<p>where \(\mathbf{e} = (1,1,1)\).</p>
 <p>Let \(\mathbf{R}_{\alpha} = (x_{\alpha}, y_{\alpha}, z_{\alpha})\) and \(\mathbf{R}_{\beta} = (x_{\beta}, y_{\beta}, z_{\beta})\).</p>
-<p>Then, we can write:
-\[\mathbf{v} = \begin{pmatrix} \frac{\mathbf{v}_{\alpha} \times (\mathbf{r} \times \mathbf{r}) + (\mathbf{R}_{\beta} - \mathbf{R}_{\alpha}) \sqrt{\Delta}}{D} \ \frac{\mathbf{v}_{\alpha} \times (\mathbf{r} \times \mathbf{r}) - (\mathbf{R}_{\beta} - \mathbf{R}_{\alpha}) \sqrt{\Delta}}{D} \end{pmatrix}\]
-Since \(\mathbf{r} \times \mathbf{r} = \mathbf{0}\),
-\[\mathbf{v} = \begin{pmatrix} (\mathbf{R}_{\beta} - \mathbf{R}_{\alpha}) \frac{\sqrt{\Delta}}{D} \ - (\mathbf{R}_{\beta} - \mathbf{R}_{\alpha}) \frac{\sqrt{\Delta}}{D} \end{pmatrix}\]
-Thus, we have
-\[\mathbf{v} = \begin{pmatrix} -\mathbf{r} \frac{\sqrt{\Delta}}{D} \ \mathbf{r} \frac{\sqrt{\Delta}}{D} \end{pmatrix} = \begin{pmatrix} -\mathbf{r} \frac{\sqrt{\Delta}}{|\mathbf{r}|^2} \ \mathbf{r} \frac{\sqrt{\Delta}}{|\mathbf{r}|^2} \end{pmatrix}\]</p>
+<p>Then, we can write:</p>
+\[ \mathbf{v} = \begin{pmatrix} \frac{\mathbf{v}_{\alpha} \times (\mathbf{r} \times \mathbf{r}) + (\mathbf{R}_{\beta} - \mathbf{R}_{\alpha}) \sqrt{\Delta}}{D} \\ \frac{\mathbf{v}_{\alpha} \times (\mathbf{r} \times \mathbf{r}) - (\mathbf{R}_{\beta} - \mathbf{R}_{\alpha}) \sqrt{\Delta}}{D} \end{pmatrix} \]
+<p>Since \(\mathbf{r} \times \mathbf{r} = \mathbf{0}\),</p>
+\[ \mathbf{v} = \begin{pmatrix} (\mathbf{R}_{\beta} - \mathbf{R}_{\alpha}) \frac{\sqrt{\Delta}}{D} \\ - (\mathbf{R}_{\beta} - \mathbf{R}_{\alpha}) \frac{\sqrt{\Delta}}{D} \end{pmatrix} \]
+<p>Thus, we have</p>
+\[ \mathbf{v} = \begin{pmatrix} -\mathbf{r} \frac{\sqrt{\Delta}}{D} \\ \mathbf{r} \frac{\sqrt{\Delta}}{D} \end{pmatrix} = \begin{pmatrix} -\mathbf{r} \frac{\sqrt{\Delta}}{\|\mathbf{r}\|^2} \\ \mathbf{r} \frac{\sqrt{\Delta}}{\|\mathbf{r}\|^2} \end{pmatrix} \]
 <p>Final Answer: The final answer is \(\boxed{\mathbf{v}}\)</p>
 <!-- pager -->
 <nav class="pager" aria-label="Previous and next page"><span class="pager-card prev empty"></span><a class="pager-card next" rel="next" href="02-math.html"><span class="pager-dir">Next &rarr;</span><span class="pager-title">Hitting a Moving Target: The Math of Projectile Motion</span></a></nav>

@@ -172,7 +172,7 @@ b) The quantity of Token B (\(y\)) minted when exchanging \(x\) units of Token A
        \[C(x) = \alpha(x) \cdot I\]
    *   <strong>Example of Dynamic Commission Function (Linear):</strong> \(\alpha(x) = a + bx\), where \(a\) is the base rate and \(b\) is the sensitivity factor.
    *   <strong>Example of Dynamic Commission Function (Tiered):</strong>
-       \[\alpha(x) = \begin{cases} \alpha_1 &amp; \text{if } x &lt; T_1 \ \alpha_2 &amp; \text{if } T_1 \le x &lt; T_2 \ \alpha_3 &amp; \text{if } x \ge T_2 \end{cases}\]
+       \[\alpha(x) = \begin{cases} \alpha_1 &amp; \text{if } x &lt; T_1 \\ \alpha_2 &amp; \text{if } T_1 \le x &lt; T_2 \\ \alpha_3 &amp; \text{if } x \ge T_2 \end{cases}\]
    *   <strong>Optimization Function:</strong> To find the optimal commission rate \(\alpha\), we aim to maximize the expected affiliate earnings. Let \(I(\alpha)\) be the expected investment volume as a function of the commission rate. The optimization function can be defined as:
        \[\text{Maximize } E(\alpha) = \alpha \cdot I(\alpha)\]
        Subject to constraints such as minimum and maximum allowable commission rates:

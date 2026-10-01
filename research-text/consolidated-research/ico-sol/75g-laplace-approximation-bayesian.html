@@ -111,7 +111,7 @@ Solve:
 <p>\(\hat{b} = \frac{\sum (P_i - \hat{m} S_i) / \sigma^2 + \mu_b / \sigma_b^2}{n / \sigma^2 + 1 / \sigma_b^2}\)</p>
 <p>Iterate or solve simultaneously.
 Step 2: Compute Hessian:
-\(H = \begin{bmatrix} \frac{\partial^2 L}{\partial m^2} &amp; \frac{\partial^2 L}{\partial m \partial b} \ \frac{\partial^2 L}{\partial b \partial m} &amp; \frac{\partial^2 L}{\partial b^2} \end{bmatrix}\)
+\(H = \begin{bmatrix} \frac{\partial^2 L}{\partial m^2} &amp; \frac{\partial^2 L}{\partial m \partial b} \\ \frac{\partial^2 L}{\partial b \partial m} &amp; \frac{\partial^2 L}{\partial b^2} \end{bmatrix}\)
 \(\frac{\partial^2 L}{\partial m^2} = \frac{1}{\sigma^2} \sum S_i^2 + \frac{1}{\sigma_m^2}\)
 \(\frac{\partial^2 L}{\partial m \partial b} = \frac{1}{\sigma^2} \sum S_i\)
 \(\frac{\partial^2 L}{\partial b^2} = \frac{n}{\sigma^2} + \frac{1}{\sigma_b^2}\)

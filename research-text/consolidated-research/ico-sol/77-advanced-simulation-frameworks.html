@@ -77,7 +77,7 @@ where \(A_g\) represents global aggregator agents, \(A_m\) represents market-lev
 \[\frac{d\mathbf{S}_m}{dt} = \sum_{i \in \mathcal{I}_m} w_i \frac{d\mathbf{S}_i}{dt} + \epsilon_m(t)\]</p>
 <p><strong>Adaptive Clustering:</strong>
 \[c_{ij}(t) = \begin{cases}
-1 &amp; \text{if } ||\boldsymbol{\mu}_i(t) - \boldsymbol{\mu}_j(t)|| &lt; \theta_c(t) \
+1 &amp; \text{if } ||\boldsymbol{\mu}_i(t) - \boldsymbol{\mu}_j(t)|| &lt; \theta_c(t) \\
 0 &amp; \text{otherwise}
 \end{cases}\]
 where \(\boldsymbol{\mu}_i(t)\) represents agent i's current strategy parameters.</p>
@@ -93,7 +93,7 @@ where each \(\alpha_i\) is an independent computational actor managing a subset 
 <p><strong>Message Passing Protocol:</strong>
 \[m_{ab} = {\text{m.type}, \text{m.timestamp}, \text{m.data}, \text{m.priority}}\]
 \[P(m_{ab}) = \begin{cases}
-\text{immediate} &amp; \text{if } \text{m.priority} &gt; p_{\text{threshold}} \
+\text{immediate} &amp; \text{if } \text{m.priority} &gt; p_{\text{threshold}} \\
 \text{batch}(t + \tau) &amp; \text{otherwise}
 \end{cases}\]</p>
 <h4>3.2 Spatial Partitioning for Locality</h4>
