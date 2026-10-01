@@ -242,7 +242,6 @@
   </div>
 </details>
 <h1 id="151-hybrid-architectures-llms-physics-engines">15.1 Hybrid Architectures: LLMs + Physics Engines</h1>
-<p>In the evolving landscape of computational physics, the integration of Large Language Models (LLMs) with traditional physics engines represents a paradigm shift towards hybrid architectures capable of addressing the limitations inherent in purely quantum or classical simulations. This chapter explores the symbiotic relationship between LLMs, functioning as quantum surrogates <a href="2_1.html">Chapter 2.1</a>, and established physics engines, enhancing predictive accuracy, scalability, and interpretability. By leveraging LLMs' ability to manipulate probability distributions as token embeddings <a href="3_1.html">Chapter 3.1</a>, these hybrid systems bridge the gap between symbolic reasoning and numerical computation, fostering decentralized physics methodologies that democratize access to high-fidelity modeling <a href="4_1.html">Chapter 4.1</a>.</p>
 <h2 id="core-integration-mechanisms">Core Integration Mechanisms</h2>
 <h3 id="embedding-llms-into-simulation-loops">Embedding LLMs into Simulation Loops</h3>
 <p>Traditional physics engines, such as molecular dynamics (MD) simulators or finite element methods (FEM), excel in numerical approximation of differential equations governing physical systems. However, they often struggle with high-dimensional optimization or emergent behaviors in complex systems. LLMs can be embedded into these loops by treating simulation outputs as contextual prompts, allowing the model to refine parameters through generative feedback.</p>
@@ -252,22 +251,8 @@
 $$</p>
 <p>where $\mathcal{L}_{physics}$ denotes the physical energy minimization, and $\mathcal{L}_{semantic}$ penalizes deviations from semantically consistent states derived from LLM priors. This formulation embeds the LLM's token-based probability manifold into the physics optimization space, effectively transforming wavefunction collapse <a href="3_4.html">Chapter 3.4</a> into adaptive constraint satisfaction.</p>
 <h3 id="symbolic-numerical-fusion">Symbolic-Numerical Fusion</h3>
-<p>The synergy extends to symbolic computation, where LLMs excel at pattern recognition and equation derivation Chapter 13.2. For instance, in quantum field theory simulations <a href="8_2.html">Chapter 8.2</a>, symbolic algebra engines like Mathematica or SymPy can generate perturbative expansions, while LLMs distill these into compact representations for numerical solvers.</p>
-<p>An illustrative example arises in cosmological simulations <a href="8_5.html">Chapter 8.5</a>, where hybrid architectures model galaxy formation. The LLM processes observational data as text sequences, inferring underlying Hamiltonian structures:</p>
-<p>$$
-H = \sum_{i} \frac{p_i^2}{2m} + V(q_i, \mathbf{d}_{obs})
-$$</p>
-<p>Here, $V(q_i, \mathbf{d}_{obs})$ incorporates LLM-derived potentials based on galactic morphology data, fusing statistical inference with deterministic dynamics.</p>
 <h2 id="advantages-and-scalability">Advantages and Scalability</h2>
-<p>Hybrid architectures mitigate LLMs' limitations in precision arithmetic by delegating precise calculations to physics engines, while LLMs handle uncertainty quantification and exploratory searches. This division of labor enables scalability: physics engines provide ground truth, while LLMs enable rapid prototyping of hypothetical scenarios <a href="11_3.html">Chapter 11.3</a>.</p>
-<p>In materials science applications <a href="7_1.html">Chapter 7.1</a>, hybrid systems accelerate catalyst design by integrating ab initio quantum chemistry with LLM-guided heuristics. The physics engine computes electronic properties, while the LLM explores parameter spaces via prompt-engineered optimization <a href="4_2.html">Chapter 4.2</a>:</p>
-<p>$$
-R = \arg\max_{\mathbf{x}} \left[ \epsilon(\mathbf{x}) - \alpha \cdot \delta_{LLM}(\mathbf{x}, \mathcal{P}_{hint}) \right]
-$$</p>
-<p>where $\epsilon$ is the computed energy, and $\delta_{LLM}$ quantifies LLM-analyzed stability metrics.</p>
 <h2 id="challenges-and-mitigations">Challenges and Mitigations</h2>
-<p>Despite their promise, hybrid architectures face challenges in model synchronization and computational overhead. Mismatched update frequencies between LLMs and physics engines can lead to oscillatory behaviors, akin to instability in coupled differential equations. Mitigation strategies include asynchronous updates and reinforced integration protocols <a href="3_4.html">Chapter 3.4</a>.</p>
-<p>Moreover, ensuring interpretability requires transparent interfaces, where LLM decisions are grounded in physical priors. Techniques such as counterfactual prompting <a href="11_1.html">Chapter 11.1</a> enable "what-if" analyses, enhancing robustness.</p>
 <h2 id="case-studies-in-implementation">Case Studies in Implementation</h2>
 <h3 id="climate-modeling">Climate Modeling</h3>
 <p>In atmospheric simulations <a href="11_1.html">Chapter 11.1</a>, hybrid LLMs-physics engines forecast extreme weather by assimilating satellite data. The LLM interprets unstructured meteorological reports, feeding refined parameters into gyroscopic models:</p>

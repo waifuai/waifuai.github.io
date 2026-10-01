@@ -398,7 +398,7 @@ details.toc summary::before { content: "\25B8"; display: inline-block; margin-ri
 details.toc[open] summary::before { transform: rotate(90deg); }
 .toc-body { padding: 0 1rem 1rem; display: flex; flex-direction: column; gap: 0.8em; }
 .toc-chapter h4 { color: var(--accent3); font-size: 0.9em; margin: 0 0 0.3em; text-transform: uppercase; letter-spacing: 0.04em; }
-.toc-chapter .toc-links { display: flex; flex-wrap: wrap; gap: 0.3em 1em; }
+.toc-chapter .toc-links { display: flex; flex-direction: column; align-items: flex-start; gap: 0.25em; }
 .toc-chapter .toc-links a.current { color: var(--accent); font-weight: 600; }
 
 footer {

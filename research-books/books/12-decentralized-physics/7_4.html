@@ -252,9 +252,7 @@
 $$</p>
 <p>or cuprate d-wave symmetries—allowing models to reason about $ T_c $ based on historical data and hypothetical syntheses.</p>
 <h3 id="generative-sampling-techniques">Generative Sampling Techniques</h3>
-<p>A key advantage is the model's ability to handle combinatorial explosions via generative sampling, exploring phase spaces $\mathcal{P} = \{ \text{candidates} \} $ with entropy $ S = k \ln |\mathcal{P}| $. For perovskite oxides (ABO3), LLMs predict $ T_c $ variations by embedding pairing mechanisms, such as phonon energies $ \omega_{phonon} \approx 0.1-1 $ THz, outperforming heuristics. Reinforcement learning optimizes trajectories, treating validations as rewards $ R = 1 - \frac{|T_c^{pred} - T_c^{obs}|}{T_c^{obs}} $.</p>
 <h3 id="validation-and-scalability">Validation and Scalability</h3>
-<p>Validation against quantum calculations (e.g., DFT for iron-pnictides) shows accuracies within $ \epsilon \leq 20\% $ for $ T_c > 10 $ K, often rivaling DFT ($ \mathcal{O}(N) $ speedup). This democratizes discovery, enabling proposals of hydrides (H2S under pressure, $ T_c \approx 165 $ K) or fullerenes without hardware barriers.</p>
 <h2 id="case-studies-in-llm-augmented-discovery">Case Studies in LLM-Augmented Discovery</h2>
 <h3 id="oxychalcogenide-systems">Oxychalcogenide Systems</h3>
 <p>Illustrative applications include the exploration of oxychalcogenides (LaOFeS), where LLMs forecasted stable tetragonal phases with lattice parameters $ a \approx 0.4 $ nm, conducive to superconductivity via chalcogen substitution. Prompted with phase stability ($ \Delta G < 0 $), the system generated alloys exhibiting $ T_c > 200 $ K, exhibiting s-wave pairing, validated via DFT simulations ($ \Delta E_{\text{mag}} < 10 $ meV).</p>

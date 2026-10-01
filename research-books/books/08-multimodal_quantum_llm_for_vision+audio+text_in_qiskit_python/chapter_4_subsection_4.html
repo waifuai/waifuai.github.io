@@ -169,8 +169,6 @@
   </div>
 </details>
 <h2 id="understanding-quantum-training-dynamics">Understanding Quantum Training Dynamics</h2>
-<p><a href="#table-of-contents">Table of Contents</a></p>
-<h2 id="understanding-quantum-training-dynamics_1">Understanding Quantum Training Dynamics</h2>
 <p>This section delves into the intricacies of training quantum language models (LLMs), highlighting the unique challenges and opportunities presented by the quantum realm.  Traditional backpropagation, a cornerstone of classical LLM training, is fundamentally incompatible with the inherent probabilistic and non-deterministic nature of quantum computation.  This necessitates novel approaches to both optimization and model update mechanisms.</p>
 <p><strong>1. Quantum Gradient Estimation:</strong></p>
 <p>A critical hurdle in quantum LLM training is the estimation of gradients.  Classical gradient descent relies on readily accessible derivatives; quantum systems, however, often only provide access to expectation values of operators.  Therefore, we must employ quantum gradient estimation techniques.  These techniques often involve parameterizing the quantum circuit to encode the model's parameters, then using variational methods to estimate the gradient.  Common methods include:</p>

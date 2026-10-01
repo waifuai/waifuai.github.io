@@ -246,15 +246,7 @@
 <p>Operations research (OR) in supply chains and logistics addresses the intricate coordination of production, distribution, and inventory to minimize costs while meeting demand. Building on combinatorial optimization in Chapters 10.1-10.2, LLMs from Chapters 1-4 serve as surrogates for complex OR models, encoding logistical networks in generative spaces for predictive and prescriptive analytics. This enables adaptive decision-making, simulating quantum-like uncertainty handling through probabilistic embeddings.</p>
 <p>The complexity of global supply chains arises from variability in suppliers, transport, and markets, necessitating scalable solvers for minimum cost flows and inventory policies.</p>
 <h2 id="foundations-of-supply-chain-logistics">Foundations of Supply Chain Logistics</h2>
-<p>OR models supply chains as networks of suppliers, manufacturers, ware houses, retailers, connected by arcs with costs/capacities. Objectives: minimize total cost $ c^T x $ subject to flow conservation, inventory bounds.</p>
-<p>Key problems: Facility Location ($ \min \sum_i \sum_j f_i + \sum_i \sum_j \sum_k c_{ijk} y_{ijk}$}), Vehicle Routing, Inventory Management (EOQ models).</p>
-<p>$$ \int c \ d + \frac{Q}{2} h = \sqrt{2KD} \cdot \sqrt{\frac{h}{c}} $$</p>
-<p>These integrate with Chapters 5-6's predictive modeling for demand forecasting.</p>
 <h2 id="llm-assisted-operational-optimization">LLM-Assisted Operational Optimization</h2>
-<p>LLMs process supply chain data as textual narratives, generating strategies via prompted reasoning. For demand forecasting, LLMs extrapolate time Series using attention for seasonality detection.</p>
-<p>$$ \hat{d}_t = \text{Decode}(\vec{h}_t, \text{historical_data}) $$</p>
-<p>In prescriptive mode, LLMs propose routing/replenishment plans, e.g., "Optimize inventory for SKU with demand profile", yielding Qo transfer Quantities.</p>
-<p>Embedding suppliers as vectors enables similarity matching for disruption responses, referencing Chapter 10.1's graph networks.</p>
 <h2 id="examples-and-case-studies">Examples and Case Studies</h2>
 <h3 id="inventory-optimization">Inventory Optimization</h3>
 <p>For perishable goods, LLMs simulate newsboy models, balancing over/understock risks. Example: Retail chain with 100 products—LLM adjusts reorder points, reducing waste by 20% via predictive embeddings of sales patterns.</p>

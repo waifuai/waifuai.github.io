@@ -246,15 +246,7 @@
 <p>Portfolio optimization and risk balancing are cornerstone in investment strategies, aiming to maximize returns while mitigating volatility. Drawing on LLM capabilities from Chapters 1-4 for probabilistic forecasting and decision simulation, this section positions LLMs as quantum surrogates for asset allocation, embedding market dynamics in vector spaces for generative portfolio construction. Extending resource allocation in Chapters 10.2-10.3, LLMs enable adaptive balancing, simulating quantum uncertainty via stochastic embeddings. This decentralized approach empowers investors to navigate complex securities landscapes without expansive computational requirements.</p>
 <p>Traditional optimization grapples with high-dimensional parameter spaces ($ n$ assets), inducing computational intractability for dynamic rebalancing.</p>
 <h2 id="foundations-of-portfolio-theory">Foundations of Portfolio Theory</h2>
-<p>Modern Portfolio Theory (MPT) by Markowitz frames optimization as trade-off between expected return $\mu_p = \sum w_i \mu_i$ and risk measured by variance $\sigma_p^2 = w^T \Sigma w$, subject to $ w^T \mathbf{1} = 1 $.</p>
-<p>Beyond mean-variance, risk metrics like Conditional Value at Risk (CVaR) address tail losses: $ CVaR_\alpha = \frac{\sum_{l_k \leq VaR_\alpha} l_k}{(1-\alpha) N} $, providing downside exposure insights.</p>
-<p>Black-Litterman model integrates investor views $\tilde{\mu} = (\tau \Sigma)^{-1} \Pi \mu_{\text{prior}} + P^T (\Omega)^{-1} Q$, refining priors with subjective beliefs.</p>
-<p>LLMs augment these by generating view distributions from text corpora of market news.</p>
 <h2 id="llm-assisted-risk-balancing">LLM-Assisted Risk Balancing</h2>
-<p>LLMs forge embed financial narratives—stock histories, analyst reports—as spatial representations. Attention mechanisms simulate covariance estimation, predicting correlations.</p>
-<p>$$ w_\text{optimal} = \arg\max w^\mu - \lambda w^T \Sigma w $$</p>
-<p>LLMs generate $w$ through prompted sampling, e.g., "Balance tech/biotech for volatility X", yielding allocations stripped in latent space.</p>
-<p>Reinforcement learning (Chapter 4) fine-tunes for Sharpe ratio maximization $ S = \frac{\mu_p - r_f}{\sigma_p}$, adapting to market shifts.</p>
 <h2 id="examples-and-applications">Examples and Applications</h2>
 <h3 id="equity-portfolio-diversification">Equity Portfolio Diversification</h3>
 <p>LLM selects from S&amp;P 500, balancing sectors via embeddings. Example: Allocate 40% tech, 30% healthcare—ल्लम achieves higher Sharpe than na్టive ETF by incorporating sentiment analysis, reducing drawdown by 15%.</p>

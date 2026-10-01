@@ -169,8 +169,6 @@
   </div>
 </details>
 <h2 id="case-study-multimodal-image-classification">Case Study: Multimodal Image Classification</h2>
-<p><a href="#table-of-contents">Table of Contents</a></p>
-<h2 id="case-study-multimodal-image-classification_1">Case Study: Multimodal Image Classification</h2>
 <p>This case study demonstrates the application of a multimodal quantum LLMs for image classification, leveraging both visual and textual information. We utilize a dataset of images with accompanying textual descriptions, demonstrating how our framework can integrate disparate modalities to enhance classification accuracy.  This section details the setup, implementation, and results of the experiment.</p>
 <p><strong>1. Dataset Description:</strong></p>
 <p>For this study, we use the Oxford Flowers-102 dataset augmented with synthetic captions, a collection of 8,189 images spanning 102 flower categories. Each image is paired with a short textual description capturing color, petal shape, and arrangement (e.g., "a cluster of violet trumpet-shaped petals with a yellow throat"). The dataset is split into training, validation, and testing sets in a ratio of 70:15:15. Images are resized to 224&times;224 and normalized to zero mean and unit variance per channel. Textual descriptions are tokenized with a byte-pair encoding tokenizer, lowercased, and stripped of stop words, then vectorized using a pretrained BERT encoder to produce 768-dimensional embeddings before being mapped down to the qubit-count-matched dimensionality required by the QTransformer's input register.</p>
