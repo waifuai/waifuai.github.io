@@ -37,6 +37,30 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://waifuai.github.io/llm-countdowns/openai/gpt-6-1-luna/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://waifuai.github.io/llm-countdowns/openai/gpt-6-2-sol/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://waifuai.github.io/llm-countdowns/openai/gpt-6-terra/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://waifuai.github.io/llm-countdowns/openai/gpt-6-2-astra/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://waifuai.github.io/llm-countdowns/openai/gpt-7/</loc>
     <lastmod>2026-10-01</lastmod>
     <changefreq>weekly</changefreq>

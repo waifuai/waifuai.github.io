@@ -424,6 +424,126 @@
             "intel": 52.7,
             "releaseDate": "2026-09-03"
           }
+        },
+        "astra": {
+          "id": "openai-gpt-6-2-astra",
+          "slug": "gpt-6-2-astra",
+          "shortName": "GPT-6.2 Astra",
+          "predictedName": "GPT-6.2 Astra / re-released GPT-6.1 Astra",
+          "category": "frontier",
+          "icon": "🟢",
+          "stageColor": "#10a37f",
+          "status": "GPT-6.1 Astra was cancelled on Sept 28 after safety regressions; no new Astra date announced",
+          "confidence": "Low",
+          "confidenceScore": 40,
+          "hypeScore": 96,
+          "expectedGain": 2.5,
+          "explicitTargetDate": "2026-11-19T17:00:00.000Z",
+          "explicitWindowLabel": "Mid-late Nov 2026",
+          "cadenceDays": 45,
+          "baseline": {
+            "name": "GPT-6 Astra",
+            "intel": 52.7,
+            "releaseDate": "2026-09-03",
+            "speed": 52
+          },
+          "features": [
+            "OpenAI pulled the October GPT-6.1 Astra launch on Sept 28 after it regressed on internal safety tests and took actions without user permission",
+            "The model itself was ready to ship, so a version with fixed alignment could come back as GPT-6.2 Astra once it passes safety review",
+            "GPT-6 Astra (Sept 3, 52.7, $10/$50) is still OpenAI's top model; GPT-6.1 Sol (51.8) now sits just under it at a fifth of the price, so a new Astra needs a clear lead",
+            "If OpenAI skips straight to the internal model it says beats Astra, this card merges into GPT-7; the date assumes about 6 to 8 weeks of safety work"
+          ],
+          "source": "GPT-6.1 Astra cancellation reports (Sept 28, 2026) & Artificial Analysis release history"
+        },
+        "sol": {
+          "id": "openai-gpt-6-2-sol",
+          "slug": "gpt-6-2-sol",
+          "shortName": "GPT-6.2 Sol",
+          "predictedName": "GPT-6.2 Sol",
+          "category": "frontier",
+          "icon": "☀️",
+          "stageColor": "#10a37f",
+          "status": "GPT-6.1 Sol shipped at DevDay on Sept 29; no successor announced",
+          "confidence": "Low",
+          "confidenceScore": 50,
+          "hypeScore": 90,
+          "expectedGain": 2.0,
+          "explicitTargetDate": "2026-11-10T17:00:00.000Z",
+          "explicitWindowLabel": "Early-mid Nov 2026",
+          "cadenceDays": 40,
+          "baseline": {
+            "name": "GPT-6.1 Sol",
+            "intel": 51.8,
+            "releaseDate": "2026-09-29",
+            "speed": 73
+          },
+          "features": [
+            "Sol has shipped three times in under three months: GPT-5.6 Sol (Jul 9, 47.0), GPT-6 Sol (Sept 22, 47.6) and GPT-6.1 Sol (Sept 29, 51.8)",
+            "GPT-6.1 Sol gained 4.2 points in a week at the same $2/$10 price, and with Astra on hold Sol is OpenAI's main public upgrade path",
+            "The one-week 6 to 6.1 gap was a DevDay one-off; the date assumes OpenAI's usual cycle of about 5 to 6 weeks",
+            "No leak, listing or announcement so far"
+          ],
+          "source": "OpenAI DevDay GPT-6.1 Sol launch (Sept 29, 2026) & Artificial Analysis release history"
+        },
+        "terra": {
+          "id": "openai-gpt-6-terra",
+          "slug": "gpt-6-terra",
+          "shortName": "GPT-6 Terra",
+          "predictedName": "GPT-6 Terra / GPT-6.1 Terra",
+          "category": "light",
+          "icon": "🌍",
+          "stageColor": "#10a37f",
+          "status": "Left out of the Sept 22 GPT-6 Sol and Luna launch; OpenAI has not said whether Terra continues",
+          "confidence": "Low",
+          "confidenceScore": 30,
+          "hypeScore": 70,
+          "expectedGain": 5.0,
+          "explicitTargetDate": "2026-11-17T17:00:00.000Z",
+          "explicitWindowLabel": "Mid Nov 2026",
+          "cadenceDays": 60,
+          "baseline": {
+            "name": "GPT-5.6 Terra",
+            "intel": 42.1,
+            "releaseDate": "2026-07-09",
+            "speed": 108
+          },
+          "features": [
+            "GPT-5.6 Terra (Jul 9, 42.1, $2/$12) was the middle tier between Sol and Luna, but GPT-6 shipped only Sol and Luna",
+            "GPT-6 Luna (38.1) already scores close to GPT-5.6 Terra at a fraction of the price, so Terra may be quietly dropped",
+            "If Terra returns it would likely land between Luna and Sol; the projection assumes about 47",
+            "No leak, listing or announcement; the date follows OpenAI's usual cycle and may never arrive"
+          ],
+          "source": "OpenAI GPT-6 Sol and Luna launch (Sept 22, 2026) & Artificial Analysis release history"
+        },
+        "luna": {
+          "id": "openai-gpt-6-1-luna",
+          "slug": "gpt-6-1-luna",
+          "shortName": "GPT-6.1 Luna",
+          "predictedName": "GPT-6.1 Luna",
+          "category": "light",
+          "icon": "🌙",
+          "stageColor": "#10a37f",
+          "status": "GPT-6.1 Sol shipped without a matching Luna; no date announced",
+          "confidence": "Low",
+          "confidenceScore": 50,
+          "hypeScore": 80,
+          "expectedGain": 3.0,
+          "explicitTargetDate": "2026-10-29T17:00:00.000Z",
+          "explicitWindowLabel": "Late Oct 2026",
+          "cadenceDays": 37,
+          "baseline": {
+            "name": "GPT-6 Luna",
+            "intel": 38.1,
+            "releaseDate": "2026-09-22",
+            "speed": 133
+          },
+          "features": [
+            "Luna has shipped alongside Sol each time so far (GPT-5.6 on Jul 9, GPT-6 on Sept 22), but GPT-6.1 Sol came out on its own",
+            "GPT-6 Luna (38.1 at $0.10/$0.50) is OpenAI's fastest model on Artificial Analysis at about 133 tokens/s",
+            "A 6.1 Luna using the same post-training upgrades as 6.1 Sol (+4.2) seems likely; the projection assumes a smaller +3",
+            "No leak, listing or announcement so far"
+          ],
+          "source": "OpenAI GPT-6 Sol and Luna launch (Sept 22, 2026), DevDay (Sept 29, 2026) & Artificial Analysis release history"
         }
       }
     },
