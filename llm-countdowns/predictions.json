@@ -137,7 +137,7 @@
           "category": "light",
           "icon": "⚡",
           "stageColor": "#4facfe",
-          "status": "No new Flash since Sept 2; Google's focus is on Gemini 4",
+          "status": "No new Flash since Sept 2; Gemini 4 Argon was announced Sept 30",
           "confidence": "Medium",
           "confidenceScore": 74,
           "hypeScore": 88,
@@ -155,32 +155,32 @@
             "Google shipped four Flash models in about 3.5 months: 3.5 (May 19), 3.6 (Jul 21), 3.7 (Aug 13) and 3.8 (Sep 2)",
             "None since Sept 2, which looks like a pause while post-training resources go to Gemini 4",
             "Gemini 3.8 Flash is currently Google's highest-scoring model on the Intelligence Index (40.9)",
-            "The ~3 week Flash cycle would likely resume after Gemini 4 ships"
+            "Gemini 4 Argon was announced Sept 30 with no Flash variant yet; the ~3 week Flash cycle would likely resume once Argon is widely available"
           ],
           "source": "Google DeepMind release notes & Kavukcuoglu Gemini 4 post-training confirmation (Sept 23, 2026)"
         },
         "frontier": {
           "id": "google-gemini-4-0",
           "slug": "gemini-4",
-          "shortName": "Gemini 4",
-          "predictedName": "Gemini 4 / Gemini 4 Ultra",
+          "shortName": "Gemini 4 Argon",
+          "predictedName": "Gemini 4 Argon (wider rollout)",
           "category": "frontier",
           "icon": "🔵",
           "stageColor": "#4facfe",
-          "status": "In early post-training; Google wants to release it as soon as possible",
-          "confidence": "Medium",
-          "confidenceScore": 74,
+          "status": "Announced Sept 30; only trusted cyber defenders have it so far, Ultra and paid API 'soon'",
+          "confidence": "High",
+          "confidenceScore": 88,
           "hypeScore": 99,
-          "expectedGain": 24.0,
+          "expectedGain": 26.0,
           "explicitTargetDate": "2026-10-15T17:00:00.000Z",
           "explicitWindowLabel": "Mid Oct 2026",
           "features": [
-            "DeepMind chief Koray Kavukcuoglu said on Sept 23 that Gemini 4 is in early post-training",
-            "Google said it intends to release an early post-training version 'as soon as possible', well before the end of 2026",
-            "Pre-training reportedly began July 21, 2026; eval codenames reported so far include Ajax, Hercules, Hector and Orpheus",
-            "Google's last Pro model was Gemini 3.1 Pro (Feb 2026, 29.7); its Flash models have since passed it, so Gemini 4 needs a large jump to compete with Anthropic and OpenAI"
+            "Google announced Gemini 4 Argon on Sept 30, 2026 as its new frontier model, a week after Kavukcuoglu said Gemini 4 was in post-training",
+            "Access starts with trusted cyber defenders in the Fairwind Program; Google AI Ultra subscribers and paid API customers are next, with no exact date given",
+            "Google's benchmarks: DeepSWE v1.1 77.9% (Claude Opus 5.5: 74.2%), CWE-bench v1 68% (tied first), AutomationBench 51.3%, LVBench 91.7%; output limit raised to 1M tokens from 64K",
+            "Introductory price $2/$10 per million input/output tokens, rising to $4/$20 later; not yet on the Intelligence Index, where Google's last Pro model was Gemini 3.1 Pro (29.7)"
           ],
-          "source": "Koray Kavukcuoglu, Google DeepMind chief, The Information AI Agenda Live Summit (Sept 23, 2026)",
+          "source": "Google blog 'Gemini 4 Argon: our next era of frontier intelligence' (Sept 30, 2026) & 9to5Google coverage",
           "baseline": {
             "name": "Gemini 3.1 Pro Preview",
             "intel": 29.7,
