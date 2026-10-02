@@ -284,6 +284,36 @@
             "Fable 5.1 cut cache-read prices 75% but still cost about 20% more per task than Fable 5; expect another round of efficiency work"
           ],
           "source": "Anthropic Fable 5.1 / Mythos 5.1 launch (Sept 1, 2026), Claude Opus 5.5 launch (Sept 22, 2026) & Artificial Analysis Index v4.3.2"
+        },
+        "sonnet": {
+          "id": "anthropic-claude-sonnet-5-6",
+          "slug": "claude-sonnet-5-6",
+          "shortName": "Claude Sonnet 5.6",
+          "predictedName": "Claude Sonnet 5.6 / Sonnet 5.7",
+          "category": "frontier",
+          "icon": "🟣",
+          "stageColor": "#9d4edd",
+          "status": "Not announced; Sonnet 5.5 shipped Sept 28",
+          "confidence": "Low",
+          "confidenceScore": 35,
+          "hypeScore": 90,
+          "expectedGain": 3.0,
+          "explicitTargetDate": "2026-12-15T17:00:00.000Z",
+          "explicitWindowLabel": "Mid Dec 2026",
+          "cadenceDays": 90,
+          "baseline": {
+            "name": "Claude Sonnet 5.5",
+            "intel": 56.0,
+            "releaseDate": "2026-09-28",
+            "speed": 145
+          },
+          "features": [
+            "Sonnet ships less often than Opus: 4.5 (Sept 29, 2025), 4.6 (Feb 17), 5 (Jun 30) and 5.5 (Sept 28), so every 3 to 5 months",
+            "Sonnet usually lands within about two weeks of the matching Opus (Opus 4.6 Feb 5 then Sonnet Feb 17; Opus 5.5 Sept 22 then Sonnet Sept 28), so this follows the Opus 5.6 forecast",
+            "Sonnet skipped Opus 4.7 and 4.8, so it may skip 5.6 too and wait for a later version, which would push this into 2027",
+            "Sonnet 5.5 (56, $2/$10) is only 1.6 points under Opus 5.5 and runs about 50% faster; the projection assumes about +3"
+          ],
+          "source": "Anthropic Sonnet 5.5 launch (Sept 28, 2026) & release history (Artificial Analysis API v2)"
         }
       }
     },
