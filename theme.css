@@ -4,7 +4,7 @@
    Same look as the landing page, data/ and llm-countdowns/: system font,
    neutral colours, light and dark mode.
    The variable names (--card-bg, --text-muted, --accent2 ...) are kept because
-   page-level styles refer to them. web-apps/ keep their own styling. */
+   page-level styles refer to them. */
 
 :root {
   --bg: #f7f7f5;

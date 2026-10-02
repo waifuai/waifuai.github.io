@@ -69,7 +69,6 @@ Monorepo for [WaifuAI](https://waifuai.github.io) — an open-source ecosystem o
 ### Web Applications
 | Project | Description |
 |---|---|
-| [web-apps](web-apps/) | 40+ interactive browser apps including token simulators, MCP tutorials, and waifu chat |
 | [function-graph-generator](function-graph-generator/) | Visual mathematical function call graphs |
 
 ### Utilities
@@ -84,7 +83,7 @@ Monorepo for [WaifuAI](https://waifuai.github.io) — an open-source ecosystem o
 
 | File | Purpose |
 |---|---|
-| [theme.css](theme.css) | Single shared stylesheet for every docs/content page (`web-apps/` demo apps keep their own bespoke styling) |
+| [theme.css](theme.css) | Single shared stylesheet for every docs/content page |
 | [search.html](search.html) | Client-side search over every page on the site |
 | [search-index.json](search-index.json) | Generated index (title, path, section, description) — rebuild with `python tools/build-search-index.py` |
 | [404.html](404.html) | Themed not-found page served by GitHub Pages |

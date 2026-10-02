@@ -74,7 +74,6 @@ PROJECTS = {
     "waifu-constitution": ("Waifu Constitution", "Alignment principles for companions"),
     "waifu-layer": ("Waifu Layer", "An L1 blockchain for AI agents"),
     "waifu-llm-vrm": ("Waifu LLM VRM", "Godot AI companions with VRM models"),
-    "web-apps": ("Web Apps", "Interactive tools that run in the browser"),
 }
 # Root-level pages: file -> (name, tagline). Cards go in og/.
 ROOT_PAGES = {

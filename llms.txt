@@ -76,7 +76,6 @@
 ## Tools & Apps
 
 - [Function Graph Generator](https://waifuai.github.io/function-graph-generator/) — Visualize mathematical functions and graphs
-- [Web Apps](https://waifuai.github.io/web-apps/) — Browser-based AI applications (chat, guides, simulations, quantum consciousness, bonding curves)
 
 ## Blog
 
