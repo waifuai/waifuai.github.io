@@ -11,14 +11,14 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Technical documentation and open-source code for WaifuAI: Live2D companion engine, Soul of Waifu architecture, Base &amp; Solana MCP tools, and autonomous agent tokenomics.">
-<meta name="keywords" content="waifu ai, waifu ai code, soul of waifu, AI companion github, waifu engine, waifu chatbot, open source waifu, Live2D AI, Base Uniswap v4, Solana MCP, AI agents, waifuai.github.io">
+<meta name="description" content="Technical documentation and open-source code for WaifuAI: the Live2D AI companion, Soul of Waifu architecture, MCP servers for AI agents, and research.">
+<meta name="keywords" content="waifu ai, waifu ai code, soul of waifu, AI companion github, waifu engine, waifu chatbot, open source waifu, Live2D AI, MCP servers, AI agents, waifuai.github.io">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/">
 <title>WaifuAI Docs Hub — Open-Source AI Companion Code, Agent Infrastructure &amp; Research</title>
 <meta name="theme-color" content="#0f0f10">
 <meta property="og:title" content="WaifuAI Docs Hub — Open-Source AI Companion Code &amp; Infrastructure">
-<meta property="og:description" content="Technical documentation and open-source code for WaifuAI: Live2D companion engine, Soul of Waifu architecture, Base &amp; Solana MCP tools, and on-chain agent economics.">
+<meta property="og:description" content="Technical documentation and open-source code for WaifuAI: the Live2D AI companion, Soul of Waifu architecture, MCP servers for AI agents, and research.">
 <meta property="og:image" content="https://waifuai.github.io/og_image.png">
 <meta property="og:url" content="https://waifuai.github.io/">
 <meta property="og:type" content="website">
@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="WaifuAI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="WaifuAI Docs Hub — Open-Source AI Companion Code &amp; Infrastructure">
-<meta name="twitter:description" content="Technical documentation and open-source code for WaifuAI: Live2D companion engine, Base &amp; Solana MCP tools, and on-chain agent economics.">
+<meta name="twitter:description" content="Technical documentation and open-source code for WaifuAI: the Live2D AI companion, Soul of Waifu architecture, MCP servers for AI agents, and research.">
 <meta name="twitter:image" content="https://waifuai.github.io/og_image.png">
 <script type="application/ld+json">
 {
@@ -37,7 +37,7 @@
       "@id": "https://waifuai.github.io/#website",
       "name": "WaifuAI Docs Hub",
       "url": "https://waifuai.github.io/",
-      "description": "Open-source technical documentation and code for AI agents, Live2D companions, and on-chain economics",
+      "description": "Open-source technical documentation and code for Live2D AI companions and AI agents",
       "potentialAction": {
         "@type": "SearchAction",
         "target": {
@@ -208,7 +208,7 @@
 <main>
 <div class="wrap">
   <h1>WaifuAI docs</h1>
-  <p class="lede">Documentation for the open-source side of WaifuAI: the Live2D companion, MCP servers, Solana and Base tools, token economy simulations, and research papers.</p>
+  <p class="lede">Documentation for the open-source side of WaifuAI: the Live2D companion, MCP servers for AI agents, LLM tooling, and research papers.</p>
 
   <div class="start">
     <a class="primary" href="https://waifuai.com/"><strong>Companion app</strong><span>Talk to a Live2D waifu in your browser, with voice and nothing to install.</span></a>
@@ -230,7 +230,6 @@
     <div class="links">
       <a href="#companion">Companion</a>
       <a href="#mcp">MCP servers</a>
-      <a href="#blockchain">Blockchain</a>
       <a href="#infra">AI infrastructure</a>
       <a href="#research">Research</a>
       <a href="#tools">Tools &amp; games</a>
@@ -263,33 +262,14 @@
 
 <section class="group" id="mcp">
   <div class="group-head"><h2>MCP servers</h2><span class="count"></span></div>
-  <p class="group-note">Model Context Protocol servers that give AI agents chat, job queues and Solana payments.</p>
+  <p class="group-note">Model Context Protocol servers that give AI agents chat, job queues and personality matching.</p>
   <div class="cards">
     <a class="card" href="mcp-waifu-queue/"><span class="card-title">MCP Waifu Queue</span><span class="card-desc">Redis-backed job queue for high-throughput text generation and agent workers.</span><span class="card-meta">42 clones</span></a>
-    <a class="card" href="mcp-solana-internet/"><span class="card-title">MCP Solana Internet</span><span class="card-desc">Pay-to-access micropayments with token expiry checks.</span><span class="card-meta">35 clones</span></a>
     <a class="card" href="mcp-waifu-chat/"><span class="card-title">MCP Waifu Chat</span><span class="card-desc">Conversational waifu server built on FastMCP, with SQLite history and OpenRouter.</span><span class="card-meta">32 clones</span></a>
-    <a class="card" href="mcp-solana-dex/"><span class="card-title">MCP Solana DEX</span><span class="card-desc">On-chain order book management and automated trade routing.</span><span class="card-meta">32 clones</span></a>
-    <a class="card" href="mcp-solana-affiliate/"><span class="card-title">MCP Solana Affiliate</span><span class="card-desc">Affiliate program for a Solana ICO, with Blink URL generation.</span><span class="card-meta">21 clones</span></a>
     <a class="card" href="mcp-traits-matcher/"><span class="card-title">MCP Traits Matcher</span><span class="card-desc">Personality analysis that matches profiles by Euclidean distance.</span><span class="card-meta">20 clones</span></a>
-    <a class="card" href="mcp-solana-ico/"><span class="card-title">MCP Solana ICO</span><span class="card-desc">Solana ICO with bonding curves, buying, selling and discounts.</span><span class="card-meta">20 clones</span></a>
   </div>
 </section>
 
-<section class="group" id="blockchain">
-  <div class="group-head"><h2>Blockchain</h2><span class="count"></span></div>
-  <p class="group-note">Solana tooling, the Waifu Layer chain design, and simulations of token economies.</p>
-  <div class="cards">
-    <a class="card" href="solana-launchpad-ecosystem/"><span class="card-title">Solana Launchpad Ecosystem</span><span class="card-desc">Solana launchpad run by autonomous Python bots, with skill specs for AI agents.</span><span class="card-meta">24 clones</span></a>
-    <a class="card" href="waifu-layer/"><span class="card-title">Waifu Layer</span><span class="card-desc">Layer 1 blockchain design for AI agents: proof-of-intelligence consensus and a lock-free DAG.</span></a>
-    <a class="card" href="solana-ico/"><span class="card-title">Solana ICO</span><span class="card-desc">Python CLI for the ContextCoin ICO with a linear bonding curve.</span></a>
-    <a class="card" href="launchpad-skill/"><span class="card-title">Launchpad Skill</span><span class="card-desc">Python CLI for managing tokenized companies on Solana.</span></a>
-    <a class="card" href="crypto-simulation/"><span class="card-title">Crypto Simulation</span><span class="card-desc">A unified mathematical model behind the token economy simulations.</span></a>
-    <a class="card" href="sim-bonding-curve/"><span class="card-title">Sim Bonding Curve</span><span class="card-desc">Agent-based simulations of bonding curve token economies.</span></a>
-    <a class="card" href="sim-airdrop/"><span class="card-title">Sim Airdrop</span><span class="card-desc">Compares tiered, lottery and uniform airdrop strategies.</span></a>
-    <a class="card" href="sim-affiliate/"><span class="card-title">Sim Affiliate</span><span class="card-desc">Token economy simulation with affiliate dynamics.</span></a>
-    <a class="card" href="sim-mcp-token/"><span class="card-title">Sim MCP Token</span><span class="card-desc">Multi-agent economic simulation with resource ecosystems.</span></a>
-  </div>
-</section>
 
 <section class="group" id="infra">
   <div class="group-head"><h2>AI infrastructure</h2><span class="count"></span></div>
@@ -306,10 +286,10 @@
 
 <section class="group" id="research">
   <div class="group-head"><h2>Research</h2><span class="count"></span></div>
-  <p class="group-note">Papers and books on tokenomics, kinematics, quantum computing and AI.</p>
+  <p class="group-note">Papers and books on AI, kinematics, quantum computing and physics.</p>
   <div class="cards">
-    <a class="card" href="research-text/"><span class="card-title">Research papers</span><span class="card-desc">The full collection: tokenomics, kinematics, quantum LLMs and domain-specific languages.</span><span class="card-meta">151 papers</span></a>
-    <a class="card" href="research-books/"><span class="card-title">Research books</span><span class="card-desc">Book-length studies on AI, blockchain, quantum biology and economics.</span><span class="card-meta">14 books</span></a>
+    <a class="card" href="research-text/"><span class="card-title">Research papers</span><span class="card-desc">The full collection: kinematics, quantum LLMs, AI agents and domain-specific languages.</span><span class="card-meta">151 papers</span></a>
+    <a class="card" href="research-books/"><span class="card-title">Research books</span><span class="card-desc">Book-length studies on AI, quantum biology and physics.</span><span class="card-meta">14 books</span></a>
     <a class="card" href="quantum-circuit-optimization/"><span class="card-title">Quantum Circuit Optimization</span><span class="card-desc">Library and simulation tools for optimizing quantum circuits.</span><span class="card-meta">20 clones</span></a>
     <a class="card" href="ransoc/"><span class="card-title">RANSOC</span><span class="card-desc">Real-time, curiosity-driven search ranking algorithm.</span></a>
     <a class="card" href="street-lines/"><span class="card-title">Street Lines</span><span class="card-desc">Mathematical proofs and geometric derivations.</span></a>
@@ -334,7 +314,7 @@
     <a class="card" href="blog-posts/13-building-automated-image-to-live2d.html"><span class="card-title">An automated image-to-Live2D pipeline</span><span class="card-desc">From a prompt to a rigged WebGL Live2D model, end to end.</span></a>
     <a class="card" href="blog-posts/11-how-to-add-your-own-live2d-avatar.html"><span class="card-title">Add your own Live2D avatar</span><span class="card-desc">Set up custom Cubism models, motion files, physics3.json and expression triggers.</span></a>
     <a class="card" href="blog-posts/14-complete-settings-guide-every-option.html"><span class="card-title">Complete settings guide</span><span class="card-desc">Kokoro voice, OpenRouter API keys, system prompts and memory.</span></a>
-    <a class="card" href="blog-posts/"><span class="card-title">All articles</span><span class="card-desc">Token economy philosophy, WebSocket architecture, prompt engineering and more.</span><span class="card-meta">14 articles</span></a>
+    <a class="card" href="blog-posts/"><span class="card-title">All articles</span><span class="card-desc">Writing style, WebSocket architecture, prompt engineering and more.</span><span class="card-meta">14 articles</span></a>
   </div>
 </section>
 
