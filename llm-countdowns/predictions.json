@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-01",
+  "lastUpdated": "2026-10-02",
   "researchBaselines": {
     "openai": {
       "name": "GPT-6 Astra",
@@ -94,13 +94,13 @@
           "id": "xai-grok-4-8",
           "slug": "grok-4-8",
           "shortName": "Grok 4.8",
-          "predictedName": "Grok 4.8 / Grok 4.9",
+          "predictedName": "Grok 4.8",
           "category": "frontier",
           "icon": "🟠",
           "stageColor": "#ffb300",
-          "status": "Pre-training finished mid-September; now in reinforcement learning",
-          "confidence": "High",
-          "confidenceScore": 90,
+          "status": "Musk says pre-training finished mid-September and RL is under way; xAI has not announced a date",
+          "confidence": "Medium",
+          "confidenceScore": 70,
           "hypeScore": 98,
           "expectedGain": 3.0,
           "explicitTargetDate": "2026-10-20T17:00:00.000Z",
@@ -115,8 +115,9 @@
           "features": [
             "2.5 trillion parameter model on xAI's entirely new C++ training stack, pre-training completed week of Sept 14 and moving into reinforcement learning",
             "Beats the 2.1T JAX-trained predecessor despite mistakes corrected midway; a 3T successor is already planned",
-            "Grok 4.9 flagged by Musk as Astra/Fable-class intelligence; Grok 5 named as the AGI-capability step beyond 4.8",
-            "Continuation of the 4.7 pattern: same $2/$6 pricing, larger base model, longer RL run on a harder task mix"
+            "Musk named Grok 4.9 as the Astra/Fable-class step and Grok 5 as the one after, so both are separate later releases",
+            "Continuation of the 4.7 pattern: same $2/$6 pricing, larger base model, longer RL run on a harder task mix",
+            "Grok 4.5 (Jul 8), 4.6 (Aug 12) and 4.7 (Sept 21) came 5 to 6 weeks apart, which points to late October"
           ],
           "source": "Elon Musk X thread (Sept 14, 2026): Grok 4.8 at 2.5T params, new C++ stack, RL next"
         }
@@ -133,7 +134,7 @@
           "id": "google-gemini-3-9-flash",
           "slug": "gemini-3-9-flash",
           "shortName": "Gemini 3.9 Flash",
-          "predictedName": "Gemini 3.9 Flash / Gemini 4 Flash-Lite",
+          "predictedName": "Gemini 3.9 Flash / Gemini 4 Flash",
           "category": "light",
           "icon": "⚡",
           "stageColor": "#4facfe",
@@ -149,13 +150,13 @@
             "name": "Gemini 3.8 Flash",
             "intel": 40.9,
             "releaseDate": "2026-09-02",
-            "speed": 230
+            "speed": 238
           },
           "features": [
             "Google shipped four Flash models in about 3.5 months: 3.5 (May 19), 3.6 (Jul 21), 3.7 (Aug 13) and 3.8 (Sep 2)",
             "None since Sept 2, which looks like a pause while post-training resources go to Gemini 4",
-            "Gemini 3.8 Flash is currently Google's highest-scoring model on the Intelligence Index (40.9)",
-            "Gemini 4 Argon was announced Sept 30 with no Flash variant yet; the ~3 week Flash cycle would likely resume once Argon is widely available"
+            "Gemini 3.8 Flash (40.9) is Google's best generally available model; Gemini 4 Argon (52.6) is still limited to trusted testers",
+            "Gemini 4 Argon was announced Sept 30 with no Flash variant yet; the next Flash may be named Gemini 4 Flash rather than 3.9"
           ],
           "source": "Google DeepMind release notes & Kavukcuoglu Gemini 4 post-training confirmation (Sept 23, 2026)"
         },
@@ -168,19 +169,20 @@
           "icon": "🔵",
           "stageColor": "#4facfe",
           "status": "Announced Sept 30; only trusted cyber defenders have it so far, Ultra and paid API 'soon'",
-          "confidence": "High",
-          "confidenceScore": 88,
+          "confidence": "Medium",
+          "confidenceScore": 72,
           "hypeScore": 99,
-          "expectedGain": 26.0,
+          "expectedGain": 22.9,
           "explicitTargetDate": "2026-10-15T17:00:00.000Z",
           "explicitWindowLabel": "Mid Oct 2026",
           "features": [
             "Google announced Gemini 4 Argon on Sept 30, 2026 as its new frontier model, a week after Kavukcuoglu said Gemini 4 was in post-training",
             "Access starts with trusted cyber defenders in the Fairwind Program; Google AI Ultra subscribers and paid API customers are next, with no exact date given",
             "Google's benchmarks: DeepSWE v1.1 77.9% (Claude Opus 5.5: 74.2%), CWE-bench v1 68% (tied first), AutomationBench 51.3%, LVBench 91.7%; output limit raised to 1M tokens from 64K",
-            "Introductory price $2/$10 per million input/output tokens, rising to $4/$20 later; not yet on the Intelligence Index, where Google's last Pro model was Gemini 3.1 Pro (29.7)"
+            "Artificial Analysis already scores it at 52.6 (Sept 30), about level with GPT-6 Astra (52.7); introductory price $2/$10, rising to $4/$20 later",
+            "As of Oct 1 it is not in the public Gemini API catalog and Google has given no date for Ultra or paid API access"
           ],
-          "source": "Google blog 'Gemini 4 Argon: our next era of frontier intelligence' (Sept 30, 2026) & 9to5Google coverage",
+          "source": "Google blog 'Gemini 4 Argon: our next era of frontier intelligence' (Sept 30, 2026), 9to5Google coverage & Artificial Analysis",
           "baseline": {
             "name": "Gemini 3.1 Pro Preview",
             "intel": 29.7,
@@ -196,16 +198,16 @@
       ],
       "models": {
         "light": {
-          "id": "anthropic-claude-5-haiku",
-          "slug": "claude-haiku-5",
-          "shortName": "Claude Haiku 5",
-          "predictedName": "Claude Haiku 5",
+          "id": "anthropic-claude-haiku-5-5",
+          "slug": "claude-haiku-5-5",
+          "shortName": "Claude Haiku 5.5",
+          "predictedName": "Claude Haiku 5.5",
           "category": "light",
           "icon": "⚡",
           "stageColor": "#00f2fe",
-          "status": "Not announced; the last Haiku was 4.5, about a year ago",
-          "confidence": "Low",
-          "confidenceScore": 45,
+          "status": "Anthropic said Haiku 5.5 will join the Claude 5.5 family 'in the coming weeks'",
+          "confidence": "Medium",
+          "confidenceScore": 65,
           "hypeScore": 90,
           "expectedGain": 25.0,
           "explicitTargetDate": "2026-10-20T17:00:00.000Z",
@@ -214,16 +216,16 @@
           "baseline": {
             "name": "Claude Haiku 4.5",
             "intel": 16.9,
-            "releaseDate": "2025-10-09",
-            "speed": 120
+            "releaseDate": "2025-10-15",
+            "speed": 125
           },
           "features": [
-            "Claude Haiku 4.5 (Oct 2025) is still Anthropic's newest small model, while Opus 5.5 and Sonnet 5.5 shipped in late September",
-            "Anthropic has typically released a Haiku after the matching Sonnet and Opus",
-            "A Haiku 5 would likely land well above Haiku 4.5 (16.9) but below Sonnet 5.5 (56); the projection assumes about the level of Sonnet 5 (38.2)",
-            "No leak, listing or announcement so far; the date follows Anthropic's usual 4 to 8 week gap between releases"
+            "When Opus 5.5 launched on Sept 22, Anthropic said Sonnet 5.5 and Haiku 5.5 would follow; Sonnet 5.5 shipped Sept 28",
+            "There was never a Haiku 5: Claude Haiku 4.5 (Oct 15, 2025, 16.9) is still Anthropic's newest small model",
+            "Haiku 4.5 came 16 days after Sonnet 4.5; the same gap after Sonnet 5.5 points to mid-late October",
+            "The projection assumes about 42, between Sonnet 5 (38.2) and Sonnet 5.5 (56)"
           ],
-          "source": "Anthropic release history (Artificial Analysis) & Claude 5.5 launches (Sept 22-28, 2026)"
+          "source": "Anthropic Claude Opus 5.5 launch (Sept 22, 2026), Sonnet 5.5 launch (Sept 28, 2026) & Artificial Analysis"
         },
         "frontier": {
           "id": "anthropic-claude-opus-5-6",
@@ -332,9 +334,9 @@
           "category": "frontier",
           "icon": "🌐",
           "stageColor": "#00f2fe",
-          "status": "Confirmed in training; no release date given",
+          "status": "Announced at Apsara (Sept 22) as in training and coming 'very soon'; no date",
           "confidence": "Medium",
-          "confidenceScore": 80,
+          "confidenceScore": 70,
           "hypeScore": 95,
           "expectedGain": 4.0,
           "explicitTargetDate": "2026-10-30T17:00:00.000Z",
@@ -347,12 +349,12 @@
             "speed": 40
           },
           "features": [
-            "Alibaba confirmed at its full-stack AI conference that Qwen 4 is currently in training, with Qwen 4.5 and Qwen 5 on the published roadmap",
-            "Roadmap projects the Qwen 5 series scaling to 5-10 trillion parameters, alongside custom AI silicon for next-gen workloads",
-            "Lean-activation sparse MoE with native multimodality and 1M token context, following the Qwen3.8-Flash-Next architecture preview",
-            "Hybrid attention: Gated DeltaNet history compression paired with Qwen Sparse Attention"
+            "At Apsara on Sept 22, Qwen lead Liu Dayiheng said Qwen 4 is in training and will ship 'very soon', in four tiers: Max, Flash, Plus and 27B",
+            "Qwen Max has updated every 1 to 3 months (3.7 Max May 19, 3.8 Max Aug 3, 3.8 Max 0902 Sept 2)",
+            "Uses the hybrid attention design previewed in Qwen3.8-Flash-Next (Aug 26)",
+            "Qwen 4.5 and Qwen 5 are on the roadmap at 5 to 10 trillion parameters"
           ],
-          "source": "Alibaba full-stack AI strategy conference: Qwen 4 in training, Qwen 4.5/5 roadmap (Sept 2026)"
+          "source": "Alibaba Apsara Conference (Sept 22, 2026) & Artificial Analysis release history"
         },
         "light": {
           "id": "alibaba-qwen-4-flash",
@@ -362,9 +364,9 @@
           "category": "light",
           "icon": "⚡",
           "stageColor": "#00f2fe",
-          "status": "Expected to follow the Qwen 4 flagship",
+          "status": "Named as a Qwen 4 tier at Apsara (Sept 22); expected with or soon after Qwen 4 Max",
           "confidence": "Medium",
-          "confidenceScore": 82,
+          "confidenceScore": 60,
           "hypeScore": 90,
           "expectedGain": 2.0,
           "explicitTargetDate": "2026-11-06T17:00:00.000Z",
@@ -378,7 +380,7 @@
           },
           "features": [
             "Would succeed Qwen3.8-Flash-Next, the architecture preview released Aug 26, 2026 (39.8)",
-            "Alibaba usually ships the smaller Qwen models shortly after the flagship",
+            "Qwen 4 Flash was one of the four Qwen 4 tiers Alibaba previewed at Apsara; smaller tiers usually ship with or shortly after the flagship",
             "Expected to use the same hybrid attention design as the Flash-Next preview (Gated DeltaNet with Qwen Sparse Attention)"
           ],
           "source": "Alibaba Cloud Qwen3.8-Flash-Next architecture preview & Qwen 4 roadmap (Sept 2026)"
@@ -399,14 +401,14 @@
           "category": "frontier",
           "icon": "🔴",
           "stageColor": "#ff5722",
-          "status": "Not announced; Mistral's last model was Medium 3.5 in April",
+          "status": "Not announced; Mistral Large 3 came out Dec 2, 2025",
           "confidence": "Low",
           "confidenceScore": 45,
           "hypeScore": 88,
           "expectedGain": 3.0,
-          "explicitTargetDate": "2026-10-27T17:00:00.000Z",
-          "explicitWindowLabel": "Late Oct 2026",
-          "cadenceDays": 52,
+          "explicitTargetDate": "2026-12-08T17:00:00.000Z",
+          "explicitWindowLabel": "Early Dec 2026",
+          "cadenceDays": 365,
           "baseline": {
             "name": "Mistral Medium 3.5",
             "intel": 14.2,
@@ -417,7 +419,7 @@
             "Mistral's newest model on the Intelligence Index is Mistral Medium 3.5 (Apr 29, 2026, 14.2), well behind the frontier",
             "Mistral launched its Vibe agent on Sept 8, 2026 (Work and Code modes), running on Medium 3.5",
             "Mistral is building out European data centres (200 MW targeted by end of 2027)",
-            "No sign of a Large 4 yet; the date is a cadence estimate"
+            "No sign of Large 4 yet; the date assumes about a year after Large 3 (Dec 2, 2025)"
           ],
           "source": "Mistral AI Vibe launch (Sept 8, 2026) & Artificial Analysis release history"
         }
@@ -438,8 +440,8 @@
           "icon": "🟢",
           "stageColor": "#10a37f",
           "status": "OpenAI says an internal model beats GPT-6 Astra; no release plan announced",
-          "confidence": "Medium",
-          "confidenceScore": 70,
+          "confidence": "Low",
+          "confidenceScore": 40,
           "hypeScore": 99,
           "expectedGain": 6.0,
           "explicitTargetDate": "2027-01-20T17:00:00.000Z",
@@ -448,7 +450,8 @@
             "OpenAI stated it has trained an internal model 'significantly more capable than GPT-6 Astra' since Aug 28, 2026",
             "That internal model has resolved 100+ open mathematics problems since training began, announced with a Navier-Stokes Millennium Prize result",
             "OpenAI dropped the planned October GPT-6.1 Astra launch after the model regressed on internal alignment tests, so the next Astra-class step now points at GPT-7",
-            "GPT-6 Astra (Sept 3, 52.7) is OpenAI's top model; GPT-6.1 Sol (Sept 29, 51.8) nearly matches it at about a fifth of the price"
+            "GPT-6 Astra (Sept 3, 52.7) is OpenAI's top model; GPT-6.1 Sol (Sept 29, 51.8) nearly matches it at about a fifth of the price",
+            "GPT-5 (Aug 2025) to GPT-6 (Sept 2026) took about 13 months; the internal model could also ship as a GPT-6.x Astra instead of GPT-7"
           ],
           "source": "OpenAI DevDay GPT-6.1 Sol launch (Sept 29, 2026), Navier-Stokes announcement (Sept 8, 2026) & GPT-6.1 Astra cancellation reports",
           "baseline": {
@@ -616,10 +619,10 @@
           "source": "OpenCode data page listing, Meta keynote 'coming soon' tease & Manifold Muse Spark 1.4 release-date market (Oct 2026)"
         },
         "frontier": {
-          "id": "meta-muse-spark-avocado",
-          "slug": "muse-spark-2",
-          "shortName": "Muse Spark 2",
-          "predictedName": "Muse Spark 2 / Avocado",
+          "id": "meta-muse-spark-1-5",
+          "slug": "muse-spark-1-5",
+          "shortName": "Muse Spark 1.5",
+          "predictedName": "Muse Spark 1.5 / Muse Spark 2",
           "category": "frontier",
           "icon": "🟦",
           "stageColor": "#00e676",
@@ -639,7 +642,7 @@
           },
           "features": [
             "Meta has released a Muse Spark update about every four weeks (1.1 Jul 9, 1.2 Aug 5, 1.3 Sep 2), with 1.4 expected in late October",
-            "The next step after 1.4 is dated one cycle later; whether Meta calls it 1.5 or 2 is unknown",
+            "The next step after 1.4 is dated one cycle later; Meta has gone 1.1, 1.2, 1.3, so 1.5 is likelier than a jump to 2",
             "Muse Spark 1.3 (48.1) reached the frontier on the Coding Agent Index",
             "Meta's MTIA chips and Prometheus/Hyperion clusters are the compute behind the next generation"
           ],
@@ -655,21 +658,21 @@
       ],
       "models": {
         "frontier": {
-          "id": "kimi-k4",
-          "slug": "kimi-k4",
-          "shortName": "Kimi K4",
-          "predictedName": "Kimi K4",
+          "id": "kimi-k3-1",
+          "slug": "kimi-k3-1",
+          "shortName": "Kimi K3.1",
+          "predictedName": "Kimi K3.1",
           "category": "frontier",
           "icon": "🌙",
           "stageColor": "#a855f7",
-          "status": "Not announced",
+          "status": "Leaked in Moonshot config snippets in late July; the reported August target has passed",
           "confidence": "Low",
-          "confidenceScore": 45,
+          "confidenceScore": 50,
           "hypeScore": 88,
           "expectedGain": 3.0,
-          "explicitTargetDate": "2026-11-24T17:00:00.000Z",
-          "explicitWindowLabel": "Late Nov 2026",
-          "cadenceDays": 52,
+          "explicitTargetDate": "2026-10-29T17:00:00.000Z",
+          "explicitWindowLabel": "Late Oct 2026",
+          "cadenceDays": 90,
           "baseline": {
             "name": "Kimi K3",
             "intel": 43.6,
@@ -677,12 +680,12 @@
             "speed": 40
           },
           "features": [
-            "No official K4 announcement from Moonshot AI as of late September 2026",
-            "Kimi K3 became generally available on Amazon Bedrock on Sept 18, 2026 — the first open-weight 2.8T model on the platform, under a revenue-sharing deal",
-            "K3 (max) scores 43.6 on the Artificial Analysis Intelligence Index v4.3.2, still one of the strongest open-weight models measured",
-            "K4 speculation traces to a single late-July investigation reporting Moonshot seeking additional Nvidia Blackwell-class capacity"
+            "Kimi K3.1 appeared in leaked Moonshot config snippets (late July) with Low/High/Max reasoning effort and up to 1M context; the leak targeted August",
+            "Moonshot has not confirmed it, and August came and went, so the date is pushed out to late October",
+            "Kimi K3 (Jul 16, 43.6) is now behind MiMo-V2.6-Pro (46.3) and GLM-5.3 (44.8) among open-weight models",
+            "Kimi K3 became generally available on Amazon Bedrock on Sept 18, 2026"
           ],
-          "source": "Amazon Bedrock Kimi K3 GA (Sept 18, 2026) & Artificial Analysis Kimi K3 model page"
+          "source": "Kimi K3.1 config leak (Jul 27-28, 2026), Amazon Bedrock Kimi K3 GA (Sept 18, 2026) & Artificial Analysis"
         }
       }
     },
@@ -700,9 +703,9 @@
           "category": "frontier",
           "icon": "👑",
           "stageColor": "#ff007a",
-          "status": "V4 Pro stays live after DeepSeek reversed its retirement",
+          "status": "Named in DeepSeek's Sept 10 announcement; no date given",
           "confidence": "Medium",
-          "confidenceScore": 72,
+          "confidenceScore": 60,
           "hypeScore": 90,
           "expectedGain": 3.0,
           "explicitTargetDate": "2026-11-12T17:00:00.000Z",
@@ -717,10 +720,10 @@
           "features": [
             "DeepSeek announced V4 Pro API retirement on Sept 14, then reversed it days later citing user demand — the flagship model ID stays live",
             "V4.1 Flash (552B MoE, 8B active on input) already outscores the 1.6T V4 Pro at roughly a quarter of the per-token cost",
-            "API price cut to $0.15 per million tokens following the Sept 10 Flash launch",
+            "DeepSeek named V4.1 Pro in the Sept 10 V4.1 Flash announcement but gave no date; a leaked Sept 30 window has passed",
             "Upgraded Multi-Head Latent Attention with an 890-byte-per-token KV cache, down from 3,500 bytes"
           ],
-          "source": "DeepSeek V4.1 Flash release (Sept 10, 2026) & V4 Pro retirement reversal (Sept 11-15, 2026)"
+          "source": "DeepSeek V4.1 Flash release (Sept 10, 2026), V4 Pro retirement reversal (Sept 11-15, 2026) & Artificial Analysis"
         },
         "light": {
           "id": "deepseek-v4-2-flash",
@@ -745,9 +748,10 @@
             "speed": 220
           },
           "features": [
-            "DeepSeek has updated its Flash model roughly every one to two months (V4 Flash 0731, V4 Flash Vision Aug 21, V4.1 Flash Sep 10)",
+            "Flash updates came 2 to 3 weeks apart this summer (V4 Flash 0731, V4 Flash Vision Aug 21, V4.1 Flash Sept 10), but V4.1 Pro is next in line",
             "V4.1 Flash (39.5) is currently DeepSeek's best model on the Intelligence Index",
-            "DeepSeek has so far kept releasing open weights with a permissive licence"
+            "DeepSeek has so far kept releasing open weights with a permissive licence",
+            "The date assumes the next Flash follows V4.1 Pro by a few weeks"
           ],
           "source": "DeepSeek release history (Artificial Analysis)"
         },
@@ -755,17 +759,17 @@
           "id": "deepseek-v5-r3",
           "slug": "deepseek-v5",
           "shortName": "DeepSeek V5",
-          "predictedName": "DeepSeek V5 / DeepSeek-R3",
-          "category": "reasoning",
-          "icon": "🧠",
-          "stageColor": "#ff007a",
+          "predictedName": "DeepSeek V5",
+          "category": "frontier",
+          "icon": "🔴",
+          "stageColor": "#ff5722",
           "status": "Not announced",
           "confidence": "Low",
           "confidenceScore": 45,
           "hypeScore": 96,
           "expectedGain": 8.0,
-          "explicitTargetDate": "2026-12-17T17:00:00.000Z",
-          "explicitWindowLabel": "Mid Dec 2026",
+          "explicitTargetDate": "2027-02-17T17:00:00.000Z",
+          "explicitWindowLabel": "Feb 2027",
           "cadenceDays": 70,
           "baseline": {
             "name": "DeepSeek V4.1 Flash",
@@ -774,9 +778,9 @@
             "speed": 220
           },
           "features": [
-            "A next major version after V4, which launched in April 2026",
-            "DeepSeek's V4 line has kept improving on its efficient attention design (890-byte-per-token KV cache in V4.1, down from 3,500)",
-            "No announcement or leak; the date is a rough estimate from the gap between major versions"
+            "V3 (Dec 2024) to V4 (Apr 2026) took about 16 months; V4.1 Pro has not even shipped yet",
+            "Bank of America expects V5 in the second half of 2026, but DeepSeek has said nothing and its change log has no V5 entry",
+            "The date is a rough estimate: after V4.1 Pro and V4.2 Flash, around the Lunar New Year window DeepSeek has used before"
           ],
           "source": "DeepSeek release history (Artificial Analysis)"
         }
@@ -814,7 +818,7 @@
           "features": [
             "MiMo-V2.6-Pro (Sept 21, 46.3) is Xiaomi's current flagship: 1.02T parameters with 42B active and 1M context",
             "The previous version, MiMo-V2.5, came out Apr 22, 2026, about five months earlier",
-            "MiMo-V2.6 is free and open, and scores close to GPT-5.6 Sol (47)",
+            "MiMo-V2.6-Pro scores close to GPT-5.6 Sol (47) at $0.44/$0.87 per million tokens",
             "No announcement; the date assumes the same five month gap"
           ],
           "source": "Xiaomi MiMo-V2.6 release (Sept 2026) & Artificial Analysis release history"
@@ -829,34 +833,34 @@
       ],
       "models": {
         "frontier": {
-          "id": "minimax-m3-pro-next",
-          "slug": "minimax-m3-pro",
-          "shortName": "MiniMax M3 Pro",
-          "predictedName": "MiniMax M3 Pro",
+          "id": "minimax-m3-1",
+          "slug": "minimax-m3-1",
+          "shortName": "MiniMax M3.1",
+          "predictedName": "MiniMax M3.1 / M3 Pro",
           "category": "frontier",
           "icon": "🪐",
           "stageColor": "#00b4d8",
-          "status": "Reported in July; not confirmed by MiniMax",
-          "confidence": "Low",
-          "confidenceScore": 45,
+          "status": "M3.1-Flash-Preview went live in MiniMax Code on Sept 27; full release not yet out",
+          "confidence": "Medium",
+          "confidenceScore": 60,
           "hypeScore": 88,
           "expectedGain": 3.0,
-          "explicitTargetDate": "2026-11-24T17:00:00.000Z",
-          "explicitWindowLabel": "Late Nov 2026",
+          "explicitTargetDate": "2026-10-28T17:00:00.000Z",
+          "explicitWindowLabel": "Late Oct 2026",
           "cadenceDays": 45,
           "baseline": {
             "name": "MiniMax M3",
             "intel": 29.2,
             "releaseDate": "2026-06-01",
-            "speed": 121
+            "speed": 95
           },
           "features": [
-            "2.7-trillion-parameter sparse MoE succeeding 427B MiniMax M3, reported by The Information on July 8, 2026 with a Q3 open-source target",
-            "Not confirmed by MiniMax as of late September — the Q3 target has already slipped",
-            "Blockwise MiniMax Sparse Attention and hybrid Lightning Attention delivering 9x faster prefill and 15x faster decode",
-            "Sub-$0.30/M token API economics; M3 launched June 1, 2026 as the first open-weight model with frontier coding, 1M context and native multimodality"
+            "MiniMax put M3.1-Flash-Preview into its MiniMax Code product on Sept 27, 2026; the API release is still ahead",
+            "A 2.7T 'M3 Pro' was reported by The Information on July 8 with a Q3 target that has passed; it may ship under the M3.1 name or later",
+            "MiniMax M3 (Jun 1, 29.2) is the current model; M2.5 (Feb 12) and M2.7 (Mar 18) came about a month apart before a longer gap",
+            "The date assumes about four weeks from preview to API"
           ],
-          "source": "The Information reporting (July 8, 2026) & MiniMax M3 release notes (June 1, 2026)"
+          "source": "MiniMax Code M3.1-Flash-Preview (Sept 27, 2026), The Information (July 8, 2026) & Artificial Analysis"
         }
       }
     }
