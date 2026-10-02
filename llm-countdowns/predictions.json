@@ -226,32 +226,34 @@
           "source": "Anthropic release history (Artificial Analysis) & Claude 5.5 launches (Sept 22-28, 2026)"
         },
         "frontier": {
-          "id": "anthropic-claude-6",
-          "slug": "claude-6",
-          "shortName": "Claude 6",
-          "predictedName": "Claude 6 / Mythos 6",
+          "id": "anthropic-claude-opus-5-6",
+          "slug": "claude-opus-5-6",
+          "shortName": "Claude Opus 5.6",
+          "predictedName": "Claude Opus 5.6 / Opus 5.7",
           "category": "frontier",
           "icon": "🟣",
           "stageColor": "#9d4edd",
-          "status": "Not announced; expected after the Claude 5.5 family",
+          "status": "Not announced; Opus 5.5 shipped Sept 22 and Fable 5.5 is expected first",
           "confidence": "Low",
           "confidenceScore": 45,
-          "hypeScore": 97,
-          "expectedGain": 6.0,
+          "hypeScore": 95,
+          "expectedGain": 3.0,
           "explicitTargetDate": "2026-12-08T17:00:00.000Z",
           "explicitWindowLabel": "Early Dec 2026",
-          "features": [
-            "Anthropic's current top model is Claude Opus 5.5 (Sept 22, 57.6), the Intelligence Index leader",
-            "The Claude 5.5 family is still rolling out (Opus Sept 22, Sonnet Sept 28, Fable expected next), so a major version is unlikely before it completes",
-            "Anthropic has moved from one version to the next roughly every two to three months in 2026",
-            "No leak or announcement; the date is a cadence estimate"
-          ],
-          "source": "Anthropic release history (Artificial Analysis Index v4.3.2)",
+          "cadenceDays": 60,
           "baseline": {
             "name": "Claude Opus 5.5",
             "intel": 57.6,
-            "releaseDate": "2026-09-22"
-          }
+            "releaseDate": "2026-09-22",
+            "speed": 96
+          },
+          "features": [
+            "Opus has shipped every 6 to 10 weeks in 2026: 4.6 (Feb 5), 4.7 (Apr 16), 4.8 (May 28), 5 (Jul 24) and 5.5 (Sept 22)",
+            "Major versions are much further apart: Opus 4 (May 2025) to Opus 5 (Jul 2026) took about 14 months with five point releases in between (4.1, 4.5, 4.6, 4.7, 4.8), so a Claude 6 this year is unlikely",
+            "Each recent Opus followed a Fable release by 3 to 7 weeks (Fable 5 then Opus 5, Fable 5.1 then Opus 5.5); with Fable 5.5 expected in early November, the next Opus points to early December",
+            "Opus 5.5 (57.6) leads the Intelligence Index; point releases have added 1 to 7 points, so the projection assumes about +3"
+          ],
+          "source": "Anthropic release history (Artificial Analysis API v2, Oct 2026)"
         },
         "fable": {
           "id": "anthropic-claude-fable-5-5",
