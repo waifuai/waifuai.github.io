@@ -14,7 +14,6 @@ Monorepo for [WaifuAI](https://waifuai.github.io) — an open-source ecosystem o
 | [llms-full-html](llms-full-html/) | Aggregated HTML documentation bundles optimized for LLM ingestion |
 | [llms-full-txt](llms-full-txt/) | Markdown code aggregation with TOC and line counting |
 | [biochem-framework](biochem-framework/) | AI conversation benchmark scoring by estimated neurochemical impact |
-| [reasoning-pricer](reasoning-pricer/) | Valuation reports for 150 tokens using reasoning models, with stress tests |
 
 ### Waifu / AI Companion
 | Project | Description |

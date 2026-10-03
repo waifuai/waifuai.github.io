@@ -53,7 +53,6 @@ PROJECTS = {
     "paraphrase-neural-machine-translation": ("NMT Paraphraser", "Seq2seq paraphrasing in TensorFlow"),
     "quantum-circuit-optimization": ("Quantum Circuit Optimization", "Gate and depth reduction tools"),
     "ransoc": ("RANSOC", "Adaptive normalization for curiosity"),
-    "reasoning-pricer": ("Reasoning Pricer", "AI price predictions for Solana tokens"),
     "research-books": ("Research Books", "Open-access academic volumes"),
     "research-text": ("Research Papers", "Papers, derivations and reports"),
     "street-lines": ("Street Lines", "Proofs for the parking rectangle algorithm"),
