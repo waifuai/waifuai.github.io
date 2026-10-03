@@ -47,7 +47,7 @@
 
 ## Research & Theory
 
-- [Research Books](https://waifuai.github.io/research-books/) — Academic research collection on AI, quantum biology, and physics (14 volumes)
+- [Research Books](https://waifuai.github.io/research-books/) — Academic research collection on AI, quantum biology, and physics (10 volumes)
 - [Research Text Hub](https://waifuai.github.io/research-text/) — 160+ research docs on kinematics, quantum LLMs, AI agents, and DSLs
 - [Quantum Circuit Optimization](https://waifuai.github.io/quantum-circuit-optimization/) — Quantum circuit optimization library
 - [RANSOC](https://waifuai.github.io/ransoc/) — Real-time curiosity-driven search relevance algorithm
