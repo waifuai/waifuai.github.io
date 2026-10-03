@@ -77,6 +77,9 @@
     <div class="messages" id="messages" aria-live="polite"></div>
     <form class="composer" id="composer" autocomplete="off">
       <input id="msgInput" type="text" maxlength="2000" placeholder="Say something..." aria-label="Message" enterkeyhint="send">
+      <button id="micBtn" class="mic" type="button" aria-label="Voice input: hold to talk, or tap to start and stop" title="Hold to talk, or tap to start and stop">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-2.08A7 7 0 0 0 19 12h-2Z"/></svg>
+      </button>
       <button id="sendBtn" type="submit" aria-label="Send">&#10148;</button>
     </form>
   </section>
@@ -118,6 +121,10 @@
       <p class="note">Ask for a selfie or a drawing, or type <code>/image</code> and a description. Pictures are drawn by WaifuAI Cloud.</p>
       <div class="options aspects" id="aspectList"></div>
 
+      <h3>Voice</h3>
+      <p class="note">Hold the mic button to talk, or tap it to start and tap again to stop. Speech is transcribed by WaifuAI Cloud.</p>
+      <label class="row"><span>Send right after speaking</span><input id="voiceAutoSend" type="checkbox"></label>
+
       <h3>Display</h3>
       <label class="row"><span>Bubble opacity</span><input id="opacity" type="range" min="0.15" max="0.95" step="0.05"></label>
       <label class="row"><span>Text size</span><input id="fontSize" type="range" min="12" max="20" step="1"></label>
@@ -158,6 +165,11 @@
 </section>
 
 <section>
+<h2>Talk to her</h2>
+<p>Hold the mic button and speak, or tap it once to start and again to stop. She listens while you talk, and your words are transcribed and sent, in whatever language you speak. Turn off "Send right after speaking" in Settings to check the text before it goes.</p>
+</section>
+
+<section>
 <h2>States and emotions</h2>
 <div class="tables">
 <table>
@@ -193,7 +205,7 @@
 <h2>AI and privacy</h2>
 <ul>
 <li><strong>WaifuAI Cloud</strong> (default): free, no key. Messages are sent to WaifuAI Cloud to generate replies and may be logged to improve the service.</li>
-<li><strong>Your own key</strong>: OpenRouter, Groq or any OpenAI-compatible endpoint. The key stays in your browser, and requests go straight to that provider. Pictures are still drawn by WaifuAI Cloud.</li>
+<li><strong>Your own key</strong>: OpenRouter, Groq or any OpenAI-compatible endpoint. The key stays in your browser, and requests go straight to that provider. Pictures and voice transcription still go through WaifuAI Cloud.</li>
 <li>Chat history is stored in your browser's local storage and never uploaded. Delete it any time in Settings.</li>
 </ul>
 </section>
@@ -223,6 +235,7 @@
 
 <script src="sprites.js"></script>
 <script src="pictures.js"></script>
+<script src="voice.js"></script>
 <script src="chat.js"></script>
 <script src="app.js"></script>
 </body>

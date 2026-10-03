@@ -43,7 +43,7 @@
 
   // ── Display settings ──
   const DISPLAY_KEY = 'ws_display';
-  let display = { opacity: 0.55, fontSize: 15, hideVideo: false, hideChat: false };
+  let display = { opacity: 0.55, fontSize: 15, hideVideo: false, hideChat: false, voiceAutoSend: true };
   try { display = Object.assign(display, JSON.parse(localStorage.getItem(DISPLAY_KEY) || '{}')); } catch (e) {}
   function saveDisplay() { try { localStorage.setItem(DISPLAY_KEY, JSON.stringify(display)); } catch (e) {} }
   function applyDisplay() {
@@ -58,6 +58,8 @@
   $('opacity').value = display.opacity;
   $('fontSize').value = display.fontSize;
   $('hideVideo').checked = display.hideVideo;
+  $('voiceAutoSend').checked = display.voiceAutoSend;
+  $('voiceAutoSend').addEventListener('change', e => { display.voiceAutoSend = e.target.checked; saveDisplay(); });
   $('opacity').addEventListener('input', e => { display.opacity = +e.target.value; applyDisplay(); saveDisplay(); });
   $('fontSize').addEventListener('input', e => { display.fontSize = +e.target.value; applyDisplay(); saveDisplay(); });
   $('hideVideo').addEventListener('change', e => { display.hideVideo = e.target.checked; applyDisplay(); saveDisplay(); });
@@ -254,6 +256,43 @@
 
   $('composer').addEventListener('submit', e => { e.preventDefault(); send(input.value); });
 
+  // ── Voice ──
+  const micBtn = $('micBtn');
+  const PLACEHOLDERS = { idle: 'Say something...', starting: 'Starting the mic...', listening: 'Listening... release or tap to stop', transcribing: 'Transcribing...' };
+  Voice.init(micBtn, {
+    ids: Chat.ids,
+    onState(state) {
+      micBtn.dataset.state = state;
+      input.placeholder = PLACEHOLDERS[state] || PLACEHOLDERS.idle;
+      if (Chat.busy) return;
+      if (state === 'listening' || state === 'transcribing') {
+        clearTimeout(idleTimer);
+        Sprites.setState(state === 'listening' ? 'listening' : 'thinking');
+      } else if (state === 'idle' && Sprites.current.name === 'listening') {
+        later(() => Sprites.setState('idle'), 1000); // too short to transcribe, or mic failed
+      }
+    },
+    onText(text) {
+      if (typeof gtag === 'function') gtag('event', 'sprites_voice');
+      const combined = (input.value.trim() + ' ' + text).trim();
+      if (display.voiceAutoSend && !Chat.busy) {
+        send(combined);
+      } else {
+        input.value = combined;
+        input.focus();
+        if (!Chat.busy) later(() => Sprites.setState('idle'), 4000);
+      }
+    },
+    onError(msg) {
+      messagesEl.querySelectorAll('.starters').forEach(el => el.remove());
+      bubble('error', msg);
+      if (!Chat.busy) {
+        Sprites.setState('error');
+        later(() => Sprites.setState('idle'), 4000);
+      }
+    },
+  });
+
   // ── Panels ──
   function openPanel(id) {
     document.querySelectorAll('.panel').forEach(p => { p.hidden = p.id !== id || !p.hidden; });
@@ -393,7 +432,7 @@
     $('keyLink').hidden = !p.keyUrl;
     if (p.keyUrl) $('keyLink').href = p.keyUrl;
     $('providerNote').textContent = own
-      ? 'Your key is saved in this browser only and sent only to ' + (s.provider === 'custom' ? 'your endpoint' : p.name) + '. Pictures still go through WaifuAI Cloud.'
+      ? 'Your key is saved in this browser only and sent only to ' + (s.provider === 'custom' ? 'your endpoint' : p.name) + '. Pictures and voice still go through WaifuAI Cloud.'
       : 'Free and keyless. Messages go to WaifuAI Cloud to generate replies and may be logged to improve the service.';
 
     const aspectList = $('aspectList');

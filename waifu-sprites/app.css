@@ -322,3 +322,19 @@
 .lightbox[hidden] { display: none; }
 .lightbox img { max-width: 100%; max-height: calc(100% - 48px); border-radius: 12px; object-fit: contain; }
 .lightbox a { color: var(--pink); font-size: 14px; }
+
+/* ── Voice ── */
+.composer .mic {
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.composer .mic:hover { border-color: var(--pink); }
+.composer .mic[data-state="starting"],
+.composer .mic[data-state="listening"] { background: #ff4f7b; color: #fff; border-color: #ff4f7b; animation: mic-pulse 1.2s ease-out infinite; }
+.composer .mic[data-state="transcribing"] { opacity: 0.6; cursor: progress; animation: pulse 1s ease-in-out infinite; }
+@keyframes mic-pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 79, 123, 0.6); } 100% { box-shadow: 0 0 0 12px rgba(255, 79, 123, 0); } }
