@@ -32,6 +32,8 @@
     sleepTimer = setTimeout(() => { if (!Chat.busy) Sprites.setState('sleeping'); }, SLEEP_AFTER_MS);
   }
   ['pointerdown', 'keydown'].forEach(ev => document.addEventListener(ev, activity, { passive: true }));
+  // Sound is only allowed after a gesture, so every click or key unlocks it.
+  ['pointerdown', 'keydown'].forEach(ev => document.addEventListener(ev, Speech.unlock, { passive: true }));
   activity();
 
   input.addEventListener('input', () => {
@@ -65,6 +67,54 @@
   $('hideVideo').addEventListener('change', e => { display.hideVideo = e.target.checked; applyDisplay(); saveDisplay(); });
   $('chatToggle').addEventListener('click', () => { display.hideChat = !display.hideChat; applyDisplay(); saveDisplay(); });
   applyDisplay();
+
+  // ── Her voice ──
+  const speakToggle = $('speakToggle');
+  function applySpeech() {
+    const on = Speech.settings.enabled;
+    speakToggle.setAttribute('aria-pressed', String(on));
+    speakToggle.innerHTML = on ? '&#128266;' : '&#128263;';
+    speakToggle.title = on ? 'Mute her voice' : 'Read replies aloud';
+    $('speakEnabled').checked = on;
+    $('speakAutoLang').checked = Speech.settings.autoLang;
+    $('voiceSelect').value = Speech.settings.voiceId;
+  }
+  (() => {
+    const select = $('voiceSelect');
+    const groups = {};
+    Speech.VOICES.forEach(v => {
+      if (!groups[v.group]) {
+        groups[v.group] = document.createElement('optgroup');
+        groups[v.group].label = v.group;
+        select.appendChild(groups[v.group]);
+      }
+      groups[v.group].appendChild(new Option(v.name, v.id));
+    });
+  })();
+  function setSpeech(on) {
+    Speech.settings.enabled = on;
+    Speech.save();
+    if (!on) Speech.stop();
+    applySpeech();
+  }
+  speakToggle.addEventListener('click', () => setSpeech(!Speech.settings.enabled));
+  $('speakEnabled').addEventListener('change', e => setSpeech(e.target.checked));
+  $('speakAutoLang').addEventListener('change', e => { Speech.settings.autoLang = e.target.checked; Speech.save(); });
+  $('voiceSelect').addEventListener('change', e => {
+    Speech.settings.voiceId = e.target.value;
+    Speech.save();
+    Speech.speak('Hi! This is how I sound.'); // a sample of the new voice
+  });
+  applySpeech();
+
+  // Reads a reply aloud and keeps her emotion on screen until it ends.
+  function speakReply(text) {
+    if (!Speech.settings.enabled) return;
+    Speech.speak(text, {
+      onStart() { clearTimeout(idleTimer); },
+      onEnd() { later(() => Sprites.setState('idle'), 4000); },
+    });
+  }
 
   // ── Messages ──
   function scrollDown() { messagesEl.scrollTop = messagesEl.scrollHeight; }
@@ -117,6 +167,7 @@
   }
 
   function renderConversation() {
+    Speech.stop();
     messagesEl.textContent = '';
     if (!Chat.messages.length) renderEmpty();
     else Chat.messages.forEach(m => (m.image ? pictureBubble(m) : bubble(m.role, m.content)));
@@ -203,6 +254,7 @@
     if (!text || Chat.busy) return;
     if (/^\/(image|img)\b/i.test(text)) { imageCommand(text); return; }
     input.value = '';
+    Speech.stop();
     // Whether this turn wants a picture is decided alongside the reply.
     const pictureDecision = Pictures.decide(text, Chat.lastReply());
     messagesEl.querySelectorAll('.starters, .msg.info:not(.keep), .msg.error').forEach(el => el.remove());
@@ -232,6 +284,7 @@
         reply.textContent = message.content;
         if (!tagged && message.emotion) Sprites.setEmotion(message.emotion);
         later(() => Sprites.setState('idle'), RETURN_TO_IDLE_MS);
+        speakReply(message.content);
         scrollDown();
       },
       onError(msg) {
@@ -264,6 +317,7 @@
     onState(state) {
       micBtn.dataset.state = state;
       input.placeholder = PLACEHOLDERS[state] || PLACEHOLDERS.idle;
+      if (state === 'starting') Speech.stop(); // don't record her own voice
       if (Chat.busy) return;
       if (state === 'listening' || state === 'transcribing') {
         clearTimeout(idleTimer);

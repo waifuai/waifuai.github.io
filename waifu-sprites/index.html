@@ -68,6 +68,7 @@
     <div class="topbar-right">
       <button class="icon-btn" id="historyBtn" type="button" title="Chat history" aria-label="Chat history" aria-controls="historyPanel">&#9776;</button>
       <button class="icon-btn" id="newBtn" type="button" title="New chat" aria-label="New chat">&#43;</button>
+      <button class="icon-btn" id="speakToggle" type="button" title="Mute her voice" aria-label="Read replies aloud" aria-pressed="true">&#128266;</button>
       <button class="icon-btn" id="chatToggle" type="button" title="Hide chat" aria-label="Hide chat" aria-pressed="false">&#128172;</button>
     </div>
   </div>
@@ -122,6 +123,10 @@
       <div class="options aspects" id="aspectList"></div>
 
       <h3>Voice</h3>
+      <label class="row"><span>Read her replies aloud</span><input id="speakEnabled" type="checkbox"></label>
+      <label class="row"><span>Her voice</span><select id="voiceSelect"></select></label>
+      <label class="row"><span>Match the reply's language</span><input id="speakAutoLang" type="checkbox"></label>
+      <p class="note">Replies are read by a free TikTok voice service, or by your browser's own voice if it's busy. A reply in Japanese, German or another language gets a voice for that language.</p>
       <p class="note">Hold the mic button to talk, or tap it to start and tap again to stop. Speech is transcribed by WaifuAI Cloud.</p>
       <label class="row"><span>Send right after speaking</span><input id="voiceAutoSend" type="checkbox"></label>
 
@@ -166,6 +171,7 @@
 
 <section>
 <h2>Talk to her</h2>
+<p>She reads her replies aloud with TikTok voices: pick from soft female voices, Japanese and Korean voices, characters like Stitch and Ghost Face, or singing voices. When she answers in another language, a voice for that language reads it. The speaker button at the top mutes her.</p>
 <p>Hold the mic button and speak, or tap it once to start and again to stop. She listens while you talk, and your words are transcribed and sent, in whatever language you speak. Turn off "Send right after speaking" in Settings to check the text before it goes.</p>
 </section>
 
@@ -206,6 +212,7 @@
 <ul>
 <li><strong>WaifuAI Cloud</strong> (default): free, no key. Messages are sent to WaifuAI Cloud to generate replies and may be logged to improve the service.</li>
 <li><strong>Your own key</strong>: OpenRouter, Groq or any OpenAI-compatible endpoint. The key stays in your browser, and requests go straight to that provider. Pictures and voice transcription still go through WaifuAI Cloud.</li>
+<li>Spoken replies: the text of each reply is sent to a free TikTok voice service, or read by your browser's built-in voice when you pick one. Mute her to send nothing.</li>
 <li>Chat history is stored in your browser's local storage and never uploaded. Delete it any time in Settings.</li>
 </ul>
 </section>
@@ -236,6 +243,7 @@
 <script src="sprites.js"></script>
 <script src="pictures.js"></script>
 <script src="voice.js"></script>
+<script src="speech.js"></script>
 <script src="chat.js"></script>
 <script src="app.js"></script>
 </body>

@@ -26,7 +26,7 @@
 
 ## Waifu / AI Companion
 
-- [Waifu Sprites](https://waifuai.github.io/waifu-sprites/) — Browser app: chat with an animated video companion that reacts with 12 states and 12 emotions; also a Hermes Agent plugin
+- [Waifu Sprites](https://waifuai.github.io/waifu-sprites/) — Browser app: chat with an animated video companion that reacts with 12 states and 12 emotions, talks with TikTok voices, listens and draws pictures; also a Hermes Agent plugin
 - [Hermes Waifu](https://waifuai.github.io/hermes-waifu/) — Live2D animated waifu with expression controls and Hermes Agent integration
 - [Waifu Chat API](https://waifuai.github.io/waifu-chat-api/) — REST API for waifu chatbot conversations with user management
 - [Waifu Constitution](https://waifuai.github.io/waifu-constitution/) — AI alignment constitution and behavioral guidelines for waifu agents

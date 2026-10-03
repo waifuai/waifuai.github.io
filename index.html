@@ -130,12 +130,14 @@
   .lede { font-size: 18px; color: var(--muted); margin: 0; max-width: 62ch; }
 
   .start { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0 0; }
-  .start a { display: block; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 16px 18px; color: var(--text); }
+  .start a { display: block; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--text); }
+  .start img { display: block; width: 100%; height: auto; aspect-ratio: 40 / 21; object-fit: cover; background: #0f0f10; border-bottom: 1px solid var(--line); }
+  .start .tile-text { display: block; padding: 14px 18px 16px; margin: 0; }
   .start a:hover { text-decoration: none; border-color: var(--faint); }
   .start a.primary { border-color: var(--accent); }
   .start strong { display: block; font-size: 16px; }
   .start strong::after { content: " \2192"; color: var(--accent); }
-  .start span { display: block; font-size: 14px; color: var(--muted); margin-top: 2px; }
+  .start .tile-text span { display: block; font-size: 14px; color: var(--muted); margin-top: 2px; }
 
   .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin: 16px 0 0; }
   .stat { background: var(--surface); padding: 14px 18px; color: var(--text); }
@@ -209,12 +211,12 @@
 <main>
 <div class="wrap">
   <h1>WaifuAI docs</h1>
-  <p class="lede">Documentation for the open-source side of WaifuAI: the Live2D companion, MCP servers for AI agents, LLM tooling, and research papers.</p>
+  <p class="lede">Documentation for the open-source side of WaifuAI: the Live2D companion, MCP servers for AI agents, LLM tooling, and research.</p>
 
   <div class="start">
-    <a class="primary" href="https://waifuai.com/"><strong>Companion app</strong><span>Talk to a Live2D waifu in your browser, with voice and nothing to install.</span></a>
-    <a href="llm-countdowns/"><strong>LLM Countdowns</strong><span>Release forecasts for upcoming frontier models from each AI lab.</span></a>
-    <a href="data/"><strong>Open data</strong><span>Every public number: visitors, repositories, projects and search reach.</span></a>
+    <a class="primary" href="https://waifuai.com/"><img src="images/home/companion.webp" width="600" height="315" alt="Waifu Companion: a Live2D anime girl next to a chat window"><span class="tile-text"><strong>Companion app</strong><span>Talk to a Live2D waifu in your browser, with voice and nothing to install.</span></span></a>
+    <a href="waifu-sprites/"><img src="images/home/sprites.webp" width="600" height="315" alt="Aurora, the Waifu Sprites companion"><span class="tile-text"><strong>Waifu Sprites</strong><span>Chat with Aurora, an animated video companion who reacts, talks and sends selfies.</span></span></a>
+    <a href="llm-countdowns/"><img src="llm-countdowns/og.png" width="1200" height="630" alt="LLM Countdowns: the next AI model release" loading="lazy"><span class="tile-text"><strong>LLM Countdowns</strong><span>Release forecasts for upcoming frontier models from each AI lab.</span></span></a>
   </div>
 
   <div class="stats">
