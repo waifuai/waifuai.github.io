@@ -51,6 +51,7 @@ PROJECTS = {
     "waifu-chat-api": ("Waifu Chat API", "REST API for companion chat"),
     "waifu-constitution": ("Waifu Constitution", "Alignment principles for companions"),
     "waifu-llm-vrm": ("Waifu LLM VRM", "Godot AI companions with VRM models"),
+    "waifu-sprites": ("Waifu Sprites", "Animated companion that reacts to your chat"),
 }
 # Root-level pages: file -> (name, tagline). Cards go in og/.
 ROOT_PAGES = {

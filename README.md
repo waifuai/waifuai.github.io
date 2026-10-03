@@ -18,6 +18,7 @@ Monorepo for [WaifuAI](https://waifuai.github.io) — an open-source ecosystem o
 ### Waifu / AI Companion
 | Project | Description |
 |---|---|
+| [waifu-sprites](waifu-sprites/) | Browser app: chat with an animated video companion (12 states, 12 emotions) |
 | [hermes-waifu](hermes-waifu/) | Live2D animated waifu with expression controls and Hermes Agent integration |
 | [waifu-chat-api](waifu-chat-api/) | REST API for waifu chatbot conversations with user management |
 | [waifu-constitution](waifu-constitution/) | AI alignment constitution and behavioral guidelines for waifu agents |

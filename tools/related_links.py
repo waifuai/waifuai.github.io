@@ -22,7 +22,7 @@ EXTRA = {
     "biochem-framework/": ["waifu-constitution/", "ai-benchmarks/"],
     "book-generator/": ["research-text/", "paraphrase/"],
     "cat-maze/": ["ai-benchmarks/"],
-    "hermes-waifu/": ["blog-posts/11-how-to-add-your-own-live2d-avatar.html", "mcp-servers/"],
+    "hermes-waifu/": ["waifu-sprites/", "blog-posts/11-how-to-add-your-own-live2d-avatar.html", "mcp-servers/"],
     "llm-text-queue-gpu/": ["mcp-servers/"],
     "llms-full/": ["function-graph-generator/", "research-text/"],
     "mcp-servers/": ["traits/", "waifu-chat-api/", "llm-text-queue-gpu/", "hermes-waifu/"],
@@ -31,6 +31,8 @@ EXTRA = {
     "traits/": ["mcp-servers/"],
     "waifu-chat-api/": ["mcp-servers/"],
     "waifu-constitution/": ["biochem-framework/"],
+    "waifu-sprites/": ["hermes-waifu/", "ransoc/"],
+    "ransoc/": ["waifu-sprites/"],
     "blog-posts/11-how-to-add-your-own-live2d-avatar.html": ["hermes-waifu/"],
 }
 # Names for pages that several homepage cards point into (one card per project on the page).
@@ -124,7 +126,9 @@ def main():
         for page in pages:
             mates = [p for p in pages if p != page]
             related.setdefault(page, [])
-            related[page] += [p for p in EXTRA.get(page, []) + mates if p not in related[page]]
+            for p in EXTRA.get(page, []) + mates:
+                if p not in related[page]:
+                    related[page].append(p)
     for page, extra in EXTRA.items():
         related.setdefault(page, list(extra))
     order = list(posts)

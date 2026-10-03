@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b12">
+<meta name="description" content="Chat with an animated anime companion in your browser. Waifu Sprites plays video sprites that react to the conversation: thinking while she waits, then 12 emotions picked from her reply. Free, no sign-up.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://waifuai.github.io/waifu-sprites/">
+<meta property="og:title" content="Waifu Sprites | WaifuAI">
+<meta property="og:description" content="An animated video companion that reacts to your chat with 12 states and 12 emotions. Runs in the browser, free.">
+<meta property="og:image" content="https://waifuai.github.io/waifu-sprites/og.png?v=6e479ccdc6">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://waifuai.github.io/waifu-sprites/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="WaifuAI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Waifu Sprites | WaifuAI">
+<meta name="twitter:description" content="An animated video companion that reacts to your chat with 12 states and 12 emotions. Runs in the browser, free.">
+<meta name="twitter:image" content="https://waifuai.github.io/waifu-sprites/og.png?v=6e479ccdc6">
+<title>Waifu Sprites — Animated AI Companion in Your Browser | WaifuAI</title>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Waifu Sprites",
+  "description": "Animated anime companion that reacts to your chat with video sprites: 12 activity states and 12 emotions, chosen from each reply.",
+  "url": "https://waifuai.github.io/waifu-sprites/",
+  "applicationCategory": "EntertainmentApplication",
+  "operatingSystem": "Any (web browser)",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Organization", "name": "WaifuAI", "url": "https://waifuai.github.io/" },
+  "sameAs": "https://github.com/waifuai/waifu-sprites"
+}
+</script>
+<link rel="stylesheet" href="../theme.css">
+<link rel="stylesheet" href="app.css">
+<link rel="preload" href="videos/1.mp4" as="video" type="video/mp4">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<!-- site-header -->
+<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/llm-countdowns/">Countdowns</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
+<!-- /site-header -->
+
+<main class="stage" id="stage" aria-label="Waifu Sprites app">
+  <div class="sprite-wrap">
+    <video class="sprite" muted playsinline preload="auto" poster="videos/poster.jpg" aria-hidden="true"></video>
+    <video class="sprite" muted playsinline preload="auto" aria-hidden="true"></video>
+  </div>
+
+  <div class="topbar">
+    <button class="icon-btn" id="settingsBtn" type="button" title="Settings" aria-label="Settings" aria-controls="settingsPanel">&#9881;</button>
+    <div class="status"><span class="dot"></span><span id="spriteLabel">idle</span></div>
+    <div class="topbar-right">
+      <button class="icon-btn" id="historyBtn" type="button" title="Chat history" aria-label="Chat history" aria-controls="historyPanel">&#9776;</button>
+      <button class="icon-btn" id="newBtn" type="button" title="New chat" aria-label="New chat">&#43;</button>
+      <button class="icon-btn" id="chatToggle" type="button" title="Hide chat" aria-label="Hide chat" aria-pressed="false">&#128172;</button>
+    </div>
+  </div>
+
+  <section class="chat" id="chat" aria-label="Chat">
+    <div class="chat-meta" id="chatMeta"></div>
+    <div class="messages" id="messages" aria-live="polite"></div>
+    <form class="composer" id="composer" autocomplete="off">
+      <input id="msgInput" type="text" maxlength="2000" placeholder="Say something..." aria-label="Message" enterkeyhint="send">
+      <button id="sendBtn" type="submit" aria-label="Send">&#10148;</button>
+    </form>
+  </section>
+
+  <aside class="panel" id="historyPanel" hidden aria-label="Chat history">
+    <div class="panel-head"><h2>Chats</h2><button class="icon-btn" type="button" data-close aria-label="Close">&#10005;</button></div>
+    <div class="panel-body" id="historyList"></div>
+  </aside>
+
+  <aside class="panel" id="settingsPanel" hidden aria-label="Settings">
+    <div class="panel-head"><h2>Settings</h2><button class="icon-btn" type="button" data-close aria-label="Close">&#10005;</button></div>
+    <div class="panel-body">
+      <h3>Personality</h3>
+      <div class="options" id="personaList"></div>
+      <div id="customPromptBox" hidden>
+        <label class="field-label" for="customPrompt">Custom personality</label>
+        <textarea id="customPrompt" rows="5" placeholder="You are... (describe who she is and how she talks)"></textarea>
+      </div>
+
+      <h3>AI</h3>
+      <div class="options" id="providerList"></div>
+      <div id="providerFields">
+        <div id="baseUrlRow" hidden>
+          <label class="field-label" for="baseUrl">Endpoint URL</label>
+          <input id="baseUrl" type="url" placeholder="https://example.com/v1" spellcheck="false">
+        </div>
+        <div id="keyRow" hidden>
+          <label class="field-label" for="apiKey">API key <a id="keyLink" href="#" target="_blank" rel="noopener">get one</a></label>
+          <input id="apiKey" type="password" placeholder="Stays in this browser" spellcheck="false" autocomplete="off">
+        </div>
+        <div id="modelRow" hidden>
+          <label class="field-label" for="modelName">Model</label>
+          <input id="modelName" type="text" spellcheck="false">
+        </div>
+      </div>
+      <p class="note" id="providerNote"></p>
+
+      <h3>Display</h3>
+      <label class="row"><span>Bubble opacity</span><input id="opacity" type="range" min="0.15" max="0.95" step="0.05"></label>
+      <label class="row"><span>Text size</span><input id="fontSize" type="range" min="12" max="20" step="1"></label>
+      <label class="row"><span>Hide the video</span><input id="hideVideo" type="checkbox"></label>
+
+      <h3>Data</h3>
+      <p class="note">Chats are saved in this browser only.</p>
+      <button class="btn-danger" id="clearAll" type="button">Delete all chats</button>
+    </div>
+  </aside>
+
+  <a class="about-link" href="#about">About &#8595;</a>
+</main>
+
+<div class="container" id="about">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">Waifu Sprites</span></nav>
+
+<header>
+<h1>Waifu Sprites</h1>
+<p>An animated anime companion that reacts to your chat, right in the browser.</p>
+<div class="links"><a href="#stage">Open the app &#8593;</a><a href="https://github.com/waifuai/waifu-sprites">Hermes Agent plugin on GitHub</a></div>
+</header>
+
+<section>
+<h2>What it is</h2>
+<p>Waifu Sprites is a companion made of short video clips instead of a 3D or Live2D model. Every clip is a few seconds of hand-picked animation that loops seamlessly, so she always looks alive: idle while you read, listening while you type, thinking while the reply is on its way, and then reacting to what she says.</p>
+<p>There are 24 clips with alternates: 12 activity states and 12 emotions. The AI tags each reply with an emotion, and the matching clip plays as soon as the first words arrive. It's free, needs no sign-up, and works on phones.</p>
+</section>
+
+<section>
+<h2>States and emotions</h2>
+<div class="tables">
+<table>
+<thead><tr><th>State</th><th>When it plays</th></tr></thead>
+<tbody>
+<tr><td>idle</td><td>Nothing happening</td></tr>
+<tr><td>listening</td><td>You're typing</td></tr>
+<tr><td>thinking</td><td>Waiting for the reply</td></tr>
+<tr><td>speaking</td><td>Reply with no clear emotion</td></tr>
+<tr><td>error / alert</td><td>The AI service failed</td></tr>
+<tr><td>sleeping</td><td>No activity for a few minutes</td></tr>
+</tbody>
+</table>
+<table>
+<thead><tr><th>Emotions</th></tr></thead>
+<tbody>
+<tr><td>happy, laughing, love, amazed</td></tr>
+<tr><td>curious, planning, triumphant</td></tr>
+<tr><td>empathetic, sorry, confused</td></tr>
+<tr><td>annoyed, overwhelmed</td></tr>
+</tbody>
+</table>
+</div>
+<p>The other states (typing, searching, calculating, fixing, success) come from the Hermes Agent plugin, where they follow what the agent is doing.</p>
+</section>
+
+<section>
+<h2>Why she never repeats herself</h2>
+<p>Emotions are picked with <a href="/ransoc/">RANSOC</a>. Each emotion carries a weight that drops when it plays and recovers while others play. The same emotion never plays twice in a row; when the reply asks for the one just shown, a similar emotion plays instead, so <em>happy</em> may become <em>love</em> or <em>laughing</em>. Each clip also has an alternate take, and the player alternates between them.</p>
+</section>
+
+<section>
+<h2>AI and privacy</h2>
+<ul>
+<li><strong>WaifuAI Cloud</strong> (default): free, no key. Messages are sent to WaifuAI Cloud to generate replies and may be logged to improve the service.</li>
+<li><strong>Your own key</strong>: OpenRouter, Groq or any OpenAI-compatible endpoint. The key stays in your browser, and requests go straight to that provider.</li>
+<li>Chat history is stored in your browser's local storage and never uploaded. Delete it any time in Settings.</li>
+</ul>
+</section>
+
+<section>
+<h2>Use it with Hermes Agent</h2>
+<p>The same sprites run as a dashboard plugin for <a href="https://github.com/nousresearch/hermes-agent">Hermes Agent</a>, where the clip follows the agent's work: typing during file edits, searching during web lookups, calculating, fixing and celebrating success. Clone <a href="https://github.com/waifuai/waifu-sprites">waifuai/waifu-sprites</a> into <code>~/.hermes/plugins</code> and rescan plugins from the dashboard.</p>
+</section>
+
+<!-- related -->
+<section>
+<h2>Related</h2>
+<div class="link-list">
+<a href="/hermes-waifu/"><h3>Hermes Waifu</h3><p>Live2D widget for Hermes Agent with five built-in models and expression controls.</p></a>
+<a href="/ransoc/"><h3>RANSOC</h3><p>Real-time, curiosity-driven search ranking algorithm.</p></a>
+<a href="/waifu-chat-api/"><h3>Waifu Chat API</h3><p>REST API for waifu chatbot conversations with user management.</p></a>
+<a href="/waifu-constitution/"><h3>Waifu Constitution</h3><p>Alignment constitution and behaviour guidelines for waifu agents.</p></a>
+<a href="/waifu-llm-vrm/"><h3>Waifu LLM VRM</h3><p>Python library for AI waifus in the Godot engine, with VRM avatar support.</p></a>
+<a href="/anime-subtitle-chatbot/"><h3>Anime Subtitle Chatbot</h3><p>Few-shot chatbot trained on anime subtitles.</p></a>
+</div>
+</section>
+<!-- /related -->
+<footer>
+<p>Generated for GitHub Pages</p>
+</footer>
+</div>
+
+<script src="sprites.js"></script>
+<script src="chat.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
