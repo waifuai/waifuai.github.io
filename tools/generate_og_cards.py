@@ -7,6 +7,10 @@ here changes, and rendering is deterministic so unchanged cards stay out of git.
 Each page's og:image / twitter:image is pointed at its card with a ?v=<content hash> so
 Discord and X refetch it when it changes. Pages without preview tags get them added.
 
+The homepage and companion cards show Aurora (the Waifu Sprites poster) on the right. Every
+other page inside a project gets its own card: the project name as label, the page title as
+title.
+
 Needs Pillow and Segoe UI (C:\\Windows\\Fonts). Run from anywhere:
     python tools/generate_og_cards.py
 """
@@ -45,7 +49,6 @@ PROJECTS = {
     "paraphrase": ("Paraphrase", "Generate paraphrases, spot AI writing"),
     "quantum-circuit-optimization": ("Quantum Circuit Optimization", "Gate and depth reduction tools"),
     "ransoc": ("RANSOC", "Adaptive normalization for curiosity"),
-    "research-text": ("Research Papers", "Papers, derivations and reports"),
     "street-lines": ("Street Lines", "Proofs for the parking rectangle algorithm"),
     "traits": ("Traits", "Personality trait analysis"),
     "waifu-chat-api": ("Waifu Chat API", "REST API for companion chat"),
@@ -56,6 +59,16 @@ PROJECTS = {
 # Root-level pages: file -> (name, tagline). Cards go in og/.
 ROOT_PAGES = {
     "links.html": ("Links", "Referral credits for AI tools"),
+    "search.html": ("Search", "Find any page on the site"),
+}
+HOME = ("waifuai.github.io", "WaifuAI", "Open-source AI companions, tools and research")
+# Cards that show Aurora on the right.
+ART = ROOT / "waifu-sprites" / "videos" / "poster.jpg"
+ART_W = 430
+WITH_ART = {"waifu-sprites"}
+# Subpage titles too vague to stand alone on a card.
+TITLE_OVERRIDES = {
+    "ransoc/2-proof.html": "RANSOC: Proof",
 }
 
 
@@ -79,27 +92,43 @@ def _wrap(draw, text, font, max_width):
     return lines + [line] if line else lines
 
 
-def _fit_lines(draw, text, path, sizes, max_lines):
+def _fit_lines(draw, text, path, sizes, max_lines, max_w=MAX_W):
     """First size in sizes at which text wraps into at most max_lines lines."""
     for size in sizes:
         font = _font(path, size)
-        lines = _wrap(draw, text, font, MAX_W)
+        lines = _wrap(draw, text, font, max_w)
         if len(lines) <= max_lines:
             return font, size, lines
     return font, size, lines[:max_lines]
 
 
-def render(label, title, tagline=None):
+def _paste_art(img):
+    """Aurora on the right, fading into the background on her left edge."""
+    art = Image.open(ART).convert("RGB")
+    h = round(art.height * ART_W / art.width)
+    art = art.resize((ART_W, h), Image.LANCZOS).crop((0, 0, ART_W, HEIGHT))
+    x0 = WIDTH - ART_W
+    img.paste(art, (x0, 0))
+    fade = 140
+    bg = Image.new("RGB", (fade, HEIGHT), BG)
+    mask = Image.linear_gradient("L").rotate(-90).resize((fade, HEIGHT))  # 255 at left, 0 at right
+    img.paste(bg, (x0, 0), mask)
+
+
+def render(label, title, tagline=None, art=False):
     """PNG bytes: label, title (up to 3 lines), optional accent tagline, vertically centered."""
     img = Image.new("RGB", (WIDTH, HEIGHT), BG)
+    if art:
+        _paste_art(img)
     d = ImageDraw.Draw(img)
     d.rectangle([0, 0, 11, HEIGHT], fill=ACCENT)
+    max_w = WIDTH - ART_W - LEFT if art else MAX_W
 
-    t_font, t_size, t_lines = _fit_lines(d, title, BOLD, (108, 96, 84, 76, 68), 2 if tagline else 3)
+    t_font, t_size, t_lines = _fit_lines(d, title, BOLD, (108, 96, 84, 76, 68), 2 if tagline else 3, max_w)
     blocks = [(34, int(34 * 1.5), [label], REGULAR, MUTED)]
     blocks.append((t_size, int(t_size * 1.12), t_lines, BOLD, TEXT))
     if tagline:
-        g_font, g_size, g_lines = _fit_lines(d, tagline, SEMIBOLD, (60, 54, 48), 2)
+        g_font, g_size, g_lines = _fit_lines(d, tagline, SEMIBOLD, (60, 54, 48), 2, max_w)
         blocks.append((g_size, int(g_size * 1.25), g_lines, SEMIBOLD, ACCENT))
 
     gap = 36
@@ -161,8 +190,8 @@ def set_preview(page, image_url):
     return s != src
 
 
-def publish(page, card, label, title, tagline=None):
-    png = render(label, title, tagline)
+def publish(page, card, label, title, tagline=None, art=False):
+    png = render(label, title, tagline, art)
     write_png(card, png)
     version = hashlib.sha256(png).hexdigest()[:10]
     url = f"{SITE_URL}{card.relative_to(ROOT).as_posix()}?v={version}"
@@ -174,10 +203,36 @@ def blog_title(page):
     return html.unescape(m[1]).rsplit(" | ", 1)[0].strip()
 
 
+def page_title(page):
+    rel = page.relative_to(ROOT).as_posix()
+    if rel in TITLE_OVERRIDES:
+        return TITLE_OVERRIDES[rel]
+    title = blog_title(page).replace("`", "")
+    title = re.sub(r"[^\w\s.,:;!?()&'’\-—/+]", "", title).strip()  # emoji Segoe UI can't draw
+    return title if len(title) <= 90 else title[:87].rsplit(" ", 1)[0] + "…"
+
+
+def subpages(slug):
+    """Content pages inside a project, other than its landing page and redirect stubs."""
+    for page in sorted((ROOT / slug).rglob("*.html")):
+        if page == ROOT / slug / "index.html" or "og" in page.relative_to(ROOT).parts:
+            continue
+        src = page.read_text(encoding="utf-8", errors="replace")
+        if 'http-equiv="refresh"' in src or "<head" not in src:
+            continue
+        yield page
+
+
 def main():
-    jobs = []
+    jobs = [(ROOT / "index.html", ROOT / "og_image.png", *HOME, True)]
     for slug, (name, tagline) in PROJECTS.items():
-        jobs.append((ROOT / slug / "index.html", ROOT / slug / "og.png", "WaifuAI", name, tagline))
+        jobs.append((ROOT / slug / "index.html", ROOT / slug / "og.png", "WaifuAI", name, tagline, slug in WITH_ART))
+        if slug == "blog-posts":
+            continue
+        for page in subpages(slug):
+            rel = page.relative_to(ROOT / slug)
+            card = ROOT / slug / "og" / rel.with_suffix(".png")
+            jobs.append((page, card, name, page_title(page), None))
     for file, (name, tagline) in ROOT_PAGES.items():
         jobs.append((ROOT / file, ROOT / "og" / file.replace(".html", ".png"), "WaifuAI", name, tagline))
     for page in sorted((ROOT / "blog-posts").glob("[0-9]*.html")):

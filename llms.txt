@@ -48,7 +48,6 @@
 
 ## Research & Theory
 
-- [Research Text Hub](https://waifuai.github.io/research-text/) — 160+ research docs on kinematics, quantum LLMs, AI agents, and DSLs
 - [Quantum Circuit Optimization](https://waifuai.github.io/quantum-circuit-optimization/) — Quantum circuit optimization library
 - [RANSOC](https://waifuai.github.io/ransoc/) — Real-time curiosity-driven search relevance algorithm
 - [Street Lines](https://waifuai.github.io/street-lines/) — Mathematical proofs and derivations

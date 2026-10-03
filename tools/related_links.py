@@ -18,16 +18,15 @@ MAX_LINKS = 6
 
 # Cross-group links: page -> pages to add after its group-mates.
 EXTRA = {
-    "ai-benchmarks/": ["llm-countdowns/", "cat-maze/", "research-text/"],
+    "ai-benchmarks/": ["llm-countdowns/", "cat-maze/"],
     "biochem-framework/": ["waifu-constitution/", "ai-benchmarks/"],
-    "book-generator/": ["research-text/", "paraphrase/"],
+    "book-generator/": ["paraphrase/"],
     "cat-maze/": ["ai-benchmarks/"],
     "hermes-waifu/": ["waifu-sprites/", "blog-posts/11-how-to-add-your-own-live2d-avatar.html", "mcp-servers/"],
     "llm-text-queue-gpu/": ["mcp-servers/"],
-    "llms-full/": ["function-graph-generator/", "research-text/"],
+    "llms-full/": ["function-graph-generator/"],
     "mcp-servers/": ["traits/", "waifu-chat-api/", "llm-text-queue-gpu/", "hermes-waifu/"],
     "paraphrase/": ["anime-subtitle-chatbot/", "macro-language-model/", "book-generator/"],
-    "research-text/": ["ai-benchmarks/", "book-generator/"],
     "traits/": ["mcp-servers/"],
     "waifu-chat-api/": ["mcp-servers/"],
     "waifu-constitution/": ["biochem-framework/"],

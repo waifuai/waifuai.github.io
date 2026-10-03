@@ -1,6 +1,6 @@
 /* WaifuAI site theme
    Shared by the docs and content pages (project pages, research-books,
-   research-text, blog-posts, ai-benchmarks, book-generator, search, 404).
+   blog-posts, ai-benchmarks, book-generator, search, 404).
    Same look as the landing page, data/ and llm-countdowns/: system font,
    neutral colours, light and dark mode.
    The variable names (--card-bg, --text-muted, --accent2 ...) are kept because
@@ -218,7 +218,7 @@ img { max-width: 100%; height: auto; border-radius: 6px; }
 
 .katex-display { overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
 
-/* Prev/next navigation (research-text) */
+/* Prev/next navigation */
 .pager-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-bottom: 24px; font-size: 14px; }
 .pager-top .back-link { margin-bottom: 0; }
 .pager-top .pager-pos { color: var(--faint); }

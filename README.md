@@ -45,7 +45,6 @@ Monorepo for [WaifuAI](https://waifuai.github.io) — an open-source ecosystem o
 ### Research & Documentation
 | Project | Description |
 |---|---|
-| [research-text](research-text/) | Research docs on kinematics, quantum computing, and AI agents |
 | [blog-posts](blog-posts/) | Ecosystem blog articles and announcements |
 
 ### Web Applications
