@@ -9,9 +9,6 @@
   --line: #e4e4e0;
   --accent: #2f5bd3;
   --accent-soft: #eaf0ff;
-  --high: #1f7a4d;
-  --medium: #8a6a12;
-  --low: #8a8a85;
   --radius: 10px;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color-scheme: light dark;
@@ -27,9 +24,6 @@
     --line: #2a2a2e;
     --accent: #8cabff;
     --accent-soft: #1b2340;
-    --high: #5ccf94;
-    --medium: #e2bd55;
-    --low: #8a8a85;
   }
 }
 
@@ -105,7 +99,7 @@ h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacin
 .release {
   display: grid;
   grid-template-columns: 76px 1fr auto;
-  grid-template-areas: "date main rel" ". note note";
+  grid-template-areas: "date main rel";
   align-items: baseline;
   gap: 2px 16px;
   padding: 12px 0;
@@ -117,15 +111,7 @@ h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacin
 .release-name a { color: var(--text); }
 .release-lab { font-size: 14px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; margin-left: 10px; }
 .release-rel { grid-area: rel; font-size: 14px; color: var(--muted); text-align: right; white-space: nowrap; }
-.release-note { grid-area: note; font-size: 14px; color: var(--muted); }
 .release.is-current .release-name a { color: var(--accent); }
-
-/* Confidence */
-.conf { font-size: 13px; white-space: nowrap; }
-.conf::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 6px; background: currentColor; vertical-align: 1px; }
-.conf-high { color: var(--high); }
-.conf-medium { color: var(--medium); }
-.conf-low { color: var(--low); }
 
 /* Model page */
 .aka { color: var(--faint); font-size: 14px; margin: -4px 0 0; }
@@ -174,9 +160,8 @@ button, select { user-select: none; }
   main { padding-top: 28px; }
   h1 { font-size: 28px; }
   .lede { font-size: 17px; }
-  .release { grid-template-columns: 60px auto 1fr; grid-template-areas: "date main main" ". rel note"; column-gap: 12px; }
+  .release { grid-template-columns: 60px auto 1fr; grid-template-areas: "date main main" ". rel rel"; column-gap: 12px; }
   .release-rel { text-align: left; }
-  .release-rel:not(:empty)::after { content: " ·"; }
   .facts { grid-template-columns: 1fr; gap: 2px; }
   .facts dd { margin-bottom: 10px; }
   .when-date { font-size: 26px; }
