@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-02",
+  "lastUpdated": "2026-10-03",
   "researchBaselines": {
     "openai": {
       "name": "GPT-6 Astra",
@@ -188,6 +188,36 @@
             "intel": 29.7,
             "releaseDate": "2026-02-19"
           }
+        },
+        "lite": {
+          "id": "google-gemini-4-flash-lite",
+          "slug": "gemini-4-flash-lite",
+          "shortName": "Gemini 4 Flash-Lite",
+          "predictedName": "Gemini 4 Flash-Lite",
+          "category": "light",
+          "icon": "🪶",
+          "stageColor": "#4facfe",
+          "status": "Not announced; Gemini 3.5 Flash-Lite (Jul 21) is the current Lite model",
+          "confidence": "Low",
+          "confidenceScore": 35,
+          "hypeScore": 70,
+          "expectedGain": 8.0,
+          "explicitTargetDate": "2027-01-13T17:00:00.000Z",
+          "explicitWindowLabel": "Mid Jan 2027",
+          "cadenceDays": 140,
+          "baseline": {
+            "name": "Gemini 3.5 Flash-Lite",
+            "intel": 22.2,
+            "releaseDate": "2026-07-21",
+            "speed": 343
+          },
+          "features": [
+            "Flash-Lite always ships after the Flash of the same generation: 2.0 (20 days later), 2.5 (4 weeks), 3.1 (11 weeks after 3 Flash) and 3.5 (9 weeks after 3.5 Flash)",
+            "Lite updates far less often than Flash: there was no 3.6, 3.7 or 3.8 Flash-Lite, so the next one probably waits for the Gemini 4 generation",
+            "The date counts about two months from the Gemini 4 Flash forecast (mid Nov), pushed past the holidays; if Gemini 4 Flash slips, this slips too",
+            "Gemini 3.5 Flash-Lite (22.2, $0.30/$2.50, about 340 tokens/s) is Google's fastest model; each Lite generation has gained 6 to 7 points, so the projection assumes about 30"
+          ],
+          "source": "Google Gemini Flash-Lite release history (3.5 Flash-Lite, Jul 21, 2026) & Artificial Analysis"
         }
       }
     },
