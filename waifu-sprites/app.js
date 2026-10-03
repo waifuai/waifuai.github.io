@@ -19,9 +19,9 @@
   Sprites.init(Array.from(document.querySelectorAll('.sprite')), $('spriteLabel'));
 
   // Analytics events use waifu-companion's names so both apps share GA reports;
-  // the app parameter (and the page path) tells them apart.
+  // app_source (and the page path) tells them apart.
   function track(name, params) {
-    if (typeof gtag === 'function') gtag('event', name, Object.assign({ app: 'waifu-sprites' }, params));
+    if (typeof gtag === 'function') gtag('event', name, Object.assign({ app_source: 'waifu-sprites' }, params));
   }
 
   // ── Sprite timing ──
