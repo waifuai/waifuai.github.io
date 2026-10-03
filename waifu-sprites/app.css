@@ -339,3 +339,81 @@
 .composer .mic[data-state="listening"] { background: #ff4f7b; color: #fff; border-color: #ff4f7b; animation: mic-pulse 1.2s ease-out infinite; }
 .composer .mic[data-state="transcribing"] { opacity: 0.6; cursor: progress; animation: pulse 1s ease-in-out infinite; }
 @keyframes mic-pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 79, 123, 0.6); } 100% { box-shadow: 0 0 0 12px rgba(255, 79, 123, 0); } }
+
+/* ── Message actions, queue and memory ── */
+.msg { position: relative; }
+.msg .actions {
+  display: none;
+  gap: 2px;
+  margin-top: 4px;
+  white-space: normal;
+}
+.msg .actions button {
+  border: 0;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink-dim);
+  border-radius: 6px;
+  padding: 2px 7px;
+  font-size: 13px;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.msg .actions button:hover { color: var(--ink); background: rgba(255, 255, 255, 0.18); }
+@media (hover: hover) { .msg:hover .actions { display: flex; } }
+.msg.show-actions .actions, .msg:focus-within .actions { display: flex; }
+.msg.user .actions { justify-content: flex-end; }
+.msg.pic .actions { padding: 0 4px; }
+.msg.queued { opacity: 0.6; }
+.msg.queued::after { content: "queued"; display: block; font-size: 11px; color: var(--ink-dim); text-align: right; }
+.msg .romaji { margin-top: 4px; font-size: 0.85em; color: var(--ink-dim); font-style: italic; }
+.memory-mark {
+  align-self: center;
+  margin: 4px 0;
+  padding: 2px 12px;
+  border: 1px dashed rgba(255, 143, 200, 0.45);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--ink-dim);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.memory-mark:hover { color: var(--pink); }
+.clock { color: var(--ink); margin-left: 4px; }
+.clock::before { content: "· "; color: var(--ink-dim); }
+.clock[hidden] { display: none; }
+
+.btn-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.btn-row .note { margin: 0; }
+.btn-row .btn-danger { margin-top: 0; }
+.btn {
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--pink); }
+.btn:disabled { opacity: 0.5; cursor: progress; }
+.btn[aria-pressed="true"] { border-color: var(--pink); color: var(--pink); }
+.row b { color: var(--pink); font-weight: 600; margin-left: 4px; }
+.row[hidden], #ambientBox[hidden] { display: none; }
+.panel .note a { color: var(--pink); }
+.peek { margin-top: 10px; font-size: 13px; }
+.peek summary { cursor: pointer; color: var(--pink); }
+.peek pre {
+  max-height: 260px;
+  overflow: auto;
+  margin: 8px 0 0;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--line);
+  font-size: 11.5px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}

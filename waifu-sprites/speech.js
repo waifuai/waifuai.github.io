@@ -158,7 +158,7 @@ const Speech = (() => {
     const local = VOICES.find(v => v.provider === 'tiktok' && v.gender === 'female' && v.language.split('-')[0] === base);
     return local ? local.id : 'en_us_001';
   }
-  const settings = { enabled: true, voiceId: '', autoLang: true };
+  const settings = { enabled: true, voiceId: '', autoLang: true, volume: 1 };
   try { Object.assign(settings, JSON.parse(localStorage.getItem(KEY) || '{}')); } catch (e) {}
   if (!byId(settings.voiceId)) settings.voiceId = defaultVoice();
   function save() { try { localStorage.setItem(KEY, JSON.stringify(settings)); } catch (e) {} }
@@ -213,7 +213,9 @@ const Speech = (() => {
     return new Promise(done => {
       const src = ctx.createBufferSource();
       src.buffer = buffer;
-      src.connect(ctx.destination);
+      const gain = ctx.createGain();
+      gain.gain.value = settings.volume;
+      src.connect(gain).connect(ctx.destination);
       source = src;
       const watchdog = setTimeout(() => { try { src.stop(); } catch (e) {} done(); }, buffer.duration * 1000 + 4000);
       src.onended = () => { clearTimeout(watchdog); if (source === src) source = null; done(); };
@@ -243,6 +245,7 @@ const Speech = (() => {
     await new Promise(done => {
       const u = new SpeechSynthesisUtterance(text);
       u.lang = lang;
+      u.volume = settings.volume;
       const v = browserVoice(lang, gender);
       if (v) u.voice = v;
       // A stalled utterance (a known Chrome behaviour) must not hang the queue.
@@ -261,11 +264,12 @@ const Speech = (() => {
   /**
    * Reads text aloud, replacing anything already playing. Resolves when it ends or is stopped.
    * hooks.onStart() fires at once, hooks.onPlay({provider, fell_back}) when the sound starts,
-   * hooks.onEnd() when it finishes without being stopped.
+   * hooks.onEnd() when it finishes without being stopped. hooks.force plays it
+   * even while her voice is muted (the replay button on a message).
    */
   async function speak(text, hooks = {}) {
     stop();
-    if (!settings.enabled) return;
+    if (!settings.enabled && !hooks.force) return;
     const chunks = chunksOf(text);
     if (!chunks.length) return;
     const token = runToken;

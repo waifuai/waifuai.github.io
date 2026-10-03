@@ -64,7 +64,7 @@
 
   <div class="topbar">
     <button class="icon-btn" id="settingsBtn" type="button" title="Settings" aria-label="Settings" aria-controls="settingsPanel">&#9881;</button>
-    <div class="status"><span class="dot"></span><span id="spriteLabel">idle</span></div>
+    <div class="status"><span class="dot"></span><span id="spriteLabel">idle</span><span id="clock" class="clock" hidden></span></div>
     <div class="topbar-right">
       <button class="icon-btn" id="historyBtn" type="button" title="Chat history" aria-label="Chat history" aria-controls="historyPanel">&#9776;</button>
       <button class="icon-btn" id="newBtn" type="button" title="New chat" aria-label="New chat">&#43;</button>
@@ -99,6 +99,46 @@
         <label class="field-label" for="customPrompt">Custom personality</label>
         <textarea id="customPrompt" rows="5" placeholder="You are... (describe who she is and how she talks)"></textarea>
       </div>
+      <label class="field-label" for="extraPrompt">Extra instructions</label>
+      <textarea id="extraPrompt" rows="3" placeholder="Added to any personality, like: call me senpai, use lots of emoji, she loves cats"></textarea>
+
+      <h3>Memory</h3>
+      <label class="field-label" for="aboutUser">About you</label>
+      <textarea id="aboutUser" rows="3" placeholder="Your name, what you like, what you're working on. She remembers this in every chat."></textarea>
+      <label class="field-label" for="summaryText">What she remembers from this chat</label>
+      <textarea id="summaryText" rows="4" placeholder="Empty for now. When this chat gets long, she writes a summary of the older messages here so she doesn't forget them. You can edit it."></textarea>
+      <div class="btn-row"><button class="btn" id="summarizeNow" type="button">Summarize now</button><span class="note" id="summaryStatus"></span></div>
+      <label class="row"><span>Messages she keeps word for word <b id="memorySizeValue"></b></span><input id="memorySize" type="range" min="10" max="60" step="2"></label>
+      <label class="row"><span>Summary length</span><select id="summaryLength">
+        <option value="ultra-concise">One sentence</option>
+        <option value="concise">Short paragraph</option>
+        <option value="detailed">One or two paragraphs</option>
+        <option value="comprehensive">In depth</option>
+      </select></label>
+      <label class="row"><span>She knows the date and time</span><input id="includeTime" type="checkbox"></label>
+      <label class="row" id="batteryRow"><span>She knows your battery level</span><input id="includeBattery" type="checkbox"></label>
+      <details class="peek" id="contextPeek"><summary>See exactly what she's sent</summary><pre id="contextView"></pre></details>
+
+      <h3>Language</h3>
+      <label class="row"><span>She replies in</span><select id="replyLanguage"><option value="">Your language</option></select></label>
+      <label class="row"><span>Romaji under Japanese and Korean replies</span><input id="romaji" type="checkbox"></label>
+
+      <h3>Chat</h3>
+      <label class="row"><span>Keep typing while she replies (queue)</span><input id="queueMessages" type="checkbox"></label>
+      <label class="row"><span>Name chats automatically</span><input id="autoTitles" type="checkbox"></label>
+      <label class="row"><span>She talks when you're quiet</span><input id="ambient" type="checkbox"></label>
+      <div id="ambientBox">
+        <label class="row"><span>After</span><select id="ambientDelay">
+          <option value="20">20 seconds</option><option value="30">30 seconds</option><option value="60">1 minute</option>
+          <option value="120">2 minutes</option><option value="300">5 minutes</option>
+        </select></label>
+        <label class="row"><span>At most, in a row</span><select id="ambientMax">
+          <option value="1">1 message</option><option value="2">2 messages</option><option value="3">3 messages</option>
+          <option value="5">5 messages</option><option value="10">10 messages</option><option value="1000">No limit</option>
+        </select></label>
+        <label class="field-label" for="ambientPrompt">What she's told to do</label>
+        <textarea id="ambientPrompt" rows="3"></textarea>
+      </div>
 
       <h3>AI</h3>
       <div class="options" id="providerList"></div>
@@ -126,18 +166,24 @@
       <label class="row"><span>Read her replies aloud</span><input id="speakEnabled" type="checkbox"></label>
       <label class="row"><span>Her voice</span><select id="voiceSelect"></select></label>
       <label class="row"><span>Match the reply's language</span><input id="speakAutoLang" type="checkbox"></label>
+      <label class="row"><span>Voice volume</span><input id="speakVolume" type="range" min="0.1" max="1" step="0.05"></label>
       <p class="note">Replies are read by a free TikTok voice service, or by your browser's own voice if it's busy. A reply in Japanese, German or another language gets a voice for that language.</p>
       <p class="note">Hold the mic button to talk, or tap it to start and tap again to stop. Speech is transcribed by WaifuAI Cloud.</p>
       <label class="row"><span>Send right after speaking</span><input id="voiceAutoSend" type="checkbox"></label>
+
+      <h3>Radio</h3>
+      <div class="row"><button class="btn" id="radioBtn" type="button">&#9654; Play anime radio</button><input id="radioVolume" type="range" min="0" max="1" step="0.05" aria-label="Radio volume"></div>
+      <p class="note">J-pop and anime songs streamed live from <a href="https://listen.moe/" target="_blank" rel="noopener">LISTEN.moe</a>.</p>
 
       <h3>Display</h3>
       <label class="row"><span>Bubble opacity</span><input id="opacity" type="range" min="0.15" max="0.95" step="0.05"></label>
       <label class="row"><span>Text size</span><input id="fontSize" type="range" min="12" max="20" step="1"></label>
       <label class="row"><span>Hide the video</span><input id="hideVideo" type="checkbox"></label>
+      <label class="row"><span>Show the clock</span><input id="showClock" type="checkbox"></label>
 
       <h3>Data</h3>
-      <p class="note">Chats are saved in this browser only.</p>
-      <button class="btn-danger" id="clearAll" type="button">Delete all chats</button>
+      <p class="note">Chats, memories and settings are saved in this browser only.</p>
+      <div class="btn-row"><button class="btn" id="exportChats" type="button">Export chats</button><button class="btn-danger" id="clearAll" type="button">Delete all chats</button></div>
     </div>
   </aside>
 
@@ -173,6 +219,13 @@
 <h2>Talk to her</h2>
 <p>She reads her replies aloud with TikTok voices: pick from soft female voices, Japanese and Korean voices, characters like Stitch and Ghost Face, or singing voices. When she answers in another language, a voice for that language reads it. The speaker button at the top mutes her.</p>
 <p>Hold the mic button and speak, or tap it once to start and again to stop. She listens while you talk, and your words are transcribed and sent, in whatever language you speak. Turn off "Send right after speaking" in Settings to check the text before it goes.</p>
+</section>
+
+<section>
+<h2>Memory and personality</h2>
+<p>She remembers. Tell her about yourself under <em>About you</em> in Settings and every chat starts with it. When a chat grows past the messages she keeps word for word, the oldest are folded into a summary she carries forward, and a marker in the chat shows where. You can read and edit that summary, summarize on demand, and see exactly what she's sent.</p>
+<p>Pick a personality (Aurora, tsundere, study buddy, a plain assistant or your own) and add extra instructions on top. She knows the date and time, and your battery level if you allow it. She replies in your language, or one you pick, with romaji under Japanese and Korean replies if you like.</p>
+<p>Turn on <em>She talks when you're quiet</em> and she speaks up after a pause you choose. Messages you send while she's replying wait in a queue. Chats name themselves, and each message can be read aloud again, copied or deleted. There's also an anime radio, a clock and a chat export.</p>
 </section>
 
 <section>
