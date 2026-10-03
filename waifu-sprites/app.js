@@ -18,6 +18,12 @@
 
   Sprites.init(Array.from(document.querySelectorAll('.sprite')), $('spriteLabel'));
 
+  // Analytics events use waifu-companion's names so both apps share GA reports;
+  // the app parameter (and the page path) tells them apart.
+  function track(name, params) {
+    if (typeof gtag === 'function') gtag('event', name, Object.assign({ app: 'waifu-sprites' }, params));
+  }
+
   // ── Sprite timing ──
   let idleTimer = null;
   let sleepTimer = null;
@@ -64,8 +70,8 @@
   $('voiceAutoSend').addEventListener('change', e => { display.voiceAutoSend = e.target.checked; saveDisplay(); });
   $('opacity').addEventListener('input', e => { display.opacity = +e.target.value; applyDisplay(); saveDisplay(); });
   $('fontSize').addEventListener('input', e => { display.fontSize = +e.target.value; applyDisplay(); saveDisplay(); });
-  $('hideVideo').addEventListener('change', e => { display.hideVideo = e.target.checked; applyDisplay(); saveDisplay(); });
-  $('chatToggle').addEventListener('click', () => { display.hideChat = !display.hideChat; applyDisplay(); saveDisplay(); });
+  $('hideVideo').addEventListener('change', e => { display.hideVideo = e.target.checked; applyDisplay(); saveDisplay(); track('setting_changed', { setting: 'hide_video', setting_value: e.target.checked }); });
+  $('chatToggle').addEventListener('click', () => { display.hideChat = !display.hideChat; applyDisplay(); saveDisplay(); track('setting_changed', { setting: 'hide_chat', setting_value: display.hideChat }); });
   applyDisplay();
 
   // ── Her voice ──
@@ -96,6 +102,7 @@
     Speech.save();
     if (!on) Speech.stop();
     applySpeech();
+    track('voice_enabled_toggle', { type: 'tiktok', enabled: on });
   }
   speakToggle.addEventListener('click', () => setSpeech(!Speech.settings.enabled));
   $('speakEnabled').addEventListener('change', e => setSpeech(e.target.checked));
@@ -103,6 +110,7 @@
   $('voiceSelect').addEventListener('change', e => {
     Speech.settings.voiceId = e.target.value;
     Speech.save();
+    track('voice_changed', { voice_id: e.target.value });
     Speech.speak('Hi! This is how I sound.'); // a sample of the new voice
   });
   applySpeech();
@@ -112,6 +120,7 @@
     if (!Speech.settings.enabled) return;
     Speech.speak(text, {
       onStart() { clearTimeout(idleTimer); },
+      onPlay(info) { track('tts_played', info); },
       onEnd() { later(() => Sprites.setState('idle'), 4000); },
     });
   }
@@ -137,7 +146,7 @@
       const b = document.createElement('button');
       b.type = 'button';
       b.textContent = text;
-      b.addEventListener('click', () => send(text));
+      b.addEventListener('click', () => send(text, 'starter'));
       wrap.appendChild(b);
     });
     messagesEl.appendChild(wrap);
@@ -187,17 +196,19 @@
   // ── Pictures ──
   // Draws in the background; the result lands in the chat it was asked in,
   // even if the visitor has opened another one meanwhile.
-  async function paint(prompt, aspect) {
+  async function paint(prompt, aspect, source) {
     const origin = Chat.convId;
     const wait = bubble('info keep', 'Painting your picture... \u{1F3A8}');
     if (!Chat.busy) Sprites.setEmotion('planning');
-    if (typeof gtag === 'function') gtag('event', 'sprites_picture');
+    track('image_generation_started', { source });
     let message = null;
     let failText = null;
     try {
       const ref = await Pictures.draw(prompt, aspect, Chat.ids());
       message = { role: 'assistant', image: ref, prompt, caption: '' };
+      track('image_generation_completed', { source });
     } catch (err) {
+      track('image_generation_failed', { source, blocked: Boolean(err.blocked), timed_out: Boolean(err.timedOut) });
       failText = err.blocked ? "I can only draw safe-for-work pictures, so I can't make that one. Want something cute instead?"
         : err.timedOut ? 'That one took too long and my brush gave up. Try again?'
         : 'Sorry, my canvas is acting up. Could we try again in a moment?';
@@ -233,7 +244,7 @@
       return;
     }
     bubble('user', text);
-    paint(prompt, aspect);
+    paint(prompt, aspect, 'command');
   }
 
   function renderMeta() {
@@ -249,7 +260,8 @@
   }
 
   // ── Sending ──
-  async function send(text) {
+  // source: typed, starter, voice or retry
+  async function send(text, source = 'typed') {
     text = (text || '').trim();
     if (!text || Chat.busy) return;
     if (/^\/(image|img)\b/i.test(text)) { imageCommand(text); return; }
@@ -264,17 +276,29 @@
     sendBtn.disabled = true;
     clearTimeout(idleTimer);
     Sprites.setState('thinking');
-    if (typeof gtag === 'function') gtag('event', 'sprites_chat', { provider: Chat.settings.provider, persona: Chat.settings.persona });
+    const provider = Chat.settings.provider;
+    const model = provider === 'cloud' ? 'cloud' : Chat.modelFor(provider) || '';
+    const startedAt = Date.now();
+    let streaming = false;
+    const firstChunk = () => {
+      if (streaming) return;
+      streaming = true;
+      track('llm_stream_started', { provider, model, time_to_first_chunk_ms: Date.now() - startedAt });
+    };
+    track('chat_message_sent', { provider, persona: Chat.settings.persona, source, turn: Chat.messages.filter(m => m.role === 'user').length + 1 });
+    track('llm_request_started', { provider, model, is_streaming: true });
 
     let tagged = false;
     let replied = false;
     await Chat.send(text, {
       onEmotion(name) {
+        firstChunk();
         tagged = !!name;
         if (name) Sprites.setEmotion(name);
         else Sprites.setState('speaking');
       },
       onText(visible) {
+        firstChunk();
         reply.textContent = visible;
         scrollDown();
       },
@@ -283,17 +307,19 @@
         reply.classList.remove('typing');
         reply.textContent = message.content;
         if (!tagged && message.emotion) Sprites.setEmotion(message.emotion);
+        track('llm_stream_completed', { provider, model, success: true, total_time_ms: Date.now() - startedAt, reply_chars: message.content.length, emotion: message.emotion || '(none)' });
         later(() => Sprites.setState('idle'), RETURN_TO_IDLE_MS);
         speakReply(message.content);
         scrollDown();
       },
       onError(msg) {
+        track('llm_stream_completed', { provider, model, success: false, total_time_ms: Date.now() - startedAt });
         reply.remove();
         const el = bubble('error', msg);
         const retry = document.createElement('button');
         retry.type = 'button';
         retry.textContent = 'Retry';
-        retry.addEventListener('click', () => { el.remove(); messagesEl.lastElementChild && messagesEl.lastElementChild.classList.contains('user') && messagesEl.lastElementChild.remove(); send(text); });
+        retry.addEventListener('click', () => { el.remove(); messagesEl.lastElementChild && messagesEl.lastElementChild.classList.contains('user') && messagesEl.lastElementChild.remove(); send(text, 'retry'); });
         el.appendChild(retry);
         Sprites.setState('error');
         later(() => Sprites.setState('idle'), 5000);
@@ -304,7 +330,7 @@
     if (matchMedia('(pointer: fine)').matches) input.focus();
     // No picture when the reply failed: a retry asks again.
     const prompt = await pictureDecision;
-    if (replied && prompt) paint(prompt, aspectValue(Chat.settings.aspect));
+    if (replied && prompt) paint(prompt, aspectValue(Chat.settings.aspect), 'auto');
   }
 
   $('composer').addEventListener('submit', e => { e.preventDefault(); send(input.value); });
@@ -327,10 +353,10 @@
       }
     },
     onText(text) {
-      if (typeof gtag === 'function') gtag('event', 'sprites_voice');
+      track('voice_input_used', { engine: 'proxy' });
       const combined = (input.value.trim() + ' ' + text).trim();
       if (display.voiceAutoSend && !Chat.busy) {
-        send(combined);
+        send(combined, 'voice');
       } else {
         input.value = combined;
         input.focus();
@@ -352,6 +378,7 @@
     document.querySelectorAll('.panel').forEach(p => { p.hidden = p.id !== id || !p.hidden; });
     if (id === 'historyPanel') renderHistory();
     if (id === 'settingsPanel') renderSettings();
+    if (!$(id).hidden) track(id === 'settingsPanel' ? 'settings_opened' : 'history_opened', { source: 'user' });
   }
   function closePanels() { document.querySelectorAll('.panel').forEach(p => { p.hidden = true; }); }
   $('settingsBtn').addEventListener('click', () => openPanel('settingsPanel'));
@@ -364,6 +391,7 @@
     Chat.newConversation();
     renderConversation();
     closePanels();
+    track('conversation_new');
     Sprites.setState('idle');
   });
 
@@ -454,6 +482,7 @@
       personaList.appendChild(optionButton(p.name, p.desc, s.persona === key, () => {
         s.persona = key;
         Chat.saveSettings();
+        track('persona_updated', { persona: key });
         renderSettings();
         renderMeta();
         if (!Chat.messages.length) renderConversation();
@@ -469,6 +498,7 @@
       providerList.appendChild(optionButton(p.name, p.desc, s.provider === key, () => {
         s.provider = key;
         Chat.saveSettings();
+        track('llm_provider_changed', { provider: key, enabled: true });
         renderSettings();
         renderMeta();
       }));

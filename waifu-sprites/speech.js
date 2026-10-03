@@ -258,7 +258,11 @@ const Speech = (() => {
     if (window.speechSynthesis) speechSynthesis.cancel();
   }
 
-  /** Reads text aloud, replacing anything already playing. Resolves when it ends or is stopped. */
+  /**
+   * Reads text aloud, replacing anything already playing. Resolves when it ends or is stopped.
+   * hooks.onStart() fires at once, hooks.onPlay({provider, fell_back}) when the sound starts,
+   * hooks.onEnd() when it finishes without being stopped.
+   */
   async function speak(text, hooks = {}) {
     stop();
     if (!settings.enabled) return;
@@ -273,6 +277,10 @@ const Speech = (() => {
       const current = await next;
       if (!live()) break;
       if (i + 1 < chunks.length) next = resolve(chunks[i + 1]);
+      if (i === 0 && hooks.onPlay) {
+        const wanted = (byId(settings.voiceId) || {}).provider;
+        hooks.onPlay({ provider: current.kind === 'buffer' ? 'tiktok' : 'browser', fell_back: wanted === 'tiktok' && current.kind !== 'buffer' });
+      }
       if (current.kind === 'buffer') await playBuffer(current.buffer);
       else await speakBrowser(current.text, current.lang, current.gender);
       if (i + 1 < chunks.length && live()) await new Promise(r => setTimeout(r, CHUNK_GAP_MS));
