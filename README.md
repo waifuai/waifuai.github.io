@@ -11,8 +11,8 @@ Monorepo for [WaifuAI](https://waifuai.github.io) — an open-source ecosystem o
 | [llm-text-queue-gpu](llm-text-queue-gpu/) | Redis-backed async text generation queue for LLM inference via OpenRouter |
 | [macro-language-model](macro-language-model/) | CLI chatbot with modular personality system (tsundere, deredere, etc.) |
 | [book-generator](book-generator/) | Full book generator from a title prompt using OpenRouter |
-| [llms-full-html](llms-full-html/) | Aggregated HTML documentation bundles optimized for LLM ingestion |
-| [llms-full-txt](llms-full-txt/) | Markdown code aggregation with TOC and line counting |
+| [llms-full-html](llms-full/#html) | Aggregated HTML documentation bundles optimized for LLM ingestion |
+| [llms-full-txt](llms-full/#txt) | Markdown code aggregation with TOC and line counting |
 | [biochem-framework](biochem-framework/) | AI conversation benchmark scoring by estimated neurochemical impact |
 
 ### Waifu / AI Companion
@@ -27,24 +27,23 @@ Monorepo for [WaifuAI](https://waifuai.github.io) — an open-source ecosystem o
 ### MCP Servers (Model Context Protocol)
 | Project | Description |
 |---|---|
-| [mcp-waifu-chat](mcp-waifu-chat/) | Conversational AI waifu with SQLite history (FastMCP) |
-| [mcp-waifu-queue](mcp-waifu-queue/) | Redis-backed async job queue for text generation |
-| [mcp-traits-matcher](mcp-traits-matcher/) | Personality analysis with Euclidean distance matching |
+| [mcp-waifu-chat](mcp-servers/#chat) | Conversational AI waifu with SQLite history (FastMCP) |
+| [mcp-waifu-queue](mcp-servers/#queue) | Redis-backed async job queue for text generation |
+| [mcp-traits-matcher](mcp-servers/#traits-matcher) | Personality analysis with Euclidean distance matching |
 
 ### NLP / Paraphrase Generation
 | Project | Description |
 |---|---|
-| [paraphrase-generation](paraphrase-generation/) | Core paraphrase generation library |
-| [paraphrase-gan](paraphrase-gan/) | GAN-style paraphrase refinement loop via OpenRouter |
-| [paraphrase-gan-utils](paraphrase-gan-utils/) | Production paraphrase system with caching and REST API |
-| [paraphrase-back-translate](paraphrase-back-translate/) | Back-translation paraphrase generation |
-| [paraphrase-neural-machine-translation](paraphrase-neural-machine-translation/) | TensorFlow 2.x seq2seq NMT with Luong attention |
-| [paraphrase-human-sentence-classifier](paraphrase-human-sentence-classifier/) | Human vs. AI sentence classifier |
+| [paraphrase-generation](paraphrase/#suite) | Core paraphrase generation library |
+| [paraphrase-gan](paraphrase/#gan) | GAN-style paraphrase refinement loop via OpenRouter |
+| [paraphrase-gan-utils](paraphrase/#gan-utils) | Production paraphrase system with caching and REST API |
+| [paraphrase-back-translate](paraphrase/#back-translate) | Back-translation paraphrase generation |
+| [paraphrase-neural-machine-translation](paraphrase/#nmt) | TensorFlow 2.x seq2seq NMT with Luong attention |
+| [paraphrase-human-sentence-classifier](paraphrase/#classifier) | Human vs. AI sentence classifier |
 
 ### Research & Documentation
 | Project | Description |
 |---|---|
-| [research-books](research-books/) | 14+ academic books on quantum biology, quantum computing, waifu AI, and more |
 | [research-text](research-text/) | Research docs on kinematics, quantum computing, and AI agents |
 | [blog-posts](blog-posts/) | Ecosystem blog articles and announcements |
 
@@ -69,7 +68,19 @@ Monorepo for [WaifuAI](https://waifuai.github.io) — an open-source ecosystem o
 | [search.html](search.html) | Client-side search over every page on the site |
 | [search-index.json](search-index.json) | Generated index (title, path, section, description) — rebuild with `python tools/build-search-index.py` |
 | [404.html](404.html) | Themed not-found page served by GitHub Pages |
-| sitemap*.xml | Sitemap index plus per-section sitemaps |
+| sitemap.xml, sitemap-main.xml | Sitemap index and every indexable page outside llm-countdowns — rebuild with `python tools/build_sitemap.py` |
+| sitemap-countdowns.xml | LLM Countdowns pages, written by all-db's `export-countdowns` |
+
+After adding, moving or deleting a page, run these from the repo root:
+
+```bash
+python tools/related_links.py       # Related blocks, from the homepage groups
+python tools/generate_og_cards.py   # link-preview cards
+python tools/build_sitemap.py       # sitemap
+python tools/build-search-index.py  # site search
+```
+
+Moved pages keep a small redirect stub (noindex, meta refresh) at the old address; the sitemap and search skip them.
 
 ## Tech Stack
 

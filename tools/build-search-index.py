@@ -16,6 +16,7 @@ SKIP_FILES = {'404.html', 'search.html'}
 TITLE = re.compile(r'<title[^>]*>(.*?)</title>', re.S | re.I)
 DESC = re.compile(r'<meta\s+name="description"\s+content="([^"]*)"', re.I)
 TAGS = re.compile(r'<[^>]+>')
+NOINDEX = re.compile(r'<meta\s+name="robots"\s+content="[^"]*noindex', re.I)
 
 ENTITIES = {'&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'",
             '&mdash;': '—', '&ndash;': '–', '&nbsp;': ' ', '&larr;': '←'}
@@ -40,6 +41,8 @@ def main():
             path = os.path.join(dirpath, name)
             rel = os.path.relpath(path, ROOT).replace(os.sep, '/')
             html = open(path, encoding='utf-8', errors='ignore').read(8192)
+            if NOINDEX.search(html):
+                continue
             m = TITLE.search(html)
             title = clean(m.group(1)) if m else rel
             if not title:

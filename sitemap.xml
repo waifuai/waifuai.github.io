@@ -2,18 +2,10 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://waifuai.github.io/sitemap-main.xml</loc>
-    <lastmod>2026-09-10</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://waifuai.github.io/sitemap-research.xml</loc>
-    <lastmod>2026-09-10</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://waifuai.github.io/sitemap-benchmarks.xml</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-10-03</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://waifuai.github.io/sitemap-countdowns.xml</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-10-03</lastmod>
   </sitemap>
 </sitemapindex>

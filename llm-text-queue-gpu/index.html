@@ -57,7 +57,7 @@
 </head>
 <body>
 <!-- site-header -->
-<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/research-books/">Books</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
+<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/llm-countdowns/">Countdowns</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
 <!-- /site-header -->
 <div class="container">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">LLM Text Queue GPU</span></nav>
@@ -66,177 +66,156 @@
 <h1>LLM Text Queue GPU</h1>
 <p>GPU-accelerated text processing pipeline.</p>
 </header>
-<h1>llm-text-queue</h1>
-
-This project provides a simple and efficient text generation service using OpenRouter with a Redis queue for handling requests. It consists of a Flask-based API that exposes endpoints for generating text and checking service health.
-
-<h2>Table of Contents</h2>
-
-- [Features](#features)
-- [Architecture](#architecture)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Provider Selection and Models](#provider-selection-and-models)
-- [Running the Service](#running-the-service)
-- [API Documentation](#api-documentation)
-- [Testing](#testing)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
-
-<h2>Features</h2>
-
-*   Text generation using OpenRouter.
-*   Request queuing using Redis for handling concurrent requests.
-*   Flask API for easy interaction.
-*   Health check endpoint for monitoring service status.
-
-<h2>Architecture</h2>
-
-The project consists of three main components:
-
-*   `respond.py`: Core text generation service. Uses OpenRouter to handle requests to generate text. Exposes a `/generate` endpoint.
-*   `api_queue.py`: Gateway for incoming requests. Receives prompts, queues them using Redis, and forwards them to `respond.py` for processing. Exposes a `/generate` endpoint.
-*   `worker.py`: Redis worker that listens for jobs on the queue and executes them for concurrency without blocking.
-
-Request flow:
-
-1. Client sends POST `/generate` to `api_queue.py`.
-2. `api_queue.py` enqueues the request via Redis/RQ.
-3. `worker.py` picks up the job and calls the GPU service (`respond.py`).
-4. `respond.py` generates text using OpenRouter and returns it.
-5. `api_queue.py` returns the generated text to the client.
-
-<h2>Prerequisites</h2>
-
-*   Python 3.8+
-*   uv
-*   Redis server (installed and running)
-*   Credentials:
-    * OpenRouter: `OPENROUTER_API_KEY` or `~/.api-openrouter` (single-line file)
-
-See Redis installation: https://redis.io/docs/getting-started/
-
-<h2>Installation</h2>
-
-1. Clone the repository:
-
-```bash
-git clone <YOUR_REPOSITORY_URL>
+<p>This project provides a simple and efficient text generation service using OpenRouter with a Redis queue for handling requests. It consists of a Flask-based API that exposes endpoints for generating text and checking service health.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#features">Features</a></li>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#provider-selection-and-models">Provider Selection and Models</a></li>
+<li><a href="#running-the-service">Running the Service</a></li>
+<li><a href="#api-documentation">API Documentation</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li>Text generation using OpenRouter.</li>
+<li>Request queuing using Redis for handling concurrent requests.</li>
+<li>Flask API for easy interaction.</li>
+<li>Health check endpoint for monitoring service status.</li>
+</ul>
+<h2 id="architecture">Architecture</h2>
+<p>The project consists of three main components:</p>
+<ul>
+<li><code>respond.py</code>: Core text generation service. Uses OpenRouter to handle requests to generate text. Exposes a <code>/generate</code> endpoint.</li>
+<li><code>api_queue.py</code>: Gateway for incoming requests. Receives prompts, queues them using Redis, and forwards them to <code>respond.py</code> for processing. Exposes a <code>/generate</code> endpoint.</li>
+<li><code>worker.py</code>: Redis worker that listens for jobs on the queue and executes them for concurrency without blocking.</li>
+</ul>
+<p>Request flow:</p>
+<ol>
+<li>Client sends POST <code>/generate</code> to <code>api_queue.py</code>.</li>
+<li><code>api_queue.py</code> enqueues the request via Redis/RQ.</li>
+<li><code>worker.py</code> picks up the job and calls the GPU service (<code>respond.py</code>).</li>
+<li><code>respond.py</code> generates text using OpenRouter and returns it.</li>
+<li><code>api_queue.py</code> returns the generated text to the client.</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Python 3.8+</li>
+<li>uv</li>
+<li>Redis server (installed and running)</li>
+<li>Credentials:
+<ul>
+<li>OpenRouter: <code>OPENROUTER_API_KEY</code> or <code>~/.api-openrouter</code> (single-line file)</li>
+</ul>
+</li>
+</ul>
+<p>See Redis installation: https://redis.io/docs/getting-started/</p>
+<h2 id="installation">Installation</h2>
+<ol>
+<li>Clone the repository:</li>
+</ol>
+<pre><code class="language-bash">git clone &lt;YOUR_REPOSITORY_URL&gt;
 cd llm-text-queue-gpu
-```
-
-2. Create a virtual environment using uv and install tooling inside:
-
-```bash
-python -m uv venv .venv
+</code></pre>
+<ol start="2">
+<li>Create a virtual environment using uv and install tooling inside:</li>
+</ol>
+<pre><code class="language-bash">python -m uv venv .venv
 .venv/Scripts/python.exe -m ensurepip
 .venv/Scripts/python.exe -m pip install uv
-```
-
-3. Install dependencies using uv:
-
-```bash
-.venv/Scripts/python.exe -m uv pip install -r requirements.txt
-```
-
-Alternatively, you can run the setup helper:
-
-```bash
-./src/setup.sh
-```
-
-<h2>Configuration</h2>
-
-1. Create a `.env` file by copying `.env.example`:
-
-```bash
-cp .env.example .env
-```
-
-2. Update `.env` values as needed:
-
-* `REDIS_URL`: Redis server URL (default: `redis://localhost:6379`)
-* `QUEUE_PORT`: Queue service port (default: `5000`)
-* `RESPOND_PORT`: Response service port (default: `5001`)
-* `MAX_NEW_TOKENS`: Max new tokens for generation (default: `150`)
-
-Note: Do not commit `.env` to source control.
-
-<h2>Provider Selection and Models</h2>
-
-The service uses OpenRouter exclusively. Model is resolved from `OPENROUTER_MODEL_NAME` env or `~/.model-openrouter` (fallback to `openrouter/free`).
-
-Credentials:
-
-* `OPENROUTER_API_KEY` env or `~/.api-openrouter` file containing the key on a single line.
-
-<h2>Running the Service</h2>
-
-Start all services using:
-
-```bash
-./scripts/start-services.sh
-```
-
-The script ensures the uv venv exists, installs dependencies if needed, then starts Redis (if not running), the worker, the queue service, and the response service. Logs are written to `/tmp/*.log` where applicable.
-
-<h2>API Documentation</h2>
-
-<h3>Health Check</h3>
-
-```http
-GET /health
-```
-
-Returns 200 if all services are healthy.
-
-<h3>Generate Text</h3>
-
-```http
-POST /generate
+</code></pre>
+<ol start="3">
+<li>Install dependencies using uv:</li>
+</ol>
+<pre><code class="language-bash">.venv/Scripts/python.exe -m uv pip install -r requirements.txt
+</code></pre>
+<p>Alternatively, you can run the setup helper:</p>
+<pre><code class="language-bash">./src/setup.sh
+</code></pre>
+<h2 id="configuration">Configuration</h2>
+<ol>
+<li>Create a <code>.env</code> file by copying <code>.env.example</code>:</li>
+</ol>
+<pre><code class="language-bash">cp .env.example .env
+</code></pre>
+<ol start="2">
+<li>Update <code>.env</code> values as needed:</li>
+</ol>
+<ul>
+<li><code>REDIS_URL</code>: Redis server URL (default: <code>redis://localhost:6379</code>)</li>
+<li><code>QUEUE_PORT</code>: Queue service port (default: <code>5000</code>)</li>
+<li><code>RESPOND_PORT</code>: Response service port (default: <code>5001</code>)</li>
+<li><code>MAX_NEW_TOKENS</code>: Max new tokens for generation (default: <code>150</code>)</li>
+</ul>
+<p>Note: Do not commit <code>.env</code> to source control.</p>
+<h2 id="provider-selection-and-models">Provider Selection and Models</h2>
+<p>The service uses OpenRouter exclusively. Model is resolved from <code>OPENROUTER_MODEL_NAME</code> env or <code>~/.model-openrouter</code> (fallback to <code>openrouter/free</code>).</p>
+<p>Credentials:</p>
+<ul>
+<li><code>OPENROUTER_API_KEY</code> env or <code>~/.api-openrouter</code> file containing the key on a single line.</li>
+</ul>
+<h2 id="running-the-service">Running the Service</h2>
+<p>Start all services using:</p>
+<pre><code class="language-bash">./scripts/start-services.sh
+</code></pre>
+<p>The script ensures the uv venv exists, installs dependencies if needed, then starts Redis (if not running), the worker, the queue service, and the response service. Logs are written to <code>/tmp/*.log</code> where applicable.</p>
+<h2 id="api-documentation">API Documentation</h2>
+<h3 id="health-check">Health Check</h3>
+<pre><code class="language-http">GET /health
+</code></pre>
+<p>Returns 200 if all services are healthy.</p>
+<h3 id="generate-text">Generate Text</h3>
+<pre><code class="language-http">POST /generate
 Content-Type: application/json
 
 {
-  "prompt": "Your input text here"
+  &quot;prompt&quot;: &quot;Your input text here&quot;
 }
-```
-
-Example Response:
-
-```json
-{
-  "response": "I am doing well, thank you for asking."
+</code></pre>
+<p>Example Response:</p>
+<pre><code class="language-json">{
+  &quot;response&quot;: &quot;I am doing well, thank you for asking.&quot;
 }
-```
+</code></pre>
+<h2 id="testing">Testing</h2>
+<p>Run the full test suite:</p>
+<pre><code class="language-bash">.venv/Scripts/python.exe -m pytest -q
+</code></pre>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li>Missing 'prompt' parameter: Ensure POST body has <code>{&quot;prompt&quot;: &quot;...&quot;}</code></li>
+<li>Service unavailable: Check Redis server, worker, API queue and respond services running; review logs in <code>/tmp/*.log</code></li>
+<li>Error generating AI response: Verify OpenRouter credentials are present and valid; check network connectivity</li>
+</ul>
+<h2 id="contributing">Contributing</h2>
+<ol>
+<li>Fork the repository.</li>
+<li>Create a branch for your change.</li>
+<li>Commit and push your branch.</li>
+<li>Open a pull request.</li>
+</ol>
+<h2 id="license">License</h2>
+<p>This project is licensed under the MIT-0 License - see the <a href="https://github.com/waifuai/llm-text-queue-gpu/blob/main/LICENSE">LICENSE</a> file for details.</p>
 
-<h2>Testing</h2>
-
-Run the full test suite:
-
-```bash
-.venv/Scripts/python.exe -m pytest -q
-```
-
-<h2>Troubleshooting</h2>
-
-* Missing 'prompt' parameter: Ensure POST body has `{"prompt": "..."}`
-* Service unavailable: Check Redis server, worker, API queue and respond services running; review logs in `/tmp/*.log`
-* Error generating AI response: Verify OpenRouter credentials are present and valid; check network connectivity
-
-<h2>Contributing</h2>
-
-1. Fork the repository.
-2. Create a branch for your change.
-3. Commit and push your branch.
-4. Open a pull request.
-
-<h2>License</h2>
-
-This project is licensed under the MIT-0 License - see the [LICENSE](LICENSE) file for details.
-
-
+<!-- related -->
+<section>
+<h2>Related</h2>
+<div class="link-list">
+<a href="/mcp-servers/"><h3>MCP servers</h3><p>Companion chat, a Redis generation queue and personality matching over MCP.</p></a>
+<a href="/ai-benchmarks/"><h3>AI Benchmarks</h3><p>Spatial reasoning tests for LLMs, with a multi-model leaderboard.</p></a>
+<a href="/book-generator/"><h3>Book Generator</h3><p>Writes a full book from a title prompt using OpenRouter.</p></a>
+<a href="/macro-language-model/"><h3>Macro Language Model</h3><p>CLI chatbot with swappable personalities such as tsundere and deredere.</p></a>
+<a href="/biochem-framework/"><h3>Biochem Framework</h3><p>Scores AI conversations by their effect on neurochemistry.</p></a>
+<a href="/function-graph-generator/"><h3>Function Graph Generator</h3><p>Generates function call graphs for Python code.</p></a>
+</div>
+</section>
+<!-- /related -->
 <footer>
 <p>Generated for GitHub Pages</p>
 </footer>

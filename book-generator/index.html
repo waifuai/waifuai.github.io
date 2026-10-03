@@ -56,7 +56,7 @@
 </head>
 <body>
 <!-- site-header -->
-<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/research-books/">Books</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
+<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/llm-countdowns/">Countdowns</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
 <!-- /site-header -->
 <div class="container">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">Book Generator</span></nav>
@@ -65,98 +65,79 @@
 <h1>Book Generator</h1>
 <p>Writes a full book from a title prompt using OpenRouter.</p>
 </header>
-<h1>Book Generator with OpenRouter</h1>
-
-This Python script uses the OpenRouter API (specifically `openrouter/free` by default) to generate books based on a given title and a prompt for the table of contents. It dynamically creates chapters and subchapters based on the generated TOC, writing the content to a Markdown file.
-<h2>Features</h2>
-
-*   **Dynamic Book Generation:** Creates a book structure based on a user-provided title and TOC prompt.
-*   **OpenRouter API Integration:** Leverages the power of OpenRouter models (default resolved from ~/.model-openrouter, falling back to `openrouter/free`) for content generation.
-*   **Command-Line Interface:** Allows customization of book title, prompts, model, API key location, and output via CLI arguments.
-*   **JSON-based TOC:** Uses JSON for structured table of contents generation.
-*   **Interactive TOC Editing:** Option to pause and manually edit the generated Table of Contents JSON file.
-*   **Error Handling:** Includes error handling for API issues, JSON parsing, and missing keys, logging errors.
-*   **Markdown Output:** Generates the book in Markdown format for easy readability and conversion.
-*   **File Organization:** Stores generated books in a dedicated "books" directory (customizable via CLI).
-
-<h2>Prerequisites</h2>
-
-*   **Python 3.x:** Make sure you have Python 3 installed.
-*   **Virtual Environment Tool (`uv`):** This project uses `uv` for environment management. Install it if you haven't already (e.g., `pip install --user uv`).
-*   **OpenRouter API Key:** You need an API key from OpenRouter (https://openrouter.ai/).
-*   **Required Libraries:** The necessary libraries (`pytest`, `tenacity`, `requests`) will be installed into a virtual environment.
-
-<h2>Setup</h2>
-
-1.  **Set Credentials:** Preferred: set OPENROUTER_API_KEY in your environment. Fallback: create a file named `.api-openrouter` in your home directory (`~/.api-openrouter`) and paste your OpenRouter API key into it. Ensure the file has restrictive permissions. You can override the path via `--api-key-file`.
-
-2.  **Create Virtual Environment:** Navigate to the project root directory in your terminal and create a `uv` environment:
-    ```bash
-    python -m uv venv .venv
-    ```
-
-3.  **Install Dependencies:** Install the required packages into the virtual environment using `uv`. This command ensures `pip` is available, installs `uv` inside the venv, and then installs the project dependencies:
-    ```bash
-    .venv/Scripts/python.exe -m ensurepip ; .venv/Scripts/python.exe -m pip install uv ; .venv/Scripts/python.exe -m uv pip install pytest tenacity requests
-    ```
-
-<h2>Usage</h2>
-
-The script is run from the command line using the Python interpreter within the virtual environment.
-
-**Basic Example (using default model and API key path):**
-
-```bash
-.venv/Scripts/python.exe -m src.main --title "My AI Generated Book"
-```
-
-**Example with a custom TOC prompt, specific model, and interactive editing:**
-
-```bash
-.venv/Scripts/python.exe -m src.main --title "Interactive AI Book" --toc-prompt "Create a 5-chapter TOC about advanced AI..." --model "openrouter/free" --interactive-toc
-```
-
-**Command-Line Arguments:**
-
-*   `--title` (str, **required**): The title of the book.
-*   `--toc-prompt` (str, optional): A specific prompt for generating the Table of Contents. If omitted, a default prompt is used.
-*   `--model` (str, optional): The OpenRouter model to use (e.g., 'openrouter/free'). If omitted, the app will use the contents of `~/.model-openrouter` when present, otherwise fallback to `openrouter/free`.
-*   `--api-key-file` (str, optional, default='~/.api-openrouter'): Path to the file containing the OpenRouter API key (fallback if env var not set).
-*   `--output-dir` (str, optional, default='books'): The directory to save the generated book files.
-*   `--interactive-toc` (flag, optional): Pause execution after TOC generation to allow manual editing of the `<book_title>.json` file before proceeding.
-*   `--browse-after-toc` (flag, optional): Display the current book content (if any) after TOC generation/loading and before generating chapters.
-
-<h2>Customization</h2>
-
-Most customization is handled via the command-line arguments described in the **Usage** section. You can change the book title, output directory, OpenRouter model, API key location, and control interactive steps without modifying the Python code.
-
-<h2>Example TOC Prompt Structure</h2>
-
-Ensure your `--toc-prompt` (if provided) instructs the AI to return valid JSON in the specified format: a list of dictionaries, where each dictionary represents a chapter and contains 'title' (string) and 'subchapters' (list of strings) keys. Instruct the model to output *only* the JSON list.
-
-Example snippet for a prompt:
-```
-... Format the output as a valid JSON list of dictionaries. Each dictionary must have 'title' and 'subchapters' keys. 'subchapters' should be a list of strings. Output ONLY the JSON list, without any introductory text or code fences. For example:  [{\"title\": \"Chapter 1: ...\", \"subchapters\": [\"Sub 1.1\", \"Sub 1.2\"]}, {\"title\": \"Chapter 2: ...\", \"subchapters\": [\"Sub 2.1\"]}]
-```
-
-<h2>Output</h2>
-
-The generated book will be saved as a Markdown file in the directory specified by `--output-dir` (defaulting to `books`). The filename will be the book title converted to lowercase with spaces replaced by underscores (e.g., `my_ai_generated_book.md`). A corresponding JSON file containing the final Table of Contents structure will also be saved (e.g., `my_ai_generated_book.json`).
-
-<h2>Error Handling</h2>
-
-The script includes error handling for various scenarios, such as invalid JSON responses, API errors (including rate limits and content blocking), file not found errors for the API key, and missing keys in the generated table of contents. Error messages are printed to the console and logged.
-
-<h2>Future Improvements</h2>
-
-*   **More Output Formats:** Add options to generate PDF, ePub, etc.
-*   **Content Refinement:** Allow interactive refinement of generated chapter/subchapter content.
-*   **Advanced Error Handling:** Implement more robust error recovery and specific handling for different API error types.
-*   **Configuration File:** Optionally load settings from a config file instead of only CLI args.
-
-<h2>License</h2>
-
-This project is licensed under the [MIT-0 License](LICENSE).
+<p>This Python script uses the OpenRouter API (specifically <code>openrouter/free</code> by default) to generate books based on a given title and a prompt for the table of contents. It dynamically creates chapters and subchapters based on the generated TOC, writing the content to a Markdown file.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Dynamic Book Generation:</strong> Creates a book structure based on a user-provided title and TOC prompt.</li>
+<li><strong>OpenRouter API Integration:</strong> Leverages the power of OpenRouter models (default resolved from ~/.model-openrouter, falling back to <code>openrouter/free</code>) for content generation.</li>
+<li><strong>Command-Line Interface:</strong> Allows customization of book title, prompts, model, API key location, and output via CLI arguments.</li>
+<li><strong>JSON-based TOC:</strong> Uses JSON for structured table of contents generation.</li>
+<li><strong>Interactive TOC Editing:</strong> Option to pause and manually edit the generated Table of Contents JSON file.</li>
+<li><strong>Error Handling:</strong> Includes error handling for API issues, JSON parsing, and missing keys, logging errors.</li>
+<li><strong>Markdown Output:</strong> Generates the book in Markdown format for easy readability and conversion.</li>
+<li><strong>File Organization:</strong> Stores generated books in a dedicated &quot;books&quot; directory (customizable via CLI).</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><strong>Python 3.x:</strong> Make sure you have Python 3 installed.</li>
+<li><strong>Virtual Environment Tool (<code>uv</code>):</strong> This project uses <code>uv</code> for environment management. Install it if you haven't already (e.g., <code>pip install --user uv</code>).</li>
+<li><strong>OpenRouter API Key:</strong> You need an API key from OpenRouter (https://openrouter.ai/).</li>
+<li><strong>Required Libraries:</strong> The necessary libraries (<code>pytest</code>, <code>tenacity</code>, <code>requests</code>) will be installed into a virtual environment.</li>
+</ul>
+<h2 id="setup">Setup</h2>
+<ol>
+<li>
+<p><strong>Set Credentials:</strong> Preferred: set OPENROUTER_API_KEY in your environment. Fallback: create a file named <code>.api-openrouter</code> in your home directory (<code>~/.api-openrouter</code>) and paste your OpenRouter API key into it. Ensure the file has restrictive permissions. You can override the path via <code>--api-key-file</code>.</p>
+</li>
+<li>
+<p><strong>Create Virtual Environment:</strong> Navigate to the project root directory in your terminal and create a <code>uv</code> environment:</p>
+<pre><code class="language-bash">python -m uv venv .venv
+</code></pre>
+</li>
+<li>
+<p><strong>Install Dependencies:</strong> Install the required packages into the virtual environment using <code>uv</code>. This command ensures <code>pip</code> is available, installs <code>uv</code> inside the venv, and then installs the project dependencies:</p>
+<pre><code class="language-bash">.venv/Scripts/python.exe -m ensurepip ; .venv/Scripts/python.exe -m pip install uv ; .venv/Scripts/python.exe -m uv pip install pytest tenacity requests
+</code></pre>
+</li>
+</ol>
+<h2 id="usage">Usage</h2>
+<p>The script is run from the command line using the Python interpreter within the virtual environment.</p>
+<p><strong>Basic Example (using default model and API key path):</strong></p>
+<pre><code class="language-bash">.venv/Scripts/python.exe -m src.main --title &quot;My AI Generated Book&quot;
+</code></pre>
+<p><strong>Example with a custom TOC prompt, specific model, and interactive editing:</strong></p>
+<pre><code class="language-bash">.venv/Scripts/python.exe -m src.main --title &quot;Interactive AI Book&quot; --toc-prompt &quot;Create a 5-chapter TOC about advanced AI...&quot; --model &quot;openrouter/free&quot; --interactive-toc
+</code></pre>
+<p><strong>Command-Line Arguments:</strong></p>
+<ul>
+<li><code>--title</code> (str, <strong>required</strong>): The title of the book.</li>
+<li><code>--toc-prompt</code> (str, optional): A specific prompt for generating the Table of Contents. If omitted, a default prompt is used.</li>
+<li><code>--model</code> (str, optional): The OpenRouter model to use (e.g., 'openrouter/free'). If omitted, the app will use the contents of <code>~/.model-openrouter</code> when present, otherwise fallback to <code>openrouter/free</code>.</li>
+<li><code>--api-key-file</code> (str, optional, default='~/.api-openrouter'): Path to the file containing the OpenRouter API key (fallback if env var not set).</li>
+<li><code>--output-dir</code> (str, optional, default='books'): The directory to save the generated book files.</li>
+<li><code>--interactive-toc</code> (flag, optional): Pause execution after TOC generation to allow manual editing of the <code>&lt;book_title&gt;.json</code> file before proceeding.</li>
+<li><code>--browse-after-toc</code> (flag, optional): Display the current book content (if any) after TOC generation/loading and before generating chapters.</li>
+</ul>
+<h2 id="customization">Customization</h2>
+<p>Most customization is handled via the command-line arguments described in the <strong>Usage</strong> section. You can change the book title, output directory, OpenRouter model, API key location, and control interactive steps without modifying the Python code.</p>
+<h2 id="example-toc-prompt-structure">Example TOC Prompt Structure</h2>
+<p>Ensure your <code>--toc-prompt</code> (if provided) instructs the AI to return valid JSON in the specified format: a list of dictionaries, where each dictionary represents a chapter and contains 'title' (string) and 'subchapters' (list of strings) keys. Instruct the model to output <em>only</em> the JSON list.</p>
+<p>Example snippet for a prompt:</p>
+<pre><code>... Format the output as a valid JSON list of dictionaries. Each dictionary must have 'title' and 'subchapters' keys. 'subchapters' should be a list of strings. Output ONLY the JSON list, without any introductory text or code fences. For example:  [{\&quot;title\&quot;: \&quot;Chapter 1: ...\&quot;, \&quot;subchapters\&quot;: [\&quot;Sub 1.1\&quot;, \&quot;Sub 1.2\&quot;]}, {\&quot;title\&quot;: \&quot;Chapter 2: ...\&quot;, \&quot;subchapters\&quot;: [\&quot;Sub 2.1\&quot;]}]
+</code></pre>
+<h2 id="output">Output</h2>
+<p>The generated book will be saved as a Markdown file in the directory specified by <code>--output-dir</code> (defaulting to <code>books</code>). The filename will be the book title converted to lowercase with spaces replaced by underscores (e.g., <code>my_ai_generated_book.md</code>). A corresponding JSON file containing the final Table of Contents structure will also be saved (e.g., <code>my_ai_generated_book.json</code>).</p>
+<h2 id="error-handling">Error Handling</h2>
+<p>The script includes error handling for various scenarios, such as invalid JSON responses, API errors (including rate limits and content blocking), file not found errors for the API key, and missing keys in the generated table of contents. Error messages are printed to the console and logged.</p>
+<h2 id="future-improvements">Future Improvements</h2>
+<ul>
+<li><strong>More Output Formats:</strong> Add options to generate PDF, ePub, etc.</li>
+<li><strong>Content Refinement:</strong> Allow interactive refinement of generated chapter/subchapter content.</li>
+<li><strong>Advanced Error Handling:</strong> Implement more robust error recovery and specific handling for different API error types.</li>
+<li><strong>Configuration File:</strong> Optionally load settings from a config file instead of only CLI args.</li>
+</ul>
+<h2 id="license">License</h2>
+<p>This project is licensed under the <a href="https://github.com/waifuai/book-generator/blob/main/LICENSE">MIT-0 License</a>.</p>
 
 <section>
   <h2>books <span class="count">(6)</span></h2>
@@ -179,6 +160,19 @@ This project is licensed under the [MIT-0 License](LICENSE).
   </div>
 </section>
 
+<!-- related -->
+<section>
+<h2>Related</h2>
+<div class="link-list">
+<a href="/research-text/"><h3>Research papers</h3><p>The full collection: kinematics, quantum LLMs, AI agents and domain-specific languages.</p></a>
+<a href="/paraphrase/"><h3>Paraphrase projects</h3><p>Back-translation, a GAN-style prompt loop, an NMT model and a human vs AI classifier.</p></a>
+<a href="/ai-benchmarks/"><h3>AI Benchmarks</h3><p>Spatial reasoning tests for LLMs, with a multi-model leaderboard.</p></a>
+<a href="/macro-language-model/"><h3>Macro Language Model</h3><p>CLI chatbot with swappable personalities such as tsundere and deredere.</p></a>
+<a href="/llm-text-queue-gpu/"><h3>LLM Text Queue GPU</h3><p>GPU-accelerated text processing pipeline.</p></a>
+<a href="/biochem-framework/"><h3>Biochem Framework</h3><p>Scores AI conversations by their effect on neurochemistry.</p></a>
+</div>
+</section>
+<!-- /related -->
 <footer>
 <p>Generated for GitHub Pages</p>
 </footer>

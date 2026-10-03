@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Open-source MCP servers built on FastMCP: a waifu chat server with SQLite history, a Redis-backed text generation queue, and a personality traits matcher.">
+<meta name="keywords" content="MCP server, Model Context Protocol, FastMCP, AI companion, Redis queue, python-rq, personality matching, OpenRouter">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://waifuai.github.io/mcp-servers/">
+<meta property="og:title" content="MCP Servers for AI Companions: Chat, Job Queue, Personality Matching | WaifuAI">
+<meta property="og:description" content="Open-source MCP servers built on FastMCP: a waifu chat server with SQLite history, a Redis-backed text generation queue, and a personality traits matcher.">
+<meta property="og:image" content="https://waifuai.github.io/mcp-servers/og.png?v=2800aca905">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://waifuai.github.io/mcp-servers/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="WaifuAI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://waifuai.github.io/mcp-servers/og.png?v=2800aca905">
+<meta name="twitter:title" content="MCP Servers for AI Companions: Chat, Job Queue, Personality Matching | WaifuAI">
+<meta name="twitter:description" content="Open-source MCP servers built on FastMCP: a waifu chat server with SQLite history, a Redis-backed text generation queue, and a personality traits matcher.">
+<title>MCP Servers for AI Companions: Chat, Job Queue, Personality Matching | WaifuAI</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "MCP servers",
+  "description": "Open-source MCP servers built on FastMCP: a waifu chat server with SQLite history, a Redis-backed text generation queue, and a personality traits matcher.",
+  "url": "https://waifuai.github.io/mcp-servers/",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "WaifuAI Docs Hub",
+    "url": "https://waifuai.github.io/"
+  },
+  "hasPart": [
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "MCP Waifu Chat",
+      "codeRepository": "https://github.com/waifuai/mcp-waifu-chat",
+      "url": "https://waifuai.github.io/mcp-servers/#chat",
+      "programmingLanguage": "Python"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "MCP Waifu Queue",
+      "codeRepository": "https://github.com/waifuai/mcp-waifu-queue",
+      "url": "https://waifuai.github.io/mcp-servers/#queue",
+      "programmingLanguage": "Python"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "MCP Traits Matcher",
+      "codeRepository": "https://github.com/waifuai/mcp-traits-matcher",
+      "url": "https://waifuai.github.io/mcp-servers/#traits-matcher",
+      "programmingLanguage": "Python"
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../theme.css">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<!-- site-header -->
+<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/llm-countdowns/">Countdowns</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
+<!-- /site-header -->
+<div class="container">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">MCP servers</span></nav>
+
+<header>
+<h1>MCP servers</h1>
+<p>Three Model Context Protocol servers that give AI agents a companion chat, a generation queue and personality matching.</p>
+</header>
+<nav class="filter-chips" aria-label="On this page"><a class="chip" href="#chat">MCP Waifu Chat</a><a class="chip" href="#queue">MCP Waifu Queue</a><a class="chip" href="#traits-matcher">MCP Traits Matcher</a></nav>
+<p>All three are Python servers built on FastMCP, so any MCP-capable agent can call them as tools. The chat and queue servers generate text with OpenRouter, and every project is MIT-0 licensed.</p>
+<section id="chat">
+<h2>MCP Waifu Chat</h2>
+<p>A companion character as an MCP server, with users and conversation memory.</p>
+<ul><li>User management: create, check, delete and count users.</li><li>Dialog history kept in SQLite, with tools to get, set and reset it.</li><li>Chat replies through OpenRouter; the model comes from an environment variable or ~/.model-openrouter.</li><li>Unit tests and a modular layout that is easy to extend.</li></ul>
+<p><a href="https://github.com/waifuai/mcp-waifu-chat">github.com/waifuai/mcp-waifu-chat</a></p>
+</section>
+<section id="queue">
+<h2>MCP Waifu Queue</h2>
+<p>Puts text generation behind a Redis queue so many requests can run at once.</p>
+<ul><li>Requests are queued with python-rq and processed by worker processes that call OpenRouter.</li><li>Job status is exposed as MCP resources, so an agent can submit work and check back later.</li><li>Configured with pydantic-settings and a .env file.</li></ul>
+<p><a href="https://github.com/waifuai/mcp-waifu-queue">github.com/waifuai/mcp-waifu-queue</a></p>
+</section>
+<section id="traits-matcher">
+<h2>MCP Traits Matcher</h2>
+<p>Personality analysis and matching over MCP.</p>
+<ul><li>Creates people and traits scored on friendliness and dominance.</li><li>Adding a description to a person updates their personality from the traits it mentions.</li><li>Matches people to a job description by Euclidean distance.</li><li>Stores everything in SQLite and lists it through the persons://all and traits://all resources.</li></ul>
+<p><a href="https://github.com/waifuai/mcp-traits-matcher">github.com/waifuai/mcp-traits-matcher</a></p>
+</section>
+<!-- related -->
+<section>
+<h2>Related</h2>
+<div class="link-list">
+<a href="/traits/"><h3>Traits</h3><p>Character and agent trait system, with Manim animations.</p></a>
+<a href="/waifu-chat-api/"><h3>Waifu Chat API</h3><p>REST API for waifu chatbot conversations with user management.</p></a>
+<a href="/llm-text-queue-gpu/"><h3>LLM Text Queue GPU</h3><p>GPU-accelerated text processing pipeline.</p></a>
+<a href="/hermes-waifu/"><h3>Hermes Waifu</h3><p>Live2D widget for Hermes Agent with five built-in models and expression controls.</p></a>
+</div>
+</section>
+<!-- /related -->
+<footer>
+<p><a href="../">WaifuAI docs</a> &middot; <a href="../search.html">Search</a> &middot; <a href="../llms.txt">llms.txt</a> &middot; <a href="https://github.com/waifuai">GitHub</a></p>
+</footer>
+</div>
+</body>
+</html>

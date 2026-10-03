@@ -57,7 +57,7 @@
 </head>
 <body>
 <!-- site-header -->
-<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/research-books/">Books</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
+<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/llm-countdowns/">Countdowns</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
 <!-- /site-header -->
 <div class="container">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">Hermes Waifu</span></nav>
@@ -66,118 +66,186 @@
 <h1>Hermes Waifu</h1>
 <p>Live2D widget for Hermes Agent with five built-in models and expression controls.</p>
 </header>
-<h1>hermes-waifu</h1>
-
-Live2D waifu display for Hermes Agent with expression controls.
-
-<h2>What is this?</h2>
-
-Live animated waifu you can drag around, resize, and control expressions. No TTS, no chat, no complexity.
-
-**Features:**
-- Live2D model rendering in browser
-- 5 built-in models (Hiyori, Haru, Mao, Rice, Senko)
-- Drag to reposition, scroll to resize (5%-200%)
-- Model selector dropdown
-- Expression controls (per-model)
-- Emotion system (e1-e12)
-- Agent state display (idle/thinking/speaking/etc)
-- Manual mode toggle (override auto state)
-- Minimal dependencies (4 CDN scripts)
-
-<h2>Expression System</h2>
-
-Three rows of controls at the bottom:
-
-| Row | What it does |
-|-----|-------------|
-| **States** | Agent states: idle, listening, speaking, thinking, working, error |
-| **Expressions** | Per-model face buttons — Haru (f00-f07), Mao (exp_01-08), motion-only models show "motion-only" |
-| **Emotions** | e1-e12 mapped to names (happy, amused, empathetic, curious, confused, surprised, embarrassed, confident, annoyed, overwhelmed, determined, affectionate) |
-
-Emotion→expression mapping matches `waifu_hook.py`:
-- Haru: e1(happy)→f04, e4(curious)→f01, e5(confused)→f06, etc.
-- Mao: e1(happy)→exp_04, e4(curious)→exp_07, e9(annoyed)→exp_08, etc.
-
-Active expression/emotion is highlighted with a glow.
-
-<h2>Expression Details</h2>
-
-<h3>Haru (f00-f07)</h3>
-| ID | Face |
-|----|------|
-| f00 | neutral |
-| f01 | surprised/excited |
-| f02 | angry/sad |
-| f03 | worried/concerned |
-| f04 | happy (closed eyes) |
-| f05 | shocked |
-| f06 | sad |
-| f07 | pouty |
-
-<h3>Mao (exp_01-exp_08)</h3>
-| ID | Face |
-|----|------|
-| exp_01 | neutral |
-| exp_02 | closed smile (^_^) |
-| exp_03 | neutral alt |
-| exp_04 | excited sparkle |
-| exp_05 | sad |
-| exp_06 | shy/blush |
-| exp_07 | worried |
-| exp_08 | angry |
-
-<h3>Motion-only (Hiyori, Rice, Senko)</h3>
-No expression files — only idle/tap motions. Emotion buttons exist but have no visual effect on the model face.
-
-<h2>Usage</h2>
-
-<h3>Live2D Display</h3>
-
-Open `index.html` in a browser. No server needed, no build step. Pure client-side.
-
-**Controls:**
-- Click expression/emotion buttons to change the face
-- Scroll over model to resize
-- Drag to reposition
-- ⏸/▶ button toggles manual mode (ignores server state)
-- Model selector in top-right header
-
-<h3>Hermes Agent Integration</h3>
-
-Symlink `src/waifu.py` and `src/waifu_hook.py` into `~/.hermes/hermes-agent/`:
-
-```bash
-ln -sf /path/to/hermes-waifu/src/waifu.py ~/.hermes/hermes-agent/waifu.py
+<p>Live2D waifu display for Hermes Agent with expression controls.</p>
+<h2 id="what-is-this">What is this?</h2>
+<p>Live animated waifu you can drag around, resize, and control expressions. No TTS, no chat, no complexity.</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li>Live2D model rendering in browser</li>
+<li>5 built-in models (Hiyori, Haru, Mao, Rice, Senko)</li>
+<li>Drag to reposition, scroll to resize (5%-200%)</li>
+<li>Model selector dropdown</li>
+<li>Expression controls (per-model)</li>
+<li>Emotion system (e1-e12)</li>
+<li>Agent state display (idle/thinking/speaking/etc)</li>
+<li>Manual mode toggle (override auto state)</li>
+<li>Minimal dependencies (4 CDN scripts)</li>
+</ul>
+<h2 id="expression-system">Expression System</h2>
+<p>Three rows of controls at the bottom:</p>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>States</strong></td>
+<td>Agent states: idle, listening, speaking, thinking, working, error</td>
+</tr>
+<tr>
+<td><strong>Expressions</strong></td>
+<td>Per-model face buttons — Haru (f00-f07), Mao (exp_01-08), motion-only models show &quot;motion-only&quot;</td>
+</tr>
+<tr>
+<td><strong>Emotions</strong></td>
+<td>e1-e12 mapped to names (happy, amused, empathetic, curious, confused, surprised, embarrassed, confident, annoyed, overwhelmed, determined, affectionate)</td>
+</tr>
+</tbody>
+</table>
+<p>Emotion→expression mapping matches <code>waifu_hook.py</code>:</p>
+<ul>
+<li>Haru: e1(happy)→f04, e4(curious)→f01, e5(confused)→f06, etc.</li>
+<li>Mao: e1(happy)→exp_04, e4(curious)→exp_07, e9(annoyed)→exp_08, etc.</li>
+</ul>
+<p>Active expression/emotion is highlighted with a glow.</p>
+<h2 id="expression-details">Expression Details</h2>
+<h3 id="haru-f00-f07">Haru (f00-f07)</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Face</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>f00</td>
+<td>neutral</td>
+</tr>
+<tr>
+<td>f01</td>
+<td>surprised/excited</td>
+</tr>
+<tr>
+<td>f02</td>
+<td>angry/sad</td>
+</tr>
+<tr>
+<td>f03</td>
+<td>worried/concerned</td>
+</tr>
+<tr>
+<td>f04</td>
+<td>happy (closed eyes)</td>
+</tr>
+<tr>
+<td>f05</td>
+<td>shocked</td>
+</tr>
+<tr>
+<td>f06</td>
+<td>sad</td>
+</tr>
+<tr>
+<td>f07</td>
+<td>pouty</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mao-exp_01-exp_08">Mao (exp_01-exp_08)</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Face</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exp_01</td>
+<td>neutral</td>
+</tr>
+<tr>
+<td>exp_02</td>
+<td>closed smile (^_^)</td>
+</tr>
+<tr>
+<td>exp_03</td>
+<td>neutral alt</td>
+</tr>
+<tr>
+<td>exp_04</td>
+<td>excited sparkle</td>
+</tr>
+<tr>
+<td>exp_05</td>
+<td>sad</td>
+</tr>
+<tr>
+<td>exp_06</td>
+<td>shy/blush</td>
+</tr>
+<tr>
+<td>exp_07</td>
+<td>worried</td>
+</tr>
+<tr>
+<td>exp_08</td>
+<td>angry</td>
+</tr>
+</tbody>
+</table>
+<h3 id="motion-only-hiyori-rice-senko">Motion-only (Hiyori, Rice, Senko)</h3>
+<p>No expression files — only idle/tap motions. Emotion buttons exist but have no visual effect on the model face.</p>
+<h2 id="usage">Usage</h2>
+<h3 id="live2d-display">Live2D Display</h3>
+<p>Open <code>index.html</code> in a browser. No server needed, no build step. Pure client-side.</p>
+<p><strong>Controls:</strong></p>
+<ul>
+<li>Click expression/emotion buttons to change the face</li>
+<li>Scroll over model to resize</li>
+<li>Drag to reposition</li>
+<li>⏸/▶ button toggles manual mode (ignores server state)</li>
+<li>Model selector in top-right header</li>
+</ul>
+<h3 id="hermes-agent-integration">Hermes Agent Integration</h3>
+<p>Symlink <code>src/waifu.py</code> and <code>src/waifu_hook.py</code> into <code>~/.hermes/hermes-agent/</code>:</p>
+<pre><code class="language-bash">ln -sf /path/to/hermes-waifu/src/waifu.py ~/.hermes/hermes-agent/waifu.py
 ln -sf /path/to/hermes-waifu/src/waifu_hook.py ~/.hermes/hermes-agent/waifu_hook.py
-```
-
-Then run `python waifu.py` instead of `python cli.py` to get lifecycle hooks injected.
-
-`waifu_hook.py` writes state to `~/.hermes-waifu-state.json`. The HTML polls `/state` to sync (requires a server endpoint, or use manual mode).
-
-<h2>Adding more models</h2>
-
-Edit the `models` array in `index.html`:
-
-```javascript
-const models = [
+</code></pre>
+<p>Then run <code>python waifu.py</code> instead of <code>python cli.py</code> to get lifecycle hooks injected.</p>
+<p><code>waifu_hook.py</code> writes state to <code>~/.hermes-waifu-state.json</code>. The HTML polls <code>/state</code> to sync (requires a server endpoint, or use manual mode).</p>
+<h2 id="adding-more-models">Adding more models</h2>
+<p>Edit the <code>models</code> array in <code>index.html</code>:</p>
+<pre><code class="language-javascript">const models = [
   {
-    name: "YourModel",
-    url: "https://cdn.jsdelivr.net/.../model.model3.json",
-    type: "expression",           // or "motion-only"
-    expressions: ["face1","face2"] // only if type="expression"
+    name: &quot;YourModel&quot;,
+    url: &quot;https://cdn.jsdelivr.net/.../model.model3.json&quot;,
+    type: &quot;expression&quot;,           // or &quot;motion-only&quot;
+    expressions: [&quot;face1&quot;,&quot;face2&quot;] // only if type=&quot;expression&quot;
   }
 ];
-```
+</code></pre>
+<p>Models must be hosted online (CDN) or served locally.</p>
+<h2 id="license">License</h2>
+<p>MIT No Attribution - see <a href="https://github.com/waifuai/hermes-waifu/blob/main/LICENSE">LICENSE</a></p>
 
-Models must be hosted online (CDN) or served locally.
-
-<h2>License</h2>
-
-MIT No Attribution - see [LICENSE](LICENSE)
-
-
+<!-- related -->
+<section>
+<h2>Related</h2>
+<div class="link-list">
+<a href="/blog-posts/11-how-to-add-your-own-live2d-avatar.html"><h3>Add your own Live2D avatar</h3><p>Set up custom Cubism models, motion files, physics3.json and expression triggers.</p></a>
+<a href="/mcp-servers/"><h3>MCP servers</h3><p>Companion chat, a Redis generation queue and personality matching over MCP.</p></a>
+<a href="/waifu-chat-api/"><h3>Waifu Chat API</h3><p>REST API for waifu chatbot conversations with user management.</p></a>
+<a href="/waifu-constitution/"><h3>Waifu Constitution</h3><p>Alignment constitution and behaviour guidelines for waifu agents.</p></a>
+<a href="/waifu-llm-vrm/"><h3>Waifu LLM VRM</h3><p>Python library for AI waifus in the Godot engine, with VRM avatar support.</p></a>
+<a href="/anime-subtitle-chatbot/"><h3>Anime Subtitle Chatbot</h3><p>Few-shot chatbot trained on anime subtitles.</p></a>
+</div>
+</section>
+<!-- /related -->
 <footer>
 <p>Generated for GitHub Pages</p>
 </footer>

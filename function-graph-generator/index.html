@@ -57,7 +57,7 @@
 </head>
 <body>
 <!-- site-header -->
-<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/research-books/">Books</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
+<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/llm-countdowns/">Countdowns</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
 <!-- /site-header -->
 <div class="container">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">Function Graph Generator</span></nav>
@@ -66,98 +66,107 @@
 <h1>Function Graph Generator</h1>
 <p>Plot mathematical functions in the browser.</p>
 </header>
-<h1>Function Graph Generator</h1>
+<p>Automatically generate function call graphs for Python code.</p>
+<p><code>graph.py</code> is a Python script that analyzes Python source code and generates visual function call graphs showing dependencies between functions.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li>Supports Python</li>
+<li>Configurable graph generation</li>
+<li>Interactive visualization with matplotlib</li>
+<li>Unit tested with sample code cases</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<h3 id="1-prepare-source-code">1. Prepare Source Code</h3>
+<p>Create a file containing your Python source code. For example, you can combine multiple Python files into a single input file:</p>
+<pre><code class="language-bash">find ./src/ -name '*.py' -exec cat {} \; &gt; input.txt
+</code></pre>
+<p>or</p>
+<pre><code class="language-bash">cat ./src/*.py &gt; input.txt
+</code></pre>
+<h3 id="2-generate-call-graph">2. Generate Call Graph</h3>
+<p>Run the script:</p>
+<pre><code class="language-bash">python3 graph.py
+</code></pre>
+<p>A window will display the interactive graph. You can zoom, pan, and inspect nodes.</p>
+<h2 id="configuration">Configuration</h2>
+<p>Modify the generator's configuration before generating the graph:</p>
+<pre><code class="language-python">generator = CallGraphGenerator()
+generator.config[&quot;allow_external_funcs&quot;] = False  # Exclude functions called but not defined in the source
+generator.config[&quot;allow_self_reference&quot;] = False  # Hide recursive calls
+generator.config[&quot;allow_childless_funcs&quot;] = False  # Omit functions that do not call other functions
+generator.generate_call_graph(&quot;input.txt&quot;)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>allow_external_funcs</code></td>
+<td>True</td>
+<td>Show functions called but not defined in the source</td>
+</tr>
+<tr>
+<td><code>allow_self_reference</code></td>
+<td>True</td>
+<td>Display edges for recursive calls</td>
+</tr>
+<tr>
+<td><code>allow_childless_funcs</code></td>
+<td>True</td>
+<td>Include functions that don't call other functions</td>
+</tr>
+</tbody>
+</table>
+<h2 id="testing">Testing</h2>
+<p>Unit tests verify function extraction and graph generation. Run tests with:</p>
+<pre><code class="language-bash">python3 -m unittest test.py
+</code></pre>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li>Python 3.6+</li>
+<li>networkx</li>
+<li>matplotlib</li>
+</ul>
+<p>Install requirements:</p>
+<pre><code class="language-bash">pip install --user networkx matplotlib
+</code></pre>
+<h2 id="how-it-works">How It Works</h2>
+<ol>
+<li>
+<p><strong>Language Detection</strong>: Checks the first 10 lines for the Python-specific pattern:</p>
+<ul>
+<li>Python: <code>def</code> keywords at the beginning of a line (allowing for leading spaces).</li>
+</ul>
+</li>
+<li>
+<p><strong>Parsing</strong>: The Python parser extracts function definitions and calls.</p>
+</li>
+<li>
+<p><strong>Graph Construction</strong>: Uses networkx to build a directed graph from call relationships.</p>
+</li>
+<li>
+<p><strong>Visualization</strong>: Applies the spring layout algorithm and matplotlib for interactive display.</p>
+</li>
+</ol>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>For large codebases, consider splitting into modules. The script processes all input as a single file.</li>
+<li>The spring layout's appearance can be adjusted in <code>create_and_visualize_graph()</code>.</li>
+<li>Function detection uses basic pattern matching. Complex syntax may require parser improvements.</li>
+</ul>
+<h2 id="example-output">Example Output</h2>
+<p>Interact with the graph to:</p>
+<ul>
+<li>Drag nodes to rearrange the layout</li>
+<li>Zoom with the scroll wheel</li>
+<li>Click nodes to highlight connections</li>
+</ul>
 
-Automatically generate function call graphs for Python code.
-
-`graph.py` is a Python script that analyzes Python source code and generates visual function call graphs showing dependencies between functions.
-
-<h2>Features</h2>
-
-- Supports Python
-- Configurable graph generation
-- Interactive visualization with matplotlib
-- Unit tested with sample code cases
-
-<h2>Usage</h2>
-
-<h3>1. Prepare Source Code</h3>
-Create a file containing your Python source code. For example, you can combine multiple Python files into a single input file:
-
-```bash
-find ./src/ -name '*.py' -exec cat {} \; > input.txt
-```
-or
-```bash
-cat ./src/*.py > input.txt
-```
-
-<h3>2. Generate Call Graph</h3>
-Run the script:
-```bash
-python3 graph.py
-```
-
-A window will display the interactive graph. You can zoom, pan, and inspect nodes.
-
-<h2>Configuration</h2>
-
-Modify the generator's configuration before generating the graph:
-```python
-generator = CallGraphGenerator()
-generator.config["allow_external_funcs"] = False  # Exclude functions called but not defined in the source
-generator.config["allow_self_reference"] = False  # Hide recursive calls
-generator.config["allow_childless_funcs"] = False  # Omit functions that do not call other functions
-generator.generate_call_graph("input.txt")
-```
-
-| Setting                | Default | Description                                                                    |
-|------------------------|---------|--------------------------------------------------------------------------------|
-| `allow_external_funcs` | True    | Show functions called but not defined in the source                            |
-| `allow_self_reference` | True    | Display edges for recursive calls                                              |
-| `allow_childless_funcs`| True    | Include functions that don't call other functions                              |
-
-<h2>Testing</h2>
-
-Unit tests verify function extraction and graph generation. Run tests with:
-```bash
-python3 -m unittest test.py
-```
-
-<h2>Dependencies</h2>
-
-- Python 3.6+
-- networkx
-- matplotlib
-
-Install requirements:
-```bash
-pip install --user networkx matplotlib
-```
-
-<h2>How It Works</h2>
-
-1. **Language Detection**: Checks the first 10 lines for the Python-specific pattern:
-   - Python: `def` keywords at the beginning of a line (allowing for leading spaces).
-
-2. **Parsing**: The Python parser extracts function definitions and calls.
-
-3. **Graph Construction**: Uses networkx to build a directed graph from call relationships.
-
-4. **Visualization**: Applies the spring layout algorithm and matplotlib for interactive display.
-
-<h2>Notes</h2>
-
-- For large codebases, consider splitting into modules. The script processes all input as a single file.
-- The spring layout's appearance can be adjusted in `create_and_visualize_graph()`.
-- Function detection uses basic pattern matching. Complex syntax may require parser improvements.
-
-<h2>Example Output</h2>
-
-Interact with the graph to:
-- Drag nodes to rearrange the layout
-- Zoom with the scroll wheel
-- Click nodes to highlight connections
 <section>
   <h2>Documentation <span class="count">(1)</span></h2>
   <p class="section-desc">Files in Documentation</p>
@@ -166,6 +175,18 @@ Interact with the graph to:
   </div>
 </section>
 
+<!-- related -->
+<section>
+<h2>Related</h2>
+<div class="link-list">
+<a href="/ai-benchmarks/"><h3>AI Benchmarks</h3><p>Spatial reasoning tests for LLMs, with a multi-model leaderboard.</p></a>
+<a href="/book-generator/"><h3>Book Generator</h3><p>Writes a full book from a title prompt using OpenRouter.</p></a>
+<a href="/macro-language-model/"><h3>Macro Language Model</h3><p>CLI chatbot with swappable personalities such as tsundere and deredere.</p></a>
+<a href="/llm-text-queue-gpu/"><h3>LLM Text Queue GPU</h3><p>GPU-accelerated text processing pipeline.</p></a>
+<a href="/biochem-framework/"><h3>Biochem Framework</h3><p>Scores AI conversations by their effect on neurochemistry.</p></a>
+</div>
+</section>
+<!-- /related -->
 <footer>
 <p>Generated for GitHub Pages</p>
 </footer>

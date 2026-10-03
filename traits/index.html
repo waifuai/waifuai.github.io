@@ -57,7 +57,7 @@
 </head>
 <body>
 <!-- site-header -->
-<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/research-books/">Books</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
+<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/llm-countdowns/">Countdowns</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
 <!-- /site-header -->
 <div class="container">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">Traits</span></nav>
@@ -67,10 +67,9 @@
 <p>Character and agent trait system, with Manim animations.</p>
 </header>
     <section>
-    <h2>Documentation <span class="count">(2)</span></h2>
+    <h2>Documentation <span class="count">(1)</span></h2>
     <p class="section-desc">Project documentation and guides</p>
     <div class="link-list">
-      <a href="README.html">Personality Analysis System</a>
       <a href="manim-animation-README.html">Personality Analysis Animation</a>
     </div>
   </section>
@@ -78,59 +77,62 @@
     <h2>Project Overview</h2>
     <div class="readme-content">
 <p>A sophisticated trait-based personality analysis tool that helps companies find candidates whose personalities best match specific job descriptions. The system analyzes personality traits using friendliness and dominance scores to create compatibility rankings.</p>
-<h2>Features</h2>
+<h2 id="features">Features</h2>
 <ul>
 <li><strong>Advanced Trait Management</strong>: Create and manage personality traits with precise friendliness/dominance scores</li>
 <li><strong>Dynamic Personality Profiling</strong>: Automatically update personality profiles from natural language descriptions</li>
-<li><strong>Intelligent Company Matching</strong>:</li>
+<li><strong>Intelligent Company Matching</strong>:
+<ul>
 <li>Extract personality requirements from job descriptions</li>
 <li>Calculate compatibility using Euclidean distance algorithms</li>
 <li>Rank candidates by personality fit with detailed scoring</li>
+</ul>
+</li>
 <li><strong>Service-Oriented Architecture</strong>: Clean separation between data access, business logic, and command interfaces</li>
 <li><strong>Comprehensive CLI</strong>: User-friendly command-line interface with detailed help and validation</li>
 </ul>
-<h2>Installation</h2>
-<h3>Prerequisites</h3>
+<h2 id="installation">Installation</h2>
+<h3 id="prerequisites">Prerequisites</h3>
 <ul>
 <li>Python 3.7+</li>
 <li>SQLite3</li>
 <li>pip (Python package manager)</li>
 </ul>
-<h3>Setup Steps</h3>
+<h3 id="setup-steps">Setup Steps</h3>
 <ol>
 <li>
-<p><strong>Clone the Repository</strong>
-   <code>bash
-   git clone &lt;repository-url&gt;
-   cd traits</code></p>
+<p><strong>Clone the Repository</strong></p>
+<pre><code class="language-bash">git clone &lt;repository-url&gt;
+cd traits
+</code></pre>
 </li>
 <li>
-<p><strong>Set Up Virtual Environment</strong> (Recommended)
-   <code>bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate</code></p>
+<p><strong>Set Up Virtual Environment</strong> (Recommended)</p>
+<pre><code class="language-bash">python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+</code></pre>
 </li>
 <li>
-<p><strong>Install Dependencies</strong>
-   <code>bash
-   python setup_dependencies.py
-   # Or manually install required packages:
-   pip install scipy numpy</code></p>
+<p><strong>Install Dependencies</strong></p>
+<pre><code class="language-bash">python setup_dependencies.py
+# Or manually install required packages:
+pip install scipy numpy
+</code></pre>
 </li>
 <li>
-<p><strong>Initialize the System</strong>
-   ```bash
-   # Set up directories and databases
-   python setup_directories.py</p>
+<p><strong>Initialize the System</strong></p>
+<pre><code class="language-bash"># Set up directories and databases
+python setup_directories.py
+
+# Populate default traits
+python populate_traits_db.py
+</code></pre>
 </li>
 </ol>
-<p># Populate default traits
-   python populate_traits_db.py
-   ```</p>
-<h2>Usage</h2>
-<h3>Command Line Interface</h3>
+<h2 id="usage">Usage</h2>
+<h3 id="command-line-interface">Command Line Interface</h3>
 <p>The tool provides a comprehensive CLI with the following commands:</p>
-<h4>Trait Operations</h4>
+<h4 id="trait-operations">Trait Operations</h4>
 <pre><code class="language-bash"># Create a new personality trait
 python main.py trait create &lt;name&gt; &lt;friendliness&gt; &lt;dominance&gt;
 
@@ -144,7 +146,7 @@ python main.py trait create &quot;detail_oriented&quot; 7.0 5.0
 # Create a trait for being creative
 python main.py trait create &quot;creative&quot; 8.0 6.0
 </code></pre>
-<h4>Person Operations</h4>
+<h4 id="person-operations">Person Operations</h4>
 <pre><code class="language-bash"># Create a new person profile
 python main.py person create &quot;&lt;full_name&gt;&quot;
 
@@ -163,7 +165,7 @@ python main.py person create &quot;Bob Smith&quot;
 python main.py person add_desc &quot;Alice Johnson&quot; &quot;friendly, collaborative team player with strong leadership qualities&quot;
 python main.py person add_desc &quot;Bob Smith&quot; &quot;analytical, detail-oriented problem solver who works well independently&quot;
 </code></pre>
-<h4>Company Matching</h4>
+<h4 id="company-matching">Company Matching</h4>
 <pre><code class="language-bash"># Find candidates matching a job description
 python main.py company query &quot;&lt;company_name&gt;&quot; &quot;&lt;job_description&gt;&quot;
 </code></pre>
@@ -174,7 +176,7 @@ python main.py company query &quot;TechCorp&quot; &quot;seeking innovative leade
 # Match for a research position
 python main.py company query &quot;ResearchLab&quot; &quot;looking for analytical, detail-oriented researcher who can work independently&quot;
 </code></pre>
-<h3>Complete Workflow Example</h3>
+<h3 id="complete-workflow-example">Complete Workflow Example</h3>
 <pre><code class="language-bash"># 1. Set up some traits
 python main.py trait create &quot;innovative&quot; 9.0 8.0
 python main.py trait create &quot;analytical&quot; 3.0 4.0
@@ -195,26 +197,29 @@ python main.py company query &quot;InnovationTeam&quot; &quot;seeking creative i
 python main.py company query &quot;ResearchDept&quot; &quot;looking for independent analytical thinkers&quot;
 python main.py company query &quot;MarketingTeam&quot; &quot;need collaborative team players for our creative campaigns&quot;
 </code></pre>
-<h2>Project Architecture</h2>
-<h3>Core Components</h3>
+<h2 id="project-architecture">Project Architecture</h2>
+<h3 id="core-components">Core Components</h3>
 <ul>
 <li><strong><code>main.py</code></strong> - CLI entry point with argument parsing and command routing</li>
-<li><strong><code>services/</code></strong> - Business logic layer:</li>
+<li><strong><code>services/</code></strong> - Business logic layer:
+<ul>
 <li><code>person_service.py</code> - Person-related business operations</li>
 <li><code>company_service.py</code> - Company matching and analysis logic</li>
+</ul>
+</li>
 <li><strong><code>person_dao.py</code></strong> - Data access object for person database operations</li>
 <li><strong><code>trait_dao.py</code></strong> - Data access object for trait database operations</li>
 <li><strong><code>personality_models.py</code></strong> - Data classes for personality traits and statistics</li>
 <li><strong><code>db_connection.py</code></strong> - Database connection context manager</li>
 </ul>
-<h3>Command Modules</h3>
+<h3 id="command-modules">Command Modules</h3>
 <ul>
 <li><strong><code>trait_commands.py</code></strong> - CLI handlers for trait operations</li>
 <li><strong><code>person_commands.py</code></strong> - CLI handlers for person operations</li>
 <li><strong><code>company_commands.py</code></strong> - CLI handlers for company matching</li>
 </ul>
-<h2>Database Schema</h2>
-<h3>Persons Table</h3>
+<h2 id="database-schema">Database Schema</h2>
+<h3 id="persons-table">Persons Table</h3>
 <pre><code class="language-sql">CREATE TABLE persons (
     person TEXT PRIMARY KEY,
     friendliness REAL DEFAULT 0.0,
@@ -223,22 +228,22 @@ python main.py company query &quot;MarketingTeam&quot; &quot;need collaborative 
     n_dominance INTEGER DEFAULT 0
 )
 </code></pre>
-<h3>Traits Table</h3>
+<h3 id="traits-table">Traits Table</h3>
 <pre><code class="language-sql">CREATE TABLE traits (
     trait TEXT PRIMARY KEY,
     friendliness REAL,
     dominance REAL
 )
 </code></pre>
-<h2>Technical Details</h2>
-<h3>Personality Analysis Algorithm</h3>
+<h2 id="technical-details">Technical Details</h2>
+<h3 id="personality-analysis-algorithm">Personality Analysis Algorithm</h3>
 <ol>
 <li><strong>Trait Extraction</strong>: Natural language descriptions are parsed to identify known personality traits</li>
 <li><strong>Weighted Averaging</strong>: Personality scores are calculated using weighted averages, giving more influence to recent traits</li>
 <li><strong>Compatibility Scoring</strong>: Euclidean distance between personality vectors determines candidate-job fit</li>
 <li><strong>Dynamic Updates</strong>: Personality profiles update automatically as new trait information is added</li>
 </ol>
-<h3>Default Traits</h3>
+<h3 id="default-traits">Default Traits</h3>
 <p>The system comes pre-loaded with these personality traits:</p>
 <ul>
 <li><strong>friendly</strong> (7.0, 6.0) - Warm and approachable</li>
@@ -255,15 +260,15 @@ python main.py company query &quot;MarketingTeam&quot; &quot;need collaborative 
 <li><strong>agile</strong> (8.0, 7.0) - Adaptable and quick-thinking</li>
 <li><strong>innovative</strong> (9.0, 6.0) - Creative and original</li>
 </ul>
-<h2>Development</h2>
-<h3>Running Tests</h3>
+<h2 id="development">Development</h2>
+<h3 id="running-tests">Running Tests</h3>
 <pre><code class="language-bash">python -m pytest tests/
 </code></pre>
-<h3>Database Management</h3>
+<h3 id="database-management">Database Management</h3>
 <pre><code class="language-bash"># Reset and repopulate databases
 python populate_db.py
 </code></pre>
-<h2>Contributing</h2>
+<h2 id="contributing">Contributing</h2>
 <ol>
 <li>Fork the repository</li>
 <li>Create a feature branch</li>
@@ -271,10 +276,11 @@ python populate_db.py
 <li>Add tests for new functionality</li>
 <li>Submit a pull request</li>
 </ol>
-<h2>License</h2>
-<p>This project is licensed under the MIT License - see the LICENSE file for details.</p>
-<h2>Support</h2>
+<h2 id="license">License</h2>
+<p>This project is licensed under the MIT-0 License - see the LICENSE file for details.</p>
+<h2 id="support">Support</h2>
 <p>For bug reports or feature requests, please open an issue in the project repository.</p>
+
     </div>
   </section>
 
@@ -285,6 +291,19 @@ python populate_db.py
       <a href="https://github.com/waifuai/traits" target="_blank">github.com/waifuai/traits</a>
     </div>
   </section>
+<!-- related -->
+<section>
+<h2>Related</h2>
+<div class="link-list">
+<a href="/mcp-servers/"><h3>MCP servers</h3><p>Companion chat, a Redis generation queue and personality matching over MCP.</p></a>
+<a href="/hermes-waifu/"><h3>Hermes Waifu</h3><p>Live2D widget for Hermes Agent with five built-in models and expression controls.</p></a>
+<a href="/waifu-chat-api/"><h3>Waifu Chat API</h3><p>REST API for waifu chatbot conversations with user management.</p></a>
+<a href="/waifu-constitution/"><h3>Waifu Constitution</h3><p>Alignment constitution and behaviour guidelines for waifu agents.</p></a>
+<a href="/waifu-llm-vrm/"><h3>Waifu LLM VRM</h3><p>Python library for AI waifus in the Godot engine, with VRM avatar support.</p></a>
+<a href="/anime-subtitle-chatbot/"><h3>Anime Subtitle Chatbot</h3><p>Few-shot chatbot trained on anime subtitles.</p></a>
+</div>
+</section>
+<!-- /related -->
   <footer>
     <p>Generated for AI agent crawlability</p>
   </footer>

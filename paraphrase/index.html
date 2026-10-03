@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Open-source paraphrasing projects: back-translation, a GAN-style prompt refinement loop, a paraphrase REST API, a human vs AI sentence classifier and a TensorFlow seq2seq model.">
+<meta name="keywords" content="paraphrase generation, back-translation, paraphrase GAN, human vs AI text classifier, seq2seq, Luong attention, OpenRouter, NLP">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://waifuai.github.io/paraphrase/">
+<meta property="og:title" content="Paraphrase Projects: Back-Translation, GAN Loop, NMT &amp; Classifier | WaifuAI">
+<meta property="og:description" content="Open-source paraphrasing projects: back-translation, a GAN-style prompt refinement loop, a paraphrase REST API, a human vs AI sentence classifier and a TensorFlow seq2seq model.">
+<meta property="og:image" content="https://waifuai.github.io/paraphrase/og.png?v=90bca658a1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://waifuai.github.io/paraphrase/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="WaifuAI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://waifuai.github.io/paraphrase/og.png?v=90bca658a1">
+<meta name="twitter:title" content="Paraphrase Projects: Back-Translation, GAN Loop, NMT &amp; Classifier | WaifuAI">
+<meta name="twitter:description" content="Open-source paraphrasing projects: back-translation, a GAN-style prompt refinement loop, a paraphrase REST API, a human vs AI sentence classifier and a TensorFlow seq2seq model.">
+<title>Paraphrase Projects: Back-Translation, GAN Loop, NMT &amp; Classifier | WaifuAI</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Paraphrase projects",
+  "description": "Open-source paraphrasing projects: back-translation, a GAN-style prompt refinement loop, a paraphrase REST API, a human vs AI sentence classifier and a TensorFlow seq2seq model.",
+  "url": "https://waifuai.github.io/paraphrase/",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "WaifuAI Docs Hub",
+    "url": "https://waifuai.github.io/"
+  },
+  "hasPart": [
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Back-Translation Paraphraser",
+      "codeRepository": "https://github.com/waifuai/paraphrase-back-translate",
+      "url": "https://waifuai.github.io/paraphrase/#back-translate",
+      "programmingLanguage": "Python"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Paraphrase GAN",
+      "codeRepository": "https://github.com/waifuai/paraphrase-gan",
+      "url": "https://waifuai.github.io/paraphrase/#gan",
+      "programmingLanguage": "Python"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Paraphrase GAN Utils",
+      "codeRepository": "https://github.com/waifuai/paraphrase-gan-utils",
+      "url": "https://waifuai.github.io/paraphrase/#gan-utils",
+      "programmingLanguage": "Python"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Human Sentence Classifier",
+      "codeRepository": "https://github.com/waifuai/paraphrase-human-sentence-classifier",
+      "url": "https://waifuai.github.io/paraphrase/#classifier",
+      "programmingLanguage": "Python"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Neural Machine Translation Paraphraser",
+      "codeRepository": "https://github.com/waifuai/paraphrase-neural-machine-translation",
+      "url": "https://waifuai.github.io/paraphrase/#nmt",
+      "programmingLanguage": "Python"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Paraphrase Generation",
+      "codeRepository": "https://github.com/waifuai/paraphrase-generation",
+      "url": "https://waifuai.github.io/paraphrase/#suite",
+      "programmingLanguage": "Python"
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../theme.css">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<!-- site-header -->
+<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/llm-countdowns/">Countdowns</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
+<!-- /site-header -->
+<div class="container">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">Paraphrase</span></nav>
+
+<header>
+<h1>Paraphrase projects</h1>
+<p>Six open-source projects for generating paraphrases and telling human writing from AI writing.</p>
+</header>
+<nav class="filter-chips" aria-label="On this page"><a class="chip" href="#back-translate">Back-Translation Paraphraser</a><a class="chip" href="#gan">Paraphrase GAN</a><a class="chip" href="#gan-utils">Paraphrase GAN Utils</a><a class="chip" href="#classifier">Human Sentence Classifier</a><a class="chip" href="#nmt">Neural Machine Translation Paraphraser</a><a class="chip" href="#suite">Paraphrase Generation</a></nav>
+<p>These came out of one idea: generate paraphrases, then keep only the ones a classifier can't tell from human writing. Back-translation and the NMT model generate, the classifier judges, the GAN loop combines the two to improve its own prompt, and GAN Utils wraps generation in a service. All are Python, MIT-0 licensed, and the LLM-based ones run on any OpenRouter model.</p>
+<section id="back-translate">
+<h2>Back-Translation Paraphraser</h2>
+<p>Translates text into another language and back, for example English to French to English, to get a paraphrase.</p>
+<ul><li>Works through a pool of input text files over a set number of cycles, alternating translation direction each cycle.</li><li>Any OpenRouter model can do the translating; the model is a command-line option.</li><li>Logs each completed cycle with its metrics.</li></ul>
+<p><a href="https://github.com/waifuai/paraphrase-back-translate">github.com/waifuai/paraphrase-back-translate</a></p>
+</section>
+<section id="gan">
+<h2>Paraphrase GAN</h2>
+<p>A generator and classifier loop that improves its own paraphrasing prompt.</p>
+<ul><li>Each iteration, an LLM paraphrases a batch of phrases using the current prompt, and a second prompt labels each result human or machine.</li><li>Paraphrases labeled human are kept, and the generator prompt is refined from the results for the next round.</li><li>Saves the selected paraphrases, every prompt version and per-iteration metrics such as generation and selection rate.</li></ul>
+<p><a href="https://github.com/waifuai/paraphrase-gan">github.com/waifuai/paraphrase-gan</a></p>
+</section>
+<section id="gan-utils">
+<h2>Paraphrase GAN Utils</h2>
+<p>Paraphrasing as a service, with the plumbing a real deployment needs.</p>
+<ul><li>Batch processing with concurrency, plus async support for high throughput.</li><li>Quality scoring that combines lexical, structural and semantic measures.</li><li>Redis or in-memory caching, rate limiting, and a FastAPI REST API with interactive docs.</li><li>An interactive CLI mode for quick experiments.</li></ul>
+<p><a href="https://github.com/waifuai/paraphrase-gan-utils">github.com/waifuai/paraphrase-gan-utils</a></p>
+</section>
+<section id="classifier">
+<h2>Human Sentence Classifier</h2>
+<p>Decides whether a sentence was written by a person or by a model.</p>
+<ul><li>Prompts an OpenRouter model to answer 1 for human-written text and 0 for machine-written text.</li><li>Includes an evaluation script that scores the classifier on a labeled TSV file.</li></ul>
+<p><a href="https://github.com/waifuai/paraphrase-human-sentence-classifier">github.com/waifuai/paraphrase-human-sentence-classifier</a></p>
+</section>
+<section id="nmt">
+<h2>Neural Machine Translation Paraphraser</h2>
+<p>A classic seq2seq model trained to paraphrase English sentences, built before the LLM projects.</p>
+<ul><li>TensorFlow 2 encoder-decoder with GRU units and Luong attention, trained on Parabank 100k.</li><li>Early stopping, checkpoints, TensorBoard logging and attention plots.</li><li>A command-line interface for training and prediction.</li></ul>
+<p><a href="https://github.com/waifuai/paraphrase-neural-machine-translation">github.com/waifuai/paraphrase-neural-machine-translation</a></p>
+</section>
+<section id="suite">
+<h2>Paraphrase Generation</h2>
+<p>The umbrella repository that collects the paraphrase projects in one place.</p>
+<p><a href="https://github.com/waifuai/paraphrase-generation">github.com/waifuai/paraphrase-generation</a></p>
+</section>
+<!-- related -->
+<section>
+<h2>Related</h2>
+<div class="link-list">
+<a href="/anime-subtitle-chatbot/"><h3>Anime Subtitle Chatbot</h3><p>Few-shot chatbot trained on anime subtitles.</p></a>
+<a href="/macro-language-model/"><h3>Macro Language Model</h3><p>CLI chatbot with swappable personalities such as tsundere and deredere.</p></a>
+<a href="/book-generator/"><h3>Book Generator</h3><p>Writes a full book from a title prompt using OpenRouter.</p></a>
+</div>
+</section>
+<!-- /related -->
+<footer>
+<p><a href="../">WaifuAI docs</a> &middot; <a href="../search.html">Search</a> &middot; <a href="../llms.txt">llms.txt</a> &middot; <a href="https://github.com/waifuai">GitHub</a></p>
+</footer>
+</div>
+</body>
+</html>

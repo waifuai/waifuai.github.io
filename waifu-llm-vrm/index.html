@@ -57,7 +57,7 @@
 </head>
 <body>
 <!-- site-header -->
-<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/research-books/">Books</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
+<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/llm-countdowns/">Countdowns</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
 <!-- /site-header -->
 <div class="container">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">Waifu LLM VRM</span></nav>
@@ -67,10 +67,9 @@
 <p>A Python library for creating AI waifus in Godot, powered by the OpenRouter API and optionally using VRM models.</p>
 </header>
     <section>
-    <h2>Documentation <span class="count">(3)</span></h2>
+    <h2>Documentation <span class="count">(2)</span></h2>
     <p class="section-desc">Project documentation and guides</p>
     <div class="link-list">
-      <a href="README.html">pywaifu</a>
       <a href="CHANGELOG.html">Changelog</a>
       <a href="CONTRIBUTING.html">Contributing to pywaifu</a>
     </div>
@@ -79,7 +78,7 @@
     <h2>Project Overview</h2>
     <div class="readme-content">
 <p>A Python library for creating AI waifus in Godot, powered by the OpenRouter API and optionally using VRM models.</p>
-<h2>Features</h2>
+<h2 id="features">Features</h2>
 <ul>
 <li><strong>AI Conversation:</strong> Uses the OpenRouter API for natural language generation. Requires an OpenRouter API key.</li>
 <li><strong>Godot Integration:</strong> Connects to a running Godot instance for communication (using <code>godot-rl</code> if available, otherwise sockets).</li>
@@ -87,31 +86,31 @@
 <li><strong>VRM Support (Optional):</strong> <code>VRMCharacter</code> subclass adds methods for controlling VRM animations and expressions via Godot.</li>
 <li><strong>Context Management:</strong> Conversation history is automatically managed by the chat session.</li>
 </ul>
-<h2>Installation</h2>
+<h2 id="installation">Installation</h2>
 <ol>
 <li>
-<p><strong>Clone the repository:</strong>
-    <code>bash
-    git clone https://github.com/waifuai/waifu-llm-vrm
-    cd waifu-llm-vrm</code></p>
+<p><strong>Clone the repository:</strong></p>
+<pre><code class="language-bash">git clone https://github.com/waifuai/waifu-llm-vrm
+cd waifu-llm-vrm
+</code></pre>
 </li>
 <li>
 <p><strong>Create a virtual environment (recommended):</strong>
-    This project uses <code>uv</code> for environment management. Ensure <code>uv</code> is installed (<code>pip install uv</code> or <code>python -m pip install uv</code>).
-    <code>bash
-    # Create the venv
-    python -m uv venv .venv
-    # Activate (Bash/Git Bash)
-    source .venv/Scripts/activate
-    # Or (CMD on Windows)
-    # .venv\Scripts\activate.bat
-    # Or (PowerShell on Windows)
-    # .venv\Scripts\Activate.ps1</code>
-    <em>Note: You might need to install <code>uv</code> inside the venv as well if you encounter issues: <code>.venv/Scripts/python.exe -m pip install uv</code></em></p>
+This project uses <code>uv</code> for environment management. Ensure <code>uv</code> is installed (<code>pip install uv</code> or <code>python -m pip install uv</code>).</p>
+<pre><code class="language-bash"># Create the venv
+python -m uv venv .venv
+# Activate (Bash/Git Bash)
+source .venv/Scripts/activate
+# Or (CMD on Windows)
+# .venv\Scripts\activate.bat
+# Or (PowerShell on Windows)
+# .venv\Scripts\Activate.ps1
+</code></pre>
+<p><em>Note: You might need to install <code>uv</code> inside the venv as well if you encounter issues: <code>.venv/Scripts/python.exe -m pip install uv</code></em></p>
 </li>
 <li>
 <p><strong>Set up OpenRouter API Key:</strong>
-    This library requires an OpenRouter API key.</p>
+This library requires an OpenRouter API key.</p>
 <ul>
 <li>Obtain an API key from OpenRouter (https://openrouter.ai/).</li>
 <li>Create a file named <code>.api-openrouter</code> in your home directory (<code>~/.api-openrouter</code>).</li>
@@ -120,13 +119,13 @@
 </li>
 <li>
 <p><strong>Install dependencies:</strong>
-    Make sure your virtual environment is activated.
-    <code>bash
-    # Install requirements using uv
-    python -m uv pip install -r requirements.txt</code></p>
+Make sure your virtual environment is activated.</p>
+<pre><code class="language-bash"># Install requirements using uv
+python -m uv pip install -r requirements.txt
+</code></pre>
 </li>
 </ol>
-<h2>Usage</h2>
+<h2 id="usage">Usage</h2>
 <p>The following example demonstrates basic usage. You can find this script in <code>examples/basic_usage.py</code>.</p>
 <pre><code class="language-python"># examples/basic_usage.py
 import time
@@ -227,32 +226,34 @@ def main():
 if __name__ == &quot;__main__&quot;:
     main()
 </code></pre>
-<h2>Godot Setup</h2>
+<h2 id="godot-setup">Godot Setup</h2>
 <p>To integrate pywaifu with your Godot project:</p>
-<h3>Basic Setup</h3>
+<h3 id="basic-setup">Basic Setup</h3>
 <ol>
 <li>
 <p><strong>Create a Godot Project</strong>: Start a new Godot project or use an existing one.</p>
 </li>
 <li>
 <p><strong>Network Configuration</strong>:</p>
-</li>
+<ul>
 <li>If using <code>godot-rl</code>: Ensure godot-rl is properly configured in your Godot project.</li>
-<li>
-<p>If using sockets: Make sure your Godot project listens on port 9000 (default) or the port specified in your configuration.</p>
+<li>If using sockets: Make sure your Godot project listens on port 9000 (default) or the port specified in your configuration.</li>
+</ul>
 </li>
 <li>
 <p><strong>Communication Scripts</strong>:
-   You'll need to implement Godot scripts to handle RPC calls from Python. Add these methods to your Godot nodes:</p>
-</li>
+You'll need to implement Godot scripts to handle RPC calls from Python. Add these methods to your Godot nodes:</p>
+<ul>
 <li><code>play_animation(node_path, animation_name, blend_time)</code></li>
 <li><code>set_expression(node_path, expression_name, value)</code></li>
 <li><code>get_animation_list(node_path)</code></li>
 <li><code>get_blendshape_list(node_path)</code></li>
 <li><code>character_spoke(character_name, message)</code></li>
 <li><code>character_error(character_name, error_message)</code></li>
+</ul>
+</li>
 </ol>
-<h3>VRM Setup (Optional)</h3>
+<h3 id="vrm-setup-optional">VRM Setup (Optional)</h3>
 <p>If you want to use VRM characters with animations and expressions:</p>
 <ol>
 <li>
@@ -262,13 +263,13 @@ if __name__ == &quot;__main__&quot;:
 <p><strong>Model Import</strong>: Import your VRM model into Godot and note the node path.</p>
 </li>
 <li>
-<p><strong>Animation Setup</strong>: Ensure your VRM model has animation player with animations like "Wave", "Idle", etc.</p>
+<p><strong>Animation Setup</strong>: Ensure your VRM model has animation player with animations like &quot;Wave&quot;, &quot;Idle&quot;, etc.</p>
 </li>
 <li>
-<p><strong>Blend Shapes</strong>: Set up blend shapes for expressions like "Happy", "Sad", "Neutral", etc.</p>
+<p><strong>Blend Shapes</strong>: Set up blend shapes for expressions like &quot;Happy&quot;, &quot;Sad&quot;, &quot;Neutral&quot;, etc.</p>
 </li>
 </ol>
-<h3>Example Godot Script</h3>
+<h3 id="example-godot-script">Example Godot Script</h3>
 <pre><code class="language-gdscript">extends Node
 
 func _ready():
@@ -298,81 +299,85 @@ func get_blendshape_list(node_path):
         return vrm_node.get_blendshape_list()
     return []
 </code></pre>
-<h2>API Reference</h2>
-<h3>Character Class</h3>
+<h2 id="api-reference">API Reference</h2>
+<h3 id="character-class">Character Class</h3>
 <p>The main class for creating AI characters.</p>
-<h4>Constructor</h4>
+<h4 id="constructor">Constructor</h4>
 <pre><code class="language-python">Character(name: str, personality: str, godot_connector: GodotConnector = None)
 </code></pre>
-<h4>Methods</h4>
+<h4 id="methods">Methods</h4>
 <ul>
 <li><code>talk(input_text: str) -&gt; str</code>: Send user input to the character and get a response</li>
 <li><code>perform_action(action: str, *args) -&gt; None</code>: Send an action command to Godot</li>
 <li><code>update_state(state_updates: dict) -&gt; None</code>: Update the character's internal state</li>
 </ul>
-<h3>VRMCharacter Class</h3>
+<h3 id="vrmcharacter-class">VRMCharacter Class</h3>
 <p>Extended character class with VRM animation support.</p>
-<h4>Constructor</h4>
+<h4 id="constructor">Constructor</h4>
 <pre><code class="language-python">VRMCharacter(name: str, personality: str, godot_connector: GodotConnector = None, vrm_node_path: str = None)
 </code></pre>
-<h4>Additional Methods</h4>
+<h4 id="additional-methods">Additional Methods</h4>
 <ul>
 <li><code>play_animation(animation_name: str, blend_time: float = 0.0) -&gt; None</code>: Play a VRM animation</li>
 <li><code>set_expression(expression_name: str, value: float) -&gt; None</code>: Set a VRM blend shape value</li>
 <li><code>get_animation_list() -&gt; list</code>: Get list of available animations from Godot</li>
 <li><code>get_blendshape_list() -&gt; list</code>: Get list of available blend shapes from Godot</li>
 </ul>
-<h3>GodotConnector Class</h3>
+<h3 id="godotconnector-class">GodotConnector Class</h3>
 <p>Handles communication between Python and Godot.</p>
-<h4>Constructor</h4>
+<h4 id="constructor">Constructor</h4>
 <pre><code class="language-python">GodotConnector(project_path: str, port: int = None, auto_start: bool = True, headless: bool = True)
 </code></pre>
-<h4>Methods</h4>
+<h4 id="methods">Methods</h4>
 <ul>
 <li><code>connect() -&gt; None</code>: Establish connection to Godot</li>
 <li><code>disconnect() -&gt; None</code>: Close the connection</li>
 <li><code>rpc(func_name: str, *args) -&gt; any</code>: Call a function in Godot</li>
 <li><code>register_callback(event: str, callback: callable) -&gt; None</code>: Register a callback for Godot events</li>
 </ul>
-<h2>Troubleshooting</h2>
-<h3>Common Issues</h3>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
 <ol>
-<li><strong>"Could not connect to Godot" Error</strong></li>
+<li>
+<p><strong>&quot;Could not connect to Godot&quot; Error</strong></p>
+<ul>
 <li>Ensure Godot is running and listening on the correct port</li>
 <li>Check that your Godot project has the necessary network scripts</li>
-<li>
-<p>Verify the project path is correct</p>
+<li>Verify the project path is correct</li>
+</ul>
 </li>
 <li>
-<p><strong>"API key file not found" Error</strong></p>
-</li>
+<p><strong>&quot;API key file not found&quot; Error</strong></p>
+<ul>
 <li>Create the <code>~/.api-openrouter</code> file</li>
 <li>Ensure the file contains only your OpenRouter API key</li>
-<li>
-<p>Check file permissions</p>
+<li>Check file permissions</li>
+</ul>
 </li>
 <li>
 <p><strong>VRM animations not working</strong></p>
-</li>
+<ul>
 <li>Verify the VRM node path is correct</li>
 <li>Ensure the VRM model has the required animations</li>
-<li>
-<p>Check that blend shapes are properly set up</p>
+<li>Check that blend shapes are properly set up</li>
+</ul>
 </li>
 <li>
 <p><strong>Poor performance</strong></p>
-</li>
+<ul>
 <li>Reduce conversation history by implementing context limits</li>
 <li>Use shorter personality descriptions</li>
 <li>Consider using a different OpenRouter model if available</li>
+</ul>
+</li>
 </ol>
-<h3>Debug Mode</h3>
+<h3 id="debug-mode">Debug Mode</h3>
 <p>Enable debug logging by setting the logging level:</p>
 <pre><code class="language-python">import logging
 logging.basicConfig(level=logging.DEBUG)
 </code></pre>
-<h2>Examples</h2>
-<h3>Advanced Character with Custom Behavior</h3>
+<h2 id="examples">Examples</h2>
+<h3 id="advanced-character-with-custom-behavior">Advanced Character with Custom Behavior</h3>
 <pre><code class="language-python">from pywaifu import Character, GodotConnector
 import time
 
@@ -412,8 +417,8 @@ while True:
 
 connector.disconnect()
 </code></pre>
-<h2>Development</h2>
-<h3>Running Tests</h3>
+<h2 id="development">Development</h2>
+<h3 id="running-tests">Running Tests</h3>
 <pre><code class="language-bash"># Run all tests
 python -m pytest
 
@@ -423,7 +428,7 @@ python -m pytest --cov=src/pywaifu
 # Run specific test file
 python -m pytest src/pywaifu/tests/test_character.py
 </code></pre>
-<h3>Project Structure</h3>
+<h3 id="project-structure">Project Structure</h3>
 <pre><code>pywaifu/
 ├── src/
 │   └── pywaifu/
@@ -444,7 +449,7 @@ python -m pytest src/pywaifu/tests/test_character.py
 ├── pytest.ini                # Test configuration
 └── .gitignore                # Git ignore patterns
 </code></pre>
-<h2>Contributing</h2>
+<h2 id="contributing">Contributing</h2>
 <p>Contributions are welcome! Please follow these steps:</p>
 <ol>
 <li>Fork the repository</li>
@@ -453,15 +458,17 @@ python -m pytest src/pywaifu/tests/test_character.py
 <li>Push to the branch (<code>git push origin feature/amazing-feature</code>)</li>
 <li>Open a Pull Request</li>
 </ol>
-<p>Please ensure your code:
-- Follows PEP 8 style guidelines
-- Includes tests for new functionality
-- Updates documentation as needed
-- Passes all existing tests</p>
-<h2>License</h2>
+<p>Please ensure your code:</p>
+<ul>
+<li>Follows PEP 8 style guidelines</li>
+<li>Includes tests for new functionality</li>
+<li>Updates documentation as needed</li>
+<li>Passes all existing tests</li>
+</ul>
+<h2 id="license">License</h2>
 <p>MIT-0 License</p>
-<h2>Changelog</h2>
-<h3>Version 1.0.0</h3>
+<h2 id="changelog">Changelog</h2>
+<h3 id="version-100">Version 1.0.0</h3>
 <ul>
 <li>Initial release</li>
 <li>Basic Character class with OpenRouter integration</li>
@@ -470,6 +477,7 @@ python -m pytest src/pywaifu/tests/test_character.py
 <li>Comprehensive test suite</li>
 <li>Documentation and examples</li>
 </ul>
+
     </div>
   </section>
 
@@ -480,6 +488,18 @@ python -m pytest src/pywaifu/tests/test_character.py
       <a href="https://github.com/waifuai/waifu-llm-vrm" target="_blank">github.com/waifuai/waifu-llm-vrm</a>
     </div>
   </section>
+<!-- related -->
+<section>
+<h2>Related</h2>
+<div class="link-list">
+<a href="/hermes-waifu/"><h3>Hermes Waifu</h3><p>Live2D widget for Hermes Agent with five built-in models and expression controls.</p></a>
+<a href="/waifu-chat-api/"><h3>Waifu Chat API</h3><p>REST API for waifu chatbot conversations with user management.</p></a>
+<a href="/waifu-constitution/"><h3>Waifu Constitution</h3><p>Alignment constitution and behaviour guidelines for waifu agents.</p></a>
+<a href="/anime-subtitle-chatbot/"><h3>Anime Subtitle Chatbot</h3><p>Few-shot chatbot trained on anime subtitles.</p></a>
+<a href="/traits/"><h3>Traits</h3><p>Character and agent trait system, with Manim animations.</p></a>
+</div>
+</section>
+<!-- /related -->
   <footer>
     <p>Generated for AI agent crawlability</p>
   </footer>

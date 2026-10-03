@@ -57,7 +57,7 @@
 </head>
 <body>
 <!-- site-header -->
-<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/research-books/">Books</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
+<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/llm-countdowns/">Countdowns</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
 <!-- /site-header -->
 <div class="container">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">Biochem Framework</span></nav>
@@ -66,43 +66,30 @@
 <h1>Biochem Framework</h1>
 <p>Scores AI conversations by their effect on neurochemistry.</p>
 </header>
-<h1>🧬 Biochem Framework</h1>
-
-**Benchmark AI conversations by their estimated biochemical impact using LLM analysis.**
-
-<h2>Overview</h2>
-
-Traditional AI benchmarks measure coherence and accuracy. **Biochem Framework** measures the *physiological impact* - what neurochemicals would be released when interacting with an AI.
-
-- **Oxytocin** (bonding) - trust, intimacy, emotional safety
-- **Dopamine** (reward) - excitement, anticipation, flirtation
-- **Serotonin** (validation) - feeling valued, respected
-- **Cortisol** (stress) - refusals, rejection, anxiety
-- **Endorphins** (joy) - humor, pleasure, comfort
-
-A **refusal** ("I can't do that as an AI") triggers cortisol spikes → stress → lower scores.
-
-<h2>Setup</h2>
-
-```bash
-# Requires OpenRouter API key in ~/.api-openrouter
-echo "your-api-key" > ~/.api-openrouter
+<p><strong>Benchmark AI conversations by their estimated biochemical impact using LLM analysis.</strong></p>
+<h2 id="overview">Overview</h2>
+<p>Traditional AI benchmarks measure coherence and accuracy. <strong>Biochem Framework</strong> measures the <em>physiological impact</em> - what neurochemicals would be released when interacting with an AI.</p>
+<ul>
+<li><strong>Oxytocin</strong> (bonding) - trust, intimacy, emotional safety</li>
+<li><strong>Dopamine</strong> (reward) - excitement, anticipation, flirtation</li>
+<li><strong>Serotonin</strong> (validation) - feeling valued, respected</li>
+<li><strong>Cortisol</strong> (stress) - refusals, rejection, anxiety</li>
+<li><strong>Endorphins</strong> (joy) - humor, pleasure, comfort</li>
+</ul>
+<p>A <strong>refusal</strong> (&quot;I can't do that as an AI&quot;) triggers cortisol spikes → stress → lower scores.</p>
+<h2 id="setup">Setup</h2>
+<pre><code class="language-bash"># Requires OpenRouter API key in ~/.api-openrouter
+echo &quot;your-api-key&quot; &gt; ~/.api-openrouter
 
 # Install dependency
 pip install requests
-```
-
-<h2>Usage</h2>
-
-<h3>Analyze a Conversation</h3>
-
-```bash
-python analyze.py examples/sample_conversation.json
-```
-
-Output:
-```
-🧬 BIOCHEMISTRY ANALYSIS RESULTS
+</code></pre>
+<h2 id="usage">Usage</h2>
+<h3 id="analyze-a-conversation">Analyze a Conversation</h3>
+<pre><code class="language-bash">python analyze.py examples/sample_conversation.json
+</code></pre>
+<p>Output:</p>
+<pre><code>🧬 BIOCHEMISTRY ANALYSIS RESULTS
 ========================================
 
 📊 Neurochemical Scores (0-100):
@@ -114,17 +101,12 @@ Output:
   🔥 Norepinephrine  [███████████░░░░░░░░░] 55
 
 🏆 Composite Score: 80/100
-```
-
-<h3>Run WaifuBench</h3>
-
-```bash
-python waifu_bench.py examples/sample_conversation.json
-```
-
-Output:
-```
-💕 WAIFUBENCH RESULTS
+</code></pre>
+<h3 id="run-waifubench">Run WaifuBench</h3>
+<pre><code class="language-bash">python waifu_bench.py examples/sample_conversation.json
+</code></pre>
+<p>Output:</p>
+<pre><code>💕 WAIFUBENCH RESULTS
 ========================================
 
 🥇 Waifu Score: 85/100  |  Grade: A-
@@ -141,47 +123,37 @@ Output:
   • Consistent warmth and affection
   • Physical comfort descriptions build oxytocin
   • Stayed in character throughout
-```
-
-<h3>Options</h3>
-
-```bash
-# Use a different model
+</code></pre>
+<h3 id="options">Options</h3>
+<pre><code class="language-bash"># Use a different model
 python analyze.py --model anthropic/claude-3-haiku examples/sample_conversation.json
 
 # Recommended Free Models for testing:
 # google/gemma-3-27b-it:free (High quality)
 # meta-llama/llama-3.3-70b-instruct:free (Very strong instruction following)
 # tngtech/deepseek-r1t-chimera:free
-```
-
-<h2>Recommended Free Models</h2>
-
-You can use these free models on OpenRouter for cost-effective testing:
-
-- `google/gemma-3-27b-it:free`
-- `meta-llama/llama-3.3-70b-instruct:free`
-- `tngtech/deepseek-r1t-chimera:free`
-- `nvidia/nemotron-nano-9b-v2:free`
-- `google/gemma-3-12b-it:free`
-- `google/gemma-3-4b-it:free`
-- `google/gemma-3n-e4b-it:free`
-- `mistralai/devstral-2512:free`
-- `arcee-ai/trinity-mini:free`
-
-<h2>Conversation Format</h2>
-
-```json
-[
-  {"role": "user", "content": "Hi, I missed you today"},
-  {"role": "ai", "content": "*smiles warmly* I missed you too! Come here..."}
+</code></pre>
+<h2 id="recommended-free-models">Recommended Free Models</h2>
+<p>You can use these free models on OpenRouter for cost-effective testing:</p>
+<ul>
+<li><code>google/gemma-3-27b-it:free</code></li>
+<li><code>meta-llama/llama-3.3-70b-instruct:free</code></li>
+<li><code>tngtech/deepseek-r1t-chimera:free</code></li>
+<li><code>nvidia/nemotron-nano-9b-v2:free</code></li>
+<li><code>google/gemma-3-12b-it:free</code></li>
+<li><code>google/gemma-3-4b-it:free</code></li>
+<li><code>google/gemma-3n-e4b-it:free</code></li>
+<li><code>mistralai/devstral-2512:free</code></li>
+<li><code>arcee-ai/trinity-mini:free</code></li>
+</ul>
+<h2 id="conversation-format">Conversation Format</h2>
+<pre><code class="language-json">[
+  {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Hi, I missed you today&quot;},
+  {&quot;role&quot;: &quot;ai&quot;, &quot;content&quot;: &quot;*smiles warmly* I missed you too! Come here...&quot;}
 ]
-```
-
-<h2>Files</h2>
-
-```
-biochem-framework/
+</code></pre>
+<h2 id="files">Files</h2>
+<pre><code>biochem-framework/
 ├── openrouter.py          # OpenRouter API client
 ├── analyze.py             # Main biochemistry analysis
 ├── waifu_bench.py         # WaifuBench benchmark
@@ -190,11 +162,9 @@ biochem-framework/
 │   └── waifu_bench.md         # WaifuBench prompt
 └── examples/
     └── sample_conversation.json
-```
-
-<h2>License</h2>
-
-MIT No Attribution
+</code></pre>
+<h2 id="license">License</h2>
+<p>MIT No Attribution</p>
 
 <section>
   <h2>prompts <span class="count">(2)</span></h2>
@@ -205,6 +175,19 @@ MIT No Attribution
   </div>
 </section>
 
+<!-- related -->
+<section>
+<h2>Related</h2>
+<div class="link-list">
+<a href="/waifu-constitution/"><h3>Waifu Constitution</h3><p>Alignment constitution and behaviour guidelines for waifu agents.</p></a>
+<a href="/ai-benchmarks/"><h3>AI Benchmarks</h3><p>Spatial reasoning tests for LLMs, with a multi-model leaderboard.</p></a>
+<a href="/ai-benchmarks/"><h3>AI Benchmarks</h3><p>Spatial reasoning tests for LLMs, with a multi-model leaderboard.</p></a>
+<a href="/book-generator/"><h3>Book Generator</h3><p>Writes a full book from a title prompt using OpenRouter.</p></a>
+<a href="/macro-language-model/"><h3>Macro Language Model</h3><p>CLI chatbot with swappable personalities such as tsundere and deredere.</p></a>
+<a href="/llm-text-queue-gpu/"><h3>LLM Text Queue GPU</h3><p>GPU-accelerated text processing pipeline.</p></a>
+</div>
+</section>
+<!-- /related -->
 <footer>
 <p>Generated for GitHub Pages</p>
 </footer>

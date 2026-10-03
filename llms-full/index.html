@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EP9DHGYS02"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EP9DHGYS02');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Open-source Python generators for llms-full.txt (one Markdown file with a table of contents) and llms-full.html (one HTML file with per-file AI summaries).">
+<meta name="keywords" content="llms-full.txt, llms-full.html, llms.txt, LLM context, documentation for AI, generator, Python">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://waifuai.github.io/llms-full/">
+<meta property="og:title" content="llms-full.txt and llms-full.html Generators | WaifuAI">
+<meta property="og:description" content="Open-source Python generators for llms-full.txt (one Markdown file with a table of contents) and llms-full.html (one HTML file with per-file AI summaries).">
+<meta property="og:image" content="https://waifuai.github.io/llms-full/og.png?v=8c76d4220a">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://waifuai.github.io/llms-full/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="WaifuAI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://waifuai.github.io/llms-full/og.png?v=8c76d4220a">
+<meta name="twitter:title" content="llms-full.txt and llms-full.html Generators | WaifuAI">
+<meta name="twitter:description" content="Open-source Python generators for llms-full.txt (one Markdown file with a table of contents) and llms-full.html (one HTML file with per-file AI summaries).">
+<title>llms-full.txt and llms-full.html Generators | WaifuAI</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "llms-full.txt and llms-full.html",
+  "description": "Open-source Python generators for llms-full.txt (one Markdown file with a table of contents) and llms-full.html (one HTML file with per-file AI summaries).",
+  "url": "https://waifuai.github.io/llms-full/",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "WaifuAI Docs Hub",
+    "url": "https://waifuai.github.io/"
+  },
+  "hasPart": [
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "llms-full.txt generator",
+      "codeRepository": "https://github.com/waifuai/llms-full-txt",
+      "url": "https://waifuai.github.io/llms-full/#txt",
+      "programmingLanguage": "Python"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "llms-full.html generator",
+      "codeRepository": "https://github.com/waifuai/llms-full-html",
+      "url": "https://waifuai.github.io/llms-full/#html",
+      "programmingLanguage": "Python"
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../theme.css">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<!-- site-header -->
+<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/research-text/">Research</a><a href="/llm-countdowns/">Countdowns</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
+<!-- /site-header -->
+<div class="container">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">llms-full</span></nav>
+
+<header>
+<h1>llms-full.txt and llms-full.html</h1>
+<p>Tools that bundle a project&#x27;s docs and code into one file a language model can read.</p>
+</header>
+<nav class="filter-chips" aria-label="On this page"><a class="chip" href="#txt">llms-full.txt generator</a><a class="chip" href="#html">llms-full.html generator</a></nav>
+<p>llms-full is a proposed companion to robots.txt and sitemap.xml: one file with a site's full documentation and code, so an LLM can take it all in at once. This site publishes its own short index at <a href="/llms.txt">/llms.txt</a>.</p>
+<section id="txt">
+<h2>llms-full.txt generator</h2>
+<p>Bundles a directory of docs and code into a single Markdown file.</p>
+<ul><li>Generates llms-full.txt from any directory.</li><li>Extra scripts build a Markdown table of contents and count lines and characters of code.</li><li>File extensions and exclude patterns are set in config.yaml.</li></ul>
+<p><a href="https://github.com/waifuai/llms-full-txt">github.com/waifuai/llms-full-txt</a></p>
+</section>
+<section id="html">
+<h2>llms-full.html generator</h2>
+<p>The same idea as HTML, with a summary for every file.</p>
+<ul><li>Generates llms-full.html from any directory.</li><li>Uses an OpenRouter model to write a short summary of each file, so a model can skim before reading.</li></ul>
+<p><a href="https://github.com/waifuai/llms-full-html">github.com/waifuai/llms-full-html</a></p>
+</section>
+<!-- related -->
+<section>
+<h2>Related</h2>
+<div class="link-list">
+<a href="/function-graph-generator/"><h3>Function Graph Generator</h3><p>Generates function call graphs for Python code.</p></a>
+<a href="/research-text/"><h3>Research papers</h3><p>The full collection: kinematics, quantum LLMs, AI agents and domain-specific languages.</p></a>
+</div>
+</section>
+<!-- /related -->
+<footer>
+<p><a href="../">WaifuAI docs</a> &middot; <a href="../search.html">Search</a> &middot; <a href="../llms.txt">llms.txt</a> &middot; <a href="https://github.com/waifuai">GitHub</a></p>
+</footer>
+</div>
+</body>
+</html>
