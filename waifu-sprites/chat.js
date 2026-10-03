@@ -8,6 +8,9 @@
  *
  * Replies start with an emotion tag like "[curious]" that picks the sprite
  * clip. The tag is stripped from what is shown and stored on the message.
+ *
+ * Messages are {role, content, emotion?}. A picture is its own assistant
+ * message {role, image, prompt, caption} (see pictures.js).
  */
 const Chat = (() => {
   const CLOUD_URL = 'https://waifu-companion-proxy.thewaifuai.workers.dev/chat/completions';
@@ -77,6 +80,7 @@ const Chat = (() => {
     customBaseUrl: '',
     persona: 'aurora',
     customPrompt: '',
+    aspect: 'portrait',
   }, load(KEY.settings, {}));
   if (!PROVIDERS[settings.provider]) settings.provider = 'cloud';
   if (!PERSONAS[settings.persona]) settings.persona = 'aurora';
@@ -92,6 +96,7 @@ const Chat = (() => {
     return id;
   }
   const sessionId = randomId('s-');
+  function ids() { return { session: sessionId, visitor: visitorId() }; }
 
   // ── Conversations ──
   let convId = null;
@@ -108,7 +113,7 @@ const Chat = (() => {
     if (!convId || !messages.length) return;
     const list = historyIndex().filter(h => h.id !== convId);
     const first = messages.find(m => m.role === 'user');
-    const title = first ? first.content.slice(0, 48) : 'New chat';
+    const title = first ? first.content.slice(0, 48) : 'Picture';
     list.unshift({ id: convId, title, updated: Date.now(), count: messages.length, persona: settings.persona });
     save(KEY.history, list.slice(0, 100));
     save(KEY.conv + convId, messages);
@@ -129,6 +134,8 @@ const Chat = (() => {
   }
 
   function deleteConversation(id) {
+    const data = load(KEY.conv + id, []);
+    if (Array.isArray(data)) data.forEach(m => { if (m.image) Pictures.forget(m.image); });
     save(KEY.history, historyIndex().filter(h => h.id !== id));
     remove(KEY.conv + id);
     if (id === convId) newConversation();
@@ -137,7 +144,46 @@ const Chat = (() => {
   // ── Requests ──
   function systemPrompt() {
     const p = settings.persona === 'custom' ? settings.customPrompt : PERSONAS[settings.persona].prompt;
-    return ((p || '').trim() + '\n\n' + EMOTION_RULE).trim();
+    return ((p || '').trim() + '\n\n' + Pictures.CHAT_RULE + '\n\n' + EMOTION_RULE).trim();
+  }
+
+  // What the model sees: tags kept on past replies so it keeps the format, and
+  // each picture as a "(sent a picture: ...)" note on the reply it belongs to.
+  function contextForModel(list) {
+    const out = [];
+    list.forEach(m => {
+      if (m.image) {
+        const note = '(sent a picture: ' + (m.prompt || 'a picture') + ')';
+        const prev = out[out.length - 1];
+        if (prev && prev.role === 'assistant') prev.content += '\n' + note;
+        else out.push({ role: 'assistant', content: (m.caption || 'Here, I drew this for you!') + '\n' + note });
+        return;
+      }
+      out.push({ role: m.role, content: m.role === 'assistant' && m.emotion ? '[' + m.emotion + '] ' + m.content : m.content });
+    });
+    return out;
+  }
+
+  // Adds a finished picture to a conversation, which may no longer be the open one.
+  // Returns true when it went into the open conversation.
+  function addPicture(id, message) {
+    if (id === convId) {
+      messages.push(message);
+      saveConversation();
+      return true;
+    }
+    const data = load(KEY.conv + id, null);
+    if (!Array.isArray(data)) return false;
+    data.push(message);
+    save(KEY.conv + id, data);
+    return false;
+  }
+
+  function lastReply() {
+    for (let i = messages.length - 1; i >= 0; i--) {
+      if (messages[i].role === 'assistant' && messages[i].content) return messages[i].content;
+    }
+    return '';
   }
 
   function modelFor(provider) {
@@ -146,11 +192,7 @@ const Chat = (() => {
 
   function buildRequest() {
     const provider = settings.provider;
-    const history = messages.slice(-30).map(m => ({
-      role: m.role,
-      // Keep the tag on past replies so the model keeps using the format.
-      content: m.role === 'assistant' && m.emotion ? '[' + m.emotion + '] ' + m.content : m.content,
-    }));
+    const history = contextForModel(messages.slice(-30));
     const body = {
       model: modelFor(provider),
       messages: [{ role: 'system', content: systemPrompt() }].concat(history),
@@ -216,6 +258,20 @@ const Chat = (() => {
     return { emotion: null, text: pending ? '' : text, pending };
   }
 
+  // Removes what only the app should act on: stray emotion tags, picture notes
+  // echoed from the history, and bracketed picture descriptions the model
+  // sometimes writes despite being told the picture is drawn separately.
+  // While streaming (partial), a bracket still open at the end is held back.
+  const PICTURE_WORDS = /draw|paint|sketch|picture|photo|selfie|image|snap/i;
+  function clean(text, partial) {
+    let t = text
+      .replace(/\(sent a picture:[^)\n]*\)?/gi, '')
+      .replace(/\s*\[([^\]\n]{0,300})\]/g, (all, inner) =>
+        /^[a-z_]{2,20}$/i.test(inner) || PICTURE_WORDS.test(inner) ? ' ' : all);
+    if (partial) t = t.replace(/\s*\[[^\]\n]*$/, '');
+    return t.replace(/[ \t]{2,}/g, ' ').trim();
+  }
+
   /**
    * Sends text and streams the reply.
    * cb.onEmotion(name) fires as soon as the tag arrives, cb.onText(visibleText)
@@ -254,13 +310,13 @@ const Chat = (() => {
             emotion = part.emotion;
             cb.onEmotion(emotion);
           }
-          cb.onText(part.text);
+          cb.onText(clean(part.text, true));
         });
       } finally {
         clearTimeout(timer);
       }
       const part = splitTag(raw);
-      const reply = part.text.replace(/\s*\[[a-z_]{2,20}\]\s*/gi, ' ').trim();
+      const reply = clean(part.text, false);
       if (!reply) throw new Error('The reply came back empty. Try again or pick another model.');
       if (!emotionSent) cb.onEmotion(null);
       const message = { role: 'assistant', content: reply, emotion: emotion || Sprites.detectEmotion(reply) };
@@ -285,7 +341,7 @@ const Chat = (() => {
 
   return {
     PROVIDERS, PERSONAS, settings, saveSettings, modelFor,
-    send, stop, newConversation, openConversation, deleteConversation, historyIndex,
+    send, stop, ids, addPicture, lastReply, newConversation, openConversation, deleteConversation, historyIndex,
     get messages() { return messages; },
     get convId() { return convId; },
     get busy() { return busy; },

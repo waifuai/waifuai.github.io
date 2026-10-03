@@ -299,3 +299,26 @@
 #about table { width: 100%; border-collapse: collapse; font-size: 14px; }
 #about th, #about td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--border); }
 #about th { color: var(--text-muted); font-weight: 600; }
+
+/* ── Pictures ── */
+.msg.pic { padding: 6px; max-width: min(78%, 320px); }
+.msg.pic img { display: block; width: 100%; height: auto; min-height: 120px; border-radius: 11px; cursor: zoom-in; background: rgba(255, 255, 255, 0.06); }
+.msg.pic figcaption { padding: 6px 6px 2px; }
+.msg.info.keep { animation: pulse 1.6s ease-in-out infinite; }
+.panel code { font-size: 12px; background: rgba(255, 255, 255, 0.1); padding: 1px 5px; border-radius: 4px; }
+.lightbox {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.85);
+  cursor: zoom-out;
+}
+.lightbox[hidden] { display: none; }
+.lightbox img { max-width: 100%; max-height: calc(100% - 48px); border-radius: 12px; object-fit: contain; }
+.lightbox a { color: var(--pink); font-size: 14px; }

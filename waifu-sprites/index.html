@@ -114,6 +114,10 @@
       </div>
       <p class="note" id="providerNote"></p>
 
+      <h3>Pictures</h3>
+      <p class="note">Ask for a selfie or a drawing, or type <code>/image</code> and a description. Pictures are drawn by WaifuAI Cloud.</p>
+      <div class="options aspects" id="aspectList"></div>
+
       <h3>Display</h3>
       <label class="row"><span>Bubble opacity</span><input id="opacity" type="range" min="0.15" max="0.95" step="0.05"></label>
       <label class="row"><span>Text size</span><input id="fontSize" type="range" min="12" max="20" step="1"></label>
@@ -124,6 +128,11 @@
       <button class="btn-danger" id="clearAll" type="button">Delete all chats</button>
     </div>
   </aside>
+
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-label="Picture">
+    <img id="lightboxImg" alt="">
+    <a id="lightboxOpen" href="#" target="_blank" rel="noopener">Open original</a>
+  </div>
 
   <a class="about-link" href="#about">About &#8595;</a>
 </main>
@@ -141,6 +150,11 @@
 <h2>What it is</h2>
 <p>Waifu Sprites is a companion made of short video clips instead of a 3D or Live2D model. Every clip is a few seconds of hand-picked animation that loops seamlessly, so she always looks alive: idle while you read, listening while you type, thinking while the reply is on its way, and then reacting to what she says.</p>
 <p>There are 24 clips with alternates: 12 activity states and 12 emotions. The AI tags each reply with an emotion, and the matching clip plays as soon as the first words arrive. It's free, needs no sign-up, and works on phones.</p>
+</section>
+
+<section>
+<h2>Pictures</h2>
+<p>Ask her for a selfie, a drawing or a picture of anything, in any language, and she paints it while she replies: she looks busy planning while it's drawn, then triumphant when it lands in the chat. You can also type <code>/image</code> followed by a description, with <em>portrait</em>, <em>square</em> or <em>landscape</em> at the end to pick the shape. Pictures are safe-for-work only and are saved with the chat.</p>
 </section>
 
 <section>
@@ -179,7 +193,7 @@
 <h2>AI and privacy</h2>
 <ul>
 <li><strong>WaifuAI Cloud</strong> (default): free, no key. Messages are sent to WaifuAI Cloud to generate replies and may be logged to improve the service.</li>
-<li><strong>Your own key</strong>: OpenRouter, Groq or any OpenAI-compatible endpoint. The key stays in your browser, and requests go straight to that provider.</li>
+<li><strong>Your own key</strong>: OpenRouter, Groq or any OpenAI-compatible endpoint. The key stays in your browser, and requests go straight to that provider. Pictures are still drawn by WaifuAI Cloud.</li>
 <li>Chat history is stored in your browser's local storage and never uploaded. Delete it any time in Settings.</li>
 </ul>
 </section>
@@ -208,6 +222,7 @@
 </div>
 
 <script src="sprites.js"></script>
+<script src="pictures.js"></script>
 <script src="chat.js"></script>
 <script src="app.js"></script>
 </body>

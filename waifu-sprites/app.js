@@ -14,7 +14,7 @@
 
   const RETURN_TO_IDLE_MS = 12000;
   const SLEEP_AFTER_MS = 3 * 60 * 1000;
-  const STARTERS = ['Hi! How is your day going?', 'Tell me something fun', 'Help me focus on my work', 'What music do you like?'];
+  const STARTERS = ['Hi! How is your day going?', 'Tell me something fun', 'Send me a selfie', 'Help me focus on my work'];
 
   Sprites.init(Array.from(document.querySelectorAll('.sprite')), $('spriteLabel'));
 
@@ -91,11 +91,96 @@
     messagesEl.appendChild(wrap);
   }
 
+  function pictureBubble(message) {
+    const fig = document.createElement('figure');
+    fig.className = 'msg assistant pic';
+    const img = document.createElement('img');
+    img.alt = message.prompt || 'Picture';
+    img.title = 'Open full size';
+    img.addEventListener('load', scrollDown);
+    img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    Pictures.resolve(message.image).then(src => {
+      if (src) img.src = src;
+      else fig.replaceWith(bubble('info', 'This picture is no longer available.'));
+    });
+    fig.appendChild(img);
+    if (message.caption) {
+      const cap = document.createElement('figcaption');
+      cap.textContent = message.caption;
+      fig.appendChild(cap);
+    }
+    messagesEl.appendChild(fig);
+    scrollDown();
+    return fig;
+  }
+
   function renderConversation() {
     messagesEl.textContent = '';
     if (!Chat.messages.length) renderEmpty();
-    else Chat.messages.forEach(m => bubble(m.role, m.content));
+    else Chat.messages.forEach(m => (m.image ? pictureBubble(m) : bubble(m.role, m.content)));
     renderMeta();
+  }
+
+  // ── Lightbox ──
+  const lightbox = $('lightbox');
+  function openLightbox(src, alt) {
+    $('lightboxImg').src = src;
+    $('lightboxImg').alt = alt;
+    $('lightboxOpen').href = src;
+    lightbox.hidden = false;
+  }
+  lightbox.addEventListener('click', e => { if (e.target !== $('lightboxOpen')) lightbox.hidden = true; });
+
+  // ── Pictures ──
+  // Draws in the background; the result lands in the chat it was asked in,
+  // even if the visitor has opened another one meanwhile.
+  async function paint(prompt, aspect) {
+    const origin = Chat.convId;
+    const wait = bubble('info keep', 'Painting your picture... \u{1F3A8}');
+    if (!Chat.busy) Sprites.setEmotion('planning');
+    if (typeof gtag === 'function') gtag('event', 'sprites_picture');
+    let message = null;
+    let failText = null;
+    try {
+      const ref = await Pictures.draw(prompt, aspect, Chat.ids());
+      message = { role: 'assistant', image: ref, prompt, caption: '' };
+    } catch (err) {
+      failText = err.blocked ? "I can only draw safe-for-work pictures, so I can't make that one. Want something cute instead?"
+        : err.timedOut ? 'That one took too long and my brush gave up. Try again?'
+        : 'Sorry, my canvas is acting up. Could we try again in a moment?';
+    }
+    wait.remove();
+    const here = Chat.convId === origin;
+    if (message) {
+      if (Chat.addPicture(origin, message) && here) pictureBubble(message);
+    } else if (here) {
+      bubble('assistant', failText);
+    }
+    if (here && !Chat.busy) {
+      Sprites.setEmotion(message ? 'found_it' : 'sorry');
+      later(() => Sprites.setState('idle'), RETURN_TO_IDLE_MS);
+    }
+  }
+
+  function aspectValue(name) { return Pictures.ASPECTS[name] || Pictures.ASPECTS.portrait; }
+
+  // "/image a cozy cafe at sunset [portrait|square|landscape]"
+  function imageCommand(text) {
+    let prompt = text.replace(/^\/(image|img)\b\s*/i, '').trim();
+    let aspect = aspectValue(Chat.settings.aspect);
+    const m = prompt.match(/\s+(portrait|landscape|square)\s*$/i);
+    if (m) {
+      aspect = aspectValue(m[1].toLowerCase());
+      prompt = prompt.slice(0, m.index).trim();
+    }
+    input.value = '';
+    messagesEl.querySelectorAll('.starters, .msg.info:not(.keep)').forEach(el => el.remove());
+    if (!prompt) {
+      bubble('info', 'Describe what to draw, like: /image a cozy cafe at sunset. Add portrait, square or landscape at the end to pick the shape.');
+      return;
+    }
+    bubble('user', text);
+    paint(prompt, aspect);
   }
 
   function renderMeta() {
@@ -114,8 +199,11 @@
   async function send(text) {
     text = (text || '').trim();
     if (!text || Chat.busy) return;
+    if (/^\/(image|img)\b/i.test(text)) { imageCommand(text); return; }
     input.value = '';
-    messagesEl.querySelectorAll('.starters, .msg.info, .msg.error').forEach(el => el.remove());
+    // Whether this turn wants a picture is decided alongside the reply.
+    const pictureDecision = Pictures.decide(text, Chat.lastReply());
+    messagesEl.querySelectorAll('.starters, .msg.info:not(.keep), .msg.error').forEach(el => el.remove());
     bubble('user', text);
     const reply = bubble('assistant typing', '');
     stage.classList.add('busy');
@@ -125,6 +213,7 @@
     if (typeof gtag === 'function') gtag('event', 'sprites_chat', { provider: Chat.settings.provider, persona: Chat.settings.persona });
 
     let tagged = false;
+    let replied = false;
     await Chat.send(text, {
       onEmotion(name) {
         tagged = !!name;
@@ -136,6 +225,7 @@
         scrollDown();
       },
       onDone(message) {
+        replied = true;
         reply.classList.remove('typing');
         reply.textContent = message.content;
         if (!tagged && message.emotion) Sprites.setEmotion(message.emotion);
@@ -157,6 +247,9 @@
     stage.classList.remove('busy');
     sendBtn.disabled = false;
     if (matchMedia('(pointer: fine)').matches) input.focus();
+    // No picture when the reply failed: a retry asks again.
+    const prompt = await pictureDecision;
+    if (replied && prompt) paint(prompt, aspectValue(Chat.settings.aspect));
   }
 
   $('composer').addEventListener('submit', e => { e.preventDefault(); send(input.value); });
@@ -300,8 +393,19 @@
     $('keyLink').hidden = !p.keyUrl;
     if (p.keyUrl) $('keyLink').href = p.keyUrl;
     $('providerNote').textContent = own
-      ? 'Your key is saved in this browser only and sent only to ' + (s.provider === 'custom' ? 'your endpoint' : p.name) + '.'
+      ? 'Your key is saved in this browser only and sent only to ' + (s.provider === 'custom' ? 'your endpoint' : p.name) + '. Pictures still go through WaifuAI Cloud.'
       : 'Free and keyless. Messages go to WaifuAI Cloud to generate replies and may be logged to improve the service.';
+
+    const aspectList = $('aspectList');
+    aspectList.textContent = '';
+    aspectList.setAttribute('role', 'radiogroup');
+    [['portrait', 'Portrait', 'Best for selfies and outfits'], ['square', 'Square', 'Avatars and icons'], ['landscape', 'Landscape', 'Scenes and wallpapers']].forEach(([key, label, desc]) => {
+      aspectList.appendChild(optionButton(label, desc, s.aspect === key, () => {
+        s.aspect = key;
+        Chat.saveSettings();
+        renderSettings();
+      }));
+    });
   }
 
   $('customPrompt').addEventListener('input', e => { Chat.settings.customPrompt = e.target.value; Chat.saveSettings(); });
