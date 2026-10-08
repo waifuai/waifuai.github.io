@@ -129,9 +129,12 @@
   h2 { font-size: 22px; letter-spacing: -0.01em; margin: 0; }
   .lede { font-size: 18px; color: var(--muted); margin: 0; max-width: 62ch; }
 
-  .start { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0 0; }
+  .start { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 28px 0 0; }
   .start a { display: block; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--text); }
   .start img { display: block; width: 100%; height: auto; aspect-ratio: 40 / 21; object-fit: cover; background: #0f0f10; border-bottom: 1px solid var(--line); }
+  .start video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: #0f0f10; border-bottom: 1px solid var(--line); }
+  .start a.countdown { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 2fr; align-items: center; }
+  .start .countdown img { border-bottom: 0; border-right: 1px solid var(--line); }
   .start .tile-text { display: block; padding: 14px 18px 16px; margin: 0; }
   .start a:hover { text-decoration: none; border-color: var(--faint); }
   .start a.primary { border-color: var(--accent); }
@@ -178,6 +181,8 @@
 
   @media (max-width: 760px) {
     .start { grid-template-columns: 1fr; gap: 10px; }
+    .start a.countdown { grid-template-columns: 1fr; }
+    .start .countdown img { border-right: 0; border-bottom: 1px solid var(--line); }
     .stats { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 600px) {
@@ -214,9 +219,9 @@
   <p class="lede">Documentation for the open-source side of WaifuAI: the Live2D companion, MCP servers for AI agents, LLM tooling, and research.</p>
 
   <div class="start">
-    <a class="primary" href="https://waifuai.com/"><img src="images/home/companion.webp" width="600" height="315" alt="Waifu Companion: a Live2D anime girl next to a chat window"><span class="tile-text"><strong>Companion app</strong><span>Talk to a Live2D waifu in your browser, with voice and nothing to install.</span></span></a>
-    <a href="waifu-sprites/"><img src="images/home/sprites.webp" width="600" height="315" alt="Aurora, the Waifu Sprites companion"><span class="tile-text"><strong>Waifu Sprites</strong><span>Chat with Aurora, an animated video companion who reacts, talks and sends selfies.</span></span></a>
-    <a href="llm-countdowns/"><img src="llm-countdowns/og.png" width="1200" height="630" alt="LLM Countdowns: the next AI model release" loading="lazy"><span class="tile-text"><strong>LLM Countdowns</strong><span>Release forecasts for upcoming frontier models from each AI lab.</span></span></a>
+    <a href="waifu-sprites/"><video data-src="images/home/sprites.mp4" poster="images/home/sprites-mobile.webp" width="480" height="600" muted loop playsinline preload="none" aria-label="Aurora, the animated Waifu Sprites companion"></video><span class="tile-text"><strong>Waifu Sprites</strong><span>Chat with Aurora, an animated video companion who reacts, talks and sends selfies.</span></span></a>
+    <a class="primary" href="https://waifuai.com/"><video data-src="images/home/companion.mp4" poster="images/home/companion-mobile.webp" width="480" height="600" muted loop playsinline preload="none" aria-label="Waifu Companion: an animated Live2D anime girl next to a chat window"></video><span class="tile-text"><strong>Companion app</strong><span>Talk to a Live2D waifu in your browser, with voice and nothing to install.</span></span></a>
+    <a class="countdown" href="llm-countdowns/"><img src="llm-countdowns/og.png" width="1200" height="630" alt="LLM Countdowns: the next AI model release" loading="lazy"><span class="tile-text"><strong>LLM Countdowns</strong><span>Release forecasts for upcoming frontier models from each AI lab.</span></span></a>
   </div>
 
   <div class="stats">
@@ -351,6 +356,31 @@
 </footer>
 
 <script>
+// Use the same looping previews as the companion landing page. Keep the poster
+// for visitors who request reduced motion or data saving.
+(function () {
+  var connection = navigator.connection;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || (connection && connection.saveData)) return;
+  var videos = document.querySelectorAll('.start video');
+  function playAll() {
+    videos.forEach(function (video) {
+      if (!video.paused) return;
+      var playback = video.play();
+      if (playback && playback.catch) playback.catch(function () {});
+    });
+  }
+  videos.forEach(function (video) {
+    video.muted = true;
+    video.autoplay = true;
+    video.src = video.dataset.src;
+  });
+  playAll();
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') playAll();
+    else videos.forEach(function (video) { video.pause(); });
+  });
+})();
+
 (function () {
   var input = document.getElementById('filter');
   var meta = document.getElementById('filter-meta');
