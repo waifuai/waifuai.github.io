@@ -566,6 +566,14 @@
     });
   }
 
+  // Player Card hosts can disallow native form submission in their sandbox.
+  // Use the same direct send path as starter buttons for click and Enter.
+  $('sendBtn').addEventListener('click', () => send(input.value));
+  input.addEventListener('keydown', e => {
+    if (e.key !== 'Enter' || e.isComposing || e.keyCode === 229) return;
+    e.preventDefault();
+    send(input.value);
+  });
   $('composer').addEventListener('submit', e => { e.preventDefault(); send(input.value); });
 
   // ── Voice ──

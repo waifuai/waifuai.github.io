@@ -22,6 +22,14 @@ Serve the repository root locally and open `/waifu-sprites/?embed=x`. Check
 480 × 480 and narrow mobile frames, settings, chat submission and the full-app
 link. Test requests can be mocked to avoid production inference usage.
 
+Run the browser regression checks with
+`python waifu-sprites/tests/test_player_card.py` from the repository root
+(requires `pip install playwright` and `python -m playwright install chromium`).
+They mock every network request and exercise actual typing, Send clicks and
+Enter presses, including a host sandbox without `allow-forms`, blocked storage,
+IME composition and empty messages. Send and Enter use direct JavaScript chat
+actions because a host may block the native form submit event.
+
 This follows [X's Player Card metadata example](https://github.com/xdevplatform/cards-player-samples/blob/main/player/page.html).
 Local iframe validation cannot confirm X acceptance or rendering. After
 publishing, check the link in X on desktop and mobile before using it in a
