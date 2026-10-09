@@ -25,10 +25,13 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="WaifuAI">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="player">
 <meta name="twitter:title" content="Waifu Sprites | WaifuAI">
 <meta name="twitter:description" content="An animated video companion that reacts to your chat with 12 states and 12 emotions. Runs in the browser, free.">
 <meta name="twitter:image" content="https://waifuai.github.io/waifu-sprites/og.png?v=522e138e82">
+<meta name="twitter:player" content="https://waifuai.github.io/waifu-sprites/?embed=x">
+<meta name="twitter:player:width" content="480">
+<meta name="twitter:player:height" content="480">
 <title>Waifu Sprites — Animated AI Companion in Your Browser | WaifuAI</title>
 
 <script type="application/ld+json">
@@ -45,6 +48,11 @@
   "sameAs": "https://github.com/waifuai/waifu-sprites"
 }
 </script>
+<script>
+  // The Player Card uses the same app in a compact, isolated browser session.
+  window.WaifuSpritesEmbed = new URLSearchParams(location.search).get('embed') === 'x';
+  if (window.WaifuSpritesEmbed) document.documentElement.classList.add('sprite-embed');
+</script>
 <link rel="stylesheet" href="../theme.css">
 <link rel="stylesheet" href="app.css">
 <link rel="preload" href="videos/1.mp4" as="video" type="video/mp4">
@@ -57,6 +65,7 @@
 <!-- /site-header -->
 
 <main class="stage" id="stage" aria-label="Waifu Sprites app">
+  <a class="full-app-link" href="https://waifuai.github.io/waifu-sprites/" target="_blank" rel="noopener noreferrer">Full app &#8599;</a>
   <div class="sprite-wrap">
     <video class="sprite" muted playsinline preload="auto" poster="videos/poster.jpg" aria-hidden="true"></video>
     <video class="sprite" muted playsinline preload="auto" aria-hidden="true"></video>

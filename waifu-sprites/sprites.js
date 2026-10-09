@@ -200,6 +200,8 @@ const Sprites = (() => {
 
   // Warm the cache with the clips every chat uses, once the first clip is up.
   function prefetch() {
+    // A feed impression needs only the idle clip; load other states on demand.
+    if (window.WaifuSpritesEmbed) return;
     const conn = navigator.connection;
     if (conn && (conn.saveData || /2g/.test(conn.effectiveType || ''))) return;
     const clips = ['2', '3', '4', '4-1', '1-1', '3-1', '2-1'];

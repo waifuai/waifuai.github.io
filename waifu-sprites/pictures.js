@@ -122,7 +122,7 @@ When the companion is in the picture, describe her as ${APPEARANCE}, plus the ou
     function db() {
       if (!dbp) {
         dbp = new Promise((ok, fail) => {
-          const req = indexedDB.open('waifu-sprites', 1);
+          const req = indexedDB.open(window.WaifuSpritesEmbed ? 'waifu-sprites-embed' : 'waifu-sprites', 1);
           req.onupgradeneeded = () => req.result.createObjectStore('images');
           req.onsuccess = () => ok(req.result);
           req.onerror = () => fail(req.error);

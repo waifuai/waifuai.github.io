@@ -152,7 +152,7 @@ const Speech = (() => {
   }
 
   // ── Settings ──
-  const KEY = 'ws_speech';
+  const KEY = window.WaifuSpritesEmbed ? 'ws_embed_speech' : 'ws_speech';
   function defaultVoice() {
     const base = (navigator.language || 'en').split('-')[0].toLowerCase();
     const local = VOICES.find(v => v.provider === 'tiktok' && v.gender === 'female' && v.language.split('-')[0] === base);

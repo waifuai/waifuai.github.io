@@ -1,6 +1,7 @@
 /* Waifu Sprites app. The stage is always dark; the About section below follows the site theme. */
 
 .site-header { margin-bottom: 0; }
+.full-app-link { display: none; }
 
 .stage {
   --bubble-alpha: 0.55;
@@ -32,6 +33,33 @@
 }
 .stage.no-video::before { display: none; }
 .stage.no-video .sprite-wrap { display: none; }
+
+/* Fit the actual iframe viewport, including narrower mobile Player Cards. */
+.sprite-embed, .sprite-embed body { height: 100%; overflow: hidden; }
+.sprite-embed body { padding: 0; background: #0b0b12; }
+.sprite-embed .site-header,
+.sprite-embed #about,
+.sprite-embed .about-link { display: none; }
+.sprite-embed .stage { margin: 0; height: 100vh; height: 100dvh; min-height: 0; }
+.sprite-embed .topbar { padding: 8px; gap: 4px; }
+.sprite-embed .topbar-right { gap: 4px; }
+.sprite-embed .topbar .icon-btn { width: 36px; height: 36px; }
+.sprite-embed .status { min-width: 0; padding: 5px 8px; gap: 4px; }
+.sprite-embed #spriteLabel { overflow: hidden; text-overflow: ellipsis; }
+.sprite-embed .clock { display: none; }
+.sprite-embed .full-app-link {
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 54px;
+  z-index: 5;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--ink);
+  font-size: 12px;
+}
 
 .sprite-wrap { position: absolute; inset: 0; }
 .sprite {
@@ -196,6 +224,17 @@
     padding: 0;
     background: none;
   }
+}
+/* Keep the card layout even when its host gives the iframe a wide viewport. */
+.sprite-embed .chat {
+  left: 0; right: 0; top: auto; bottom: 0;
+  width: auto; height: 52%;
+  padding: 0 12px calc(12px + env(safe-area-inset-bottom));
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.35) 30%);
+}
+@media (max-height: 380px) {
+  .sprite-embed .chat { height: 60%; }
+  .sprite-embed .messages:has(.starters) > .msg.info { display: none; }
 }
 
 /* ── Panels ── */

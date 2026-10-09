@@ -13,7 +13,9 @@
 
   const RETURN_TO_IDLE_MS = 12000;
   const SLEEP_AFTER_MS = 3 * 60 * 1000;
-  const STARTERS = ['Hi! How is your day going?', 'Tell me something fun', 'Send me a selfie', 'Help me focus on my work'];
+  const STARTERS = window.WaifuSpritesEmbed
+    ? ['Hi!', 'Tell me something fun', 'Send me a selfie', 'Help me focus']
+    : ['Hi! How is your day going?', 'Tell me something fun', 'Send me a selfie', 'Help me focus on my work'];
 
   Sprites.init(Array.from(document.querySelectorAll('.sprite')), $('spriteLabel'));
 
@@ -49,10 +51,13 @@
   });
 
   // ── Display settings ──
-  const DISPLAY_KEY = 'ws_display';
+  const DISPLAY_KEY = window.WaifuSpritesEmbed ? 'ws_embed_display' : 'ws_display';
   let display = { opacity: 0.55, fontSize: 15, hideVideo: false, hideChat: false, voiceAutoSend: true, clock: false, radioVolume: 0.3 };
   try { display = Object.assign(display, JSON.parse(localStorage.getItem(DISPLAY_KEY) || '{}')); } catch (e) {}
   function saveDisplay() { try { localStorage.setItem(DISPLAY_KEY, JSON.stringify(display)); } catch (e) {} }
+  if (window.WaifuSpritesEmbed) document.addEventListener('visibilitychange', () => {
+    Sprites.setVisible(!document.hidden && !display.hideVideo);
+  });
   function applyDisplay() {
     stage.style.setProperty('--bubble-alpha', display.opacity);
     stage.style.setProperty('--chat-font', display.fontSize + 'px');

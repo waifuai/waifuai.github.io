@@ -75,12 +75,13 @@ const Chat = (() => {
   const DEFAULT_AMBIENT_PROMPT = '(The user has gone quiet for a while. Continue the conversation naturally, in character: share a thought or a feeling, ' +
     'or ask them something related to what you were talking about. One or two sentences. Speak directly to them.)';
 
+  const storagePrefix = window.WaifuSpritesEmbed ? 'ws_embed_' : 'ws_';
   const KEY = {
-    settings: 'ws_settings',
-    history: 'ws_history',
-    conv: 'ws_conv_',
-    mem: 'ws_mem_',
-    visitor: 'ws_visitor',
+    settings: storagePrefix + 'settings',
+    history: storagePrefix + 'history',
+    conv: storagePrefix + 'conv_',
+    mem: storagePrefix + 'mem_',
+    visitor: storagePrefix + 'visitor',
   };
 
   function load(key, fallback) {
@@ -112,7 +113,7 @@ const Chat = (() => {
     includeBattery: false,
     memorySize: 30,
     summaryLength: 'concise',
-    autoTitles: true,
+    autoTitles: !window.WaifuSpritesEmbed,
     queue: true,
     ambient: false,
     ambientDelay: 60,
