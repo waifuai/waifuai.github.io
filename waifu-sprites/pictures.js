@@ -57,9 +57,12 @@ When the companion is in the picture, describe her as ${APPEARANCE}, plus the ou
     if (!REQUEST_WORDS.test(userText || '') && !(prevReply && OFFER_WORDS.test(prevReply))) return null;
     const clip = s => String(s || '').slice(0, 300);
     try {
+      const headers = { 'Content-Type': 'application/json', 'X-Waifu-Purpose': 'image_prompt' };
+      if (ids && ids.session) headers['x-session-id'] = ids.session;
+      if (ids && ids.visitor) headers['x-visitor-id'] = ids.visitor;
       const resp = await fetch(BASE + '/chat/completions', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-Waifu-Purpose': 'image_prompt' },
+        headers,
         body: JSON.stringify({
           model: DECISION_MODEL,
           max_tokens: 120,

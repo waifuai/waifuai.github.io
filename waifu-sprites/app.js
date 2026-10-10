@@ -451,7 +451,7 @@
     stopAmbient();
     if (!ambient) ambientRun = 0;
     // Whether this turn wants a picture is decided alongside the reply.
-    const pictureDecision = ambient ? Promise.resolve(null) : Pictures.decide(text, Chat.lastReply());
+    const pictureDecision = ambient ? Promise.resolve(null) : Pictures.decide(text, Chat.lastReply(), Chat.ids());
     messagesEl.querySelectorAll('.starters, .msg.info:not(.keep), .msg.error').forEach(m => m.remove());
     let userEl = el;
     if (userEl) {

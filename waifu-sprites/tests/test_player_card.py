@@ -30,6 +30,7 @@ class PlayerCardTests(unittest.TestCase):
         self.context = self.browser.new_context(viewport={'width': 600, 'height': 600})
         self.context.set_default_timeout(6000)
         self.calls = []
+        self.cloud_requests = []
         self.errors = []
         self.context.route('**/*', self.route)
         self.page = self.context.new_page()
@@ -50,12 +51,17 @@ class PlayerCardTests(unittest.TestCase):
                 route.fulfill(status=404)
         elif url.path.endswith('/chat/completions'):
             request = route.request.post_data_json
+            self.cloud_requests.append({'path': url.path, 'headers': route.request.all_headers(), 'body': request})
             if request.get('stream'):
                 self.calls.append(request)
                 event = {'choices': [{'delta': {'content': '[happy] Mock reply received.'}}]}
                 route.fulfill(content_type='text/event-stream', body='data: ' + json.dumps(event) + '\n\ndata: [DONE]\n\n')
             else:
-                route.fulfill(content_type='application/json', body=json.dumps({'choices': [{'message': {'content': 'Test chat'}}]}))
+                content = 'DRAW: Aurora smiling in a sunny garden' if route.request.headers.get('x-waifu-purpose') == 'image_prompt' else 'Test chat'
+                route.fulfill(content_type='application/json', body=json.dumps({'choices': [{'message': {'content': content}}]}))
+        elif url.path == '/image':
+            self.cloud_requests.append({'path': url.path, 'headers': route.request.all_headers()})
+            route.fulfill(headers={'X-Image-Url': 'https://sprites.test/picture.png'}, body='')
         else:
             # Analytics, speech and other external services never reach production.
             route.fulfill(content_type='application/javascript', body='')
@@ -116,6 +122,35 @@ class PlayerCardTests(unittest.TestCase):
 
     def test_iframe_without_forms_or_storage(self):
         self.check_chat('allow-scripts', blocked_storage=True)
+
+    def check_picture_identity(self, sandbox=None):
+        if sandbox is None:
+            self.page.goto(APP)
+            app = self.page
+        else:
+            self.context.route('https://host.test/', lambda r: r.fulfill(content_type='text/html', body=f'<iframe src="{APP}?embed=x" sandbox="{sandbox}"></iframe>'))
+            self.page.goto('https://host.test/')
+            app = self.page.frame_locator('iframe')
+        app.locator('#speakToggle').click()
+        app.locator('#msgInput').fill('Send me a selfie')
+        app.locator('#sendBtn').click()
+        app.locator('.msg.assistant:not(.typing)').filter(has_text='Mock reply received.').wait_for()
+        app.locator('.msg img').wait_for()
+        chat = next(r for r in self.cloud_requests if r.get('body', {}).get('stream'))
+        prompt = next(r for r in self.cloud_requests if r['headers'].get('x-waifu-purpose') == 'image_prompt')
+        image = next(r for r in self.cloud_requests if r['path'] == '/image')
+        for header in ('x-session-id', 'x-visitor-id'):
+            self.assertTrue(chat['headers'].get(header))
+            self.assertEqual(prompt['headers'].get(header), chat['headers'][header])
+            self.assertEqual(image['headers'].get(header), chat['headers'][header])
+        self.assertEqual(prompt['body']['client_settings']['app'], 'waifu-sprites')
+        self.assertFalse(self.errors)
+
+    def test_picture_calls_share_chat_identity(self):
+        self.check_picture_identity()
+
+    def test_embedded_picture_calls_share_chat_identity(self):
+        self.check_picture_identity('allow-scripts allow-same-origin')
 
 
 if __name__ == '__main__':
