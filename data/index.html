@@ -206,9 +206,9 @@
   caption { text-align:left; font-size:11px; padding:8px 0; } .chart-footnote { font-size:11px; color:var(--muted); margin:14px 0 0; }
   .progress-note { border-left:2px solid var(--accent); padding:2px 0 2px 14px; margin-top:20px; font-size:12px; color:var(--muted); } .progress-note strong { color:var(--text); }
   section { padding-top:65px; } .section-head { display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:22px; } .section-head .eyebrow { margin-bottom:8px; }
-  .product-layout { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-  .product-tile { display:grid; grid-template-columns:120px 1fr; align-items:center; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--surface); color:var(--text); }
-  .product-tile img { width:120px; height:166px; object-fit:cover; } .product-tile div { padding:18px; } .product-tile strong { font-size:20px; font-family:Georgia,serif; font-weight:400; }
+  .product-layout { display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:980px; margin-inline:auto; }
+  .product-tile { display:flex; flex-direction:column; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--surface); color:var(--text); }
+  .product-tile video { display:block; width:100%; height:auto; aspect-ratio:4 / 5; object-fit:cover; background:#0f0f10; border-bottom:1px solid var(--line); } .product-tile div { padding:22px; width:100%; } .product-tile strong { font-size:20px; font-family:Georgia,serif; font-weight:400; }
   .product-tile p { color:var(--muted); font-size:13px; margin:8px 0; } .product-tile span { font-size:12px; color:var(--accent); }
   .stats { margin-top:22px; } .stat-value { font-weight:500; } .stat-sub { font-size:11px; }
   .detail-heading { border-top:1px solid var(--line); margin-top:65px; padding-top:35px; } .detail-heading .lede { font-size:14px; }
@@ -220,7 +220,7 @@
     .demo { height:220px; } .demo video { object-position:center 30%; } .hero .lede { font-size:15px; } .hero-proof strong { font-size:45px; }
     .growth-kpi { padding:15px 10px; } .growth-kpi strong { font-size:26px; } .growth-kpi span { font-size:11px; } .growth-kpi small { font-size:10px; }
     .chart-card { padding:18px 14px 12px; } .chart-heading { gap:5px; } .chart-card h2 { font-size:17px; } .badge { font-size:10px; padding:4px 6px; }
-    .month-chart { gap:6px; } .bar-value { font-size:10px; } .product-layout { grid-template-columns:1fr; } .product-tile { grid-template-columns:100px 1fr; } .product-tile img { width:100px; height:150px; }
+    .month-chart { gap:6px; } .bar-value { font-size:10px; } .product-layout { grid-template-columns:1fr; } .product-tile div { padding:18px; }
     .stats.four,.stats { grid-template-columns:1fr 1fr; } .two-col { grid-template-columns:minmax(0,1fr); }
     .section-head { display:block; } .section-head .text-link { padding-left:0; display:inline-block; margin-top:8px; } .projects { grid-template-columns:1fr 1fr; }
   }
@@ -309,8 +309,8 @@
   <section id="product">
     <div class="section-head"><div><p class="eyebrow">Beyond the numbers</p><h2>Meet the companions.</h2></div><a class="text-link" href="https://github.com/waifuai">Explore the open-source code ↗</a></div>
     <div class="product-layout">
-      <a class="product-tile" href="https://waifuai.com/app/"><img src="../images/home/companion-mobile.webp" alt="Live2D companion and chat interface" loading="lazy" width="120" height="166"><div><strong>Waifu Companion</strong><p>A Live2D companion with chat and voice. Meet her in your browser.</p><span>Try the companion ↗</span></div></a>
-      <a class="product-tile" href="../waifu-sprites/"><img src="../images/home/sprites-mobile.webp" alt="Aurora, the Waifu Sprites companion" loading="lazy" width="120" height="166"><div><strong>Waifu Sprites</strong><p>An animated video companion who reacts, talks, and sends images.</p><span>Meet Aurora ↗</span></div></a>
+      <a class="product-tile" href="https://waifuai.com/app/"><video data-src="../images/home/companion.mp4" poster="../images/home/companion-mobile.webp" width="480" height="600" muted loop playsinline preload="none" aria-label="Waifu Companion: an animated Live2D anime girl next to a chat window"></video><div><strong>Waifu Companion</strong><p>A Live2D companion with chat and voice. Meet her in your browser.</p><span>Try the companion ↗</span></div></a>
+      <a class="product-tile" href="../waifu-sprites/"><video data-src="../images/home/sprites.mp4" poster="../images/home/sprites-mobile.webp" width="480" height="600" muted loop playsinline preload="none" aria-label="Aurora, the animated Waifu Sprites companion"></video><div><strong>Waifu Sprites</strong><p>An animated video companion who reacts, talks, and sends images.</p><span>Meet Aurora ↗</span></div></a>
     </div>
     <div class="chat-highlight"><div class="stat"><div class="stat-value">20,582</div><div class="stat-label">Chat messages</div></div><p>A companion to talk to.<br>A world to build together.</p></div>
   </section>
@@ -1648,12 +1648,21 @@ s</span><span class="project-desc">A blog post 📑 about designing AI-friendly 
     button.addEventListener('focus',describe);
     button.addEventListener('mouseenter',describe);
   });
-  var video=document.querySelector('.demo video');
-  if(video && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !(navigator.connection && navigator.connection.saveData)) {
-    video.muted=true; video.src=video.dataset.src;
-    function play() { var p=video.play(); if(p && p.catch) p.catch(function() {}); }
-    play();
-    document.addEventListener('visibilitychange',function() { if(document.visibilityState==='visible') play(); else video.pause(); });
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !(navigator.connection && navigator.connection.saveData)) {
+    var videos=document.querySelectorAll('.demo video, .product-tile video');
+    function playAll() {
+      videos.forEach(function(video) {
+        if(!video.paused) return;
+        var playback=video.play();
+        if(playback && playback.catch) playback.catch(function() {});
+      });
+    }
+    videos.forEach(function(video) { video.muted=true; video.autoplay=true; video.src=video.dataset.src; });
+    playAll();
+    document.addEventListener('visibilitychange',function() {
+      if(document.visibilityState==='visible') playAll();
+      else videos.forEach(function(video) { video.pause(); });
+    });
   }
   var groups = document.querySelectorAll('[data-collapse]');
   groups.forEach(function (box) {
