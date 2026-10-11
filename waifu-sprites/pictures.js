@@ -57,6 +57,17 @@ When the companion is in the picture, describe her as ${APPEARANCE}, plus the ou
     if (!REQUEST_WORDS.test(userText || '') && !(prevReply && OFFER_WORDS.test(prevReply))) return null;
     const clip = s => String(s || '').slice(0, 300);
     try {
+      // WaifuAI Cloud makes the draw/no-draw call first. A confident "no"
+      // skips the writing call below; any other answer, or no answer, runs it.
+      if (typeof Chat !== 'undefined' && typeof Chat.askDecisions === 'function') {
+        const answers = await Chat.askDecisions(['picture_action_v1'], {
+          user_message: clip(userText),
+          previous_reply: prevReply ? clip(prevReply) : undefined,
+          picture_offered: Boolean(prevReply && OFFER_WORDS.test(prevReply)),
+        });
+        const picture = answers && answers.picture_action_v1;
+        if (picture && picture.choice_id === 'none' && (picture.confidence ?? 0) >= 0.6) return null;
+      }
       const headers = { 'Content-Type': 'application/json', 'X-Waifu-Purpose': 'image_prompt' };
       if (ids && ids.session) headers['x-session-id'] = ids.session;
       if (ids && ids.visitor) headers['x-visitor-id'] = ids.visitor;

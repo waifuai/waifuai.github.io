@@ -20,6 +20,7 @@
  */
 const Chat = (() => {
   const CLOUD_URL = 'https://waifu-companion-proxy.thewaifuai.workers.dev/chat/completions';
+  const DECISIONS_URL = 'https://waifu-companion-proxy.thewaifuai.workers.dev/decisions';
 
   const PROVIDERS = {
     cloud: { name: 'WaifuAI Cloud', desc: 'Free, no key needed', defaultModel: 'waifuai-v1' },
@@ -136,6 +137,31 @@ const Chat = (() => {
   }
   const sessionId = randomId('s-');
   function ids() { return { session: sessionId, visitor: visitorId() }; }
+
+  // WaifuAI Cloud's fixed-choice endpoint: names task ids from the server's
+  // fixed set and supplies the conversation state each task documents.
+  // Resolves { <task>: { choice_id, confidence } } on an ok answer, or null
+  // when the endpoint is unavailable, the request was rejected or the answer
+  // was not ok — callers keep their local behavior on null. Never throws.
+  async function askDecisions(tasks, state) {
+    try {
+      const headers = { 'Content-Type': 'application/json' };
+      const id = ids();
+      if (id.session) headers['x-session-id'] = id.session;
+      if (id.visitor) headers['x-visitor-id'] = id.visitor;
+      const resp = await fetch(DECISIONS_URL, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ request_id: randomId('r-'), tasks, state }),
+      });
+      if (!resp.ok) return null;
+      const body = await resp.json();
+      if (!body || body.status !== 'ok' || !body.answers) return null;
+      return body.answers;
+    } catch (e) {
+      return null;
+    }
+  }
 
   let msgSeq = 0;
   function messageId() { return 'm' + Date.now().toString(36) + (msgSeq++).toString(36); }
@@ -610,7 +636,7 @@ const Chat = (() => {
 
   return {
     PROVIDERS, PERSONAS, LANGUAGES, SUMMARY_LENGTHS, DEFAULT_AMBIENT_PROMPT, settings, saveSettings, modelFor,
-    send, stop, ids, addPicture, lastReply, newConversation, openConversation, deleteConversation, deleteMessage,
+    send, stop, ids, askDecisions, addPicture, lastReply, newConversation, openConversation, deleteConversation, deleteMessage,
     renameConversation, historyIndex, exportAll, summarize, setSummary, generateTitle, needsRomaji, romanize, modelMessages,
     unsummarizedStart,
     get messages() { return messages; },
