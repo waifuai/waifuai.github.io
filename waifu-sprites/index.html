@@ -79,6 +79,7 @@
       <button class="icon-btn" id="newBtn" type="button" title="New chat" aria-label="New chat">&#43;</button>
       <button class="icon-btn" id="speakToggle" type="button" title="Mute her voice" aria-label="Read replies aloud" aria-pressed="true">&#128266;</button>
       <button class="icon-btn" id="chatToggle" type="button" title="Hide chat" aria-label="Hide chat" aria-pressed="false">&#128172;</button>
+      <a class="icon-btn" href="docs/" target="_blank" rel="noopener" title="Docs" aria-label="Documentation">&#128214;</a>
     </div>
   </div>
 
@@ -201,106 +202,7 @@
     <a id="lightboxOpen" href="#" target="_blank" rel="noopener">Open original</a>
   </div>
 
-  <a class="about-link" href="#about">About &#8595;</a>
 </main>
-
-<div class="container" id="about">
-<nav class="crumbs" aria-label="Breadcrumb"><a href="../">WaifuAI Docs</a><span class="sep">/</span><span aria-current="page">Waifu Sprites</span></nav>
-
-<header>
-<h1>Waifu Sprites</h1>
-<p>An animated anime companion that reacts to your chat, right in the browser.</p>
-<div class="links"><a href="#stage">Open the app &#8593;</a><a href="https://github.com/waifuai/waifu-sprites">Hermes Agent plugin on GitHub</a></div>
-</header>
-
-<section>
-<h2>What it is</h2>
-<p>Waifu Sprites is a companion made of short video clips instead of a 3D or Live2D model. Every clip is a few seconds of hand-picked animation that loops seamlessly, so she always looks alive: idle while you read, listening while you type, thinking while the reply is on its way, and then reacting to what she says.</p>
-<p>There are 24 clips with alternates: 12 activity states and 12 emotions. The AI tags each reply with an emotion, and the matching clip plays as soon as the first words arrive. It's free, needs no sign-up, and works on phones.</p>
-</section>
-
-<section>
-<h2>Pictures</h2>
-<p>Ask her for a selfie, a drawing or a picture of anything, in any language, and she paints it while she replies: she looks busy planning while it's drawn, then triumphant when it lands in the chat. You can also type <code>/image</code> followed by a description, with <em>portrait</em>, <em>square</em> or <em>landscape</em> at the end to pick the shape. Pictures are safe-for-work only and are saved with the chat.</p>
-</section>
-
-<section>
-<h2>Talk to her</h2>
-<p>She reads her replies aloud with TikTok voices: pick from soft female voices, Japanese and Korean voices, characters like Stitch and Ghost Face, or singing voices. When she answers in another language, a voice for that language reads it. The speaker button at the top mutes her.</p>
-<p>Hold the mic button and speak, or tap it once to start and again to stop. She listens while you talk, and your words are transcribed and sent, in whatever language you speak. Turn off "Send right after speaking" in Settings to check the text before it goes.</p>
-</section>
-
-<section>
-<h2>Memory and personality</h2>
-<p>She remembers. Tell her about yourself under <em>About you</em> in Settings and every chat starts with it. When a chat grows past the messages she keeps word for word, the oldest are folded into a summary she carries forward, and a marker in the chat shows where. You can read and edit that summary, summarize on demand, and see exactly what she's sent.</p>
-<p>Pick a personality (Aurora, tsundere, study buddy, a plain assistant or your own) and add extra instructions on top. She knows the date and time, and your battery level if you allow it. She replies in your language, or one you pick, with romaji under Japanese and Korean replies if you like.</p>
-<p>Turn on <em>She talks when you're quiet</em> and she speaks up after a pause you choose. Messages you send while she's replying wait in a queue. Chats name themselves, and each message can be read aloud again, copied or deleted. There's also an anime radio, a clock and a chat export.</p>
-</section>
-
-<section>
-<h2>States and emotions</h2>
-<div class="tables">
-<table>
-<thead><tr><th>State</th><th>When it plays</th></tr></thead>
-<tbody>
-<tr><td>idle</td><td>Nothing happening</td></tr>
-<tr><td>listening</td><td>You're typing</td></tr>
-<tr><td>thinking</td><td>Waiting for the reply</td></tr>
-<tr><td>speaking</td><td>Reply with no clear emotion</td></tr>
-<tr><td>error / alert</td><td>The AI service failed</td></tr>
-<tr><td>sleeping</td><td>No activity for a few minutes</td></tr>
-</tbody>
-</table>
-<table>
-<thead><tr><th>Emotions</th></tr></thead>
-<tbody>
-<tr><td>happy, laughing, love, amazed</td></tr>
-<tr><td>curious, planning, triumphant</td></tr>
-<tr><td>empathetic, sorry, confused</td></tr>
-<tr><td>annoyed, overwhelmed</td></tr>
-</tbody>
-</table>
-</div>
-<p>The other states (typing, searching, calculating, fixing, success) come from the Hermes Agent plugin, where they follow what the agent is doing.</p>
-</section>
-
-<section>
-<h2>Why she never repeats herself</h2>
-<p>Emotions are picked with <a href="/ransoc/">RANSOC</a>. Each emotion carries a weight that drops when it plays and recovers while others play. The same emotion never plays twice in a row; when the reply asks for the one just shown, a similar emotion plays instead, so <em>happy</em> may become <em>love</em> or <em>laughing</em>. Each clip also has an alternate take, and the player alternates between them.</p>
-</section>
-
-<section>
-<h2>AI and privacy</h2>
-<ul>
-<li><strong>WaifuAI Cloud</strong> (default): free, no key. Messages are sent to WaifuAI Cloud to generate replies and may be logged to improve the service.</li>
-<li><strong>Your own key</strong>: OpenRouter, Groq or any OpenAI-compatible endpoint. The key stays in your browser, and requests go straight to that provider. Pictures and voice transcription still go through WaifuAI Cloud.</li>
-<li>Spoken replies: the text of each reply is sent to a free TikTok voice service, or read by your browser's built-in voice when you pick one. Mute her to send nothing.</li>
-<li>Chat history is stored in your browser's local storage and never uploaded. Delete it any time in Settings.</li>
-</ul>
-</section>
-
-<section>
-<h2>Use it with Hermes Agent</h2>
-<p>The same sprites run as a dashboard plugin for <a href="https://github.com/nousresearch/hermes-agent">Hermes Agent</a>, where the clip follows the agent's work: typing during file edits, searching during web lookups, calculating, fixing and celebrating success. Clone <a href="https://github.com/waifuai/waifu-sprites">waifuai/waifu-sprites</a> into <code>~/.hermes/plugins</code> and rescan plugins from the dashboard.</p>
-</section>
-
-<!-- related -->
-<section>
-<h2>Related</h2>
-<div class="link-list">
-<a href="/hermes-waifu/"><h3>Hermes Waifu</h3><p>Live2D widget for Hermes Agent with five built-in models and expression controls.</p></a>
-<a href="/ransoc/"><h3>RANSOC</h3><p>Real-time, curiosity-driven search ranking algorithm.</p></a>
-<a href="/waifu-chat-api/"><h3>Waifu Chat API</h3><p>REST API for waifu chatbot conversations with user management.</p></a>
-<a href="/waifu-constitution/"><h3>Waifu Constitution</h3><p>Alignment constitution and behaviour guidelines for waifu agents.</p></a>
-<a href="/waifu-llm-vrm/"><h3>Waifu LLM VRM</h3><p>Python library for AI waifus in the Godot engine, with VRM avatar support.</p></a>
-<a href="/anime-subtitle-chatbot/"><h3>Anime Subtitle Chatbot</h3><p>Few-shot chatbot trained on anime subtitles.</p></a>
-</div>
-</section>
-<!-- /related -->
-<footer>
-<p>Generated for GitHub Pages</p>
-</footer>
-</div>
 
 <script src="sprites.js"></script>
 <script src="pictures.js"></script>

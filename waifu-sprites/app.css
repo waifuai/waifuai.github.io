@@ -1,4 +1,4 @@
-/* Waifu Sprites app. The stage is always dark; the About section below follows the site theme. */
+/* Waifu Sprites app. The stage is the whole page and is always dark. */
 
 .site-header { margin-bottom: 0; }
 .full-app-link { display: none; }
@@ -37,9 +37,7 @@
 /* Fit the actual iframe viewport, including narrower mobile Player Cards. */
 .sprite-embed, .sprite-embed body { height: 100%; overflow: hidden; }
 .sprite-embed body { padding: 0; background: #0b0b12; }
-.sprite-embed .site-header,
-.sprite-embed #about,
-.sprite-embed .about-link { display: none; }
+.sprite-embed .site-header { display: none; }
 .sprite-embed .stage { margin: 0; height: 100vh; height: 100dvh; min-height: 0; }
 .sprite-embed .topbar { padding: 8px; gap: 4px; }
 .sprite-embed .topbar-right { gap: 4px; }
@@ -91,6 +89,7 @@
   z-index: 5;
 }
 .topbar-right { display: flex; gap: 8px; }
+.topbar a.icon-btn { text-decoration: none; }
 .icon-btn {
   width: 40px;
   height: 40px;
@@ -319,26 +318,6 @@
 .history-open small { color: var(--ink-dim); font-size: 12px; }
 .history-del { flex: none; width: 32px; height: 32px; border-radius: 50%; border: 0; background: none; color: var(--ink-dim); cursor: pointer; font-size: 15px; }
 .history-del:hover { color: #ff8a9b; }
-
-.about-link {
-  position: absolute;
-  left: 16px;
-  bottom: 14px;
-  z-index: 3;
-  font-size: 12px;
-  color: var(--ink-dim);
-  text-decoration: none;
-  display: none;
-}
-@media (min-width: 900px) { .about-link { display: block; } }
-.about-link:hover { color: var(--ink); }
-
-/* ── About section ── */
-#about { padding-top: 24px; }
-#about .tables { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-#about table { width: 100%; border-collapse: collapse; font-size: 14px; }
-#about th, #about td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--border); }
-#about th { color: var(--text-muted); font-weight: 600; }
 
 /* ── Pictures ── */
 .msg.pic { padding: 6px; max-width: min(78%, 320px); }

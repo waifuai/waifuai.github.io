@@ -6,7 +6,9 @@ on X. Its static HTML advertises a 480 × 480 Player Card, with the existing
 **https://waifuai.github.io/waifu-sprites/?embed=x**.
 
 The embedded view uses the same app, sized to its iframe, with a **Full app**
-link. Site navigation and the About section stay on the full page. Chats,
+link. The full page is the same full-page app with site navigation on top.
+Its documentation lives on a separate indexed page, `docs/`, opened from the
+book button in the top bar. Chats,
 settings, speech preferences and stored pictures use a separate embed storage
 namespace, so opening a card cannot display the normal app's saved chats or
 reuse its saved provider credentials. Storage blocked by the host still allows
