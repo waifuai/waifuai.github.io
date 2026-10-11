@@ -174,7 +174,7 @@
   .chart-heading { display:flex; justify-content:space-between; gap:8px; align-items:start; margin-bottom:18px; }
   .chart-card h2 { font:500 19px var(--font); letter-spacing:-.5px; margin:0 0 5px; } .chart-sub { font-size:11px; color:var(--muted); margin:0; }
   .badge { background:var(--row); color:var(--accent); font-size:11px; border-radius:999px; padding:5px 9px; white-space:nowrap; }
-  .chart-tabs { display:flex; gap:4px; margin-bottom:16px; }
+  .chart-tabs { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:16px; }
   .chart-tabs button { background:transparent; color:var(--muted); border:1px solid transparent; border-radius:999px; padding:5px 11px; font-size:11px; cursor:pointer; }
   .chart-tabs button[aria-pressed=true] { border-color:var(--line); background:var(--row); color:var(--text); }
   .chart-panel { position:relative; } .chart-scale { position:absolute; top:0; left:0; height:194px; display:flex; flex-direction:column; justify-content:space-between; font-size:9px; color:var(--muted); }
