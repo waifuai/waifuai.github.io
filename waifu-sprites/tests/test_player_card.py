@@ -31,6 +31,12 @@ class PlayerCardTests(unittest.TestCase):
         self.context.set_default_timeout(6000)
         self.calls = []
         self.cloud_requests = []
+        self.decision_requests = []
+        self.reply_text = '[happy] Mock reply received.'
+        self.emotion_answer = {'choice_id': 'confused', 'confidence': 0.9}
+        self.decision_status = 'ok'
+        self.pending_emotion = None
+        self.hold_emotion = False
         self.errors = []
         self.context.route('**/*', self.route)
         self.page = self.context.new_page()
@@ -54,17 +60,125 @@ class PlayerCardTests(unittest.TestCase):
             self.cloud_requests.append({'path': url.path, 'headers': route.request.all_headers(), 'body': request})
             if request.get('stream'):
                 self.calls.append(request)
-                event = {'choices': [{'delta': {'content': '[happy] Mock reply received.'}}]}
+                event = {'choices': [{'delta': {'content': self.reply_text}}]}
                 route.fulfill(content_type='text/event-stream', body='data: ' + json.dumps(event) + '\n\ndata: [DONE]\n\n')
             else:
                 content = 'DRAW: Aurora smiling in a sunny garden' if route.request.headers.get('x-waifu-purpose') == 'image_prompt' else 'Test chat'
                 route.fulfill(content_type='application/json', body=json.dumps({'choices': [{'message': {'content': content}}]}))
+        elif url.path == '/decisions':
+            request = route.request.post_data_json
+            self.decision_requests.append({'headers': route.request.all_headers(), 'body': request})
+            if request['tasks'] == ['sprites_emotion_v1'] and self.hold_emotion:
+                self.pending_emotion = route
+            else:
+                self.fulfill_decision(route, request['tasks'])
         elif url.path == '/image':
             self.cloud_requests.append({'path': url.path, 'headers': route.request.all_headers()})
             route.fulfill(headers={'X-Image-Url': 'https://sprites.test/picture.png'}, body='')
         else:
             # Analytics, speech and other external services never reach production.
             route.fulfill(content_type='application/javascript', body='')
+
+    def fulfill_decision(self, route, tasks):
+        wants_picture = 'selfie' in route.request.post_data_json.get('state', {}).get('user_message', '').lower()
+        answers = {task: (self.emotion_answer if task == 'sprites_emotion_v1'
+                         else {'choice_id': 'draw' if wants_picture else 'none', 'confidence': 0.9}) for task in tasks}
+        route.fulfill(content_type='application/json', body=json.dumps({
+            'status': self.decision_status,
+            'answers': answers if self.decision_status == 'ok' else {},
+        }))
+
+    def send_emotion_reply(self):
+        self.page.goto(APP)
+        self.page.evaluate('localStorage.clear()')
+        self.page.reload()
+        self.page.locator('#speakToggle').click()
+        # Observe intended expressions independently of clip variation.
+        self.page.evaluate("""() => {
+            window.emotionCalls = [];
+            const original = Sprites.setEmotion;
+            Sprites.setEmotion = name => { emotionCalls.push(name); return original(name); };
+            window.emotionFinished = 0;
+            const ask = Chat.askDecisions;
+            Chat.askDecisions = (tasks, state) => ask(tasks, state).finally(() => {
+                if (tasks.includes('sprites_emotion_v1')) emotionFinished++;
+            });
+        }""")
+        self.page.locator('#msgInput').fill('Explain this')
+        self.page.locator('#sendBtn').click()
+        self.page.locator('.msg.assistant:not(.typing)').wait_for()
+        self.page.wait_for_function("() => !Chat.busy")
+
+    def test_tagged_reply_requests_emotion_and_refines_expression(self):
+        self.send_emotion_reply()
+        self.page.wait_for_function("() => emotionCalls.includes('confused')")
+        emotion = [r for r in self.decision_requests if r['body']['tasks'] == ['sprites_emotion_v1']]
+        self.assertEqual(len(emotion), 1)
+        self.assertEqual(emotion[0]['body']['state']['reply'], 'Mock reply received.')
+        self.assertEqual(emotion[0]['body']['state']['user_message'], 'Explain this')
+        chat = next(r for r in self.cloud_requests if r.get('body', {}).get('stream'))
+        for header in ('x-session-id', 'x-visitor-id'):
+            self.assertEqual(emotion[0]['headers'][header], chat['headers'][header])
+        self.assertEqual(self.page.evaluate('emotionCalls'), ['happy', 'confused'])
+        self.assertFalse(self.errors)
+
+    def test_untagged_reply_still_requests_emotion(self):
+        self.reply_text = 'Mock reply received.'
+        self.send_emotion_reply()
+        self.page.wait_for_function("() => emotionCalls.includes('confused')")
+        self.assertEqual(self.page.evaluate('emotionCalls'), ['confused'])
+
+    def test_decision_fallback_preserves_tag(self):
+        for status, answer in [('unavailable', self.emotion_answer),
+                               ('ok', {'choice_id': 'confused', 'confidence': 0.1}),
+                               ('ok', {'choice_id': 'invalid', 'confidence': 0.9}),
+                               ('ok', {'choice_id': 'happy', 'confidence': 0.9})]:
+            with self.subTest(status=status, answer=answer):
+                self.decision_status = status
+                self.emotion_answer = answer
+                self.send_emotion_reply()
+                self.page.wait_for_function('() => emotionFinished === 1')
+                self.assertEqual(self.page.evaluate('emotionCalls'), ['happy'])
+
+    def test_late_decision_does_not_interrupt_typing(self):
+        self.hold_emotion = True
+        self.send_emotion_reply()
+        self.page.wait_for_timeout(100)
+        self.assertIsNotNone(self.pending_emotion)
+        self.page.locator('#msgInput').fill('A new message')
+        self.page.locator('#msgInput').dispatch_event('input')
+        self.fulfill_decision(self.pending_emotion, ['sprites_emotion_v1'])
+        self.page.wait_for_function('() => emotionFinished === 1')
+        self.assertEqual(self.page.evaluate('emotionCalls'), ['happy'])
+        self.assertEqual(self.page.evaluate('Sprites.current.name'), 'listening')
+
+    def test_late_decision_does_not_interrupt_new_conversation(self):
+        self.hold_emotion = True
+        self.send_emotion_reply()
+        self.page.wait_for_timeout(100)
+        self.assertIsNotNone(self.pending_emotion)
+        self.page.locator('#newBtn').click()
+        self.fulfill_decision(self.pending_emotion, ['sprites_emotion_v1'])
+        self.page.wait_for_function('() => emotionFinished === 1')
+        self.assertEqual(self.page.evaluate('emotionCalls'), ['happy'])
+        self.assertEqual(self.page.evaluate('Sprites.current.name'), 'idle')
+
+    def test_late_decision_does_not_override_newer_reply(self):
+        self.hold_emotion = True
+        self.send_emotion_reply()
+        self.page.wait_for_timeout(100)
+        old = self.pending_emotion
+        self.assertIsNotNone(old)
+        self.page.locator('#msgInput').fill('Another turn')
+        self.page.locator('#sendBtn').click()
+        self.page.locator('.msg.assistant:not(.typing)').nth(1).wait_for()
+        self.page.wait_for_function('() => !Chat.busy')
+        self.fulfill_decision(old, ['sprites_emotion_v1'])
+        self.page.wait_for_function('() => emotionFinished === 1')
+        self.assertEqual(self.page.evaluate('emotionCalls'), ['happy', 'happy'])
+        self.fulfill_decision(self.pending_emotion, ['sprites_emotion_v1'])
+        self.page.wait_for_function('() => emotionFinished === 2')
+        self.assertEqual(self.page.evaluate('emotionCalls'), ['happy', 'happy', 'confused'])
 
     def check_chat(self, sandbox=None, blocked_storage=False):
         if blocked_storage:

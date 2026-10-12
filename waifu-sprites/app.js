@@ -505,20 +505,24 @@
         }
         if (!tagged) {
           if (message.emotion) Sprites.setEmotion(message.emotion);
-          // No streamed tag: the keyword guess is weak or found nothing, so
-          // WaifuAI Cloud's read of the finished reply picks her expression
-          // when confident. Silence keeps whatever was applied above.
-          if (!ambient && typeof Chat.askDecisions === 'function') {
-            Chat.askDecisions(['sprites_emotion_v1'], {
-              reply: message.content.slice(0, 1200),
-              user_message: text ? String(text).slice(0, 300) : undefined,
-            }).then(answers => {
-              const e = answers && answers.sprites_emotion_v1;
-              if (e && Sprites.EMOTIONS.includes(e.choice_id) && (e.confidence ?? 0) >= 0.5) {
-                Sprites.setEmotion(e.choice_id);
-              }
-            }).catch(() => {});
-          }
+        }
+        // The streamed tag reacts immediately; ask WaifuAI Cloud about every
+        // finished user reply too, so tagged replies reach the decision path.
+        // A confident answer may refine the expression while this reply is
+        // still on stage. Failed or late answers keep the current behavior.
+        if (!ambient && typeof Chat.askDecisions === 'function') {
+          const conversation = Chat.convId;
+          const expression = Sprites.current;
+          Chat.askDecisions(['sprites_emotion_v1'], {
+            reply: message.content.slice(0, 1200),
+            user_message: text ? String(text).slice(0, 300) : undefined,
+          }).then(answers => {
+            const e = answers && answers.sprites_emotion_v1;
+            if (Chat.convId !== conversation || !reply.isConnected || Sprites.current !== expression) return;
+            if (e && Sprites.EMOTIONS.includes(e.choice_id) && (e.confidence ?? 0) >= 0.5 && e.choice_id !== message.emotion) {
+              Sprites.setEmotion(e.choice_id);
+            }
+          }).catch(() => {});
         }
         track('llm_stream_completed', { provider, model, success: true, total_time_ms: Date.now() - startedAt, reply_chars: message.content.length, emotion: message.emotion || '(none)' });
         later(() => Sprites.setState('idle'), RETURN_TO_IDLE_MS);
