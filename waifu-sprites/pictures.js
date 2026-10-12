@@ -53,16 +53,24 @@ When the companion is in the picture, describe her as ${APPEARANCE}, plus the ou
   const CHAT_RULE = `You can draw pictures, including pictures of yourself (you look like ${APPEARANCE}). When the user asks for a picture, photo, selfie or drawing, it is drawn separately and appears in the chat on its own: just react in character, happy to make it. Never write out the picture's description yourself, and never refuse by saying you are an AI or can't make images. Nude or sexual pictures are never drawn: playfully suggest a cute alternative instead.`;
 
   // ── Decision ──
+  function clipPictureContext(text) {
+    const clean = String(text || '').trim();
+    // Keep the closing offer or scene choices as well as the opening, within
+    // the endpoint's 300-character context limit.
+    return clean.length <= 300 ? clean : clean.slice(0, 100) + '\n...\n' + clean.slice(-195);
+  }
+
   async function decide(userText, prevReply, ids) {
     if (!REQUEST_WORDS.test(userText || '') && !(prevReply && OFFER_WORDS.test(prevReply))) return null;
     const clip = s => String(s || '').slice(0, 300);
+    const previous = prevReply ? clipPictureContext(prevReply) : undefined;
     try {
       // WaifuAI Cloud makes the draw/no-draw call first. A confident "no"
       // skips the writing call below; any other answer, or no answer, runs it.
       if (typeof Chat !== 'undefined' && typeof Chat.askDecisions === 'function') {
         const answers = await Chat.askDecisions(['picture_action_v1'], {
           user_message: clip(userText),
-          previous_reply: prevReply ? clip(prevReply) : undefined,
+          previous_reply: previous,
           picture_offered: Boolean(prevReply && OFFER_WORDS.test(prevReply)),
         });
         const picture = answers && answers.picture_action_v1;
@@ -80,7 +88,7 @@ When the companion is in the picture, describe her as ${APPEARANCE}, plus the ou
           stream: false,
           messages: [
             { role: 'system', content: DECISION_PROMPT },
-            { role: 'user', content: "Companion's previous message: " + (prevReply ? clip(prevReply) : '(none)') + "\n\nUser's NEW message: " + clip(userText) },
+            { role: 'user', content: "Companion's previous message: " + (previous || '(none)') + "\n\nUser's NEW message: " + clip(userText) },
           ],
           client_settings: { app: 'waifu-sprites' },
         }),
