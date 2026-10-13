@@ -4,6 +4,9 @@ Run: python waifu-sprites/tests/test_player_card.py
 Requires Playwright and its Chromium browser. All network requests are mocked.
 """
 import json
+import base64
+import io
+import wave
 import mimetypes
 from pathlib import Path
 import unittest
@@ -32,6 +35,8 @@ class PlayerCardTests(unittest.TestCase):
         self.calls = []
         self.cloud_requests = []
         self.decision_requests = []
+        self.tts_calls = []
+        self.language_answer = {'choice_id': 'en-US', 'confidence': 0.95}
         self.reply_text = '[happy] Mock reply received.'
         self.emotion_answer = {'choice_id': 'confused', 'confidence': 0.9}
         self.decision_status = 'ok'
@@ -68,10 +73,18 @@ class PlayerCardTests(unittest.TestCase):
         elif url.path == '/decisions':
             request = route.request.post_data_json
             self.decision_requests.append({'headers': route.request.all_headers(), 'body': request})
-            if request['tasks'] == ['sprites_emotion_v1'] and self.hold_emotion:
+            if 'sprites_emotion_v1' in request['tasks'] and self.hold_emotion:
                 self.pending_emotion = route
             else:
                 self.fulfill_decision(route, request['tasks'])
+        elif url.hostname == 'ottsy.weilbyte.dev':
+            self.tts_calls.append(route.request.post_data_json)
+            audio = io.BytesIO()
+            with wave.open(audio, 'wb') as wav:
+                wav.setparams((1, 2, 22050, 0, 'NONE', 'not compressed'))
+                wav.writeframes(b'\0\0' * 2205)
+            route.fulfill(headers={'access-control-allow-origin': '*'}, content_type='application/json',
+                          body=json.dumps({'success': True, 'data': base64.b64encode(audio.getvalue()).decode()}))
         elif url.path == '/image':
             self.cloud_requests.append({'path': url.path, 'headers': route.request.all_headers()})
             route.fulfill(headers={'X-Image-Url': 'https://sprites.test/picture.png'}, body='')
@@ -81,7 +94,7 @@ class PlayerCardTests(unittest.TestCase):
 
     def fulfill_decision(self, route, tasks):
         wants_picture = 'selfie' in route.request.post_data_json.get('state', {}).get('user_message', '').lower()
-        answers = {task: (self.emotion_answer if task == 'sprites_emotion_v1'
+        answers = {task: (self.language_answer if task == 'sprites_tts_language_v1' else self.emotion_answer if task == 'sprites_emotion_v1'
                          else {'choice_id': 'draw' if wants_picture else 'none', 'confidence': 0.9}) for task in tasks}
         route.fulfill(content_type='application/json', body=json.dumps({
             'status': self.decision_status,
@@ -265,6 +278,55 @@ class PlayerCardTests(unittest.TestCase):
 
     def test_embedded_picture_calls_share_chat_identity(self):
         self.check_picture_identity('allow-scripts allow-same-origin')
+
+
+    def test_tts_uncertain_reply_shares_emotion_request_and_replay_cache(self):
+        self.page.goto(APP)
+        self.reply_text = '[happy] *waves gently* Kimi no koe ga yasashikute kokoro ga atatakai.'
+        self.language_answer = {'choice_id': 'ja-JP', 'confidence': 0.95}
+        self.page.locator('#msgInput').fill('Please read this')
+        self.page.locator('#sendBtn').click()
+        self.page.wait_for_function('!Chat.busy && !Speech.speaking')
+        self.assertTrue(self.tts_calls)
+        self.assertEqual(self.tts_calls[0]['voice'], 'jp_003')
+        requests = [r['body'] for r in self.decision_requests if 'sprites_tts_language_v1' in r['body']['tasks']]
+        self.assertEqual(len(requests), 1)
+        self.assertEqual(requests[0]['tasks'], ['sprites_emotion_v1', 'sprites_tts_language_v1'])
+        self.assertFalse(requests[0]['state']['spoken_reply'].startswith('*'))
+        before = len(self.decision_requests)
+        self.page.evaluate('Speech.speak(Chat.lastReply(), {force: true})')
+        self.assertEqual(len(self.decision_requests), before)
+        self.assertEqual(self.tts_calls[-1]['voice'], 'jp_003')
+        self.assertFalse(self.errors)
+
+    def test_tts_clear_french_and_spanish_are_local(self):
+        self.page.goto(APP)
+        for text, voice in [('Bonjour, je suis contente de te voir.', 'fr_001'), ('Hola, gracias!', 'es_002')]:
+            self.reply_text = '[happy] ' + text
+            self.page.locator('#msgInput').fill('Read this reply')
+            self.page.locator('#sendBtn').click()
+            self.page.wait_for_function('!Chat.busy && !Speech.speaking')
+            self.assertTrue(self.tts_calls)
+            self.assertEqual(self.tts_calls[-1]['voice'], voice)
+        self.assertFalse(any('sprites_tts_language_v1' in r['body']['tasks'] for r in self.decision_requests))
+        self.assertFalse(self.errors)
+
+    def test_tts_muted_and_auto_language_off_do_not_add_language_tasks(self):
+        self.page.goto(APP)
+        self.page.locator('#speakToggle').click()
+        self.reply_text = '[happy] Kimi no koe ga yasashikute kokoro ga atatakai.'
+        self.page.locator('#msgInput').fill('Read this reply')
+        self.page.locator('#sendBtn').click()
+        self.page.wait_for_function('!Chat.busy')
+        self.assertFalse(self.tts_calls)
+        self.page.locator('#speakToggle').click()
+        self.page.evaluate('Speech.settings.autoLang = false')
+        self.page.locator('#msgInput').fill('Read it again')
+        self.page.locator('#sendBtn').click()
+        self.page.wait_for_function('!Chat.busy && !Speech.speaking')
+        self.assertEqual(self.tts_calls[-1]['voice'], 'en_us_001')
+        self.assertFalse(any('sprites_tts_language_v1' in r['body']['tasks'] for r in self.decision_requests))
+        self.assertFalse(self.errors)
 
 
 if __name__ == '__main__':

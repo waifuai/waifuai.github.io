@@ -73,7 +73,7 @@ const Speech = (() => {
   // Drops whole *multi-word action* spans, keeps single-word emphasis, strips emoji.
   function stripForTTS(text) {
     const emoji = new RegExp('([\\u2700-\\u27BF]|[\\uE000-\\uF8FF]|\\uD83C[\\uDC00-\\uDFFF]|\\uD83D[\\uDC00-\\uDFFF]|[\\u2000-\\u2FFF]|\\uD83E[\\uDD00-\\uDFFF])', 'g');
-    return String(text || '')
+    return (window.TTSLanguageRouter ? window.TTSLanguageRouter.clean(text) : String(text || ''))
       .replace(/\*\s*[^*\n]*\s[^*\n]*\s*\*/g, ' ')
       .replace(/\*\s*\*/g, ' ')
       .replace(/\*/g, '')
@@ -99,56 +99,21 @@ const Speech = (() => {
     return chunks;
   }
 
-  // ── Language routing (waifu-companion audio_player.js) ──
-  const LANG_TAGS = { ru: 'ru-RU', ar: 'ar-SA', ja: 'ja-JP', ko: 'ko-KR', zh: 'zh-CN', th: 'th-TH', hi: 'hi-IN', he: 'he-IL', el: 'el-GR', id: 'id-ID', de: 'de-DE', pt: 'pt-BR' };
-  const PREFERRED = { ja: 'jp_003' };
-
-  function detectScriptLang(text) {
-    if (/[Ѐ-ӿ]/.test(text)) return 'ru';
-    if (/[؀-ۿ]/.test(text)) return 'ar';
-    if (/[぀-ヿ]/.test(text)) return 'ja'; // kana before Han, or Japanese reads as Chinese
-    if (/[가-힯]/.test(text)) return 'ko';
-    if (/[一-鿿]/.test(text)) return 'zh';
-    if (/[฀-๿]/.test(text)) return 'th';
-    if (/[ऀ-ॿ]/.test(text)) return 'hi';
-    if (/[֐-׿]/.test(text)) return 'he';
-    if (/[Ͱ-Ͽ]/.test(text)) return 'el';
-    return null;
+  // Reply-level language plans; the voice inventory remains local.
+  const languageState = window.TTSLanguageRouter ? window.TTSLanguageRouter.create() : null;
+  function conversationKey() { return typeof Chat !== 'undefined' ? Chat.convId || 'default' : 'default'; }
+  function fingerprint() { return JSON.stringify([settings.voiceId, settings.autoLang]); }
+  function prepareRouting(text, force = false, sample = false) {
+    return languageState ? languageState.prepare(stripForTTS(text), { key: conversationKey(), voiceId: settings.voiceId, voices: VOICES,
+      auto: settings.autoLang && !sample, enabled: settings.enabled || force || sample, fingerprint: fingerprint() }) : null;
   }
-
-  // Function words for the Latin-script languages that have a voice. English is
-  // only a guard: when nothing clearly beats it, the picked voice is kept.
-  const HINTS = {
-    en: 'the and you that have for not with this but what your just like how are was can it is to of in my me we so do if on or at be as an his her they them would could should there here from about when then than some one all out up who why will well yeah okay ok love want know think feel really very much good happy sad please thanks thank sorry hello hey cute pretty beautiful little big day night morning time right back down over again still only even more most too oh haha lol yes',
-    id: 'yang dan itu ini dari apa siapa kenapa bagaimana kapan dimana mana tidak tak bukan jangan aku kamu kau saya anda dia kita kami mereka orang dengan untuk pada dalam akan sudah udah belum bisa dapat boleh harus mau ingin suka sayang cinta hati senang sedih lucu cantik manis baik besar kecil banyak semua juga tapi karena kalau jadi adalah ada tahu tau lihat kasih buat bikin makan gambar minum tidur rumah kerja teman nama kabar halo terima maaf tolong selamat banget nggak gak nih dong sih deh kok yuk ayo oke sekarang nanti besok pagi malam hari ang mga ako ikaw niya tayo kayo sila ito dito saan paano bakit hindi wala dahil kasi naman lang talaga salamat kamusta kumusta mahal ganda masaya lahat ingat mahu jom',
-    de: 'der die das dem den und oder aber ich wir ihr mich dich sich uns dein sein ihre nicht kein keine ein eine einem einen ist bin bist sind war waren wird werden kann kannst können muss will willst möchte habe hast hat haben für auf von bei nach über unter vor durch ohne wie was wer warum wo wann jetzt dann wenn weil dass doch mal schon nur auch noch immer wieder sehr gut ja nein danke bitte hallo liebe schatz herz tag nacht morgen gern gerne',
-    pt: 'não nao sim você voce sou eu ele ela nós mas com para isso isto aqui muito bem tudo nada bom boa dia noite tarde olá ola oi obrigado obrigada desculpa amor querido querida saudade coração beijo gosto gente então também quando onde tá né acho vou vai está estão hola gracias muy usted eres del ellos nosotros puedo puedes quiero tengo tienes dime dónde donde quién bueno buena esto eso siempre nunca mañana feliz triste encanta corazón beso lindo linda amiga amigo casa vida tiempo favor cariño estoy estás están somos son mucho hermosa juntos sabes amo cómo aquí qué siento contigo',
-  };
-  const HINT_SETS = Object.fromEntries(Object.entries(HINTS).map(([k, v]) => [k, new Set(v.split(' '))]));
-
-  function detectLatinLang(text) {
-    const tokens = String(text || '').toLowerCase().split(/[^a-zà-öø-ÿ0-9']+/).filter(t => t.length >= 2);
-    if (!tokens.length) return null;
-    const scores = {};
-    for (const lang of Object.keys(HINT_SETS)) scores[lang] = tokens.filter(t => HINT_SETS[lang].has(t)).length;
-    let best = null, bestScore = 0, tied = false;
-    for (const [lang, score] of Object.entries(scores)) {
-      if (score > bestScore) { best = lang; bestScore = score; tied = false; }
-      else if (score === bestScore && score > 0) tied = true;
-    }
-    if (!best || best === 'en' || tied || bestScore < 2) return null;
-    if (bestScore < 3 && bestScore * 4 < tokens.length) return null;
-    if (bestScore - scores.en < 1) return null;
-    return best;
+  function finishRouting(plan, request, valid = () => true) {
+    return plan && languageState ? languageState.settle(plan, request, 'sprites_tts_language_v1', valid) : Promise.resolve(plan);
   }
-
-  function routeVoice(text, voiceId) {
-    if (!settings.autoLang) return { voiceId, lang: null };
-    const lang = detectScriptLang(text) || detectLatinLang(text);
-    if (!lang) return { voiceId, lang: null };
-    const matches = v => v.provider === 'tiktok' && v.language.split('-')[0] === lang;
-    const chosen = (PREFERRED[lang] && byId(PREFERRED[lang])) || VOICES.find(v => matches(v) && v.gender === 'female') || VOICES.find(matches);
-    return { voiceId: chosen ? chosen.id : voiceId, lang: LANG_TAGS[lang] || null };
+  function routeVoice(text, voiceId, plan = null) {
+    if (!window.TTSLanguageRouter) return { voiceId, lang: null };
+    const language = plan ? plan.lang : window.TTSLanguageRouter.analyze(text).lang;
+    return window.TTSLanguageRouter.selectVoice(VOICES, voiceId, language, settings.autoLang && (!plan || plan.auto));
   }
 
   // ── Settings ──
@@ -167,6 +132,7 @@ const Speech = (() => {
   let ctx = null;
   let source = null;
   let runToken = 0;
+  let preparing = false;
 
   // Browsers only allow sound after a user gesture, so the page calls this on clicks and keys.
   function unlock() {
@@ -196,17 +162,27 @@ const Speech = (() => {
 
   // Resolves a chunk to something playable without making a sound, so the next
   // chunk can be fetched while this one plays.
-  async function resolve(text) {
+  async function resolve(text, plan = null) {
     const voice = byId(settings.voiceId) || byId('en_us_001');
-    const routed = routeVoice(text, voice.id);
-    if (voice.provider === 'tiktok') {
+    let routed = routeVoice(text, voice.id, plan);
+    if (routed.unsupportedPrimary) {
+      if (window.speechSynthesis && !speechSynthesis.getVoices().length) {
+        await new Promise(done => { const timer = setTimeout(done, 1000); speechSynthesis.addEventListener('voiceschanged', () => { clearTimeout(timer); done(); }, { once: true }); });
+      }
+      const available = window.speechSynthesis && speechSynthesis.getVoices().some(v => v.lang.split('-')[0].toLowerCase() === routed.lang.split('-')[0]);
+      if (!available) routed = { voiceId: voice.id, lang: voice.language, provider: voice.provider, unsupported: true };
+    }
+    if (routed.provider === 'tiktok') {
       try {
-        return { kind: 'buffer', buffer: await fetchTikTok(text, routed.voiceId) };
+        return { kind: 'buffer', buffer: await fetchTikTok(text, routed.voiceId), lang: routed.lang || voice.language, voiceId: routed.voiceId, unsupported: !!routed.unsupported };
       } catch (e) {
         // Rate limit or outage: fall through to the browser voice.
       }
     }
-    return { kind: 'browser', text, gender: voice.gender, lang: routed.lang || voice.language };
+    const target = routed.lang || voice.language;
+    const installed = window.speechSynthesis ? browserVoice(target, voice.gender) : null;
+    if (window.speechSynthesis && speechSynthesis.getVoices().length && !installed) return { kind: 'silent' };
+    return { kind: 'browser', text, gender: voice.gender, lang: installed ? installed.lang : target };
   }
 
   function playBuffer(buffer) {
@@ -225,8 +201,12 @@ const Speech = (() => {
 
   function browserVoice(lang, gender) {
     const all = speechSynthesis.getVoices();
-    const local = all.filter(v => v.lang.startsWith(lang.split('-')[0]));
-    if (!local.length) return all[0] || null;
+    let local = all.filter(v => v.lang.split('-')[0].toLowerCase() === lang.split('-')[0].toLowerCase());
+    if (!local.length) {
+      const fallbackLang = (byId(settings.voiceId) || byId('en_us_001')).language;
+      local = all.filter(v => v.lang.split('-')[0].toLowerCase() === fallbackLang.split('-')[0].toLowerCase());
+    }
+    if (!local.length) return null;
     const female = ['female', 'woman', 'girl', 'zira', 'hazel', 'susan', 'samantha', 'karen', 'moira', 'tessa', 'fiona', 'kate', 'victoria', 'alice'];
     const male = ['male', 'man', 'boy', 'david', 'mark', 'james', 'daniel', 'thomas', 'george', 'alex', 'fred', 'ralph'];
     const [want, avoid] = gender === 'male' ? [male, female] : [female, male];
@@ -257,6 +237,7 @@ const Speech = (() => {
 
   function stop() {
     runToken++;
+    preparing = false;
     if (source) { try { source.stop(); } catch (e) {} source = null; }
     if (window.speechSynthesis) speechSynthesis.cancel();
   }
@@ -274,25 +255,43 @@ const Speech = (() => {
     if (!chunks.length) return;
     const token = runToken;
     const live = () => token === runToken;
-    unlock();
-    if (hooks.onStart) hooks.onStart();
-    let next = resolve(chunks[0]);
-    for (let i = 0; i < chunks.length && live(); i++) {
-      const current = await next;
-      if (!live()) break;
-      if (i + 1 < chunks.length) next = resolve(chunks[i + 1]);
-      if (i === 0 && hooks.onPlay) {
-        const wanted = (byId(settings.voiceId) || {}).provider;
-        hooks.onPlay({ provider: current.kind === 'buffer' ? 'tiktok' : 'browser', fell_back: wanted === 'tiktok' && current.kind !== 'buffer' });
+    preparing = true;
+    try {
+      unlock();
+      if (hooks.onStart) hooks.onStart();
+      const key = conversationKey();
+      const valid = () => live() && conversationKey() === key && (settings.enabled || hooks.force || hooks.sample);
+      let plan = hooks.routingPlan ? await hooks.routingPlan : prepareRouting(text, hooks.force, hooks.sample);
+      if (!valid()) return;
+      const signature = JSON.stringify([key, settings.voiceId, settings.autoLang && !hooks.sample, fingerprint()]);
+      if (plan && plan.signature !== signature) plan = prepareRouting(text, hooks.force, hooks.sample);
+      if (plan && plan.needsDecision && !plan.finished && !plan.pending) {
+        const recent = typeof Chat !== 'undefined' ? Chat.messages.slice(-4).filter(m => m.content !== text).map(m => ({ role: m.role, text: m.content.slice(0, 300) })) : [];
+        const request = typeof Chat !== 'undefined' && typeof Chat.askDecisions === 'function'
+          ? Chat.askDecisions(['sprites_tts_language_v1'], { reply: plan.text.slice(0, 1200), conversation_language: plan.previousLang, recent_context: recent }) : null;
+        plan = await finishRouting(plan, request, valid);
+      } else if (plan && plan.pending && !plan.finished) plan = await plan.pending;
+      if (!valid()) return;
+      let next = resolve(chunks[0], plan);
+      for (let i = 0; i < chunks.length && live(); i++) {
+        const current = await next;
+        if (!valid()) break;
+        if (i + 1 < chunks.length) next = resolve(chunks[i + 1], plan);
+        if (i === 0 && hooks.onPlay) {
+          const wanted = (byId(settings.voiceId) || {}).provider;
+          if (current.kind !== 'silent') hooks.onPlay({ provider: current.kind === 'buffer' ? 'tiktok' : 'browser', fell_back: wanted === 'tiktok' && current.kind !== 'buffer', voice_lang: current.lang || '', requested_voice_lang: plan && plan.lang || '', routing_source: plan && plan.source || 'local', routing_cache_hit: !!(plan && plan.cacheHit), decision_requested: !!(plan && plan.decisionRequested), routing_wait_ms: plan && plan.waitMs || 0 });
+        }
+        if (current.kind === 'buffer') await playBuffer(current.buffer);
+        else if (current.kind === 'browser') await speakBrowser(current.text, current.lang, current.gender);
+        if (i + 1 < chunks.length && live()) await new Promise(r => setTimeout(r, CHUNK_GAP_MS));
       }
-      if (current.kind === 'buffer') await playBuffer(current.buffer);
-      else await speakBrowser(current.text, current.lang, current.gender);
-      if (i + 1 < chunks.length && live()) await new Promise(r => setTimeout(r, CHUNK_GAP_MS));
+      if (live() && hooks.onEnd) hooks.onEnd();
+    } finally {
+      if (live()) preparing = false;
     }
-    if (live() && hooks.onEnd) hooks.onEnd();
   }
 
-  const speaking = () => !!source || (window.speechSynthesis && speechSynthesis.speaking);
+  const speaking = () => preparing || !!source || (window.speechSynthesis && speechSynthesis.speaking);
 
-  return { VOICES, settings, save, speak, stop, unlock, get speaking() { return speaking(); } };
+  return { VOICES, settings, save, speak, stop, unlock, prepareRouting, finishRouting, get speaking() { return speaking(); } };
 })();

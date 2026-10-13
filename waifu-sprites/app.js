@@ -154,16 +154,17 @@
     Speech.settings.voiceId = e.target.value;
     Speech.save();
     track('voice_changed', { voice_id: e.target.value });
-    Speech.speak('Hi! This is how I sound.'); // a sample of the new voice
+    Speech.speak('Hi! This is how I sound.', { sample: true });
   });
   applySpeech();
 
   // Reads a reply aloud and keeps her emotion on screen until it ends.
   // Resolves when she's done talking (at once when her voice is off).
-  function speakReply(text, force) {
+  function speakReply(text, force, routingPlan = null) {
     if (!Speech.settings.enabled && !force) return Promise.resolve();
     return Speech.speak(text, {
       force,
+      routingPlan,
       onStart() { clearTimeout(idleTimer); },
       onPlay(info) { if (!force) track('tts_played', info); },
       onEnd() { later(() => Sprites.setState('idle'), 4000); },
@@ -482,6 +483,7 @@
 
     let tagged = false;
     let done = null;
+    let speechRouting = null;
     await Chat.send(ambient ? (Chat.settings.ambientPrompt.trim() || Chat.DEFAULT_AMBIENT_PROMPT) : text, {
       onEmotion(name) {
         firstChunk();
@@ -510,13 +512,22 @@
         // finished user reply too, so tagged replies reach the decision path.
         // A confident answer may refine the expression while this reply is
         // still on stage. Failed or late answers keep the current behavior.
+        const speechPlan = Speech.settings.enabled ? Speech.prepareRouting(message.content) : null;
+        const speechConversation = Chat.convId;
+        const validSpeech = () => Chat.convId === speechConversation && reply.isConnected && Speech.settings.enabled;
+        let speechDecision = null;
         if (!ambient && typeof Chat.askDecisions === 'function') {
           const conversation = Chat.convId;
           const expression = Sprites.current;
-          Chat.askDecisions(['sprites_emotion_v1'], {
+          const tasks = ['sprites_emotion_v1'];
+          if (speechPlan && speechPlan.needsDecision && !speechPlan.finished && !speechPlan.pending) tasks.push('sprites_tts_language_v1');
+          speechDecision = Chat.askDecisions(tasks, {
             reply: message.content.slice(0, 1200),
             user_message: text ? String(text).slice(0, 300) : undefined,
-          }).then(answers => {
+            ...(tasks.length > 1 ? { conversation_language: speechPlan.previousLang, recent_context: Chat.messages.slice(-4, -1).map(m => ({ role: m.role, text: m.content.slice(0, 300) })) } : {}),
+            ...(tasks.length > 1 && speechPlan.text !== message.content.trim() ? { spoken_reply: speechPlan.text.slice(0, 1200) } : {}),
+          });
+          speechDecision.then(answers => {
             const e = answers && answers.sprites_emotion_v1;
             if (Chat.convId !== conversation || !reply.isConnected || Sprites.current !== expression) return;
             if (e && Sprites.EMOTIONS.includes(e.choice_id) && (e.confidence ?? 0) >= 0.5 && e.choice_id !== message.emotion) {
@@ -524,6 +535,10 @@
             }
           }).catch(() => {});
         }
+        if (speechPlan && speechPlan.needsDecision && !speechPlan.finished && !speechPlan.pending && !speechDecision) {
+          speechDecision = Chat.askDecisions(['sprites_tts_language_v1'], { reply: speechPlan.text.slice(0, 1200), conversation_language: speechPlan.previousLang });
+        }
+        speechRouting = speechPlan ? Speech.finishRouting(speechPlan, speechDecision, validSpeech) : null;
         track('llm_stream_completed', { provider, model, success: true, total_time_ms: Date.now() - startedAt, reply_chars: message.content.length, emotion: message.emotion || '(none)' });
         later(() => Sprites.setState('idle'), RETURN_TO_IDLE_MS);
         scrollDown();
@@ -553,7 +568,7 @@
     stage.classList.remove('busy');
     if (matchMedia('(pointer: fine)').matches && !ambient) input.focus();
 
-    const spoken = done ? speakReply(done.content) : Promise.resolve();
+    const spoken = done ? speakReply(done.content, false, speechRouting) : Promise.resolve();
     if (done) afterReply(done, reply);
 
     // No picture when the reply failed: a retry asks again.
