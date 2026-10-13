@@ -242,7 +242,7 @@ class PlayerCardTests(unittest.TestCase):
         self.page.goto(APP)
         conversation = self.page.evaluate('''() => {
             Chat.newConversation();
-            Chat.messages.push({id: 'long-source', role: 'user', content: '日本語😀\\n'.repeat(8000)},
+            Chat.messages.push({id: 'long-source', role: 'user', content: '日本語😀\\n'.repeat(12000)},
                 ...Array.from({length: 9}, (_, i) => ({id: 'tail-' + i, role: i % 2 ? 'user' : 'assistant', content: 'Tail ' + i})));
             localStorage.setItem('ws_conv_' + Chat.convId, JSON.stringify(Chat.messages));
             return Chat.convId;
@@ -263,7 +263,7 @@ class PlayerCardTests(unittest.TestCase):
         summaries = [c['body'] for c in self.cloud_requests if c['headers'].get('x-waifu-purpose') == 'summary']
         self.assertGreater(len(summaries), 1)
         for request in summaries:
-            self.assertLessEqual(len(json.dumps(request, ensure_ascii=False, separators=(',', ':')).encode()), 32768)
+            self.assertLessEqual(len(json.dumps(request, ensure_ascii=False, separators=(',', ':')).encode()), 262144)
             self.assertEqual(request['context_budget_version'], 1)
         self.assertFalse(self.errors, self.errors)
 
@@ -272,13 +272,13 @@ class PlayerCardTests(unittest.TestCase):
         self.page.evaluate("Chat.newConversation(); Chat.setSummary('Original notes')")
         self.page.locator('#settingsBtn').click()
         field = self.page.locator('#summaryText')
-        self.assertIn('14 / 4096 bytes', self.page.locator('#summarySizeStatus').inner_text())
-        field.fill('😀' * 1100)
-        self.assertIn('4400 / 4096 bytes', self.page.locator('#summarySizeStatus').inner_text())
+        self.assertIn('14 / 32768 bytes', self.page.locator('#summarySizeStatus').inner_text())
+        field.fill('😀' * 9000)
+        self.assertIn('36000 / 32768 bytes', self.page.locator('#summarySizeStatus').inner_text())
         field.dispatch_event('change')
         self.assertEqual(self.page.evaluate('Chat.summary'), 'Original notes')
         self.assertEqual(field.input_value(), 'Original notes')
-        self.assertIn('4 KiB', self.page.locator('#summarySizeStatus').inner_text())
+        self.assertIn('32 KiB', self.page.locator('#summarySizeStatus').inner_text())
         self.assertFalse(self.errors, self.errors)
 
     def test_full_app(self):

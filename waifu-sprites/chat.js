@@ -292,13 +292,13 @@ const Chat = (() => {
   }
 
   function memorySize() {
-    return Math.min(20, Math.max(6, parseInt(settings.memorySize, 10) || 20));
+    return Math.min(100, Math.max(6, parseInt(settings.memorySize, 10) || 20));
   }
 
   function setSummary(text) {
     const summary = window.ConversationBudget.validateSummary(text, true);
     memoryRevision++;
-    if (window.ConversationBudget.bytes(memory.summary) > 4096) memory.backup = memory.summary;
+    if (window.ConversationBudget.bytes(memory.summary) > window.ConversationBudget.limits.summary) memory.backup = memory.summary;
     memory.summary = summary;
     memory.progress = null;
     if (!memory.summary) memory.through = null;
@@ -675,7 +675,7 @@ const Chat = (() => {
     unsummarizedStart,
     get messages() { return messages; },
     get summary() { return memory.summary; },
-    get memoryPending() { return Boolean(memory.progress) || window.ConversationBudget.bytes(memory.summary) > 4096; },
+    get memoryPending() { return Boolean(memory.progress) || window.ConversationBudget.bytes(memory.summary) > window.ConversationBudget.limits.summary; },
     get convId() { return convId; },
     get busy() { return busy; },
   };

@@ -20,14 +20,15 @@ embed; user-triggered chats and image requests still use the usual proxy.
 
 ## Validation and publishing
 
-Memory defaults to at most 20 recent conversational messages, including the
-current turn. Cloud context packing also limits older history to 16 KiB and
-the complete serialized request to 32 KiB. It preserves the newest message,
-persona and accepted summary; an oversized mandatory context gives a recovery
-message rather than silently cutting text.
+Memory defaults to 20 recent conversational messages, raisable to 100 in
+settings, including the current turn. Cloud context packing also limits older
+history to 128 KiB and the complete serialized request to 256 KiB. It preserves
+the newest message, persona and accepted summary; an oversized mandatory context
+gives a recovery message rather than silently cutting text.
 
-Summaries aim for 2 KiB and accept at most 4 KiB of UTF-8 text. Compression uses
-24 KiB transcript batches reduced further to fit the complete request. Long
+Summaries aim for a compact size and accept at most 32 KiB of UTF-8 text.
+Compression uses 128 KiB transcript batches reduced further to fit the complete
+request. Long
 messages and legacy summaries resume from saved checkpoints. A failed, blank,
 oversized or stale result cannot advance the covered-message boundary. The full
 chat archive stays saved, and completed legacy compression retains the original

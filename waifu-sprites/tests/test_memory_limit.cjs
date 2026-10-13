@@ -18,12 +18,12 @@ function client(saved, embed = false) {
   return { chat: ctx.chat, store, key, ctx };
 }
 
-test('saved values above 20 are clamped and persisted for full and embedded clients', () => {
-  for (const embed of [false, true]) for (const saved of [30, 50, 60]) {
+test('saved values above 100 are clamped and persisted for full and embedded clients', () => {
+  for (const embed of [false, true]) for (const saved of [120, 150, 200]) {
     const { chat, store, key } = client(saved, embed);
-    assert.equal(chat.settings.memorySize, 20);
+    assert.equal(chat.settings.memorySize, 100);
     const persisted = JSON.parse(store.get(key));
-    assert.equal(persisted.memorySize, 20);
+    assert.equal(persisted.memorySize, 100);
     assert.equal(persisted.aboutUser, 'Remember me');
   }
 });
@@ -36,7 +36,7 @@ function response(content) { return { ok: true, json: async () => ({ choices: [{
 test('failed and oversized results preserve both memory boundary and archive', async () => {
   for (const fail of ['offline', 'oversized']) {
     const { chat, ctx } = client(); populate(chat); chat.setSummary('Existing facts');
-    ctx.fetch = async () => { if (fail === 'offline') throw Error('Offline'); return response('x'.repeat(4097)); };
+    ctx.fetch = async () => { if (fail === 'offline') throw Error('Offline'); return response('x'.repeat(32769)); };
     await assert.rejects(chat.summarize(true));
     assert.equal(chat.summary, 'Existing facts');
     assert.equal(chat.unsummarizedStart(), 0);
@@ -65,11 +65,11 @@ test('one automatic batch per user turn advances only completed source', async (
   assert.ok(chat.unsummarizedStart() > 0 && chat.unsummarizedStart() < 30);
   chat.messages.push({ id: 'next', role: 'user', content: 'Next turn' });
   await chat.summarize(); assert.equal(calls.length, 2);
-  assert.ok(calls.every(r => Buffer.byteLength(JSON.stringify(r)) <= 32768));
+  assert.ok(calls.every(r => Buffer.byteLength(JSON.stringify(r)) <= 262144));
 });
 test('legacy memory is progressively recompressed and the full original is retained', async () => {
   const { chat, ctx, store } = client(); populate(chat);
-  const id = chat.convId, original = 'Older facts. '.repeat(10000);
+  const id = chat.convId, original = 'Older facts. '.repeat(12000);
   store.set('ws_conv_' + id, JSON.stringify(chat.messages));
   store.set('ws_mem_' + id, JSON.stringify({ summary: original, through: 'm0' }));
   chat.openConversation(id);
@@ -91,21 +91,22 @@ test('fresh defaults and smaller saved choices use 20 and the smaller value resp
 
 test('settings saves and request construction enforce the cap without deleting messages', async () => {
   const { chat, store, key } = client(30);
-  chat.settings.memorySize = 60;
+  chat.settings.memorySize = 120;
   chat.saveSettings();
-  assert.equal(JSON.parse(store.get(key)).memorySize, 20);
+  assert.equal(JSON.parse(store.get(key)).memorySize, 100);
   for (let i = 0; i < 35; i++) chat.messages.push({ id: 'm' + i, role: i % 2 ? 'assistant' : 'user', content: 'message ' + i });
-  chat.settings.memorySize = 60; // request boundary still protects against direct changes
+  chat.settings.memorySize = 150; // request boundary still protects against direct changes
   const messages = await chat.modelMessages();
-  assert.equal(messages.length, 21);
-  assert.equal(messages[1].content, 'message 15');
+  assert.equal(messages.length, 36);
+  assert.equal(messages[1].content, 'message 0');
   assert.equal(messages.at(-1).content, 'message 34');
   assert.equal(chat.messages.length, 35);
 });
 
 test('oversized legacy summary never blocks chat or prompts the user, using active summary within budget', async () => {
-  const { chat, store } = client();
-  const id = chat.convId, legacySummary = 'Older facts about user and story. '.repeat(500);
+  const { chat, store, ctx } = client();
+  const budget = ctx.window.ConversationBudget;
+  const id = chat.convId, legacySummary = 'Older facts about user and story. '.repeat(1500);
   chat.messages.push(
     { id: 'm1', role: 'user', content: 'prior question' },
     { id: 'm2', role: 'assistant', content: 'prior answer' }
@@ -118,10 +119,8 @@ test('oversized legacy summary never blocks chat or prompts the user, using acti
   const sysMsg = messages.find(m => m.role === 'system');
   assert.ok(sysMsg);
   assert.ok(sysMsg.content.includes('Summary of your conversation with the user so far:'));
-  assert.ok(Buffer.byteLength(sysMsg.content, 'utf8') < 10000);
+  assert.ok(Buffer.byteLength(sysMsg.content, 'utf8') < budget.limits.summary + 4096);
   assert.equal(chat.summary, legacySummary);
   const body = { model: 'waifuai-v1', messages, max_tokens: 600, stream: true };
-  assert.ok(Buffer.byteLength(JSON.stringify(body), 'utf8') <= 32768);
+  assert.ok(Buffer.byteLength(JSON.stringify(body), 'utf8') <= budget.limits.request);
 });
-
-

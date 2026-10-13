@@ -893,7 +893,7 @@
   bindSetting('ambientPrompt', 'ambientPrompt', 'text');
 
   function showSummarySize(message) {
-    $('summarySizeStatus').textContent = message || (window.ConversationBudget.bytes($('summaryText').value) + ' / 4096 bytes');
+    $('summarySizeStatus').textContent = message || (window.ConversationBudget.bytes($('summaryText').value) + ' / ' + window.ConversationBudget.limits.summary + ' bytes');
   }
   $('summaryText').addEventListener('input', () => showSummarySize());
   $('summaryText').addEventListener('change', e => {
