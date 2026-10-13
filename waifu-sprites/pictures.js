@@ -107,43 +107,29 @@ When the companion is in the picture, describe her as ${APPEARANCE}, plus the ou
   // ── Drawing ──
   // Resolves with a stored reference ("https://..." or "idb:<id>"). Throws with
   // .blocked when the content filter refused, .timedOut when it took too long.
-  // Transient server failures (5xx without a content block, network
-  // errors) are re-requested once with a new seed; blocks and 429 overload
-  // are final.
+  // Each generation makes one request; failures are returned to the caller.
   async function draw(prompt, aspect, ids) {
     const params = new URLSearchParams({ text: prompt, aspect: aspect || '2:3' });
     const headers = {};
     if (ids && ids.session) headers['x-session-id'] = ids.session;
     if (ids && ids.visitor) headers['x-visitor-id'] = ids.visitor;
-    for (let attempt = 0; ; attempt++) {
-      if (attempt > 0) {
-        params.set('seed', String(Math.floor(Math.random() * 2147483647)));
-      }
-      let res;
-      try {
-        res = await fetch(BASE + '/image?' + params.toString(), { headers });
-      } catch (e) {
-        if (attempt === 0) continue; // network error: one more try
-        throw e;
-      }
-      if (!res.ok) {
-        let body = null;
-        try { body = await res.json(); } catch (e) {}
-        const err = new Error((body && body.error) || 'Image generation failed.');
-        err.blocked = Boolean(body && body.blocked);
-        err.timedOut = res.status === 504;
-        if (res.status >= 500 && !err.blocked && attempt === 0) continue;
-        throw err;
-      }
-      const url = res.headers.get('X-Image-Url');
-      if (url) {
-        try { res.body && res.body.cancel(); } catch (e) {}
-        return url;
-      }
-      const id = res.headers.get('X-Image-Id') || ('img' + Date.now().toString(36));
-      await Store.put(id, await res.blob());
-      return 'idb:' + id;
+    const res = await fetch(BASE + '/image?' + params.toString(), { headers });
+    if (!res.ok) {
+      let body = null;
+      try { body = await res.json(); } catch (e) {}
+      const err = new Error((body && body.error) || 'Image generation failed.');
+      err.blocked = Boolean(body && body.blocked);
+      err.timedOut = res.status === 504;
+      throw err;
     }
+    const url = res.headers.get('X-Image-Url');
+    if (url) {
+      try { res.body && res.body.cancel(); } catch (e) {}
+      return url;
+    }
+    const id = res.headers.get('X-Image-Id') || ('img' + Date.now().toString(36));
+    await Store.put(id, await res.blob());
+    return 'idb:' + id;
   }
 
   // Turns a stored reference into something an <img> can show.
