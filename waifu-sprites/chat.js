@@ -125,7 +125,14 @@ const Chat = (() => {
   if (!PERSONAS[settings.persona]) settings.persona = 'aurora';
   if (!SUMMARY_LENGTHS[settings.summaryLength]) settings.summaryLength = 'concise';
 
-  function saveSettings() { save(KEY.settings, settings); }
+  const savedMemorySize = settings.memorySize;
+  settings.memorySize = memorySize();
+  if (settings.memorySize !== savedMemorySize) saveSettings();
+
+  function saveSettings() {
+    settings.memorySize = memorySize();
+    save(KEY.settings, settings);
+  }
 
   function randomId(prefix) {
     return (crypto.randomUUID && crypto.randomUUID()) || (prefix + Date.now().toString(36) + Math.random().toString(36).slice(2, 10));
@@ -276,7 +283,7 @@ const Chat = (() => {
   }
 
   function memorySize() {
-    return Math.min(60, Math.max(6, Number(settings.memorySize) || 20));
+    return Math.min(20, Math.max(6, parseInt(settings.memorySize, 10) || 20));
   }
 
   function setSummary(text) {
