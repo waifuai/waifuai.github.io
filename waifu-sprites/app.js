@@ -597,7 +597,7 @@
       if (!changed) return;
       track('memory_summarized', { source: 'auto' });
       placeMemoryMark();
-      if (!$('settingsPanel').hidden) $('summaryText').value = Chat.summary;
+      if (!$('settingsPanel').hidden) { $('summaryText').value = Chat.summary; showSummarySize(); }
     });
   }
 
@@ -797,6 +797,7 @@
 
     $('aboutUser').value = s.aboutUser;
     $('summaryText').value = Chat.summary;
+    showSummarySize();
     $('summaryStatus').textContent = '';
     $('memorySize').value = s.memorySize;
     $('memorySizeValue').textContent = s.memorySize;
@@ -891,31 +892,41 @@
   bindSetting('ambientMax', 'ambientMax', 'number');
   bindSetting('ambientPrompt', 'ambientPrompt', 'text');
 
-  $('summaryText').addEventListener('change', e => { Chat.setSummary(e.target.value); placeMemoryMark(); });
+  function showSummarySize(message) {
+    $('summarySizeStatus').textContent = message || (window.ConversationBudget.bytes($('summaryText').value) + ' / 4096 bytes');
+  }
+  $('summaryText').addEventListener('input', () => showSummarySize());
+  $('summaryText').addEventListener('change', e => {
+    try { Chat.setSummary(e.target.value); placeMemoryMark(); showSummarySize(); }
+    catch (error) { e.target.value = Chat.summary; showSummarySize(error.message); }
+  });
   $('summarizeNow').addEventListener('click', async () => {
     const btn = $('summarizeNow');
     const status = $('summaryStatus');
-    if (Chat.messages.length <= 4) { status.textContent = 'Chat a little more first.'; return; }
+    if (Chat.messages.length < 2 && !Chat.memoryPending) { status.textContent = 'Chat a little more first.'; return; }
     btn.disabled = true;
     status.textContent = 'Summarizing...';
     try {
       const changed = await Chat.summarize(true);
-      status.textContent = changed ? 'Updated.' : 'Nothing new to summarize.';
+      status.textContent = changed ? (Chat.memoryPending ? 'Part updated. More older text is kept; update again to continue.' : 'Updated.') : 'Nothing older to summarize.';
       if (changed) {
         track('manual_summary_triggered');
         $('summaryText').value = Chat.summary;
+        showSummarySize();
         placeMemoryMark();
       }
     } catch (e) {
-      status.textContent = "Couldn't summarize right now. Try again later.";
+      status.textContent = e.message || "Couldn't summarize right now. Try again later.";
     } finally {
       btn.disabled = false;
     }
   });
   $('contextPeek').addEventListener('toggle', async () => {
     if (!$('contextPeek').open) return;
-    const msgs = await Chat.modelMessages(null);
-    $('contextView').textContent = msgs.map(m => m.role.toUpperCase() + ':\n' + m.content).join('\n\n');
+    try {
+      const msgs = await Chat.modelMessages(null);
+      $('contextView').textContent = msgs.map(m => m.role.toUpperCase() + ':\n' + m.content).join('\n\n');
+    } catch (e) { $('contextView').textContent = e.message; }
   });
 
   $('baseUrl').addEventListener('change', e => { Chat.settings.customBaseUrl = e.target.value.trim(); Chat.saveSettings(); });

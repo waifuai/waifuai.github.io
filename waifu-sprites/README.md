@@ -20,6 +20,22 @@ embed; user-triggered chats and image requests still use the usual proxy.
 
 ## Validation and publishing
 
+Memory defaults to at most 20 recent conversational messages, including the
+current turn. Cloud context packing also limits older history to 16 KiB and
+the complete serialized request to 32 KiB. It preserves the newest message,
+persona and accepted summary; an oversized mandatory context gives a recovery
+message rather than silently cutting text.
+
+Summaries aim for 2 KiB and accept at most 4 KiB of UTF-8 text. Compression uses
+24 KiB transcript batches reduced further to fit the complete request. Long
+messages and legacy summaries resume from saved checkpoints. A failed, blank,
+oversized or stale result cannot advance the covered-message boundary. The full
+chat archive stays saved, and completed legacy compression retains the original
+summary as a backup in chat exports. Automatic work runs one job per user turn,
+with a two-minute failure cooldown; the manual button continues a backlog.
+Manual summary edits show their byte count and preserve the saved memory when
+validation fails.
+
 Serve the repository root locally and open `/waifu-sprites/?embed=x`. Check
 480 × 480 and narrow mobile frames, settings, chat submission and the full-app
 link. Test requests can be mocked to avoid production inference usage.

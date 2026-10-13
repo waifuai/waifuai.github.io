@@ -117,6 +117,7 @@
       <textarea id="aboutUser" rows="3" placeholder="Your name, what you like, what you're working on. She remembers this in every chat."></textarea>
       <label class="field-label" for="summaryText">What she remembers from this chat</label>
       <textarea id="summaryText" rows="4" placeholder="Empty for now. When this chat gets long, she writes a summary of the older messages here so she doesn't forget them. You can edit it."></textarea>
+      <span id="summarySizeStatus" class="note" role="status">Memory limit: 4 KiB. Older text is kept until compression succeeds.</span>
       <div class="btn-row"><button class="btn" id="summarizeNow" type="button">Summarize now</button><span class="note" id="summaryStatus"></span></div>
       <label class="row"><span>Messages she keeps word for word <b id="memorySizeValue"></b></span><input id="memorySize" type="range" min="10" max="20" step="2"></label>
       <label class="row"><span>Summary length</span><select id="summaryLength">
@@ -209,6 +210,7 @@
 <script src="voice.js"></script>
 <script src="tts_language_router.js"></script>
 <script src="speech.js"></script>
+<script src="context_budget.js"></script>
 <script src="chat.js"></script>
 <script src="app.js?v=20261009-send"></script>
 </body>

@@ -177,6 +177,8 @@ const Chat = (() => {
   let convId = null;
   let messages = [];
   let memory = { summary: '', through: null }; // through = id of the last summarized message
+  let memoryRevision = 0;
+  let lastAutomaticMemoryTurn = null;
   let busy = false;
   let abortCtrl = null;
 
@@ -214,6 +216,7 @@ const Chat = (() => {
   }
 
   function newConversation() {
+    memoryRevision++;
     convId = 'c' + Date.now().toString(36);
     messages = [];
     memory = { summary: '', through: null };
@@ -221,6 +224,7 @@ const Chat = (() => {
   }
 
   function openConversation(id) {
+    memoryRevision++;
     const data = load(KEY.conv + id, null);
     if (!Array.isArray(data)) return null;
     convId = id;
@@ -245,9 +249,12 @@ const Chat = (() => {
   }
 
   function deleteMessage(id) {
+    memoryRevision++;
     const i = messages.findIndex(m => m.id === id);
     if (i === -1) return;
     const [m] = messages.splice(i, 1);
+    memory.progress = null;
+    saveMemory();
     if (m.image) Pictures.forget(m.image);
     // Keep the summary boundary on a message that still exists.
     if (memory.through === id) {
@@ -270,6 +277,8 @@ const Chat = (() => {
         meta: h,
         messages: load(KEY.conv + h.id, []),
         summary: (load(KEY.mem + h.id, null) || {}).summary || '',
+        summaryBackup: (load(KEY.mem + h.id, null) || {}).backup || '',
+        summaryProgress: (load(KEY.mem + h.id, null) || {}).progress || null,
       })),
     };
   }
@@ -287,7 +296,11 @@ const Chat = (() => {
   }
 
   function setSummary(text) {
-    memory.summary = (text || '').trim();
+    const summary = window.ConversationBudget.validateSummary(text, true);
+    memoryRevision++;
+    if (window.ConversationBudget.bytes(memory.summary) > 4096) memory.backup = memory.summary;
+    memory.summary = summary;
+    memory.progress = null;
     if (!memory.summary) memory.through = null;
     saveMemory();
   }
@@ -308,40 +321,43 @@ const Chat = (() => {
    * true when the summary changed. A failure keeps every message and backs off
    * for two minutes.
    */
-  async function summarize(force) {
+  async function summarize(force = false) {
+    if (summarizing && force) throw window.ConversationBudget.error('memory_busy', 'A memory update is already running. Wait for it to finish.');
     if (summarizing || (!force && Date.now() - summaryFailedAt < 120000)) return false;
-    const start = unsummarizedStart();
-    const pending = messages.length - start;
-    const keep = force ? 4 : Math.ceil(memorySize() / 2);
-    if (pending <= (force ? keep : memorySize())) return false;
-    const batch = messages.slice(start, messages.length - keep);
-    if (!batch.length) return false;
-    const id = convId;
+    const budget = window.ConversationBudget;
+    const id = convId, revision = memoryRevision, snapshot = memory;
+    const pendingMessages = messages.slice(unsummarizedStart());
+    const latestUser = [...messages].reverse().find(m => m.role === 'user');
+    const turn = id + ':' + (latestUser && latestUser.id);
+    if (!force && (!latestUser || turn === lastAutomaticMemoryTurn)) return false;
+    const legacy = budget.bytes(memory.summary) > budget.limits.summary;
+    if (!force && !legacy && !memory.progress && pendingMessages.length <= memorySize() &&
+        budget.jsonBytes(contextForModel(pendingMessages.slice(0, -1))) <= budget.limits.history) return false;
+    const keep = Math.min(force ? 4 : Math.ceil(memorySize() / 2), Math.max(1, pendingMessages.length - 1));
+    const source = pendingMessages.slice(0, Math.max(0, pendingMessages.length - keep))
+      .map(m => ({ id: m.id, text: asTranscript([m]), original: m }));
+    const valid = () => id === convId && revision === memoryRevision && memory === snapshot &&
+      (legacy || source.every(e => messages.includes(e.original) && asTranscript([e.original]) === e.text));
     summarizing = true;
     try {
-      const prompt = 'You are a memory compression engine.\nThe following is an existing summary of a conversation:\n"' +
-        (memory.summary || 'No previous summary exists.') + '"\n\nThe following are the ' + batch.length +
-        ' oldest messages that were just pushed out of memory:\n' + asTranscript(batch) + '\n\n' +
-        SUMMARY_LENGTHS[settings.summaryLength] + ' that combines the previous summary and these new messages. ' +
-        'Focus on important facts about the user, names, events, promises and the emotional progress of the relationship. ' +
-        'Respond ONLY with the new summary text.';
-      const summary = await complete([
-        { role: 'system', content: 'You summarize conversations concisely.' },
-        { role: 'user', content: prompt },
-      ], 'summary', 700);
-      if (!summary) throw new Error('empty summary');
-      if (id !== convId) return false; // the visitor switched chats meanwhile
-      memory = { summary, through: batch[batch.length - 1].id };
+      const task = budget.compressionTask(source, memory,
+        m => ({ model: modelFor(settings.provider), messages: m, max_tokens: 700, stream: false,
+          ...(settings.provider === 'cloud' ? { client_settings: { app: 'waifu-sprites', persona: settings.persona }, context_budget_version: 1 } : {}) }), settings.summaryLength);
+      if (!task) return false;
+      if (!force) lastAutomaticMemoryTurn = turn;
+      const summary = await complete(task.messages, 'summary', 700);
+      if (!valid()) return false;
+      const next = budget.accept(task, summary);
+      memory = { ...memory, ...next };
+      if (!task.legacy && task.completed.length) memory.through = task.completed[task.completed.length - 1].id;
       saveMemory();
       summaryFailedAt = 0;
       return true;
     } catch (e) {
-      summaryFailedAt = Date.now();
+      if (valid()) summaryFailedAt = Date.now();
       if (force) throw e;
       return false;
-    } finally {
-      summarizing = false;
-    }
+    } finally { summarizing = false; }
   }
 
   // ── Requests ──
@@ -396,13 +412,24 @@ const Chat = (() => {
   // The messages the model gets after the system prompt: what the summary
   // doesn't cover, capped at the memory size.
   function recentForModel() {
-    return contextForModel(messages.slice(unsummarizedStart()).slice(-memorySize()));
+    return contextForModel(messages.slice(unsummarizedStart()));
   }
 
-  async function modelMessages(extraUserTurn) {
-    const out = [{ role: 'system', content: await systemPrompt() }].concat(recentForModel());
-    if (extraUserTurn) out.push({ role: 'user', content: extraUserTurn });
-    return out;
+  async function modelMessages(extraUserTurn, compressLegacy = false) {
+    const budget = window.ConversationBudget;
+    if (budget.bytes(memory.summary) > budget.limits.summary) {
+      if (compressLegacy) await summarize(false);
+      if (budget.bytes(memory.summary) > budget.limits.summary) {
+        throw budget.error('memory_pending', 'Older memory needs compression. Use Summarize now to continue; your saved text is kept.');
+      }
+    }
+    const system = { role: 'system', content: await systemPrompt() };
+    const history = recentForModel();
+    if (extraUserTurn) history.push({ role: 'user', content: extraUserTurn });
+    const out = [system].concat(history);
+    if (settings.provider !== 'cloud') return [system].concat(history.slice(-memorySize()));
+    return budget.pack(out, m => ({ model: modelFor(settings.provider), messages: m, max_tokens: 600, stream: true,
+      client_settings: { app: 'waifu-sprites', persona: settings.persona }, context_budget_version: 1 }), memorySize()).messages;
   }
 
   // Adds a finished picture to a conversation, which may no longer be the open one.
@@ -445,6 +472,10 @@ const Chat = (() => {
       headers['x-visitor-id'] = visitorId();
       if (purpose !== 'chat') headers['X-Waifu-Purpose'] = purpose;
       body.client_settings = { app: 'waifu-sprites', persona: settings.persona };
+      body.context_budget_version = 1;
+      const budget = window.ConversationBudget;
+      if (purpose === 'chat' || purpose === 'ambient') body.messages = budget.pack(body.messages, m => ({ ...body, messages: m }), memorySize()).messages;
+      budget.checkBody(body);
     } else {
       const base = provider === 'custom' ? settings.customBaseUrl : PROVIDERS[provider].baseUrl;
       const key = (settings.keys[provider] || '').trim();
@@ -587,7 +618,7 @@ const Chat = (() => {
     let emotion = null;
     let emotionSent = false;
     try {
-      const req = buildRequest(await modelMessages(ambient ? text : null), ambient ? 'ambient' : 'chat', true, 600);
+      const req = buildRequest(await modelMessages(ambient ? text : null, true), ambient ? 'ambient' : 'chat', true, 600);
       abortCtrl = new AbortController();
       const timer = setTimeout(() => abortCtrl.abort(), 90000);
       let resp;
@@ -597,6 +628,7 @@ const Chat = (() => {
           let detail = '';
           try { const j = await resp.json(); detail = (j.error && (j.error.message || j.error)) || ''; } catch (e) {}
           if (resp.status === 429) throw new Error('Too many messages right now. Wait a minute and try again.');
+          if (resp.status === 413) throw window.ConversationBudget.error('context_too_large', detail || 'This request is too large. Compress older memory or shorten the input. Your saved text is kept.');
           if (resp.status === 401 || resp.status === 403) throw new Error('The provider rejected the key. Check it in Settings.');
           throw new Error('The AI service returned an error (' + resp.status + ')' + (detail ? ': ' + String(detail).slice(0, 160) : '.'));
         }
@@ -627,7 +659,7 @@ const Chat = (() => {
       cb.onDone(message);
     } catch (err) {
       // Drop the unanswered turn so a retry doesn't send it twice.
-      if (!ambient && messages.length && messages[messages.length - 1].role === 'user') messages.pop();
+      if (!ambient && !['context_too_large', 'memory_pending', 'summary_too_large'].includes(err.code) && messages.length && messages[messages.length - 1].role === 'user') messages.pop();
       saveConversation();
       const msg = err.name === 'AbortError' ? 'The reply took too long. Try again.'
         : err instanceof TypeError ? 'Could not reach the AI service. Check your connection' + (settings.provider === 'custom' ? ' and that the endpoint allows browser requests (CORS).' : '.')
@@ -648,6 +680,7 @@ const Chat = (() => {
     unsummarizedStart,
     get messages() { return messages; },
     get summary() { return memory.summary; },
+    get memoryPending() { return Boolean(memory.progress) || window.ConversationBudget.bytes(memory.summary) > 4096; },
     get convId() { return convId; },
     get busy() { return busy; },
   };

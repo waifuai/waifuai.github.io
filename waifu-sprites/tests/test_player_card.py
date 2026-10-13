@@ -238,6 +238,49 @@ class PlayerCardTests(unittest.TestCase):
         self.assertEqual(len(self.calls), 3, 'Empty messages must not send')
         self.assertFalse(self.errors)
 
+    def test_memory_checkpoint_and_archive_survive_reload(self):
+        self.page.goto(APP)
+        conversation = self.page.evaluate('''() => {
+            Chat.newConversation();
+            Chat.messages.push({id: 'long-source', role: 'user', content: '日本語😀\\n'.repeat(8000)},
+                ...Array.from({length: 9}, (_, i) => ({id: 'tail-' + i, role: i % 2 ? 'user' : 'assistant', content: 'Tail ' + i})));
+            localStorage.setItem('ws_conv_' + Chat.convId, JSON.stringify(Chat.messages));
+            return Chat.convId;
+        }''')
+        self.assertTrue(self.page.evaluate('Chat.summarize(true)'))
+        self.assertTrue(self.page.evaluate('Chat.memoryPending'))
+        self.page.reload()
+        self.page.evaluate('(id) => Chat.openConversation(id)', conversation)
+        self.assertTrue(self.page.evaluate('Chat.memoryPending'))
+        for _ in range(8):
+            if not self.page.evaluate('Chat.memoryPending'):
+                break
+            self.assertTrue(self.page.evaluate('Chat.summarize(true)'))
+        self.assertFalse(self.page.evaluate('Chat.memoryPending'))
+        self.assertEqual(self.page.evaluate('Chat.messages.length'), 10)
+        self.assertEqual(self.page.evaluate('Chat.messages[0].id'), 'long-source')
+        self.assertEqual(self.page.evaluate('Chat.unsummarizedStart()'), 6)
+        summaries = [c['body'] for c in self.cloud_requests if c['headers'].get('x-waifu-purpose') == 'summary']
+        self.assertGreater(len(summaries), 1)
+        for request in summaries:
+            self.assertLessEqual(len(json.dumps(request, ensure_ascii=False, separators=(',', ':')).encode()), 32768)
+            self.assertEqual(request['context_budget_version'], 1)
+        self.assertFalse(self.errors, self.errors)
+
+    def test_manual_summary_size_feedback_keeps_saved_memory(self):
+        self.page.goto(APP)
+        self.page.evaluate("Chat.newConversation(); Chat.setSummary('Original notes')")
+        self.page.locator('#settingsBtn').click()
+        field = self.page.locator('#summaryText')
+        self.assertIn('14 / 4096 bytes', self.page.locator('#summarySizeStatus').inner_text())
+        field.fill('😀' * 1100)
+        self.assertIn('4400 / 4096 bytes', self.page.locator('#summarySizeStatus').inner_text())
+        field.dispatch_event('change')
+        self.assertEqual(self.page.evaluate('Chat.summary'), 'Original notes')
+        self.assertEqual(field.input_value(), 'Original notes')
+        self.assertIn('4 KiB', self.page.locator('#summarySizeStatus').inner_text())
+        self.assertFalse(self.errors, self.errors)
+
     def test_full_app(self):
         self.check_chat()
 
