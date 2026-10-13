@@ -112,7 +112,7 @@ const Chat = (() => {
     romaji: false,
     includeTime: true,
     includeBattery: false,
-    memorySize: 20,
+    memorySize: 30,
     summaryLength: 'concise',
     autoTitles: !window.WaifuSpritesEmbed,
     queue: true,
@@ -292,7 +292,7 @@ const Chat = (() => {
   }
 
   function memorySize() {
-    return Math.min(100, Math.max(6, parseInt(settings.memorySize, 10) || 20));
+    return Math.min(100, Math.max(6, parseInt(settings.memorySize, 10) || 30));
   }
 
   function setSummary(text) {

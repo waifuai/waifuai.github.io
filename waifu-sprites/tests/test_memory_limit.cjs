@@ -84,8 +84,8 @@ test('legacy memory is progressively recompressed and the full original is retai
   assert.equal(chat.messages.length, 30);
 });
 
-test('fresh defaults and smaller saved choices use 20 and the smaller value respectively', () => {
-  assert.equal(client().chat.settings.memorySize, 20);
+test('fresh defaults and smaller saved choices use 30 and the smaller value respectively', () => {
+  assert.equal(client().chat.settings.memorySize, 30);
   assert.equal(client(10).chat.settings.memorySize, 10);
 });
 

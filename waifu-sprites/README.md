@@ -20,7 +20,7 @@ embed; user-triggered chats and image requests still use the usual proxy.
 
 ## Validation and publishing
 
-Memory defaults to 20 recent conversational messages, raisable to 100 in
+Memory defaults to 30 recent conversational messages, raisable to 100 in
 settings, including the current turn. Cloud context packing also limits older
 history to 128 KiB and the complete serialized request to 256 KiB. It preserves
 the newest message, persona and accepted summary; an oversized mandatory context
