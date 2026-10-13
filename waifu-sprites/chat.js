@@ -383,7 +383,8 @@ const Chat = (() => {
     const parts = [personaPrompt().trim()];
     if (settings.extraPrompt.trim()) parts.push('Additional personality instructions: ' + settings.extraPrompt.trim());
     if (settings.aboutUser.trim()) parts.push('What the user has told you about themselves (always keep it in mind): ' + settings.aboutUser.trim());
-    if (memory.summary) parts.push('Summary of your conversation with the user so far: ' + memory.summary);
+    const active = window.ConversationBudget ? window.ConversationBudget.activeSummary(memory) : (memory.summary || '');
+    if (active) parts.push('Summary of your conversation with the user so far: ' + active);
     parts.push(...await contextLines());
     parts.push(settings.language
       ? 'Reply in ' + settings.language + ', unless the user asks you to speak another language; then switch. Never mix languages in one reply.'
@@ -415,14 +416,8 @@ const Chat = (() => {
     return contextForModel(messages.slice(unsummarizedStart()));
   }
 
-  async function modelMessages(extraUserTurn, compressLegacy = false) {
+  async function modelMessages(extraUserTurn) {
     const budget = window.ConversationBudget;
-    if (budget.bytes(memory.summary) > budget.limits.summary) {
-      if (compressLegacy) await summarize(false);
-      if (budget.bytes(memory.summary) > budget.limits.summary) {
-        throw budget.error('memory_pending', 'Older memory needs compression. Use Summarize now to continue; your saved text is kept.');
-      }
-    }
     const system = { role: 'system', content: await systemPrompt() };
     const history = recentForModel();
     if (extraUserTurn) history.push({ role: 'user', content: extraUserTurn });
@@ -618,7 +613,7 @@ const Chat = (() => {
     let emotion = null;
     let emotionSent = false;
     try {
-      const req = buildRequest(await modelMessages(ambient ? text : null, true), ambient ? 'ambient' : 'chat', true, 600);
+      const req = buildRequest(await modelMessages(ambient ? text : null), ambient ? 'ambient' : 'chat', true, 600);
       abortCtrl = new AbortController();
       const timer = setTimeout(() => abortCtrl.abort(), 90000);
       let resp;

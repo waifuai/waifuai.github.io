@@ -102,3 +102,26 @@ test('settings saves and request construction enforce the cap without deleting m
   assert.equal(messages.at(-1).content, 'message 34');
   assert.equal(chat.messages.length, 35);
 });
+
+test('oversized legacy summary never blocks chat or prompts the user, using active summary within budget', async () => {
+  const { chat, store } = client();
+  const id = chat.convId, legacySummary = 'Older facts about user and story. '.repeat(500);
+  chat.messages.push(
+    { id: 'm1', role: 'user', content: 'prior question' },
+    { id: 'm2', role: 'assistant', content: 'prior answer' }
+  );
+  store.set('ws_conv_' + id, JSON.stringify(chat.messages));
+  store.set('ws_mem_' + id, JSON.stringify({ summary: legacySummary, through: 'm1' }));
+  chat.openConversation(id);
+  const messages = await chat.modelMessages('new message');
+  assert.ok(messages.length >= 2);
+  const sysMsg = messages.find(m => m.role === 'system');
+  assert.ok(sysMsg);
+  assert.ok(sysMsg.content.includes('Summary of your conversation with the user so far:'));
+  assert.ok(Buffer.byteLength(sysMsg.content, 'utf8') < 10000);
+  assert.equal(chat.summary, legacySummary);
+  const body = { model: 'waifuai-v1', messages, max_tokens: 600, stream: true };
+  assert.ok(Buffer.byteLength(JSON.stringify(body), 'utf8') <= 32768);
+});
+
+
