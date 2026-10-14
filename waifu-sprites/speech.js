@@ -181,7 +181,7 @@ const Speech = (() => {
     }
     const target = routed.lang || voice.language;
     const installed = window.speechSynthesis ? browserVoice(target, voice.gender) : null;
-    if (window.speechSynthesis && speechSynthesis.getVoices().length && !installed) return { kind: 'silent' };
+    if (!installed) return { kind: 'silent' };
     return { kind: 'browser', text, gender: voice.gender, lang: installed ? installed.lang : target };
   }
 
@@ -207,11 +207,7 @@ const Speech = (() => {
       local = all.filter(v => v.lang.split('-')[0].toLowerCase() === fallbackLang.split('-')[0].toLowerCase());
     }
     if (!local.length) return null;
-    const female = ['female', 'woman', 'girl', 'zira', 'hazel', 'susan', 'samantha', 'karen', 'moira', 'tessa', 'fiona', 'kate', 'victoria', 'alice'];
-    const male = ['male', 'man', 'boy', 'david', 'mark', 'james', 'daniel', 'thomas', 'george', 'alex', 'fred', 'ralph'];
-    const [want, avoid] = gender === 'male' ? [male, female] : [female, male];
-    const has = (v, words) => words.some(w => v.name.toLowerCase().includes(w));
-    return local.find(v => has(v, want)) || local.find(v => !has(v, avoid)) || local[0];
+    return window.TTSLanguageRouter.browserVoiceForGender(local, gender);
   }
 
   async function speakBrowser(text, lang, gender) {
@@ -222,11 +218,13 @@ const Speech = (() => {
         speechSynthesis.addEventListener('voiceschanged', () => { clearTimeout(t); ok(); }, { once: true });
       });
     }
+    const selected = browserVoice(lang, gender);
+    if (!selected) return;
     await new Promise(done => {
       const u = new SpeechSynthesisUtterance(text);
       u.lang = lang;
       u.volume = settings.volume;
-      const v = browserVoice(lang, gender);
+      const v = selected;
       if (v) u.voice = v;
       // A stalled utterance (a known Chrome behaviour) must not hang the queue.
       const watchdog = setTimeout(() => { speechSynthesis.cancel(); done(); }, Math.max(10000, text.length / 12 * 1000 + 8000));
