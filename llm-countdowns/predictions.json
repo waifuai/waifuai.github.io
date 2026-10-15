@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-08",
+  "lastUpdated": "2026-10-16",
   "researchBaselines": {
     "openai": {
       "name": "GPT-6 Astra",
@@ -7,9 +7,9 @@
       "releaseDate": "2026-09-03"
     },
     "google": {
-      "name": "Gemini 3.8 Flash",
-      "intel": 40.9,
-      "releaseDate": "2026-09-02"
+      "name": "Gemini 4 Argon (high)",
+      "intel": 53,
+      "releaseDate": "2026-10-13"
     },
     "anthropic": {
       "name": "Claude Opus 5.5",
@@ -143,7 +143,7 @@
           "category": "light",
           "icon": "⚡",
           "stageColor": "#4facfe",
-          "status": "Not announced; Gemini 4 Argon (Sept 30) has no Flash variant yet",
+        "status": "Not announced; Gemini 4 Argon became generally available Oct 13, with no Gemini 4 Flash announced",
           "hypeScore": 88,
           "expectedGain": 2.0,
           "explicitTargetDate": "2026-11-12T17:00:00.000Z",
@@ -158,36 +158,37 @@
           "features": [
             "Google's Flash takes the number of the latest major model: 2.5 Pro (Mar 2025) then 2.5 Flash (Apr 2025), Gemini 3 Pro (Nov 18, 2025) then Gemini 3 Flash (Dec 17, 2025)",
             "Flash went 3.5, 3.6, 3.7, 3.8 (May 19 to Sept 2) only because Pro stayed on 3.1; with Gemini 4 Argon out, a 3.9 Flash looks unlikely",
-            "Gemini 3 Flash came about four weeks after Gemini 3 Pro; Argon is still limited to trusted testers, so the date counts from its wider rollout (expected mid October)",
-            "Gemini 3.8 Flash (40.9) is Google's best generally available model; Gemini 4 Argon scores 52.6"
+          "Gemini 3 Flash came about four weeks after Gemini 3 Pro; the Nov 12 forecast is about four weeks after Argon's confirmed Oct 13 wider release",
+          "Gemini 3.8 Flash remains the Flash baseline at 40.9; the generally available Gemini 4 Argon (high) scores 53 on Artificial Analysis as checked Oct 16"
           ],
-          "source": "Google Gemini release history, Gemini 4 Argon announcement (Sept 30, 2026) & Artificial Analysis"
+        "source": "Google Gemini release history; Gemini API changelog (Oct 13, 2026), https://ai.google.dev/gemini-api/docs/changelog; Artificial Analysis, https://artificialanalysis.ai/models/gemini-4-argon (checked Oct 16)"
         },
         "frontier": {
-          "id": "google-gemini-4-0",
-          "slug": "gemini-4",
-          "shortName": "Gemini 4 Argon",
-          "predictedName": "Gemini 4 Argon (wider rollout)",
+        "id": "google-gemini-4-1-argon",
+        "slug": "gemini-4-1-argon",
+        "shortName": "Gemini 4.1 Argon",
+        "predictedName": "Gemini 4.1 Argon (speculative successor name)",
           "category": "frontier",
           "icon": "🔵",
           "stageColor": "#4facfe",
-          "status": "Announced Sept 30; only trusted cyber defenders have it so far, Ultra and paid API 'soon'",
-          "hypeScore": 99,
-          "expectedGain": 22.9,
-          "explicitTargetDate": "2026-10-15T17:00:00.000Z",
-          "explicitWindowLabel": "Mid Oct 2026",
+        "status": "Speculative successor; Google has not announced a Gemini 4.1 name or release date as of Oct 16, 2026",
+        "hypeScore": 90,
+        "expectedGain": 2.0,
+        "explicitTargetDate": "2027-01-14T17:00:00.000Z",
+        "explicitWindowLabel": "Jan 2027 (tentative; low confidence)",
+        "cadenceDays": 93,
           "features": [
-            "Google announced Gemini 4 Argon on Sept 30, 2026 as its new frontier model, a week after Kavukcuoglu said Gemini 4 was in post-training",
-            "Access starts with trusted cyber defenders in the Fairwind Program; Google AI Ultra subscribers and paid API customers are next, with no exact date given",
-            "Google's benchmarks: DeepSWE v1.1 77.9% (Claude Opus 5.5: 74.2%), CWE-bench v1 68% (tied first), AutomationBench 51.3%, LVBench 91.7%; output limit raised to 1M tokens from 64K",
-            "Artificial Analysis already scores it at 52.6 (Sept 30), about level with GPT-6 Astra (52.7); introductory price $2/$10, rising to $4/$20 later",
-            "As of Oct 1 it is not in the public Gemini API catalog and Google has given no date for Ultra or paid API access"
+          "Gemini 4 Argon is already released: Google announced it Sept 30 and confirmed general API availability Oct 13, 2026",
+          "Gemini 4.1 Argon is a forecast label only; neither the version number nor continued use of the Argon name is confirmed by Google",
+          "Gemini 3 Pro launched Nov 18, 2025 and Gemini 3.1 Pro followed Feb 19, 2026, a gap of 93 days; this is one historical comparison, not a reliable schedule",
+          "Applying that 93-day interval to Argon's Oct 13 public release gives Jan 14, 2027; the countdown uses this illustrative midpoint for a low-confidence January window",
+          "The projected score assumes a modest 2-point gain over Argon's observed 53; this is a scenario, not a benchmark result or a Google claim"
           ],
-          "source": "Google blog 'Gemini 4 Argon: our next era of frontier intelligence' (Sept 30, 2026), 9to5Google coverage & Artificial Analysis",
+        "source": "Forecast extrapolation, checked Oct 16, 2026: Google Gemini API changelog, https://ai.google.dev/gemini-api/docs/changelog; Gemini 3 launch (Nov 18, 2025), https://blog.google/products-and-platforms/products/gemini/gemini-3/; Gemini 3.1 Pro launch (Feb 19, 2026), https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/; baseline score from https://artificialanalysis.ai/models/gemini-4-argon",
           "baseline": {
-            "name": "Gemini 3.1 Pro Preview",
-            "intel": 29.7,
-            "releaseDate": "2026-02-19"
+          "name": "Gemini 4 Argon (high)",
+          "intel": 53,
+          "releaseDate": "2026-10-13"
           }
         },
         "lite": {
