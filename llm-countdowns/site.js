@@ -1,5 +1,4 @@
-// LLM Countdowns: live relative dates, copy link and calendar export.
-// Pages are complete without this script; it only turns absolute dates into "in N days".
+// LLM Countdowns: upcoming releases, live relative dates, copy link and calendar export.
 (function () {
   const DAY = 86400000;
 
@@ -38,7 +37,75 @@
     });
   }
 
-  renderRelative();
+  const releases = Array.from(document.querySelectorAll(".release"));
+  const featured = document.querySelector(".next");
+  const nextExpected = document.querySelector("[data-next-expected]");
+  const dateFormat = new Intl.DateTimeFormat("en-US", {
+    month: "short", day: "numeric", year: "numeric", timeZone: "UTC",
+  });
+  const empty = document.createElement("p");
+  empty.textContent = "No upcoming release dates currently scheduled.";
+  empty.hidden = true;
+  const firstList = document.querySelector(".releases");
+  if (firstList) {
+    const heading = firstList.previousElementSibling;
+    (heading && heading.matches(".month") ? heading : firstList).before(empty);
+  }
+
+  function targetOf(row) {
+    const target = row.querySelector("[data-until]").dataset.until;
+    return target ? calendarDay(target) : NaN;
+  }
+
+  function refresh() {
+    const currentDay = today();
+    releases.forEach((row) => {
+      row.hidden = targetOf(row) < currentDay;
+    });
+    document.querySelectorAll(".releases").forEach((list) => {
+      list.hidden = !Array.from(list.children).some((row) => !row.hidden);
+      const heading = list.previousElementSibling;
+      if (heading && heading.matches(".month")) heading.hidden = list.hidden;
+    });
+    // Lists are already sorted; use the first future date for both summaries.
+    const next = releases.find((row) => !row.hidden && targetOf(row) >= currentDay);
+    empty.hidden = releases.some((row) => !row.hidden);
+    if (featured) {
+      featured.hidden = !next;
+      if (next) {
+        const link = next.querySelector(".release-name a");
+        const lab = next.querySelector(".release-lab");
+        featured.href = link.href;
+        featured.querySelector(".next-name").textContent = link.textContent;
+        const label = featured.querySelector(".next-label");
+        label.replaceChildren(lab.querySelector(".dot").cloneNode(true),
+          "Next up · " + lab.textContent.trim());
+        featured.querySelector(".next-when strong").textContent = dateFormat.format(targetOf(next));
+        featured.querySelector("[data-until]").dataset.until = next.querySelector("[data-until]").dataset.until;
+      }
+    }
+    if (nextExpected) {
+      nextExpected.hidden = !next;
+      if (next) {
+        nextExpected.replaceChildren("Next expected: ", next.querySelector(".release-name a").cloneNode(true),
+          ", around " + dateFormat.format(targetOf(next)) + ".");
+      }
+    }
+    const countdown = document.querySelector(".when [data-until]");
+    if (countdown) {
+      const expired = calendarDay(countdown.dataset.until) < currentDay;
+      countdown.closest(".when").hidden = expired;
+      const calendar = document.querySelector("[data-calendar]");
+      if (calendar) calendar.hidden = expired;
+    }
+    renderRelative();
+  }
+
+  refresh();
+  setInterval(refresh, 60000);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) refresh();
+  });
 
   const toastEl = document.querySelector(".toast");
   function toast(message) {
