@@ -143,7 +143,6 @@ class PlayerCardTests(unittest.TestCase):
 
     def test_decision_fallback_preserves_tag(self):
         for status, answer in [('unavailable', self.emotion_answer),
-                               ('ok', {'choice_id': 'confused', 'confidence': 0.1}),
                                ('ok', {'choice_id': 'invalid', 'confidence': 0.9}),
                                ('ok', {'choice_id': 'happy', 'confidence': 0.9})]:
             with self.subTest(status=status, answer=answer):
@@ -152,6 +151,17 @@ class PlayerCardTests(unittest.TestCase):
                 self.send_emotion_reply()
                 self.page.wait_for_function('() => emotionFinished === 1')
                 self.assertEqual(self.page.evaluate('emotionCalls'), ['happy'])
+
+
+    def test_low_confidence_emotion_winner_refines_expression(self):
+        for confidence in [0, 0.1]:
+            with self.subTest(confidence=confidence):
+                self.emotion_answer = {'choice_id': 'confused', 'confidence': confidence}
+                self.send_emotion_reply()
+                self.page.wait_for_function('() => emotionFinished === 1')
+                self.assertEqual(self.page.evaluate('emotionCalls'), ['happy', 'confused'])
+                self.assertFalse(self.errors, self.errors)
+
 
     def test_late_decision_does_not_interrupt_typing(self):
         self.hold_emotion = True
@@ -370,6 +380,22 @@ class PlayerCardTests(unittest.TestCase):
         self.assertEqual(self.tts_calls[-1]['voice'], 'en_us_001')
         self.assertFalse(any('sprites_tts_language_v1' in r['body']['tasks'] for r in self.decision_requests))
         self.assertFalse(self.errors)
+
+
+
+    def test_long_reply_preserves_emotional_ending_in_decision_request(self):
+        self.reply_text = '[happy] Opening. ' + 'x' * 5000 + ' I am thrilled!'
+        self.page.goto(APP)
+        self.page.locator('#speakToggle').click()
+        self.page.locator('#msgInput').fill('Hello')
+        with self.page.expect_request('**/decisions') as captured:
+            self.page.locator('#sendBtn').click()
+        state = captured.value.post_data_json['state']
+        self.assertLessEqual(len(state['reply']), 4096)
+        self.assertTrue(state['reply'].startswith('Opening. '))
+        self.assertTrue(state['reply'].endswith('I am thrilled!'))
+        self.assertIn('[...]', state['reply'])
+        self.assertFalse(self.errors, self.errors)
 
 
 if __name__ == '__main__':

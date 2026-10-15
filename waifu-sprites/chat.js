@@ -159,7 +159,7 @@ const Chat = (() => {
       const resp = await fetch(DECISIONS_URL, {
         method: 'POST',
         headers,
-        body: JSON.stringify({ request_id: randomId('r-'), tasks, state }),
+        body: JSON.stringify({ request_id: randomId('r-'), tasks, state: window.ConversationBudget.decisionState(state) }),
       });
       if (!resp.ok) return null;
       const body = await resp.json();

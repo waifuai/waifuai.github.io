@@ -266,7 +266,7 @@ const Speech = (() => {
       if (plan && plan.needsDecision && !plan.finished && !plan.pending) {
         const recent = typeof Chat !== 'undefined' ? Chat.messages.slice(-4).filter(m => m.content !== text).map(m => ({ role: m.role, text: m.content.slice(0, 300) })) : [];
         const request = typeof Chat !== 'undefined' && typeof Chat.askDecisions === 'function'
-          ? Chat.askDecisions(['sprites_tts_language_v1'], { reply: plan.text.slice(0, 1200), conversation_language: plan.previousLang, recent_context: recent }) : null;
+          ? Chat.askDecisions(['sprites_tts_language_v1'], { reply: plan.text, conversation_language: plan.previousLang, recent_context: recent }) : null;
         plan = await finishRouting(plan, request, valid);
       } else if (plan && plan.pending && !plan.finished) plan = await plan.pending;
       if (!valid()) return;

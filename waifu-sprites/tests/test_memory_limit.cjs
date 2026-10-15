@@ -124,3 +124,17 @@ test('oversized legacy summary never blocks chat or prompts the user, using acti
   const body = { model: 'waifuai-v1', messages, max_tokens: 600, stream: true };
   assert.ok(Buffer.byteLength(JSON.stringify(body), 'utf8') <= budget.limits.request);
 });
+
+
+test('decision transport preserves a long completed reply and bounds oversized evidence', async () => {
+  const {chat,ctx}=client();const calls=[];
+  ctx.fetch=async(_url,options)=>{calls.push(JSON.parse(options.body));return{ok:true,json:async()=>({status:'ok',answers:{}})}};
+  for(const n of [2600,9000]) {
+    const reply='Opening. '+'x'.repeat(n)+' I am thrilled!';
+    await chat.askDecisions(['sprites_emotion_v1'],{reply});
+    const state=calls.at(-1).state;
+    assert.ok(state.reply.endsWith('I am thrilled!'));
+    assert.ok(state.reply.length<=4096);
+    if(n===2600)assert.equal(state.reply,reply);
+  }
+});
