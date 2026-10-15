@@ -37,6 +37,7 @@ class PlayerCardTests(unittest.TestCase):
         self.decision_requests = []
         self.tts_calls = []
         self.language_answer = {'choice_id': 'en-US', 'confidence': 0.95}
+        self.picture_answer = None
         self.reply_text = '[happy] Mock reply received.'
         self.emotion_answer = {'choice_id': 'confused', 'confidence': 0.9}
         self.decision_status = 'ok'
@@ -95,7 +96,7 @@ class PlayerCardTests(unittest.TestCase):
     def fulfill_decision(self, route, tasks):
         wants_picture = 'selfie' in route.request.post_data_json.get('state', {}).get('user_message', '').lower()
         answers = {task: (self.language_answer if task == 'sprites_tts_language_v1' else self.emotion_answer if task == 'sprites_emotion_v1'
-                         else {'choice_id': 'draw' if wants_picture else 'none', 'confidence': 0.9}) for task in tasks}
+                         else self.picture_answer or {'choice_id': 'draw' if wants_picture else 'none', 'confidence': 0.9}) for task in tasks}
         route.fulfill(content_type='application/json', body=json.dumps({
             'status': self.decision_status,
             'answers': answers if self.decision_status == 'ok' else {},
@@ -326,6 +327,19 @@ class PlayerCardTests(unittest.TestCase):
         self.assertEqual(prompt['body']['client_settings']['app'], 'waifu-sprites')
         self.assertFalse(self.errors)
 
+    def test_zero_confidence_picture_actions_honor_choices(self):
+        self.page.goto(APP)
+        self.picture_answer = {'choice_id': 'none', 'confidence': 0}
+        self.assertIsNone(self.page.evaluate("Pictures.decide('Send me a selfie', '')"))
+        self.assertFalse(self.cloud_requests)
+        self.picture_answer = {'choice_id': 'draw', 'confidence': 0}
+        self.assertIn('garden', self.page.evaluate("Pictures.decide('Send me a selfie', '')"))
+        self.assertEqual(len(self.cloud_requests), 1)
+        prompt = self.cloud_requests[0]['body']['messages'][0]['content']
+        self.assertIn('approved picture request', prompt)
+        self.assertNotIn('NONE', prompt)
+        self.assertFalse(self.errors, self.errors)
+
     def test_picture_calls_share_chat_identity(self):
         self.check_picture_identity()
 
@@ -336,7 +350,7 @@ class PlayerCardTests(unittest.TestCase):
     def test_tts_uncertain_reply_shares_emotion_request_and_replay_cache(self):
         self.page.goto(APP)
         self.reply_text = '[happy] *waves gently* Kimi no koe ga yasashikute kokoro ga atatakai.'
-        self.language_answer = {'choice_id': 'ja-JP', 'confidence': 0.95}
+        self.language_answer = {'choice_id': 'ja-JP', 'confidence': 0}
         self.page.locator('#msgInput').fill('Please read this')
         self.page.locator('#sendBtn').click()
         self.page.wait_for_function('!Chat.busy && !Speech.speaking')

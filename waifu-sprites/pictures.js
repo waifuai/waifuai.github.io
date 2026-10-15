@@ -49,6 +49,12 @@ Don't judge whether the picture is too revealing: the image service has its own 
 The description is one line of English (translate if the chat isn't English), 10 to 40 words, describing a concrete scene: who is in it, outfit, pose, setting and mood.
 When the companion is in the picture, describe her as ${APPEARANCE}, plus the outfit or pose asked for.`;
 
+  const WRITER_PROMPT = `Write the image description for an approved picture request. Use the user's NEW message and the companion's previous message to resolve the requested scene or accepted offer. The chat can be in any language.
+
+Answer with exactly one line: DRAW: <English description>
+
+The description is 10 to 40 words describing who is in it, outfit, pose, setting and mood. When the companion is in the picture, describe her as ${APPEARANCE}, plus the requested outfit or pose. The image service applies its own content filter. Describe the requested picture.`;
+
   // Added to the chat system prompt so the reply reacts instead of refusing.
   const CHAT_RULE = `You can draw pictures, including pictures of yourself (you look like ${APPEARANCE}). When the user asks for a picture, photo, selfie or drawing, it is drawn separately and appears in the chat on its own: just react in character, happy to make it. Never write out the picture's description yourself, and never refuse by saying you are an AI or can't make images. Nude or sexual pictures are never drawn: playfully suggest a cute alternative instead.`;
 
@@ -65,16 +71,22 @@ When the companion is in the picture, describe her as ${APPEARANCE}, plus the ou
     const clip = s => String(s || '').slice(0, 300);
     const previous = prevReply ? clipPictureContext(prevReply) : undefined;
     try {
-      // WaifuAI Cloud makes the draw/no-draw call first. A confident "no"
-      // skips the writing call below; any other answer, or no answer, runs it.
+      // Honor the cloud's selected action; uncertain or unavailable answers
+      // leave the existing judgment to the writing call.
+      let writePicture = false;
       if (typeof Chat !== 'undefined' && typeof Chat.askDecisions === 'function') {
-        const answers = await Chat.askDecisions(['picture_action_v1'], {
-          user_message: clip(userText),
-          previous_reply: previous,
-          picture_offered: Boolean(prevReply && OFFER_WORDS.test(prevReply)),
-        });
-        const picture = answers && answers.picture_action_v1;
-        if (picture && picture.choice_id === 'none' && (picture.confidence ?? 0) >= 0.6) return null;
+        try {
+          const answers = await Chat.askDecisions(['picture_action_v1'], {
+            user_message: clip(userText),
+            previous_reply: previous,
+            picture_offered: Boolean(prevReply && OFFER_WORDS.test(prevReply)),
+          });
+          const picture = answers && answers.picture_action_v1;
+          if (picture && picture.choice_id === 'none') return null;
+          writePicture = picture?.choice_id === 'draw';
+        } catch (e) {
+          // Continue with the existing picture judgment if the action failed.
+        }
       }
       const headers = { 'Content-Type': 'application/json', 'X-Waifu-Purpose': 'image_prompt' };
       if (ids && ids.session) headers['x-session-id'] = ids.session;
@@ -87,7 +99,7 @@ When the companion is in the picture, describe her as ${APPEARANCE}, plus the ou
           max_tokens: 120,
           stream: false,
           messages: [
-            { role: 'system', content: DECISION_PROMPT },
+            { role: 'system', content: writePicture ? WRITER_PROMPT : DECISION_PROMPT },
             { role: 'user', content: "Companion's previous message: " + (previous || '(none)') + "\n\nUser's NEW message: " + clip(userText) },
           ],
           client_settings: { app: 'waifu-sprites' },
