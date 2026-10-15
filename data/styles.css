@@ -51,7 +51,7 @@
   .jump a:first-child { margin-left: -10px; }
   .jump a:hover { color: var(--text); text-decoration: none; border-bottom-color: var(--line); }
 
-  main { padding: 40px 0 0; }
+  main.wrap { padding-top: 40px; }
   section, [id] { scroll-margin-top: 56px; }
 
   h1 { font-size: 34px; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 12px; }
@@ -132,7 +132,7 @@
   @media (max-width: 600px) {
     h1 { font-size: 28px; }
     .lede { font-size: 16px; }
-    main { padding-top: 28px; }
+    main.wrap { padding-top: 28px; }
     section { padding-top: 44px; }
     .stats, .stats.four { grid-template-columns: 1fr 1fr; }
     .stat { padding: 12px 14px; }
@@ -199,7 +199,7 @@
   @media(max-width:800px) { .hero { grid-template-columns:1fr 240px; gap:25px; } h1 { font-size:45px; } .projects { grid-template-columns:repeat(3,1fr); } }
   @media(max-width:600px) {
     .wrap { padding:0 18px; } .site-header .wrap { height:60px; } .site-header nav { gap:12px; font-size:12px; } .site-header nav .nav-code { display:none; }
-    main { padding-top:30px; } .hero { grid-template-columns:1fr; gap:25px; } h1 { font-size:43px; letter-spacing:-1.8px; } h2 { font-size:29px; }
+    main.wrap { padding-top:30px; } .hero { grid-template-columns:1fr; gap:25px; } h1 { font-size:43px; letter-spacing:-1.8px; } h2 { font-size:29px; }
     .demo { height:220px; } .demo video { object-position:center 30%; } .hero .lede { font-size:15px; } .hero-proof strong { font-size:45px; }
     .growth-kpi { padding:15px 10px; } .growth-kpi strong { font-size:26px; } .growth-kpi span { font-size:11px; } .growth-kpi small { font-size:10px; }
     .chart-card { padding:18px 14px 12px; } .chart-heading { gap:5px; } .chart-card h2 { font-size:17px; } .badge { font-size:10px; padding:4px 6px; }
