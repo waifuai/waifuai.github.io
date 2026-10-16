@@ -19,6 +19,7 @@
  * memory shared by every chat.
  */
 const Chat = (() => {
+  const tr = (key, params) => (window.WaifuI18n ? window.WaifuI18n.t(key, params) : key);
   const CLOUD_URL = 'https://waifu-companion-proxy.thewaifuai.workers.dev/chat/completions';
   const DECISIONS_URL = 'https://waifu-companion-proxy.thewaifuai.workers.dev/decisions';
 
@@ -194,7 +195,7 @@ const Chat = (() => {
     const list = all.filter(h => h.id !== convId);
     const first = messages.find(m => m.role === 'user');
     // A named chat (generated or renamed) keeps its name; others use the first message.
-    const title = prev && prev.named ? prev.title : (first ? first.content.slice(0, 48) : 'Picture');
+    const title = prev && prev.named ? prev.title : (first ? first.content.slice(0, 48) : tr('app.photo'));
     list.unshift({ id: convId, title, named: Boolean(prev && prev.named), updated: Date.now(), count: messages.length, persona: settings.persona });
     save(KEY.history, list.slice(0, 100));
     save(KEY.conv + convId, messages);
@@ -322,7 +323,7 @@ const Chat = (() => {
    * for two minutes.
    */
   async function summarize(force = false) {
-    if (summarizing && force) throw window.ConversationBudget.error('memory_busy', 'A memory update is already running. Wait for it to finish.');
+    if (summarizing && force) throw window.ConversationBudget.error('memory_busy', tr('memory.busy'));
     if (summarizing || (!force && Date.now() - summaryFailedAt < 120000)) return false;
     const budget = window.ConversationBudget;
     const id = convId, revision = memoryRevision, snapshot = memory;
@@ -474,9 +475,9 @@ const Chat = (() => {
     } else {
       const base = provider === 'custom' ? settings.customBaseUrl : PROVIDERS[provider].baseUrl;
       const key = (settings.keys[provider] || '').trim();
-      if (!base) throw new Error('Set the endpoint URL in Settings first.');
-      if (!key && provider !== 'custom') throw new Error('Add your ' + PROVIDERS[provider].name + ' key in Settings, or switch back to WaifuAI Cloud.');
-      if (!body.model) throw new Error('Set a model name in Settings first.');
+      if (!base) throw new Error(tr('error.setEndpoint'));
+      if (!key && provider !== 'custom') throw new Error(tr('error.setKey', { provider: tr('provider.' + provider + '.name') }));
+      if (!body.model) throw new Error(tr('error.setModel'));
       url = base.replace(/\/+$/, '') + '/chat/completions';
       if (key) headers.Authorization = 'Bearer ' + key;
       if (provider === 'openrouter') {
@@ -622,10 +623,10 @@ const Chat = (() => {
         if (!resp.ok) {
           let detail = '';
           try { const j = await resp.json(); detail = (j.error && (j.error.message || j.error)) || ''; } catch (e) {}
-          if (resp.status === 429) throw new Error('Too many messages right now. Wait a minute and try again.');
-          if (resp.status === 413) throw window.ConversationBudget.error('context_too_large', detail || 'This request is too large. Compress older memory or shorten the input. Your saved text is kept.');
-          if (resp.status === 401 || resp.status === 403) throw new Error('The provider rejected the key. Check it in Settings.');
-          throw new Error('The AI service returned an error (' + resp.status + ')' + (detail ? ': ' + String(detail).slice(0, 160) : '.'));
+          if (resp.status === 429) throw new Error(tr('error.tooMany'));
+          if (resp.status === 413) throw window.ConversationBudget.error('context_too_large', detail || tr('error.contextTooLarge'));
+          if (resp.status === 401 || resp.status === 403) throw new Error(tr('error.rejected'));
+          throw new Error(tr('error.service', { status: resp.status, detail: '' }) + (detail ? ': ' + String(detail).slice(0, 160) : '.'));
         }
         await readStream(resp, delta => {
           raw += delta;
@@ -645,7 +646,7 @@ const Chat = (() => {
       }
       const part = splitTag(raw.replace(/^\s*<think>[\s\S]*?(<\/think>\s*|$)/i, ''));
       const reply = clean(part.text, false);
-      if (!reply) throw new Error('The reply came back empty. Try again or pick another model.');
+      if (!reply) throw new Error(tr('error.emptyReply'));
       if (!emotionSent) cb.onEmotion(null);
       const message = { id: messageId(), role: 'assistant', content: reply, emotion: emotion || Sprites.detectEmotion(reply) };
       if (ambient) message.ambient = true;
@@ -656,8 +657,8 @@ const Chat = (() => {
       // Drop the unanswered turn so a retry doesn't send it twice.
       if (!ambient && !['context_too_large', 'memory_pending', 'summary_too_large'].includes(err.code) && messages.length && messages[messages.length - 1].role === 'user') messages.pop();
       saveConversation();
-      const msg = err.name === 'AbortError' ? 'The reply took too long. Try again.'
-        : err instanceof TypeError ? 'Could not reach the AI service. Check your connection' + (settings.provider === 'custom' ? ' and that the endpoint allows browser requests (CORS).' : '.')
+      const msg = err.name === 'AbortError' ? tr('error.timeout')
+        : err instanceof TypeError ? tr(settings.provider === 'custom' ? 'error.unreachableCustom' : 'error.unreachable')
         : err.message;
       cb.onError(msg);
     } finally {

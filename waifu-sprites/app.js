@@ -11,11 +11,18 @@
   const messagesEl = $('messages');
   const input = $('msgInput');
 
+  // ── Interface language ──
+  // Every string the page shows goes through I18n; a missing runtime would
+  // only ever happen in a stripped-down copy, so fall back to the key.
+  const I18n = window.WaifuI18n;
+  const tr = (key, params) => (I18n ? I18n.t(key, params) : key);
+  const localize = el => { if (I18n) I18n.apply(el); return el; };
+
   const RETURN_TO_IDLE_MS = 12000;
   const SLEEP_AFTER_MS = 3 * 60 * 1000;
   const STARTERS = window.WaifuSpritesEmbed
-    ? ['Hi!', 'Tell me something fun', 'Send me a selfie', 'Help me focus']
-    : ['Hi! How is your day going?', 'Tell me something fun', 'Send me a selfie', 'Help me focus on my work'];
+    ? ['starter.hiShort', 'starter.fun', 'starter.selfie', 'starter.focusShort']
+    : ['starter.hi', 'starter.fun', 'starter.selfie', 'starter.focus'];
 
   Sprites.init(Array.from(document.querySelectorAll('.sprite')), $('spriteLabel'));
 
@@ -61,10 +68,12 @@
   function applyDisplay() {
     stage.style.setProperty('--bubble-alpha', display.opacity);
     stage.style.setProperty('--chat-font', display.fontSize + 'px');
+    stage.style.setProperty('--queued-label', '"' + tr('chat.queued').replace(/"/g, '\\"') + '"');
     stage.classList.toggle('no-video', display.hideVideo);
     stage.classList.toggle('chat-hidden', display.hideChat);
     $('chatToggle').setAttribute('aria-pressed', String(display.hideChat));
-    $('chatToggle').title = display.hideChat ? 'Show chat' : 'Hide chat';
+    $('chatToggle').title = tr(display.hideChat ? 'app.showChat' : 'app.hideChat');
+    $('chatToggle').setAttribute('aria-label', tr(display.hideChat ? 'app.showChat' : 'app.hideChat'));
     Sprites.setVisible(!display.hideVideo);
     $('clock').hidden = !display.clock;
     tickClock();
@@ -91,8 +100,9 @@
   const radioBtn = $('radioBtn');
   function applyRadio() {
     const on = radio && !radio.paused;
-    radioBtn.innerHTML = on ? '&#9208; Pause radio' : '&#9654; Play anime radio';
+    radioBtn.innerHTML = (on ? '&#9208; ' : '&#9654; ') + '<span data-i18n="' + (on ? 'radio.pause' : 'radio.play') + '"></span>';
     radioBtn.setAttribute('aria-pressed', String(Boolean(on)));
+    localize(radioBtn);
   }
   radioBtn.addEventListener('click', () => {
     if (!radio) {
@@ -101,7 +111,7 @@
       ['play', 'pause', 'ended', 'error'].forEach(ev => radio.addEventListener(ev, applyRadio));
     }
     if (radio.paused) {
-      radio.play().catch(() => bubble('error', "Couldn't start the radio. Try again in a moment."));
+      radio.play().catch(() => bubble('error', tr('radio.failed')));
       track('radio_toggle', { action: 'play' });
     } else {
       radio.pause();
@@ -121,7 +131,8 @@
     const on = Speech.settings.enabled;
     speakToggle.setAttribute('aria-pressed', String(on));
     speakToggle.innerHTML = on ? '&#128266;' : '&#128263;';
-    speakToggle.title = on ? 'Mute her voice' : 'Read replies aloud';
+    speakToggle.title = tr(on ? 'app.muteVoice' : 'app.readAloud');
+    speakToggle.setAttribute('aria-label', tr('app.readAloud'));
     $('speakEnabled').checked = on;
     $('speakAutoLang').checked = Speech.settings.autoLang;
     $('speakVolume').value = Speech.settings.volume;
@@ -179,6 +190,7 @@
     el.className = 'msg ' + role;
     const span = document.createElement('span');
     span.className = 'text';
+    span.dir = 'auto';
     span.textContent = text;
     el.appendChild(span);
     messagesEl.appendChild(el);
@@ -198,12 +210,13 @@
     scrollDown();
   }
 
-  function actionButton(label, title, onClick) {
+  function actionButton(label, titleKey, onClick) {
     const b = document.createElement('button');
     b.type = 'button';
     b.innerHTML = label;
-    b.title = title;
-    b.setAttribute('aria-label', title);
+    b.setAttribute('data-i18n-title', titleKey);
+    b.setAttribute('data-i18n-aria-label', titleKey);
+    localize(b);
     b.addEventListener('click', e => { e.stopPropagation(); onClick(b); });
     return b;
   }
@@ -214,13 +227,13 @@
     const bar = document.createElement('div');
     bar.className = 'actions';
     if (message.role === 'assistant' && message.content) {
-      bar.appendChild(actionButton('&#128266;', 'Read aloud', () => {
+      bar.appendChild(actionButton('&#128266;', 'chat.readAloud', () => {
         track('tts_action', { action: 'play', source: 'message' });
         speakReply(message.content, true);
       }));
     }
     if (message.content) {
-      bar.appendChild(actionButton('&#128203;', 'Copy', b => {
+      bar.appendChild(actionButton('&#128203;', 'chat.copy', b => {
         navigator.clipboard && navigator.clipboard.writeText(message.content).then(() => {
           b.innerHTML = '&#10003;';
           setTimeout(() => { b.innerHTML = '&#128203;'; }, 1500);
@@ -228,7 +241,7 @@
         track('message_copied');
       }));
     }
-    bar.appendChild(actionButton('&#128465;', 'Delete', () => {
+    bar.appendChild(actionButton('&#128465;', 'chat.delete', () => {
       if (Chat.busy) return;
       Chat.deleteMessage(message.id);
       el.remove();
@@ -252,15 +265,16 @@
   }
 
   function renderEmpty() {
-    const persona = Chat.PERSONAS[Chat.settings.persona];
-    bubble('info', persona.name === 'Custom' ? 'Say hi to start chatting.' : 'Say hi to ' + persona.name + '. She reacts to what she says.');
+    const key = Chat.settings.persona;
+    bubble('info', key === 'custom' ? tr('chat.sayHi') : tr('chat.sayHiTo', { name: tr('persona.' + key + '.name') }));
     const wrap = document.createElement('div');
     wrap.className = 'starters';
-    STARTERS.forEach(text => {
+    STARTERS.forEach(starterKey => {
       const b = document.createElement('button');
       b.type = 'button';
-      b.textContent = text;
-      b.addEventListener('click', () => send(text, 'starter'));
+      b.setAttribute('data-i18n', starterKey);
+      localize(b);
+      b.addEventListener('click', () => send(tr(starterKey), 'starter'));
       wrap.appendChild(b);
     });
     messagesEl.appendChild(wrap);
@@ -270,13 +284,13 @@
     const fig = document.createElement('figure');
     fig.className = 'msg assistant pic';
     const img = document.createElement('img');
-    img.alt = message.prompt || 'Picture';
-    img.title = 'Open full size';
+    img.alt = message.prompt || tr('app.photo');
+    img.title = tr('chat.openFullSize');
     img.addEventListener('load', scrollDown);
     img.addEventListener('click', () => openLightbox(img.src, img.alt));
     Pictures.resolve(message.image).then(src => {
       if (src) img.src = src;
-      else fig.replaceWith(bubble('info', 'This picture is no longer available.'));
+      else fig.replaceWith(bubble('info', tr('chat.pictureGone')));
     });
     fig.appendChild(img);
     if (message.caption) {
@@ -300,8 +314,9 @@
     const mark = document.createElement('button');
     mark.type = 'button';
     mark.className = 'memory-mark';
-    mark.textContent = 'Older messages are remembered as a summary';
-    mark.title = 'See or edit what she remembers';
+    mark.setAttribute('data-i18n', 'chat.olderSummary');
+    mark.setAttribute('data-i18n-title', 'chat.editMemory');
+    localize(mark);
     mark.addEventListener('click', () => openPanel('settingsPanel', 'summaryText'));
     if (target) messagesEl.insertBefore(mark, target);
   }
@@ -332,7 +347,7 @@
   // even if the visitor has opened another one meanwhile.
   async function paint(prompt, aspect, source) {
     const origin = Chat.convId;
-    const wait = bubble('info keep', 'Painting your picture... \u{1F3A8}');
+    const wait = bubble('info keep', tr('chat.painting'));
     if (!Chat.busy) Sprites.setEmotion('planning');
     track('image_generation_started', { source });
     let message = null;
@@ -343,9 +358,9 @@
       track('image_generation_completed', { source });
     } catch (err) {
       track('image_generation_failed', { source, blocked: Boolean(err.blocked), timed_out: Boolean(err.timedOut) });
-      failText = err.blocked ? "I can only draw safe-for-work pictures, so I can't make that one. Want something cute instead?"
-        : err.timedOut ? 'That one took too long and my brush gave up. Try again?'
-        : 'Sorry, my canvas is acting up. Could we try again in a moment?';
+      failText = err.blocked ? tr('chat.pictureBlocked')
+        : err.timedOut ? tr('chat.pictureSlow')
+        : tr('chat.pictureFailed');
     }
     wait.remove();
     const here = Chat.convId === origin;
@@ -374,7 +389,7 @@
     input.value = '';
     messagesEl.querySelectorAll('.starters, .msg.info:not(.keep)').forEach(el => el.remove());
     if (!prompt) {
-      bubble('info', 'Describe what to draw, like: /image a cozy cafe at sunset. Add portrait, square or landscape at the end to pick the shape.');
+      bubble('info', tr('chat.imageHelp'));
       return;
     }
     bubble('user', text);
@@ -387,8 +402,10 @@
     meta.textContent = '';
     const b = document.createElement('button');
     b.type = 'button';
-    b.textContent = Chat.PERSONAS[s.persona].name + ' · ' + (s.provider === 'cloud' ? 'WaifuAI Cloud' : Chat.modelFor(s.provider) || Chat.PROVIDERS[s.provider].name);
-    b.title = 'Change personality or AI';
+    const model = s.provider === 'cloud' ? '' : Chat.modelFor(s.provider) || tr('provider.' + s.provider + '.name');
+    b.textContent = tr('persona.' + s.persona + '.name') + ' · ' + (s.provider === 'cloud' ? tr('provider.cloud.name') : model);
+    b.setAttribute('data-i18n-title', 'chat.changePersonality');
+    localize(b);
     b.addEventListener('click', () => openPanel('settingsPanel'));
     meta.appendChild(b);
   }
@@ -553,7 +570,8 @@
         const errEl = bubble('error', msg);
         const retry = document.createElement('button');
         retry.type = 'button';
-        retry.textContent = 'Retry';
+        retry.setAttribute('data-i18n', 'app.retry');
+        localize(retry);
         retry.addEventListener('click', () => {
           if (Chat.busy) return;
           errEl.remove();
@@ -613,12 +631,13 @@
 
   // ── Voice ──
   const micBtn = $('micBtn');
-  const PLACEHOLDERS = { idle: 'Say something...', starting: 'Starting the mic...', listening: 'Listening... release or tap to stop', transcribing: 'Transcribing...' };
+  const MIC_KEYS = { idle: 'composer.micIdle', starting: 'composer.micStarting', listening: 'composer.micListening', transcribing: 'composer.micTranscribing' };
+  const micPlaceholder = state => tr(MIC_KEYS[state] || 'composer.micIdle');
   Voice.init(micBtn, {
     ids: Chat.ids,
     onState(state) {
       micBtn.dataset.state = state;
-      input.placeholder = PLACEHOLDERS[state] || PLACEHOLDERS.idle;
+      input.placeholder = micPlaceholder(state);
       if (state === 'starting') { Speech.stop(); stopAmbient(); } // don't record her own voice
       if (Chat.busy) return;
       if (state === 'listening' || state === 'transcribing') {
@@ -677,9 +696,9 @@
   // ── History ──
   function timeAgo(ms) {
     const min = Math.round((Date.now() - ms) / 60000);
-    if (min < 1) return 'just now';
-    if (min < 60) return min + ' min ago';
-    if (min < 1440) return Math.round(min / 60) + ' h ago';
+    if (min < 1) return tr('history.justNow');
+    if (min < 60) return tr('history.minutesAgo', { count: min });
+    if (min < 1440) return tr('history.hoursAgo', { count: Math.round(min / 60) });
     return new Date(ms).toLocaleDateString();
   }
 
@@ -690,7 +709,8 @@
     if (!items.length) {
       const p = document.createElement('p');
       p.className = 'note';
-      p.textContent = 'No saved chats yet.';
+      p.setAttribute('data-i18n', 'history.empty');
+      localize(p);
       list.appendChild(p);
       return;
     }
@@ -701,10 +721,12 @@
       open.type = 'button';
       open.className = 'history-open';
       const title = document.createElement('span');
+      title.dir = 'auto';
       title.textContent = h.title;
       const meta = document.createElement('small');
       const persona = Chat.PERSONAS[h.persona];
-      meta.textContent = (persona ? persona.name + ' · ' : '') + h.count + ' messages · ' + timeAgo(h.updated);
+      meta.textContent = (persona ? tr('persona.' + h.persona + '.name') + ' · ' : '') +
+        tr('history.count', { count: h.count }) + ' · ' + timeAgo(h.updated);
       open.append(title, meta);
       open.addEventListener('click', () => {
         if (Chat.busy) return;
@@ -713,18 +735,18 @@
       const rename = document.createElement('button');
       rename.type = 'button';
       rename.className = 'history-del';
-      rename.title = 'Rename chat';
-      rename.setAttribute('aria-label', 'Rename chat: ' + h.title);
+      rename.title = tr('history.rename');
+      rename.setAttribute('aria-label', tr('history.renameFor', { title: h.title }));
       rename.innerHTML = '&#9998;';
       rename.addEventListener('click', () => {
-        const name = prompt('Name this chat', h.title);
+        const name = prompt(tr('history.namePrompt'), h.title);
         if (name && name.trim()) { Chat.renameConversation(h.id, name); renderHistory(); }
       });
       const del = document.createElement('button');
       del.type = 'button';
       del.className = 'history-del';
-      del.title = 'Delete chat';
-      del.setAttribute('aria-label', 'Delete chat: ' + h.title);
+      del.title = tr('history.delete');
+      del.setAttribute('aria-label', tr('history.deleteFor', { title: h.title }));
       del.textContent = '✕';
       del.addEventListener('click', () => {
         if (Chat.busy && h.id === Chat.convId) return;
@@ -739,7 +761,7 @@
   }
 
   $('clearAll').addEventListener('click', () => {
-    if (Chat.busy || !confirm('Delete all saved chats in this browser?')) return;
+    if (Chat.busy || !confirm(tr('settings.deleteAllConfirm'))) return;
     Chat.historyIndex().forEach(h => Chat.deleteConversation(h.id));
     Chat.newConversation();
     renderConversation();
@@ -748,7 +770,7 @@
 
   $('exportChats').addEventListener('click', () => {
     const data = Chat.exportAll();
-    if (!data.chats.length) { alert('No chats to export yet.'); return; }
+    if (!data.chats.length) { alert(tr('settings.exportNone')); return; }
     const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
     const a = document.createElement('a');
     a.href = url;
@@ -761,17 +783,18 @@
   });
 
   // ── Settings ──
-  function optionButton(label, desc, checked, onPick) {
+  function optionButton(labelKey, descKey, checked, onPick) {
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'option';
     b.setAttribute('role', 'radio');
     b.setAttribute('aria-checked', String(checked));
     const name = document.createElement('span');
-    name.textContent = label;
+    name.setAttribute('data-i18n', labelKey);
     const small = document.createElement('small');
-    small.textContent = desc;
+    small.setAttribute('data-i18n', descKey);
     b.append(name, small);
+    localize(b);
     b.addEventListener('click', onPick);
     return b;
   }
@@ -782,7 +805,7 @@
     personaList.textContent = '';
     personaList.setAttribute('role', 'radiogroup');
     Object.entries(Chat.PERSONAS).forEach(([key, p]) => {
-      personaList.appendChild(optionButton(p.name, p.desc, s.persona === key, () => {
+      personaList.appendChild(optionButton('persona.' + key + '.name', 'persona.' + key + '.desc', s.persona === key, () => {
         s.persona = key;
         Chat.saveSettings();
         track('persona_updated', { persona: key });
@@ -821,7 +844,7 @@
     providerList.textContent = '';
     providerList.setAttribute('role', 'radiogroup');
     Object.entries(Chat.PROVIDERS).forEach(([key, p]) => {
-      providerList.appendChild(optionButton(p.name, p.desc, s.provider === key, () => {
+      providerList.appendChild(optionButton('provider.' + key + '.name', 'provider.' + key + '.desc', s.provider === key, () => {
         s.provider = key;
         Chat.saveSettings();
         track('llm_provider_changed', { provider: key, enabled: true });
@@ -842,22 +865,77 @@
     $('keyLink').hidden = !p.keyUrl;
     if (p.keyUrl) $('keyLink').href = p.keyUrl;
     $('providerNote').textContent = own
-      ? 'Your key is saved in this browser only and sent only to ' + (s.provider === 'custom' ? 'your endpoint' : p.name) + '. Pictures and voice still go through WaifuAI Cloud.'
-      : 'Free and keyless. Messages go to WaifuAI Cloud to generate replies and may be logged to improve the service.';
+      ? tr('settings.providerNoteOwn', { target: s.provider === 'custom' ? tr('settings.providerTargetEndpoint') : tr('provider.' + s.provider + '.name') })
+      : tr('settings.providerNoteCloud');
 
     const aspectList = $('aspectList');
     aspectList.textContent = '';
     aspectList.setAttribute('role', 'radiogroup');
-    [['portrait', 'Portrait', 'Best for selfies and outfits'], ['square', 'Square', 'Avatars and icons'], ['landscape', 'Landscape', 'Scenes and wallpapers']].forEach(([key, label, desc]) => {
-      aspectList.appendChild(optionButton(label, desc, s.aspect === key, () => {
+    [['portrait'], ['square'], ['landscape']].forEach(([key]) => {
+      aspectList.appendChild(optionButton('aspect.' + key + '.label', 'aspect.' + key + '.desc', s.aspect === key, () => {
         s.aspect = key;
         Chat.saveSettings();
         renderSettings();
       }));
     });
+
+    renderInterfaceLanguage();
+    buildReplyLanguages();
   }
 
-  Chat.LANGUAGES.forEach(name => $('replyLanguage').appendChild(new Option(name, name)));
+  // ── Interface language ──
+  // The picker lists "Use device language" plus every locale's own name; a
+  // switch is instant and never reloads the page.
+  function detectedName() {
+    const meta = I18n && I18n.localeInfo(I18n.detect());
+    return meta ? meta.name : 'English';
+  }
+
+  function renderInterfaceLanguage() {
+    const select = $('interfaceLanguage');
+    const current = (I18n && I18n.choice) || 'auto';
+    select.textContent = '';
+    select.appendChild(new Option(tr('settings.deviceLanguage') + ' · ' + detectedName(), 'auto'));
+    (I18n ? I18n.locales() : []).forEach(meta => select.appendChild(new Option(meta.name, meta.code)));
+    select.value = current;
+  }
+
+  // Reply-language values stay the English names sent in the system prompt;
+  // only the visible labels become the language's own name.
+  function buildReplyLanguages() {
+    const select = $('replyLanguage');
+    select.textContent = '';
+    select.appendChild(new Option(tr('settings.yourLanguage'), ''));
+    Chat.LANGUAGES.forEach(name => select.appendChild(new Option(I18n ? I18n.languageName(name) : name, name)));
+    select.value = Chat.settings.language || '';
+  }
+
+  $('interfaceLanguage').addEventListener('change', e => {
+    const code = e.target.value;
+    if (I18n) I18n.setLocale(code);
+    track('interface_language_changed', { locale: code });
+  });
+
+  if (I18n) I18n.onChange(() => {
+    // Static attributes are re-applied by the runtime; this refreshes the parts
+    // built in JavaScript and the few strings that depend on live state.
+    applyDisplay();
+    applyRadio();
+    applySpeech();
+    renderMeta();
+    input.placeholder = micPlaceholder(Voice.state);
+    Sprites.refreshLabel();
+    renderInterfaceLanguage();
+    buildReplyLanguages();
+    if (!$('historyPanel').hidden) renderHistory();
+    if (!$('settingsPanel').hidden) renderSettings();
+    else $('summarySizeStatus').textContent = tr('memory.limitNote');
+    if (!Chat.messages.length) renderConversation();
+    placeMemoryMark();
+  });
+
+  renderInterfaceLanguage();
+  buildReplyLanguages();
 
   // Saves a settings control into Chat.settings. kind: text, check, number or select.
   function bindSetting(id, key, kind, after) {
@@ -903,12 +981,12 @@
   $('summarizeNow').addEventListener('click', async () => {
     const btn = $('summarizeNow');
     const status = $('summaryStatus');
-    if (Chat.messages.length < 2 && !Chat.memoryPending) { status.textContent = 'Chat a little more first.'; return; }
+    if (Chat.messages.length < 2 && !Chat.memoryPending) { status.textContent = tr('memory.tooShort'); return; }
     btn.disabled = true;
-    status.textContent = 'Summarizing...';
+    status.textContent = tr('memory.summarizing');
     try {
       const changed = await Chat.summarize(true);
-      status.textContent = changed ? (Chat.memoryPending ? 'Part updated. More older text is kept; update again to continue.' : 'Updated.') : 'Nothing older to summarize.';
+      status.textContent = changed ? tr(Chat.memoryPending ? 'memory.partUpdated' : 'memory.updated') : tr('memory.nothingOlder');
       if (changed) {
         track('manual_summary_triggered');
         $('summaryText').value = Chat.summary;
@@ -916,7 +994,7 @@
         placeMemoryMark();
       }
     } catch (e) {
-      status.textContent = e.message || "Couldn't summarize right now. Try again later.";
+      status.textContent = e.message || tr('memory.failed');
     } finally {
       btn.disabled = false;
     }

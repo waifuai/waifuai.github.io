@@ -11,6 +11,7 @@
  * Recordings stop by themselves after one minute.
  */
 const Voice = (() => {
+  const tr = (key, params) => (window.WaifuI18n ? window.WaifuI18n.t(key, params) : key);
   const TRANSCRIBE_URL = 'https://waifu-companion-proxy.thewaifuai.workers.dev/transcribe';
   const HOLD_THRESHOLD_MS = 300;
 
@@ -43,13 +44,13 @@ const Voice = (() => {
       let body = null;
       try { body = await res.json(); } catch (error) { if (controller.signal.aborted) throw error; }
       if (!res.ok) {
-        const err = new Error((body && body.error) || 'Transcription failed (HTTP ' + res.status + ').');
+        const err = new Error((body && body.error) || tr('voice.transcribeFailed', { status: res.status }));
         err.status = res.status;
         throw err;
       }
       return ((body && body.text) || '').trim();
     } catch (error) {
-      if (controller.signal.aborted) throw new Error('Transcription took too long. Please try again.');
+      if (controller.signal.aborted) throw new Error(tr('voice.transcribeSlow'));
       throw error;
     } finally {
       clearTimeout(timer);
@@ -69,11 +70,11 @@ const Voice = (() => {
         try { text = await transcribe(blob); }
         catch (error) {
           throw new Error(error.status === 429
-            ? 'Voice input is busy right now. Try again in a moment.'
-            : 'Voice input failed: ' + error.message);
+            ? tr('voice.busy')
+            : tr('voice.failed', { message: error.message }));
         }
         if (text) opts.onText(text);
-        else opts.onError("I couldn't hear anything in that recording. Check your microphone and try again.");
+        else opts.onError(tr('voice.heardNothing'));
       }
     });
     capture.start();

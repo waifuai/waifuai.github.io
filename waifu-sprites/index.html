@@ -53,166 +53,173 @@
   window.WaifuSpritesEmbed = new URLSearchParams(location.search).get('embed') === 'x';
   if (window.WaifuSpritesEmbed) document.documentElement.classList.add('sprite-embed');
 </script>
+<!-- Interface localization: metadata + detection, then the matched dictionary,
+     written during parse so a non-English visitor never sees a flash of English. -->
+<script src="../i18n/i18n.js"></script>
+<script src="../i18n/bootstrap.js"></script>
+<script src="../i18n/locales/en.js"></script>
 <link rel="stylesheet" href="../theme.css">
-<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="app.css?v=20261017-i18n">
 <link rel="preload" href="videos/1.mp4" as="video" type="video/mp4">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
 <!-- site-header -->
-<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html">Search</a><a href="/llm-countdowns/">Countdowns</a><a class="hide-sm" href="https://github.com/waifuai">GitHub</a></nav></div></header>
+<header class="site-header"><div class="wrap"><a class="brand" href="/">WaifuAI</a><nav><a href="/search.html" data-i18n="site.search">Search</a><a href="/llm-countdowns/" data-i18n="site.countdowns">Countdowns</a><a class="hide-sm" href="https://github.com/waifuai" data-i18n="site.github">GitHub</a></nav></div></header>
 <!-- /site-header -->
 
-<main class="stage" id="stage" aria-label="Waifu Sprites app">
-  <a class="full-app-link" href="https://waifuai.github.io/waifu-sprites/" target="_blank" rel="noopener noreferrer">Full app &#8599;</a>
+<main class="stage" id="stage" aria-label="Waifu Sprites app" data-i18n-aria-label="app.label">
+  <a class="full-app-link" href="https://waifuai.github.io/waifu-sprites/" target="_blank" rel="noopener noreferrer"><span data-i18n="app.fullApp">Full app</span> &#8599;</a>
   <div class="sprite-wrap">
     <video class="sprite" muted playsinline preload="auto" poster="videos/poster.jpg" aria-hidden="true"></video>
     <video class="sprite" muted playsinline preload="auto" aria-hidden="true"></video>
   </div>
 
   <div class="topbar">
-    <button class="icon-btn" id="settingsBtn" type="button" title="Settings" aria-label="Settings" aria-controls="settingsPanel">&#9881;</button>
-    <div class="status"><span class="dot"></span><span id="spriteLabel">idle</span><span id="clock" class="clock" hidden></span></div>
+    <button class="icon-btn" id="settingsBtn" type="button" title="Settings" aria-label="Settings" aria-controls="settingsPanel" data-i18n-title="app.settings" data-i18n-aria-label="app.settings">&#9881;</button>
+    <div class="status"><span class="dot"></span><span id="spriteLabel" data-i18n="sprite.state.idle">idle</span><span id="clock" class="clock" hidden></span></div>
     <div class="topbar-right">
-      <button class="icon-btn" id="historyBtn" type="button" title="Chat history" aria-label="Chat history" aria-controls="historyPanel">&#9776;</button>
-      <button class="icon-btn" id="newBtn" type="button" title="New chat" aria-label="New chat">&#43;</button>
-      <button class="icon-btn" id="speakToggle" type="button" title="Mute her voice" aria-label="Read replies aloud" aria-pressed="true">&#128266;</button>
-      <button class="icon-btn" id="chatToggle" type="button" title="Hide chat" aria-label="Hide chat" aria-pressed="false">&#128172;</button>
-      <a class="icon-btn" href="docs/" target="_blank" rel="noopener" title="Docs" aria-label="Documentation">&#128214;</a>
+      <button class="icon-btn" id="historyBtn" type="button" title="Chat history" aria-label="Chat history" aria-controls="historyPanel" data-i18n-title="app.chatHistory" data-i18n-aria-label="app.chatHistory">&#9776;</button>
+      <button class="icon-btn" id="newBtn" type="button" title="New chat" aria-label="New chat" data-i18n-title="app.newChat" data-i18n-aria-label="app.newChat">&#43;</button>
+      <button class="icon-btn" id="speakToggle" type="button" title="Mute her voice" aria-label="Read replies aloud" aria-pressed="true" data-i18n-aria-label="app.readAloud">&#128266;</button>
+      <button class="icon-btn" id="chatToggle" type="button" title="Hide chat" aria-label="Hide chat" aria-pressed="false" data-i18n-aria-label="app.hideChat">&#128172;</button>
+      <a class="icon-btn" href="docs/" target="_blank" rel="noopener" title="Docs" aria-label="Documentation" data-i18n-title="app.docs" data-i18n-aria-label="app.documentation">&#128214;</a>
     </div>
   </div>
 
-  <section class="chat" id="chat" aria-label="Chat">
+  <section class="chat" id="chat" aria-label="Chat" data-i18n-aria-label="app.chat">
     <div class="chat-meta" id="chatMeta"></div>
     <div class="messages" id="messages" aria-live="polite"></div>
     <form class="composer" id="composer" autocomplete="off">
-      <input id="msgInput" type="text" maxlength="2000" placeholder="Say something..." aria-label="Message" enterkeyhint="send">
-      <button id="micBtn" class="mic" type="button" aria-label="Voice input: hold to talk, or tap to start and stop" title="Hold to talk, or tap to start and stop">
+      <input id="msgInput" type="text" maxlength="2000" placeholder="Say something..." aria-label="Message" enterkeyhint="send" dir="auto" data-i18n-placeholder="composer.placeholder" data-i18n-aria-label="composer.message">
+      <button id="micBtn" class="mic" type="button" aria-label="Voice input: hold to talk, or tap to start and stop" title="Hold to talk, or tap to start and stop" data-i18n-aria-label="composer.micAria" data-i18n-title="composer.micTitle">
         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-2.08A7 7 0 0 0 19 12h-2Z"/></svg>
       </button>
-      <button id="sendBtn" type="button" aria-label="Send">&#10148;</button>
+      <button id="sendBtn" type="button" aria-label="Send" data-i18n-aria-label="composer.send">&#10148;</button>
     </form>
   </section>
 
-  <aside class="panel" id="historyPanel" hidden aria-label="Chat history">
-    <div class="panel-head"><h2>Chats</h2><button class="icon-btn" type="button" data-close aria-label="Close">&#10005;</button></div>
+  <aside class="panel" id="historyPanel" hidden aria-label="Chat history" data-i18n-aria-label="app.chatHistory">
+    <div class="panel-head"><h2 data-i18n="history.title">Chats</h2><button class="icon-btn" type="button" data-close aria-label="Close" data-i18n-aria-label="app.close">&#10005;</button></div>
     <div class="panel-body" id="historyList"></div>
   </aside>
 
-  <aside class="panel" id="settingsPanel" hidden aria-label="Settings">
-    <div class="panel-head"><h2>Settings</h2><button class="icon-btn" type="button" data-close aria-label="Close">&#10005;</button></div>
+  <aside class="panel" id="settingsPanel" hidden aria-label="Settings" data-i18n-aria-label="app.settings">
+    <div class="panel-head"><h2 data-i18n="app.settings">Settings</h2><button class="icon-btn" type="button" data-close aria-label="Close" data-i18n-aria-label="app.close">&#10005;</button></div>
     <div class="panel-body">
-      <h3>Personality</h3>
+      <h3 data-i18n="settings.personality">Personality</h3>
       <div class="options" id="personaList"></div>
       <div id="customPromptBox" hidden>
-        <label class="field-label" for="customPrompt">Custom personality</label>
-        <textarea id="customPrompt" rows="5" placeholder="You are... (describe who she is and how she talks)"></textarea>
+        <label class="field-label" for="customPrompt" data-i18n="settings.customPersonality">Custom personality</label>
+        <textarea id="customPrompt" rows="5" placeholder="You are... (describe who she is and how she talks)" dir="auto" data-i18n-placeholder="settings.customPlaceholder"></textarea>
       </div>
-      <label class="field-label" for="extraPrompt">Extra instructions</label>
-      <textarea id="extraPrompt" rows="3" placeholder="Added to any personality, like: call me senpai, use lots of emoji, she loves cats"></textarea>
+      <label class="field-label" for="extraPrompt" data-i18n="settings.extra">Extra instructions</label>
+      <textarea id="extraPrompt" rows="3" placeholder="Added to any personality, like: call me senpai, use lots of emoji, she loves cats" dir="auto" data-i18n-placeholder="settings.extraPlaceholder"></textarea>
 
-      <h3>Memory</h3>
-      <label class="field-label" for="aboutUser">About you</label>
-      <textarea id="aboutUser" rows="3" placeholder="Your name, what you like, what you're working on. She remembers this in every chat."></textarea>
-      <label class="field-label" for="summaryText">What she remembers from this chat</label>
-      <textarea id="summaryText" rows="4" placeholder="Empty for now. When this chat gets long, she writes a summary of the older messages here so she doesn't forget them. You can edit it."></textarea>
-      <span id="summarySizeStatus" class="note" role="status">Memory limit: 32 KiB. Older text is kept until compression succeeds.</span>
-      <div class="btn-row"><button class="btn" id="summarizeNow" type="button">Summarize now</button><span class="note" id="summaryStatus"></span></div>
-      <label class="row"><span>Messages she keeps word for word <b id="memorySizeValue"></b></span><input id="memorySize" type="range" min="10" max="100" step="2"></label>
-      <label class="row"><span>Summary length</span><select id="summaryLength">
-        <option value="ultra-concise">One sentence</option>
-        <option value="concise">Short paragraph</option>
-        <option value="detailed">One or two paragraphs</option>
-        <option value="comprehensive">In depth</option>
+      <h3 data-i18n="memory.heading">Memory</h3>
+      <label class="field-label" for="aboutUser" data-i18n="memory.about">About you</label>
+      <textarea id="aboutUser" rows="3" placeholder="Your name, what you like, what you're working on. She remembers this in every chat." dir="auto" data-i18n-placeholder="memory.aboutPlaceholder"></textarea>
+      <label class="field-label" for="summaryText" data-i18n="memory.remembers">What she remembers from this chat</label>
+      <textarea id="summaryText" rows="4" placeholder="Empty for now. When this chat gets long, she writes a summary of the older messages here so she doesn't forget them. You can edit it." dir="auto" data-i18n-placeholder="memory.remembersPlaceholder"></textarea>
+      <span id="summarySizeStatus" class="note" role="status" data-i18n="memory.limitNote">Memory limit: 32 KiB. Older text is kept until compression succeeds.</span>
+      <div class="btn-row"><button class="btn" id="summarizeNow" type="button" data-i18n="memory.summarizeNow">Summarize now</button><span class="note" id="summaryStatus"></span></div>
+      <label class="row"><span><span data-i18n="memory.keeps">Messages she keeps word for word</span> <b id="memorySizeValue"></b></span><input id="memorySize" type="range" min="10" max="100" step="2"></label>
+      <label class="row"><span data-i18n="memory.summaryLength">Summary length</span><select id="summaryLength">
+        <option value="ultra-concise" data-i18n="summaryLength.ultra-concise">One sentence</option>
+        <option value="concise" data-i18n="summaryLength.concise">Short paragraph</option>
+        <option value="detailed" data-i18n="summaryLength.detailed">One or two paragraphs</option>
+        <option value="comprehensive" data-i18n="summaryLength.comprehensive">In depth</option>
       </select></label>
-      <label class="row"><span>She knows the date and time</span><input id="includeTime" type="checkbox"></label>
-      <label class="row" id="batteryRow"><span>She knows your battery level</span><input id="includeBattery" type="checkbox"></label>
-      <details class="peek" id="contextPeek"><summary>See exactly what she's sent</summary><pre id="contextView"></pre></details>
+      <label class="row"><span data-i18n="settings.knowsTime">She knows the date and time</span><input id="includeTime" type="checkbox"></label>
+      <label class="row" id="batteryRow"><span data-i18n="settings.knowsBattery">She knows your battery level</span><input id="includeBattery" type="checkbox"></label>
+      <details class="peek" id="contextPeek"><summary data-i18n="memory.peek">See exactly what she's sent</summary><pre id="contextView"></pre></details>
 
-      <h3>Language</h3>
-      <label class="row"><span>She replies in</span><select id="replyLanguage"><option value="">Your language</option></select></label>
-      <label class="row"><span>Romaji under Japanese and Korean replies</span><input id="romaji" type="checkbox"></label>
+      <h3 data-i18n="settings.language">Language</h3>
+      <label class="row"><span data-i18n="settings.interfaceLanguage">Interface language</span><select id="interfaceLanguage"></select></label>
+      <label class="row"><span data-i18n="settings.repliesIn">She replies in</span><select id="replyLanguage"><option value="" data-i18n="settings.yourLanguage">Your language</option></select></label>
+      <label class="row"><span data-i18n="settings.romaji">Romaji under Japanese and Korean replies</span><input id="romaji" type="checkbox"></label>
 
-      <h3>Chat</h3>
-      <label class="row"><span>Keep typing while she replies (queue)</span><input id="queueMessages" type="checkbox"></label>
-      <label class="row"><span>Name chats automatically</span><input id="autoTitles" type="checkbox"></label>
-      <label class="row"><span>She talks when you're quiet</span><input id="ambient" type="checkbox"></label>
+      <h3 data-i18n="settings.chat">Chat</h3>
+      <label class="row"><span data-i18n="settings.queue">Keep typing while she replies (queue)</span><input id="queueMessages" type="checkbox"></label>
+      <label class="row"><span data-i18n="settings.autoTitles">Name chats automatically</span><input id="autoTitles" type="checkbox"></label>
+      <label class="row"><span data-i18n="settings.ambient">She talks when you're quiet</span><input id="ambient" type="checkbox"></label>
       <div id="ambientBox">
-        <label class="row"><span>After</span><select id="ambientDelay">
-          <option value="20">20 seconds</option><option value="30">30 seconds</option><option value="60">1 minute</option>
-          <option value="120">2 minutes</option><option value="300">5 minutes</option>
+        <label class="row"><span data-i18n="settings.ambientAfter">After</span><select id="ambientDelay">
+          <option value="20" data-i18n="ambient.delay.20">20 seconds</option><option value="30" data-i18n="ambient.delay.30">30 seconds</option><option value="60" data-i18n="ambient.delay.60">1 minute</option>
+          <option value="120" data-i18n="ambient.delay.120">2 minutes</option><option value="300" data-i18n="ambient.delay.300">5 minutes</option>
         </select></label>
-        <label class="row"><span>At most, in a row</span><select id="ambientMax">
-          <option value="1">1 message</option><option value="2">2 messages</option><option value="3">3 messages</option>
-          <option value="5">5 messages</option><option value="10">10 messages</option><option value="1000">No limit</option>
+        <label class="row"><span data-i18n="settings.ambientMax">At most, in a row</span><select id="ambientMax">
+          <option value="1" data-i18n="ambient.max.1">1 message</option><option value="2" data-i18n="ambient.max.2">2 messages</option><option value="3" data-i18n="ambient.max.3">3 messages</option>
+          <option value="5" data-i18n="ambient.max.5">5 messages</option><option value="10" data-i18n="ambient.max.10">10 messages</option><option value="1000" data-i18n="ambient.max.1000">No limit</option>
         </select></label>
-        <label class="field-label" for="ambientPrompt">What she's told to do</label>
-        <textarea id="ambientPrompt" rows="3"></textarea>
+        <label class="field-label" for="ambientPrompt" data-i18n="settings.ambientPrompt">What she's told to do</label>
+        <textarea id="ambientPrompt" rows="3" dir="auto"></textarea>
       </div>
 
-      <h3>AI</h3>
+      <h3 data-i18n="settings.ai">AI</h3>
       <div class="options" id="providerList"></div>
       <div id="providerFields">
         <div id="baseUrlRow" hidden>
-          <label class="field-label" for="baseUrl">Endpoint URL</label>
-          <input id="baseUrl" type="url" placeholder="https://example.com/v1" spellcheck="false">
+          <label class="field-label" for="baseUrl" data-i18n="settings.endpoint">Endpoint URL</label>
+          <input id="baseUrl" type="url" placeholder="https://example.com/v1" spellcheck="false" dir="ltr" data-i18n-placeholder="settings.endpointPlaceholder">
         </div>
         <div id="keyRow" hidden>
-          <label class="field-label" for="apiKey">API key <a id="keyLink" href="#" target="_blank" rel="noopener">get one</a></label>
-          <input id="apiKey" type="password" placeholder="Stays in this browser" spellcheck="false" autocomplete="off">
+          <label class="field-label" for="apiKey"><span data-i18n="settings.apiKey">API key</span> <a id="keyLink" href="#" target="_blank" rel="noopener" data-i18n="settings.getOne">get one</a></label>
+          <input id="apiKey" type="password" placeholder="Stays in this browser" spellcheck="false" autocomplete="off" dir="ltr" data-i18n-placeholder="settings.keyPlaceholder">
         </div>
         <div id="modelRow" hidden>
-          <label class="field-label" for="modelName">Model</label>
-          <input id="modelName" type="text" spellcheck="false">
+          <label class="field-label" for="modelName" data-i18n="settings.model">Model</label>
+          <input id="modelName" type="text" spellcheck="false" dir="ltr">
         </div>
       </div>
       <p class="note" id="providerNote"></p>
 
-      <h3>Pictures</h3>
-      <p class="note">Ask for a selfie or a drawing, or type <code>/image</code> and a description. Pictures are drawn by WaifuAI Cloud.</p>
+      <h3 data-i18n="settings.pictures">Pictures</h3>
+      <p class="note" data-i18n-html="settings.picturesNote">Ask for a selfie or a drawing, or type <code dir="ltr">/image</code> and a description. Pictures are drawn by WaifuAI Cloud.</p>
       <div class="options aspects" id="aspectList"></div>
 
-      <h3>Voice</h3>
-      <label class="row"><span>Read her replies aloud</span><input id="speakEnabled" type="checkbox"></label>
-      <label class="row"><span>Her voice</span><select id="voiceSelect"></select></label>
-      <label class="row"><span>Match the reply's language</span><input id="speakAutoLang" type="checkbox"></label>
-      <label class="row"><span>Voice volume</span><input id="speakVolume" type="range" min="0.1" max="1" step="0.05"></label>
-      <p class="note">Replies are read by a free TikTok voice service, or by your browser's own voice if it's busy. A reply in Japanese, German or another language gets a voice for that language.</p>
-      <p class="note">Hold the mic button to talk, or tap it to start and tap again to stop. Speech is transcribed by WaifuAI Cloud.</p>
-      <label class="row"><span>Send right after speaking</span><input id="voiceAutoSend" type="checkbox"></label>
+      <h3 data-i18n="settings.voice">Voice</h3>
+      <label class="row"><span data-i18n="settings.readAloud">Read her replies aloud</span><input id="speakEnabled" type="checkbox"></label>
+      <label class="row"><span data-i18n="settings.herVoice">Her voice</span><select id="voiceSelect"></select></label>
+      <label class="row"><span data-i18n="settings.matchLanguage">Match the reply's language</span><input id="speakAutoLang" type="checkbox"></label>
+      <label class="row"><span data-i18n="settings.voiceVolume">Voice volume</span><input id="speakVolume" type="range" min="0.1" max="1" step="0.05"></label>
+      <p class="note" data-i18n="settings.voiceNote">Replies are read by a free TikTok voice service, or by your browser's own voice if it's busy. A reply in Japanese, German or another language gets a voice for that language.</p>
+      <p class="note" data-i18n="settings.micNote">Hold the mic button to talk, or tap it to start and tap again to stop. Speech is transcribed by WaifuAI Cloud.</p>
+      <label class="row"><span data-i18n="settings.voiceAutoSend">Send right after speaking</span><input id="voiceAutoSend" type="checkbox"></label>
 
-      <h3>Radio</h3>
-      <div class="row"><button class="btn" id="radioBtn" type="button">&#9654; Play anime radio</button><input id="radioVolume" type="range" min="0" max="1" step="0.05" aria-label="Radio volume"></div>
-      <p class="note">J-pop and anime songs streamed live from <a href="https://listen.moe/" target="_blank" rel="noopener">LISTEN.moe</a>.</p>
+      <h3 data-i18n="settings.radio">Radio</h3>
+      <div class="row"><button class="btn" id="radioBtn" type="button">&#9654; <span data-i18n="radio.play">Play anime radio</span></button><input id="radioVolume" type="range" min="0" max="1" step="0.05" aria-label="Radio volume" data-i18n-aria-label="settings.radioVolume"></div>
+      <p class="note" data-i18n-html="settings.radioNote">J-pop and anime songs streamed live from <a href="https://listen.moe/" target="_blank" rel="noopener">LISTEN.moe</a>.</p>
 
-      <h3>Display</h3>
-      <label class="row"><span>Bubble opacity</span><input id="opacity" type="range" min="0.15" max="0.95" step="0.05"></label>
-      <label class="row"><span>Text size</span><input id="fontSize" type="range" min="12" max="20" step="1"></label>
-      <label class="row"><span>Hide the video</span><input id="hideVideo" type="checkbox"></label>
-      <label class="row"><span>Show the clock</span><input id="showClock" type="checkbox"></label>
+      <h3 data-i18n="settings.display">Display</h3>
+      <label class="row"><span data-i18n="settings.opacity">Bubble opacity</span><input id="opacity" type="range" min="0.15" max="0.95" step="0.05"></label>
+      <label class="row"><span data-i18n="settings.fontSize">Text size</span><input id="fontSize" type="range" min="12" max="20" step="1"></label>
+      <label class="row"><span data-i18n="settings.hideVideo">Hide the video</span><input id="hideVideo" type="checkbox"></label>
+      <label class="row"><span data-i18n="settings.showClock">Show the clock</span><input id="showClock" type="checkbox"></label>
 
-      <h3>Data</h3>
-      <p class="note">Chats, memories and settings are saved in this browser only.</p>
-      <div class="btn-row"><button class="btn" id="exportChats" type="button">Export chats</button><button class="btn-danger" id="clearAll" type="button">Delete all chats</button></div>
+      <h3 data-i18n="settings.data">Data</h3>
+      <p class="note" data-i18n="settings.dataNote">Chats, memories and settings are saved in this browser only.</p>
+      <div class="btn-row"><button class="btn" id="exportChats" type="button" data-i18n="settings.export">Export chats</button><button class="btn-danger" id="clearAll" type="button" data-i18n="settings.deleteAll">Delete all chats</button></div>
     </div>
   </aside>
 
-  <div class="lightbox" id="lightbox" hidden role="dialog" aria-label="Picture">
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-label="Picture" data-i18n-aria-label="app.photo">
     <img id="lightboxImg" alt="">
-    <a id="lightboxOpen" href="#" target="_blank" rel="noopener">Open original</a>
+    <a id="lightboxOpen" href="#" target="_blank" rel="noopener" data-i18n="app.openOriginal">Open original</a>
   </div>
 
 </main>
 
-<script src="sprites.js"></script>
+<script>WaifuI18n.apply(document);</script>
+<script src="sprites.js?v=20261017-i18n"></script>
 <script src="pictures.js"></script>
-<script src="mic_capture.js"></script>
-<script src="voice.js"></script>
+<script src="mic_capture.js?v=20261017-i18n"></script>
+<script src="voice.js?v=20261017-i18n"></script>
 <script src="tts_language_router.js"></script>
 <script src="speech.js"></script>
-<script src="context_budget.js"></script>
-<script src="chat.js"></script>
-<script src="app.js?v=20261009-send"></script>
+<script src="context_budget.js?v=20261017-i18n"></script>
+<script src="chat.js?v=20261017-i18n"></script>
+<script src="app.js?v=20261017-i18n"></script>
 </body>
 </html>

@@ -411,6 +411,136 @@ class PlayerCardTests(unittest.TestCase):
         self.assertIn('[...]', state['reply'])
         self.assertFalse(self.errors, self.errors)
 
+    # ── Interface localization ──
+    def open_with_locale(self, locale):
+        """A fresh context whose browser reports `locale`, so detection runs."""
+        context = self.browser.new_context(viewport={'width': 600, 'height': 600}, locale=locale)
+        context.set_default_timeout(6000)
+        context.route('**/*', self.route)
+        context.add_init_script(
+            "document.addEventListener('DOMContentLoaded', () => { window.__langAtReady = document.documentElement.lang; }, { once: true })")
+        self.addCleanup(context.close)
+        page = context.new_page()
+        page.on('pageerror', lambda e: self.errors.append(str(e)))
+        return page
+
+    def test_first_visit_uses_browser_language_without_an_english_flash(self):
+        page = self.open_with_locale('ja-JP')
+        requests = []
+        page.on('request', lambda r: requests.append(r.url))
+        page.goto(APP)
+        page.wait_for_selector('#msgInput')
+        index = lambda fragment: next(i for i, url in enumerate(requests) if fragment in url)
+        # The matched dictionary is parsed before the app scripts, so no English
+        # ever paints.
+        self.assertLess(index('/i18n/locales/ja.js'), index('/waifu-sprites/app.js'))
+        self.assertLess(index('/i18n/locales/ja.js'), index('/waifu-sprites/chat.js'))
+        self.assertEqual(page.evaluate('window.__langAtReady'), 'ja')
+        self.assertEqual(page.evaluate('document.documentElement.lang'), 'ja')
+        self.assertEqual(page.evaluate('document.documentElement.dir'), 'ltr')
+        self.assertEqual(page.evaluate('WaifuI18n.locale'), 'ja')
+        self.assertNotEqual(page.get_attribute('#msgInput', 'placeholder'), 'Say something...')
+        self.assertEqual(page.locator('#spriteLabel').inner_text(), page.evaluate("WaifuI18n.t('sprite.state.idle')"))
+        saved = page.evaluate("localStorage.getItem('ws_locale')")
+        self.assertIsNone(saved, 'detection must not write a choice')
+        self.assertFalse(self.errors, self.errors)
+
+    def test_switching_language_is_instant_and_persists(self):
+        self.page.goto(APP)
+        self.assertEqual(self.page.evaluate('document.documentElement.lang'), 'en')
+        self.page.evaluate("window.__noReloadMarker = true; WaifuI18n.setLocale('ar')")
+        self.page.wait_for_function("document.documentElement.lang === 'ar'")
+        # No reload: the same document, and Arabic applied in place.
+        self.assertTrue(self.page.evaluate('window.__noReloadMarker === true'))
+        self.assertEqual(self.page.evaluate('document.documentElement.dir'), 'rtl')
+        self.assertEqual(self.page.evaluate("localStorage.getItem('ws_locale')"), 'ar')
+        self.assertEqual(self.page.get_attribute('#msgInput', 'placeholder'),
+                         self.page.evaluate("WaifuI18n.t('composer.placeholder')"))
+        self.page.reload()
+        self.page.wait_for_selector('#msgInput')
+        self.assertEqual(self.page.evaluate('document.documentElement.lang'), 'ar')
+        self.assertEqual(self.page.evaluate('document.documentElement.dir'), 'rtl')
+        self.assertFalse(self.errors, self.errors)
+
+    def test_device_language_choice_is_remembered_as_auto(self):
+        self.page.goto(APP)
+        self.page.evaluate("WaifuI18n.setLocale('de')")
+        self.page.wait_for_function("document.documentElement.lang === 'de'")
+        self.page.evaluate("WaifuI18n.setLocale('auto')")
+        self.page.wait_for_function("document.documentElement.lang === 'en'")
+        self.assertEqual(self.page.evaluate("localStorage.getItem('ws_locale')"), 'auto')
+        self.assertFalse(self.errors, self.errors)
+
+    def test_settings_language_picker_lists_native_names_and_switches(self):
+        self.page.goto(APP)
+        self.page.locator('#settingsBtn').click()
+        options = self.page.locator('#interfaceLanguage option').all_inner_texts()
+        self.assertTrue(options[0].startswith('Use device language'))
+        self.assertIn('日本語', options)
+        self.assertIn('العربية', options)
+        self.page.select_option('#interfaceLanguage', 'fr')
+        self.page.wait_for_function("document.documentElement.lang === 'fr'")
+        self.assertEqual(self.page.evaluate('document.documentElement.dir'), 'ltr')
+        self.assertEqual(self.page.evaluate("localStorage.getItem('ws_locale')"), 'fr')
+        # Reply-language values stay English; only the labels become native names.
+        self.assertEqual(self.page.evaluate("Chat.LANGUAGES.includes('Japanese')"), True)
+        self.assertIn('日本語', self.page.locator('#replyLanguage option').all_inner_texts())
+        self.assertFalse(self.errors, self.errors)
+
+    def test_rtl_layout_and_mixed_direction_content(self):
+        self.page.goto(APP)
+        self.page.evaluate("WaifuI18n.setLocale('fa')")
+        self.page.wait_for_function("document.documentElement.dir === 'rtl'")
+        self.assertEqual(self.page.evaluate('document.documentElement.lang'), 'fa')
+        # Panels mirror to the logical edges.
+        self.page.locator('#settingsBtn').click()
+        self.assertEqual(self.page.evaluate(
+            "getComputedStyle(document.getElementById('settingsPanel')).insetInlineStart"), '0px')
+        self.page.locator('#settingsPanel [data-close]').click()
+        self.page.locator('#historyBtn').click()
+        self.assertEqual(self.page.evaluate(
+            "getComputedStyle(document.getElementById('historyPanel')).insetInlineEnd"), '0px')
+        # Chat bubbles and the composer stay direction-safe for mixed text.
+        self.assertEqual(self.page.get_attribute('#msgInput', 'dir'), 'auto')
+        self.assertEqual(self.page.evaluate("document.querySelector('.msg .text').getAttribute('dir')"), 'auto')
+        self.assertFalse(self.errors, self.errors)
+
+    def test_english_fallback_and_long_strings_do_not_overflow(self):
+        self.page.goto(APP)
+        self.assertEqual(self.page.evaluate("WaifuI18n.t('no.such.key')"), 'no.such.key')
+        self.assertEqual(self.page.evaluate("WaifuI18n.t('app.retry')"),
+                         self.page.evaluate("WaifuI18n.dictionary('en')['app.retry']"))
+        self.page.evaluate("WaifuI18n.setLocale('de')")
+        self.page.wait_for_function("document.documentElement.lang === 'de'")
+        self.page.locator('#settingsBtn').click()
+        overflow = self.page.evaluate("""() => {
+            const selector = '#settingsPanel .row > span, #settingsPanel .option span, #settingsPanel .option small,'
+                + ' #settingsPanel .note, #settingsPanel .field-label, #settingsPanel h3';
+            const bad = [];
+            for (const el of document.querySelectorAll(selector)) {
+                if (el.clientWidth > 0 && el.scrollWidth > el.clientWidth + 1) bad.push(el.textContent.trim().slice(0, 40));
+            }
+            return bad;
+        }""")
+        self.assertEqual(overflow, [])
+        self.assertFalse(self.errors, self.errors)
+
+    def test_embed_keeps_its_own_language_choice(self):
+        context = self.browser.new_context(viewport={'width': 480, 'height': 480}, locale='fr-FR')
+        context.set_default_timeout(6000)
+        context.route('**/*', self.route)
+        self.addCleanup(context.close)
+        page = context.new_page()
+        page.on('pageerror', lambda e: self.errors.append(str(e)))
+        page.goto(APP + '?embed=x')
+        page.wait_for_selector('#msgInput')
+        self.assertEqual(page.evaluate('document.documentElement.lang'), 'fr')
+        page.evaluate("WaifuI18n.setLocale('es')")
+        page.wait_for_function("document.documentElement.lang === 'es'")
+        self.assertEqual(page.evaluate("localStorage.getItem('ws_embed_locale')"), 'es')
+        self.assertIsNone(page.evaluate("localStorage.getItem('ws_locale')"))
+        self.assertFalse(self.errors, self.errors)
+
 
 if __name__ == '__main__':
     unittest.main()

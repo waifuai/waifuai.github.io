@@ -1,0 +1,102 @@
+# `i18n/` — the shared interface-localization runtime
+
+A tiny, dependency-free runtime that shows every visitor their own language on
+the first paint, with no flash of English and no per-visit model call. It is
+plain `<script>` tags and hand-written dictionaries: no build step, no webfont,
+no CDN.
+
+Waifu Sprites is the first consumer. The runtime lives at the repository root so
+the other WaifuAI apps can adopt it later without a cross-repo refactor.
+
+| File | Role |
+|---|---|
+| `i18n/i18n.js` | The runtime: locale catalog, detection, `t()`, plurals, `apply()`, `setLocale()`, `onChange()`, RTL metadata. |
+| `i18n/bootstrap.js` | Runs in `<head>`: picks the language, sets `<html lang dir>` before paint, and loads the matched dictionary during parse. |
+| `i18n/locales/en.js` | English, the source of truth. Every other dictionary must match its keys. |
+| `i18n/locales/<code>.js` | One dictionary per locale. |
+
+## Adopting it in another app
+
+1. **Load the runtime in `<head>`, in order**, before anything that reads a
+   language:
+
+   ```html
+   <script src="../i18n/i18n.js"></script>
+   <script src="../i18n/bootstrap.js"></script>
+   <script src="../i18n/locales/en.js"></script>
+   ```
+
+   Set `window.WaifuSpritesEmbed` (or your own flag) before `bootstrap.js` if the
+   page needs its own storage key; otherwise edit the `storageKey` in
+   `bootstrap.js`.
+
+2. **Mark up static text** with `data-i18n*` attributes (all optional, all
+   re-applied by `apply()`, so a language switch needs no re-render):
+
+   | Attribute | Effect |
+   |---|---|
+   | `data-i18n="key"` | `textContent` |
+   | `data-i18n-html="key"` | `innerHTML` (only for strings you author that contain `<code>`/`<a>`) |
+   | `data-i18n-placeholder="key"` | `placeholder` |
+   | `data-i18n-title="key"` | `title` |
+   | `data-i18n-aria-label="key"` | `aria-label` |
+   | `data-i18n-value="key"` | `value` |
+
+3. **Translate strings built in JavaScript** with
+   `WaifuI18n.t('key')` / `t('key', { count: 3 })`, and prefer the same
+   `data-i18n*` attributes on elements you create so `apply(document)` can
+   re-translate them in place. For live state (a status pill, a placeholder that
+   depends on a control), register `WaifuI18n.onChange(fn)`.
+
+4. **Run `WaifuI18n.apply(document)` before your app scripts** at the end of
+   `<body>`.
+
+5. **Offer a language picker** with `WaifuI18n.locales()` (metadata) and switch
+   with `WaifuI18n.setLocale(code)`; `'auto'` restores device detection. A
+   dictionary that is not yet in the page loads on demand; if it fails the page
+   simply keeps the language it has.
+
+## Detection and persistence
+
+First match wins: a saved choice (`localStorage`, per app) → `navigator.languages`
+in the visitor's own order → `navigator.language` → English. Regional and legacy
+tags reduce to the base locale (`es-MX`→`es`, `pt-PT`→`pt`, `zh-TW`→`zh`,
+`in`→`id`, …). Only an explicit pick is stored, so a visitor who later changes
+their browser language still gets the new language; `auto` remembers the intent
+without freezing the language.
+
+## Adding a language
+
+One `locales/<code>.js` file, and a catalog entry in `i18n.js` only when the tag
+does not already reduce to a supported base. A `zh-Hant` dictionary later needs
+no runtime change.
+
+### Dictionary contract
+
+- Register with the same wrapper as `en.js`:
+
+  ```js
+  (function (root) {
+    'use strict';
+    var api = root.WaifuI18n;
+    if (!api) return;
+    api.register('xx', { /* … */ });
+  })(typeof window !== 'undefined' ? window : globalThis);
+  ```
+
+- Keys are flat `namespace.key` strings. **Every key in `en.js` must be present**
+  and no others; `tests/test_i18n.cjs` fails the build otherwise.
+- Interpolate with `%{name}` and keep the placeholders exactly as English has
+  them.
+- A key whose text depends on a number maps to a plural object
+  (`{ one, few, many, two, zero, other }`); include the forms your language uses
+  plus `other`. `WaifuI18n` picks the form with `Intl.PluralRules`.
+- Keep strings that are model input, brand names and identifiers in English:
+  persona/system prompts, the emotion tag list, summary-length instructions, the
+  picture prompts, `WaifuAI Cloud`, `OpenRouter`, `Groq`, `TikTok`, `LISTEN.moe`,
+  `Romaji`, `/image`.
+- Strings authored with markup keep it: `settings.picturesNote` keeps
+  `<code dir="ltr">/image</code>`, `settings.radioNote` keeps the `LISTEN.moe`
+  link.
+- Numbers stay Latin digits with no grouping, so size reports like
+  `14 / 32768 bytes` are identical in every language.

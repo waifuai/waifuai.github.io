@@ -22,7 +22,7 @@ const Sprites = (() => {
     happy: 1, funny: 2, empathetic: 3, curious: 4, confused: 5, amazed: 6,
     sorry: 7, found_it: 8, annoyed: 9, overwhelmed: 10, planning: 11, love: 12,
   };
-  const LABELS = { funny: 'laughing', found_it: 'triumphant' };
+  const tr = key => (window.WaifuI18n ? window.WaifuI18n.t(key) : key);
 
   // Clips with a second alternate (most have one: N.mp4 and N-1.mp4).
   const EXTRA_VARIANTS = { '4': ['4-2'], 'e2': ['e2-2'] };
@@ -164,17 +164,26 @@ const Sprites = (() => {
     next.src = BASE + clip + '.mp4';
   }
 
+  function stateLabel(name) { return tr('sprite.state.' + name); }
+  function emotionLabel(name) { return tr('sprite.emotion.' + name); }
+
   function setState(name) {
     if (!STATES[name]) return;
     current = { kind: 'state', name };
-    play(chooseClip(String(STATES[name])), name);
+    play(chooseClip(String(STATES[name])), stateLabel(name));
   }
 
   function setEmotion(detected) {
     const name = ransocSelect(detected);
     current = { kind: 'emotion', name };
-    play(chooseClip('e' + EMOTIONS[name]), LABELS[name] || name.replace('_', ' '));
+    play(chooseClip('e' + EMOTIONS[name]), emotionLabel(name));
     return name;
+  }
+
+  // Re-applies the current pill text after a language switch.
+  function refreshLabel() {
+    if (!labelEl) return;
+    labelEl.textContent = current.kind === 'emotion' ? emotionLabel(current.name) : stateLabel(current.name);
   }
 
   function detectEmotion(text) {
@@ -188,7 +197,7 @@ const Sprites = (() => {
   function setVisible(on) {
     visible = !!on;
     if (!visible) videos.forEach(v => v.pause());
-    else if (current.kind === 'emotion') play(chooseClip('e' + EMOTIONS[current.name]), LABELS[current.name] || current.name.replace('_', ' '));
+    else if (current.kind === 'emotion') play(chooseClip('e' + EMOTIONS[current.name]), emotionLabel(current.name));
     else setState(current.name);
   }
 
@@ -231,7 +240,7 @@ const Sprites = (() => {
   }
 
   return {
-    init, setState, setEmotion, detectEmotion, setVisible,
+    init, setState, setEmotion, detectEmotion, setVisible, refreshLabel,
     onChange: fn => listeners.push(fn),
     STATES: Object.keys(STATES),
     EMOTIONS: Object.keys(EMOTIONS),
