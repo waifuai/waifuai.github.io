@@ -8,24 +8,17 @@
  *  - press and hold: records while held, stops on release (push-to-talk)
  *  - quick tap: keeps recording until the next tap
  *  - keyboard (Enter/Space): toggles, like a tap
- * Recordings stop by themselves after MAX_RECORDING_MS.
+ * Recordings stop by themselves after one minute.
  */
 const Voice = (() => {
   const TRANSCRIBE_URL = 'https://waifu-companion-proxy.thewaifuai.workers.dev/transcribe';
   const HOLD_THRESHOLD_MS = 300;
-  const MIN_RECORDING_MS = 400;
-  const MAX_RECORDING_MS = 60000;
-  const MIME_TYPES = ['audio/webm;codecs=opus', 'audio/webm', 'audio/ogg;codecs=opus', 'audio/mp4', 'audio/mpeg'];
 
-  const supported = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
+  const supported = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder && window.MicCapture);
 
   let state = 'idle'; // idle | starting | listening | transcribing
-  let stream = null;
-  let recorder = null;
-  let chunks = [];
-  let startedAt = 0;
-  let discard = false;
-  let maxTimer = null;
+  let capture = null;
+  let buttonElement = null;
   let opts = {};
 
   function setState(next) {
@@ -43,70 +36,50 @@ const Voice = (() => {
     const headers = {};
     if (ids.session) headers['x-session-id'] = ids.session;
     if (ids.visitor) headers['x-visitor-id'] = ids.visitor;
-    const res = await fetch(TRANSCRIBE_URL, { method: 'POST', body: form, headers });
-    let body = null;
-    try { body = await res.json(); } catch (e) {}
-    if (!res.ok) {
-      const err = new Error((body && body.error) || 'Transcription failed (HTTP ' + res.status + ').');
-      err.status = res.status;
-      throw err;
-    }
-    return ((body && body.text) || '').trim();
-  }
-
-  function releaseMic() {
-    if (stream) stream.getTracks().forEach(t => t.stop());
-    stream = null;
-  }
-
-  async function start() {
-    discard = false;
-    setState('starting');
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 75000);
     try {
-      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    } catch (err) {
-      setState('idle');
-      const denied = err && (err.name === 'NotAllowedError' || err.name === 'SecurityError');
-      opts.onError(denied ? 'Microphone access is blocked. Allow it in your browser to talk to her.' : 'Could not start the microphone.');
-      return;
+      const res = await fetch(TRANSCRIBE_URL, { method: 'POST', body: form, headers, signal: controller.signal });
+      let body = null;
+      try { body = await res.json(); } catch (error) { if (controller.signal.aborted) throw error; }
+      if (!res.ok) {
+        const err = new Error((body && body.error) || 'Transcription failed (HTTP ' + res.status + ').');
+        err.status = res.status;
+        throw err;
+      }
+      return ((body && body.text) || '').trim();
+    } catch (error) {
+      if (controller.signal.aborted) throw new Error('Transcription took too long. Please try again.');
+      throw error;
+    } finally {
+      clearTimeout(timer);
     }
-    if (discard) { releaseMic(); setState('idle'); return; } // Stopped while the permission prompt was open.
+  }
 
-    const mimeType = MediaRecorder.isTypeSupported ? MIME_TYPES.find(t => MediaRecorder.isTypeSupported(t)) : undefined;
-    chunks = [];
-    recorder = new MediaRecorder(stream, mimeType ? { mimeType } : undefined);
-    recorder.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
-    recorder.onstop = async () => {
-      clearTimeout(maxTimer);
-      releaseMic();
-      const blob = new Blob(chunks, { type: recorder.mimeType || 'audio/webm' });
-      recorder = null;
-      if (discard || Date.now() - startedAt < MIN_RECORDING_MS) {
-        setState('idle');
-        return;
-      }
-      setState('transcribing');
-      try {
-        const text = await transcribe(blob);
+  function start() {
+    if (!capture) capture = window.MicCapture.create({
+      onState: setState,
+      onLevel(level) {
+        buttonElement.dataset.inputMonitor = String(level !== null);
+        buttonElement.style.setProperty('--mic-input-level', String(level || 0));
+      },
+      onError(message) { opts.onError(message); },
+      async onAudio(blob) {
+        let text;
+        try { text = await transcribe(blob); }
+        catch (error) {
+          throw new Error(error.status === 429
+            ? 'Voice input is busy right now. Try again in a moment.'
+            : 'Voice input failed: ' + error.message);
+        }
         if (text) opts.onText(text);
-        else opts.onError("I couldn't hear anything in that recording. Try again a bit closer to the mic?");
-      } catch (err) {
-        opts.onError(err.status === 429 ? 'Voice input is busy right now. Try again in a moment.' : 'Voice input failed: ' + err.message);
-      } finally {
-        setState('idle');
+        else opts.onError("I couldn't hear anything in that recording. Check your microphone and try again.");
       }
-    };
-    recorder.start();
-    startedAt = Date.now();
-    maxTimer = setTimeout(stop, MAX_RECORDING_MS);
-    setState('listening');
+    });
+    capture.start();
   }
 
-  function stop() {
-    if (recorder && recorder.state !== 'inactive') recorder.stop();
-    else if (state === 'starting') discard = true;
-    else setState('idle');
-  }
+  function stop() { capture?.stop(); }
 
   const recording = () => state === 'starting' || state === 'listening';
 
@@ -116,6 +89,7 @@ const Voice = (() => {
    */
   function init(button, options) {
     opts = options;
+    buttonElement = button;
     if (!supported) { button.hidden = true; return; }
 
     let pressAction = null;

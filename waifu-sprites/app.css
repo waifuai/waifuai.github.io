@@ -353,6 +353,24 @@
   -webkit-touch-callout: none;
 }
 .composer .mic:hover { border-color: var(--pink); }
+.composer .mic { position: relative; }
+.composer .mic[data-state="listening"][data-input-monitor="true"]::before,
+.composer .mic[data-state="listening"][data-input-monitor="true"]::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 15%;
+  width: 70%;
+  height: 3px;
+  border-radius: 2px;
+  background: #ffffff45;
+  pointer-events: none;
+}
+.composer .mic[data-state="listening"][data-input-monitor="true"]::after {
+  background: #a9ffcd;
+  transform: scaleX(var(--mic-input-level, 0));
+  transform-origin: left;
+}
 .composer .mic[data-state="starting"],
 .composer .mic[data-state="listening"] { background: #ff4f7b; color: #fff; border-color: #ff4f7b; animation: mic-pulse 1.2s ease-out infinite; }
 .composer .mic[data-state="transcribing"] { opacity: 0.6; cursor: progress; animation: pulse 1s ease-in-out infinite; }
