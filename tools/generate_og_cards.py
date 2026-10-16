@@ -58,7 +58,7 @@ PROJECTS = {
 }
 # Root-level pages: file -> (name, tagline). Cards go in og/.
 ROOT_PAGES = {
-    "links.html": ("Links", "Referral credits for AI tools"),
+    "links.html": ("Free AI Credits & Discounts", "Token bonuses and referral offers for AI tools"),
     "search.html": ("Search", "Find any page on the site"),
 }
 HOME = ("waifuai.github.io", "WaifuAI", "Open-source AI companions, tools and research")
