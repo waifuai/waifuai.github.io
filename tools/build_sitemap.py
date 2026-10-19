@@ -2,7 +2,7 @@
 
 Lists every indexable page on the site by its canonical URL (directory URLs for index.html),
 with lastmod taken from the page's last git commit (today for uncommitted changes). Pages marked
-noindex (the redirect stubs) and 404.html are left out. llm-countdowns/ is left out too: all-db
+noindex (the redirect stubs) and 404.html are left out. llm-countdowns/ is left out too: script
 writes its own sitemap-countdowns.xml, which the index points to. Run from anywhere:
     python tools/build_sitemap.py
 """

@@ -231,3 +231,102 @@
   .projects { grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:22px; } .closing-cta { border-top:1px solid var(--line); padding:50px 0 0; margin-top:60px; text-align:center; } .closing-cta p { color:var(--muted); margin:12px auto 24px; max-width:45ch; }
   @media(max-width:800px) { .reach-layout { grid-template-columns:minmax(0,1fr); } .country-ranking { display:grid; grid-template-columns:1fr 1fr; gap:10px; } .country-ranking li + li { margin:0; } }
   @media(max-width:600px) { .chat-highlight { padding:20px; gap:15px; } .chat-highlight .stat-value { font-size:35px; } .chat-highlight p { font-size:18px; } .reach-layout { padding:20px 14px; gap:22px; } .world-map { margin-top:20px; } .map-legend { gap:10px; } .projects { grid-template-columns:1fr 1fr; } .data-disclosure { padding:14px; } }
+.forecast-bar .bar-column { background:repeating-linear-gradient(135deg,transparent 0,transparent 5px,color-mix(in srgb,var(--bar) 40%,transparent) 5px,color-mix(in srgb,var(--bar) 40%,transparent) 9px); border:1px dashed var(--accent); }
+.forecast-recorded { position:absolute; bottom:0; left:0; right:0; background:var(--bar); }
+.forecast-bar .bar-value { color:var(--accent); }
+.month-bar[hidden] { display:none; }
+
+.growth-rate-note { grid-column:1/-1; font-size:11px; color:var(--muted); margin:0; padding:10px 0; }
+
+.growth-kpi:nth-of-type(3) { border-right:0; }
+
+main.wrap { padding-top:38px; }
+.hero { grid-template-columns:minmax(0,1fr) 380px; gap:64px; padding:12px 0 28px; }
+.hero h1 { font-size:clamp(42px,5vw,64px); }
+.hero .demo { height:370px; border-radius:28px; }
+.hero .lede { font-size:18px; margin:18px 0; }
+.growth-story { margin:30px 0 0; font-size:13px; color:var(--muted); }
+.growth-story strong { display:block; font-weight:500; color:var(--text); }
+.growth-story span { display:block; font-size:11px; margin-top:4px; max-width:48ch; }
+.quiet-details { border:0; border-top:1px solid var(--line); padding:14px 0; margin-top:18px; color:var(--muted); font-size:12px; }
+.quiet-details > summary { cursor:pointer; width:fit-content; font-size:12px; }
+.quiet-details > summary:hover { color:var(--accent); }
+.quiet-details[open] { padding-bottom:22px; }
+.quiet-details > p { max-width:85ch; }
+#growth-charts > .section-head { margin-bottom:22px; }
+.section-head h2 { font-size:32px; }
+.visual-charts { grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; }
+.chart-card { padding:24px 24px 12px; }
+.chart-heading { align-items:center; margin-bottom:24px; }
+.chart-heading h3 { font-size:14px; text-transform:none; font-weight:500; letter-spacing:0; color:var(--text); margin:0; }
+.chart-heading h3 span { font-size:11px; color:var(--muted); margin-left:5px; font-weight:400; }
+.bar-value { opacity:0; transition:opacity .15s; }
+.month-bar:hover .bar-value,.month-bar:focus .bar-value,.forecast-bar .bar-value { opacity:1; }
+.chart-detail { font-size:10px; color:var(--muted); margin-bottom:10px; }
+.chart-data { font-size:10px; padding:8px 0 0; }
+.estimate-key { display:flex; align-items:center; gap:7px; font-size:10px; white-space:nowrap; color:var(--muted); }
+.estimate-key i { width:16px; height:12px; border:1px dashed var(--accent); border-radius:3px; background:repeating-linear-gradient(135deg,transparent 0,transparent 3px,var(--line) 3px,var(--line) 6px); }
+.visual-hint { color:var(--muted); font-size:11px; margin:14px 0 0; }
+section { padding-top:64px; }
+.section-head .eyebrow { margin-bottom:8px; }
+.reach-caption { font-size:13px; color:var(--muted); }
+.reach-layout { padding:20px 28px; }
+.world-map { margin:8px 0; }
+.country-ranking strong { display:none; }
+.reach-side h3 { text-transform:none; letter-spacing:0; font-size:13px; margin:14px 0; }
+.country-ranking button { background:transparent; padding:14px 0; border-radius:0; }
+.country-ranking i { opacity:.55; height:2px; }
+.decision-chart-card { margin-top:24px; }
+.decision-pies { grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:18px; }
+.pie-card { padding:22px 18px; }
+.pie-card h3 { font-size:12px; text-transform:none; letter-spacing:0; color:var(--text); }
+.pie-row { grid-template-columns:88px minmax(0,1fr); gap:14px; }
+.pie-legend { font-size:11px; gap:6px; }
+.pie-legend li { grid-template-columns:7px minmax(0,1fr) max-content; gap:6px; }
+.pie-legend i { width:7px; height:7px; }
+.product-layout { max-width:none; gap:22px; }
+.product-tile video { aspect-ratio:16/10; height:300px; object-position:center 30%; }
+.product-tile div { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 20px; }
+.product-tile strong { font-size:21px; }
+.project-desc,.project-stats { display:none; }
+.project-body { padding:12px 14px; }
+.project-title { font-size:13px; font-weight:500; }
+.source-details { padding-top:58px; }
+.source-details > h2 { font-size:25px; }
+.source-details > .meta { margin-top:20px; }
+.source-details .quiet-details { padding:18px 0; }
+.site-footer .wrap { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+@media(max-width:1000px) {
+  .hero { grid-template-columns:minmax(0,1fr) 310px; gap:32px; }
+  .decision-pies { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:700px) {
+  .hero { grid-template-columns:minmax(0,1fr) 230px; gap:24px; }
+  .hero .demo { height:290px; }
+  .hero h1 { font-size:40px; }
+  .hero-actions { gap:4px; }
+  .visual-charts { grid-template-columns:minmax(0,1fr); }
+  .product-tile div { display:block; }
+  .product-tile span { display:block; margin-top:6px; }
+}
+@media(max-width:600px) {
+  .hero { grid-template-columns:minmax(0,1fr); gap:22px; padding-top:0; }
+  .hero .demo { height:300px; }
+  .hero h1 { font-size:44px; }
+  .hero .lede { font-size:16px; margin:12px 0; }
+  .hero-actions { margin:18px 0; }
+  .growth-story { margin-top:16px; }
+  .section-head h2 { font-size:28px; }
+  .estimate-key { margin-top:12px; }
+  .chart-heading .estimate-key { margin-top:0; }
+  .chart-card { padding:20px 16px 12px; }
+  .decision-pies { grid-template-columns:minmax(0,1fr); }
+  .pie-row { grid-template-columns:88px minmax(0,1fr); }
+  .pie { justify-self:start; }
+  .pie-legend { font-size:12px; }
+  .product-tile video { height:260px; }
+  .reach-caption { display:block; margin-top:10px; }
+  .reach-layout { padding:18px 12px; }
+  .site-footer .wrap { display:block; }
+}
+@media(prefers-reduced-motion:reduce) { .bar-value { transition:none; } }

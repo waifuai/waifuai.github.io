@@ -1,4 +1,12 @@
 (function () {
+  function expireForecasts() {
+    document.querySelectorAll('[data-forecast-end]').forEach(function(bar) {
+      if(Date.now() >= Date.parse(bar.dataset.forecastEnd)) bar.hidden = true;
+    });
+  }
+  expireForecasts();
+  setInterval(expireForecasts, 60000);
+  document.addEventListener('visibilitychange', expireForecasts);
   var reach=document.querySelector('.reach-layout');
   function watchCountry(country) {
     function select() {

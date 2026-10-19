@@ -69,7 +69,7 @@ Monorepo for [WaifuAI](https://waifuai.github.io) — an open-source ecosystem o
 | [search-index.json](search-index.json) | Generated index (title, path, section, description) — rebuild with `python tools/build-search-index.py` |
 | [404.html](404.html) | Themed not-found page served by GitHub Pages |
 | sitemap.xml, sitemap-main.xml | Sitemap index and every indexable page outside llm-countdowns — rebuild with `python tools/build_sitemap.py` |
-| sitemap-countdowns.xml | LLM Countdowns pages, written by all-db's `export-countdowns` |
+| sitemap-countdowns.xml | LLM Countdowns pages, written by `export-countdowns` |
 
 After adding, moving or deleting a page, run these from the repo root:
 
