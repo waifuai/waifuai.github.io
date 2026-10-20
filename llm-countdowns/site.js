@@ -1,4 +1,4 @@
-// LLM Countdowns: upcoming releases, live relative dates, copy link and calendar export.
+// LLM Countdowns: release predictions, live relative dates, copy link and calendar export.
 (function () {
   const DAY = 86400000;
 
@@ -15,7 +15,7 @@
 
   function untilText(isoString) {
     const days = Math.round((calendarDay(isoString) - today()) / DAY);
-    if (days < 0) return "date passed";
+    if (days < 0) return "Predicted " + -days + " day" + (days === -1 ? "" : "s") + " ago";
     if (days === 0) return "today";
     if (days === 1) return "tomorrow";
     return "in " + days + " days";
@@ -44,7 +44,7 @@
     month: "short", day: "numeric", year: "numeric", timeZone: "UTC",
   });
   const empty = document.createElement("p");
-  empty.textContent = "No upcoming release dates currently scheduled.";
+  empty.textContent = "All predicted dates below have passed. Releases remain unconfirmed.";
   empty.hidden = true;
   const firstList = document.querySelector(".releases");
   if (firstList) {
@@ -59,17 +59,10 @@
 
   function refresh() {
     const currentDay = today();
-    releases.forEach((row) => {
-      row.hidden = targetOf(row) < currentDay;
-    });
-    document.querySelectorAll(".releases").forEach((list) => {
-      list.hidden = !Array.from(list.children).some((row) => !row.hidden);
-      const heading = list.previousElementSibling;
-      if (heading && heading.matches(".month")) heading.hidden = list.hidden;
-    });
-    // Lists are already sorted; use the first future date for both summaries.
-    const next = releases.find((row) => !row.hidden && targetOf(row) >= currentDay);
-    empty.hidden = releases.some((row) => !row.hidden);
+    // Keep all forecasts visible; elapsed estimates do not establish a release.
+    // Lists are already sorted; use the first current/future date for summaries.
+    const next = releases.find((row) => targetOf(row) >= currentDay);
+    empty.hidden = !releases.length || !!next;
     if (featured) {
       featured.hidden = !next;
       if (next) {
@@ -94,7 +87,8 @@
     const countdown = document.querySelector(".when [data-until]");
     if (countdown) {
       const expired = calendarDay(countdown.dataset.until) < currentDay;
-      countdown.closest(".when").hidden = expired;
+      const note = document.querySelector("[data-overdue-note]");
+      if (note) note.hidden = !expired;
       const calendar = document.querySelector("[data-calendar]");
       if (calendar) calendar.hidden = expired;
     }
