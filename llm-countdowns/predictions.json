@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-20",
+  "lastUpdated": "2026-10-22",
   "researchBaselines": {
     "openai": {
       "name": "GPT-6 Astra",
@@ -107,11 +107,11 @@
           "category": "frontier",
           "icon": "🟠",
           "stageColor": "#ffb300",
-          "status": "No Grok 4.8 launch/date found in official release notes as of Oct 20; Grok 4.7 remains the latest listed model",
+          "status": "No Grok 4.8 launch or date found in official sources checked Oct 22; revised forecast, not an announced delay",
           "hypeScore": 98,
           "expectedGain": 3.0,
-          "explicitTargetDate": "2026-10-20T17:00:00.000Z",
-          "explicitWindowLabel": "Late Oct 2026",
+          "explicitTargetDate": "2026-11-05T17:00:00.000Z",
+          "explicitWindowLabel": "Early Nov 2026 (revised estimate; low confidence)",
           "cadenceDays": 32,
           "baseline": {
             "name": "Grok 4.7",
@@ -120,13 +120,13 @@
             "speed": 83
           },
           "features": [
-            "Official release notes list Grok 4.7 as released Sept 21; the checked notes contain no Grok 4.8 model launch",
-            "The Oct 20 countdown is an estimate, not an announced release day; it is retained rather than automatically moved after a missed forecast",
-            "The 4.8 name, architecture, parameter count, future pricing and +3 score gain are unconfirmed forecast assumptions",
-            "Grok 4.7 is the observed release baseline; a new model would need its own official announcement"
+            "Official release notes and the model catalog checked Oct 22 still list Grok 4.7; no Grok 4.8 launch or schedule was found",
+            "The previous Oct 20 estimate passed without a matching launch in the checked sources; the Nov 5 revision allows two more weeks from this review",
+            "Nov 5 is a low-confidence judgment forecast, not a new provider deadline or a mechanically repeated 32-day cycle",
+            "The 4.8 name, specifications, pricing and projected +3 Intelligence Index gain remain unconfirmed assumptions; the Grok 4.7 benchmark baseline is retained"
           ],
-          "source": "https://docs.x.ai/developers/release-notes; https://x.ai/news/grok-4-7 (checked Oct 20, 2026); cadence date and historical baseline retained, no verified Grok 4.8 specifications",
-          "lastVerified": "2026-10-20"
+          "source": "https://docs.x.ai/developers/release-notes; https://docs.x.ai/developers/models; https://x.ai/news/grok-4-7 (checked Oct 22, 2026); Nov 5 is a judgment forecast, not an announced date; historical benchmark baseline retained",
+          "lastVerified": "2026-10-22"
         }
       }
     },
@@ -559,11 +559,11 @@
           "category": "frontier",
           "icon": "🟦",
           "stageColor": "#00e676",
-          "status": "Speculative Spark successor; Meta launched Muse Wonder and Wonder Full Oct 12, not a model named Muse Spark 1.4",
+          "status": "Speculative Spark successor; no matching numbered release or schedule found as of Oct 22. Meta released Muse Wonder and Wonder Full Oct 12",
           "hypeScore": 70,
           "expectedGain": 5.0,
-          "explicitTargetDate": "2026-10-22T17:00:00.000Z",
-          "explicitWindowLabel": "Late Oct 2026 (tentative; low confidence)",
+          "explicitTargetDate": "2026-11-19T17:00:00.000Z",
+          "explicitWindowLabel": "Mid Nov 2026 (revised estimate; very low confidence)",
           "cadenceDays": 28,
           "baseline": {
             "name": "Muse Spark 1.3",
@@ -572,13 +572,13 @@
             "speed": 196
           },
           "features": [
-            "Meta released Muse Wonder and Muse Wonder Full on Oct 12, describing them as its most capable models; these are a separate family from Spark",
-            "No official Muse Spark 1.4 release or date was found in the checked Meta sources; a future Spark version number is speculative",
-            "The retained countdown is a low-confidence Spark-line scenario, not a date implied by the Wonder launch",
-            "The per-model Spark 1.3 baseline is a historical snapshot; Meta's research baseline now records Muse Wonder Full instead"
+            "Meta released Muse Wonder and Muse Wonder Full on Oct 12; that announcement does not identify either model as a numbered Muse Spark release",
+            "No official Muse Spark 1.4 launch or schedule was found in the checked Meta sources; the future Spark version label remains speculative",
+            "The prior Oct 22 target is replaced by Nov 19, a four-week allowance from this review; Wonder does not establish a monthly Spark schedule",
+            "This is a very-low-confidence scenario and the Spark line may not follow these version labels or dates; the historical Spark 1.3 baseline and projected gain are retained"
           ],
-          "source": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/ (Oct 12, 2026; checked Oct 20); Wonder baseline: https://artificialanalysis.ai/models/muse-wonder-full; historical Spark baseline retained",
-          "lastVerified": "2026-10-20"
+          "source": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/ (Oct 12, 2026; checked Oct 22); revised Spark date/version are judgment assumptions, not Meta guidance; historical Spark benchmark baseline retained",
+          "lastVerified": "2026-10-22"
         },
         "frontier": {
           "id": "meta-muse-spark-1-5",
@@ -588,11 +588,11 @@
           "category": "frontier",
           "icon": "🟦",
           "stageColor": "#00e676",
-          "status": "Speculative Spark successor; Meta launched Muse Wonder and Wonder Full Oct 12, not a model named Muse Spark 1.5",
+          "status": "Speculative Spark successor; no matching numbered release or schedule found as of Oct 22. Meta released Muse Wonder and Wonder Full Oct 12",
           "hypeScore": 65,
           "expectedGain": 10.0,
-          "explicitTargetDate": "2026-11-19T17:00:00.000Z",
-          "explicitWindowLabel": "Mid Nov 2026 (tentative; low confidence)",
+          "explicitTargetDate": "2026-12-17T17:00:00.000Z",
+          "explicitWindowLabel": "Mid Dec 2026 (conditional estimate; very low confidence)",
           "cadenceDays": 28,
           "baseline": {
             "name": "Muse Spark 1.3",
@@ -601,13 +601,13 @@
             "speed": 196
           },
           "features": [
-            "Meta released Muse Wonder and Muse Wonder Full on Oct 12, describing them as its most capable models; these are a separate family from Spark",
-            "No official Muse Spark 1.5 release or date was found in the checked Meta sources; a future Spark version number is speculative",
-            "The retained countdown is a low-confidence Spark-line scenario, not a date implied by the Wonder launch",
-            "The per-model Spark 1.3 baseline is a historical snapshot; Meta's research baseline now records Muse Wonder Full instead"
+            "Meta released Muse Wonder and Muse Wonder Full on Oct 12; that announcement does not identify either model as a numbered Muse Spark release",
+            "No official Muse Spark 1.5 launch or schedule was found in the checked Meta sources; the future Spark version label remains speculative",
+            "The prior Nov 19 target moves to Dec 17 to remain 28 days after the revised Spark 1.4 scenario; both the sequence and interval are assumptions",
+            "This is a very-low-confidence scenario and the Spark line may not follow these version labels or dates; the historical Spark 1.3 baseline and projected gain are retained"
           ],
-          "source": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/ (Oct 12, 2026; checked Oct 20); Wonder baseline: https://artificialanalysis.ai/models/muse-wonder-full; historical Spark baseline retained",
-          "lastVerified": "2026-10-20"
+          "source": "https://about.fb.com/news/2026/10/introducing-muse-wonder-models/ (Oct 12, 2026; checked Oct 22); revised Spark date/version are judgment assumptions, not Meta guidance; historical Spark benchmark baseline retained",
+          "lastVerified": "2026-10-22"
         }
       }
     },
@@ -836,11 +836,11 @@
           "category": "frontier",
           "icon": "🔷",
           "stageColor": "#2d5bff",
-          "status": "No GLM-5.4 release/date in official release notes as of Oct 20; the Oct 20 countdown is only a cadence estimate",
+          "status": "No GLM-5.4 launch or date found in official sources checked Oct 22; revised forecast, not an announced delay",
           "hypeScore": 85,
           "expectedGain": 4.0,
-          "explicitTargetDate": "2026-10-20T17:00:00.000Z",
-          "explicitWindowLabel": "Late Oct 2026",
+          "explicitTargetDate": "2026-11-12T17:00:00.000Z",
+          "explicitWindowLabel": "Mid Nov 2026 (revised estimate; low confidence)",
           "cadenceDays": 63,
           "baseline": {
             "name": "GLM-5.3",
@@ -849,13 +849,13 @@
             "speed": 71
           },
           "features": [
-            "GLM-5.3 (Aug 18, 44.8) is the current model and one of the strongest open-weight releases; GLM 5.3 Flash followed on Aug 26",
-            "Point releases have come about two months apart: GLM-5 (Feb 11), 5.1 (Apr 7), 5.2 (Jun 16), 5.3 (Aug 18)",
-            "The Oct 20 date is a cadence estimate, not a launch commitment; it is retained rather than automatically moved after a missed forecast",
-            "GLM-5.2 to 5.3 gained 11 points, but 5.1 scored below GLM-5, so the forecast gain is modest"
+            "Official release notes checked Oct 22 still list GLM-5.3 (Aug 18) and GLM-5.3-Flash (Aug 26); the model guide calls GLM-5.3 the latest flagship",
+            "The previous Oct 20 cadence estimate passed without a matching launch in the checked sources; Nov 12 allows three more weeks from this review",
+            "The historical roughly two-month cadence is a weak prior, not a deadline; the revised date is a low-confidence judgment forecast",
+            "The GLM-5.3 benchmark baseline and projected +4 gain are retained historical/scenario values; no GLM-5.4 specifications or benchmark are established"
           ],
-          "source": "Z.ai release history & Artificial Analysis; release-status review Oct 20, 2026: https://docs.z.ai/release-notes/new-released",
-          "lastVerified": "2026-10-20"
+          "source": "https://docs.z.ai/release-notes/new-released; https://docs.z.ai/guides/llm/glm-5.3 (checked Oct 22, 2026); Nov 12 is a judgment forecast, not an announced date; historical benchmark baseline retained",
+          "lastVerified": "2026-10-22"
         }
       }
     }
