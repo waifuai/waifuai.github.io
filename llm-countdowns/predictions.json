@@ -169,31 +169,31 @@
         "frontier": {
           "id": "google-gemini-4-1-argon",
           "slug": "gemini-4-1-argon",
-          "shortName": "Gemini 4.1 Argon",
-          "predictedName": "Gemini 4.1 Argon (speculative successor name)",
+          "shortName": "Gemini 4 Carbon",
+          "predictedName": "Gemini 4 Carbon (rumored name)",
           "category": "frontier",
           "icon": "🔵",
           "stageColor": "#4facfe",
-          "status": "Speculative successor; Google has not announced a Gemini 4.1 name or release date as of Oct 20, 2026",
+          "status": "Rumored name for a possible future Gemini model; no Carbon launch, official product name, version or schedule found in Google sources checked Oct 22, 2026",
           "hypeScore": 90,
           "expectedGain": 2.0,
           "explicitTargetDate": "2027-01-14T17:00:00.000Z",
           "explicitWindowLabel": "Jan 2027 (tentative; low confidence)",
           "cadenceDays": 93,
           "features": [
-            "Gemini 4 Argon is already released: Google announced it Sept 30 and confirmed general API availability Oct 13, 2026",
-            "Gemini 4.1 Argon is a forecast label only; neither the version number nor continued use of the Argon name is confirmed by Google",
-            "Gemini 3 Pro launched Nov 18, 2025 and Gemini 3.1 Pro followed Feb 19, 2026, a gap of 93 days; this is one historical comparison, not a reliable schedule",
-            "Applying that 93-day interval to Argon's Oct 13 public release gives Jan 14, 2027; the countdown uses this illustrative midpoint for a low-confidence January window",
-            "The projected score assumes a modest 2-point gain over Argon's observed 53; this is a scenario, not a benchmark result or a Google claim"
+            "Gemini 4 Argon is already released: Google confirmed general API availability Oct 13, 2026",
+            "Carbon replaces the speculative Gemini 4.1 Argon label on this forecast; neither label establishes an official successor identity or public version number",
+            "No Carbon entry was found in the checked Google Gemini API release notes; this page does not establish public availability, specifications, pricing or performance",
+            "The retained Jan 14, 2027 estimate applies one historical 93-day gap (Gemini 3 Pro to 3.1 Pro) to Argon's Oct 13 release; it is a low-confidence placeholder, not a Carbon-specific schedule",
+            "The projected +2 Intelligence Index gain over Argon's historical 53 baseline is a scenario, not a Carbon benchmark or a Google claim"
           ],
-          "source": "Forecast extrapolation, checked Oct 16, 2026: Google Gemini API changelog, https://ai.google.dev/gemini-api/docs/changelog; Gemini 3 launch (Nov 18, 2025), https://blog.google/products-and-platforms/products/gemini/gemini-3/; Gemini 3.1 Pro launch (Feb 19, 2026), https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/; baseline score from https://artificialanalysis.ai/models/gemini-4-argon; release-status review Oct 20, 2026: https://ai.google.dev/gemini-api/docs/changelog",
+          "source": "Release-status check Oct 22, 2026: https://ai.google.dev/gemini-api/docs/changelog (no Carbon entry found); Carbon is an unconfirmed forecast label, not a Google-announced name. Historical date comparison: https://blog.google/products-and-platforms/products/gemini/gemini-3/; https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/; historical baseline: https://artificialanalysis.ai/models/gemini-4-argon",
           "baseline": {
             "name": "Gemini 4 Argon (high)",
             "intel": 53,
             "releaseDate": "2026-10-13"
           },
-          "lastVerified": "2026-10-20"
+          "lastVerified": "2026-10-22"
         },
         "lite": {
           "id": "google-gemini-4-flash-lite",
