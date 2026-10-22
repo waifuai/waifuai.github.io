@@ -39,6 +39,28 @@
     'app.openOriginal': 'Открыть оригинал',
     'app.retry': 'Повторить',
 
+    // Turn and image operation states
+    "composer.stop": "Остановить",
+    "chat.stopped": "Остановлено",
+    "chat.interrupted": "Прервано",
+    "chat.failed": "Ошибка ответа",
+    "chat.stillWorking": "Всё ещё работаю…",
+    "chat.longWait": "Это занимает больше времени, чем обычно. Можно остановить в любой момент.",
+    "chat.queuePaused": "Очередь приостановлена",
+    "chat.resumeQueue": "Продолжить очередь",
+    "chat.removeQueued": "Убрать сообщение из очереди",
+    "picture.pending": "Рисование",
+    "picture.loading": "Создано / загрузка",
+    "picture.loaded": "Загружено в этом браузере",
+    "picture.blocked": "Заблокировано",
+    "picture.failed": "Ошибка генерации",
+    "picture.displayFailed": "Ошибка отображения",
+    "picture.stopped": "Остановлено",
+    "picture.interrupted": "Прервано",
+    "picture.unknown": "Отображение не подтверждено",
+    "picture.reload": "Перезагрузить изображение",
+    "picture.again": "Создать заново",
+
     // ── Composer ──
     'composer.placeholder': 'Скажи что-нибудь...',
     'composer.message': 'Сообщение',
@@ -69,9 +91,9 @@
     'chat.queued': 'в очереди',
 
     // ── Starter chips ──
-    'starter.hiShort': 'Привет!',
-    'starter.hi': 'Привет! Как проходит твой день?',
-    'starter.fun': 'Расскажи что-нибудь интересное',
+    'starter.hiShort': "Спроси меня, как прошёл мой день",
+    'starter.hi': "Спроси меня, как прошёл мой день",
+    'starter.fun': "Давай сыграем в «Что бы ты выбрала».",
     'starter.selfie': 'Пришли мне селфи',
     'starter.focusShort': 'Помоги сосредоточиться',
     'starter.focus': 'Помоги мне сосредоточиться на работе',

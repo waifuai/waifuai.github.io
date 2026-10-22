@@ -34,6 +34,28 @@
     'app.openOriginal': 'Buka asal',
     'app.retry': 'Cuba lagi',
 
+    // Turn and image operation states
+    "composer.stop": "Hentikan",
+    "chat.stopped": "Dihentikan",
+    "chat.interrupted": "Terganggu",
+    "chat.failed": "Balasan gagal",
+    "chat.stillWorking": "Masih diproses…",
+    "chat.longWait": "Mengambil masa lebih lama daripada biasa. Anda boleh berhenti pada bila-bila masa.",
+    "chat.queuePaused": "Baris gilir dijeda",
+    "chat.resumeQueue": "Sambung baris gilir",
+    "chat.removeQueued": "Buang mesej dalam baris gilir",
+    "picture.pending": "Melukis",
+    "picture.loading": "Dijana / memuatkan",
+    "picture.loaded": "Dimuatkan dalam pelayar ini",
+    "picture.blocked": "Disekat",
+    "picture.failed": "Penjanaan gagal",
+    "picture.displayFailed": "Paparan gagal",
+    "picture.stopped": "Dihentikan",
+    "picture.interrupted": "Terganggu",
+    "picture.unknown": "Paparan belum disahkan",
+    "picture.reload": "Muat semula imej",
+    "picture.again": "Jana semula",
+
     // ── Composer ──
     'composer.placeholder': 'Cakap sesuatu...',
     'composer.message': 'Mesej',
@@ -64,9 +86,9 @@
     'chat.queued': 'beratur',
 
     // ── Starter chips ──
-    'starter.hiShort': 'Hai!',
-    'starter.hi': 'Hai! Apa khabar hari ini?',
-    'starter.fun': 'Ceritakan sesuatu yang menyeronokkan',
+    'starter.hiShort': "Tanya saya tentang hari saya",
+    'starter.hi': "Tanya saya tentang hari saya",
+    'starter.fun': "Jom main mana satu pilihan kamu.",
     'starter.selfie': 'Hantar selfie kepada saya',
     'starter.focusShort': 'Bantu saya fokus',
     'starter.focus': 'Bantu saya fokus pada kerja saya',

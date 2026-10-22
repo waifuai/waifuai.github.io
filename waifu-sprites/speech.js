@@ -247,12 +247,13 @@ const Speech = (() => {
    * even while her voice is muted (the replay button on a message).
    */
   async function speak(text, hooks = {}) {
+    if (hooks.valid && !hooks.valid()) return;
     stop();
     if (!settings.enabled && !hooks.force) return;
     const chunks = chunksOf(text);
     if (!chunks.length) return;
     const token = runToken;
-    const live = () => token === runToken;
+    const live = () => token === runToken && (!hooks.valid || hooks.valid());
     preparing = true;
     try {
       unlock();
@@ -264,9 +265,9 @@ const Speech = (() => {
       const signature = JSON.stringify([key, settings.voiceId, settings.autoLang && !hooks.sample, fingerprint()]);
       if (plan && plan.signature !== signature) plan = prepareRouting(text, hooks.force, hooks.sample);
       if (plan && plan.needsDecision && !plan.finished && !plan.pending) {
-        const recent = typeof Chat !== 'undefined' ? Chat.messages.slice(-4).filter(m => m.content !== text).map(m => ({ role: m.role, text: m.content.slice(0, 300) })) : [];
+        const recent = typeof Chat !== 'undefined' && Chat.recentContext ? Chat.recentContext().filter(m => m.text !== text) : [];
         const request = typeof Chat !== 'undefined' && typeof Chat.askDecisions === 'function'
-          ? Chat.askDecisions(['sprites_tts_language_v1'], { reply: plan.text, conversation_language: plan.previousLang, recent_context: recent }) : null;
+          ? Chat.askDecisions(['sprites_tts_language_v1'], { reply: plan.text, conversation_language: plan.previousLang, recent_context: recent }, hooks.owner) : null;
         plan = await finishRouting(plan, request, valid);
       } else if (plan && plan.pending && !plan.finished) plan = await plan.pending;
       if (!valid()) return;
@@ -285,7 +286,7 @@ const Speech = (() => {
       }
       if (live() && hooks.onEnd) hooks.onEnd();
     } finally {
-      if (live()) preparing = false;
+      if (token === runToken) preparing = false;
     }
   }
 

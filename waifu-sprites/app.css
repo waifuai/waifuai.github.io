@@ -468,3 +468,15 @@
 [dir="rtl"] .peek pre { text-align: start; }
 /* Long translations must wrap instead of stretching a panel. */
 .panel-head h2, .option span, .option small { overflow-wrap: anywhere; }
+
+/* Owned attempts and manual recovery remain visible on touch screens. */
+#sendBtn[data-mode="stop"] { background: #753149; color: #fff; }
+.wait-status, .attempt-status, .picture-status { margin-top: 6px; font-size: 12px; color: var(--ink-dim); }
+.msg .actions:has(.retry) { display: flex; opacity: 1; visibility: visible; pointer-events: auto; }
+.msg .actions .retry { min-height: 32px; padding: 6px 10px; font: inherit; }
+.msg.queued:has(.queue-actions) { opacity: 1; border: 1px dashed var(--line); }
+.queue-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 6px; }
+.msg.queued:has(.queue-actions)::after { display: none; }
+.queue-actions button, .picture-reload, .pic > button { font: inherit; color: var(--ink); background: rgba(255,255,255,.1); border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; cursor: pointer; }
+.pic img[hidden], .pic button[hidden] { display: none; }
+button:focus-visible { outline: 2px solid var(--pink); outline-offset: 2px; }

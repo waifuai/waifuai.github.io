@@ -56,7 +56,18 @@ Answer with exactly one line: DRAW: <English description>
 The description is 10 to 40 words describing who is in it, outfit, pose, setting and mood. When the companion is in the picture, describe her as ${APPEARANCE}, plus the requested outfit or pose. The image service applies its own content filter. Describe the requested picture.`;
 
   // Added to the chat system prompt so the reply reacts instead of refusing.
-  const CHAT_RULE = `You can draw pictures, including pictures of yourself (you look like ${APPEARANCE}). When the user asks for a picture, photo, selfie or drawing, it is drawn separately and appears in the chat on its own: just react in character, happy to make it. Never write out the picture's description yourself, and never refuse by saying you are an AI or can't make images. Nude or sexual pictures are never drawn: playfully suggest a cute alternative instead.`;
+  const CHAT_RULE = `You can draw pictures, including pictures of yourself (you look like ${APPEARANCE}). When the user asks for a picture, photo, selfie or drawing, a separate app operation attempts generation: react in character and offer to make it. An offer, request or returned URL does not confirm delivery. Only application-authored image outcome notes establish generation or browser loading; browser loading is not proof the user saw the picture. A blocked, failed, stopped, interrupted or unconfirmed operation must never be described as sent or delivered. You cannot inspect image contents. Never write out the picture's description yourself, and never refuse by saying you are an AI or can't make images. Nude or sexual pictures are never drawn: playfully suggest a cute alternative instead.`;
+
+  function check(options) {
+    if (options.signal?.aborted || (options.valid && !options.valid())) {
+      const error = new Error('Canceled'); error.name = 'AbortError'; throw error;
+    }
+  }
+  async function owned(work, options) {
+    const result = await (typeof Chat !== 'undefined' && Chat.abortable ? Chat.abortable(work, options.signal) : work);
+    check(options);
+    return result;
+  }
 
   // ── Decision ──
   function clipPictureContext(text) {
@@ -66,7 +77,8 @@ The description is 10 to 40 words describing who is in it, outfit, pose, setting
     return clean.length <= 300 ? clean : clean.slice(0, 100) + '\n...\n' + clean.slice(-195);
   }
 
-  async function decide(userText, prevReply, ids) {
+  async function decide(userText, prevReply, ids, options = {}) {
+    check(options);
     if (!REQUEST_WORDS.test(userText || '') && !(prevReply && OFFER_WORDS.test(prevReply))) return null;
     const clip = s => String(s || '').slice(0, 300);
     const previous = prevReply ? clipPictureContext(prevReply) : undefined;
@@ -76,24 +88,27 @@ The description is 10 to 40 words describing who is in it, outfit, pose, setting
       let writePicture = false;
       if (typeof Chat !== 'undefined' && typeof Chat.askDecisions === 'function') {
         try {
-          const answers = await Chat.askDecisions(['picture_action_v1'], {
+          const answers = await owned(Chat.askDecisions(['picture_action_v1'], {
             user_message: clip(userText),
             previous_reply: previous,
             picture_offered: Boolean(prevReply && OFFER_WORDS.test(prevReply)),
-          });
+          }, options.owner), options);
           const picture = answers && answers.picture_action_v1;
           if (picture && picture.choice_id === 'none') return null;
           writePicture = picture?.choice_id === 'draw';
         } catch (e) {
+          check(options);
           // Continue with the existing picture judgment if the action failed.
         }
       }
       const headers = { 'Content-Type': 'application/json', 'X-Waifu-Purpose': 'image_prompt' };
       if (ids && ids.session) headers['x-session-id'] = ids.session;
       if (ids && ids.visitor) headers['x-visitor-id'] = ids.visitor;
-      const resp = await fetch(BASE + '/chat/completions', {
+      check(options);
+      const resp = await owned(fetch(BASE + '/chat/completions', {
         method: 'POST',
         headers,
+        signal: options.signal,
         body: JSON.stringify({
           model: DECISION_MODEL,
           max_tokens: 120,
@@ -104,9 +119,9 @@ The description is 10 to 40 words describing who is in it, outfit, pose, setting
           ],
           client_settings: { app: 'waifu-sprites' },
         }),
-      });
+      }), options);
       if (!resp.ok) return null;
-      const data = await resp.json();
+      const data = await owned(resp.json(), options);
       const m = String(data.choices?.[0]?.message?.content || '').match(/DRAW:\s*([^\n|]+)/i);
       if (!m) return null;
       const prompt = m[1].replace(/^[\s"'[<]+|[\s"'\]>]+$/g, '').trim();
@@ -120,18 +135,20 @@ The description is 10 to 40 words describing who is in it, outfit, pose, setting
   // Resolves with a stored reference ("https://..." or "idb:<id>"). Throws with
   // .blocked when the content filter refused, .timedOut when it took too long.
   // Each generation makes one request; failures are returned to the caller.
-  async function draw(prompt, aspect, ids) {
+  async function draw(prompt, aspect, ids, options = {}) {
+    check(options);
     const params = new URLSearchParams({ text: prompt, aspect: aspect || '2:3' });
     const headers = {};
     if (ids && ids.session) headers['x-session-id'] = ids.session;
     if (ids && ids.visitor) headers['x-visitor-id'] = ids.visitor;
-    const res = await fetch(BASE + '/image?' + params.toString(), { headers });
+    const res = await owned(fetch(BASE + '/image?' + params.toString(), { headers, signal: options.signal }), options);
     if (!res.ok) {
       let body = null;
-      try { body = await res.json(); } catch (e) {}
+      try { body = await owned(res.json(), options); } catch (e) { check(options); }
       const err = new Error((body && body.error) || 'Image generation failed.');
       err.blocked = Boolean(body && body.blocked);
       err.timedOut = res.status === 504;
+      err.retryable = !err.blocked && (res.status >= 500 || res.status === 408);
       throw err;
     }
     const url = res.headers.get('X-Image-Url');
@@ -140,7 +157,11 @@ The description is 10 to 40 words describing who is in it, outfit, pose, setting
       return url;
     }
     const id = res.headers.get('X-Image-Id') || ('img' + Date.now().toString(36));
-    await Store.put(id, await res.blob());
+    const blob = await owned(res.blob(), options);
+    if (!blob?.size) { const error = new Error('Empty image'); error.retryable = true; throw error; }
+    check(options);
+    await Store.put(id, blob);
+    try { check(options); } catch (error) { forget('idb:' + id); throw error; }
     return 'idb:' + id;
   }
 
@@ -171,6 +192,7 @@ The description is 10 to 40 words describing who is in it, outfit, pose, setting
         const req = fn(tx.objectStore('images'));
         tx.oncomplete = () => ok(req && req.result);
         tx.onerror = () => fail(tx.error);
+        tx.onabort = () => fail(tx.error || new Error('Image storage interrupted'));
       }));
     }
     return {

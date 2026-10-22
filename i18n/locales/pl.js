@@ -38,6 +38,28 @@
     'app.openOriginal': 'Otwórz oryginał',
     'app.retry': 'Ponów',
 
+    // Turn and image operation states
+    "composer.stop": "Zatrzymaj",
+    "chat.stopped": "Zatrzymano",
+    "chat.interrupted": "Przerwano",
+    "chat.failed": "Błąd odpowiedzi",
+    "chat.stillWorking": "Nadal pracuję…",
+    "chat.longWait": "To trwa dłużej niż zwykle. Możesz zatrzymać w każdej chwili.",
+    "chat.queuePaused": "Kolejka wstrzymana",
+    "chat.resumeQueue": "Wznów kolejkę",
+    "chat.removeQueued": "Usuń wiadomość z kolejki",
+    "picture.pending": "Rysowanie",
+    "picture.loading": "Wygenerowano / ładowanie",
+    "picture.loaded": "Załadowano w tej przeglądarce",
+    "picture.blocked": "Zablokowano",
+    "picture.failed": "Błąd generowania",
+    "picture.displayFailed": "Błąd wyświetlania",
+    "picture.stopped": "Zatrzymano",
+    "picture.interrupted": "Przerwano",
+    "picture.unknown": "Wyświetlenie niepotwierdzone",
+    "picture.reload": "Wczytaj obraz ponownie",
+    "picture.again": "Wygeneruj ponownie",
+
     // ── Composer ──
     'composer.placeholder': 'Napisz coś...',
     'composer.message': 'Wiadomość',
@@ -68,9 +90,9 @@
     'chat.queued': 'w kolejce',
 
     // ── Starter chips ──
-    'starter.hiShort': 'Cześć!',
-    'starter.hi': 'Cześć! Jak mija ci dzień?',
-    'starter.fun': 'Opowiedz mi coś zabawnego',
+    'starter.hiShort': "Zapytaj mnie o mój dzień",
+    'starter.hi': "Zapytaj mnie o mój dzień",
+    'starter.fun': "Zagrajmy w „Co wolisz”.",
     'starter.selfie': 'Wyślij mi selfie',
     'starter.focusShort': 'Pomóż mi się skupić',
     'starter.focus': 'Pomóż mi skupić się na pracy',

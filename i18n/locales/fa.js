@@ -38,6 +38,28 @@
     'app.openOriginal': 'باز کردن نسخه اصلی',
     'app.retry': 'تلاش دوباره',
 
+    // Turn and image operation states
+    "composer.stop": "توقف",
+    "chat.stopped": "متوقف شد",
+    "chat.interrupted": "قطع شد",
+    "chat.failed": "پاسخ ناموفق بود",
+    "chat.stillWorking": "هنوز در حال انجام است…",
+    "chat.longWait": "بیشتر از معمول طول کشیده است. هر زمان بخواهید می‌توانید متوقف کنید.",
+    "chat.queuePaused": "صف متوقف است",
+    "chat.resumeQueue": "ادامهٔ صف",
+    "chat.removeQueued": "حذف پیام از صف",
+    "picture.pending": "در حال نقاشی",
+    "picture.loading": "ساخته شد / در حال بارگیری",
+    "picture.loaded": "در این مرورگر بارگیری شد",
+    "picture.blocked": "مسدود شد",
+    "picture.failed": "ساخت ناموفق بود",
+    "picture.displayFailed": "نمایش ناموفق بود",
+    "picture.stopped": "متوقف شد",
+    "picture.interrupted": "قطع شد",
+    "picture.unknown": "نمایش تأیید نشده",
+    "picture.reload": "بارگیری دوبارهٔ تصویر",
+    "picture.again": "ساخت دوباره",
+
     // ── Composer ──
     'composer.placeholder': 'چیزی بگو...',
     'composer.message': 'پیام',
@@ -68,9 +90,9 @@
     'chat.queued': 'در صف',
 
     // ── Starter chips ──
-    'starter.hiShort': 'سلام!',
-    'starter.hi': 'سلام! روزت چطور می‌گذرد؟',
-    'starter.fun': 'یک چیز بامزه بگو',
+    'starter.hiShort': "دربارهٔ روزم از من بپرس",
+    'starter.hi': "دربارهٔ روزم از من بپرس",
+    'starter.fun': "بیا «کدام را ترجیح می‌دهی» بازی کنیم.",
     'starter.selfie': 'یک سلفی برایم بفرست',
     'starter.focusShort': 'کمکم کن تمرکز کنم',
     'starter.focus': 'کمکم کن روی کارم تمرکز کنم',

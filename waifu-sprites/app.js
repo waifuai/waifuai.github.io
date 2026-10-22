@@ -10,13 +10,30 @@
   const stage = $('stage');
   const messagesEl = $('messages');
   const input = $('msgInput');
+  let viewRevision = 0;
+  let observedOwner = null;
+  let observedAbort = false;
+  let waitTimers = [];
+  let waitOwner = null;
+  let waitStatus = null;
+  let summaryUIRun = 0;
+  const pictureViews = new Map();
 
   // ── Interface language ──
   // Every string the page shows goes through I18n; a missing runtime would
   // only ever happen in a stripped-down copy, so fall back to the key.
   const I18n = window.WaifuI18n;
   const tr = (key, params) => (I18n ? I18n.t(key, params) : key);
-  const localize = el => { if (I18n) I18n.apply(el); return el; };
+  const localize = el => {
+    if (I18n) {
+      if (el.hasAttribute('data-i18n')) el.textContent = tr(el.getAttribute('data-i18n'));
+      for (const [attribute, target] of [['data-i18n-title', 'title'], ['data-i18n-aria-label', 'aria-label']]) {
+        if (el.hasAttribute(attribute)) el.setAttribute(target, tr(el.getAttribute(attribute)));
+      }
+      I18n.apply(el);
+    }
+    return el;
+  };
 
   const RETURN_TO_IDLE_MS = 12000;
   const SLEEP_AFTER_MS = 3 * 60 * 1000;
@@ -171,14 +188,17 @@
 
   // Reads a reply aloud and keeps her emotion on screen until it ends.
   // Resolves when she's done talking (at once when her voice is off).
-  function speakReply(text, force, routingPlan = null) {
-    if (!Speech.settings.enabled && !force) return Promise.resolve();
+  function speakReply(text, force, routingPlan = null, owner = null) {
+    const valid = () => !owner || Chat.isCurrent(owner);
+    if ((!Speech.settings.enabled && !force) || !valid()) return Promise.resolve();
     return Speech.speak(text, {
       force,
       routingPlan,
-      onStart() { clearTimeout(idleTimer); },
-      onPlay(info) { if (!force) track('tts_played', info); },
-      onEnd() { later(() => Sprites.setState('idle'), 4000); },
+      owner,
+      valid,
+      onStart() { if (valid()) clearTimeout(idleTimer); },
+      onPlay(info) { if (!force && valid()) track('tts_played', info); },
+      onEnd() { if (valid()) later(() => { if (valid()) Sprites.setState('idle'); }, 4000); },
     });
   }
 
@@ -224,8 +244,16 @@
   // Replay, copy and delete on a finished message. Shown on hover, or on tap on touch screens.
   function addActions(el, message) {
     el.dataset.id = message.id;
+    el.querySelector('.actions')?.remove();
     const bar = document.createElement('div');
     bar.className = 'actions';
+    if (Chat.canRetry(message.id)) {
+      const retry = actionButton(tr('app.retry'), 'app.retry', () => {
+        if (Chat.canRetry(message.id)) runTurn({ text: Chat.messages.find(m => m.id === message.userId)?.content, source: 'retry', retryId: message.id });
+      });
+      retry.className = 'retry';
+      bar.appendChild(retry);
+    }
     if (message.role === 'assistant' && message.content) {
       bar.appendChild(actionButton('&#128266;', 'chat.readAloud', () => {
         track('tts_action', { action: 'play', source: 'message' });
@@ -242,9 +270,8 @@
       }));
     }
     bar.appendChild(actionButton('&#128465;', 'chat.delete', () => {
-      if (Chat.busy) return;
       Chat.deleteMessage(message.id);
-      el.remove();
+      renderConversation();
       track('message_deleted');
       placeMemoryMark();
       if (!Chat.messages.length) renderConversation();
@@ -261,7 +288,20 @@
     const el = bubble(message.role, message.content);
     if (message.romaji) showRomaji(el, message.romaji);
     addActions(el, message);
+    showAttemptStatus(el, message);
     return el;
+  }
+
+  function showAttemptStatus(el, message) {
+    el.querySelector('.attempt-status')?.remove();
+    if (!message.status || message.status === 'completed' || message.status === 'pending') return;
+    const status = document.createElement('div');
+    status.className = 'attempt-status';
+    status.setAttribute('role', 'status');
+    if (message.status !== 'failed' || !message.error) {
+      status.setAttribute('data-i18n', 'chat.' + message.status); localize(status);
+    } else status.textContent = tr('chat.failed') + ': ' + message.error;
+    el.appendChild(status);
   }
 
   function renderEmpty() {
@@ -281,24 +321,72 @@
   }
 
   function pictureBubble(message) {
+    const old = pictureViews.get(message.id);
+    old?.dispose();
     const fig = document.createElement('figure');
     fig.className = 'msg assistant pic';
+    fig.dataset.id = message.id;
+    const revision = viewRevision, chatId = Chat.convId, ref = message.image, attempt = message.attemptId;
+    const owner = Chat.current?.attemptId === attempt && Chat.isCurrent(Chat.current) ? Chat.current : null;
+    let disposed = false, objectUrl = null;
+    const valid = () => !disposed && revision === viewRevision && chatId === Chat.convId &&
+      Chat.messages.includes(message) && message.image === ref && message.attemptId === attempt && fig.isConnected &&
+      (!owner || Chat.isCurrent(owner));
+    const status = document.createElement('figcaption');
+    status.className = 'picture-status';
+    status.setAttribute('role', 'status');
+    const stateKey = () => 'picture.' + ((message.generation || 'generated') !== 'generated'
+      ? (message.generation || 'unknown') : message.display === 'loaded' ? 'loaded' : message.display === 'failed' ? 'displayFailed'
+        : message.display === 'interrupted' ? 'interrupted' : 'loading');
+    const refreshStatus = () => { status.setAttribute('data-i18n', stateKey()); localize(status); };
+    refreshStatus();
     const img = document.createElement('img');
     img.alt = message.prompt || tr('app.photo');
     img.title = tr('chat.openFullSize');
-    img.addEventListener('load', scrollDown);
-    img.addEventListener('click', () => openLightbox(img.src, img.alt));
-    Pictures.resolve(message.image).then(src => {
-      if (src) img.src = src;
-      else fig.replaceWith(bubble('info', tr('chat.pictureGone')));
+    const displayFailed = () => {
+      if (!valid()) return;
+      Chat.setPictureDisplay(chatId, message, ref, 'failed');
+      img.hidden = true;
+      refreshStatus();
+      reload.hidden = false;
+    };
+    img.addEventListener('load', () => {
+      if (!valid()) return;
+      if (!img.naturalWidth) { displayFailed(); return; }
+      Chat.setPictureDisplay(chatId, message, ref, 'loaded');
+      refreshStatus(); scrollDown();
     });
-    fig.appendChild(img);
+    img.addEventListener('error', displayFailed);
+    img.addEventListener('click', () => { if (valid() && message.display === 'loaded') openLightbox(img.src, img.alt); });
+    const reload = actionButton(tr('picture.reload'), 'picture.reload', () => {
+      if (!Chat.messages.includes(message) || Chat.convId !== chatId) return;
+      Chat.setPictureDisplay(chatId, message, ref, 'unknown');
+      pictureBubble(message);
+    });
+    reload.className = 'picture-reload';
+    reload.hidden = message.display !== 'interrupted';
+    fig.append(img, status, reload);
     if (message.caption) {
       const cap = document.createElement('figcaption');
       cap.textContent = message.caption;
       fig.appendChild(cap);
     }
-    messagesEl.appendChild(fig);
+    if (old?.el.isConnected) old.el.replaceWith(fig); else messagesEl.appendChild(fig);
+    const dispose = () => { disposed = true; if (objectUrl) URL.revokeObjectURL(objectUrl); };
+    pictureViews.set(message.id, { el: fig, dispose });
+    if (ref && message.display !== 'interrupted' && (!message.generation || message.generation === 'generated')) {
+      Promise.resolve().then(() => Pictures.resolve(ref)).then(src => {
+        if (src?.startsWith('blob:')) objectUrl = src;
+        if (!valid()) { if (objectUrl) URL.revokeObjectURL(objectUrl); return; }
+        if (!src) { displayFailed(); return; }
+        img.src = src;
+      }).catch(displayFailed);
+    } else img.hidden = true;
+    if (Chat.canRetryImage(message)) {
+      fig.appendChild(actionButton(tr('picture.again'), 'picture.again', () => {
+        if (!Chat.busy && Chat.canRetryImage(message)) runImageRetry(message);
+      }));
+    }
     if (message.id) addActions(fig, message);
     scrollDown();
     return fig;
@@ -322,12 +410,20 @@
   }
 
   function renderConversation() {
+    viewRevision++;
+    summaryUIRun++;
+    $('summarizeNow').disabled = false;
+    $('summaryStatus').textContent = '';
+    pictureViews.forEach(view => view.dispose());
+    pictureViews.clear();
+    Voice.cancel();
+    clearWait();
     Speech.stop();
     stopAmbient();
     clearQueue();
     messagesEl.textContent = '';
     if (!Chat.messages.length) renderEmpty();
-    else Chat.messages.forEach(m => (m.image ? pictureBubble(m) : messageBubble(m)));
+    else Chat.messages.forEach(m => (Chat.isPicture(m) ? pictureBubble(m) : messageBubble(m)));
     placeMemoryMark();
     renderMeta();
   }
@@ -343,57 +439,47 @@
   lightbox.addEventListener('click', e => { if (e.target !== $('lightboxOpen')) lightbox.hidden = true; });
 
   // ── Pictures ──
-  // Draws in the background; the result lands in the chat it was asked in,
-  // even if the visitor has opened another one meanwhile.
-  async function paint(prompt, aspect, source) {
-    const origin = Chat.convId;
-    const wait = bubble('info keep', tr('chat.painting'));
-    if (!Chat.busy) Sprites.setEmotion('planning');
+  // A persisted operation keeps the same message ID through every outcome.
+  async function paint(prompt, aspect, source, owner) {
+    if (!Chat.isCurrent(owner)) return;
+    const message = Chat.createPicture(owner, prompt, aspect);
+    pictureBubble(message);
+    Chat.effect(owner, 1);
     track('image_generation_started', { source });
-    let message = null;
-    let failText = null;
     try {
-      const ref = await Pictures.draw(prompt, aspect, Chat.ids());
-      message = { role: 'assistant', image: ref, prompt, caption: '' };
+      const ref = await Pictures.draw(prompt, aspect, Chat.ids(), { owner, signal: owner.signal, valid: () => Chat.isCurrent(owner) });
+      if (!Chat.updatePicture(owner, message, { image: ref, generation: 'generated', display: 'unknown', retryable: false })) {
+        Pictures.forget(ref); return;
+      }
       track('image_generation_completed', { source });
+      pictureBubble(message);
     } catch (err) {
+      if (!Chat.isCurrent(owner)) return;
       track('image_generation_failed', { source, blocked: Boolean(err.blocked), timed_out: Boolean(err.timedOut) });
-      failText = err.blocked ? tr('chat.pictureBlocked')
-        : err.timedOut ? tr('chat.pictureSlow')
-        : tr('chat.pictureFailed');
-    }
-    wait.remove();
-    const here = Chat.convId === origin;
-    if (message) {
-      if (Chat.addPicture(origin, message) && here) pictureBubble(message);
-    } else if (here) {
-      bubble('assistant', failText);
-    }
-    if (here && !Chat.busy) {
-      Sprites.setEmotion(message ? 'found_it' : 'sorry');
-      later(() => Sprites.setState('idle'), RETURN_TO_IDLE_MS);
+      Chat.updatePicture(owner, message, { generation: err.blocked ? 'blocked' : 'failed',
+        retryable: err.retryable === true || (!err.blocked && err instanceof TypeError) });
+      pictureBubble(message);
+    } finally {
+      Chat.effect(owner, -1);
+      if (Chat.isCurrent(owner) && owner.kind === 'image') Chat.finishTurn(owner);
     }
   }
 
   function aspectValue(name) { return Pictures.ASPECTS[name] || Pictures.ASPECTS.portrait; }
 
-  // "/image a cozy cafe at sunset [portrait|square|landscape]"
-  function imageCommand(text) {
+  function parseImageCommand(text) {
     let prompt = text.replace(/^\/(image|img)\b\s*/i, '').trim();
     let aspect = aspectValue(Chat.settings.aspect);
     const m = prompt.match(/\s+(portrait|landscape|square)\s*$/i);
-    if (m) {
-      aspect = aspectValue(m[1].toLowerCase());
-      prompt = prompt.slice(0, m.index).trim();
-    }
-    input.value = '';
-    messagesEl.querySelectorAll('.starters, .msg.info:not(.keep)').forEach(el => el.remove());
-    if (!prompt) {
-      bubble('info', tr('chat.imageHelp'));
-      return;
-    }
-    bubble('user', text);
-    paint(prompt, aspect, 'command');
+    if (m) { aspect = aspectValue(m[1].toLowerCase()); prompt = prompt.slice(0, m.index).trim(); }
+    return { prompt, aspect };
+  }
+
+  function runImageRetry(message) {
+    const owner = Chat.beginTurn('', { kind: 'image', retryImageId: message.id });
+    if (!owner) return;
+    prepareTurn(owner);
+    paint(message.prompt, message.aspect, 'retry', owner).then(() => drainQueue(owner));
   }
 
   function renderMeta() {
@@ -413,14 +499,36 @@
   // ── Queue ──
   // Messages typed while she's replying wait their turn, as in waifu-companion.
   let queue = []; // {text, source, el}
+  let queuePaused = false;
+  let ambientPaused = false;
   function clearQueue() {
     queue.forEach(q => q.el.remove());
     queue = [];
+    queuePaused = false;
+  }
+  function renderQueued() {
+    queue.forEach(q => {
+      q.el.querySelector('.queue-actions')?.remove();
+      const controls = document.createElement('div'); controls.className = 'queue-actions';
+      const label = document.createElement('small');
+      label.setAttribute('data-i18n', queuePaused ? 'chat.queuePaused' : 'chat.queued'); localize(label);
+      controls.appendChild(label);
+      if (queuePaused) controls.appendChild(actionButton(tr('chat.resumeQueue'), 'chat.resumeQueue', () => {
+        if (Chat.busy) return;
+        queuePaused = false; renderQueued();
+        const next = queue.shift(); next.el.remove(); runTurn({ text: next.text, source: 'queued' });
+      }));
+      controls.appendChild(actionButton(tr('chat.removeQueued'), 'chat.removeQueued', () => {
+        queue = queue.filter(item => item !== q); q.el.remove();
+      }));
+      q.el.appendChild(controls);
+    });
   }
   function enqueue(text, source) {
     input.value = '';
     const el = bubble('user queued', text);
     queue.push({ text, source, el });
+    renderQueued();
   }
 
   // ── Ambient: she speaks up when the visitor goes quiet ──
@@ -433,7 +541,7 @@
   function scheduleAmbient() {
     stopAmbient();
     const s = Chat.settings;
-    if (!s.ambient || !Chat.messages.length || ambientRun >= s.ambientMax) return;
+    if (ambientPaused || !s.ambient || !Chat.messages.length || ambientRun >= s.ambientMax) return;
     ambientTimer = setTimeout(fireAmbient, Math.max(15, s.ambientDelay) * 1000);
   }
   function fireAmbient() {
@@ -450,182 +558,191 @@
   document.addEventListener('visibilitychange', () => { if (!document.hidden && ambientTimer) scheduleAmbient(); });
 
   // ── Sending ──
-  // source: typed, starter, voice, retry or queued
+  function clearWait() {
+    waitTimers.forEach(clearTimeout); waitTimers = [];
+    waitStatus?.remove(); waitStatus = null; waitOwner = null;
+  }
+  function startWait(owner, reply) {
+    clearWait(); waitOwner = owner;
+    [8000, 20000].forEach((delay, index) => waitTimers.push(setTimeout(() => {
+      if (!Chat.isCurrent(owner) || owner.status !== 'pending' || waitOwner !== owner || !reply.isConnected) return;
+      if (!waitStatus) { waitStatus = document.createElement('div'); waitStatus.className = 'wait-status'; waitStatus.setAttribute('role', 'status'); reply.appendChild(waitStatus); }
+      waitStatus.setAttribute('data-i18n', index ? 'chat.longWait' : 'chat.stillWorking'); localize(waitStatus);
+    }, delay)));
+  }
+  function updateComposer() {
+    const button = $('sendBtn');
+    const stopping = Chat.stoppable;
+    button.dataset.mode = stopping ? 'stop' : 'send';
+    button.setAttribute('data-i18n-aria-label', stopping ? 'composer.stop' : 'composer.send');
+    button.setAttribute('data-i18n-title', stopping ? 'composer.stop' : 'composer.send');
+    button.textContent = stopping ? '■' : '➤'; localize(button);
+    stage.classList.toggle('busy', Chat.busy);
+    messagesEl.querySelectorAll('.retry').forEach(b => { b.disabled = !Chat.canRetry(b.closest('[data-id]').dataset.id); });
+  }
+  Chat.onTurnChange(owner => {
+    const aborted = Boolean(owner?.signal.aborted);
+    if (owner !== observedOwner || aborted !== observedAbort) {
+      Speech.stop(); Voice.cancel(); clearWait();
+      observedOwner = owner; observedAbort = aborted;
+      if (aborted) {
+        stopAmbient();
+        for (const m of Chat.messages.filter(Chat.isPicture)) pictureBubble(m);
+      }
+    }
+    updateComposer();
+  });
+  function prepareTurn(owner) {
+    Speech.stop(); Voice.cancel(); stopAmbient();
+    observedOwner = owner; observedAbort = false;
+    clearWait();
+    if (!owner.ambient) { ambientRun = 0; ambientPaused = false; }
+    messagesEl.querySelectorAll('.starters, .msg.info:not(.keep)').forEach(m => m.remove());
+    updateComposer();
+  }
+  function stopTurn() {
+    queuePaused = true; ambientPaused = true;
+    stopAmbient(); Speech.stop(); Voice.cancel(); clearWait();
+    Chat.stop();
+    renderQueued();
+    updateComposer();
+    Sprites.setState('idle');
+  }
+  // All submission sources share this guard. Only the primary Stop click cancels.
   function send(text, source = 'typed') {
     text = (text || '').trim();
-    if (!text) return;
-    if (/^\/(image|img)\b/i.test(text)) { imageCommand(text); return; }
-    if (Chat.busy) {
+    if (!text || Chat.isDuplicate(text) || queue.some(q => Chat.normalizeText(q.text) === Chat.normalizeText(text))) return;
+    if (Chat.busy || (queuePaused && queue.length)) {
       if (Chat.settings.queue) enqueue(text, source);
       return;
     }
-    input.value = '';
     runTurn({ text, source });
   }
-
-  // One exchange: a visitor message (or an ambient nudge) and her streamed reply.
-  async function runTurn({ text, source, ambient, el }) {
-    Speech.stop();
-    stopAmbient();
-    if (!ambient) ambientRun = 0;
-    // Whether this turn wants a picture is decided alongside the reply.
-    const pictureDecision = ambient ? Promise.resolve(null) : Pictures.decide(text, Chat.lastReply(), Chat.ids());
-    messagesEl.querySelectorAll('.starters, .msg.info:not(.keep), .msg.error').forEach(m => m.remove());
-    let userEl = el;
-    if (userEl) {
-      userEl.classList.remove('queued');
-      messagesEl.appendChild(userEl); // below anything that arrived while it waited
-    } else if (!ambient) {
-      userEl = bubble('user', text);
+  function drainQueue(owner) {
+    if (!Chat.isCurrent(owner) || Chat.busy || queuePaused) return;
+    if (queue.length) {
+      const next = queue.shift(); next.el.remove();
+      runTurn({ text: next.text, source: 'queued' });
     }
+  }
+
+  async function runTurn({ text, source, ambient = false, retryId }) {
+    const command = !ambient && /^\/(image|img)\b/i.test(text) ? parseImageCommand(text) : null;
+    if (command && !command.prompt) { bubble('info', tr('chat.imageHelp')); return; }
+    const previous = Chat.lastReply();
+    const owner = Chat.beginTurn(ambient ? (Chat.settings.ambientPrompt.trim() || Chat.DEFAULT_AMBIENT_PROMPT) : text,
+      { ambient, retryId, kind: command ? 'image' : 'chat' });
+    if (!owner) return;
+    input.value = '';
+    prepareTurn(owner);
+    const revision = viewRevision;
+    const valid = () => Chat.isCurrent(owner) && revision === viewRevision;
+    if (!ambient && !retryId) messageBubble(owner.userMessage);
+    updateComposer();
+    if (command) { await paint(command.prompt, command.aspect, 'command', owner); drainQueue(owner); return; }
     const reply = bubble('assistant typing', '');
-    stage.classList.add('busy');
-    clearTimeout(idleTimer);
-    Sprites.setState('thinking');
+    reply.dataset.id = owner.replyMessage.id;
+    startWait(owner, reply);
+    clearTimeout(idleTimer); Sprites.setState('thinking');
+    // Ownership exists before either asynchronous branch starts.
+    const aspect = aspectValue(Chat.settings.aspect);
+    if (!ambient) Chat.effect(owner, 1);
+    const pictureDecision = ambient ? Promise.resolve(null)
+      : Pictures.decide(text, previous, Chat.ids(), { owner, signal: owner.signal, valid });
     const provider = Chat.settings.provider;
     const model = provider === 'cloud' ? 'cloud' : Chat.modelFor(provider) || '';
     const startedAt = Date.now();
-    let streaming = false;
+    let streaming = false, tagged = false, done = null, speechRouting = null;
     const firstChunk = () => {
       if (streaming) return;
       streaming = true;
       track('llm_stream_started', { provider, model, time_to_first_chunk_ms: Date.now() - startedAt });
     };
-    if (ambient) {
-      track('ambient_message', { provider, persona: Chat.settings.persona, run: ambientRun });
-    } else {
-      track('chat_message_sent', { provider, persona: Chat.settings.persona, source, turn: Chat.messages.filter(m => m.role === 'user').length + 1 });
-    }
+    if (ambient) track('ambient_message', { provider, persona: Chat.settings.persona, run: ambientRun });
+    else track('chat_message_sent', { provider, persona: Chat.settings.persona, source, turn: Chat.messages.filter(m => m.role === 'user').length });
     track('llm_request_started', { provider, model, is_streaming: true });
-
-    let tagged = false;
-    let done = null;
-    let speechRouting = null;
-    await Chat.send(ambient ? (Chat.settings.ambientPrompt.trim() || Chat.DEFAULT_AMBIENT_PROMPT) : text, {
+    await Chat.send(owner.text, {
       onEmotion(name) {
-        firstChunk();
-        tagged = !!name;
-        if (name) Sprites.setEmotion(name);
-        else Sprites.setState('speaking');
+        if (!valid()) return;
+        tagged = Boolean(name);
+        if (name) Sprites.setEmotion(name); else Sprites.setState('speaking');
       },
       onText(visible) {
-        firstChunk();
-        setText(reply, visible);
-        scrollDown();
+        if (!valid()) return;
+        if (visible.trim()) { clearWait(); firstChunk(); }
+        setText(reply, visible); scrollDown();
       },
       onDone(message) {
-        done = message;
-        reply.classList.remove('typing');
-        setText(reply, message.content);
-        addActions(reply, message);
-        if (userEl) {
-          const sent = Chat.messages[Chat.messages.length - 2];
-          if (sent && sent.role === 'user' && !userEl.dataset.id) addActions(userEl, sent);
-        }
-        if (!tagged) {
-          if (message.emotion) Sprites.setEmotion(message.emotion);
-        }
-        // The streamed tag reacts immediately; ask WaifuAI Cloud about every
-        // finished user reply too, so tagged replies reach the decision path.
-        // A valid answer may refine the expression while this reply is
-        // still on stage. Failed or late answers keep the current behavior.
+        if (!valid()) return;
+        clearWait(); done = message;
+        reply.classList.remove('typing'); setText(reply, message.content); addActions(reply, message);
+        if (!tagged && message.emotion) Sprites.setEmotion(message.emotion);
         const speechPlan = Speech.settings.enabled ? Speech.prepareRouting(message.content) : null;
-        const speechConversation = Chat.convId;
-        const validSpeech = () => Chat.convId === speechConversation && reply.isConnected && Speech.settings.enabled;
-        let speechDecision = null;
-        if (!ambient && typeof Chat.askDecisions === 'function') {
-          const conversation = Chat.convId;
-          const expression = Sprites.current;
-          const tasks = ['sprites_emotion_v1'];
-          if (speechPlan && speechPlan.needsDecision && !speechPlan.finished && !speechPlan.pending) tasks.push('sprites_tts_language_v1');
-          speechDecision = Chat.askDecisions(tasks, {
-            reply: message.content,
-            user_message: text ? String(text).slice(0, 300) : undefined,
-            ...(tasks.length > 1 ? { conversation_language: speechPlan.previousLang, recent_context: Chat.messages.slice(-4, -1).map(m => ({ role: m.role, text: m.content.slice(0, 300) })) } : {}),
-            ...(tasks.length > 1 && speechPlan.text !== message.content.trim() ? { spoken_reply: speechPlan.text } : {}),
-          });
-          speechDecision.then(answers => {
-            const e = answers && answers.sprites_emotion_v1;
-            if (Chat.convId !== conversation || !reply.isConnected || Sprites.current !== expression) return;
-            if (e && Sprites.EMOTIONS.includes(e.choice_id) && e.choice_id !== message.emotion) {
-              Sprites.setEmotion(e.choice_id);
-            }
-          }).catch(() => {});
-        }
-        if (speechPlan && speechPlan.needsDecision && !speechPlan.finished && !speechPlan.pending && !speechDecision) {
-          speechDecision = Chat.askDecisions(['sprites_tts_language_v1'], { reply: speechPlan.text, conversation_language: speechPlan.previousLang });
-        }
-        speechRouting = speechPlan ? Speech.finishRouting(speechPlan, speechDecision, validSpeech) : null;
+        const tasks = ambient ? [] : ['sprites_emotion_v1'];
+        if (speechPlan?.needsDecision && !speechPlan.finished && !speechPlan.pending) tasks.push('sprites_tts_language_v1');
+        const decision = tasks.length ? Chat.askDecisions(tasks, { reply: message.content, user_message: text?.slice(0, 300),
+          ...(tasks.includes('sprites_tts_language_v1') ? { conversation_language: speechPlan.previousLang, recent_context: Chat.recentContext().slice(0, -1),
+            ...(speechPlan.text !== message.content.trim() ? { spoken_reply: speechPlan.text } : {}) } : {}) }, owner) : null;
+        const expression = Sprites.current;
+        decision?.then(answers => {
+          if (!valid() || Sprites.current !== expression) return;
+          const e = answers?.sprites_emotion_v1;
+          if (e && Sprites.EMOTIONS.includes(e.choice_id) && e.choice_id !== message.emotion) Sprites.setEmotion(e.choice_id);
+        }).catch(() => {});
+        speechRouting = speechPlan ? Speech.finishRouting(speechPlan, decision, () => valid() && Speech.settings.enabled) : null;
         track('llm_stream_completed', { provider, model, success: true, total_time_ms: Date.now() - startedAt, reply_chars: message.content.length, emotion: message.emotion || '(none)' });
-        later(() => Sprites.setState('idle'), RETURN_TO_IDLE_MS);
-        scrollDown();
+        later(() => { if (valid()) Sprites.setState('idle'); }, RETURN_TO_IDLE_MS);
       },
-      onError(msg) {
+      onError(msg, message) {
+        // A Stop callback belongs to this attempt even though its signal is now aborted.
+        if (Chat.current !== owner || revision !== viewRevision) return;
+        clearWait(); reply.classList.remove('typing');
+        queuePaused = true; renderQueued();
+        setText(reply, message.content); addActions(reply, message); showAttemptStatus(reply, message);
         track('llm_stream_completed', { provider, model, success: false, total_time_ms: Date.now() - startedAt });
-        reply.remove();
-        if (ambient) { // nobody asked, so fail quietly
-          Sprites.setState('idle');
-          return;
-        }
-        const errEl = bubble('error', msg);
-        const retry = document.createElement('button');
-        retry.type = 'button';
-        retry.setAttribute('data-i18n', 'app.retry');
-        localize(retry);
-        retry.addEventListener('click', () => {
-          if (Chat.busy) return;
-          errEl.remove();
-          if (userEl) userEl.remove();
-          runTurn({ text, source: 'retry' });
-        });
-        errEl.appendChild(retry);
-        Sprites.setState('error');
-        later(() => Sprites.setState('idle'), 5000);
+        if (message.status === 'failed') Sprites.setState('error');
       },
-    }, { ambient });
-    stage.classList.remove('busy');
+    }, { owner });
+    if (!valid()) return;
+    updateComposer();
     if (matchMedia('(pointer: fine)').matches && !ambient) input.focus();
-
-    const spoken = done ? speakReply(done.content, false, speechRouting) : Promise.resolve();
-    if (done) afterReply(done, reply);
-
-    // No picture when the reply failed: a retry asks again.
-    pictureDecision.then(prompt => { if (done && prompt) paint(prompt, aspectValue(Chat.settings.aspect), 'auto'); });
-
-    if (queue.length) {
-      const next = queue.shift();
-      runTurn({ text: next.text, source: 'queued', el: next.el });
-      return;
-    }
-    // The quiet countdown starts once she has finished talking.
-    if (done) spoken.then(() => { if (!Chat.busy && !queue.length) scheduleAmbient(); });
+    const spoken = done ? speakReply(done.content, false, speechRouting, owner) : Promise.resolve();
+    if (done) afterReply(done, reply, owner);
+    // Waiting for a decision does not lock the composer; a newer send cancels this owner.
+    pictureDecision.then(prompt => {
+      if (valid() && done && prompt) return paint(prompt, aspect, 'auto', owner);
+    }).catch(() => {}).finally(() => {
+      if (!ambient) Chat.effect(owner, -1);
+    });
+    if (!done) { queuePaused = true; renderQueued(); }
+    drainQueue(owner);
+    if (done) spoken.then(() => { if (valid() && !Chat.busy && !queue.length) scheduleAmbient(); }).catch(() => {});
   }
 
-  // Background jobs after a reply: romaji, the chat's name, and memory.
-  function afterReply(message, el) {
+  function afterReply(message, el, owner) {
+    const valid = () => Chat.isCurrent(owner) && el.isConnected;
     const s = Chat.settings;
     if (s.romaji && Chat.needsRomaji(message.content)) {
-      Chat.romanize(message).then(t => { if (t && el.isConnected) showRomaji(el, t); }).catch(() => {});
+      Chat.romanize(message, owner).then(t => { if (t && valid()) showRomaji(el, t); }).catch(() => {});
     }
-    const meta = Chat.historyIndex().find(h => h.id === Chat.convId);
+    const meta = Chat.historyIndex().find(h => h.id === owner.chatId);
     if (s.autoTitles && meta && !meta.named && Chat.messages.length >= 2) {
-      Chat.generateTitle(Chat.convId).then(t => { if (t && !$('historyPanel').hidden) renderHistory(); });
+      Chat.generateTitle(owner.chatId, owner).then(t => { if (t && valid() && !$('historyPanel').hidden) renderHistory(); });
     }
-    Chat.summarize(false).then(changed => {
-      if (!changed) return;
-      track('memory_summarized', { source: 'auto' });
-      placeMemoryMark();
+    Chat.summarize(false, owner).then(changed => {
+      if (!changed || !valid()) return;
+      track('memory_summarized', { source: 'auto' }); placeMemoryMark();
       if (!$('settingsPanel').hidden) { $('summaryText').value = Chat.summary; showSummarySize(); }
-    });
+    }).catch(() => {});
   }
 
-  // Player Card hosts can disallow native form submission in their sandbox.
-  // Use the same direct send path as starter buttons for click and Enter.
-  $('sendBtn').addEventListener('click', () => send(input.value));
+  $('sendBtn').addEventListener('click', e => {
+    // A second click from a double-click Send gesture is a duplicate submission.
+    if (Chat.stoppable && e.detail < 2) stopTurn(); else send(input.value);
+  });
   input.addEventListener('keydown', e => {
     if (e.key !== 'Enter' || e.isComposing || e.keyCode === 229) return;
-    e.preventDefault();
-    send(input.value);
+    e.preventDefault(); send(input.value);
   });
   $('composer').addEventListener('submit', e => { e.preventDefault(); send(input.value); });
 
@@ -685,7 +802,6 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanels(); });
 
   $('newBtn').addEventListener('click', () => {
-    if (Chat.busy) return;
     Chat.newConversation();
     renderConversation();
     closePanels();
@@ -729,7 +845,6 @@
         tr('history.count', { count: h.count }) + ' · ' + timeAgo(h.updated);
       open.append(title, meta);
       open.addEventListener('click', () => {
-        if (Chat.busy) return;
         if (Chat.openConversation(h.id)) { renderConversation(); closePanels(); }
       });
       const rename = document.createElement('button');
@@ -749,7 +864,6 @@
       del.setAttribute('aria-label', tr('history.deleteFor', { title: h.title }));
       del.textContent = '✕';
       del.addEventListener('click', () => {
-        if (Chat.busy && h.id === Chat.convId) return;
         const wasCurrent = h.id === Chat.convId;
         Chat.deleteConversation(h.id);
         if (wasCurrent) renderConversation();
@@ -761,7 +875,7 @@
   }
 
   $('clearAll').addEventListener('click', () => {
-    if (Chat.busy || !confirm(tr('settings.deleteAllConfirm'))) return;
+    if (!confirm(tr('settings.deleteAllConfirm'))) return;
     Chat.historyIndex().forEach(h => Chat.deleteConversation(h.id));
     Chat.newConversation();
     renderConversation();
@@ -931,6 +1045,8 @@
     if (!$('settingsPanel').hidden) renderSettings();
     else $('summarySizeStatus').textContent = tr('memory.limitNote');
     if (!Chat.messages.length) renderConversation();
+    updateComposer();
+    renderQueued();
     placeMemoryMark();
   });
 
@@ -982,10 +1098,13 @@
     const btn = $('summarizeNow');
     const status = $('summaryStatus');
     if (Chat.messages.length < 2 && !Chat.memoryPending) { status.textContent = tr('memory.tooShort'); return; }
+    const run = ++summaryUIRun, revision = Chat.revision, view = viewRevision;
+    const valid = () => run === summaryUIRun && revision === Chat.revision && view === viewRevision;
     btn.disabled = true;
     status.textContent = tr('memory.summarizing');
     try {
       const changed = await Chat.summarize(true);
+      if (!valid()) return;
       status.textContent = changed ? tr(Chat.memoryPending ? 'memory.partUpdated' : 'memory.updated') : tr('memory.nothingOlder');
       if (changed) {
         track('manual_summary_triggered');
@@ -994,17 +1113,19 @@
         placeMemoryMark();
       }
     } catch (e) {
-      status.textContent = e.message || tr('memory.failed');
+      if (valid()) status.textContent = e.message || tr('memory.failed');
     } finally {
-      btn.disabled = false;
+      if (run === summaryUIRun) btn.disabled = false;
     }
   });
   $('contextPeek').addEventListener('toggle', async () => {
     if (!$('contextPeek').open) return;
+    const revision = Chat.revision, view = viewRevision;
+    const valid = () => revision === Chat.revision && view === viewRevision && $('contextPeek').open;
     try {
       const msgs = await Chat.modelMessages(null);
-      $('contextView').textContent = msgs.map(m => m.role.toUpperCase() + ':\n' + m.content).join('\n\n');
-    } catch (e) { $('contextView').textContent = e.message; }
+      if (valid()) $('contextView').textContent = msgs.map(m => m.role.toUpperCase() + ':\n' + m.content).join('\n\n');
+    } catch (e) { if (valid()) $('contextView').textContent = e.message; }
   });
 
   $('baseUrl').addEventListener('change', e => { Chat.settings.customBaseUrl = e.target.value.trim(); Chat.saveSettings(); });

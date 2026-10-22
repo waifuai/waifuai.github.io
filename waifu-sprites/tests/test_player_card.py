@@ -53,7 +53,9 @@ class PlayerCardTests(unittest.TestCase):
 
     def route(self, route):
         url = urlparse(route.request.url)
-        if url.hostname == 'sprites.test':
+        if url.hostname == 'sprites.test' and url.path == '/picture.png':
+            route.fulfill(content_type='image/png', body=base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRZkAAAAASUVORK5CYII='))
+        elif url.hostname == 'sprites.test':
             file = (ROOT / unquote(url.path).lstrip('/')).resolve()
             if file.is_dir():
                 file = file / 'index.html'
@@ -88,7 +90,7 @@ class PlayerCardTests(unittest.TestCase):
                           body=json.dumps({'success': True, 'data': base64.b64encode(audio.getvalue()).decode()}))
         elif url.path == '/image':
             self.cloud_requests.append({'path': url.path, 'headers': route.request.all_headers()})
-            route.fulfill(headers={'X-Image-Url': 'https://sprites.test/picture.png'}, body='')
+            route.fulfill(headers={'X-Image-Url': 'https://sprites.test/picture.png', 'Access-Control-Allow-Origin':'*', 'Access-Control-Expose-Headers':'X-Image-Url'}, body='')
         else:
             # Analytics, speech and other external services never reach production.
             route.fulfill(content_type='application/javascript', body='')
@@ -368,13 +370,22 @@ class PlayerCardTests(unittest.TestCase):
 
     def test_tts_clear_french_and_spanish_are_local(self):
         self.page.goto(APP)
-        for text, voice in [('Bonjour, je suis contente de te voir.', 'fr_001'), ('Hola, gracias!', 'es_002')]:
+        # The existing female-voice policy uses browser voices for these locales;
+        # fr_001 and es_002 are male voices. Mock the supported browser path.
+        self.page.evaluate("""() => {
+            window.spokenLanguages = [];
+            window.SpeechSynthesisUtterance = class { constructor(text) { this.text = text; } };
+            speechSynthesis.getVoices = () => [
+                {name:'Amelie Female',lang:'fr-FR'}, {name:'Monica Female',lang:'es-ES'}];
+            speechSynthesis.speak = u => { spokenLanguages.push(u.lang); queueMicrotask(() => u.onend?.()); };
+        }""")
+        for text, language in [('Bonjour, je suis contente de te voir.', 'fr-FR'), ('Hola, gracias!', 'es-ES')]:
             self.reply_text = '[happy] ' + text
             self.page.locator('#msgInput').fill('Read this reply')
             self.page.locator('#sendBtn').click()
             self.page.wait_for_function('!Chat.busy && !Speech.speaking')
-            self.assertTrue(self.tts_calls)
-            self.assertEqual(self.tts_calls[-1]['voice'], voice)
+            self.assertEqual(self.page.evaluate('spokenLanguages.at(-1)'), language)
+        self.assertFalse(self.tts_calls)
         self.assertFalse(any('sprites_tts_language_v1' in r['body']['tasks'] for r in self.decision_requests))
         self.assertFalse(self.errors)
 

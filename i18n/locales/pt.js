@@ -36,6 +36,28 @@
     'app.openOriginal': 'Abrir original',
     'app.retry': 'Tentar de novo',
 
+    // Turn and image operation states
+    "composer.stop": "Parar",
+    "chat.stopped": "Parado",
+    "chat.interrupted": "Interrompido",
+    "chat.failed": "Falha na resposta",
+    "chat.stillWorking": "Ainda trabalhando…",
+    "chat.longWait": "Está demorando mais que o normal. Você pode parar a qualquer momento.",
+    "chat.queuePaused": "Fila pausada",
+    "chat.resumeQueue": "Retomar fila",
+    "chat.removeQueued": "Remover mensagem da fila",
+    "picture.pending": "Desenhando",
+    "picture.loading": "Gerada / carregando",
+    "picture.loaded": "Carregada neste navegador",
+    "picture.blocked": "Bloqueada",
+    "picture.failed": "Falha na geração",
+    "picture.displayFailed": "Falha na exibição",
+    "picture.stopped": "Parada",
+    "picture.interrupted": "Interrompida",
+    "picture.unknown": "Exibição não confirmada",
+    "picture.reload": "Recarregar imagem",
+    "picture.again": "Gerar novamente",
+
     // ── Composer ──
     'composer.placeholder': 'Diga algo...',
     'composer.message': 'Mensagem',
@@ -66,9 +88,9 @@
     'chat.queued': 'na fila',
 
     // ── Starter chips ──
-    'starter.hiShort': 'Oi!',
-    'starter.hi': 'Oi! Como está seu dia?',
-    'starter.fun': 'Me conte algo divertido',
+    'starter.hiShort': "Pergunte sobre o meu dia",
+    'starter.hi': "Pergunte sobre o meu dia",
+    'starter.fun': "Vamos jogar o que você prefere.",
     'starter.selfie': 'Me manda uma selfie',
     'starter.focusShort': 'Me ajude a focar',
     'starter.focus': 'Me ajude a focar no trabalho',

@@ -38,6 +38,28 @@
     'app.openOriginal': 'فتح الأصل',
     'app.retry': 'إعادة المحاولة',
 
+    // Turn and image operation states
+    "composer.stop": "إيقاف",
+    "chat.stopped": "تم الإيقاف",
+    "chat.interrupted": "انقطع",
+    "chat.failed": "فشل الرد",
+    "chat.stillWorking": "ما زلت أعمل…",
+    "chat.longWait": "يستغرق وقتًا أطول من المعتاد. يمكنك الإيقاف في أي وقت.",
+    "chat.queuePaused": "قائمة الانتظار متوقفة مؤقتًا",
+    "chat.resumeQueue": "استئناف قائمة الانتظار",
+    "chat.removeQueued": "إزالة الرسالة من قائمة الانتظار",
+    "picture.pending": "جارٍ الرسم",
+    "picture.loading": "تم الإنشاء / جارٍ التحميل",
+    "picture.loaded": "تم التحميل في هذا المتصفح",
+    "picture.blocked": "محظور",
+    "picture.failed": "فشل الإنشاء",
+    "picture.displayFailed": "فشل العرض",
+    "picture.stopped": "تم الإيقاف",
+    "picture.interrupted": "انقطع",
+    "picture.unknown": "العرض غير مؤكد",
+    "picture.reload": "إعادة تحميل الصورة",
+    "picture.again": "إنشاء مرة أخرى",
+
     // ── Composer ──
     'composer.placeholder': 'قل شيئًا...',
     'composer.message': 'رسالة',
@@ -68,9 +90,9 @@
     'chat.queued': 'في الانتظار',
 
     // ── Starter chips ──
-    'starter.hiShort': 'مرحبًا!',
-    'starter.hi': 'مرحبًا! كيف يومك؟',
-    'starter.fun': 'أخبرني شيئًا ممتعًا',
+    'starter.hiShort': "اسأليني عن يومي",
+    'starter.hi': "اسأليني عن يومي",
+    'starter.fun': "لنلعب لعبة ماذا تفضل.",
     'starter.selfie': 'أرسلي لي سيلفي',
     'starter.focusShort': 'ساعدني على التركيز',
     'starter.focus': 'ساعدني على التركيز في عملي',

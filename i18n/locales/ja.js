@@ -35,6 +35,28 @@
     'app.openOriginal': '元の画像を開く',
     'app.retry': '再試行',
 
+    // Turn and image operation states
+    "composer.stop": "停止",
+    "chat.stopped": "停止しました",
+    "chat.interrupted": "中断しました",
+    "chat.failed": "返信に失敗しました",
+    "chat.stillWorking": "処理を続けています…",
+    "chat.longWait": "通常より時間がかかっています。いつでも停止できます。",
+    "chat.queuePaused": "送信待ちを一時停止中",
+    "chat.resumeQueue": "送信待ちを再開",
+    "chat.removeQueued": "待機中のメッセージを削除",
+    "picture.pending": "描画中",
+    "picture.loading": "生成済み / 読み込み中",
+    "picture.loaded": "このブラウザーで読み込み済み",
+    "picture.blocked": "ブロックされました",
+    "picture.failed": "生成に失敗しました",
+    "picture.displayFailed": "表示に失敗しました",
+    "picture.stopped": "停止しました",
+    "picture.interrupted": "中断しました",
+    "picture.unknown": "表示は未確認です",
+    "picture.reload": "画像を再読み込み",
+    "picture.again": "もう一度生成",
+
     // ── Composer ──
     'composer.placeholder': 'メッセージを入力...',
     'composer.message': 'メッセージ',
@@ -65,9 +87,9 @@
     'chat.queued': '待機中',
 
     // ── Starter chips ──
-    'starter.hiShort': 'こんにちは！',
-    'starter.hi': 'こんにちは！今日はどんな一日？',
-    'starter.fun': '楽しい話をして',
+    'starter.hiShort': "私の一日について聞いて",
+    'starter.hi': "私の一日について聞いて",
+    'starter.fun': "「どっちがいい？」で遊ぼう。",
     'starter.selfie': '自撮りを送って',
     'starter.focusShort': '集中を手伝って',
     'starter.focus': '仕事に集中できるよう手伝って',

@@ -36,6 +36,28 @@
     'app.openOriginal': 'Original öffnen',
     'app.retry': 'Erneut versuchen',
 
+    // Turn and image operation states
+    "composer.stop": "Stoppen",
+    "chat.stopped": "Gestoppt",
+    "chat.interrupted": "Unterbrochen",
+    "chat.failed": "Antwort fehlgeschlagen",
+    "chat.stillWorking": "Noch in Arbeit…",
+    "chat.longWait": "Es dauert länger als üblich. Du kannst jederzeit stoppen.",
+    "chat.queuePaused": "Warteschlange pausiert",
+    "chat.resumeQueue": "Warteschlange fortsetzen",
+    "chat.removeQueued": "Nachricht aus Warteschlange entfernen",
+    "picture.pending": "Wird gezeichnet",
+    "picture.loading": "Generiert / wird geladen",
+    "picture.loaded": "In diesem Browser geladen",
+    "picture.blocked": "Blockiert",
+    "picture.failed": "Generierung fehlgeschlagen",
+    "picture.displayFailed": "Anzeige fehlgeschlagen",
+    "picture.stopped": "Gestoppt",
+    "picture.interrupted": "Unterbrochen",
+    "picture.unknown": "Anzeige unbestätigt",
+    "picture.reload": "Bild neu laden",
+    "picture.again": "Erneut generieren",
+
     // ── Composer ──
     'composer.placeholder': 'Sag etwas ...',
     'composer.message': 'Nachricht',
@@ -66,9 +88,9 @@
     'chat.queued': 'in Warteschlange',
 
     // ── Starter chips ──
-    'starter.hiShort': 'Hi!',
-    'starter.hi': 'Hi! Wie läuft dein Tag?',
-    'starter.fun': 'Erzähl mir etwas Lustiges',
+    'starter.hiShort': "Frag mich nach meinem Tag",
+    'starter.hi': "Frag mich nach meinem Tag",
+    'starter.fun': "Spielen wir „Würdest du lieber“.",
     'starter.selfie': 'Schick mir ein Selfie',
     'starter.focusShort': 'Hilf mir beim Fokussieren',
     'starter.focus': 'Hilf mir, mich auf meine Arbeit zu konzentrieren',

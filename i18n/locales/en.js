@@ -38,6 +38,28 @@
     'app.openOriginal': 'Open original',
     'app.retry': 'Retry',
 
+    // Turn and image operation states
+    "composer.stop": "Stop",
+    "chat.stopped": "Stopped",
+    "chat.interrupted": "Interrupted",
+    "chat.failed": "Reply failed",
+    "chat.stillWorking": "Still working…",
+    "chat.longWait": "Taking longer than usual. You can Stop at any time.",
+    "chat.queuePaused": "Queue paused",
+    "chat.resumeQueue": "Resume queue",
+    "chat.removeQueued": "Remove queued message",
+    "picture.pending": "Drawing",
+    "picture.loading": "Generated / loading",
+    "picture.loaded": "Loaded in this browser",
+    "picture.blocked": "Blocked",
+    "picture.failed": "Generation failed",
+    "picture.displayFailed": "Display failed",
+    "picture.stopped": "Stopped",
+    "picture.interrupted": "Interrupted",
+    "picture.unknown": "Display unconfirmed",
+    "picture.reload": "Reload image",
+    "picture.again": "Generate again",
+
     // ── Composer ──
     'composer.placeholder': 'Say something...',
     'composer.message': 'Message',
@@ -68,9 +90,9 @@
     'chat.queued': 'queued',
 
     // ── Starter chips ──
-    'starter.hiShort': 'Hi!',
-    'starter.hi': 'Hi! How is your day going?',
-    'starter.fun': 'Tell me something fun',
+    'starter.hiShort': "Ask me about my day",
+    'starter.hi': "Ask me about my day",
+    'starter.fun': "Let’s play would you rather.",
     'starter.selfie': 'Send me a selfie',
     'starter.focusShort': 'Help me focus',
     'starter.focus': 'Help me focus on my work',

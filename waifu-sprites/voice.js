@@ -21,6 +21,8 @@ const Voice = (() => {
   let capture = null;
   let buttonElement = null;
   let opts = {};
+  let generation = 0;
+  let transcriptionController = null;
 
   function setState(next) {
     state = next;
@@ -38,6 +40,7 @@ const Voice = (() => {
     if (ids.session) headers['x-session-id'] = ids.session;
     if (ids.visitor) headers['x-visitor-id'] = ids.visitor;
     const controller = new AbortController();
+    transcriptionController = controller;
     const timer = setTimeout(() => controller.abort(), 75000);
     try {
       const res = await fetch(TRANSCRIBE_URL, { method: 'POST', body: form, headers, signal: controller.signal });
@@ -54,6 +57,7 @@ const Voice = (() => {
       throw error;
     } finally {
       clearTimeout(timer);
+      if (transcriptionController === controller) transcriptionController = null;
     }
   }
 
@@ -66,13 +70,16 @@ const Voice = (() => {
       },
       onError(message) { opts.onError(message); },
       async onAudio(blob) {
+        const token = generation;
         let text;
         try { text = await transcribe(blob); }
         catch (error) {
+          if (token !== generation) return;
           throw new Error(error.status === 429
             ? tr('voice.busy')
             : tr('voice.failed', { message: error.message }));
         }
+        if (token !== generation) return;
         if (text) opts.onText(text);
         else opts.onError(tr('voice.heardNothing'));
       }
@@ -81,6 +88,11 @@ const Voice = (() => {
   }
 
   function stop() { capture?.stop(); }
+  function cancel() {
+    generation++;
+    transcriptionController?.abort();
+    capture?.cancel();
+  }
 
   const recording = () => state === 'starting' || state === 'listening';
 
@@ -122,5 +134,5 @@ const Voice = (() => {
     });
   }
 
-  return { init, supported, get state() { return state; } };
+  return { init, cancel, supported, get state() { return state; } };
 })();

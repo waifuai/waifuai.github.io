@@ -38,6 +38,28 @@
     'app.openOriginal': "Ouvrir l'original",
     'app.retry': 'Réessayer',
 
+    // Turn and image operation states
+    "composer.stop": "Arrêter",
+    "chat.stopped": "Arrêté",
+    "chat.interrupted": "Interrompu",
+    "chat.failed": "Échec de la réponse",
+    "chat.stillWorking": "Toujours en cours…",
+    "chat.longWait": "Cela prend plus de temps que prévu. Vous pouvez arrêter à tout moment.",
+    "chat.queuePaused": "File en pause",
+    "chat.resumeQueue": "Reprendre la file",
+    "chat.removeQueued": "Retirer le message en attente",
+    "picture.pending": "Dessin en cours",
+    "picture.loading": "Générée / chargement",
+    "picture.loaded": "Chargée dans ce navigateur",
+    "picture.blocked": "Bloquée",
+    "picture.failed": "Échec de la génération",
+    "picture.displayFailed": "Échec de l’affichage",
+    "picture.stopped": "Arrêtée",
+    "picture.interrupted": "Interrompue",
+    "picture.unknown": "Affichage non confirmé",
+    "picture.reload": "Recharger l’image",
+    "picture.again": "Générer à nouveau",
+
     // ── Composer ──
     'composer.placeholder': 'Dites quelque chose...',
     'composer.message': 'Message',
@@ -68,9 +90,9 @@
     'chat.queued': 'en attente',
 
     // ── Starter chips ──
-    'starter.hiShort': 'Salut !',
-    'starter.hi': 'Salut ! Comment se passe ta journée ?',
-    'starter.fun': 'Raconte-moi un truc drôle',
+    'starter.hiShort': "Pose-moi des questions sur ma journée",
+    'starter.hi': "Pose-moi des questions sur ma journée",
+    'starter.fun': "Jouons à « Tu préfères ».",
     'starter.selfie': 'Envoie-moi un selfie',
     'starter.focusShort': 'Aide-moi à me concentrer',
     'starter.focus': 'Aide-moi à me concentrer sur mon travail',

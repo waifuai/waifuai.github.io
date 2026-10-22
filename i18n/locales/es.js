@@ -38,6 +38,28 @@
     'app.openOriginal': 'Abrir original',
     'app.retry': 'Reintentar',
 
+    // Turn and image operation states
+    "composer.stop": "Detener",
+    "chat.stopped": "Detenido",
+    "chat.interrupted": "Interrumpido",
+    "chat.failed": "La respuesta falló",
+    "chat.stillWorking": "Sigo trabajando…",
+    "chat.longWait": "Está tardando más de lo habitual. Puedes detenerlo en cualquier momento.",
+    "chat.queuePaused": "Cola en pausa",
+    "chat.resumeQueue": "Reanudar cola",
+    "chat.removeQueued": "Quitar mensaje en cola",
+    "picture.pending": "Dibujando",
+    "picture.loading": "Generada / cargando",
+    "picture.loaded": "Cargada en este navegador",
+    "picture.blocked": "Bloqueada",
+    "picture.failed": "La generación falló",
+    "picture.displayFailed": "La visualización falló",
+    "picture.stopped": "Detenida",
+    "picture.interrupted": "Interrumpida",
+    "picture.unknown": "Visualización sin confirmar",
+    "picture.reload": "Recargar imagen",
+    "picture.again": "Generar de nuevo",
+
     // ── Composer ──
     'composer.placeholder': 'Di algo...',
     'composer.message': 'Mensaje',
@@ -68,9 +90,9 @@
     'chat.queued': 'en cola',
 
     // ── Starter chips ──
-    'starter.hiShort': '¡Hola!',
-    'starter.hi': '¡Hola! ¿Cómo va tu día?',
-    'starter.fun': 'Cuéntame algo divertido',
+    'starter.hiShort': "Pregúntame por mi día",
+    'starter.hi': "Pregúntame por mi día",
+    'starter.fun': "Juguemos a qué prefieres.",
     'starter.selfie': 'Mándame una selfie',
     'starter.focusShort': 'Ayúdame a concentrarme',
     'starter.focus': 'Ayúdame a concentrarme en mi trabajo',

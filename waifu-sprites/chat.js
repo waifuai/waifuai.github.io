@@ -151,19 +151,23 @@ const Chat = (() => {
   // Resolves { <task>: { choice_id, confidence } } on an ok answer, or null
   // when the endpoint is unavailable, the request was rejected or the answer
   // was not ok — callers keep their local behavior on null. Never throws.
-  async function askDecisions(tasks, state) {
+  async function askDecisions(tasks, state, owner = null) {
     try {
+      checkOwner(owner);
       const headers = { 'Content-Type': 'application/json' };
       const id = ids();
       if (id.session) headers['x-session-id'] = id.session;
       if (id.visitor) headers['x-visitor-id'] = id.visitor;
-      const resp = await fetch(DECISIONS_URL, {
+      const resp = await abortable(fetch(DECISIONS_URL, {
         method: 'POST',
         headers,
         body: JSON.stringify({ request_id: randomId('r-'), tasks, state: window.ConversationBudget.decisionState(state) }),
-      });
+        ...(owner ? { signal: owner.signal } : {}),
+      }), owner?.signal);
+      checkOwner(owner);
       if (!resp.ok) return null;
-      const body = await resp.json();
+      const body = await abortable(resp.json(), owner?.signal);
+      checkOwner(owner);
       if (!body || body.status !== 'ok' || !body.answers) return null;
       return body.answers;
     } catch (e) {
@@ -181,7 +185,158 @@ const Chat = (() => {
   let memoryRevision = 0;
   let lastAutomaticMemoryTurn = null;
   let busy = false;
-  let abortCtrl = null;
+  let currentTurn = null;
+  let conversationRevision = 0;
+  const turnListeners = new Set();
+  const sideControllers = new Set();
+
+  const normalizeText = text => String(text || '').trim().replace(/\s+/g, ' ');
+  const isPicture = message => Boolean(message && (message.kind === 'image' || message.image));
+  function isCurrent(owner) {
+    return Boolean(owner && currentTurn === owner && owner.chatId === convId && !owner.signal.aborted &&
+      (!owner.userMessage || messages.includes(owner.userMessage)) &&
+      (!owner.replyMessage || messages.includes(owner.replyMessage)));
+  }
+  function notifyTurn() { turnListeners.forEach(fn => fn(currentTurn)); }
+  function onTurnChange(fn) { turnListeners.add(fn); return () => turnListeners.delete(fn); }
+  function abortError() { const error = new Error('Canceled'); error.name = 'AbortError'; return error; }
+  function checkOwner(owner) { if (owner && !isCurrent(owner)) throw abortError(); }
+  function abortable(work, signal) {
+    if (!signal) return Promise.resolve(work);
+    return new Promise((resolve, reject) => {
+      const abort = () => { signal.removeEventListener('abort', abort); reject(abortError()); };
+      Promise.resolve(work).then(value => { signal.removeEventListener('abort', abort); resolve(value); }, error => {
+        signal.removeEventListener('abort', abort); reject(error);
+      });
+      if (signal.aborted) abort();
+      else signal.addEventListener('abort', abort, { once: true });
+    });
+  }
+  function isDuplicate(text) {
+    return busy && isCurrent(currentTurn) && normalizeText(text) === normalizeText(currentTurn.text);
+  }
+  function settle(owner, status, errorText = '', silent = false) {
+    if (!owner || owner !== currentTurn || owner.chatId !== convId || owner.status !== 'pending') return;
+    owner.status = status;
+    busy = false;
+    if (owner.replyMessage) {
+      owner.replyMessage.status = status;
+      if (errorText) owner.replyMessage.error = errorText;
+    }
+    saveConversation();
+    const cb = owner.callbacks;
+    if (!silent && cb) {
+      if (status === 'completed') cb.onDone?.(owner.replyMessage);
+      else cb.onError?.(errorText, owner.replyMessage);
+    }
+    notifyTurn();
+  }
+  function stop(reason = 'stopped', silent = false) {
+    const owner = currentTurn;
+    conversationRevision++;
+    sideControllers.forEach(controller => controller.abort());
+    sideControllers.clear();
+    if (!owner || owner.signal.aborted) return;
+    const state = reason === 'stopped' ? 'stopped' : 'interrupted';
+    for (const message of messages) {
+      if (!isPicture(message) || message.attemptId !== owner.attemptId) continue;
+      if (message.generation === 'pending') message.generation = state;
+      else if (message.generation === 'generated' && message.display !== 'loaded' && message.display !== 'failed') message.display = 'interrupted';
+    }
+    owner.controller.abort();
+    if (owner.status === 'pending') settle(owner, state, tr(state === 'stopped' ? 'chat.stopped' : 'chat.interrupted'), silent);
+    else { saveConversation(); notifyTurn(); }
+  }
+  function canRetry(id) {
+    const reply = messages.find(m => m.id === id);
+    if (!reply || isPicture(reply) || reply.role !== 'assistant' || reply.superseded ||
+        !['failed', 'stopped', 'interrupted'].includes(reply.status)) return false;
+    const user = messages.find(m => m.id === reply.userId && m.role === 'user');
+    return Boolean(!busy && user && messages.filter(m => m.role === 'user').at(-1) === user &&
+      !messages.slice(messages.indexOf(reply) + 1).some(m => !isPicture(m) && m.role === 'assistant' && !m.superseded) &&
+      !messages.some(m => m !== reply && m.turnId === reply.turnId && m.role === 'assistant' && !isPicture(m) && !m.superseded));
+  }
+  function canRetryImage(message) {
+    return Boolean(message && messages.includes(message) && isPicture(message) && message.generation === 'failed' && message.retryable === true);
+  }
+  function beginTurn(text, opts = {}) {
+    if (busy) return null;
+    const retry = opts.retryId && messages.find(m => m.id === opts.retryId);
+    const image = opts.retryImageId && messages.find(m => m.id === opts.retryImageId);
+    if ((opts.retryId && !canRetry(opts.retryId)) || (opts.retryImageId && !canRetryImage(image))) return null;
+    if (!convId) newConversation();
+    stop('interrupted', true);
+    conversationRevision++;
+    const ambient = Boolean(opts.ambient);
+    let user = retry ? messages.find(m => m.id === retry.userId) : image ? messages.find(m => m.id === image.userId) : null;
+    const turnId = user?.turnId || image?.turnId || randomId('t-');
+    if (!ambient && !user && !image) {
+      user = { id: messageId(), role: 'user', content: text, turnId };
+      messages.push(user);
+    }
+    if (user) user.turnId = turnId;
+    if (retry) retry.superseded = true;
+    const controller = new AbortController();
+    const owner = { chatId: convId, turnId, attemptId: randomId('a-'), controller, signal: controller.signal,
+      text: user?.content || text, ambient, kind: opts.kind || 'chat', userMessage: user, replyMessage: null,
+      imageMessage: image || null, status: 'pending', callbacks: null };
+    currentTurn = owner;
+    busy = true;
+    if (owner.kind === 'chat') {
+      owner.replyMessage = { id: messageId(), role: 'assistant', content: '', status: 'pending',
+        turnId, attemptId: owner.attemptId, userId: user?.id, ...(ambient ? { ambient: true } : {}) };
+      messages.push(owner.replyMessage);
+    } else if (image) {
+      Object.assign(image, { generation: 'pending', display: 'unknown', retryable: false, attemptId: owner.attemptId });
+    }
+    saveConversation();
+    Promise.resolve().then(() => { if (currentTurn === owner) notifyTurn(); });
+    return owner;
+  }
+  function finishTurn(owner) { if (isCurrent(owner)) settle(owner, 'completed'); }
+  function createPicture(owner, prompt, aspect) {
+    if (!isCurrent(owner)) return null;
+    if (owner.imageMessage) return owner.imageMessage;
+    const message = { id: messageId(), role: 'assistant', kind: 'image', image: '', prompt, aspect, caption: '',
+      generation: 'pending', display: 'unknown', retryable: false, turnId: owner.turnId,
+      attemptId: owner.attemptId, userId: owner.userMessage?.id };
+    messages.push(message);
+    owner.imageMessage = message;
+    saveConversation();
+    return message;
+  }
+  function updatePicture(owner, message, patch) {
+    if (!isCurrent(owner) || !messages.includes(message) || message.attemptId !== owner.attemptId) return false;
+    Object.assign(message, patch);
+    saveConversation();
+    return true;
+  }
+  function setPictureDisplay(chatId, message, ref, state) {
+    if (chatId !== convId || !messages.includes(message) || message.image !== ref ||
+        (message.generation && message.generation !== 'generated')) return false;
+    message.generation = 'generated';
+    message.display = state;
+    saveConversation();
+    return true;
+  }
+  function effect(owner, amount) {
+    if (!isCurrent(owner)) return;
+    owner.pendingEffects = Math.max(0, (owner.pendingEffects || 0) + amount);
+    notifyTurn();
+  }
+  function recoverMessages() {
+    let changed = false;
+    messages.forEach(m => {
+      if (!m.id) { m.id = messageId(); changed = true; }
+      if (m.status === 'pending') { m.status = 'interrupted'; changed = true; }
+      if (isPicture(m)) {
+        if (m.generation === 'pending') { m.generation = 'interrupted'; changed = true; }
+        if (!m.generation && m.image) { m.generation = 'generated'; changed = true; }
+        if (m.display !== 'failed' && m.display !== 'unknown') { m.display = 'unknown'; changed = true; }
+      }
+    });
+    if (changed) saveConversation();
+  }
 
   function historyIndex() {
     const list = load(KEY.history, []);
@@ -189,7 +344,12 @@ const Chat = (() => {
   }
 
   function saveConversation() {
-    if (!convId || !messages.length) return;
+    if (!convId) return;
+    if (!messages.length) {
+      save(KEY.conv + convId, []);
+      save(KEY.history, historyIndex().filter(h => h.id !== convId));
+      return;
+    }
     const all = historyIndex();
     const prev = all.find(h => h.id === convId);
     const list = all.filter(h => h.id !== convId);
@@ -217,30 +377,35 @@ const Chat = (() => {
   }
 
   function newConversation() {
+    stop('interrupted', true);
+    currentTurn = null;
+    busy = false;
     memoryRevision++;
-    convId = 'c' + Date.now().toString(36);
+    convId = randomId('c-');
     messages = [];
     memory = { summary: '', through: null };
+    notifyTurn();
     return convId;
   }
 
   function openConversation(id) {
-    memoryRevision++;
     const data = load(KEY.conv + id, null);
     if (!Array.isArray(data)) return null;
+    stop('interrupted', true);
+    currentTurn = null;
+    busy = false;
+    memoryRevision++;
     convId = id;
-    messages = data;
-    // Chats saved before memory existed have no message ids.
-    if (messages.some(m => !m.id)) {
-      messages.forEach(m => { if (!m.id) m.id = messageId(); });
-      save(KEY.conv + id, messages);
-    }
+    messages = load(KEY.conv + id, data);
+    recoverMessages();
     const mem = load(KEY.mem + id, null);
     memory = mem && typeof mem.summary === 'string' ? mem : { summary: '', through: null };
+    notifyTurn();
     return messages;
   }
 
   function deleteConversation(id) {
+    if (id === convId) stop('interrupted', true);
     const data = load(KEY.conv + id, []);
     if (Array.isArray(data)) data.forEach(m => { if (m.image) Pictures.forget(m.image); });
     save(KEY.history, historyIndex().filter(h => h.id !== id));
@@ -250,9 +415,10 @@ const Chat = (() => {
   }
 
   function deleteMessage(id) {
-    memoryRevision++;
     const i = messages.findIndex(m => m.id === id);
     if (i === -1) return;
+    stop('interrupted', true);
+    memoryRevision++;
     const [m] = messages.splice(i, 1);
     memory.progress = null;
     saveMemory();
@@ -298,6 +464,7 @@ const Chat = (() => {
 
   function setSummary(text) {
     const summary = window.ConversationBudget.validateSummary(text, true);
+    stop('interrupted', true);
     memoryRevision++;
     if (window.ConversationBudget.bytes(memory.summary) > window.ConversationBudget.limits.summary) memory.backup = memory.summary;
     memory.summary = summary;
@@ -306,10 +473,31 @@ const Chat = (() => {
     saveMemory();
   }
 
+  function messageText(message) {
+    if (!isPicture(message)) return String(message.content || '');
+    const generation = message.generation || (message.image ? 'generated' : 'unknown');
+    const display = message.display || 'unknown';
+    const result = generation === 'generated'
+      ? display === 'loaded' ? 'generated; loaded in this browser, not proof the user saw it'
+        : display === 'failed' ? 'generated; browser display failed'
+        : display === 'interrupted' ? 'generated; browser loading interrupted, display unconfirmed'
+        : 'generated; browser display unconfirmed'
+      : generation === 'pending' ? 'generation pending; not delivered'
+        : generation === 'blocked' ? 'blocked by the image service; not delivered'
+          : generation === 'failed' ? 'generation failed; not delivered'
+            : generation === 'stopped' || generation === 'interrupted' ? 'generation ' + generation + '; not delivered'
+              : 'generation and display unconfirmed';
+    return '(App image status: ' + result + '. Requested scene: ' + String(message.prompt || 'a picture').slice(0, 500) + ')';
+  }
+  function usableMessage(message) {
+    return isPicture(message) || (!message.superseded && (!message.status || message.status === 'completed'));
+  }
+  function recentContext(limit = 4) {
+    return messages.filter(usableMessage).slice(-limit).map(m => ({ role: m.role, text: messageText(m).slice(0, 300) }));
+  }
   function asTranscript(list) {
-    return list.map(m => m.image
-      ? 'ASSISTANT: (sent a picture: ' + (m.prompt || 'a picture') + ')'
-      : m.role.toUpperCase() + ': ' + m.content).join('\n');
+    return list.map(m => usableMessage(m) ? m.role.toUpperCase() + ': ' + messageText(m)
+      : 'APP: Incomplete assistant attempt (' + m.status + '); not a completed answer.').join('\n');
   }
 
   let summarizing = false;
@@ -322,11 +510,12 @@ const Chat = (() => {
    * true when the summary changed. A failure keeps every message and backs off
    * for two minutes.
    */
-  async function summarize(force = false) {
+  async function summarize(force = false, owner = null) {
+    if (owner && !isCurrent(owner)) return false;
     if (summarizing && force) throw window.ConversationBudget.error('memory_busy', tr('memory.busy'));
     if (summarizing || (!force && Date.now() - summaryFailedAt < 120000)) return false;
     const budget = window.ConversationBudget;
-    const id = convId, revision = memoryRevision, snapshot = memory;
+    const id = convId, revision = memoryRevision, snapshot = memory, scope = conversationRevision;
     const pendingMessages = messages.slice(unsummarizedStart());
     const latestUser = [...messages].reverse().find(m => m.role === 'user');
     const turn = id + ':' + (latestUser && latestUser.id);
@@ -337,16 +526,18 @@ const Chat = (() => {
     const keep = Math.min(force ? 4 : Math.ceil(memorySize() / 2), Math.max(1, pendingMessages.length - 1));
     const source = pendingMessages.slice(0, Math.max(0, pendingMessages.length - keep))
       .map(m => ({ id: m.id, text: asTranscript([m]), original: m }));
-    const valid = () => id === convId && revision === memoryRevision && memory === snapshot &&
+    const valid = () => id === convId && scope === conversationRevision && (!owner || isCurrent(owner)) &&
+      revision === memoryRevision && memory === snapshot &&
       (legacy || source.every(e => messages.includes(e.original) && asTranscript([e.original]) === e.text));
-    summarizing = true;
+    const run = {};
+    summarizing = run;
     try {
       const task = budget.compressionTask(source, memory,
         m => ({ model: modelFor(settings.provider), messages: m, max_tokens: 700, stream: false,
           ...(settings.provider === 'cloud' ? { client_settings: { app: 'waifu-sprites', persona: settings.persona }, context_budget_version: 1 } : {}) }), settings.summaryLength);
       if (!task) return false;
       if (!force) lastAutomaticMemoryTurn = turn;
-      const summary = await complete(task.messages, 'summary', 700);
+      const summary = await complete(task.messages, 'summary', 700, owner);
       if (!valid()) return false;
       const next = budget.accept(task, summary);
       memory = { ...memory, ...next };
@@ -355,10 +546,11 @@ const Chat = (() => {
       summaryFailedAt = 0;
       return true;
     } catch (e) {
-      if (valid()) summaryFailedAt = Date.now();
+      if (!valid()) return false;
+      summaryFailedAt = Date.now();
       if (force) throw e;
       return false;
-    } finally { summarizing = false; }
+    } finally { if (summarizing === run) summarizing = false; }
   }
 
   // ── Requests ──
@@ -394,19 +586,17 @@ const Chat = (() => {
     return parts.filter(Boolean).join('\n\n');
   }
 
-  // What the model sees: tags kept on past replies so it keeps the format, and
-  // each picture as a "(sent a picture: ...)" note on the reply it belongs to.
   function contextForModel(list) {
     const out = [];
-    list.forEach(m => {
-      if (m.image) {
-        const note = '(sent a picture: ' + (m.prompt || 'a picture') + ')';
-        const prev = out[out.length - 1];
-        if (prev && prev.role === 'assistant') prev.content += '\n' + note;
-        else out.push({ role: 'assistant', content: (m.caption || 'Here, I drew this for you!') + '\n' + note });
-        return;
+    list.filter(usableMessage).forEach(m => {
+      const content = messageText(m);
+      if (isPicture(m)) {
+        const previous = out[out.length - 1];
+        if (previous && previous.role === 'assistant') previous.content += '\n' + content;
+        else out.push({ role: 'assistant', content });
+      } else if (content) {
+        out.push({ role: m.role, content: m.role === 'assistant' && m.emotion ? '[' + m.emotion + '] ' + content : content });
       }
-      out.push({ role: m.role, content: m.role === 'assistant' && m.emotion ? '[' + m.emotion + '] ' + m.content : m.content });
     });
     return out;
   }
@@ -417,9 +607,13 @@ const Chat = (() => {
     return contextForModel(messages.slice(unsummarizedStart()));
   }
 
-  async function modelMessages(extraUserTurn) {
+  async function modelMessages(extraUserTurn, owner = null) {
+    checkOwner(owner);
+    const revision = conversationRevision;
     const budget = window.ConversationBudget;
-    const system = { role: 'system', content: await systemPrompt() };
+    const system = { role: 'system', content: await abortable(systemPrompt(), owner?.signal) };
+    checkOwner(owner);
+    if (revision !== conversationRevision) throw abortError();
     const history = recentForModel();
     if (extraUserTurn) history.push({ role: 'user', content: extraUserTurn });
     const out = [system].concat(history);
@@ -428,25 +622,17 @@ const Chat = (() => {
       client_settings: { app: 'waifu-sprites', persona: settings.persona }, context_budget_version: 1 }), memorySize()).messages;
   }
 
-  // Adds a finished picture to a conversation, which may no longer be the open one.
-  // Returns true when it went into the open conversation.
-  function addPicture(id, message) {
+  function addPicture(id, message, owner = null) {
+    if (!owner || !isCurrent(owner) || id !== convId) return false;
     message.id = message.id || messageId();
-    if (id === convId) {
-      messages.push(message);
-      saveConversation();
-      return true;
-    }
-    const data = load(KEY.conv + id, null);
-    if (!Array.isArray(data)) return false;
-    data.push(message);
-    save(KEY.conv + id, data);
-    return false;
+    messages.push(message);
+    saveConversation();
+    return true;
   }
 
   function lastReply() {
     for (let i = messages.length - 1; i >= 0; i--) {
-      if (messages[i].role === 'assistant' && messages[i].content) return messages[i].content;
+      if (messages[i].role === 'assistant' && !isPicture(messages[i]) && usableMessage(messages[i]) && messages[i].content) return messages[i].content;
     }
     return '';
   }
@@ -489,32 +675,44 @@ const Chat = (() => {
   }
 
   // One non-streaming call for the side jobs (summary, title, romaji). Resolves with the text.
-  async function complete(msgs, purpose, maxTokens) {
+  async function complete(msgs, purpose, maxTokens, owner = null) {
+    checkOwner(owner);
+    const scope = conversationRevision;
     const req = buildRequest(msgs, purpose, false, maxTokens || 300);
     const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 60000);
+    const abort = () => ctrl.abort();
+    owner?.signal.addEventListener('abort', abort, { once: true });
+    sideControllers.add(ctrl);
+    const timer = setTimeout(abort, 60000);
     try {
-      const resp = await fetch(req.url, { method: 'POST', headers: req.headers, body: JSON.stringify(req.body), signal: ctrl.signal });
+      const resp = await abortable(fetch(req.url, { method: 'POST', headers: req.headers, body: JSON.stringify(req.body), signal: ctrl.signal }), ctrl.signal);
       if (!resp.ok) throw new Error('HTTP ' + resp.status);
-      const data = await resp.json();
+      const data = await abortable(resp.json(), ctrl.signal);
+      checkOwner(owner);
+      if (scope !== conversationRevision || ctrl.signal.aborted) throw abortError();
       return String(data.choices?.[0]?.message?.content || '').replace(/<think>[\s\S]*?<\/think>/gi, '').trim();
     } finally {
       clearTimeout(timer);
+      sideControllers.delete(ctrl);
+      owner?.signal.removeEventListener('abort', abort);
     }
   }
 
   // Names a chat in a few words from its first messages, unless it already has a name.
-  async function generateTitle(id) {
+  async function generateTitle(id, owner = null) {
+    if (owner && !isCurrent(owner)) return null;
+    const scope = conversationRevision;
     const h = historyIndex().find(x => x.id === id);
     if (!h || h.named || id !== convId) return null;
-    const text = messages.filter(m => !m.image).slice(0, 6)
-      .map(m => (m.role === 'user' ? 'User: ' : 'Assistant: ') + m.content.slice(0, 150)).join('\n');
+    const text = messages.filter(m => !isPicture(m) && usableMessage(m)).slice(0, 6)
+      .map(m => (m.role === 'user' ? 'User: ' : 'Assistant: ') + messageText(m).slice(0, 150)).join('\n');
     if (!text) return null;
     try {
       let title = await complete([
         { role: 'system', content: 'Generate a very short title (3-6 words) that summarizes the topic of this conversation, in the conversation\'s language. Reply with ONLY the title, no quotes or punctuation.' },
         { role: 'user', content: text },
-      ], 'title', 30);
+      ], 'title', 30, owner);
+      if (scope !== conversationRevision || id !== convId || (owner && !isCurrent(owner)) || historyIndex().find(x => x.id === id)?.named) return null;
       title = title.split('\n')[0].replace(/^["'\s*#]+|["'.\s*]+$/g, '').slice(0, 48);
       if (!title) return null;
       renameConversation(id, title);
@@ -529,39 +727,53 @@ const Chat = (() => {
   function needsRomaji(text) { return KANA.test(text) || HANGUL.test(text); }
 
   // Latin-letter reading of a Japanese or Korean reply, stored on the message.
-  async function romanize(message) {
+  async function romanize(message, owner = null) {
+    if (owner && !isCurrent(owner)) return null;
+    const scope = conversationRevision, original = message.content;
     const lang = KANA.test(message.content) ? 'Japanese' : 'Korean';
     const how = lang === 'Japanese' ? 'Romaji' : 'Revised Romanization';
     const text = await complete([
       { role: 'system', content: 'Provide a ' + how + ' transliteration of the following ' + lang + ' text. Respond ONLY with the transliterated text, nothing else.' },
       { role: 'user', content: message.content },
-    ], 'translate', 400);
-    if (!text) return null;
+    ], 'translate', 400, owner);
+    if (!text || scope !== conversationRevision || !messages.includes(message) || message.content !== original || (owner && !isCurrent(owner))) return null;
     message.romaji = text;
-    if (messages.includes(message)) saveConversation();
+    saveConversation();
     return text;
   }
 
-  async function readStream(resp, onDelta) {
+  async function readStream(resp, onDelta, owner) {
     const reader = resp.body.getReader();
     const decoder = new TextDecoder();
-    let buffer = '';
-    for (;;) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split('\n');
-      buffer = lines.pop();
-      for (const raw of lines) {
-        const line = raw.trim();
-        if (!line.startsWith('data:')) continue;
-        const payload = line.slice(5).trim();
-        if (payload === '[DONE]') return;
-        try {
-          const delta = JSON.parse(payload).choices?.[0]?.delta;
-          if (delta && delta.content) onDelta(delta.content);
-        } catch (e) { /* partial or non-JSON line */ }
+    let buffer = '', finished = false;
+    const cancel = () => { try { Promise.resolve(reader.cancel()).catch(() => {}); } catch (e) {} };
+    owner.signal.addEventListener('abort', cancel, { once: true });
+    const line = raw => {
+      if (!raw.trim().startsWith('data:')) return;
+      const payload = raw.trim().slice(5).trim();
+      if (payload === '[DONE]') { finished = true; return; }
+      let choice;
+      try { choice = JSON.parse(payload).choices?.[0]; } catch (e) { return; }
+      checkOwner(owner);
+      if (choice?.delta?.content) onDelta(choice.delta.content);
+      if (choice?.finish_reason) finished = true;
+    };
+    try {
+      for (;;) {
+        const { done, value } = await abortable(reader.read(), owner.signal);
+        checkOwner(owner);
+        if (done) { buffer += decoder.decode(); if (buffer) line(buffer); break; }
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop();
+        for (const raw of lines) line(raw);
+        if (finished) break;
       }
+      if (!finished) throw new Error(tr('chat.interrupted'));
+    } finally {
+      owner.signal.removeEventListener('abort', cancel);
+      cancel();
+      try { reader.releaseLock(); } catch (e) {}
     }
   }
 
@@ -586,7 +798,7 @@ const Chat = (() => {
   function clean(text, partial) {
     let t = text
       .replace(/<think>[\s\S]*?(<\/think>|$)/gi, '')
-      .replace(/\(sent a picture:[^)\n]*\)?/gi, '')
+      .replace(/\((?:sent a picture:|App image status:)[^)\n]*\)?/gi, '')
       .replace(/\s*\[([^\]\n]{0,300})\]/g, (all, inner) =>
         /^[a-z_]{2,20}$/i.test(inner) || PICTURE_WORDS.test(inner) ? ' ' : all);
     if (partial) t = t.replace(/\s*\[[^\]\n]*$/, '');
@@ -601,79 +813,80 @@ const Chat = (() => {
    * never stored or shown.
    */
   async function send(text, cb, opts = {}) {
-    if (busy) return;
-    if (!convId) newConversation();
-    busy = true;
-    const ambient = Boolean(opts.ambient);
-    if (!ambient) {
-      messages.push({ id: messageId(), role: 'user', content: text });
-      saveConversation();
-    }
-
+    const owner = opts.owner || beginTurn(text, opts);
+    if (!owner || !isCurrent(owner) || owner.started) return;
+    owner.started = true;
+    owner.callbacks = cb;
+    const ambient = owner.ambient;
     let raw = '';
     let emotion = null;
     let emotionSent = false;
+    let timedOut = false;
+    const timer = setTimeout(() => {
+      if (!isCurrent(owner) || owner.status !== 'pending') return;
+      timedOut = true;
+      settle(owner, 'failed', tr('error.timeout'));
+      owner.controller.abort();
+      notifyTurn();
+    }, 90000);
     try {
-      const req = buildRequest(await modelMessages(ambient ? text : null), ambient ? 'ambient' : 'chat', true, 600);
-      abortCtrl = new AbortController();
-      const timer = setTimeout(() => abortCtrl.abort(), 90000);
-      let resp;
-      try {
-        resp = await fetch(req.url, { method: 'POST', headers: req.headers, body: JSON.stringify(req.body), signal: abortCtrl.signal });
-        if (!resp.ok) {
-          let detail = '';
-          try { const j = await resp.json(); detail = (j.error && (j.error.message || j.error)) || ''; } catch (e) {}
-          if (resp.status === 429) throw new Error(tr('error.tooMany'));
-          if (resp.status === 413) throw window.ConversationBudget.error('context_too_large', detail || tr('error.contextTooLarge'));
-          if (resp.status === 401 || resp.status === 403) throw new Error(tr('error.rejected'));
-          throw new Error(tr('error.service', { status: resp.status, detail: '' }) + (detail ? ': ' + String(detail).slice(0, 160) : '.'));
-        }
-        await readStream(resp, delta => {
-          raw += delta;
-          const part = splitTag(raw.replace(/^\s*<think>[\s\S]*?(<\/think>\s*|$)/i, ''));
-          if (part.pending) return;
-          const visible = clean(part.text, true);
-          if (!emotionSent) {
-            if (!part.emotion && !visible) return; // still inside a <think> block
-            emotionSent = true;
-            emotion = part.emotion;
-            cb.onEmotion(emotion);
-          }
-          cb.onText(visible);
-        });
-      } finally {
-        clearTimeout(timer);
+      const req = buildRequest(await modelMessages(ambient ? text : null, owner), ambient ? 'ambient' : 'chat', true, 600);
+      checkOwner(owner);
+      const resp = await abortable(fetch(req.url, { method: 'POST', headers: req.headers, body: JSON.stringify(req.body), signal: owner.signal }), owner.signal);
+      checkOwner(owner);
+      if (!resp.ok) {
+        let detail = '';
+        try { const j = await abortable(resp.json(), owner.signal); detail = (j.error && (j.error.message || j.error)) || ''; } catch (e) { checkOwner(owner); }
+        if (resp.status === 429) throw new Error(tr('error.tooMany'));
+        if (resp.status === 413) throw window.ConversationBudget.error('context_too_large', detail || tr('error.contextTooLarge'));
+        if (resp.status === 401 || resp.status === 403) throw new Error(tr('error.rejected'));
+        throw new Error(tr('error.service', { status: resp.status, detail: '' }) + (detail ? ': ' + String(detail).slice(0, 160) : '.'));
       }
+      await readStream(resp, delta => {
+        checkOwner(owner);
+        raw += delta;
+        const part = splitTag(raw.replace(/^\s*<think>[\s\S]*?(<\/think>\s*|$)/i, ''));
+        if (part.pending) return;
+        const visible = clean(part.text, true);
+        if (!emotionSent) {
+          if (!part.emotion && !visible) return; // still inside a <think> block
+          emotionSent = true;
+          emotion = part.emotion;
+          cb.onEmotion?.(emotion);
+        }
+        owner.replyMessage.content = visible;
+        owner.replyMessage.emotion = emotion;
+        saveConversation();
+        cb.onText?.(visible);
+      }, owner);
+      checkOwner(owner);
       const part = splitTag(raw.replace(/^\s*<think>[\s\S]*?(<\/think>\s*|$)/i, ''));
       const reply = clean(part.text, false);
       if (!reply) throw new Error(tr('error.emptyReply'));
-      if (!emotionSent) cb.onEmotion(null);
-      const message = { id: messageId(), role: 'assistant', content: reply, emotion: emotion || Sprites.detectEmotion(reply) };
-      if (ambient) message.ambient = true;
-      messages.push(message);
-      saveConversation();
-      cb.onDone(message);
+      if (!emotionSent) cb.onEmotion?.(null);
+      Object.assign(owner.replyMessage, { content: reply, emotion: emotion || Sprites.detectEmotion(reply) });
+      settle(owner, 'completed');
     } catch (err) {
-      // Drop the unanswered turn so a retry doesn't send it twice.
-      if (!ambient && !['context_too_large', 'memory_pending', 'summary_too_large'].includes(err.code) && messages.length && messages[messages.length - 1].role === 'user') messages.pop();
-      saveConversation();
-      const msg = err.name === 'AbortError' ? tr('error.timeout')
+      if (!isCurrent(owner) || timedOut) return owner;
+      const msg = err.name === 'AbortError' ? tr('chat.interrupted')
         : err instanceof TypeError ? tr(settings.provider === 'custom' ? 'error.unreachableCustom' : 'error.unreachable')
         : err.message;
-      cb.onError(msg);
+      settle(owner, 'failed', msg);
     } finally {
-      busy = false;
-      abortCtrl = null;
+      clearTimeout(timer);
     }
+    return owner;
   }
-
-  function stop() { if (abortCtrl) abortCtrl.abort(); }
 
   return {
     PROVIDERS, PERSONAS, LANGUAGES, SUMMARY_LENGTHS, DEFAULT_AMBIENT_PROMPT, settings, saveSettings, modelFor,
     send, stop, ids, askDecisions, addPicture, lastReply, newConversation, openConversation, deleteConversation, deleteMessage,
     renameConversation, historyIndex, exportAll, summarize, setSummary, generateTitle, needsRomaji, romanize, modelMessages,
-    unsummarizedStart,
+    unsummarizedStart, beginTurn, finishTurn, isCurrent, isDuplicate, normalizeText, onTurnChange, canRetry,
+    isPicture, createPicture, updatePicture, setPictureDisplay, canRetryImage, messageText, recentContext, effect, abortable,
+    get current() { return currentTurn; },
+    get revision() { return conversationRevision; },
+    get stoppable() { return isCurrent(currentTurn) && (busy || currentTurn.pendingEffects > 0); },
     get messages() { return messages; },
     get summary() { return memory.summary; },
     get memoryPending() { return Boolean(memory.progress) || window.ConversationBudget.bytes(memory.summary) > window.ConversationBudget.limits.summary; },
