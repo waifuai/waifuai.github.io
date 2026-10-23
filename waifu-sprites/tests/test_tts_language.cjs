@@ -158,3 +158,28 @@ test('Sprites browser playback refuses male-only and unknown inventories',async(
   await window.testSpeech.speakBrowser('Hello','en-US','female');assert.equal(spoken,0);
  }
 });
+
+function speechRuntime(failure) {
+ const window={};let requests=0;
+ const speechSynthesis={getVoices:()=>[{name:'English Female',lang:'en-US'},{name:'Arabic Female',lang:'ar-SA'}]};
+ const c=vm.createContext({window,navigator:{language:'en-US'},localStorage:{getItem:()=>null},setTimeout,clearTimeout,speechSynthesis,
+ atob:x=>Buffer.from(x,'base64').toString('binary'),
+ fetch:async()=>{requests++;if(failure==='network')throw new TypeError('Failed to fetch');return{ok:failure!=='http',status:503,json:async()=>failure==='api'?{success:false,error:'offline'}:{data:'AA=='}};}});
+ window.speechSynthesis=speechSynthesis;
+ window.AudioContext=function(){this.decodeAudioData=async()=>{if(failure==='decode')throw new Error('Invalid audio');return{duration:0}}};
+ vm.runInContext(fs.readFileSync(routerPath,'utf8'),c);
+ let source=fs.readFileSync(path.join(__dirname,'../speech.js'),'utf8');
+ source=source.replace('return { VOICES, settings,','return { resolve, VOICES, settings,');
+ vm.runInContext(source+';window.testSpeech=Speech;',c);
+ return {speech:window.testSpeech,requests:()=>requests};
+}
+for(const failure of ['network','http','api','decode'])test(`Sprites TikTok ${failure} failure stays silent`,async()=>{
+ const r=speechRuntime(failure);assert.equal((await r.speech.resolve('Hello, how are you today?')).kind,'silent');assert.equal(r.requests(),1);
+});
+test('Sprites unsupported primary language stays silent with installed browser voice',async()=>{
+ const r=speechRuntime();assert.equal((await r.speech.resolve('مرحبا كيف حالك اليوم؟')).kind,'silent');assert.equal(r.requests(),0);
+});
+test('Sprites successful primary and explicit browser selection remain available',async()=>{
+ const r=speechRuntime();assert.equal((await r.speech.resolve('Hello, how are you today?')).kind,'buffer');
+ r.speech.settings.voiceId='browser-female';assert.equal((await r.speech.resolve('Hello')).kind,'browser');assert.equal(r.requests(),1);
+});

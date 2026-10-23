@@ -2,8 +2,8 @@
  * speech.js: reads her replies aloud, ported from waifu-companion's TTS.
  *
  * TikTok voices first (the service sends CORS headers, so it is called
- * directly), the browser's own SpeechSynthesis when that fails or when a
- * browser voice is picked. Replies are cleaned for speech (no *actions*, no
+ * directly). Browser SpeechSynthesis is used only when a browser voice is
+ * explicitly picked. Failed or unsupported primary voices stay silent. Replies are cleaned for speech (no *actions*, no
  * emoji), split into sentences and grouped into chunks of up to CHUNK_LIMIT
  * characters. While one chunk plays, the next is fetched.
  *
@@ -165,18 +165,14 @@ const Speech = (() => {
   async function resolve(text, plan = null) {
     const voice = byId(settings.voiceId) || byId('en_us_001');
     let routed = routeVoice(text, voice.id, plan);
-    if (routed.unsupportedPrimary) {
-      if (window.speechSynthesis && !speechSynthesis.getVoices().length) {
-        await new Promise(done => { const timer = setTimeout(done, 1000); speechSynthesis.addEventListener('voiceschanged', () => { clearTimeout(timer); done(); }, { once: true }); });
-      }
-      const available = window.speechSynthesis && speechSynthesis.getVoices().some(v => v.lang.split('-')[0].toLowerCase() === routed.lang.split('-')[0]);
-      if (!available) routed = { voiceId: voice.id, lang: voice.language, provider: voice.provider, unsupported: true };
-    }
+    // Never substitute a browser voice for an unsupported primary language.
+    if (routed.unsupportedPrimary) return { kind: 'silent' };
     if (routed.provider === 'tiktok') {
       try {
         return { kind: 'buffer', buffer: await fetchTikTok(text, routed.voiceId), lang: routed.lang || voice.language, voiceId: routed.voiceId, unsupported: !!routed.unsupported };
       } catch (e) {
-        // Rate limit or outage: fall through to the browser voice.
+        // Rate limits, outages and invalid audio leave this chunk silent.
+        return { kind: 'silent' };
       }
     }
     const target = routed.lang || voice.language;
