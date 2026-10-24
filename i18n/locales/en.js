@@ -170,7 +170,7 @@
     'settings.herVoice': 'Her voice',
     'settings.matchLanguage': "Match the reply's language",
     'settings.voiceVolume': 'Voice volume',
-    'settings.voiceNote': "Replies are read by a free TikTok voice service, or by your browser's own voice if it's busy. A reply in Japanese, German or another language gets a voice for that language.",
+    'settings.voiceNote': "Replies are read aloud in the reply's language. You can also pick your browser's own voice instead.",
     'settings.micNote': 'Hold the mic button to talk, or tap it to start and tap again to stop. Speech is transcribed by WaifuAI Cloud.',
     'settings.voiceAutoSend': 'Send right after speaking',
     'settings.radio': 'Radio',

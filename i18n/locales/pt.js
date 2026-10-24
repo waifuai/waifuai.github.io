@@ -168,7 +168,7 @@
     'settings.herVoice': 'A voz dela',
     'settings.matchLanguage': 'Acompanhar o idioma da resposta',
     'settings.voiceVolume': 'Volume da voz',
-    'settings.voiceNote': 'As respostas são lidas por um serviço gratuito de voz do TikTok, ou pela voz do próprio navegador se ele estiver ocupado. Uma resposta em japonês, alemão ou outro idioma ganha uma voz para esse idioma.',
+    'settings.voiceNote': 'As respostas são lidas em voz alta no idioma da resposta. Você também pode escolher a voz do próprio navegador.',
     'settings.micNote': 'Segure o botão do microfone para falar, ou toque para iniciar e toque de novo para parar. A fala é transcrita pelo WaifuAI Cloud.',
     'settings.voiceAutoSend': 'Enviar logo após falar',
     'settings.radio': 'Rádio',

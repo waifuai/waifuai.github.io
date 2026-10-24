@@ -10,7 +10,7 @@ import wave
 import mimetypes
 from pathlib import Path
 import unittest
-from urllib.parse import unquote, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
 
 from playwright.sync_api import sync_playwright
 
@@ -80,14 +80,16 @@ class PlayerCardTests(unittest.TestCase):
                 self.pending_emotion = route
             else:
                 self.fulfill_decision(route, request['tasks'])
-        elif url.hostname == 'ottsy.weilbyte.dev':
-            self.tts_calls.append(route.request.post_data_json)
+        elif url.path == '/tts':
+            self.tts_calls.append({k: v[0] for k, v in parse_qs(urlparse(route.request.url).query).items()})
             audio = io.BytesIO()
             with wave.open(audio, 'wb') as wav:
                 wav.setparams((1, 2, 22050, 0, 'NONE', 'not compressed'))
                 wav.writeframes(b'\0\0' * 2205)
-            route.fulfill(headers={'access-control-allow-origin': '*'}, content_type='application/json',
-                          body=json.dumps({'success': True, 'data': base64.b64encode(audio.getvalue()).decode()}))
+            route.fulfill(headers={'access-control-allow-origin': '*',
+                                   'access-control-expose-headers': 'X-Tts-Provider',
+                                   'x-tts-provider': 'edge'},
+                          content_type='audio/mpeg', body=audio.getvalue())
         elif url.path == '/image':
             self.cloud_requests.append({'path': url.path, 'headers': route.request.all_headers()})
             route.fulfill(headers={'X-Image-Url': 'https://sprites.test/picture.png', 'Access-Control-Allow-Origin':'*', 'Access-Control-Expose-Headers':'X-Image-Url'}, body='')
@@ -357,7 +359,7 @@ class PlayerCardTests(unittest.TestCase):
         self.page.locator('#sendBtn').click()
         self.page.wait_for_function('!Chat.busy && !Speech.speaking')
         self.assertTrue(self.tts_calls)
-        self.assertEqual(self.tts_calls[0]['voice'], 'jp_003')
+        self.assertEqual(self.tts_calls[0]['lang'], 'ja-JP')
         requests = [r['body'] for r in self.decision_requests if 'sprites_tts_language_v1' in r['body']['tasks']]
         self.assertEqual(len(requests), 1)
         self.assertEqual(requests[0]['tasks'], ['sprites_emotion_v1', 'sprites_tts_language_v1'])
@@ -365,13 +367,14 @@ class PlayerCardTests(unittest.TestCase):
         before = len(self.decision_requests)
         self.page.evaluate('Speech.speak(Chat.lastReply(), {force: true})')
         self.assertEqual(len(self.decision_requests), before)
-        self.assertEqual(self.tts_calls[-1]['voice'], 'jp_003')
+        self.assertEqual(self.tts_calls[-1]['lang'], 'ja-JP')
         self.assertFalse(self.errors)
 
-    def test_tts_clear_french_and_spanish_are_local(self):
+    def test_tts_clear_french_and_spanish_use_picked_browser_voice(self):
         self.page.goto(APP)
-        # The existing female-voice policy uses browser voices for these locales;
-        # fr_001 and es_002 are male voices. Mock the supported browser path.
+        # With a browser voice explicitly picked, replies stay on the browser
+        # path and the cloud speech endpoint is never called.
+        self.page.evaluate("() => { Speech.settings.voiceId = 'browser-female'; Speech.save(); }")
         self.page.evaluate("""() => {
             window.spokenLanguages = [];
             window.SpeechSynthesisUtterance = class { constructor(text) { this.text = text; } };
@@ -389,8 +392,9 @@ class PlayerCardTests(unittest.TestCase):
         self.assertFalse(any('sprites_tts_language_v1' in r['body']['tasks'] for r in self.decision_requests))
         self.assertFalse(self.errors)
 
-    def test_tts_muted_and_auto_language_off_do_not_add_language_tasks(self):
+    def test_tts_muted_skips_cloud_and_uncertain_language_asks(self):
         self.page.goto(APP)
+        self.language_answer = {'choice_id': 'ja-JP', 'confidence': 0}
         self.page.locator('#speakToggle').click()
         self.reply_text = '[happy] Kimi no koe ga yasashikute kokoro ga atatakai.'
         self.page.locator('#msgInput').fill('Read this reply')
@@ -398,12 +402,11 @@ class PlayerCardTests(unittest.TestCase):
         self.page.wait_for_function('!Chat.busy')
         self.assertFalse(self.tts_calls)
         self.page.locator('#speakToggle').click()
-        self.page.evaluate('Speech.settings.autoLang = false')
         self.page.locator('#msgInput').fill('Read it again')
         self.page.locator('#sendBtn').click()
         self.page.wait_for_function('!Chat.busy && !Speech.speaking')
-        self.assertEqual(self.tts_calls[-1]['voice'], 'en_us_001')
-        self.assertFalse(any('sprites_tts_language_v1' in r['body']['tasks'] for r in self.decision_requests))
+        self.assertEqual(self.tts_calls[-1]['lang'], 'ja-JP')
+        self.assertTrue(any('sprites_tts_language_v1' in r['body']['tasks'] for r in self.decision_requests))
         self.assertFalse(self.errors)
 
 

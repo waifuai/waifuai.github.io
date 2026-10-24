@@ -167,7 +167,7 @@
     'settings.herVoice': '彼女の声',
     'settings.matchLanguage': '返信の言語に合わせる',
     'settings.voiceVolume': '声の音量',
-    'settings.voiceNote': '返信は無料の TikTok 音声サービスで読み上げられます。混み合っているときはブラウザー自身の音声が使われます。日本語やドイツ語などの返信には、その言語の声が使われます。',
+    'settings.voiceNote': '返信はその言語の声で読み上げられます。ブラウザー自身の音声を選ぶこともできます。',
     'settings.micNote': 'マイクボタンを長押しして話すか、タップで開始、もう一度タップで停止します。音声は WaifuAI Cloud が文字起こしします。',
     'settings.voiceAutoSend': '話した直後に送信',
     'settings.radio': 'ラジオ',

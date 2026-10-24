@@ -170,7 +170,7 @@
     'settings.herVoice': 'Suaranya',
     'settings.matchLanguage': 'Sesuaikan dengan bahasa balasan',
     'settings.voiceVolume': 'Volume suara',
-    'settings.voiceNote': 'Balasan dibacakan oleh layanan suara TikTok gratis, atau oleh suara browser kamu sendiri jika sedang sibuk. Balasan dalam bahasa Jepang, Jerman, atau bahasa lain mendapat suara untuk bahasa itu.',
+    'settings.voiceNote': 'Balasan dibacakan dalam bahasa balasannya. Kamu juga bisa memilih suara browser kamu sendiri.',
     'settings.micNote': 'Tahan tombol mikrofon untuk bicara, atau ketuk untuk mulai dan ketuk lagi untuk berhenti. Ucapan disalin oleh WaifuAI Cloud.',
     'settings.voiceAutoSend': 'Kirim langsung setelah bicara',
     'settings.radio': 'Radio',

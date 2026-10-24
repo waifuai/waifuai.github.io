@@ -168,7 +168,7 @@
     'settings.herVoice': 'Ihre Stimme',
     'settings.matchLanguage': 'Sprache der Antwort übernehmen',
     'settings.voiceVolume': 'Stimmlautstärke',
-    'settings.voiceNote': 'Antworten werden von einem kostenlosen TikTok-Stimmdienst vorgelesen oder, wenn dieser ausgelastet ist, von der Stimme deines Browsers. Eine Antwort auf Japanisch, Deutsch oder einer anderen Sprache bekommt eine Stimme für diese Sprache.',
+    'settings.voiceNote': 'Antworten werden in der Sprache der Antwort vorgelesen. Du kannst auch die Stimme deines Browsers wählen.',
     'settings.micNote': 'Halte die Mikrofon-Taste gedrückt zum Sprechen oder tippe sie an, um zu starten, und tippe erneut, um zu stoppen. Sprache wird von WaifuAI Cloud transkribiert.',
     'settings.voiceAutoSend': 'Direkt nach dem Sprechen senden',
     'settings.radio': 'Radio',

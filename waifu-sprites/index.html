@@ -181,10 +181,9 @@
 
       <h3 data-i18n="settings.voice">Voice</h3>
       <label class="row"><span data-i18n="settings.readAloud">Read her replies aloud</span><input id="speakEnabled" type="checkbox"></label>
-      <label class="row"><span data-i18n="settings.herVoice">Her voice</span><select id="voiceSelect"></select></label>
-      <label class="row"><span data-i18n="settings.matchLanguage">Match the reply's language</span><input id="speakAutoLang" type="checkbox"></label>
+      <label class="row"><span data-i18n="settings.herVoice">Her voice</span><select id="voiceSelect"><option value="" data-i18n="settings.matchLanguage">Match the reply's language</option></select></label>
       <label class="row"><span data-i18n="settings.voiceVolume">Voice volume</span><input id="speakVolume" type="range" min="0.1" max="1" step="0.05"></label>
-      <p class="note" data-i18n="settings.voiceNote">Replies are read by a free TikTok voice service, or by your browser's own voice if it's busy. A reply in Japanese, German or another language gets a voice for that language.</p>
+      <p class="note" data-i18n="settings.voiceNote">Replies are read aloud in the reply's language. You can also pick your browser's own voice instead.</p>
       <p class="note" data-i18n="settings.micNote">Hold the mic button to talk, or tap it to start and tap again to stop. Speech is transcribed by WaifuAI Cloud.</p>
       <label class="row"><span data-i18n="settings.voiceAutoSend">Send right after speaking</span><input id="voiceAutoSend" type="checkbox"></label>
 

@@ -170,7 +170,7 @@
     'settings.herVoice': '她的声音',
     'settings.matchLanguage': '匹配回复的语言',
     'settings.voiceVolume': '语音音量',
-    'settings.voiceNote': '回复由免费的 TikTok 语音服务朗读；如果它繁忙，则用浏览器自带的声音。日语、德语等语言的回复会用对应语言的声音。',
+    'settings.voiceNote': '回复会以回复的语言朗读；你也可以改用浏览器自带的声音。',
     'settings.micNote': '按住麦克风按钮说话，或点一下开始、再点一下结束。语音由 WaifuAI Cloud 转录。',
     'settings.voiceAutoSend': '说完后立即发送',
     'settings.radio': '电台',

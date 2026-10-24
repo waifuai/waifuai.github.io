@@ -160,24 +160,31 @@ test('Sprites browser playback refuses male-only and unknown inventories',async(
 });
 
 function speechRuntime(failure) {
- const window={};let requests=0;
+ const window={};let requests=0,lastUrl='';
  const speechSynthesis={getVoices:()=>[{name:'English Female',lang:'en-US'},{name:'Arabic Female',lang:'ar-SA'}]};
  const c=vm.createContext({window,navigator:{language:'en-US'},localStorage:{getItem:()=>null},setTimeout,clearTimeout,speechSynthesis,
- atob:x=>Buffer.from(x,'base64').toString('binary'),
- fetch:async()=>{requests++;if(failure==='network')throw new TypeError('Failed to fetch');return{ok:failure!=='http',status:503,json:async()=>failure==='api'?{success:false,error:'offline'}:{data:'AA=='}};}});
+ AbortSignal,URLSearchParams,URL,
+ fetch:async url=>{requests++;lastUrl=String(url);if(failure==='network')throw new TypeError('Failed to fetch');
+  if(failure==='unavailable')return{ok:true,status:204,headers:new Map()};
+  return{ok:failure!=='http',status:failure==='http'?503:200,headers:new Map(),
+   arrayBuffer:async()=>failure==='empty'?new ArrayBuffer(0):new ArrayBuffer(4)};}});
  window.speechSynthesis=speechSynthesis;
  window.AudioContext=function(){this.decodeAudioData=async()=>{if(failure==='decode')throw new Error('Invalid audio');return{duration:0}}};
  vm.runInContext(fs.readFileSync(routerPath,'utf8'),c);
  let source=fs.readFileSync(path.join(__dirname,'../speech.js'),'utf8');
  source=source.replace('return { VOICES, settings,','return { resolve, VOICES, settings,');
  vm.runInContext(source+';window.testSpeech=Speech;',c);
- return {speech:window.testSpeech,requests:()=>requests};
+ return {speech:window.testSpeech,requests:()=>requests,lastUrl:()=>lastUrl};
 }
-for(const failure of ['network','http','api','decode'])test(`Sprites TikTok ${failure} failure stays silent`,async()=>{
+for(const failure of ['network','http','unavailable','empty','decode'])test(`Sprites cloud ${failure} failure stays silent`,async()=>{
  const r=speechRuntime(failure);assert.equal((await r.speech.resolve('Hello, how are you today?')).kind,'silent');assert.equal(r.requests(),1);
 });
-test('Sprites unsupported primary language stays silent with installed browser voice',async()=>{
- const r=speechRuntime();assert.equal((await r.speech.resolve('مرحبا كيف حالك اليوم؟')).kind,'silent');assert.equal(r.requests(),0);
+test('Sprites cloud speech receives the reply language',async()=>{
+ const r=speechRuntime();
+ assert.equal((await r.speech.resolve('Hello, how are you today?')).kind,'buffer');
+ assert.ok(r.lastUrl().includes('lang=en-US'));
+ assert.equal((await r.speech.resolve('مرحبا كيف حالك اليوم؟')).kind,'buffer');
+ assert.ok(r.lastUrl().includes('lang=ar-SA'));
 });
 test('Sprites successful primary and explicit browser selection remain available',async()=>{
  const r=speechRuntime();assert.equal((await r.speech.resolve('Hello, how are you today?')).kind,'buffer');

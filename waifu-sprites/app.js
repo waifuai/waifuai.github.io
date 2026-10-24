@@ -151,7 +151,6 @@
     speakToggle.title = tr(on ? 'app.muteVoice' : 'app.readAloud');
     speakToggle.setAttribute('aria-label', tr('app.readAloud'));
     $('speakEnabled').checked = on;
-    $('speakAutoLang').checked = Speech.settings.autoLang;
     $('speakVolume').value = Speech.settings.volume;
     $('voiceSelect').value = Speech.settings.voiceId;
   }
@@ -172,11 +171,10 @@
     Speech.save();
     if (!on) Speech.stop();
     applySpeech();
-    track('voice_enabled_toggle', { type: 'tiktok', enabled: on });
+    track('voice_enabled_toggle', { type: 'cloud', enabled: on });
   }
   speakToggle.addEventListener('click', () => setSpeech(!Speech.settings.enabled));
   $('speakEnabled').addEventListener('change', e => setSpeech(e.target.checked));
-  $('speakAutoLang').addEventListener('change', e => { Speech.settings.autoLang = e.target.checked; Speech.save(); });
   $('speakVolume').addEventListener('change', e => { Speech.settings.volume = +e.target.value; Speech.save(); });
   $('voiceSelect').addEventListener('change', e => {
     Speech.settings.voiceId = e.target.value;
