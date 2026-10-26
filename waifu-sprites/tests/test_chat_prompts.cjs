@@ -27,11 +27,18 @@ function client(locale = 'en', bundles = true) {
 const system = async chat => (await chat.modelMessages('Synthetic greeting'))[0].content;
 const placeholders = s => [...s.matchAll(/%\{(\w+)\}/g)].map(m => m[1]).sort();
 
-test('all 13 interface locales plus Bengali have complete Sprites prompts and placeholders', () => {
+// Authored instruction sets that are deliberately not offered as interface
+// locales: Bengali can be selected as a reply language, but the UI picker does
+// not list it. Keep this explicit so an interface locale cannot ship without
+// prompt coverage, and a new reply-only prompt cannot appear by accident.
+const REPLY_ONLY_PROMPTS = ['bn'];
+
+test('every interface locale has complete Sprites prompts and placeholders', () => {
   const { c } = client();
   const dicts = c.ChatPrompts.dictionaries;
   const catalog = require('../../i18n/i18n.js').locales().map(l => l.code);
-  assert.deepEqual(Object.keys(dicts).sort(), [...catalog, 'bn'].sort());
+  for (const code of catalog) assert.ok(dicts[code], code + ' is an interface locale but has no prompt dictionary');
+  assert.deepEqual(Object.keys(dicts).sort(), [...catalog, ...REPLY_ONLY_PROMPTS].sort());
   for (const [locale, entries] of Object.entries(dicts)) {
     assert.deepEqual(Object.keys(entries).sort(), Object.keys(dicts.en).sort(), locale);
     for (const key of Object.keys(dicts.en)) {

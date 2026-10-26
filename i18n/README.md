@@ -20,10 +20,17 @@ the other WaifuAI apps can adopt it later without a cross-repo refactor.
 
 Sprites loads the shared `chat_prompts.js` bundle and then
 `waifu-sprites/prompt_translations.js`. Together they provide chat instructions
-for all 13 interface locales plus Bengali: four built-in personas, response
-language, picture behavior, emotion instructions, context wrappers and the
-default ambient instruction. The shared bundle is byte-identical to Companion's;
-Sprites adds only its own keys in its separate file.
+for all 13 interface locales plus reply-only Bengali: four built-in personas,
+response language, picture behavior, emotion instructions, context wrappers and
+the default ambient instruction. The shared bundle is byte-identical to
+Companion's; Sprites adds only its own keys in its separate file.
+
+The locale contract is one-directional: every locale that `i18n.js` offers in
+the interface picker must have instructions, but instructions may exist without
+a UI dictionary (Bengali today). A reply-only locale can be chosen as the
+response language; the interface picker still lists only catalog locales.
+`test_chat_prompts.cjs` enforces the direction and the explicit reply-only
+allowlist.
 
 An explicit reply-language selection chooses the instruction locale. Automatic
 replies use the interface locale for instruction prose while still following the
@@ -90,7 +97,10 @@ summaries and transliteration tasks retain their existing output contracts.
 First match wins: a saved choice (`localStorage`, per app) → `navigator.languages`
 in the visitor's own order → `navigator.language` → English. Regional and legacy
 tags reduce to the base locale (`es-MX`→`es`, `pt-PT`→`pt`, `zh-TW`→`zh`,
-`in`→`id`, …). Only an explicit pick is stored, so a visitor who later changes
+`in`→`id`, …). Filipino and Tagalog (`tl`, `fil`) are deliberately absent from
+that table: the response picker supports them, but without a Filipino interface
+dictionary they fall through to the next browser language instead of showing
+Indonesian. Only an explicit pick is stored, so a visitor who later changes
 their browser language still gets the new language; `auto` remembers the intent
 without freezing the language.
 
@@ -98,7 +108,11 @@ without freezing the language.
 
 One `locales/<code>.js` file, and a catalog entry in `i18n.js` only when the tag
 does not already reduce to a supported base. A `zh-Hant` dictionary later needs
-no runtime change.
+no runtime change. An interface locale also needs instructions in the shared
+`chat_prompts.js` bundle and its Sprites keys in `prompt_translations.js`;
+`test_chat_prompts.cjs` fails when a catalog locale has no prompt dictionary. A
+reply-only locale needs only the prompt dictionaries and must be listed in that
+test's `REPLY_ONLY_PROMPTS`.
 
 ### Dictionary contract
 
