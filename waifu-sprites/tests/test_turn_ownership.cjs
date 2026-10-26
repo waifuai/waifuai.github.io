@@ -157,3 +157,16 @@ test('delayed transcription and audio decoding cannot submit or play after cance
   const speaking=audio.speech.speak('Hello there.',{valid:()=>valid});await tick();valid=false;audio.speech.stop();decoding.resolve({duration:1});
   await speaking;assert.equal(plays,0);assert.ok(!audio.speech.speaking);
 });
+
+test('per-chat interface locale reaches Cloud settings in full and embedded apps',async()=>{
+ for(const embed of [false,true]){
+  const {chat,ctx}=client(embed);let body;
+  const snapshot={interface_locale:'ja',interface_locale_preference:'auto',interface_locale_status:'ready',interface_locale_version:1};
+  ctx.window.WaifuI18n={snapshot:()=>snapshot};
+  chat.settings.stream=false;
+  ctx.fetch=async(url,options)=>{body=JSON.parse(options.body);return json('Invented reply');};
+  await chat.send('Invented',{onDone(){}});
+  assert.ok(body);
+  for(const [key,value] of Object.entries(snapshot))assert.equal(body.client_settings[key],value);
+ }
+});
