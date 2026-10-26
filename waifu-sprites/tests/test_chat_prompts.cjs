@@ -31,7 +31,7 @@ const placeholders = s => [...s.matchAll(/%\{(\w+)\}/g)].map(m => m[1]).sort();
 // locales: Bengali can be selected as a reply language, but the UI picker does
 // not list it. Keep this explicit so an interface locale cannot ship without
 // prompt coverage, and a new reply-only prompt cannot appear by accident.
-const REPLY_ONLY_PROMPTS = ['bn'];
+const REPLY_ONLY_PROMPTS = ['bn', 'cs', 'el', 'fi', 'hi', 'hu', 'it', 'ko', 'my', 'nl', 'ro', 'si', 'th', 'tr', 'uk', 'vi'];
 
 test('every interface locale has complete Sprites prompts and placeholders', () => {
   const { c } = client();
@@ -53,7 +53,10 @@ test('all four built-in personas and emotion instructions use every supported re
   const { c, chat } = client('ar');
   const languages = { en:'English', ar:'Arabic', bn:'Bengali', es:'Spanish', pt:'Portuguese (Brazil)',
     ru:'Russian', fr:'French', de:'German', ja:'Japanese', zh:'Chinese (Simplified)', fa:'Persian',
-    id:'Indonesian', ms:'Malay', pl:'Polish' };
+    id:'Indonesian', ms:'Malay', pl:'Polish', hi:'Hindi', ko:'Korean', tr:'Turkish',
+    it:'Italian', vi:'Vietnamese', uk:'Ukrainian', cs:'Czech',
+    th:'Thai', nl:'Dutch', el:'Greek', ro:'Romanian',
+    hu:'Hungarian', fi:'Finnish', my:'Myanmar (Burmese)', si:'Sinhala (Sinhalese)' };
   for (const [locale, language] of Object.entries(languages)) {
     chat.settings.language = language;
     const t = c.ChatPrompts.forLanguage(language);
@@ -131,7 +134,7 @@ test('default and saved legacy ambient instructions translate while custom instr
 
 test('unsupported explicit languages keep their requested language with English instructions', async () => {
   const { chat } = client('ar');
-  for (const language of ['Korean','Chinese (Traditional)','constructor','__proto__']) {
+  for (const language of ['Swedish','Chinese (Traditional)','constructor','__proto__']) {
     chat.settings.language = language;
     const sys = await system(chat);
     assert.ok(sys.startsWith('Reply in ' + language));

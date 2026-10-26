@@ -20,14 +20,17 @@ the other WaifuAI apps can adopt it later without a cross-repo refactor.
 
 Sprites loads the shared `chat_prompts.js` bundle and then
 `waifu-sprites/prompt_translations.js`. Together they provide chat instructions
-for all 13 interface locales plus reply-only Bengali: four built-in personas,
-response language, picture behavior, emotion instructions, context wrappers and
-the default ambient instruction. The shared bundle is byte-identical to
-Companion's; Sprites adds only its own keys in its separate file.
+for all 13 interface locales plus reply-only Bengali, Burmese, Czech, Dutch,
+Finnish, Greek, Hindi, Hungarian, Italian, Korean, Romanian, Sinhala, Thai,
+Turkish, Ukrainian and Vietnamese: four built-in personas, response language,
+picture behavior, emotion
+instructions, context wrappers and the default ambient instruction. The shared
+bundle is byte-identical to Companion's; Sprites adds only its own keys in its
+separate file.
 
 The locale contract is one-directional: every locale that `i18n.js` offers in
 the interface picker must have instructions, but instructions may exist without
-a UI dictionary (Bengali today). A reply-only locale can be chosen as the
+a UI dictionary (those sixteen today). A reply-only locale can be chosen as the
 response language; the interface picker still lists only catalog locales.
 `test_chat_prompts.cjs` enforces the direction and the explicit reply-only
 allowlist.

@@ -63,9 +63,9 @@ const Chat = (() => {
 
   // Reply languages. '' follows whatever language the user writes in.
   const LANGUAGES = ['Arabic', 'Bengali', 'Chinese (Simplified)', 'Chinese (Traditional)', 'Czech', 'Dutch', 'English', 'Filipino',
-    'French', 'German', 'Greek', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Malay', 'Persian',
-    'Polish', 'Portuguese (Brazil)', 'Portuguese (Portugal)', 'Romanian', 'Russian', 'Spanish', 'Swedish', 'Tamil', 'Thai', 'Turkish',
-    'Ukrainian', 'Urdu', 'Vietnamese'];
+    'Finnish', 'French', 'German', 'Greek', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Malay',
+    'Myanmar (Burmese)', 'Persian', 'Polish', 'Portuguese (Brazil)', 'Portuguese (Portugal)', 'Romanian', 'Russian',
+    'Sinhala (Sinhalese)', 'Spanish', 'Swedish', 'Tamil', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Vietnamese'];
 
   const SUMMARY_LENGTHS = {
     'ultra-concise': 'Create an ultra-concise one-sentence summary',
