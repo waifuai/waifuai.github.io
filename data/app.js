@@ -1,4 +1,97 @@
 (function () {
+  function updateDecisionMonths() {
+    var panel=document.querySelector('[data-decision-cutoff]');
+    if(!panel) return;
+    var cutoff=Date.parse(panel.dataset.decisionCutoff), daily=Number(panel.dataset.dailyRate), now=Date.now();
+    if(!Number.isFinite(cutoff) || !Number.isFinite(daily) || daily<0) return;
+    var allowEstimate=now>=cutoff;
+    var day=86400000, offset=8*3600000;
+    function monthStart(time) {
+      var d=new Date(time+offset);
+      return Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),1)-offset;
+    }
+    function moveMonth(time, count) {
+      var d=new Date(time+offset);
+      return Date.UTC(d.getUTCFullYear(),d.getUTCMonth()+count,1)-offset;
+    }
+    function key(time) { return new Date(time+offset).toISOString().slice(0,7); }
+    function label(time, length) {
+      return new Date(time).toLocaleDateString('en-US',{timeZone:'Asia/Singapore',month:length,year:'numeric'});
+    }
+    function number(value) { return Math.round(value).toLocaleString('en-US'); }
+    var saved={}, first;
+    panel.querySelectorAll('[data-decision-month]').forEach(function(row) {
+      saved[row.dataset.decisionMonth]={calls:Number(row.dataset.calls),partial:row.dataset.partial==='1'};
+      if(!first || row.dataset.decisionMonth<first) first=row.dataset.decisionMonth;
+    });
+    if(!first) return;
+    var current=monthStart(Math.max(now,cutoff)), start=Math.max(Date.parse(first+'-01T00:00:00+08:00'),moveMonth(current,-11));
+    var months=[];
+    for(var time=start; time<=current; time=moveMonth(time,1)) {
+      var end=moveMonth(time,1), recorded=saved[key(time)] || {calls:0,partial:false};
+      months.push({time:time,key:key(time),recorded:recorded.calls,partial:recorded.partial,
+        estimated:allowEstimate && end>cutoff,calls:recorded.calls+(allowEstimate?daily*Math.max(0,end-Math.max(time,cutoff))/day:0)});
+    }
+    var peak=Math.max.apply(null,months.map(function(m) { return m.calls; }));
+    var step=Math.max(1,Math.pow(10,Math.floor(Math.log10(Math.max(1,peak))))/5);
+    var ceiling=Math.max(1,Math.ceil(peak*1.15/step)*step);
+    var chart=panel.querySelector('.month-chart'), selected=chart.querySelector(':focus');
+    var selectedKey=selected && selected.dataset.month;
+    var fragment=document.createDocumentFragment();
+    months.forEach(function(m) {
+      var button=document.createElement('button'), column=document.createElement('span');
+      button.type='button';
+      button.className='month-bar'+(m.estimated?' forecast-bar':'');
+      button.dataset.month=m.key;
+      button.style.setProperty('--height',(m.calls/ceiling*100).toFixed(3)+'%');
+      var detail=label(m.time,'long')+' · '+number(m.calls)+' decision calls';
+      if(m.estimated) detail+=' estimated month · '+number(m.recorded)+' recorded · '+panel.dataset.rateBasis;
+      if(m.partial) detail+=' · partial recorded month; no estimate before recording began';
+      button.dataset.detail=detail;
+      button.setAttribute('aria-label',detail);
+      column.className='bar-column';
+      if(m.estimated) {
+        var fill=document.createElement('span');
+        fill.className='forecast-recorded';
+        fill.style.height=(m.recorded/Math.max(1,m.calls)*100).toFixed(3)+'%';
+        column.appendChild(fill);
+      }
+      var value=document.createElement('span'), caption=document.createElement('span');
+      value.className='bar-value';
+      value.textContent=(m.estimated?'≈':'')+number(m.calls);
+      column.appendChild(value);
+      caption.className='month-label';
+      caption.textContent=label(m.time,'short')+(m.partial?' partial':'')+(m.estimated?' est.':'');
+      button.append(column,caption);
+      fragment.appendChild(button);
+    });
+    chart.replaceChildren(fragment);
+    panel.querySelector('.chart-scale span').textContent=number(ceiling);
+    panel.querySelector('.decision-estimate-note').textContent=allowEstimate?
+      'Estimates through '+label(current,'long')+' · ≈'+number(daily)+' calls/day · Later months keep using this saved pace until the next export.':
+      'Recorded counts only; the latest recorded call is ahead of this device’s clock.';
+    if(selectedKey) {
+      var replacement=chart.querySelector('[data-month="'+selectedKey+'"]');
+      if(replacement) replacement.focus({preventScroll:true});
+    }
+  }
+  updateDecisionMonths();
+  setInterval(updateDecisionMonths,60000);
+  document.addEventListener('visibilitychange',updateDecisionMonths);
+
+  function openLinkedSection() {
+    var id;
+    try { id=decodeURIComponent(location.hash.slice(1)); } catch(error) { return; }
+    var target=id && document.getElementById(id);
+    if(!target) return;
+    for(var parent=target; parent; parent=parent.parentElement) {
+      if(parent.tagName==='DETAILS') parent.open=true;
+    }
+    target.scrollIntoView();
+  }
+  openLinkedSection();
+  window.addEventListener('hashchange',openLinkedSection);
+
   function expireForecasts() {
     document.querySelectorAll('[data-forecast-end]').forEach(function(bar) {
       if(Date.now() >= Date.parse(bar.dataset.forecastEnd)) bar.hidden = true;
@@ -44,11 +137,14 @@
       });
     });
   });
-  document.querySelectorAll('.month-bar').forEach(function(button) {
-    function describe() { button.closest('.chart-panel').querySelector('.chart-detail').textContent=button.dataset.detail; }
-    button.addEventListener('click',describe);
-    button.addEventListener('focus',describe);
-    button.addEventListener('mouseenter',describe);
+  document.querySelectorAll('.chart-panel').forEach(function(panel) {
+    function describe(event) {
+      var button=event.target.closest('.month-bar');
+      if(button) panel.querySelector('.chart-detail').textContent=button.dataset.detail;
+    }
+    panel.addEventListener('click',describe);
+    panel.addEventListener('focusin',describe);
+    panel.addEventListener('mouseover',describe);
   });
   if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !(navigator.connection && navigator.connection.saveData)) {
     var videos=document.querySelectorAll('.demo video, .product-tile video');
