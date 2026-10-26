@@ -20,6 +20,21 @@ embed; user-triggered chats and image requests still use the usual proxy.
 
 ## Validation and publishing
 
+Built-in chat instructions are translated for all 13 interface locales plus
+Bengali. An explicit reply language takes priority; automatic replies use the
+interface locale for instruction prose while following the user's latest
+message. All four built-in personas, emotion explanations, picture behavior,
+context wrappers and the default ambient instruction are translated. Custom
+prompts and stored memories stay intact. Emotion tags keep their existing names
+and remain hidden from the displayed and spoken reply. See
+[`i18n/README.md`](../i18n/README.md#chat-instructions).
+
+Run `node --test "waifu-sprites/tests/*.cjs"` for the unit checks and
+`python waifu-sprites/tests/test_chat_prompts_browser.py` for mocked Send checks
+in the mobile full app and embed, including a failed prompt-bundle download.
+These validate request construction and tag handling; real output-language
+adherence and translation quality need separate review after publication.
+
 Memory defaults to 30 recent conversational messages, raisable to 100 in
 settings, including the current turn. Cloud context packing also limits older
 history to 128 KiB and the complete serialized request to 256 KiB. It preserves

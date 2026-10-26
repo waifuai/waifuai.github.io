@@ -554,35 +554,61 @@ const Chat = (() => {
   }
 
   // ── Requests ──
-  function personaPrompt() {
-    return (settings.persona === 'custom' ? settings.customPrompt : PERSONAS[settings.persona].prompt) || '';
+  function promptText(language = settings.language) {
+    if (window.ChatPrompts) return window.ChatPrompts.forLanguage(language);
+    // A failed translation download must not stop chat.
+    return (_key, fallback, params = {}) => fallback.replace(/%\{(\w+)\}/g,
+      (all, key) => params[key] == null ? all : String(params[key]));
   }
 
-  async function contextLines() {
+  function personaPrompt(prompt = promptText()) {
+    return settings.persona === 'custom' ? (settings.customPrompt || '')
+      : prompt('sprite_' + settings.persona, PERSONAS[settings.persona].prompt);
+  }
+
+  function ambientPrompt() {
+    const custom = settings.ambientPrompt.trim();
+    return custom && custom !== DEFAULT_AMBIENT_PROMPT ? custom
+      : promptText()('sprite_ambient', DEFAULT_AMBIENT_PROMPT);
+  }
+
+  async function contextLines(prompt) {
     const lines = [];
     if (settings.includeTime) {
-      lines.push('The current date and time for the user is ' + new Date().toLocaleString([], { dateStyle: 'full', timeStyle: 'short' }) + '.');
+      lines.push(prompt('time', 'The current date and time for the user is %{time}.', {
+        time: new Date().toLocaleString(prompt.locale, { dateStyle: 'full', timeStyle: 'short' }),
+      }));
     }
     if (settings.includeBattery && navigator.getBattery) {
       try {
         const b = await navigator.getBattery();
-        lines.push('The user\'s device battery is at ' + Math.round(b.level * 100) + '% and ' + (b.charging ? 'charging' : 'not charging') + '.');
+        lines.push(prompt('battery', "The user's device battery is at %{level}%; charging: %{charging}. %{remaining}", {
+          level: Math.round(b.level * 100), charging: b.charging ? prompt('yes', 'yes') : prompt('no', 'no'), remaining: '',
+        }).trim());
       } catch (e) {}
     }
     return lines;
   }
 
   async function systemPrompt() {
-    const parts = [personaPrompt().trim()];
-    if (settings.extraPrompt.trim()) parts.push('Additional personality instructions: ' + settings.extraPrompt.trim());
-    if (settings.aboutUser.trim()) parts.push('What the user has told you about themselves (always keep it in mind): ' + settings.aboutUser.trim());
+    const language = settings.language;
+    const prompt = promptText(language);
+    const nativeName = window.WaifuI18n?.languageName?.(language);
+    const languageName = typeof nativeName === 'string' && nativeName ? nativeName : language;
+    const languageRule = language
+      ? prompt('fixed', 'Reply in %{language}, unless the user asks you to speak another language; then switch. Never mix languages in one reply.', { language: languageName })
+      : prompt('auto', 'Reply in the language of the user\'s latest message, and never mix languages in one reply. If they ask you to switch languages, do so.');
+    const parts = [languageRule, personaPrompt(prompt).trim()];
+    if (settings.extraPrompt.trim()) parts.push(prompt('sprite_extra', 'Additional personality instructions: %{text}', { text: settings.extraPrompt.trim() }));
+    if (settings.aboutUser.trim()) parts.push(prompt('sprite_about', 'What the user has told you about themselves (always keep it in mind): %{text}', { text: settings.aboutUser.trim() }));
     const active = window.ConversationBudget ? window.ConversationBudget.activeSummary(memory) : (memory.summary || '');
-    if (active) parts.push('Summary of your conversation with the user so far: ' + active);
-    parts.push(...await contextLines());
-    parts.push(settings.language
-      ? 'Reply in ' + settings.language + ', unless the user asks you to speak another language; then switch. Never mix languages in one reply.'
-      : 'Reply in the language of the user\'s latest message, and never mix languages in one reply. If they ask you to switch languages, do so.');
-    parts.push(Pictures.CHAT_RULE, EMOTION_RULE);
+    if (active) parts.push(prompt('sprite_summary', 'Summary of your conversation with the user so far: %{text}', { text: active }));
+    parts.push(...await contextLines(prompt));
+    parts.push(prompt('pictures', Pictures.CHAT_RULE, {
+      appearance: prompt('sprite_appearance', Pictures.APPEARANCE || 'an anime girl'),
+    }));
+    parts.push(prompt('sprite_offer', 'React in character to a picture request and offer to make it; do not promise successful generation or delivery.'));
+    parts.push(prompt('sprite_emotion', EMOTION_RULE, { tags: Sprites.EMOTIONS.join(', ') }));
     return parts.filter(Boolean).join('\n\n');
   }
 
@@ -879,7 +905,8 @@ const Chat = (() => {
   }
 
   return {
-    PROVIDERS, PERSONAS, LANGUAGES, SUMMARY_LENGTHS, DEFAULT_AMBIENT_PROMPT, settings, saveSettings, modelFor,
+    PROVIDERS, PERSONAS, LANGUAGES, SUMMARY_LENGTHS, settings, saveSettings, modelFor, ambientPrompt,
+    get DEFAULT_AMBIENT_PROMPT() { return promptText()('sprite_ambient', DEFAULT_AMBIENT_PROMPT); },
     send, stop, ids, askDecisions, addPicture, lastReply, newConversation, openConversation, deleteConversation, deleteMessage,
     renameConversation, historyIndex, exportAll, summarize, setSummary, generateTitle, needsRomaji, romanize, modelMessages,
     unsummarizedStart, beginTurn, finishTurn, isCurrent, isDuplicate, normalizeText, onTurnChange, canRetry,

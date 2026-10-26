@@ -628,7 +628,7 @@
     const command = !ambient && /^\/(image|img)\b/i.test(text) ? parseImageCommand(text) : null;
     if (command && !command.prompt) { bubble('info', tr('chat.imageHelp')); return; }
     const previous = Chat.lastReply();
-    const owner = Chat.beginTurn(ambient ? (Chat.settings.ambientPrompt.trim() || Chat.DEFAULT_AMBIENT_PROMPT) : text,
+    const owner = Chat.beginTurn(ambient ? Chat.ambientPrompt() : text,
       { ambient, retryId, kind: command ? 'image' : 'chat' });
     if (!owner) return;
     input.value = '';
@@ -950,7 +950,7 @@
     $('ambientBox').hidden = !s.ambient;
     $('ambientDelay').value = String(s.ambientDelay);
     $('ambientMax').value = String(s.ambientMax);
-    $('ambientPrompt').value = s.ambientPrompt || Chat.DEFAULT_AMBIENT_PROMPT;
+    $('ambientPrompt').value = Chat.ambientPrompt();
 
     const providerList = $('providerList');
     providerList.textContent = '';

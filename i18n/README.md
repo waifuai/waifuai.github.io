@@ -14,6 +14,32 @@ the other WaifuAI apps can adopt it later without a cross-repo refactor.
 | `i18n/bootstrap.js` | Runs in `<head>`: picks the language, sets `<html lang dir>` before paint, and loads the matched dictionary during parse. |
 | `i18n/locales/en.js` | English, the source of truth. Every other dictionary must match its keys. |
 | `i18n/locales/<code>.js` | One dictionary per locale. |
+| `i18n/chat_prompts.js` | Shared built-in chat instructions, also vendored by Companion. |
+
+## Chat instructions
+
+Sprites loads the shared `chat_prompts.js` bundle and then
+`waifu-sprites/prompt_translations.js`. Together they provide chat instructions
+for all 13 interface locales plus Bengali: four built-in personas, response
+language, picture behavior, emotion instructions, context wrappers and the
+default ambient instruction. The shared bundle is byte-identical to Companion's;
+Sprites adds only its own keys in its separate file.
+
+An explicit reply-language selection chooses the instruction locale. Automatic
+replies use the interface locale for instruction prose while still following the
+latest user message. The reply and interface settings remain independent. An
+unsupported prompt language uses English instructions naming the requested
+language. Simplified Chinese instructions are not substituted for a Traditional
+Chinese selection. Missing bundles leave English chat instructions usable; no
+translation service or model call is used to select a prompt.
+
+Custom personas, extra instructions, user background, memories and custom
+ambient prompts remain verbatim and are never rewritten in storage. An exact
+saved copy of the old English default ambient prompt is treated as the built-in
+default when constructing a request. Emotion identifiers such as `[curious]`
+remain unchanged; their explanations and examples are translated, and the tags
+are still stripped from displayed and spoken replies. Internal picture writers,
+summaries and transliteration tasks retain their existing output contracts.
 
 ## Adopting it in another app
 
@@ -91,10 +117,12 @@ no runtime change.
 - A key whose text depends on a number maps to a plural object
   (`{ one, few, many, two, zero, other }`); include the forms your language uses
   plus `other`. `WaifuI18n` picks the form with `Intl.PluralRules`.
-- Keep strings that are model input, brand names and identifiers in English:
-  persona/system prompts, the emotion tag list, summary-length instructions, the
-  picture prompts, `WaifuAI Cloud`, `OpenRouter`, `Groq`, `TikTok`, `LISTEN.moe`,
+- Keep brand names and identifiers unchanged: `WaifuAI Cloud`, `OpenRouter`, `Groq`, `TikTok`, `LISTEN.moe`,
   `Romaji`, `/image`.
+- Translate built-in chat instructions in the prompt bundles, preserving all
+  placeholders, emotion identifiers and the original meaning. Never translate
+  user-authored text as part of interface localization. Internal task prompts
+  retain their separate output contracts.
 - Strings authored with markup keep it: `settings.picturesNote` keeps
   `<code dir="ltr">/image</code>`, `settings.radioNote` keeps the `LISTEN.moe`
   link.

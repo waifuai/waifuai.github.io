@@ -206,5 +206,5 @@ The description is 10 to 40 words describing who is in it, outfit, pose, setting
     if (ref && ref.startsWith('idb:')) Store.del(ref.slice(4));
   }
 
-  return { decide, draw, resolve, forget, ASPECTS, CHAT_RULE };
+  return { decide, draw, resolve, forget, ASPECTS, CHAT_RULE, APPEARANCE };
 })();
