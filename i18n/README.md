@@ -5,8 +5,9 @@ the first paint, with no flash of English and no per-visit model call. It is
 plain `<script>` tags and hand-written dictionaries: no build step, no webfont,
 no CDN.
 
-Waifu Sprites is the first consumer. The runtime lives at the repository root so
-the other WaifuAI apps can adopt it later without a cross-repo refactor.
+Waifu Sprites and Waifu Companion share the same runtime and catalog. Companion
+vendors byte-identical copies of `i18n.js` and `chat_prompts.js`; each app has
+its own complete interface dictionaries matching its English key set.
 
 | File | Role |
 |---|---|
@@ -20,20 +21,19 @@ the other WaifuAI apps can adopt it later without a cross-repo refactor.
 
 Sprites loads the shared `chat_prompts.js` bundle and then
 `waifu-sprites/prompt_translations.js`. Together they provide chat instructions
-for all 14 interface locales plus reply-only Bengali, Burmese, Czech, Dutch,
-Finnish, Greek, Hindi, Hungarian, Korean, Romanian, Sinhala, Thai, Turkish,
-Ukrainian and Vietnamese: four built-in personas, response language,
-picture behavior, emotion
+for all 29 interface locales: English, Arabic, Spanish, Brazilian Portuguese,
+French, Russian, Japanese, Simplified Chinese, Persian, German, Indonesian,
+Malay, Polish, Italian, Bengali, Korean, Hindi, Turkish, Vietnamese, Ukrainian,
+Czech, Thai, Dutch, Greek, Romanian, Hungarian, Finnish, Burmese and Sinhala.
+They cover four built-in personas, response language, picture behavior, emotion
 instructions, context wrappers and the default ambient instruction. The shared
 bundle is byte-identical to Companion's; Sprites adds only its own keys in its
 separate file.
 
-The locale contract is one-directional: every locale that `i18n.js` offers in
-the interface picker must have instructions, but instructions may exist without
-a UI dictionary (those fifteen today). A reply-only locale can be chosen as the
-response language; the interface picker still lists only catalog locales.
-`test_chat_prompts.cjs` enforces the direction and the explicit reply-only
-allowlist.
+Every locale that `i18n.js` offers in the interface picker must have both a UI
+dictionary and chat instructions. All current prompt languages are full interface
+locales. A future reply-only prompt must be explicitly listed in
+`test_chat_prompts.cjs`'s `REPLY_ONLY_PROMPTS`; the test enforces coverage.
 
 An explicit reply-language selection chooses the instruction locale. Automatic
 replies use the interface locale for instruction prose while still following the
@@ -106,6 +106,13 @@ dictionary they fall through to the next browser language instead of showing
 Indonesian. Only an explicit pick is stored, so a visitor who later changes
 their browser language still gets the new language; `auto` remembers the intent
 without freezing the language.
+
+The picker lists all 29 catalog locales plus the device-language option.
+`python waifu-sprites/tests/test_locale_expansion_browser.py` checks every new locale
+and Italian in narrow full-app and embedded layouts, saved-choice reloads,
+new-language startup, and device-language loading after a saved choice. Inference
+is mocked. `test_locale_loading.cjs` also covers a failed dictionary download;
+the working interface remains active.
 
 ## Adding a language
 

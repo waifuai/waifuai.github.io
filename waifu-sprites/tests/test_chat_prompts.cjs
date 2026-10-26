@@ -27,11 +27,9 @@ function client(locale = 'en', bundles = true) {
 const system = async chat => (await chat.modelMessages('Synthetic greeting'))[0].content;
 const placeholders = s => [...s.matchAll(/%\{(\w+)\}/g)].map(m => m[1]).sort();
 
-// Authored instruction sets that are deliberately not offered as interface
-// locales: Bengali can be selected as a reply language, but the UI picker does
-// not list it. Keep this explicit so an interface locale cannot ship without
-// prompt coverage, and a new reply-only prompt cannot appear by accident.
-const REPLY_ONLY_PROMPTS = ['bn', 'cs', 'el', 'fi', 'hi', 'hu', 'ko', 'my', 'nl', 'ro', 'si', 'th', 'tr', 'uk', 'vi'];
+// All authored prompt languages are also full interface locales. Keep an
+// explicit allowlist for any future intentionally reply-only additions.
+const REPLY_ONLY_PROMPTS = [];
 
 test('every interface locale has complete Sprites prompts and placeholders', () => {
   const { c } = client();

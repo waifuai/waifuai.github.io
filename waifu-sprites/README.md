@@ -20,8 +20,9 @@ embed; user-triggered chats and image requests still use the usual proxy.
 
 ## Validation and publishing
 
-Built-in chat instructions are translated for all 13 interface locales plus
-Bengali. An explicit reply language takes priority; automatic replies use the
+The full interface and built-in chat instructions are translated for all 29
+catalog locales (including Italian and the fifteen former reply-only languages).
+An explicit reply language takes priority; automatic replies use the
 interface locale for instruction prose while following the user's latest
 message. All four built-in personas, emotion explanations, picture behavior,
 context wrappers and the default ambient instruction are translated. Custom
