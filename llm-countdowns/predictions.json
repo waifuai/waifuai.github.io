@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-22",
+  "lastUpdated": "2026-10-26",
   "researchBaselines": {
     "openai": {
       "name": "GPT-6 Astra",
@@ -43,9 +43,10 @@
       "releaseDate": "2026-10-06"
     },
     "kimi": {
-      "name": "Kimi K3",
-      "intel": 43.6,
-      "releaseDate": "2026-07-16"
+      "name": "Kimi K3.1 Pro",
+      "intel": 55,
+      "releaseDate": "2026-10-23",
+      "speed": 73.5
     },
     "xiaomi": {
       "name": "MiMo-V2.6-Pro",
@@ -73,7 +74,7 @@
     "anthropic": 33,
     "deepseek": 40,
     "mistral": 52,
-    "kimi": 52,
+    "kimi": 99,
     "xiaomi": 40,
     "minimax": 45,
     "zai": 63
@@ -87,7 +88,7 @@
     "alibaba": 48.0,
     "deepseek": 48.0,
     "mistral": 38.0,
-    "kimi": 46.0,
+    "kimi": 58.0,
     "xiaomi": 47.0,
     "minimax": 46.0,
     "zai": 48.0
@@ -622,33 +623,34 @@
       ],
       "models": {
         "frontier": {
-          "id": "kimi-k3-1",
-          "slug": "kimi-k3-1",
-          "shortName": "Kimi K3.1",
-          "predictedName": "Kimi K3.1",
+          "id": "kimi-k3-2",
+          "slug": "kimi-k3-2",
+          "shortName": "Kimi K3.2",
+          "predictedName": "Kimi K3.2 (speculative successor)",
           "category": "frontier",
           "icon": "🌙",
           "stageColor": "#a855f7",
-          "status": "Kimi K3 remains the current model in official docs; no K3.1 launch or date found as of Oct 20",
+          "status": "Speculative successor label; Kimi K3.1 Pro launched Oct 23, with no K3.2 name or launch schedule found in official sources checked Oct 26, 2026",
           "hypeScore": 88,
           "expectedGain": 3.0,
-          "explicitTargetDate": "2026-10-29T17:00:00.000Z",
-          "explicitWindowLabel": "Late Oct 2026",
-          "cadenceDays": 90,
+          "explicitTargetDate": "2027-01-30T09:00:00.000Z",
+          "explicitWindowLabel": "Late Jan 2027 (low-confidence estimate)",
+          "cadenceDays": 99,
           "baseline": {
-            "name": "Kimi K3",
-            "intel": 43.6,
-            "releaseDate": "2026-07-16",
-            "speed": 40
+            "name": "Kimi K3.1 Pro",
+            "intel": 55,
+            "releaseDate": "2026-10-23",
+            "speed": 73.5
           },
           "features": [
-            "The current official Kimi K3 documentation describes K3 as its flagship with native vision and 1M context",
-            "No K3.1 release or schedule was found in the checked official documentation; configuration-leak claims are not launch confirmation",
-            "Reasoning effort and long context are already documented K3 features and do not prove a K3.1 release",
-            "The Oct 29 date and +3 score gain remain speculative estimates"
+            "Kimi Code dates the K3.1 Pro and Pro Highspeed rollout to Oct 23, 2026; the research blog is dated Oct 24. The old Oct 29 K3.1 forecast is retired",
+            "K3.2 is a speculative placeholder for a future model, not an announced Moonshot product name; another K3.1 variant or a different version could arrive first",
+            "Kimi K3 launched Jul 16 and K3.1 Pro Oct 23, a 99-day gap. Repeating that single interval gives Jan 30, 2027; this is a low-confidence estimate, not an established schedule",
+            "Artificial Analysis currently displays 55 on its Intelligence Index and 73.5 output tokens/s for K3.1 Pro. The +3 gain and projected 58 for a successor are illustrative assumptions, not measured performance",
+            "K3.1 Pro and Highspeed are already available through Kimi products and API. The announced Nov 4 full-weights deadline is a distribution milestone for the released model, not a new-model forecast"
           ],
-          "source": "Kimi K3.1 config leak (Jul 27-28, 2026), Amazon Bedrock Kimi K3 GA (Sept 18, 2026) & Artificial Analysis; release-status review Oct 20, 2026: https://platform.kimi.ai/docs/guide/kimi-k3-quickstart",
-          "lastVerified": "2026-10-20"
+          "source": "Checked Oct 26, 2026: Kimi Code release notes (Oct 23 rollout), https://www.kimi.com/code/docs/en/kimi-code/whats-new.html; Kimi research index (Oct 24 blog date), https://www.kimi.com/en/blog/; K3.1 Pro announcement, https://www.kimi.com/en/blog/kimi-k3-1-pro; Artificial Analysis displayed score/speed and Oct 23 release date, https://artificialanalysis.ai/models/kimi-k3-1-pro. Jan 30 and the K3.2 label are our speculative extrapolation from the Jul 16 to Oct 23 gap, not a Moonshot announcement",
+          "lastVerified": "2026-10-26"
         }
       }
     },
