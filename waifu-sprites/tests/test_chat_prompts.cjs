@@ -60,6 +60,7 @@ test('all four built-in personas and emotion instructions use every supported re
       assert.ok(sys.includes('[curious]'), locale);
       assert.ok(sys.includes(t('sprite_appearance')), locale);
       assert.ok(sys.includes(t('sprite_offer')), locale);
+      assert.ok(sys.endsWith(t('reminder', '', { language: c.WaifuI18n.languageName(language) })), locale);
       assert.doesNotMatch(sys, /%\{\w+\}/, locale);
     }
     assert.equal(c.WaifuI18n.locale, 'ar');
@@ -76,9 +77,11 @@ test('English translations preserve the original persona definitions', () => {
 
 test('automatic replies localize instructions to UI while following the latest message', async () => {
   const { c, chat } = client('pt');
+  const t = c.ChatPrompts.forLanguage(null);
   const sys = await system(chat);
   assert.ok(sys.startsWith('Responda no idioma da mensagem mais recente'));
   assert.ok(sys.includes('Você é Aurora'));
+  assert.ok(sys.endsWith(t('reminderAuto')));
   assert.equal(chat.settings.language, '');
   c.WaifuI18n.locale = 'ru';
   assert.ok((await system(chat)).startsWith('Отвечай на языке последнего сообщения'));

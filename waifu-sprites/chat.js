@@ -609,6 +609,9 @@ const Chat = (() => {
     }));
     parts.push(prompt('sprite_offer', 'React in character to a picture request and offer to make it; do not promise successful generation or delivery.'));
     parts.push(prompt('sprite_emotion', EMOTION_RULE, { tags: Sprites.EMOTIONS.join(', ') }));
+    parts.push(language
+      ? prompt('reminder', 'Important: even if the user writes in another language or sends only a short message, reply only in %{language} — unless they explicitly ask you to switch.', { language: languageName })
+      : prompt('reminderAuto', "Important: reply only in the language of the user's latest message, even if it is short; never mix languages. Use English only if their language is unclear."));
     return parts.filter(Boolean).join('\n\n');
   }
 

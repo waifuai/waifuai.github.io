@@ -27,7 +27,10 @@ Sprites adds only its own keys in its separate file.
 
 An explicit reply-language selection chooses the instruction locale. Automatic
 replies use the interface locale for instruction prose while still following the
-latest user message. The reply and interface settings remain independent. An
+latest user message. The reply and interface settings remain independent. Each
+prompt ends with a short reminder in the same locale: an explicit choice repeats
+the requested language even when the user writes in another language or sends
+only a few words, and automatic mode repeats the latest-message rule. An
 unsupported prompt language uses English instructions naming the requested
 language. Simplified Chinese instructions are not substituted for a Traditional
 Chinese selection. Missing bundles leave English chat instructions usable; no
