@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-26",
+  "lastUpdated": "2026-10-27",
   "researchBaselines": {
     "openai": {
       "name": "GPT-6 Astra",
@@ -490,33 +490,33 @@
           "lastVerified": "2026-10-20"
         },
         "terra": {
-          "id": "openai-gpt-6-terra",
-          "slug": "gpt-6-terra",
-          "shortName": "GPT-6 Terra",
-          "predictedName": "GPT-6 Terra / GPT-6.1 Terra",
+          "id": "openai-gpt-6-2-terra",
+          "slug": "gpt-6-2-terra",
+          "shortName": "GPT-6.2 Terra",
+          "predictedName": "GPT-6.2 Terra (speculative successor)",
           "category": "light",
           "icon": "🌍",
           "stageColor": "#10a37f",
-          "status": "Speculative successor; no GPT-6 Terra release or date found in the official model catalog/changelog as of Oct 20",
+          "status": "GPT-6.1 Terra launched Oct 26; no successor name, version or release date announced in the official model catalog checked Oct 27",
           "hypeScore": 70,
-          "expectedGain": 5.0,
-          "explicitTargetDate": "2026-11-17T17:00:00.000Z",
-          "explicitWindowLabel": "Mid Nov 2026 (tentative; low confidence)",
-          "cadenceDays": 60,
+          "expectedGain": 3.0,
+          "explicitTargetDate": "2027-02-12T09:00:00.000Z",
+          "explicitWindowLabel": "Feb 2027 (illustrative; low confidence)",
+          "cadenceDays": 109,
           "baseline": {
-            "name": "GPT-5.6 Terra",
-            "intel": 42.1,
-            "releaseDate": "2026-07-09",
-            "speed": 108
+            "name": "GPT-6.1 Terra (max)",
+            "intel": 48,
+            "releaseDate": "2026-10-26"
           },
           "features": [
-            "GPT-5.6 Terra (Jul 9, 42.1, $2/$12) was the middle tier between Sol and Luna, but GPT-6 shipped only Sol and Luna",
-            "GPT-6 Luna (38.1) already scores close to GPT-5.6 Terra at a fraction of the price, so Terra may be quietly dropped",
-            "If Terra returns it would likely land between Luna and Sol; the projection assumes about 47",
-            "The current flagship catalog has no GPT-6 Terra entry; both the return of this tier and the date remain speculative"
+            "OpenAI released GPT-6.1 Terra on Oct 26, 2026, skipping the predicted GPT-6 Terra name; it is available in ChatGPT Work, Codex and the API",
+            "Artificial Analysis displays 48 on its Intelligence Index for GPT-6.1 Terra at max effort; output speed was not reported on the checked model page",
+            "Feb 12 repeats the single 109-day gap from GPT-5.6 Terra (Jul 9) to GPT-6.1 Terra (Oct 26); one interval is a weak basis for a forecast",
+            "GPT-6.2 Terra is an unconfirmed placeholder name and the +3 Intelligence Index gain is an illustrative scenario, not an announced model, schedule or measured score",
+            "The previous forecast tracked GPT-6 Terra / GPT-6.1 Terra for Nov 17; GPT-6.1 Terra arrived on Oct 26, 22 days earlier"
           ],
-          "source": "https://developers.openai.com/api/docs/changelog; https://developers.openai.com/api/docs/models (checked Oct 20, 2026); historical baselines and cadence estimates retained",
-          "lastVerified": "2026-10-20"
+          "source": "OpenAI launch: https://openai.com/index/introducing-gpt-6-1-terra/ (Oct 26, 2026); official model catalog: https://developers.openai.com/api/docs/models (checked Oct 27); Artificial Analysis: https://artificialanalysis.ai/models/gpt-6-1-terra (checked Oct 27)",
+          "lastVerified": "2026-10-27"
         },
         "luna": {
           "id": "openai-gpt-6-1-luna",
