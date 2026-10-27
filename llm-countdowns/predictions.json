@@ -270,6 +270,7 @@
           "slug": "claude-fable-5-5",
           "shortName": "Claude Fable 5.5",
           "predictedName": "Claude Fable 5.5 / Mythos 5.5",
+          "previewDetail": "Fable and Mythos could return as two access tiers.",
           "category": "frontier",
           "icon": "🟣",
           "stageColor": "#9d4edd",
