@@ -155,3 +155,10 @@ test('shipped page loads prompt bundles in order before chat', () => {
   const base = html.indexOf('../i18n/chat_prompts.js'), extra = html.indexOf('prompt_translations.js'), chat = html.indexOf('src="chat.js');
   assert.ok(base > 0 && base < extra && extra < chat);
 });
+
+ test('new reply languages and Tagalog tags select their prompt locale', () => {
+  const { c } = client();
+  for (const [language, code] of [['Urdu','ur'], ['Filipino','fil'], ['Filipino (Tagalog)','fil'], ['tl-PH','fil'], ['Tamil','ta'], ['Uzbek','uz']]) {
+    assert.equal(c.ChatPrompts.forLanguage(language).locale, code, language);
+  }
+});

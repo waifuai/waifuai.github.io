@@ -2,7 +2,7 @@
 import unittest
 import test_player_card as fixtures
 
-EXPANDED = ['bn', 'ko', 'hi', 'tr', 'vi', 'uk', 'cs', 'th', 'nl', 'el', 'ro', 'hu', 'fi', 'my', 'si']
+EXPANDED = ['bn', 'ko', 'hi', 'tr', 'vi', 'uk', 'cs', 'th', 'nl', 'el', 'ro', 'hu', 'fi', 'my', 'ur', 'fil', 'ta', 'uz', 'si']
 
 
 class LocaleExpansionTests(unittest.TestCase):
@@ -38,7 +38,7 @@ class LocaleExpansionTests(unittest.TestCase):
                 self.page.locator('#settingsBtn').click()
                 self.page.locator('#replyLanguage').select_option('Spanish')
                 values = self.page.locator('#interfaceLanguage option').evaluate_all('els => els.map(el => el.value)')
-                self.assertEqual(len(values), 30)  # 29 locales and device language.
+                self.assertEqual(len(values), 34)  # 33 locales and device language.
                 for code in ['it', *EXPANDED]:
                     with self.subTest(locale=code):
                         self.assertIn(code, values)
@@ -48,7 +48,7 @@ class LocaleExpansionTests(unittest.TestCase):
                                          self.page.evaluate("code => WaifuI18n.dictionary(code)['composer.placeholder']", code))
                         self.assertEqual(self.page.locator('#replyLanguage').input_value(), 'Spanish')
                         self.assertEqual(self.page.evaluate('Chat.settings.language'), 'Spanish')
-                        self.assertEqual(self.page.evaluate('document.documentElement.dir'), 'ltr')
+                        self.assertEqual(self.page.evaluate('document.documentElement.dir'), 'rtl' if code == 'ur' else 'ltr')
                         self.assertTrue(self.page.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'))
                 key = 'ws_embed_locale' if embed else 'ws_locale'
                 self.assertEqual(self.page.evaluate('key => localStorage.getItem(key)', key), 'si')
@@ -56,6 +56,19 @@ class LocaleExpansionTests(unittest.TestCase):
                 self.assertEqual(self.page.evaluate('WaifuI18n.locale'), 'si')
                 self.assertEqual(self.page.get_attribute('#msgInput', 'placeholder'),
                                  self.page.evaluate("WaifuI18n.dictionary('si')['composer.placeholder']"))
+        self.assertFalse(self.calls)
+        self.assertFalse(self.errors, self.errors)
+
+    def test_new_urdu_and_tagalog_browser_locales_start_correctly(self):
+        for tag, code, direction in [('ur-PK', 'ur', 'rtl'), ('tl-PH', 'fil', 'ltr')]:
+            with self.subTest(tag=tag):
+                page = self.open_with_locale(tag)
+                page.goto(fixtures.APP)
+                self.assertEqual(page.evaluate('window.__langAtReady'), code)
+                self.assertEqual(page.evaluate('WaifuI18n.locale'), code)
+                self.assertEqual(page.evaluate('document.documentElement.dir'), direction)
+                self.assertEqual(page.get_attribute('#msgInput', 'placeholder'),
+                                 page.evaluate("code => WaifuI18n.dictionary(code)['composer.placeholder']", code))
         self.assertFalse(self.calls)
         self.assertFalse(self.errors, self.errors)
 

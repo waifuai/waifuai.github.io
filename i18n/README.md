@@ -2,7 +2,7 @@
 
 A tiny, dependency-free runtime that shows every visitor their own language on
 the first paint, with no flash of English and no per-visit model call. It is
-plain `<script>` tags and hand-written dictionaries: no build step, no webfont,
+plain `<script>` tags and local dictionaries: no build step, no webfont,
 no CDN.
 
 Waifu Sprites and Waifu Companion share the same runtime and catalog. Companion
@@ -21,10 +21,10 @@ its own complete interface dictionaries matching its English key set.
 
 Sprites loads the shared `chat_prompts.js` bundle and then
 `waifu-sprites/prompt_translations.js`. Together they provide chat instructions
-for all 29 interface locales: English, Arabic, Spanish, Brazilian Portuguese,
+for all 33 interface locales: English, Arabic, Spanish, Brazilian Portuguese,
 French, Russian, Japanese, Simplified Chinese, Persian, German, Indonesian,
 Malay, Polish, Italian, Bengali, Korean, Hindi, Turkish, Vietnamese, Ukrainian,
-Czech, Thai, Dutch, Greek, Romanian, Hungarian, Finnish, Burmese and Sinhala.
+Czech, Thai, Dutch, Greek, Romanian, Hungarian, Finnish, Burmese, Sinhala, Urdu, Filipino, Tamil and Uzbek.
 They cover four built-in personas, response language, picture behavior, emotion
 instructions, context wrappers and the default ambient instruction. The shared
 bundle is byte-identical to Companion's; Sprites adds only its own keys in its
@@ -100,14 +100,11 @@ summaries and transliteration tasks retain their existing output contracts.
 First match wins: a saved choice (`localStorage`, per app) → `navigator.languages`
 in the visitor's own order → `navigator.language` → English. Regional and legacy
 tags reduce to the base locale (`es-MX`→`es`, `pt-PT`→`pt`, `zh-TW`→`zh`,
-`in`→`id`, …). Filipino and Tagalog (`tl`, `fil`) are deliberately absent from
-that table: the response picker supports them, but without a Filipino interface
-dictionary they fall through to the next browser language instead of showing
-Indonesian. Only an explicit pick is stored, so a visitor who later changes
+`in`→`id`, …). Tagalog (`tl`) resolves to the Filipino (`fil`) dictionary. Only an explicit pick is stored, so a visitor who later changes
 their browser language still gets the new language; `auto` remembers the intent
 without freezing the language.
 
-The picker lists all 29 catalog locales plus the device-language option.
+The picker lists all 33 catalog locales plus the device-language option.
 `python waifu-sprites/tests/test_locale_expansion_browser.py` checks every new locale
 and Italian in narrow full-app and embedded layouts, saved-choice reloads,
 new-language startup, and device-language loading after a saved choice. Inference
@@ -155,3 +152,5 @@ test's `REPLY_ONLY_PROMPTS`.
   link.
 - Numbers stay Latin digits with no grouping, so size reports like
   `14 / 32768 bytes` are identical in every language.
+
+The Urdu, Filipino, Tamil and Uzbek interface dictionaries and some prompt translations use machine translation; native-speaker review remains pending.

@@ -65,7 +65,7 @@ const Chat = (() => {
   const LANGUAGES = ['Arabic', 'Bengali', 'Chinese (Simplified)', 'Chinese (Traditional)', 'Czech', 'Dutch', 'English', 'Filipino',
     'Finnish', 'French', 'German', 'Greek', 'Hebrew', 'Hindi', 'Hungarian', 'Indonesian', 'Italian', 'Japanese', 'Korean', 'Malay',
     'Myanmar (Burmese)', 'Persian', 'Polish', 'Portuguese (Brazil)', 'Portuguese (Portugal)', 'Romanian', 'Russian',
-    'Sinhala (Sinhalese)', 'Spanish', 'Swedish', 'Tamil', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Vietnamese'];
+    'Sinhala (Sinhalese)', 'Spanish', 'Swedish', 'Tamil', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Uzbek', 'Vietnamese'];
 
   const SUMMARY_LENGTHS = {
     'ultra-concise': 'Create an ultra-concise one-sentence summary',
