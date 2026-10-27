@@ -67,6 +67,11 @@ h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacin
 .crumbs a { color: var(--muted); }
 
 .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex: none; background: var(--lab, var(--faint)); }
+.lab-logo { width: 20px; height: 20px; display: inline-block; flex: none; vertical-align: middle; }
+.logo-openai, .logo-anthropic, .logo-xai { filter: invert(1); }
+@media (prefers-color-scheme: dark) {
+  .logo-openai, .logo-anthropic, .logo-xai { filter: none; }
+}
 
 /* Featured "next up" block on the index */
 .next {
