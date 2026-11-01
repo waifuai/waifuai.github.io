@@ -83,6 +83,9 @@
     for(var parent=target; parent; parent=parent.parentElement) {
       if(parent.tagName==='DETAILS') parent.open=true;
     }
+    // Sections folded into a collapsed disclosure (the WebSim projects) reopen
+    // when a link targets them.
+    target.querySelectorAll('details[data-anchor-open]').forEach(function(d) { d.open=true; });
     target.scrollIntoView();
   }
   openLinkedSection();

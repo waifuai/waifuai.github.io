@@ -157,6 +157,12 @@
   .jump .links a:hover { color: var(--text); text-decoration: none; border-bottom-color: var(--line); }
   .filter { width: 220px; flex: none; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 14px; }
   .filter:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .toggle-desc { flex: none; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 14px; cursor: pointer; }
+  .toggle-desc:hover { border-color: var(--faint); }
+  .toggle-desc:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .desc-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 21px; }
+  /* Descriptions ship collapsed (JS adds .no-desc); searching reveals them. */
+  #projects.no-desc .card-desc { display: none; }
 
   .filter-meta { font-size: 14px; color: var(--muted); margin: 16px 0 0; min-height: 0; }
   .filter-meta:empty { display: none; }
@@ -216,21 +222,73 @@
 <main>
 <div class="wrap">
   <h1>WaifuAI docs</h1>
-  <p class="lede">Documentation for the open-source side of WaifuAI: the Live2D companion, MCP servers for AI agents, LLM tooling, and research.</p>
+  <p class="lede">Docs and open-source code for the WaifuAI companions — and the live numbers behind them.</p>
+
 
   <div class="start">
-    <a href="waifu-sprites/"><video data-src="images/home/sprites.mp4" poster="images/home/sprites-mobile.webp" width="480" height="600" muted loop playsinline preload="none" aria-label="Aurora, the animated Waifu Sprites companion"></video><span class="tile-text"><strong>Waifu Sprites</strong><span>Chat with Aurora, an animated video companion who reacts, talks and sends selfies.</span></span></a>
-    <a class="primary" href="https://waifuai.com/"><video data-src="images/home/companion.mp4" poster="images/home/companion-mobile.webp" width="480" height="600" muted loop playsinline preload="none" aria-label="Waifu Companion: an animated Live2D anime girl next to a chat window"></video><span class="tile-text"><strong>Companion app</strong><span>Talk to a Live2D waifu in your browser, with voice and nothing to install.</span></span></a>
+    <a href="https://waifuai.com/"><video data-src="images/home/sprites.mp4" poster="images/home/sprites-mobile.webp" width="480" height="600" muted loop playsinline preload="none" aria-label="Aurora, the animated Waifu Sprites companion"></video><span class="tile-text"><strong>Waifu Sprites</strong><span>Chat with Aurora, an animated companion who reacts, talks and sends selfies.</span></span></a>
+    <a class="primary" href="https://waifuai.com/app"><video data-src="images/home/companion.mp4" poster="images/home/companion-mobile.webp" width="480" height="600" muted loop playsinline preload="none" aria-label="Waifu Companion: an animated Live2D anime girl next to a chat window"></video><span class="tile-text"><strong>Companion app</strong><span>Talk to a Live2D waifu in your browser, with voice and nothing to install.</span></span></a>
     <a class="countdown" href="llm-countdowns/"><img src="llm-countdowns/og.png" width="1200" height="630" alt="LLM Countdowns: the next AI model release" loading="lazy"><span class="tile-text"><strong>LLM Countdowns</strong><span>Release forecasts for upcoming frontier models from each AI lab.</span></span></a>
   </div>
 
-  <div class="stats">
-    <a class="stat" href="data/#traffic"><span class="stat-value">16,643</span><span class="stat-label">Website visitors</span></a>
-    <a class="stat" href="data/#github"><span class="stat-value">52</span><span class="stat-label">GitHub repositories</span></a>
-    <a class="stat" href="data/#websim"><span class="stat-value">618</span><span class="stat-label">WebSim projects</span></a>
-    <a class="stat" href="data/#search"><span class="stat-value">83,819</span><span class="stat-label">Google Search appearances</span></a>
-  </div>
-  <p class="stats-note">From the <a href="data/">open data page</a>, updated October 1, 2026.</p>
+  <!-- The all-db export refreshes the chart between these markers on every
+       export so it always matches the one on data/. -->
+  <!--PUBLIC-STATS:CLOUD-CHART:START-->
+<section class="home-cloud" aria-label="WaifuAI Cloud weekly interactions"><style>
+    .home-cloud { margin: 40px 0 8px; }
+    .home-cloud-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+    .home-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 650; color: var(--accent); margin: 0; }
+    .home-cloud h2 { margin: 0 0 14px; }
+    .home-cloud { --bar: var(--accent); }
+    .home-cloud .chart-card { border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius); padding: 24px 24px 12px; min-width: 0; }
+    .home-cloud .chart-panel { position: relative; }
+    .home-cloud .chart-scale { position: absolute; top: 0; left: 0; height: 194px; display: flex; flex-direction: column; justify-content: space-between; font-size: 9px; color: var(--muted); }
+    .home-cloud .month-chart { height: 220px; padding-left: 30px; display: flex; gap: 9px; align-items: stretch; position: relative; }
+    .home-cloud .month-chart::before { content: ''; position: absolute; inset: 0 0 27px 30px; background: repeating-linear-gradient(to top, var(--line) 0, var(--line) 1px, transparent 1px, transparent 25%); pointer-events: none; }
+    .home-cloud .month-bar { background: none; border: 0; padding: 0; color: var(--text); font: inherit; flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: end; align-items: center; z-index: 1; cursor: pointer; }
+    .home-cloud .bar-column { height: calc(var(--height) * .875); width: 72%; background: var(--bar); border-radius: 6px 6px 0 0; position: relative; display: block; transition: filter .15s; }
+    .home-cloud .month-bar:hover .bar-column, .home-cloud .month-bar:focus-visible .bar-column { filter: brightness(1.15); }
+    .home-cloud .month-bar:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+    .home-cloud .bar-value { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 11px; white-space: nowrap; opacity: 0; transition: opacity .15s; }
+    .home-cloud .month-bar:hover .bar-value, .home-cloud .month-bar:focus .bar-value, .home-cloud .forecast-bar .bar-value { opacity: 1; }
+    .home-cloud .month-label { height: 27px; padding-top: 7px; font-size: 11px; color: var(--muted); }
+    .home-cloud .chart-detail { color: var(--muted); font-size: 10px; min-height: 17px; margin: 10px 0 12px; }
+    .home-cloud .chart-data { border-top: 1px solid var(--line); padding: 8px 0 0; font-size: 10px; color: var(--muted); }
+    .home-cloud .chart-data summary { cursor: pointer; }
+    .home-cloud .chart-data table { margin-top: 10px; width: 100%; border-collapse: collapse; }
+    .home-cloud .chart-data th { text-align: left; font-weight: 600; color: var(--muted); font-size: 10px; padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+    .home-cloud .chart-data th.num, .home-cloud .chart-data td.num { text-align: right; }
+    .home-cloud .chart-data td { padding: 5px 8px; border-top: 1px solid var(--row); }
+    .home-cloud .chart-data caption { text-align: left; font-size: 10px; padding: 6px 0; color: var(--muted); }
+    .home-cloud .estimate-key { display: flex; align-items: center; gap: 7px; font-size: 10px; white-space: nowrap; color: var(--muted); }
+    .home-cloud .estimate-key i { width: 16px; height: 12px; border: 1px dashed var(--accent); border-radius: 3px; background: repeating-linear-gradient(135deg, transparent 0, transparent 3px, var(--line) 3px, var(--line) 6px); }
+    .home-cloud .forecast-bar .bar-column { background: repeating-linear-gradient(135deg, transparent 0, transparent 5px, color-mix(in srgb, var(--bar) 40%, transparent) 5px, color-mix(in srgb, var(--bar) 40%, transparent) 9px); border: 1px dashed var(--accent); }
+    .home-cloud .forecast-recorded { position: absolute; bottom: 0; left: 0; right: 0; background: var(--bar); }
+    .home-cloud .forecast-bar .bar-value { color: var(--accent); }
+    .home-cloud-note { font-size: 13px; color: var(--muted); margin: 12px 0 0; }
+    @media (max-width: 600px) {
+      .home-cloud .chart-card { padding: 18px 14px 12px; }
+      .home-cloud .month-chart { gap: 6px; }
+      .home-cloud .bar-value { font-size: 10px; }
+      .home-cloud-head { flex-wrap: wrap; }
+    }
+    @media (prefers-reduced-motion: reduce) { .home-cloud .bar-column, .home-cloud .bar-value { transition: none; } }
+</style><div class="home-cloud-head"><p class="home-eyebrow">WaifuAI Cloud</p><span class="estimate-key"><i></i>Striped = estimate</span></div><h2 id="home-cloud-title">Interactions each week</h2><article class="chart-card"><div class="chart-panel" id="home-api-chart"><div class="chart-scale"><span>64,000</span><span>0</span></div><div class="month-chart"><button class="month-bar" type="button" style="--height:8.042%" aria-label="Week of September 14 · 5,147 interactions" data-detail="Week of September 14 · 5,147 interactions"><span class="bar-column"><span class="bar-value">5,147</span></span><span class="month-label">Sep 14</span></button><button class="month-bar" type="button" style="--height:9.084%" aria-label="Week of September 21 · 5,814 interactions" data-detail="Week of September 21 · 5,814 interactions"><span class="bar-column"><span class="bar-value">5,814</span></span><span class="month-label">Sep 21</span></button><button class="month-bar" type="button" style="--height:16.030%" aria-label="Week of September 28 · 10,259 interactions" data-detail="Week of September 28 · 10,259 interactions"><span class="bar-column"><span class="bar-value">10,259</span></span><span class="month-label">Sep 28</span></button><button class="month-bar" type="button" style="--height:30.384%" aria-label="Week of October 5 · 19,446 interactions" data-detail="Week of October 5 · 19,446 interactions"><span class="bar-column"><span class="bar-value">19,446</span></span><span class="month-label">Oct 5</span></button><button class="month-bar" type="button" style="--height:52.845%" aria-label="Week of October 12 · 33,821 interactions" data-detail="Week of October 12 · 33,821 interactions"><span class="bar-column"><span class="bar-value">33,821</span></span><span class="month-label">Oct 12</span></button><button class="month-bar" type="button" style="--height:80.583%" aria-label="Week of October 19 · 51,573 interactions" data-detail="Week of October 19 · 51,573 interactions"><span class="bar-column"><span class="bar-value">51,573</span></span><span class="month-label">Oct 19</span></button><button class="month-bar forecast-bar" type="button" style="--height:85.114%" aria-label="Week of October 26 · ≈54,473 interactions · estimated week · 49,055 recorded · recorded daily average × 7 days" data-detail="Week of October 26 · ≈54,473 interactions · estimated week · 49,055 recorded · recorded daily average × 7 days"><span class="bar-column"><span class="forecast-recorded" style="height:90.054%"></span><span class="bar-value">≈54,473</span></span><span class="month-label">Oct 26 est.</span></button></div><p class="chart-detail" aria-live="polite">Weeks · Sep 14 – Oct 26 · select a week</p><details class="chart-data"><summary>View weekly numbers</summary><table><caption>Interactions · waifuai.com · complete weeks</caption><thead><tr><th>Week</th><th class="num">Interactions</th></tr></thead><tbody><tr><td>Week of September 14</td><td class="num">5,147</td></tr><tr><td>Week of September 21</td><td class="num">5,814</td></tr><tr><td>Week of September 28</td><td class="num">10,259</td></tr><tr><td>Week of October 5</td><td class="num">19,446</td></tr><tr><td>Week of October 12</td><td class="num">33,821</td></tr><tr><td>Week of October 19</td><td class="num">51,573</td></tr></tbody></table></details></div></article><p class="home-cloud-note">175,897 interactions since 13 September 2026 — each chat reply, voice line and picture request counts as one. Data through 1 November 2026 · <a href="data/">full open data dashboard &#8599;</a></p></section><script>
+(function () {
+  var panel = document.getElementById('home-api-chart');
+  if (!panel) return;
+  var detail = panel.querySelector('.chart-detail');
+  function describe(event) {
+    var button = event.target.closest('.month-bar');
+    if (button) detail.textContent = button.dataset.detail;
+  }
+  panel.addEventListener('click', describe);
+  panel.addEventListener('focusin', describe);
+  panel.addEventListener('mouseover', describe);
+})();
+</script>
+<!--PUBLIC-STATS:CLOUD-CHART:END-->
+
 </div>
 
 <nav class="jump" aria-label="Project groups">
@@ -251,15 +309,19 @@
 </nav>
 
 <div class="wrap" id="projects">
-<p class="filter-meta" id="filter-meta" role="status" aria-live="polite"></p>
+<div class="desc-bar">
+  <p class="filter-meta" id="filter-meta" role="status" aria-live="polite"></p>
+  <button id="toggle-desc" class="toggle-desc" type="button" aria-pressed="false" hidden>Show descriptions</button>
+</div>
 
 <section class="group" id="companion">
   <div class="group-head"><h2>Companion</h2><span class="count"></span></div>
-  <p class="group-note">The WaifuAI companion and the pieces around it: avatars, chat backends and character design.</p>
+  <p class="group-note">The companion and the pieces around it: avatars, chat backends, character design.</p>
   <div class="cards">
-    <a class="card" href="https://waifuai.com/"><span class="card-title">Waifu Companion <span class="ext">&#8599;</span></span><span class="card-desc">The browser companion at waifuai.com: Live2D animation, local Kokoro voice, OpenRouter models and memory kept in your browser.</span><span class="card-meta">34 stars</span></a>
-    <a class="card" href="waifu-sprites/"><span class="card-title">Waifu Sprites</span><span class="card-desc">Chat with an animated video companion in your browser. She reacts with 12 states and 12 emotions. Also a Hermes Agent plugin.</span><span class="card-meta">21 stars</span></a>
-    <a class="card" href="hermes-waifu/"><span class="card-title">Hermes Waifu</span><span class="card-desc">Live2D widget for Hermes Agent with five built-in models and expression controls.</span><span class="card-meta">21 stars</span></a>
+    <a class="card" href="https://waifuai.com/app"><span class="card-title">Waifu Companion <span class="ext">&#8599;</span></span><span class="card-desc">Live2D companion in your browser — voice, memory, nothing to install.</span><span class="card-meta">34 stars</span></a>
+    <a class="card" href="https://waifuai.com/"><span class="card-title">Waifu Sprites <span class="ext">&#8599;</span></span><span class="card-desc">Chat with Aurora, an animated companion who reacts and sends selfies.</span><span class="card-meta">21 stars</span></a>
+    <a class="card" href="waifu-sprites/"><span class="card-title">Waifu Sprites docs</span><span class="card-desc">Project site for the sprites companion, with 12 states and 12 emotions.</span></a>
+    <a class="card" href="hermes-waifu/"><span class="card-title">Hermes Waifu</span><span class="card-desc">Live2D widget for Hermes Agent with expression controls.</span><span class="card-meta">21 stars</span></a>
     <a class="card" href="waifu-chat-api/"><span class="card-title">Waifu Chat API</span><span class="card-desc">REST API for waifu chatbot conversations with user management.</span></a>
     <a class="card" href="waifu-constitution/"><span class="card-title">Waifu Constitution</span><span class="card-desc">Alignment constitution and behaviour guidelines for waifu agents.</span></a>
     <a class="card" href="waifu-llm-vrm/"><span class="card-title">Waifu LLM VRM</span><span class="card-desc">Python library for AI waifus in the Godot engine, with VRM avatar support.</span></a>
@@ -272,8 +334,8 @@
   <div class="group-head"><h2>MCP servers</h2><span class="count"></span></div>
   <p class="group-note">Model Context Protocol servers that give AI agents chat, job queues and personality matching.</p>
   <div class="cards">
-    <a class="card" href="mcp-servers/#queue"><span class="card-title">MCP Waifu Queue</span><span class="card-desc">Redis-backed job queue for high-throughput text generation and agent workers.</span><span class="card-meta">42 clones</span></a>
-    <a class="card" href="mcp-servers/#chat"><span class="card-title">MCP Waifu Chat</span><span class="card-desc">Conversational waifu server built on FastMCP, with SQLite history and OpenRouter.</span><span class="card-meta">32 clones</span></a>
+    <a class="card" href="mcp-servers/#queue"><span class="card-title">MCP Waifu Queue</span><span class="card-desc">Redis-backed job queue for text generation and agent workers.</span><span class="card-meta">42 clones</span></a>
+    <a class="card" href="mcp-servers/#chat"><span class="card-title">MCP Waifu Chat</span><span class="card-desc">Conversational waifu server with SQLite history.</span><span class="card-meta">32 clones</span></a>
     <a class="card" href="mcp-servers/#traits-matcher"><span class="card-title">MCP Traits Matcher</span><span class="card-desc">Personality analysis that matches profiles by Euclidean distance.</span><span class="card-meta">20 clones</span></a>
   </div>
 </section>
@@ -285,7 +347,7 @@
   <div class="cards">
     <a class="card" href="ai-benchmarks/"><span class="card-title">AI Benchmarks</span><span class="card-desc">Spatial reasoning tests for LLMs, with a multi-model leaderboard.</span></a>
     <a class="card" href="book-generator/"><span class="card-title">Book Generator</span><span class="card-desc">Writes a full book from a title prompt using OpenRouter.</span></a>
-    <a class="card" href="macro-language-model/"><span class="card-title">Macro Language Model</span><span class="card-desc">CLI chatbot with swappable personalities such as tsundere and deredere.</span></a>
+    <a class="card" href="macro-language-model/"><span class="card-title">Macro Language Model</span><span class="card-desc">CLI chatbot with swappable personalities.</span></a>
     <a class="card" href="llm-text-queue-gpu/"><span class="card-title">LLM Text Queue GPU</span><span class="card-desc">GPU-accelerated text processing pipeline.</span></a>
     <a class="card" href="biochem-framework/"><span class="card-title">Biochem Framework</span><span class="card-desc">Scores AI conversations by their effect on neurochemistry.</span></a>
     <a class="card" href="function-graph-generator/"><span class="card-title">Function Graph Generator</span><span class="card-desc">Generates function call graphs for Python code.</span></a>
@@ -342,7 +404,7 @@
   <div class="cards">
     <a class="card" href="llms.txt"><span class="card-title">llms.txt</span><span class="card-desc">Short index of the site for language models.</span></a>
     <a class="card" href="llms-full/#html"><span class="card-title">LLMS Full HTML</span><span class="card-desc">All documentation in bundled HTML files, ready for LLM context.</span></a>
-    <a class="card" href="llms-full/#txt"><span class="card-title">LLMS Full TXT</span><span class="card-desc">Bundles a codebase into one Markdown file with a table of contents and line counts.</span><span class="card-meta">8 stars</span></a>
+    <a class="card" href="llms-full/#txt"><span class="card-title">LLMS Full TXT</span><span class="card-desc">Bundles a codebase into one Markdown file for LLM context.</span><span class="card-meta">8 stars</span></a>
   </div>
 </section>
 </div>
@@ -350,7 +412,7 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <p><a href="https://waifuai.com/">Companion app</a> &middot; <a href="search.html">Search</a> &middot; <a href="data/">Open data</a> &middot; <a href="links.html">Free AI Credits &amp; Discounts</a> &middot; <a href="sitemap.xml">Sitemap</a></p>
+    <p><a href="https://waifuai.com/app">Companion app</a> &middot; <a href="https://waifuai.com/">Waifu Sprites</a> &middot; <a href="search.html">Search</a> &middot; <a href="data/">Open data</a> &middot; <a href="links.html">Free AI Credits &amp; Discounts</a> &middot; <a href="sitemap.xml">Sitemap</a></p>
     <p><a href="https://github.com/waifuai">GitHub</a> &middot; <a href="https://x.com/thewaifuai">X</a> &middot; <a href="https://www.youtube.com/@thewaifuai">YouTube</a></p>
   </div>
 </footer>
@@ -412,10 +474,34 @@
       count(g, hits);
       shown += hits;
     });
+    applyDesc();
     if (!raw) { meta.innerHTML = ''; return; }
     meta.innerHTML = shown + (shown === 1 ? ' project' : ' projects') + ' match &middot; ' +
       '<a href="search.html?q=' + encodeURIComponent(raw) + '">Search every page for &ldquo;' + esc(raw) + '&rdquo;</a>';
   }
+
+  // Project descriptions ship collapsed (owner, 2026-11-01): titles only until
+  // "Show descriptions" is used, and searching always reveals them. Without JS
+  // nothing is hidden — the button only appears once this script runs.
+  var descBtn = document.getElementById('toggle-desc');
+  var projectsBox = document.getElementById('projects');
+  var descCollapsed = true;
+  function applyDesc() {
+    var searching = input.value.trim() !== '';
+    projectsBox.classList.toggle('no-desc', descCollapsed && !searching);
+    if (descBtn) {
+      descBtn.textContent = descCollapsed ? 'Show descriptions' : 'Hide descriptions';
+      descBtn.setAttribute('aria-pressed', String(!descCollapsed));
+    }
+  }
+  if (descBtn) {
+    descBtn.hidden = false;
+    descBtn.addEventListener('click', function () {
+      descCollapsed = !descCollapsed;
+      applyDesc();
+    });
+  }
+  applyDesc();
 
   input.addEventListener('input', run);
   input.addEventListener('keydown', function (e) {
