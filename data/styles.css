@@ -9,6 +9,11 @@
     --accent: #2f5bd3;
     --bar: #2f5bd3;
     --like: #c2185b;
+    --seg-chat: var(--bar);
+    --seg-aiops: #7b52c9;
+    --seg-image: #c07f1f;
+    --seg-voice: #168378;
+    --seg-other: #c9c9c1;
     --radius: 10px;
     --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     color-scheme: light dark;
@@ -25,6 +30,10 @@
       --accent: #8cabff;
       --bar: #8cabff;
       --like: #f48fb1;
+      --seg-aiops: #b49cff;
+      --seg-image: #e0a94e;
+      --seg-voice: #4cbdb0;
+      --seg-other: #35353c;
     }
   }
   * { box-sizing: border-box; }
@@ -235,6 +244,18 @@
 .forecast-recorded { position:absolute; bottom:0; left:0; right:0; background:var(--bar); }
 .forecast-bar .bar-value { color:var(--accent); }
 .month-bar[hidden] { display:none; }
+.stacked-bar .bar-column { background:none; }
+.seg { display:block; width:100%; }
+.stacked-bar .seg:first-child { border-radius:6px 6px 0 0; }
+.seg-chat { background:var(--seg-chat); } .seg-aiops { background:var(--seg-aiops); } .seg-image { background:var(--seg-image); } .seg-voice { background:var(--seg-voice); } .seg-other { background:var(--seg-other); }
+.stack-key { display:flex; flex-wrap:wrap; gap:4px 14px; font-size:10px; color:var(--muted); margin:2px 0 0; padding-left:30px; }
+.stack-key i { width:8px; height:8px; border-radius:2px; display:inline-block; margin-right:5px; }
+.stack-tip { position:absolute; z-index:6; min-width:175px; background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:8px 11px; font-size:11px; color:var(--text); box-shadow:0 4px 14px rgba(0,0,0,.14); pointer-events:none; }
+.stack-tip[hidden] { display:none !important; }
+.tip-title { font-weight:600; margin:0 0 5px; white-space:nowrap; }
+.tip-row { display:flex; align-items:center; gap:7px; line-height:1.7; }
+.tip-row b { margin-left:auto; font-weight:500; padding-left:12px; white-space:nowrap; }
+.tip-dot { width:8px; height:8px; border-radius:2px; display:inline-block; flex:none; }
 
 .growth-rate-note { grid-column:1/-1; font-size:11px; color:var(--muted); margin:0; padding:10px 0; }
 

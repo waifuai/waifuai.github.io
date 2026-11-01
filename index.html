@@ -240,6 +240,10 @@
     .home-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 650; color: var(--accent); margin: 0; }
     .home-cloud h2 { margin: 0 0 14px; }
     .home-cloud { --bar: var(--accent); }
+    .home-cloud { --seg-chat: var(--bar); --seg-aiops: #7b52c9; --seg-image: #c07f1f; --seg-voice: #168378; --seg-other: #c9c9c1; }
+    @media (prefers-color-scheme: dark) {
+      .home-cloud { --seg-aiops: #b49cff; --seg-image: #e0a94e; --seg-voice: #4cbdb0; --seg-other: #35353c; }
+    }
     .home-cloud .chart-card { border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius); padding: 24px 24px 12px; min-width: 0; }
     .home-cloud .chart-panel { position: relative; }
     .home-cloud .chart-scale { position: absolute; top: 0; left: 0; height: 194px; display: flex; flex-direction: column; justify-content: space-between; font-size: 9px; color: var(--muted); }
@@ -265,6 +269,22 @@
     .home-cloud .forecast-bar .bar-column { background: repeating-linear-gradient(135deg, transparent 0, transparent 5px, color-mix(in srgb, var(--bar) 40%, transparent) 5px, color-mix(in srgb, var(--bar) 40%, transparent) 9px); border: 1px dashed var(--accent); }
     .home-cloud .forecast-recorded { position: absolute; bottom: 0; left: 0; right: 0; background: var(--bar); }
     .home-cloud .forecast-bar .bar-value { color: var(--accent); }
+    .home-cloud .stacked-bar .bar-column { background: none; }
+    .home-cloud .seg { display: block; width: 100%; }
+    .home-cloud .stacked-bar .seg:first-child { border-radius: 6px 6px 0 0; }
+    .home-cloud .seg-chat { background: var(--seg-chat); }
+    .home-cloud .seg-aiops { background: var(--seg-aiops); }
+    .home-cloud .seg-image { background: var(--seg-image); }
+    .home-cloud .seg-voice { background: var(--seg-voice); }
+    .home-cloud .seg-other { background: var(--seg-other); }
+    .home-cloud .stack-key { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 10px; color: var(--muted); margin: 0 0 2px; padding-left: 30px; }
+    .home-cloud .stack-key i { width: 8px; height: 8px; border-radius: 2px; display: inline-block; margin-right: 5px; }
+    .home-cloud .stack-tip { position: absolute; z-index: 6; min-width: 175px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px 11px; font-size: 11px; color: var(--text); box-shadow: 0 4px 14px rgba(0, 0, 0, .14); pointer-events: none; }
+    .home-cloud .stack-tip[hidden] { display: none !important; }
+    .home-cloud .tip-title { font-weight: 600; margin: 0 0 5px; white-space: nowrap; }
+    .home-cloud .tip-row { display: flex; align-items: center; gap: 7px; line-height: 1.7; }
+    .home-cloud .tip-row b { margin-left: auto; font-weight: 500; font-variant-numeric: tabular-nums; padding-left: 12px; white-space: nowrap; }
+    .home-cloud .tip-dot { width: 8px; height: 8px; border-radius: 2px; display: inline-block; flex: none; }
     .home-cloud-note { font-size: 13px; color: var(--muted); margin: 12px 0 0; }
     @media (max-width: 600px) {
       .home-cloud .chart-card { padding: 18px 14px 12px; }
@@ -273,7 +293,66 @@
       .home-cloud-head { flex-wrap: wrap; }
     }
     @media (prefers-reduced-motion: reduce) { .home-cloud .bar-column, .home-cloud .bar-value { transition: none; } }
-</style><div class="home-cloud-head"><p class="home-eyebrow">WaifuAI Cloud</p><span class="estimate-key"><i></i>Striped = estimate</span></div><h2 id="home-cloud-title">Interactions each week</h2><article class="chart-card"><div class="chart-panel" id="home-api-chart"><div class="chart-scale"><span>64,000</span><span>0</span></div><div class="month-chart"><button class="month-bar" type="button" style="--height:8.042%" aria-label="Week of September 14 · 5,147 interactions" data-detail="Week of September 14 · 5,147 interactions"><span class="bar-column"><span class="bar-value">5,147</span></span><span class="month-label">Sep 14</span></button><button class="month-bar" type="button" style="--height:9.084%" aria-label="Week of September 21 · 5,814 interactions" data-detail="Week of September 21 · 5,814 interactions"><span class="bar-column"><span class="bar-value">5,814</span></span><span class="month-label">Sep 21</span></button><button class="month-bar" type="button" style="--height:16.030%" aria-label="Week of September 28 · 10,259 interactions" data-detail="Week of September 28 · 10,259 interactions"><span class="bar-column"><span class="bar-value">10,259</span></span><span class="month-label">Sep 28</span></button><button class="month-bar" type="button" style="--height:30.384%" aria-label="Week of October 5 · 19,446 interactions" data-detail="Week of October 5 · 19,446 interactions"><span class="bar-column"><span class="bar-value">19,446</span></span><span class="month-label">Oct 5</span></button><button class="month-bar" type="button" style="--height:52.845%" aria-label="Week of October 12 · 33,821 interactions" data-detail="Week of October 12 · 33,821 interactions"><span class="bar-column"><span class="bar-value">33,821</span></span><span class="month-label">Oct 12</span></button><button class="month-bar" type="button" style="--height:80.583%" aria-label="Week of October 19 · 51,573 interactions" data-detail="Week of October 19 · 51,573 interactions"><span class="bar-column"><span class="bar-value">51,573</span></span><span class="month-label">Oct 19</span></button><button class="month-bar forecast-bar" type="button" style="--height:85.114%" aria-label="Week of October 26 · ≈54,473 interactions · estimated week · 49,055 recorded · recorded daily average × 7 days" data-detail="Week of October 26 · ≈54,473 interactions · estimated week · 49,055 recorded · recorded daily average × 7 days"><span class="bar-column"><span class="forecast-recorded" style="height:90.054%"></span><span class="bar-value">≈54,473</span></span><span class="month-label">Oct 26 est.</span></button></div><p class="chart-detail" aria-live="polite">Weeks · Sep 14 – Oct 26 · select a week</p><details class="chart-data"><summary>View weekly numbers</summary><table><caption>Interactions · waifuai.com · complete weeks</caption><thead><tr><th>Week</th><th class="num">Interactions</th></tr></thead><tbody><tr><td>Week of September 14</td><td class="num">5,147</td></tr><tr><td>Week of September 21</td><td class="num">5,814</td></tr><tr><td>Week of September 28</td><td class="num">10,259</td></tr><tr><td>Week of October 5</td><td class="num">19,446</td></tr><tr><td>Week of October 12</td><td class="num">33,821</td></tr><tr><td>Week of October 19</td><td class="num">51,573</td></tr></tbody></table></details></div></article><p class="home-cloud-note">175,897 interactions since 13 September 2026 — each chat reply, voice line and picture request counts as one. Data through 1 November 2026 · <a href="data/">full open data dashboard &#8599;</a></p></section><script>
+</style><div class="home-cloud-head"><p class="home-eyebrow">WaifuAI Cloud</p><span class="estimate-key"><i></i>Striped = estimate</span></div><h2 id="home-cloud-title">Interactions each week</h2><article class="chart-card"><div class="chart-panel" id="home-api-chart"><div class="chart-scale"><span>64,000</span><span>0</span></div><div class="month-chart"><button class="month-bar stacked-bar" type="button" style="--height:8.042%" aria-label="Week of September 14 · 5,147 interactions · Chat 3,614 · AI operations 420 · Other 1,113" data-detail="Week of September 14 · 5,147 interactions · Chat 3,614 · AI operations 420 · Other 1,113" data-tip="Week of September 14 · 5,147 interactions" data-cats="{&quot;chat&quot;:3614,&quot;internal&quot;:420,&quot;decision&quot;:0,&quot;image&quot;:0,&quot;background&quot;:0,&quot;transcription&quot;:0,&quot;tts&quot;:0,&quot;ttsKnown&quot;:false,&quot;other&quot;:1113}"><span class="bar-column"><i class="seg seg-other" style="height:21.624%"></i><i class="seg seg-aiops" style="height:8.160%"></i><i class="seg seg-chat" style="height:70.216%"></i><span class="bar-value">5,147</span></span><span class="month-label">Sep 14</span></button><button class="month-bar stacked-bar" type="button" style="--height:9.084%" aria-label="Week of September 21 · 5,814 interactions · Chat 3,987 · AI operations 297 · Other 1,530" data-detail="Week of September 21 · 5,814 interactions · Chat 3,987 · AI operations 297 · Other 1,530" data-tip="Week of September 21 · 5,814 interactions" data-cats="{&quot;chat&quot;:3987,&quot;internal&quot;:297,&quot;decision&quot;:0,&quot;image&quot;:0,&quot;background&quot;:0,&quot;transcription&quot;:0,&quot;tts&quot;:0,&quot;ttsKnown&quot;:false,&quot;other&quot;:1530}"><span class="bar-column"><i class="seg seg-other" style="height:26.316%"></i><i class="seg seg-aiops" style="height:5.108%"></i><i class="seg seg-chat" style="height:68.576%"></i><span class="bar-value">5,814</span></span><span class="month-label">Sep 21</span></button><button class="month-bar stacked-bar" type="button" style="--height:16.030%" aria-label="Week of September 28 · 10,259 interactions · Chat 5,093 · AI operations 1,292 · Image 335 · Voice 42 · Other 3,497" data-detail="Week of September 28 · 10,259 interactions · Chat 5,093 · AI operations 1,292 · Image 335 · Voice 42 · Other 3,497" data-tip="Week of September 28 · 10,259 interactions" data-cats="{&quot;chat&quot;:5093,&quot;internal&quot;:1292,&quot;decision&quot;:0,&quot;image&quot;:292,&quot;background&quot;:43,&quot;transcription&quot;:42,&quot;tts&quot;:0,&quot;ttsKnown&quot;:false,&quot;other&quot;:3497}"><span class="bar-column"><i class="seg seg-other" style="height:34.087%"></i><i class="seg seg-voice" style="height:0.409%"></i><i class="seg seg-image" style="height:3.265%"></i><i class="seg seg-aiops" style="height:12.594%"></i><i class="seg seg-chat" style="height:49.644%"></i><span class="bar-value">10,259</span></span><span class="month-label">Sep 28</span></button><button class="month-bar stacked-bar" type="button" style="--height:30.384%" aria-label="Week of October 5 · 19,446 interactions · Chat 10,116 · AI operations 3,241 · Image 595 · Voice 464 · Other 5,030" data-detail="Week of October 5 · 19,446 interactions · Chat 10,116 · AI operations 3,241 · Image 595 · Voice 464 · Other 5,030" data-tip="Week of October 5 · 19,446 interactions" data-cats="{&quot;chat&quot;:10116,&quot;internal&quot;:2963,&quot;decision&quot;:278,&quot;image&quot;:503,&quot;background&quot;:92,&quot;transcription&quot;:464,&quot;tts&quot;:0,&quot;ttsKnown&quot;:false,&quot;other&quot;:5030}"><span class="bar-column"><i class="seg seg-other" style="height:25.867%"></i><i class="seg seg-voice" style="height:2.386%"></i><i class="seg seg-image" style="height:3.060%"></i><i class="seg seg-aiops" style="height:16.667%"></i><i class="seg seg-chat" style="height:52.021%"></i><span class="bar-value">19,446</span></span><span class="month-label">Oct 5</span></button><button class="month-bar stacked-bar" type="button" style="--height:52.845%" aria-label="Week of October 12 · 33,821 interactions · Chat 10,049 · AI operations 9,590 · Image 558 · Voice 239 · Other 13,385" data-detail="Week of October 12 · 33,821 interactions · Chat 10,049 · AI operations 9,590 · Image 558 · Voice 239 · Other 13,385" data-tip="Week of October 12 · 33,821 interactions" data-cats="{&quot;chat&quot;:10049,&quot;internal&quot;:1849,&quot;decision&quot;:7741,&quot;image&quot;:477,&quot;background&quot;:81,&quot;transcription&quot;:239,&quot;tts&quot;:0,&quot;ttsKnown&quot;:false,&quot;other&quot;:13385}"><span class="bar-column"><i class="seg seg-other" style="height:39.576%"></i><i class="seg seg-voice" style="height:0.707%"></i><i class="seg seg-image" style="height:1.650%"></i><i class="seg seg-aiops" style="height:28.355%"></i><i class="seg seg-chat" style="height:29.712%"></i><span class="bar-value">33,821</span></span><span class="month-label">Oct 12</span></button><button class="month-bar stacked-bar" type="button" style="--height:80.583%" aria-label="Week of October 19 · 51,573 interactions · Chat 13,882 · AI operations 13,805 · Image 734 · Voice 2,437 · Other 20,715" data-detail="Week of October 19 · 51,573 interactions · Chat 13,882 · AI operations 13,805 · Image 734 · Voice 2,437 · Other 20,715" data-tip="Week of October 19 · 51,573 interactions" data-cats="{&quot;chat&quot;:13882,&quot;internal&quot;:2544,&quot;decision&quot;:11261,&quot;image&quot;:588,&quot;background&quot;:146,&quot;transcription&quot;:370,&quot;tts&quot;:2067,&quot;ttsKnown&quot;:true,&quot;other&quot;:20715}"><span class="bar-column"><i class="seg seg-other" style="height:40.166%"></i><i class="seg seg-voice" style="height:4.725%"></i><i class="seg seg-image" style="height:1.423%"></i><i class="seg seg-aiops" style="height:26.768%"></i><i class="seg seg-chat" style="height:26.917%"></i><span class="bar-value">51,573</span></span><span class="month-label">Oct 19</span></button><button class="month-bar forecast-bar" type="button" style="--height:85.114%" aria-label="Week of October 26 · ≈54,473 interactions · estimated week · 49,055 recorded · recorded daily average × 7 days" data-detail="Week of October 26 · ≈54,473 interactions · estimated week · 49,055 recorded · recorded daily average × 7 days"><span class="bar-column"><span class="forecast-recorded" style="height:90.054%"></span><span class="bar-value">≈54,473</span></span><span class="month-label">Oct 26 est.</span></button></div><div class="stack-key"><span><i class="seg-chat"></i>Chat</span><span><i class="seg-aiops"></i>AI operations</span><span><i class="seg-image"></i>Image</span><span><i class="seg-voice"></i>Voice</span><span><i class="seg-other"></i>Other</span></div><p class="chart-detail" aria-live="polite">Weeks · Sep 14 – Oct 26 · select a week</p><div class="stack-tip" hidden></div><script>
+(function () {
+  var panel = document.getElementById('home-api-chart');
+  if (!panel) return;
+  var tip = panel.querySelector('.stack-tip');
+  if (!tip) return;
+  var ROWS = [["Chat", "chat", "seg-chat"], ["Internal calls", "internal", "seg-aiops"], ["Decisions", "decision", "seg-aiops"], ["Images", "image", "seg-image"], ["Background images", "background", "seg-image"], ["Transcription", "transcription", "seg-voice"], ["Text-to-speech", "tts", "seg-voice"], ["Other", "other", "seg-other"]];
+  function render(button) {
+    var data;
+    try { data = JSON.parse(button.dataset.cats); } catch (err) { return false; }
+    tip.textContent = '';
+    var head = document.createElement('div');
+    head.className = 'tip-title';
+    head.textContent = button.dataset.tip || '';
+    tip.appendChild(head);
+    ROWS.forEach(function (row) {
+      if (!(row[1] in data)) return;
+      var line = document.createElement('div');
+      line.className = 'tip-row';
+      var dot = document.createElement('i');
+      dot.className = 'tip-dot ' + row[2];
+      var label = document.createElement('span');
+      label.textContent = row[0];
+      var num = document.createElement('b');
+      num.textContent = (row[1] === 'tts' && !data.ttsKnown) ? 'not recorded'
+        : Number(data[row[1]]).toLocaleString('en-US');
+      line.appendChild(dot);
+      line.appendChild(label);
+      line.appendChild(num);
+      tip.appendChild(line);
+    });
+    return true;
+  }
+  function place(button) {
+    var panelBox = panel.getBoundingClientRect();
+    var box = button.getBoundingClientRect();
+    tip.hidden = false;
+    var width = tip.offsetWidth, height = tip.offsetHeight;
+    var left = box.left - panelBox.left + (box.width - width) / 2;
+    left = Math.max(4, Math.min(left, panelBox.width - width - 4));
+    var top = box.top - panelBox.top - height - 8;
+    if (top < 2) top = box.bottom - panelBox.top + 8;
+    tip.style.left = left + 'px';
+    tip.style.top = top + 'px';
+  }
+  function hide() { tip.hidden = true; }
+  panel.addEventListener('mouseover', function (event) {
+    var button = event.target.closest('.month-bar');
+    if (!button || !button.dataset.cats || !render(button)) { hide(); return; }
+    place(button);
+  });
+  panel.addEventListener('focusin', function (event) {
+    var button = event.target.closest('.month-bar');
+    if (button && button.dataset.cats && render(button)) place(button);
+    else hide();
+  });
+  panel.addEventListener('mouseleave', hide);
+  panel.addEventListener('focusout', hide);
+})();
+</script><details class="chart-data"><summary>View weekly numbers</summary><table><caption>Interactions · waifuai.com · complete weeks</caption><thead><tr><th>Week</th><th class="num">Interactions</th></tr></thead><tbody><tr><td>Week of September 14</td><td class="num">5,147</td></tr><tr><td>Week of September 21</td><td class="num">5,814</td></tr><tr><td>Week of September 28</td><td class="num">10,259</td></tr><tr><td>Week of October 5</td><td class="num">19,446</td></tr><tr><td>Week of October 12</td><td class="num">33,821</td></tr><tr><td>Week of October 19</td><td class="num">51,573</td></tr></tbody></table></details></div></article><p class="home-cloud-note">175,897 interactions since 13 September 2026 — each chat reply, voice line and picture request counts as one, and every bar splits into chat, AI operations, image and voice calls (hover for the detail). Data through 1 November 2026 · <a href="data/">full open data dashboard &#8599;</a></p></section><script>
 (function () {
   var panel = document.getElementById('home-api-chart');
   if (!panel) return;
