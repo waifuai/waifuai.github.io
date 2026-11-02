@@ -139,12 +139,11 @@ test('decision transport preserves a long completed reply and bounds oversized e
   }
 });
 
-test('cross-chat memory defaults off and persists under the browser storage prefix', () => {
+test('cross-chat memory defaults on and persists under the browser storage prefix', () => {
   for (const embed of [false, true]) {
     const { chat, store } = client(undefined, embed);
-    assert.equal(chat.settings.crossChatMemory, false);
+    assert.equal(chat.settings.crossChatMemory, true);
     assert.equal(chat.getUserMemory(), '');
-    chat.settings.crossChatMemory = true;
     chat.setUserMemory('Name: Rei\nLikes: rain sounds');
     assert.equal(chat.getUserMemory(), 'Name: Rei\nLikes: rain sounds');
     const key = embed ? 'ws_embed_userMemory' : 'ws_userMemory';
@@ -152,6 +151,34 @@ test('cross-chat memory defaults off and persists under the browser storage pref
     chat.clearUserMemory();
     assert.equal(chat.getUserMemory(), '');
     assert.equal(store.has(key), false);
+  }
+});
+
+test('saved settings without a cross-chat memory choice use the enabled default', () => {
+  for (const embed of [false, true]) {
+    const { chat } = client(20, embed);
+    assert.equal(chat.settings.crossChatMemory, true);
+    assert.equal(chat.settings.memorySize, 20);
+    assert.equal(chat.settings.aboutUser, 'Remember me');
+  }
+});
+
+test('turning cross-chat memory off survives reload and excludes saved memory', async () => {
+  for (const embed of [false, true]) {
+    const { chat, store } = client(undefined, embed);
+    chat.setUserMemory('Name: Rei');
+    chat.settings.crossChatMemory = false;
+    chat.saveSettings();
+    const reloaded = client(undefined, embed, store).chat;
+    assert.equal(reloaded.settings.crossChatMemory, false);
+    assert.equal(reloaded.getUserMemory(), 'Name: Rei');
+    assert.doesNotMatch((await reloaded.modelMessages()).find(m => m.role === 'system').content, /Things you remember about the user/);
+    assert.equal(reloaded.buildRequest([{ role: 'user', content: 'hi' }], 'chat', false, 10).body.client_settings.cross_chat_memory, undefined);
+    reloaded.newConversation();
+    assert.equal(reloaded.messages.length, 0);
+    reloaded.settings.crossChatMemory = true;
+    reloaded.saveSettings();
+    assert.equal(client(undefined, embed, store).chat.settings.crossChatMemory, true);
   }
 });
 
