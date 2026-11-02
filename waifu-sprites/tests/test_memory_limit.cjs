@@ -4,9 +4,9 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 
-function client(saved, embed = false) {
+function client(saved, embed = false, store = new Map()) {
   const key = embed ? 'ws_embed_settings' : 'ws_settings';
-  const store = new Map(saved === undefined ? [] : [[key, JSON.stringify({ memorySize: saved, aboutUser: 'Remember me' })]]);
+  if (saved !== undefined) store.set(key, JSON.stringify({ memorySize: saved, aboutUser: 'Remember me' }));
   const ctx = vm.createContext({ window: { WaifuSpritesEmbed: embed },
     Sprites: { EMOTIONS: ['happy'] }, Pictures: { CHAT_RULE: 'Picture instructions' }, navigator: {},
     crypto: require('node:crypto').webcrypto,
@@ -227,4 +227,80 @@ test('cross-chat memory rides in the system prompt and flags chat requests', asy
   chat.settings.crossChatMemory = true;
   chat.clearUserMemory();
   assert.equal(chat.buildRequest([{ role: 'user', content: 'hi' }], 'chat', false, 10).body.client_settings.cross_chat_memory, undefined);
+});
+
+test('manual user-memory changes reject delayed durable updates without losing the chat summary', async () => {
+  for (const embed of [false, true]) for (const action of ['forget', 'edit']) {
+    const { chat, ctx, store } = client(undefined, embed); populate(chat);
+    chat.settings.crossChatMemory = true; chat.setUserMemory('Name: Rei');
+    let finish; ctx.fetch = () => new Promise(resolve => { finish = resolve; });
+    const work = chat.summarize(true);
+    if (action === 'forget') chat.clearUserMemory();
+    else chat.setUserMemory('Name: Corrected');
+    finish(response('Fresh chat summary.\nDurable across chats:\nName: Rei\nLikes: rain sounds'));
+    assert.equal(await work, true);
+    assert.equal(chat.summary, 'Fresh chat summary.');
+    const expected = action === 'forget' ? '' : 'Name: Corrected';
+    assert.equal(chat.getUserMemory(), expected);
+    const stored = store.get((embed ? 'ws_embed_' : 'ws_') + 'userMemory');
+    assert.equal(stored ? JSON.parse(stored) : '', expected);
+  }
+});
+
+test('cross-chat setting changes leave pending durable updates unapplied', async () => {
+  for (const enabled of [false, true]) {
+    const { chat, ctx } = client(); populate(chat);
+    chat.settings.crossChatMemory = enabled; chat.saveSettings(); chat.setUserMemory('Kept facts');
+    let finish; ctx.fetch = () => new Promise(resolve => { finish = resolve; });
+    const work = chat.summarize(true);
+    if (enabled) { chat.settings.crossChatMemory = false; chat.saveSettings(); }
+    chat.settings.crossChatMemory = true; chat.saveSettings();
+    finish(response('Fresh chat summary.\nDurable across chats:\nName: Rei'));
+    assert.equal(await work, true);
+    assert.equal(chat.summary, 'Fresh chat summary.');
+    assert.equal(chat.getUserMemory(), 'Kept facts');
+  }
+});
+
+test('welcome-back survives replies, reload and removal of its message and summary', () => {
+  for (const embed of [false, true]) {
+    const prefix = embed ? 'ws_embed_' : 'ws_';
+    const { chat, store } = client(undefined, embed); populate(chat); chat.setSummary('Our game');
+    const id = chat.convId;
+    assert.ok(chat.seedWelcomeBack());
+    assert.equal(JSON.parse(store.get(prefix + 'mem_' + id)).welcomeBackGreeted, true);
+    chat.messages.push({ id: 'next', role: 'user', content: 'Continue' });
+    store.set(prefix + 'conv_' + id, JSON.stringify(chat.messages));
+    const reloaded = client(undefined, embed, store).chat;
+    reloaded.openConversation(id);
+    assert.equal(reloaded.seedWelcomeBack(), false);
+    reloaded.deleteMessage(reloaded.messages.find(m => m.welcomeBack).id);
+    reloaded.setSummary('');
+    assert.equal(JSON.parse(store.get(prefix + 'mem_' + id)).welcomeBackGreeted, true);
+    reloaded.setSummary('A later summary');
+    const afterRemoval = client(undefined, embed, store).chat;
+    afterRemoval.openConversation(id);
+    assert.equal(afterRemoval.seedWelcomeBack(), false);
+    assert.equal(afterRemoval.messages.filter(m => m.welcomeBack).length, 0);
+    afterRemoval.newConversation();
+    afterRemoval.messages.push({ id: 'fresh', role: 'user', content: 'Another game' });
+    afterRemoval.setSummary('Different game');
+    assert.ok(afterRemoval.seedWelcomeBack());
+  }
+});
+
+test('older welcome-back message markers migrate before those messages are removed', () => {
+  const { chat, store } = client();
+  const id = 'legacy-chat';
+  store.set('ws_conv_' + id, JSON.stringify([
+    { id: 'greet', role: 'assistant', content: 'Welcome back', welcomeBack: true },
+    { id: 'user', role: 'user', content: 'Continue' }
+  ]));
+  store.set('ws_mem_' + id, JSON.stringify({ summary: 'Our game', through: null }));
+  chat.openConversation(id);
+  assert.equal(chat.seedWelcomeBack(), false);
+  assert.equal(JSON.parse(store.get('ws_mem_' + id)).welcomeBackGreeted, true);
+  chat.deleteMessage('greet');
+  chat.openConversation(id);
+  assert.equal(chat.seedWelcomeBack(), false);
 });
