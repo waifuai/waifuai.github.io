@@ -138,3 +138,93 @@ test('decision transport preserves a long completed reply and bounds oversized e
     if(n===2600)assert.equal(state.reply,reply);
   }
 });
+
+test('cross-chat memory defaults off and persists under the browser storage prefix', () => {
+  for (const embed of [false, true]) {
+    const { chat, store } = client(undefined, embed);
+    assert.equal(chat.settings.crossChatMemory, false);
+    assert.equal(chat.getUserMemory(), '');
+    chat.settings.crossChatMemory = true;
+    chat.setUserMemory('Name: Rei\nLikes: rain sounds');
+    assert.equal(chat.getUserMemory(), 'Name: Rei\nLikes: rain sounds');
+    const key = embed ? 'ws_embed_userMemory' : 'ws_userMemory';
+    assert.equal(JSON.parse(store.get(key)), 'Name: Rei\nLikes: rain sounds');
+    chat.clearUserMemory();
+    assert.equal(chat.getUserMemory(), '');
+    assert.equal(store.has(key), false);
+  }
+});
+
+test('a remembered visitor’s new chats greet them back, and the opener is not saved alone', () => {
+  const { chat } = client();
+  chat.settings.crossChatMemory = true;
+  chat.setUserMemory('Name: Rei\nLikes: rain sounds');
+  chat.newConversation();
+  assert.equal(chat.messages.length, 1);
+  assert.equal(chat.messages[0].userMemoryGreeting, true);
+  assert.match(chat.messages[0].content, /^Nice to see you again! I remembered: Name: Rei; Likes: rain sounds — how have things been\?$/);
+  assert.equal(chat.historyIndex().length, 0);
+  chat.newConversation();
+  assert.equal(chat.messages.length, 1);
+  assert.equal(chat.messages[0].userMemoryGreeting, true);
+});
+
+test('the greeting needs the toggle on, a non-empty store and a fresh conversation', () => {
+  const withoutToggle = client();
+  withoutToggle.chat.settings.crossChatMemory = false;
+  withoutToggle.chat.setUserMemory('Name: Rei');
+  withoutToggle.chat.newConversation();
+  assert.equal(withoutToggle.chat.messages.length, 0);
+  const withoutStore = client();
+  withoutStore.chat.settings.crossChatMemory = true;
+  withoutStore.chat.setUserMemory('');
+  withoutStore.chat.newConversation();
+  assert.equal(withoutStore.chat.messages.length, 0);
+  const { chat, store } = client();
+  chat.settings.crossChatMemory = true;
+  chat.setUserMemory('Name: Rei');
+  const id = 'c-existing';
+  store.set('ws_conv_' + id, JSON.stringify([{ id: 'm1', role: 'user', content: 'hello there' }]));
+  store.set('ws_history', JSON.stringify([{ id, title: 'hello there', named: false, updated: 1, count: 1, persona: 'aurora' }]));
+  chat.openConversation(id);
+  assert.equal(chat.messages.length, 1);
+  assert.equal(chat.messages[0].userMemoryGreeting, undefined);
+});
+
+test('the summarizer’s durable section updates the store and the summary keeps the rest', async () => {
+  const { chat, ctx, store } = client(); populate(chat);
+  chat.settings.crossChatMemory = true;
+  chat.setUserMemory('Name: Rei');
+  chat.setSummary('Existing facts');
+  ctx.fetch = async () => response('Remembered facts.\n\nDurable across chats:\nName: Rei\nLikes: rain sounds');
+  await chat.summarize(true);
+  assert.equal(chat.summary, 'Remembered facts.');
+  assert.equal(chat.getUserMemory(), 'Name: Rei\nLikes: rain sounds');
+  assert.equal(JSON.parse(store.get('ws_userMemory')), 'Name: Rei\nLikes: rain sounds');
+});
+
+test('with the toggle off the durable section is dropped, not stored', async () => {
+  const { chat, ctx } = client(); populate(chat);
+  chat.settings.crossChatMemory = false;
+  chat.setUserMemory('Kept facts');
+  ctx.fetch = async () => response('Remembered facts.\n\nDurable across chats:\nName: Rei');
+  await chat.summarize(true);
+  assert.equal(chat.summary, 'Remembered facts.');
+  assert.equal(chat.getUserMemory(), 'Kept facts');
+});
+
+test('cross-chat memory rides in the system prompt and flags chat requests', async () => {
+  const { chat } = client();
+  chat.settings.crossChatMemory = true;
+  chat.setUserMemory('Name: Rei');
+  const system = (await chat.modelMessages()).find(m => m.role === 'system');
+  assert.ok(system.content.includes('Things you remember about the user from earlier conversations: Name: Rei'));
+  const carried = chat.buildRequest([{ role: 'user', content: 'hi' }], 'chat', false, 10);
+  assert.equal(carried.body.client_settings.cross_chat_memory, 1);
+  chat.settings.crossChatMemory = false;
+  assert.doesNotMatch((await chat.modelMessages()).find(m => m.role === 'system').content, /Things you remember about the user/);
+  assert.equal(chat.buildRequest([{ role: 'user', content: 'hi' }], 'chat', false, 10).body.client_settings.cross_chat_memory, undefined);
+  chat.settings.crossChatMemory = true;
+  chat.clearUserMemory();
+  assert.equal(chat.buildRequest([{ role: 'user', content: 'hi' }], 'chat', false, 10).body.client_settings.cross_chat_memory, undefined);
+});
