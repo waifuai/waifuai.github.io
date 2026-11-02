@@ -36,7 +36,7 @@ in the mobile full app and embed, including a failed prompt-bundle download.
 These validate request construction and tag handling; real output-language
 adherence and translation quality need separate review after publication.
 
-Memory defaults to 30 recent conversational messages, raisable to 100 in
+Memory defaults to 60 recent conversational messages, raisable to 100 in
 settings, including the current turn. Cloud context packing also limits older
 history to 128 KiB and the complete serialized request to 256 KiB. It preserves
 the newest message, persona and accepted summary; an oversized mandatory context
@@ -52,6 +52,12 @@ summary as a backup in chat exports. Automatic work runs one job per user turn,
 with a two-minute failure cooldown; the manual button continues a backlog.
 Manual summary edits show their byte count and preserve the saved memory when
 validation fails.
+
+Remember me between chats is enabled by default. It keeps short facts in this
+browser and carries them into New Chat in this client. You can turn it off in
+settings, edit the saved facts or use Forget everything to clear them. A saved
+off choice stays off after reloads. Memory is not shared with other clients,
+browsers or devices.
 
 Serve the repository root locally and open `/waifu-sprites/?embed=x`. Check
 480 × 480 and narrow mobile frames, settings, chat submission and the full-app
