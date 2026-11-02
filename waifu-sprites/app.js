@@ -1133,6 +1133,7 @@
   // ── Start: reopen the most recent chat ──
   const recent = Chat.historyIndex()[0];
   if (!(recent && Chat.openConversation(recent.id))) Chat.newConversation();
+  Chat.seedWelcomeBack?.();
   renderConversation();
   activity();
 })();
