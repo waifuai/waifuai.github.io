@@ -4,10 +4,10 @@ const path = require('node:path');
 const vm = require('node:vm');
 const { test } = require('node:test');
 
-function client(answer) {
+function client(answer,character='') {
   const decisions = [], writers = [];
   const context = vm.createContext({
-    Chat: { async askDecisions(tasks, state) {
+    Chat: { pictureCharacterContext:()=>character,async askDecisions(tasks, state) {
       decisions.push({ tasks, state });
       if (answer instanceof Error) throw answer;
       return answer === undefined
@@ -69,4 +69,13 @@ test('uncertain, unknown and failed actions retain the original picture judgment
     assert.match(writers[0].messages[0].content, /Decide whether/);
     assert.match(writers[0].messages[0].content, /NONE/);
   }
+});
+
+test('the writer receives custom appearance and a long request keeps its explicit third-party subject',async()=>{
+  const {pictures,writers}=client({picture_action_v1:{choice_id:'draw'}},'Current companion Mira has silver hair and a blue coat.');
+  await pictures.decide('Draw a picture. '+'setting '.repeat(500)+' The subject is an adult knight with amber eyes, not the companion.','A picture?');
+  const messages=writers[0].messages;assert.match(messages[1].content,/silver hair and a blue coat/);
+  assert.match(messages[1].content,/adult knight with amber eyes/);
+  assert.match(messages[0].content,/NEW request's explicit subject and appearance take priority/);
+  assert.match(messages[0].content,/Later roleplay corrections override earlier details/);
 });

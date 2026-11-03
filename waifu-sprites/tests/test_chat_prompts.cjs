@@ -27,6 +27,24 @@ function client(locale = 'en', bundles = true) {
 const system = async chat => (await chat.modelMessages('Synthetic greeting'))[0].content;
 const placeholders = s => [...s.matchAll(/%\{(\w+)\}/g)].map(m => m[1]).sort();
 
+test('picture context includes a short middle-scene definition and excludes stopped/image turns',()=>{
+  const {chat}=client();
+  for(let i=0;i<24;i++)chat.messages.push({role:'user',content:i===12?'In this story you are Mira with turquoise hair.':'Ordinary short turn '+i});
+  chat.messages.push({role:'assistant',status:'stopped',content:'stopped-character-secret'},
+    {role:'assistant',kind:'image',content:'image-character-secret'});
+  const context=chat.pictureCharacterContext();
+  assert.match(context,/turquoise hair/);assert.doesNotMatch(context,/stopped-character-secret|image-character-secret/);
+});
+
+test('long character context reserves space for current appearance corrections',()=>{
+  const {chat}=client();chat.settings.persona='custom';chat.settings.customPrompt='Custom companion Mira. '+'old costume '.repeat(1000);
+  chat.settings.extraPrompt='Old instructions. '.repeat(1000);chat.setSummary('Old story. '.repeat(1000));
+  chat.messages.push({role:'user',content:'Earlier scene. '.repeat(1000)},
+    {role:'user',content:'For the current scene, you now have silver hair and a blue coat.'});
+  const context=chat.pictureCharacterContext();assert.ok(context.length<=6000);
+  assert.match(context,/silver hair and a blue coat/);assert.match(context,/Custom companion Mira/);
+});
+
 // All authored prompt languages are also full interface locales. Keep an
 // explicit allowlist for any future intentionally reply-only additions.
 const REPLY_ONLY_PROMPTS = [];
