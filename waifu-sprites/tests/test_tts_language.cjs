@@ -164,7 +164,7 @@ function speechRuntime(failure) {
  const speechSynthesis={getVoices:()=>[{name:'English Female',lang:'en-US'},{name:'Arabic Female',lang:'ar-SA'}]};
  const c=vm.createContext({window,navigator:{language:'en-US'},localStorage:{getItem:()=>null},setTimeout,clearTimeout,speechSynthesis,
  AbortSignal,URLSearchParams,URL,
- fetch:async url=>{requests++;lastUrl=String(url);if(failure==='network')throw new TypeError('Failed to fetch');
+ fetch:async url=>{if(String(url).endsWith('/events'))return{ok:true,status:204};requests++;lastUrl=String(url);if(failure==='network')throw new TypeError('Failed to fetch');
   if(failure==='unavailable')return{ok:true,status:204,headers:new Map()};
   return{ok:failure!=='http',status:failure==='http'?503:200,headers:new Map(),
    arrayBuffer:async()=>failure==='empty'?new ArrayBuffer(0):new ArrayBuffer(4)};}});
@@ -189,4 +189,12 @@ test('Sprites cloud speech receives the reply language',async()=>{
 test('Sprites successful primary and explicit browser selection remain available',async()=>{
  const r=speechRuntime();assert.equal((await r.speech.resolve('Hello, how are you today?')).kind,'buffer');
  r.speech.settings.voiceId='browser-female';assert.equal((await r.speech.resolve('Hello')).kind,'browser');assert.equal(r.requests(),1);
+});
+
+test('explicit cloud voice is sent independently of reply language and preview stays marked',async()=>{
+  const r=speechRuntime();r.speech.settings.voiceId='cloud:tt-jp-001';
+  const result=await r.speech.resolve('Hello, how are you today?',null,true);
+  assert.equal(result.kind,'buffer');assert.ok(r.lastUrl().includes('voice=tt-jp-001'));
+  assert.ok(r.lastUrl().includes('lang=en-US'));assert.ok(r.lastUrl().includes('preview=1'));
+  assert.equal(r.speech.settings.voiceId,'cloud:tt-jp-001');
 });

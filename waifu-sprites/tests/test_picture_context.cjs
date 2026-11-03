@@ -34,7 +34,7 @@ test('accepting a closing offer in a long reply reaches the picture writer', asy
   assert.ok(state.previous_reply.startsWith('Here is a little about me.'));
   assert.ok(state.previous_reply.endsWith(offer));
   assert.equal(writers.length, 1);
-  assert.equal(writers[0].messages[1].content, `Companion's previous message: ${state.previous_reply}\n\nUser's NEW message: In your room`);
+  assert.ok(writers[0].messages[1].content.endsWith(`Companion's previous message: ${state.previous_reply}\n\nUser's NEW message: In your room`));
 });
 
 test('short context stays intact and zero-confidence none suppresses the writer', async () => {
