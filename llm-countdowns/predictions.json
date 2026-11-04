@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-01",
+  "lastUpdated": "2026-11-04",
   "researchBaselines": {
     "openai": {
       "name": "GPT-6 Astra (Max)",
@@ -63,6 +63,11 @@
       "name": "GLM-5.3",
       "intel": 31.7,
       "releaseDate": "2026-08-18"
+    },
+    "tencent": {
+      "name": "HY4",
+      "intel": null,
+      "releaseDate": "2026-11-04"
     }
   },
   "defaultCadences": {
@@ -77,7 +82,8 @@
     "kimi": 99,
     "xiaomi": 40,
     "minimax": 45,
-    "zai": 63
+    "zai": 63,
+    "tencent": 120
   },
   "defaultIntel": {
     "anthropic": 58.4,
@@ -91,9 +97,47 @@
     "kimi": 46.0,
     "xiaomi": 29.9,
     "minimax": 28.9,
-    "zai": 31.7
+    "zai": 31.7,
+    "tencent": null
   },
   "labs": {
+    "tencent": {
+      "name": "Tencent",
+      "matchSlugs": [
+        "tencent",
+        "hunyuan"
+      ],
+      "models": {
+        "frontier": {
+          "id": "tencent-hy5",
+          "slug": "hy5",
+          "shortName": "HY5",
+          "predictedName": "HY5",
+          "category": "frontier",
+          "icon": "🔵",
+          "stageColor": "#0052d9",
+          "status": "Next Hunyuan flagship after HY4",
+          "hypeScore": 86,
+          "expectedGain": 5.0,
+          "explicitTargetDate": "2027-03-04T17:00:00.000Z",
+          "explicitWindowLabel": "Early Mar 2027",
+          "cadenceDays": 120,
+          "baseline": {
+            "name": "HY4",
+            "intel": null,
+            "releaseDate": "2026-11-04"
+          },
+          "features": [
+            "HY4 launched on Nov 4, 2026, following HY4 Preview on Aug 28; the full release adds image input alongside text and retains a 1M-token context window",
+            "HY5 tracks the next generation of Tencent's Hunyuan flagship, with stronger coding agents, tool use and long-horizon productivity as the expected focus",
+            "The March 4 target follows the roughly four-month gap between HY3 on July 6 and HY4 on Nov 4; the 120-day cycle is applied to HY4's full release",
+            "Artificial Analysis has not yet listed an Intelligence Index score for HY4 as of Nov 4"
+          ],
+          "source": "https://openrouter.ai/tencent/hy4; https://openrouter.ai/api/v1/models (HY4 full release Nov 4, 2026; HY4 Preview Aug 28); https://artificialanalysis.ai/api/v2/data/llms/models (HY3 release July 6, 2026; checked Nov 4)",
+          "lastVerified": "2026-11-04"
+        }
+      }
+    },
     "xai": {
       "name": "xAI",
       "matchSlugs": [
