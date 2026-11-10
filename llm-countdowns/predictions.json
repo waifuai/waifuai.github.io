@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-04",
+  "lastUpdated": "2026-11-10",
   "researchBaselines": {
     "openai": {
       "name": "GPT-6 Astra (Max)",
@@ -306,8 +306,8 @@
           "features": [
             "Opus has shipped every 6 to 10 weeks in 2026: 4.6 (Feb 5), 4.7 (Apr 16), 4.8 (May 28), 5 (Jul 24) and 5.5 (Sept 22)",
             "Major versions are much further apart: Opus 4 (May 2025) to Opus 5 (Jul 2026) took about 14 months with five point releases in between (4.1, 4.5, 4.6, 4.7, 4.8), so a Claude 6 this year is unlikely",
-            "Each recent Opus followed a Fable release by 3 to 7 weeks (Fable 5 then Opus 5, Fable 5.1 then Opus 5.5); with Fable 5.5 now forecast for end of November, the next Opus points to late December",
-            "Opus 5.5 (58.4 on the v5 index) still leads Anthropic's lineup and sits second overall behind Gemini 4 Carbon (59.4); the projection assumes about +3, which would retake the top spot"
+            "The Dec 21 target is retained from the Nov 1 review. Its earlier rationale depended on a Nov 30 Fable forecast that is now superseded; no Opus schedule was rechecked in this focused review.",
+            "At the Nov 1 review, Opus 5.5 (58.4 on the v5 index) led Anthropic's measured lineup and sat second overall behind Gemini 4 Carbon (59.4); the retained +3 projection is an assumption, and Fable 5.2's score was not verified in this focused review."
           ],
           "source": "Anthropic release history (Artificial Analysis API v2, re-read Nov 1, 2026); release-status review Nov 1, 2026: https://www.anthropic.com/system-cards",
           "lastVerified": "2026-11-01"
@@ -316,32 +316,31 @@
           "id": "anthropic-claude-fable-5-5",
           "slug": "claude-fable-5-5",
           "shortName": "Claude Fable 5.5",
-          "predictedName": "Claude Fable 5.5 / Mythos 5.5",
-          "previewDetail": "Fable and Mythos could return as two access tiers.",
+          "predictedName": "Claude Fable 5.5 (speculative successor)",
+          "previewDetail": "The 5.5 label is a speculative placeholder; the next Fable version could have a different name.",
           "category": "frontier",
           "icon": "🟣",
           "stageColor": "#9d4edd",
-          "status": "No Fable 5.5 release as of Nov 1; community routing reports and a hidden documentation URL keep the rumor alive, pointing to end-Nov/early-Dec",
+          "status": "Fable 5.2 released Nov 9; the next version and release date are not established by the checked first-party sources",
           "hypeScore": 96,
           "expectedGain": 7.0,
-          "explicitTargetDate": "2026-11-30T17:00:00.000Z",
-          "explicitWindowLabel": "End Nov 2026 (revised estimate; low confidence)",
-          "cadenceDays": 60,
+          "explicitTargetDate": "2027-01-17T09:00:00.000Z",
+          "explicitWindowLabel": "Mid Jan 2027 (single-interval estimate; low confidence)",
+          "cadenceDays": 69,
           "baseline": {
-            "name": "Claude Fable 5.1",
-            "intel": 49,
-            "releaseDate": "2026-09-01",
-            "speed": 72.3
+            "name": "Claude Fable 5.2",
+            "intel": null,
+            "releaseDate": "2026-11-09"
           },
           "features": [
-            "Opus 5.5, Sonnet 5.5 and Haiku 5.5 have shipped; Fable 5.5 is a speculative next top-tier label, not an announced missing member of the family",
-            "The Oct 5 estimate passed without a launch; Fable 5.1 shipped Sept 1, and a three-month Fable cadence lands at the end of November, matching the community's 'best case end of November or early December' consensus",
-            "Fable 5.5 routing was reported Oct 1-2 with no release following; the evidence is still community rumor, not an Anthropic announcement",
-            "Opus 5.5 (58.4) now outscores the historical Fable 5.1 anchor (49 on the v5 index) by more than nine points, so the pressure is on the frontier gap as well as cost per task",
-            "The projected +7 (49 to 56) assumes Fable 5.5 retakes the family lead, echoing how earlier Fable releases stepped past the concurrent Opus"
+            "Anthropic released Claude Fable 5.2 (claude-fable-5-2) on Nov 9, 2026; its model overview lists it as Active (latest).",
+            "Mythos 5.2 shares the underlying model but has verification-program access restrictions; Fable's broad availability does not establish unrestricted Mythos access.",
+            "Fable 5.5 is the retained speculative successor label, not a verified official next version; a different version could arrive first.",
+            "Repeating the 69-day interval from the previously recorded Sept 1 Fable 5.1 release to the Nov 9 Fable 5.2 release gives Jan 17, 2027; one interval is a weak forecasting basis, not an announced schedule. The 09:00 UTC / 17:00 SGT target aligns the displayed date, not a verified launch hour.",
+            "No Fable 5.2 AA Intelligence Index score or output speed was verified in this review. The retained +7 gain is an illustrative assumption, not a measured result or a projected family lead."
           ],
-          "source": "Anthropic Fable 5.1 / Mythos 5.1 launch (Sept 1, 2026), Claude Opus 5.5 launch (Sept 22, 2026), Claude Haiku 5.5 launch (Oct 7, 2026; https://www.anthropic.com/claude/haiku) & Artificial Analysis Index v5 (re-read Nov 1, 2026); release-status review Nov 1, 2026: https://www.anthropic.com/system-cards",
-          "lastVerified": "2026-11-01"
+          "source": "Anthropic announcement: https://www.anthropic.com/claude-fable-and-mythos-5-2; model overview: https://platform.claude.com/docs/en/models/fable-5-2/overview (independently verified Nov 10, 2026; released Nov 9). The Sept 1 Fable 5.1 date is retained from the existing forecast baseline. The 5.5 name and Jan 17 target are speculative extrapolations, not Anthropic announcements.",
+          "lastVerified": "2026-11-10"
         },
         "sonnet": {
           "id": "anthropic-claude-sonnet-5-6",
@@ -389,7 +388,7 @@
           "category": "frontier",
           "icon": "🌐",
           "stageColor": "#00f2fe",
-          "status": "Qwen 4 confirmed in training at Apsara Sept 22; the Oct 30 estimate passed with no release — no Qwen 4 weights on Hugging Face as of Oct 28 and a 'Kalmia' test model spotted Oct 26",
+          "status": "Qwen 4 was announced in training Sept 22; the Qoder notice checked Nov 10 leaves Qoduck's identity undisclosed and does not establish a Qwen 4 or Max release",
           "hypeScore": 95,
           "expectedGain": 4.0,
           "explicitTargetDate": "2026-11-16T17:00:00.000Z",
@@ -402,14 +401,14 @@
             "speed": 38.2
           },
           "features": [
-            "Alibaba's Sept 22 roadmap confirms Qwen 4 is in training, but does not give a release day or confirm the Max tier name",
-            "The late-October partner leak did not materialize: prediction markets marked the Oct 29 window a miss, no Qwen4-named weights had appeared on Hugging Face as of Oct 28, and an unreleased test model codenamed 'Kalmia' was spotted Oct 26",
-            "Qwen Max has updated every 1 to 3 months (3.7 Max May 19, 3.8 Max Aug 3, 3.8 Max 0902 Sept 2); the Nov 16 revision allows two more weeks from this review",
-            "Uses the hybrid attention design previewed in Qwen3.8-Flash-Next (Aug 26); Qwen 4.5 and Qwen 5 are on the roadmap at 5 to 10 trillion parameters",
-            "Qwen3.8 Max (0902) reads 33.6 on Artificial Analysis' v5 index; the projected +4 remains a scenario, not a benchmark"
+            "Alibaba's Sept 22 announcement said Qwen 4 was in training without a release day or a confirmed Max tier name; it does not establish the model's Nov 10 release status.",
+            "Qoder's official notice checked Nov 10 says Qoduck is a stealth model whose identity has yet to be disclosed. Its Nov 7 free-allowance promotion start (Singapore time) is not a verified Qwen release date or Qoduck's original launch date.",
+            "Qwen Max has updated every 1 to 3 months (3.7 Max May 19, 3.8 Max Aug 3, 3.8 Max 0902 Sept 2); the Nov 16 judgment forecast is retained from the Nov 1 review, not a newly confirmed schedule.",
+            "Alibaba named Qwen 4.5 and Qwen 5 as upcoming roadmap series at 5 to 10 trillion parameters; neither is established by the checked pages as the exact next public model or the identity behind Qoduck.",
+            "The Qwen3.8 Max (0902) baseline of 33.6 on Artificial Analysis' v5 index is unchanged and was not remeasured; the projected +4 remains a scenario, not a benchmark."
           ],
-          "source": "Alibaba Apsara Conference (Sept 22, 2026) & Artificial Analysis release history (re-read Nov 1, 2026); Oct 28-29 status reporting (Hugging Face/leak/prediction-market roundups); release-status review Nov 1, 2026: https://www.alibabacloud.com/en/press-room/alibaba-unveils-roadmap-on-full-stack-ai-strategy",
-          "lastVerified": "2026-11-01"
+          "source": "Primary-source caveat review Nov 10, 2026: https://docs.qoder.com/events/qoduck-free (Qoduck identity undisclosed; Nov 7 promotion start in Singapore time, not a model release date); https://www.alibabacloud.com/en/press-room/alibaba-unveils-roadmap-on-full-stack-ai-strategy (Sept 22 training/roadmap announcement, not release confirmation). These pages do not establish Qoduck = Qwen 4 or a Max-tier release. The Nov 1 forecast date and Artificial Analysis baseline are retained, not freshly verified.",
+          "lastVerified": "2026-11-10"
         },
         "light": {
           "id": "alibaba-qwen-4-flash",
@@ -419,7 +418,7 @@
           "category": "light",
           "icon": "⚡",
           "stageColor": "#00f2fe",
-          "status": "Speculative Flash tier of Qwen 4; the checked official roadmap confirms Qwen 4 training without a tier-specific date and nothing has shipped",
+          "status": "Speculative Flash tier of Qwen 4; the Sept 22 roadmap gives no tier-specific release date, and Qoder's undisclosed Qoduck alias does not verify a Qwen 4 Flash release",
           "hypeScore": 90,
           "expectedGain": 2.0,
           "explicitTargetDate": "2026-11-23T17:00:00.000Z",
@@ -432,12 +431,13 @@
           },
           "features": [
             "Would succeed Qwen3.8-Flash-Next, the architecture preview released Aug 26, 2026",
-            "Artificial Analysis displays no Intelligence Index for the Flash-Next preview on the current v5 scale, so this forecast carries no projected score rather than a stale number",
-            "The official roadmap confirms the Qwen 4 family; this Flash tier name and timing are forecast assumptions, following the Max forecast by about a week",
+            "No Flash-Next Intelligence Index score is recorded in this forecast's baseline; the Nov 1 benchmark observation was not refreshed in this review.",
+            "The Sept 22 official roadmap names the Qwen 4 family, not a Flash release. This tier name and Nov 23 target remain the Nov 1 forecast assumptions, following Max by about a week.",
+            "Qoder's official notice checked Nov 10 leaves Qoduck's identity undisclosed; its Nov 7 free-allowance promotion start is not a Qwen release date and does not establish that any particular Qwen tier shipped.",
             "Expected to use the same hybrid attention design as the Flash-Next preview (Gated DeltaNet with Qwen Sparse Attention)"
           ],
-          "source": "Alibaba Cloud Qwen3.8-Flash-Next architecture preview & Qwen 4 roadmap (Sept 2026); Artificial Analysis data feed (re-read Nov 1, 2026); release-status review Nov 1, 2026: https://www.alibabacloud.com/en/press-room/alibaba-unveils-roadmap-on-full-stack-ai-strategy",
-          "lastVerified": "2026-11-01"
+          "source": "Primary-source caveat review Nov 10, 2026: https://docs.qoder.com/events/qoduck-free (Qoduck identity undisclosed; Nov 7 promotion start in Singapore time); https://www.alibabacloud.com/en/press-room/alibaba-unveils-roadmap-on-full-stack-ai-strategy (Sept 22 training/roadmap announcement). Neither page verifies Qoduck = Qwen 4 Flash or a Flash release date. The Nov 1 forecast and Flash-Next baseline are unchanged; no benchmark refresh was performed.",
+          "lastVerified": "2026-11-10"
         }
       }
     },

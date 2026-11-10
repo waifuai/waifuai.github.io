@@ -71,7 +71,7 @@
         featured.href = link.href;
         featured.querySelector(".next-name").textContent = link.textContent;
         const label = featured.querySelector(".next-label");
-        label.replaceChildren(lab.querySelector(".dot").cloneNode(true),
+        label.replaceChildren(lab.querySelector(".lab-logo, .dot").cloneNode(true),
           "Next up · " + lab.textContent.trim());
         featured.querySelector(".next-when strong").textContent = dateFormat.format(targetOf(next));
         featured.querySelector("[data-until]").dataset.until = next.querySelector("[data-until]").dataset.until;
