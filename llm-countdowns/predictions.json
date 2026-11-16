@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-12",
+  "lastUpdated": "2026-11-16",
   "researchBaselines": {
     "openai": {
       "name": "GPT-6 Astra (Max)",
@@ -27,9 +27,9 @@
       "releaseDate": "2026-09-21"
     },
     "alibaba": {
-      "name": "Qwen3.8 Max (0902)",
-      "intel": 33.6,
-      "releaseDate": "2026-09-02"
+      "name": "Qwen4 Max",
+      "intel": 42.9,
+      "releaseDate": "2026-11-16"
     },
     "deepseek": {
       "name": "DeepSeek V4.1 Flash 1017 (max)",
@@ -382,34 +382,33 @@
       ],
       "models": {
         "frontier": {
-          "id": "alibaba-qwen-4-max",
-          "slug": "qwen-4-max",
-          "shortName": "Qwen 4 Max",
-          "predictedName": "Qwen 4 Max / Qwen 4",
+          "id": "alibaba-qwen-5-max",
+          "slug": "qwen-5-max",
+          "shortName": "Qwen 5 Max",
+          "predictedName": "Qwen 5 Max (speculative successor)",
+          "previewDetail": "The Qwen 5 Max label is a speculative placeholder; Alibaba's roadmap also names Qwen 4.5, which could arrive first.",
           "category": "frontier",
           "icon": "🌐",
           "stageColor": "#00f2fe",
-          "status": "Qwen4-Max-Preview entered preview Nov 11 (Token Plan only, through Nov 25); a stable Qwen 4 Max release is not established, and Qoder's Qoduck identity remains undisclosed",
+          "status": "Qwen4 Max released Nov 16; the next Max version and release date are not established by the checked first-party sources",
           "hypeScore": 95,
-          "expectedGain": 4.2,
-          "explicitTargetDate": "2026-12-10T17:00:00.000Z",
-          "explicitWindowLabel": "Early Dec 2026 (revised estimate; low confidence)",
-          "cadenceDays": 25,
+          "expectedGain": 9.2,
+          "explicitTargetDate": "2027-01-30T09:00:00.000Z",
+          "explicitWindowLabel": "Late Jan 2027 (single-interval estimate; low confidence)",
+          "cadenceDays": 75,
           "baseline": {
-            "name": "Qwen3.8 Max (0902)",
-            "intel": 33.6,
-            "releaseDate": "2026-09-02",
-            "speed": 38.2
+            "name": "Qwen4 Max",
+            "intel": 42.9,
+            "releaseDate": "2026-11-16"
           },
           "features": [
-            "Alibaba's Model Studio docs list qwen4-max-preview, in preview from 10:00 on Nov 11 to 24:00 on Nov 25, 2026 (UTC+8), available through Token Plan only, with a 1M-token context window and 393,216 max output. The Sept 22 announcement had said Qwen 4 was in training.",
-            "Qwen's official X post (Nov 11) says 'Qwen4 is coming... Qwen4-Max is now in preview', with early access on QwenWork, Qoder, Qwen APP and QwenStudio. A preview is not a stable Max release, and no GA date is announced.",
-            "Qoder's official notice checked Nov 12 still says Qoduck is a stealth model whose identity has yet to be disclosed. Its Nov 7-11 free-allowance promotion (Singapore time) is not a verified Qwen release date, and Qoder's preview early access does not disclose Qoduck's identity.",
-            "Qwen Max has updated every 1 to 3 months (3.7 Max May 19, 3.8 Max Aug 3, 3.8 Max 0902 Sept 2); the Dec 10 target is an owner-requested ~4-week buffer (Nov 12), not a newly confirmed schedule. Alibaba named Qwen 4.5 and Qwen 5 as upcoming roadmap series; neither is established as the exact next public model.",
-            "The Qwen3.8 Max (0902) baseline of 33.6 is unchanged. Qwen3.7 Max and Qwen3.6 Max Preview have no v5 score in the Nov 12 AA API catalog, so no same-index v5 delta exists. Launch coverage reports the 0803->0902 refresh at 45 vs 40 on v4.3 (+5, +12.5%); scaling that onto the retained 33.6 anchor gives +4.2, projecting about 37.8 (scaled from v4.3 - scenario, not a v5 benchmark). A full major-generation step (Qwen3.8 Max 0803 +11 over Qwen3.7 Max, 47->58 on v4.1.1, +23.4%) would scale to about +7.9; the conservative refresh floor is retained pending a confirmed Qwen 4 Max GA."
+            "Alibaba released Qwen4 Max (qwen4-max) on Nov 16, 2026: Model Studio lists it as the latest flagship, generally available across Beijing, Singapore, Frankfurt, Virginia, Tokyo and HK, with a 1M-token context, 131,072 max non-thinking output, text/image/video input, and OpenAI- and Anthropic-compatible APIs. The Nov 11-25 Token Plan preview preceded the stable release.",
+            "Qwen 5 Max is a speculative successor label, not an announced model. Alibaba's Sept 22 roadmap named Qwen 4.5 and Qwen 5 as upcoming series; either could arrive first, and no Qwen 5 release date is announced.",
+            "Repeating the 75-day interval from the retained Qwen3.8 Max (0902) baseline (Sept 2) to the Nov 16 Qwen4 Max release gives Jan 30, 2027; one interval is a weak forecasting basis, not an announced schedule. The 09:00 UTC / 17:00 SGT target aligns the displayed date, not a verified launch hour.",
+            "Artificial Analysis lists Qwen4 Max at 42.9 on its v5 Intelligence Index (release_date 2026-11-16 in the AA Data API free catalog fetched Nov 16); no output speed is recorded yet (null, so none is ingested). The +9.2 gain repeats the observed same-index v5 step from Qwen3.8 Max (0902) (33.7 in the Nov 16 catalog) to Qwen4 Max (42.9), max-to-max; independent estimate over the measured 42.9 anchor, not a measured result."
           ],
-          "source": "Primary-source review Nov 12, 2026: https://www.alibabacloud.com/help/en/model-studio/qwen4-max-preview (preview Nov 11-25, Token Plan only; no stable qwen4-max listed); https://www.alibabacloud.com/help/en/model-studio/models; Qwen official X post Nov 11, https://x.com/Alibaba_Qwen/status/2120335993643684315; https://docs.qoder.com/events/qoduck-free (identity still undisclosed; Nov 7-11 promotion window, not a release date); https://www.alibabacloud.com/en/press-room/alibaba-unveils-roadmap-on-full-stack-ai-strategy (Sept 22 training/roadmap announcement). A preview is not a GA release; the Nov 16 forecast date and Artificial Analysis baseline are retained.; Nov 12 gain review: AA Data API free catalog (v5.0.1); old-index launch delta (owner deep-research, Nov 12): Qwen3.8 Max 0803->0902 +5 (40->45) on v4.3, https://go.tabbit.ai/blog/qwen3-8-max; major-gen alt +11 (47->58) on v4.1.1, https://www.deeplearning.ai/the-batch/qwen3-8-max-lands-with-a-bang",
-          "lastVerified": "2026-11-12"
+          "source": "Primary sources checked Nov 16, 2026: https://www.alibabacloud.com/help/en/model-studio/qwen4-max (stable qwen4-max, latest model, 1M context; doc updated Nov 16); https://www.alibabacloud.com/help/en/model-studio/models (qwen4-max listed as recommended flagship); https://qwen.ai/blog?id=qwen4-max (official launch post); https://artificialanalysis.ai/models/qwen4-max (43 on the v5 index). AA Data API free catalog fetched Nov 16 (index v5): qwen4-max release_date 2026-11-16, intel 42.9, speed null; qwen3-8-max (0902) intel 33.7. The Qwen 5 Max name and Jan 30 target are speculative extrapolations, not Alibaba announcements.; Nov 12 gain review: AA Data API free catalog (v5.0.1)",
+          "lastVerified": "2026-11-16"
         },
         "light": {
           "id": "alibaba-qwen-4-flash",
