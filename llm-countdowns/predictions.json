@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-11-16",
+  "lastUpdated": "2026-11-18",
   "researchBaselines": {
     "openai": {
-      "name": "GPT-6 Astra (Max)",
-      "intel": 56.9,
-      "releaseDate": "2026-09-03"
+      "name": "GPT-6.2 Astra (Max)",
+      "intel": 62.1,
+      "releaseDate": "2026-11-17"
     },
     "google": {
       "name": "Gemini 4 Carbon (High)",
@@ -87,7 +87,7 @@
   },
   "defaultIntel": {
     "anthropic": 58.4,
-    "openai": 56.9,
+    "openai": 62.1,
     "meta": 49.7,
     "xai": 35.0,
     "google": 59.4,
@@ -462,83 +462,88 @@
           "category": "frontier",
           "icon": "🟢",
           "stageColor": "#10a37f",
-          "status": "Speculative successor; no GPT-7 release or date found in the official model catalog/changelog as of Nov 12",
+          "status": "Speculative successor; no GPT-7 release or date found in the official model catalog/changelog as of Nov 18",
           "hypeScore": 99,
-          "expectedGain": 6.0,
+          "expectedGain": 5.2,
           "explicitTargetDate": "2027-01-20T17:00:00.000Z",
           "explicitWindowLabel": "Jan 2027 (tentative; low confidence)",
           "features": [
-            "The official model catalog currently lists GPT-6 Astra, GPT-6.1 Sol and GPT-6 Luna in the flagship family, with GPT-6.1 Terra (Oct 26) as the newest general release; gated specialists (gpt-6-rosalind Oct 30, GPT-6-Cyber Nov 5, the latter for approved Daybreak Red users) do not change the flagship lineup",
-            "GPT-7 is a speculative label; no GPT-7 model release or schedule was found in the sources reviewed Nov 12",
+            "The official catalog's flagship family is now led by GPT-6.2 Astra and GPT-6.2 Sol (both released Nov 17, 2026), with GPT-6.1 Terra (Oct 26) and GPT-6 Luna also current; gated specialists (gpt-6-rosalind Oct 30, GPT-6-Cyber Nov 5, the latter for approved Daybreak Red users) do not change the flagship lineup",
+            "GPT-7 is a speculative label; no GPT-7 model release or schedule was found in the sources reviewed Nov 18",
             "The Jan 20 date is retained as a low-confidence forecast, not a confirmed release plan",
-            "An eventual flagship could use a different name. No GPT-5.x/6.x Astra predecessor is scored on v5 in the Nov 12 AA API catalog, so no same-index v5 delta exists. Launch coverage reports GPT-6 Astra (Max) at 53 vs GPT-5.6 Sol (Max) at 47 on v4.3 (+6); applying that closed-frontier delta about 1:1 to the retained Astra anchor (56.9) gives +6, projecting about 62.9 (observed on v4.3; conservative scenario, not a v5 benchmark)."
+            "The Nov 18 AA API catalog scores GPT-6.2 Astra (Max) at 62.1 over GPT-6 Astra (Max) at 56.9 on v5 — an observed same-index flagship step of +5.2 whose interval skipped 6.1. The +5.2 gain repeats that clean v5 delta over the new GPT-6.2 Astra anchor, projecting about 67.3; independent estimate, not a benchmark. This supersedes the retired v4.3 scenario (GPT-6 Astra vs GPT-5.6 Sol +6), which spanned a generation on an index version that is no longer comparable."
           ],
-          "source": "https://developers.openai.com/api/docs/changelog; https://developers.openai.com/api/docs/models (checked Oct 20, 2026); Nov 12 re-check: official catalog/changelog (GPT-6-Cyber system card published Nov 5, gated; no GPT-7) and release coverage; historical baselines and cadence estimates retained; Nov 12 gain review: AA Data API free catalog (v5.0.1); old-index launch delta (owner deep-research, Nov 12): GPT-6 Astra vs GPT-5.6 Sol +6 (47->53) on v4.3, https://artificialanalysis.ai/articles/benchmarking-gpt-6-astra",
+          "source": "https://developers.openai.com/api/docs/changelog; https://developers.openai.com/api/docs/models (checked Oct 20, 2026); Nov 12 re-check: official catalog/changelog (GPT-6-Cyber system card published Nov 5, gated; no GPT-7) and release coverage; Nov 18 re-check: official changelog lists gpt-6.2-astra and gpt-6.2-sol (Nov 17, 2026 Feature entry; no GPT-7); gain re-derived from the same-index v5 Astra step in the AA Data API free catalog fetched Nov 18, 2026 (gpt-6-2-astra Max 62.1, gpt-6-astra Max 56.9); historical baselines and cadence estimates retained; Nov 12 gain review: AA Data API free catalog (v5.0.1)",
           "baseline": {
-            "name": "GPT-6 Astra",
-            "intel": 56.9,
-            "releaseDate": "2026-09-03",
-            "speed": 76.6
+            "name": "GPT-6.2 Astra",
+            "intel": 62.1,
+            "releaseDate": "2026-11-17"
           },
-          "lastVerified": "2026-11-12"
+          "lastVerified": "2026-11-18"
         },
         "astra": {
-          "id": "openai-gpt-6-1-astra",
-          "slug": "gpt-6-1-astra",
-          "shortName": "GPT-6.1 Astra",
-          "predictedName": "GPT-6.1 Astra / GPT-6.2 Astra",
+          "id": "openai-gpt-6-3-astra",
+          "slug": "gpt-6-3-astra",
+          "shortName": "GPT-6.3 Astra",
+          "predictedName": "GPT-6.3 Astra (speculative successor)",
+          "previewDetail": "The GPT-6.3 Astra label is a speculative placeholder; the next Astra version could carry a different number or name.",
           "category": "frontier",
           "icon": "🟢",
           "stageColor": "#10a37f",
-          "status": "Speculative successor; reports since Sept 28 claim OpenAI will not release GPT-6.1 Astra; no official changelog entry or first-party cancellation statement found as of Nov 12",
+          "status": "GPT-6.2 Astra released Nov 17; no next-Astra name, version or release date is established by the checked first-party sources as of Nov 18",
           "hypeScore": 96,
-          "expectedGain": 2.5,
-          "explicitTargetDate": "2026-12-10T17:00:00.000Z",
-          "explicitWindowLabel": "Early Dec 2026 (revised estimate; low confidence)",
-          "cadenceDays": 45,
-          "baseline": {
-            "name": "GPT-6 Astra",
-            "intel": 56.9,
-            "releaseDate": "2026-09-03",
-            "speed": 76.6
-          },
-          "features": [
-            "GPT-6 Astra remains the Astra model listed in the current official catalog (56.9 on the v5 index); no GPT-6.1 or GPT-6.2 Astra release was found as of Nov 1",
-            "Reports persist that OpenAI said on Sept 28 it would not release GPT-6.1 Astra because the model 'did not fully meet its standards'; the official documentation reviewed here does not establish those claims, so the entry stays with a cancellation caveat",
-            "The Dec 10 date is an owner-requested ~4-week buffer (Nov 12), an illustrative estimate rather than a known safety-review schedule; Terra's Oct 26 release filled the interim slot instead.",
-            "No Astra predecessor is scored on v5, so no same-index delta exists; the +2.5 stays a conservative labeled scenario over GPT-6 Astra (56.9). Quota-page sightings of a gpt-6.2-astra identifier in early November are unconfirmed leaks, not an OpenAI announcement (AA Data API v5.0.1 catalog, Nov 12)."
+          "expectedGain": 5.2,
+          "explicitTargetDate": "2027-01-31T09:00:00.000Z",
+          "explicitWindowLabel": "Late Jan 2027 (single-interval estimate; low confidence)",
+          "cadenceDays": 75,
+          "previousSlugs": [
+            "gpt-6-1-astra"
           ],
-          "source": "https://developers.openai.com/api/docs/changelog; https://developers.openai.com/api/docs/models (checked Oct 20, 2026); Nov 12 re-check: official catalog/changelog (no 6.1/6.2 Astra) and release coverage (Sept 28 cancellation reports remain press-only); historical baselines and cadence estimates retained; Nov 12 gain review: AA Data API free catalog (v5.0.1)",
-          "lastVerified": "2026-11-12"
+          "features": [
+            "OpenAI shipped GPT-6.2 Astra (gpt-6.2-astra) on Nov 17, 2026 for demanding reasoning and coding tasks; the same changelog entry introduced GPT-6.2 Sol, and both serve through the Responses API and Chat Completions with tool calling requiring the Responses API",
+            "The Astra line skipped 6.1: after Sept 28 reports that GPT-6.1 Astra would not ship because it 'did not fully meet its standards', the next Astra arrived directly as 6.2; the retired 6.1 label now redirects here",
+            "Repeating the 75-day interval from GPT-6 Astra (Sept 3) to GPT-6.2 Astra (Nov 17) gives Jan 31, 2027; one interval is a weak forecasting basis, not an announced schedule. The 09:00 UTC / 17:00 SGT target aligns the displayed date, not a verified launch hour.",
+            "The Nov 18 AA API catalog scores GPT-6.2 Astra (Max) at 62.1 on the v5 index (High 60.1, Xhigh 61.6); no output speed is recorded yet (null, so none is ingested). The +5.2 gain repeats the observed same-index v5 step from GPT-6 Astra (Max, 56.9) to GPT-6.2 Astra (Max, 62.1) — an interval that skipped 6.1, so a single point step could land lower; independent estimate, not a measured result."
+          ],
+          "source": "OpenAI changelog: https://developers.openai.com/api/docs/changelog (Nov 17, 2026 Feature entry: gpt-6.2-astra for demanding reasoning and coding; gpt-6.2-sol for everyday coding and agent workflows; Responses API + Chat Completions, tool calling Responses-only); Artificial Analysis Data API free catalog fetched Nov 18, 2026 (index v5): gpt-6-2-astra release_date 2026-11-17, Max 62.1 (High 60.1, Xhigh 61.6), speed null; gpt-6-astra Max 56.9. The GPT-6.3 Astra name and Jan 31 target are speculative extrapolations, not OpenAI announcements.; Nov 12 gain review: AA Data API free catalog (v5.0.1)",
+          "baseline": {
+            "name": "GPT-6.2 Astra",
+            "intel": 62.1,
+            "releaseDate": "2026-11-17"
+          },
+          "lastVerified": "2026-11-18"
         },
         "sol": {
-          "id": "openai-gpt-6-2-sol",
-          "slug": "gpt-6-2-sol",
-          "shortName": "GPT-6.2 Sol",
-          "predictedName": "GPT-6.2 Sol",
+          "id": "openai-gpt-6-3-sol",
+          "slug": "gpt-6-3-sol",
+          "shortName": "GPT-6.3 Sol",
+          "predictedName": "GPT-6.3 Sol (speculative successor)",
+          "previewDetail": "The GPT-6.3 Sol label is a speculative placeholder; the next Sol version could carry a different number or name.",
           "category": "frontier",
           "icon": "☀️",
           "stageColor": "#10a37f",
-          "status": "The Nov 10 estimate passed without a GPT-6.2 Sol release; the official catalog/changelog checked Nov 12 still list GPT-6.1 Sol as the newest Sol",
+          "status": "GPT-6.2 Sol released Nov 17 in the same changelog entry as GPT-6.2 Astra; no next-Sol name, version or release date is established by the checked first-party sources as of Nov 18",
           "hypeScore": 90,
-          "expectedGain": 10.4,
-          "explicitTargetDate": "2026-12-10T17:00:00.000Z",
-          "explicitWindowLabel": "Early Dec 2026 (revised estimate; low confidence)",
-          "cadenceDays": 40,
-          "baseline": {
-            "name": "GPT-6.1 Sol",
-            "intel": 54.5,
-            "releaseDate": "2026-09-29",
-            "speed": 74.3
-          },
-          "features": [
-            "Sol on the current v5 index: GPT-6 Sol (Sept 22) 44.2 and GPT-6.1 Sol (Sept 29) 54.6, both max — an observed +10.4 leap; GPT-5.6 Sol (Jul 9) has no v5 score. The +10.4 projection repeats that single observed same-index interval (AA Data API v5.0.1 catalog, Nov 12); it is an independent estimate, not a benchmark.",
-            "GPT-6.1 Sol was released Sept 29; official documentation describes it as offering near-Astra performance at lower cost",
-            "The one-week 6 to 6.1 gap was a DevDay one-off; the Dec 10 target is an owner-requested ~4-week buffer (Nov 12) after the Nov 10 and Nov 26 estimates passed without a release, not an announced schedule.",
-            "No GPT-6.2 Sol release or schedule was found in the sources reviewed Nov 12; early-November quota-page sightings of a gpt-6.2-sol identifier are unconfirmed leaks, not an OpenAI announcement"
+          "expectedGain": 2.7,
+          "explicitTargetDate": "2027-01-05T09:00:00.000Z",
+          "explicitWindowLabel": "Early Jan 2027 (single-interval estimate; low confidence)",
+          "cadenceDays": 49,
+          "previousSlugs": [
+            "gpt-6-2-sol"
           ],
-          "source": "https://developers.openai.com/api/docs/changelog; https://developers.openai.com/api/docs/models (checked Oct 20, 2026); Nov 12 re-check: official catalog/changelog (no 6.2 Sol; newest Sol is 6.1) and release coverage; quota-page leak reports are secondary and unconfirmed; historical baselines and cadence estimates retained; Nov 12 gain review: AA Data API free catalog (v5.0.1)",
-          "lastVerified": "2026-11-12"
+          "features": [
+            "OpenAI shipped GPT-6.2 Sol (gpt-6.2-sol) on Nov 17, 2026, positioned for everyday coding and agent workflows; it arrived in the same changelog entry as GPT-6.2 Astra rather than on the previous Dec 10 estimate",
+            "Sol on the v5 index (max effort): GPT-6 Sol (Sept 22) 44.2 to GPT-6.1 Sol (Sept 29) 54.6 was a +10.4 leap, while GPT-6.1 Sol to GPT-6.2 Sol (Nov 17) 57.3 stepped +2.7 — the 6.2 release confirms point releases add far less than the DevDay-style generation jump",
+            "Repeating the 49-day interval from GPT-6.1 Sol (Sept 29) to GPT-6.2 Sol (Nov 17) gives Jan 5, 2027; one interval is a weak forecasting basis, not an announced schedule. The 09:00 UTC / 17:00 SGT target aligns the displayed date, not a verified launch hour.",
+            "The Nov 18 AA API catalog scores GPT-6.2 Sol (Max) at 57.3 (High 54.9, Xhigh 55.7); no output speed is recorded yet (null, so none is ingested). The +2.7 gain repeats the observed same-index v5 step from GPT-6.1 Sol (Max, 54.6) to GPT-6.2 Sol (Max, 57.3); independent estimate, not a measured result."
+          ],
+          "source": "OpenAI changelog: https://developers.openai.com/api/docs/changelog (Nov 17, 2026 Feature entry: gpt-6.2-astra and gpt-6.2-sol; Responses API + Chat Completions, tool calling Responses-only); Artificial Analysis Data API free catalog fetched Nov 18, 2026 (index v5): gpt-6-2-sol release_date 2026-11-17, Max 57.3 (High 54.9, Xhigh 55.7), speed null; gpt-6-1-sol Max 54.6. The GPT-6.3 Sol name and Jan 5 target are speculative extrapolations, not OpenAI announcements.; Nov 12 gain review: AA Data API free catalog (v5.0.1)",
+          "baseline": {
+            "name": "GPT-6.2 Sol",
+            "intel": 57.3,
+            "releaseDate": "2026-11-17"
+          },
+          "lastVerified": "2026-11-18"
         },
         "terra": {
           "id": "openai-gpt-6-2-terra",
