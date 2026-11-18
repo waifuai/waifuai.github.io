@@ -184,23 +184,24 @@
       ],
       "models": {
         "light": {
-          "id": "google-gemini-4-neon",
-          "slug": "gemini-4-neon",
-          "shortName": "Gemini 4 Neon",
-          "predictedName": "Gemini 4 Neon (leaked name; unannounced)",
-          "previewDetail": "The Neon name comes from a gemini-4-neon string spotted in the Gemini app's code; Google has not announced it and the real name could differ.",
+          "id": "google-gemini-4-1-neon",
+          "slug": "gemini-4-1-neon",
+          "shortName": "Gemini 4.1 Neon",
+          "predictedName": "Gemini 4.1 Neon (speculative successor)",
+          "previewDetail": "The 4.1 label follows the owner-directed element convention; Google has not announced a Gemini 4.1 generation, and the next light-tier model could carry a different name.",
           "category": "light",
           "icon": "⚡",
           "stageColor": "#4facfe",
-          "status": "Not announced; the only trace is a gemini-4-neon string reported in the Gemini app's code (Nov 18), and Gemini 4 Hydrogen (Nov 12) is the newest released Gemini",
+          "status": "Not announced; Gemini 4 Neon itself went GA Nov 18 and is not yet scored on the AA index (checked Nov 19)",
           "hypeScore": 88,
           "expectedGain": 2.0,
-          "explicitTargetDate": "2026-12-10T17:00:00.000Z",
-          "explicitWindowLabel": "Early Dec 2026 (revised estimate; low confidence)",
+          "explicitTargetDate": "2026-12-16T17:00:00.000Z",
+          "explicitWindowLabel": "Mid Dec 2026 (owner ~4-week buffer; low confidence)",
           "cadenceDays": 35,
           "previousSlugs": [
             "gemini-4-flash",
-            "gemini-4-flash-lite"
+            "gemini-4-flash-lite",
+            "gemini-4-neon"
           ],
           "baseline": {
             "name": "Gemini 4 Hydrogen",
@@ -208,48 +209,50 @@
             "releaseDate": "2026-11-12"
           },
           "features": [
-            "Google shipped Gemini 4 Hydrogen (gemini-4-hydrogen) on Nov 12, 2026 as the element-named everyday/execution tier: GA in AI Studio and the Gemini API, 1M-token context, $1.50/$7.50 per 1M, a fourth 'xhigh' thinking level, the default model in Antigravity and the upgrade path from Gemini 3.8 Flash in Google Search",
-            "The Flash/Flash-Lite names end with the Gemini 3 generation: the Oct-Nov changelog adds no Flash or Flash-Lite model, and the Nov 2 entry still routes gemini-2.5-flash to gemini-3.5-flash-lite from Dec 1 — the element series (Argon, Carbon, Hydrogen) is the active naming, with Neon the only additional element name on record",
-            "Neon is unannounced: the only trace is a gemini-4-neon string in the Gemini web app's code reported Nov 18, 2026; community reads make it a faster/lighter variant (possibly the budget slot, in which case it succeeds 3.5 Flash-Lite rather than Hydrogen and could land lower), and no specs, tier or date exist",
-            "The Dec 10 target is an owner-requested ~4-week buffer (Nov 12 sweep convention) counted from Hydrogen's Nov 12 release, not an announced date; if Neon is the budget slot it may wait for the 9-11-week gap Lite historically kept behind its Flash",
-            "The Nov 19 AA catalog reads Gemini 4 Hydrogen at 53.9 on the v5 index (default row; High 50.8, Medium 41.2, Low 26.9) versus Gemini 3.8 Flash at 30.8 — a +23.1 whole-generation step that, applied 1:1, would project about 77, above Fable 5.2 (65); implausible for the next light-tier model, so the +2 stays a conservative labeled scenario over the measured Hydrogen anchor (outlier moderated; independent estimate, not a benchmark)"
+            "Google shipped Gemini 4 Neon (gemini-4-neon) on Nov 18, 2026 — GA per the Vertex Model Garden versions table ('Initial GA release'); it is the fast-reasoning tier that builds on Hydrogen with deeper reasoning, bringing quality close to Carbon at Flash-tier speed and cost, with a 1M-token context and Low/Medium/High (default)/XHigh thinking levels; the Gemini 4 Neon forecast is retired into this card",
+            "The AA catalog had not scored Neon at the Nov 19 check (759 rows, no neon row), so the measured anchor stays Hydrogen (53.9, Nov 12) until Neon is scored; Google's own positioning — quality close to Carbon, 60.0 on v5 — suggests the conservative scenario below may understate Neon's tier",
+            "The 4.1 successor naming is owner-directed (Nov 19), consistent with community 'Gemini 4.1' chatter; Google has not announced a 4.1 generation or a 4.1 Neon, and other leaked element names (Xenon, Oxygen) are unverified",
+            "The Dec 16 target is an owner-requested ~4-week buffer counted from Neon's Nov 18 GA, not an announced date; the element family has shipped a model every 2-4 weeks since late September",
+            "The only observed same-index v5 light-line step is the +23.1 whole-generation jump (3.8 Flash 30.8 → Hydrogen 53.9); applied 1:1 it would project about 77, above Fable 5.2 (65) — moderated, so the +2 stays a conservative labeled scenario over the Hydrogen anchor (outlier moderated; independent estimate, not a benchmark)"
           ],
-          "source": "Primary sources checked Nov 19, 2026: Gemini API changelog, https://aistudio.google.com/docs/changelog (gemini-4-hydrogen GA entry Nov 12, 2026; no Neon entry in the Oct-Nov notes); Hydrogen announcement, https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen (Nov 12, 2026; updated Nov 16 — 'daily driver for agentic workflows', 1M context, $1.50/$7.50, beats Argon 51 vs 50 and 54 at xhigh); AA Data API free catalog fetched Nov 19, 2026 (index v5): gemini-4-hydrogen release_date 2026-11-12, default 53.9 (High 50.8, Medium 41.2, Low 26.9), gemini-3-8-flash 30.8, no Neon row. Neon evidence is third-party app-code reporting Nov 18, 2026, not a Google statement. Nov 12 gain review: AA Data API free catalog (v5.0.1) — superseded for this card by the Nov 19 re-review above (Hydrogen delta re-derived from the same catalog, index v5).",
+          "source": "Primary sources checked Nov 19, 2026: Vertex AI Model Garden, https://console.cloud.google.com/agent-platform/publishers/google/model-garden/gemini-4-neon (versions table: gemini-4-neon 11/18/2026 GA 'Initial GA release'; fast reasoning model, builds on Hydrogen, near-Carbon quality at Flash-tier speed and cost); Gemini API changelog, https://aistudio.google.com/docs/changelog (re-checked Nov 19, 2026: no Neon GA entry yet — changelog lag); AA Data API free catalog fetched Nov 19, 2026 (index v5, 759 rows): no gemini-4-neon row yet, gemini-4-hydrogen 53.9. The 4.1 naming is owner-directed. Nov 12 gain review: AA Data API free catalog (v5.0.1) — superseded for this card by the Nov 19 re-review above (Neon release verified; delta unchanged).",
           "lastVerified": "2026-11-19"
         },
         "frontier": {
-          "id": "google-gemini-5",
-          "slug": "gemini-5",
-          "shortName": "Gemini 5",
-          "predictedName": "Gemini 5 (rumored name)",
+          "id": "google-gemini-4-1-carbon",
+          "slug": "gemini-4-1-carbon",
+          "shortName": "Gemini 4.1 Carbon",
+          "predictedName": "Gemini 4.1 Carbon (speculative successor)",
+          "previewDetail": "The 4.1 label follows the owner-directed element convention; Google has not announced a Gemini 4.1 generation, and the next flagship could carry a different element or number.",
           "category": "frontier",
           "icon": "🔵",
           "stageColor": "#4facfe",
-          "status": "Rumored successor; Google has not confirmed Gemini 5, and reports describe employees testing a model beyond Carbon with a 2027 expectation",
+          "status": "Not announced; the 4.1 element naming is owner-directed (Nov 19), Carbon remains the newest flagship, and reports describe employees testing a model beyond Carbon with a 2027 expectation",
           "hypeScore": 92,
           "expectedGain": 9.6,
-          "explicitTargetDate": "2027-08-28T17:00:00.000Z",
-          "explicitWindowLabel": "2027 (rumored; low confidence)",
-          "cadenceDays": 316,
+          "explicitTargetDate": "2026-12-16T17:00:00.000Z",
+          "explicitWindowLabel": "Mid Dec 2026 (owner ~4-week buffer; low confidence)",
+          "cadenceDays": 28,
           "previousSlugs": [
+            "gemini-5",
             "gemini-4-carbon",
             "gemini-4-1-argon"
           ],
           "features": [
-            "Gemini 4 Carbon shipped Oct 28, 2026, announced as Google's strongest model and debuting #1 on the Artificial Analysis Intelligence Index v5.0 (59.4 at High effort)",
-            "Carbon carries no version number ('not Gemini 4.1, it's just Carbon'), so the next-generation label points to Gemini 5 rather than a numbered 4.x",
-            "Google has not confirmed Gemini 5; industry reports expect a 2027 release built on TPU v8 hardware, and employees are reported testing something 'way better than Carbon'",
-            "The Aug 2027 estimate applies the ~10.5-month Gemini 3 Pro (Nov 18, 2025) to Gemini 4 Argon (Sept 30, 2026) generation gap to Carbon's Oct 28 release; another unnumbered Gemini 4-series element could arrive first",
-            "The Nov 12 AA API catalog scores both Gemini 4 Argon (High, 50.4) and Carbon (High, 60.0) on v5.0.1, an observed same-index +9.6 sibling step. The +9.6 gain repeats that clean v5 delta over the retained Carbon anchor (59.4), projecting about 69 - an independent scenario, not a benchmark or a Google claim (observed on v5.0.1)."
+            "The Gemini 4 element series is complete: Argon (Sept 30), Carbon (Oct 28), Hydrogen (Nov 12) and Neon (Nov 18) are all GA, with Neon the fast-reasoning tier that builds on Hydrogen and brings quality close to Carbon at Flash-tier speed and cost (Vertex Model Garden)",
+            "The 4.1 successor naming is owner-directed (Nov 19), consistent with community 'Gemini 4.1 Pro' chatter; Google has not announced a 4.1 generation, and the retired Gemini 5 label now redirects here — a full Gemini 5 generation jump remains the longer-term alternative if no 4.1 wave materializes",
+            "Carbon is the flagship head: 60.0 on the v5 index in the Nov 19 AA catalog (default row; the retained anchor is 59.4 from its Oct 28 debut) versus Gemini 4 Argon at 50.4",
+            "The Dec 16 target is an owner-requested ~4-week buffer counted from Neon's Nov 18 GA — the element family shipped Argon, Carbon, Hydrogen and Neon in seven weeks — not an announced date",
+            "The +9.6 gain repeats the observed same-index v5 sibling step from Argon (50.4) to Carbon (60.0), projecting about 69 over the retained 59.4 anchor — an independent scenario, not a benchmark or a Google claim (observed on v5.0.1)"
           ],
-          "source": "Carbon announcement and launch coverage Oct 28, 2026; Artificial Analysis, https://artificialanalysis.ai/models/gemini-4-carbon (checked Nov 1, 2026); Gemini 5 naming/timing is third-party rumor (2027 TPU v8 reports), not a Google statement. Release-status check Nov 1, 2026: no Gemini 5 announcement found; Nov 12 gain review: AA Data API free catalog (v5.0.1); Argon->Carbon v5.0.1 sibling delta (+9.6) API-verified Nov 12 (gemini-4-argon High 50.4, gemini-4-carbon High 60.0); launch comparison: https://www.datastudios.org/post/gemini-4-carbon-vs-gemini-4-argon-comparison",
+          "source": "Element series verified first-party Nov 19, 2026: Vertex AI Model Garden, https://console.cloud.google.com/agent-platform/publishers/google/model-garden/gemini-4-neon (versions table: gemini-4-neon 11/18/2026 GA 'Initial GA release'; lineup table lists Neon/Carbon/Hydrogen/Argon GA with 3.8/3.7/3.5 Flash as previous workhorses); Gemini API changelog, https://aistudio.google.com/docs/changelog (re-checked Nov 19, 2026: no Neon GA entry yet — changelog lag); Carbon announcement and launch coverage Oct 28, 2026; Artificial Analysis, https://artificialanalysis.ai/models/gemini-4-carbon (checked Nov 1, 2026); AA Data API free catalog fetched Nov 19, 2026 (index v5, 759 rows): gemini-4-carbon 60.0, gemini-4-argon 50.4, no gemini-4-neon row yet. The 4.1 naming is owner-directed; Gemini 5 naming/timing was third-party rumor. Nov 12 gain review: AA Data API free catalog (v5.0.1) — superseded for this card by the Nov 19 re-review above (Argon->Carbon v5.0.1 sibling delta +9.6 re-confirmed, gemini-4-argon 50.4, gemini-4-carbon 60.0); launch comparison: https://www.datastudios.org/post/gemini-4-carbon-vs-gemini-4-argon-comparison",
           "baseline": {
             "name": "Gemini 4 Carbon (High)",
             "intel": 59.4,
             "releaseDate": "2026-10-28",
             "speed": 87.1
           },
-          "lastVerified": "2026-11-12"
+          "lastVerified": "2026-11-19"
         }
       }
     },
