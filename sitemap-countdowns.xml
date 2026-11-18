@@ -85,6 +85,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://waifuai.github.io/llm-countdowns/google/gemini-4-1-argon/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://waifuai.github.io/llm-countdowns/google/gemini-4-1-hydrogen/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://waifuai.github.io/llm-countdowns/xai/</loc>
     <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
