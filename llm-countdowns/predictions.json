@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-18",
+  "lastUpdated": "2026-11-19",
   "researchBaselines": {
     "openai": {
       "name": "GPT-6.2 Astra (Max)",
@@ -184,34 +184,38 @@
       ],
       "models": {
         "light": {
-          "id": "google-gemini-4-flash",
-          "slug": "gemini-4-flash",
-          "shortName": "Gemini 4 Flash",
-          "predictedName": "Gemini 4 Flash / Gemini 3.9 Flash",
+          "id": "google-gemini-4-neon",
+          "slug": "gemini-4-neon",
+          "shortName": "Gemini 4 Neon",
+          "predictedName": "Gemini 4 Neon (leaked name; unannounced)",
+          "previewDetail": "The Neon name comes from a gemini-4-neon string spotted in the Gemini app's code; Google has not announced it and the real name could differ.",
           "category": "light",
           "icon": "⚡",
           "stageColor": "#4facfe",
-          "status": "Not announced; Gemini 4 Carbon (Oct 28) is the newest Gemini LLM and no Gemini 4 Flash has appeared as of Nov 12",
+          "status": "Not announced; the only trace is a gemini-4-neon string reported in the Gemini app's code (Nov 18), and Gemini 4 Hydrogen (Nov 12) is the newest released Gemini",
           "hypeScore": 88,
-          "expectedGain": 1.9,
+          "expectedGain": 2.0,
           "explicitTargetDate": "2026-12-10T17:00:00.000Z",
           "explicitWindowLabel": "Early Dec 2026 (revised estimate; low confidence)",
           "cadenceDays": 35,
+          "previousSlugs": [
+            "gemini-4-flash",
+            "gemini-4-flash-lite"
+          ],
           "baseline": {
-            "name": "Gemini 3.8 Flash",
-            "intel": 30.5,
-            "releaseDate": "2026-09-02",
-            "speed": 122.7
+            "name": "Gemini 4 Hydrogen",
+            "intel": 53.9,
+            "releaseDate": "2026-11-12"
           },
           "features": [
-            "Google's Flash takes the number of the latest major model: 2.5 Pro (Mar 2025) then 2.5 Flash (Apr 2025), Gemini 3 Pro (Nov 18, 2025) then Gemini 3 Flash (Dec 17, 2025)",
-            "Flash went 3.5, 3.6, 3.7, 3.8 (May 19 to Sept 2) only because Pro stayed on 3.1; with the Gemini 4 family now two models deep, a 3.9 Flash looks unlikely",
-            "Gemini 3 Flash came about four weeks after Gemini 3 Pro; the Dec 10 target is an owner-requested ~4-week buffer (Nov 12) rather than the earlier four-weeks-after-Carbon estimate, and is not an announced date.",
-            "Gemini 3.8 Flash remains the Flash baseline (30.5 on Artificial Analysis' v5 index); Gemini 4 Carbon (High) topped the whole index at 59.4 at its Oct 28 debut — Fable 5.2's measured 65 leads as of the Nov 12 AA check",
-            "Gemini 3.5/3.6/3.7 Flash have no v5 score in the Nov 12 AA API catalog, so no same-index v5 Flash delta exists. Launch coverage reports the 3.7->3.8 Flash step at 40.93 vs 39.06 on v4.3.2 (+1.87); applying that closed-model sibling delta about 1:1 to the retained 3.8 Flash anchor (30.5) gives +1.9, projecting about 32.4 (observed on v4.3.2; conservative scenario, not a v5 benchmark)."
+            "Google shipped Gemini 4 Hydrogen (gemini-4-hydrogen) on Nov 12, 2026 as the element-named everyday/execution tier: GA in AI Studio and the Gemini API, 1M-token context, $1.50/$7.50 per 1M, a fourth 'xhigh' thinking level, the default model in Antigravity and the upgrade path from Gemini 3.8 Flash in Google Search",
+            "The Flash/Flash-Lite names end with the Gemini 3 generation: the Oct-Nov changelog adds no Flash or Flash-Lite model, and the Nov 2 entry still routes gemini-2.5-flash to gemini-3.5-flash-lite from Dec 1 — the element series (Argon, Carbon, Hydrogen) is the active naming, with Neon the only additional element name on record",
+            "Neon is unannounced: the only trace is a gemini-4-neon string in the Gemini web app's code reported Nov 18, 2026; community reads make it a faster/lighter variant (possibly the budget slot, in which case it succeeds 3.5 Flash-Lite rather than Hydrogen and could land lower), and no specs, tier or date exist",
+            "The Dec 10 target is an owner-requested ~4-week buffer (Nov 12 sweep convention) counted from Hydrogen's Nov 12 release, not an announced date; if Neon is the budget slot it may wait for the 9-11-week gap Lite historically kept behind its Flash",
+            "The Nov 19 AA catalog reads Gemini 4 Hydrogen at 53.9 on the v5 index (default row; High 50.8, Medium 41.2, Low 26.9) versus Gemini 3.8 Flash at 30.8 — a +23.1 whole-generation step that, applied 1:1, would project about 77, above Fable 5.2 (65); implausible for the next light-tier model, so the +2 stays a conservative labeled scenario over the measured Hydrogen anchor (outlier moderated; independent estimate, not a benchmark)"
           ],
-          "source": "Google Gemini release history; Gemini API changelog, https://ai.google.dev/gemini-api/docs/changelog (re-checked Nov 12, 2026: Carbon API GA entry Nov 10; no Gemini 4 Flash); Carbon announcement Oct 28, 2026; Artificial Analysis, https://artificialanalysis.ai/models/gemini-4-carbon (checked Nov 1, 2026); Nov 12 gain review: AA Data API free catalog (v5.0.1); old-index launch delta (owner deep-research, Nov 12): 3.7->3.8 Flash +1.87 (39.06->40.93) on v4.3.2, https://artificialanalysis.ai/articles/gemini-3-8-flash",
-          "lastVerified": "2026-11-12"
+          "source": "Primary sources checked Nov 19, 2026: Gemini API changelog, https://aistudio.google.com/docs/changelog (gemini-4-hydrogen GA entry Nov 12, 2026; no Neon entry in the Oct-Nov notes); Hydrogen announcement, https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen (Nov 12, 2026; updated Nov 16 — 'daily driver for agentic workflows', 1M context, $1.50/$7.50, beats Argon 51 vs 50 and 54 at xhigh); AA Data API free catalog fetched Nov 19, 2026 (index v5): gemini-4-hydrogen release_date 2026-11-12, default 53.9 (High 50.8, Medium 41.2, Low 26.9), gemini-3-8-flash 30.8, no Neon row. Neon evidence is third-party app-code reporting Nov 18, 2026, not a Google statement. Nov 12 gain review: AA Data API free catalog (v5.0.1) — superseded for this card by the Nov 19 re-review above (Hydrogen delta re-derived from the same catalog, index v5).",
+          "lastVerified": "2026-11-19"
         },
         "frontier": {
           "id": "google-gemini-5",
@@ -245,35 +249,6 @@
             "releaseDate": "2026-10-28",
             "speed": 87.1
           },
-          "lastVerified": "2026-11-12"
-        },
-        "lite": {
-          "id": "google-gemini-4-flash-lite",
-          "slug": "gemini-4-flash-lite",
-          "shortName": "Gemini 4 Flash-Lite",
-          "predictedName": "Gemini 4 Flash-Lite",
-          "category": "light",
-          "icon": "🪶",
-          "stageColor": "#4facfe",
-          "status": "Not announced; Gemini 3.5 Flash-Lite (Jul 21) is the current Lite model",
-          "hypeScore": 70,
-          "expectedGain": 5.5,
-          "explicitTargetDate": "2027-01-27T17:00:00.000Z",
-          "explicitWindowLabel": "Late Jan 2027",
-          "cadenceDays": 140,
-          "baseline": {
-            "name": "Gemini 3.5 Flash-Lite",
-            "intel": 11.7,
-            "releaseDate": "2026-07-21",
-            "speed": 402.9
-          },
-          "features": [
-            "Flash-Lite always ships after the Flash of the same generation: 2.0 (20 days later), 2.5 (4 weeks), 3.1 (11 weeks after 3 Flash) and 3.5 (9 weeks after 3.5 Flash)",
-            "Lite updates far less often than Flash: there was no 3.6, 3.7 or 3.8 Flash-Lite, so the next one probably waits for the Gemini 4 generation",
-            "The date counts about two months from the Gemini 4 Flash forecast (late Nov), pushed past the holidays; if Gemini 4 Flash slips, this slips too",
-            "Gemini 3.5 Flash-Lite (11.7 on the v5 index, $0.30/$2.50, about 400 tokens/s) is Google's fastest model. The +5.5 gain repeats the observed v5 leap from Gemini 3.1 Flash-Lite (6.2) to 3.5 Flash-Lite (11.7), projecting about 17; independent estimate, not a benchmark (AA Data API v5.0.1 catalog, Nov 12)."
-          ],
-          "source": "Google Gemini Flash-Lite release history (3.5 Flash-Lite, Jul 21, 2026) & Artificial Analysis (v5 scores checked Nov 1, 2026); release-status review Nov 1, 2026; Nov 12 gain review: AA Data API free catalog (v5.0.1)",
           "lastVerified": "2026-11-12"
         }
       }
