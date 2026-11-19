@@ -167,7 +167,7 @@
     'settings.herVoice': '彼女の声',
     'settings.matchLanguage': '返信の言語に合わせる',
     'settings.voiceVolume': '声の音量',
-    'settings.voiceNote': '返信はその言語の声で読み上げられます。ブラウザー自身の音声を選ぶこともできます。',
+    'settings.voiceNote': '返信はその言語の声で読み上げられます。ブラウザー自身の音声を選ぶこともできます。 Choosing a TikTok voice is optional and sends reply text to an external speech service.',
     'settings.micNote': "マイクボタンを押し続けて話すか、タップで開始してもう一度タップで停止します。音声はブラウザが認識します。",
     'settings.voiceAutoSend': '話した直後に送信',
     'settings.radio': 'ラジオ',

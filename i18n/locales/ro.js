@@ -146,7 +146,7 @@
       "settings.herVoice": "Vocea ei",
       "settings.matchLanguage": "Potrivește limba răspunsului",
       "settings.voiceVolume": "Volumul vocii",
-      "settings.voiceNote": "Răspunsurile sunt citite cu voce tare în limba răspunsului. Poți alege și o voce a browserului tău.",
+      "settings.voiceNote": "Răspunsurile sunt citite cu voce tare în limba răspunsului. Poți alege și o voce a browserului tău. Choosing a TikTok voice is optional and sends reply text to an external speech service.",
       'settings.micNote': "Ține apăsat butonul microfonului pentru a vorbi, sau apasă pentru a începe și apasă din nou pentru a opri. Vorbirea este recunoscută de browser.",
       "settings.voiceAutoSend": "Trimite imediat după ce vorbești",
       "settings.radio": "Radio",

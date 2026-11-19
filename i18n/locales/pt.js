@@ -168,7 +168,7 @@
     'settings.herVoice': 'A voz dela',
     'settings.matchLanguage': 'Acompanhar o idioma da resposta',
     'settings.voiceVolume': 'Volume da voz',
-    'settings.voiceNote': 'As respostas são lidas em voz alta no idioma da resposta. Você também pode escolher a voz do próprio navegador.',
+    'settings.voiceNote': 'As respostas são lidas em voz alta no idioma da resposta. Você também pode escolher a voz do próprio navegador. Choosing a TikTok voice is optional and sends reply text to an external speech service.',
     'settings.micNote': "Segure o botão do microfone para falar, ou toque para iniciar e toque novamente para parar. A fala é reconhecida pelo seu navegador.",
     'settings.voiceAutoSend': 'Enviar logo após falar',
     'settings.radio': 'Rádio',

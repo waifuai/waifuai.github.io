@@ -145,7 +145,7 @@
       "settings.herVoice": "Haar stem",
       "settings.matchLanguage": "Taal van het antwoord volgen",
       "settings.voiceVolume": "Stemvolume",
-      "settings.voiceNote": "Antwoorden worden voorgelezen in de taal van het antwoord. Je kunt ook een eigen stem van je browser kiezen.",
+      "settings.voiceNote": "Antwoorden worden voorgelezen in de taal van het antwoord. Je kunt ook een eigen stem van je browser kiezen. Choosing a TikTok voice is optional and sends reply text to an external speech service.",
       'settings.micNote': "Houd de microfoonknop ingedrukt om te praten, of tik om te starten en nog eens om te stoppen. Spraak wordt door je browser herkend.",
       "settings.voiceAutoSend": "Meteen na het praten versturen",
       "settings.radio": "Radio",

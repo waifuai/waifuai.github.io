@@ -176,7 +176,7 @@
     'settings.herVoice': 'Её голос',
     'settings.matchLanguage': 'Подстраивать под язык ответа',
     'settings.voiceVolume': 'Громкость голоса',
-    'settings.voiceNote': 'Ответы зачитываются на языке ответа. Также можно выбрать голос вашего браузера.',
+    'settings.voiceNote': 'Ответы зачитываются на языке ответа. Также можно выбрать голос вашего браузера. Choosing a TikTok voice is optional and sends reply text to an external speech service.',
     'settings.micNote': "Удерживайте кнопку микрофона, чтобы говорить, или нажмите один раз для начала и ещё раз для остановки. Речь распознаёт ваш браузер.",
     'settings.voiceAutoSend': 'Отправлять сразу после речи',
     'settings.radio': 'Радио',

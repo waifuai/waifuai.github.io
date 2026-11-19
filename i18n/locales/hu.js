@@ -145,7 +145,7 @@
       "settings.herVoice": "Az ő hangja",
       "settings.matchLanguage": "Igazodjon a válasz nyelvéhez",
       "settings.voiceVolume": "Beszéd hangereje",
-      "settings.voiceNote": "A válaszok a válasz nyelvén hangzanak el. Választhatod a böngésződ saját hangját is.",
+      "settings.voiceNote": "A válaszok a válasz nyelvén hangzanak el. Választhatod a böngésződ saját hangját is. Choosing a TikTok voice is optional and sends reply text to an external speech service.",
       'settings.micNote': "Nyomd hosszan a mikrofon gombot a beszédhez, vagy koppints a kezdéshez és újra a megállításhoz. A beszédet a böngésződ ismeri fel.",
       "settings.voiceAutoSend": "Küldés közvetlenül beszéd után",
       "settings.radio": "Rádió",

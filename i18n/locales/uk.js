@@ -147,7 +147,7 @@
     "settings.herVoice": "Її голос",
     "settings.matchLanguage": "Відповідно до мови відповіді",
     "settings.voiceVolume": "Гучність голосу",
-    "settings.voiceNote": "Відповіді озвучуються їхньою мовою. Також можна вибрати власний голос браузера.",
+    "settings.voiceNote": "Відповіді озвучуються їхньою мовою. Також можна вибрати власний голос браузера. Choosing a TikTok voice is optional and sends reply text to an external speech service.",
     'settings.micNote': "Утримуйте кнопку мікрофона, щоб говорити, або натисніть один раз для початку та ще раз для зупинки. Мовлення розпізнає ваш браузер.",
     "settings.voiceAutoSend": "Надсилати відразу після мовлення",
     "settings.radio": "Радіо",

@@ -147,7 +147,7 @@
       "settings.herVoice": "Její hlas",
       "settings.matchLanguage": "Podle jazyka odpovědi",
       "settings.voiceVolume": "Hlasitost hlasu",
-      "settings.voiceNote": "Odpovědi jsou čteny nahlas v jazyce odpovědi. Můžete také zvolit vlastní hlas prohlížeče.",
+      "settings.voiceNote": "Odpovědi jsou čteny nahlas v jazyce odpovědi. Můžete také zvolit vlastní hlas prohlížeče. Choosing a TikTok voice is optional and sends reply text to an external speech service.",
       'settings.micNote': "Podržte tlačítko mikrofonu a mluvte, nebo klepnutím spusťte a dalším klepnutím zastavte. Řeč rozpoznává váš prohlížeč.",
       "settings.voiceAutoSend": "Odeslat ihned po domluvení",
       "settings.radio": "Rádio",

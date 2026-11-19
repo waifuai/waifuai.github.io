@@ -144,7 +144,7 @@
     "settings.herVoice": "목소리",
     "settings.matchLanguage": "답변 언어에 맞추기",
     "settings.voiceVolume": "음성 볼륨",
-    "settings.voiceNote": "답변의 언어로 소리 내어 읽어요. 브라우저의 자체 음성을 선택할 수도 있어요.",
+    "settings.voiceNote": "답변의 언어로 소리 내어 읽어요. 브라우저의 자체 음성을 선택할 수도 있어요. Choosing a TikTok voice is optional and sends reply text to an external speech service.",
     'settings.micNote': "마이크 버튼을 길게 눌러 말하거나, 탭해서 시작하고 다시 탭해서 멈추세요. 음성은 브라우저에서 인식합니다.",
     "settings.voiceAutoSend": "말한 후 바로 보내기",
     "settings.radio": "라디오",

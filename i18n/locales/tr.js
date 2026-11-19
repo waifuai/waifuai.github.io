@@ -145,7 +145,7 @@
     "settings.herVoice": "Onun sesi",
     "settings.matchLanguage": "Yanıtın diliyle eşleştir",
     "settings.voiceVolume": "Ses düzeyi",
-    "settings.voiceNote": "Yanıtlar kendi dilinde sesli okunur. İstersen tarayıcının kendi sesini de seçebilirsin.",
+    "settings.voiceNote": "Yanıtlar kendi dilinde sesli okunur. İstersen tarayıcının kendi sesini de seçebilirsin. Choosing a TikTok voice is optional and sends reply text to an external speech service.",
     'settings.micNote': "Konuşmak için mikrofon düğmesini basılı tutun veya başlatmak için dokunup durdurmak için tekrar dokunun. Konuşma tarayıcınız tarafından tanınır.",
     "settings.voiceAutoSend": "Konuştuktan hemen sonra gönder",
     "settings.radio": "Radyo",

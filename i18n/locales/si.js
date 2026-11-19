@@ -145,7 +145,7 @@
     "settings.herVoice": "ඇගේ හඬ",
     "settings.matchLanguage": "පිළිතුරේ භාෂාවට ගළපන්න",
     "settings.voiceVolume": "හඬේ ශබ්ද මට්ටම",
-    "settings.voiceNote": "පිළිතුරු ඒවායේම භාෂාවෙන් හඬ නඟා කියවයි. ඔබට බ්‍රව්සරයේම හඬක් ද තෝරාගත හැක.",
+    "settings.voiceNote": "පිළිතුරු ඒවායේම භාෂාවෙන් හඬ නඟා කියවයි. ඔබට බ්‍රව්සරයේම හඬක් ද තෝරාගත හැක. Choosing a TikTok voice is optional and sends reply text to an external speech service.",
     'settings.micNote': "කතා කිරීමට මයික්‍රෆෝන බොත්තම ඔබාගෙන සිටින්න, නැතහොත් ආරම්භ කිරීමට තට්ටු කර නැවතීමට නැවත තට්ටු කරන්න. කථනය ඔබේ බ්‍රවුසරය හඳුනා ගනී.",
     "settings.voiceAutoSend": "කතා කළ වහාම යවන්න",
     "settings.radio": "ගුවන්විදුලිය",

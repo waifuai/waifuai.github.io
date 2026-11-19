@@ -144,7 +144,7 @@
     "settings.herVoice": "သူမ၏အသံ",
     "settings.matchLanguage": "အဖြေ၏ဘာသာစကားနှင့် ကိုက်ညီရန်",
     "settings.voiceVolume": "အသံအတိုးအကျယ်",
-    "settings.voiceNote": "အဖြေများကို ၎င်း၏ဘာသာစကားဖြင့် အသံထွက်ဖတ်သည်။ ဘရောက်ဇာ၏ကိုယ်ပိုင်အသံကိုလည်း ရွေးနိုင်သည်။",
+    "settings.voiceNote": "အဖြေများကို ၎င်း၏ဘာသာစကားဖြင့် အသံထွက်ဖတ်သည်။ ဘရောက်ဇာ၏ကိုယ်ပိုင်အသံကိုလည်း ရွေးနိုင်သည်။ Choosing a TikTok voice is optional and sends reply text to an external speech service.",
     'settings.micNote': "စကားပြောရန် မိုက်ခရိုဖုန်းခလုတ်ကို ဖိထားပါ၊ သို့မဟုတ် စတင်ရန် တစ်ချက်နှိပ်ပြီး ရပ်ရန် နောက်တစ်ချက်နှိပ်ပါ။ စကားကို သင့်ဘရောက်ဇာက မှတ်သိပါသည်။",
     "settings.voiceAutoSend": "ပြောပြီးသည်နှင့် ပို့ရန်",
     "settings.radio": "ရေဒီယို",

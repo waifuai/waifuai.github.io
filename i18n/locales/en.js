@@ -170,7 +170,7 @@
     'settings.herVoice': 'Her voice',
     'settings.matchLanguage': "Match the reply's language",
     'settings.voiceVolume': 'Voice volume',
-    'settings.voiceNote': "Replies are read aloud in the reply's language. You can also pick your browser's own voice instead.",
+    'settings.voiceNote': "Replies are read aloud in the reply's language. You can also pick your browser's own voice instead. Choosing a TikTok voice is optional and sends reply text to an external speech service.",
     'settings.micNote': "Hold the mic button to talk, or tap it to start and tap again to stop. Speech is recognized by your browser.",
     'settings.voiceAutoSend': 'Send right after speaking',
     'settings.radio': 'Radio',
