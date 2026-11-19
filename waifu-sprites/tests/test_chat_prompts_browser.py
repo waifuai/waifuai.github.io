@@ -7,7 +7,6 @@ import test_player_card as fixtures
 class ChatPromptTests(unittest.TestCase):
     setUpClass = classmethod(fixtures.PlayerCardTests.setUpClass.__func__)
     tearDownClass = classmethod(fixtures.PlayerCardTests.tearDownClass.__func__)
-    fulfill_decision = fixtures.PlayerCardTests.fulfill_decision
     setUp = fixtures.PlayerCardTests.setUp
     tearDown = fixtures.PlayerCardTests.tearDown
 
@@ -21,7 +20,9 @@ class ChatPromptTests(unittest.TestCase):
     def open(self, embed=False, width=390):
         self.page.set_viewport_size({'width':width, 'height':760})
         self.page.goto(fixtures.APP + ('?embed=x' if embed else ''))
-        self.page.evaluate('Chat.settings.autoTitles=false; Chat.settings.ambient=false; Speech.settings.enabled=false;')
+        # Prompt construction is still tested through a BYO provider; the
+        # default built-in provider answers locally without a request.
+        self.page.evaluate("Object.assign(Chat.settings, {provider:'custom', customBaseUrl:'https://provider.test/v1', models:{custom:'test-model'}}); Chat.settings.autoTitles=false; Chat.settings.ambient=false; Speech.settings.enabled=false;")
 
     def send(self, text):
         n = len(self.calls)

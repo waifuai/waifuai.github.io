@@ -15,6 +15,12 @@ function client(saved, embed = false, store = new Map()) {
   });
   ctx.window.ConversationBudget = require('../context_budget.js');
   vm.runInContext(fs.readFileSync(path.join(__dirname, '../chat.js'), 'utf8') + '\nthis.chat = Chat;', ctx);
+  // Summary/body transport is still supported for bring-your-own-key providers;
+  // opt this harness into one so those tests keep their original coverage.
+  ctx.chat.settings.provider='custom';
+  ctx.chat.settings.customBaseUrl='https://provider.test/v1';
+  ctx.chat.settings.keys.custom='test-key';
+  ctx.chat.settings.models.custom='test-model';
   return { chat: ctx.chat, store, key, ctx };
 }
 
@@ -126,17 +132,14 @@ test('oversized legacy summary never blocks chat or prompts the user, using acti
 });
 
 
-test('decision transport preserves a long completed reply and bounds oversized evidence', async () => {
-  const {chat,ctx}=client();const calls=[];
-  ctx.fetch=async(_url,options)=>{calls.push(JSON.parse(options.body));return{ok:true,json:async()=>({status:'ok',answers:{}})}};
+test('decisions are local no-ops with no transport', async () => {
+  const {chat,ctx}=client();let calls=0;
+  ctx.fetch=async()=>{calls++;throw Error('decision API removed');};
   for(const n of [2600,9000]) {
     const reply='Opening. '+'x'.repeat(n)+' I am thrilled!';
-    await chat.askDecisions(['sprites_emotion_v1'],{reply});
-    const state=calls.at(-1).state;
-    assert.ok(state.reply.endsWith('I am thrilled!'));
-    assert.ok(state.reply.length<=4096);
-    if(n===2600)assert.equal(state.reply,reply);
+    assert.equal(await chat.askDecisions(['sprites_emotion_v1'],{reply}),null);
   }
+  assert.equal(calls,0);
 });
 
 test('cross-chat memory defaults on and persists under the browser storage prefix', () => {
@@ -173,7 +176,6 @@ test('turning cross-chat memory off survives reload and excludes saved memory', 
     assert.equal(reloaded.settings.crossChatMemory, false);
     assert.equal(reloaded.getUserMemory(), 'Name: Rei');
     assert.doesNotMatch((await reloaded.modelMessages()).find(m => m.role === 'system').content, /Things you remember about the user/);
-    assert.equal(reloaded.buildRequest([{ role: 'user', content: 'hi' }], 'chat', false, 10).body.client_settings.cross_chat_memory, undefined);
     reloaded.newConversation();
     assert.equal(reloaded.messages.length, 0);
     reloaded.settings.crossChatMemory = true;
@@ -240,20 +242,16 @@ test('with the toggle off the durable section is dropped, not stored', async () 
   assert.equal(chat.getUserMemory(), 'Kept facts');
 });
 
-test('cross-chat memory rides in the system prompt and flags chat requests', async () => {
+test('cross-chat memory rides in the system prompt', async () => {
   const { chat } = client();
   chat.settings.crossChatMemory = true;
   chat.setUserMemory('Name: Rei');
   const system = (await chat.modelMessages()).find(m => m.role === 'system');
   assert.ok(system.content.includes('Things you remember about the user from earlier conversations: Name: Rei'));
-  const carried = chat.buildRequest([{ role: 'user', content: 'hi' }], 'chat', false, 10);
-  assert.equal(carried.body.client_settings.cross_chat_memory, 1);
   chat.settings.crossChatMemory = false;
   assert.doesNotMatch((await chat.modelMessages()).find(m => m.role === 'system').content, /Things you remember about the user/);
-  assert.equal(chat.buildRequest([{ role: 'user', content: 'hi' }], 'chat', false, 10).body.client_settings.cross_chat_memory, undefined);
   chat.settings.crossChatMemory = true;
   chat.clearUserMemory();
-  assert.equal(chat.buildRequest([{ role: 'user', content: 'hi' }], 'chat', false, 10).body.client_settings.cross_chat_memory, undefined);
 });
 
 test('manual user-memory changes reject delayed durable updates without losing the chat summary', async () => {

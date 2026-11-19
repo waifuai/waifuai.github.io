@@ -11,7 +11,6 @@ class LocaleExpansionTests(unittest.TestCase):
     setUp = fixtures.PlayerCardTests.setUp
     tearDown = fixtures.PlayerCardTests.tearDown
     route = fixtures.PlayerCardTests.route
-    fulfill_decision = fixtures.PlayerCardTests.fulfill_decision
     open_with_locale = fixtures.PlayerCardTests.open_with_locale
 
     def test_new_browser_locale_loads_before_app_scripts(self):

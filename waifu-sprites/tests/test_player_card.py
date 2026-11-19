@@ -4,13 +4,10 @@ Run: python waifu-sprites/tests/test_player_card.py
 Requires Playwright and its Chromium browser. All network requests are mocked.
 """
 import json
-import base64
-import io
-import wave
 import mimetypes
 from pathlib import Path
 import unittest
-from urllib.parse import parse_qs, unquote, urlparse
+from urllib.parse import unquote, urlparse
 
 from playwright.sync_api import sync_playwright
 
@@ -34,16 +31,9 @@ class PlayerCardTests(unittest.TestCase):
         self.context.set_default_timeout(6000)
         self.calls = []
         self.cloud_requests = []
-        self.decision_requests = []
-        self.tts_calls = []
-        self.language_answer = {'choice_id': 'en-US', 'confidence': 0.95}
-        self.picture_answer = None
-        self.reply_text = '[happy] Mock reply received.'
-        self.emotion_answer = {'choice_id': 'confused', 'confidence': 0.9}
-        self.decision_status = 'ok'
-        self.pending_emotion = None
-        self.hold_emotion = False
+        self.retired_requests = []
         self.errors = []
+        self.reply_text = '[happy] Mock reply received.'
         self.context.route('**/*', self.route)
         self.page = self.context.new_page()
         self.page.on('pageerror', lambda e: self.errors.append(str(e)))
@@ -51,11 +41,25 @@ class PlayerCardTests(unittest.TestCase):
     def tearDown(self):
         self.context.close()
 
+    def seed_byo_provider(self, page=None):
+        """Opt a page into a mock bring-your-own-key provider for transport tests."""
+        target = page or self.page
+        target.evaluate("""() => {
+            Chat.settings.provider = 'custom';
+            Chat.settings.customBaseUrl = 'https://provider.test/v1';
+            Chat.settings.keys.custom = 'test-key';
+            Chat.settings.models.custom = 'test-model';
+            Chat.saveSettings();
+        }""")
+
+    def use_local_provider(self, page=None):
+        """Restore the retired-endpoint-free default after a BYO transport test."""
+        target = page or self.page
+        target.evaluate("() => { Chat.settings.provider = 'cloud'; Chat.saveSettings(); }")
+
     def route(self, route):
         url = urlparse(route.request.url)
-        if url.hostname == 'sprites.test' and url.path == '/picture.png':
-            route.fulfill(content_type='image/png', body=base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRZkAAAAASUVORK5CYII='))
-        elif url.hostname == 'sprites.test':
+        if url.hostname == 'sprites.test':
             file = (ROOT / unquote(url.path).lstrip('/')).resolve()
             if file.is_dir():
                 file = file / 'index.html'
@@ -71,142 +75,44 @@ class PlayerCardTests(unittest.TestCase):
                 event = {'choices': [{'delta': {'content': self.reply_text}}]}
                 route.fulfill(content_type='text/event-stream', body='data: ' + json.dumps(event) + '\n\ndata: [DONE]\n\n')
             else:
-                content = 'DRAW: Aurora smiling in a sunny garden' if route.request.headers.get('x-waifu-purpose') == 'image_prompt' else 'Test chat'
-                route.fulfill(content_type='application/json', body=json.dumps({'choices': [{'message': {'content': content}}]}))
-        elif url.path == '/decisions':
-            request = route.request.post_data_json
-            self.decision_requests.append({'headers': route.request.all_headers(), 'body': request})
-            if 'sprites_emotion_v1' in request['tasks'] and self.hold_emotion:
-                self.pending_emotion = route
-            else:
-                self.fulfill_decision(route, request['tasks'])
-        elif url.path == '/tts':
-            self.tts_calls.append({k: v[0] for k, v in parse_qs(urlparse(route.request.url).query).items()})
-            audio = io.BytesIO()
-            with wave.open(audio, 'wb') as wav:
-                wav.setparams((1, 2, 22050, 0, 'NONE', 'not compressed'))
-                wav.writeframes(b'\0\0' * 2205)
-            route.fulfill(headers={'access-control-allow-origin': '*',
-                                   'access-control-expose-headers': 'X-Tts-Provider',
-                                   'x-tts-provider': 'edge'},
-                          content_type='audio/mpeg', body=audio.getvalue())
-        elif url.path == '/image':
-            self.cloud_requests.append({'path': url.path, 'headers': route.request.all_headers()})
-            route.fulfill(headers={'X-Image-Url': 'https://sprites.test/picture.png', 'Access-Control-Allow-Origin':'*', 'Access-Control-Expose-Headers':'X-Image-Url'}, body='')
+                route.fulfill(content_type='application/json', body=json.dumps({'choices': [{'message': {'content': 'Test chat'}}]}))
+        elif any(marker in url.path for marker in ('/decisions', '/tts', '/image', '/transcribe')):
+            # Any attempt to reach a retired endpoint fails loudly in the suite.
+            self.retired_requests.append(route.request.url)
+            route.fulfill(status=404)
         else:
-            # Analytics, speech and other external services never reach production.
+            # Analytics and other external services never reach production.
             route.fulfill(content_type='application/javascript', body='')
 
-    def fulfill_decision(self, route, tasks):
-        wants_picture = 'selfie' in route.request.post_data_json.get('state', {}).get('user_message', '').lower()
-        answers = {task: (self.language_answer if task == 'sprites_tts_language_v1' else self.emotion_answer if task == 'sprites_emotion_v1'
-                         else self.picture_answer or {'choice_id': 'draw' if wants_picture else 'none', 'confidence': 0.9}) for task in tasks}
-        route.fulfill(content_type='application/json', body=json.dumps({
-            'status': self.decision_status,
-            'answers': answers if self.decision_status == 'ok' else {},
-        }))
-
-    def send_emotion_reply(self):
-        self.page.goto(APP)
-        self.page.evaluate('localStorage.clear()')
-        self.page.reload()
-        self.page.locator('#speakToggle').click()
-        # Observe intended expressions independently of clip variation.
-        self.page.evaluate("""() => {
-            window.emotionCalls = [];
-            const original = Sprites.setEmotion;
-            Sprites.setEmotion = name => { emotionCalls.push(name); return original(name); };
-            window.emotionFinished = 0;
-            const ask = Chat.askDecisions;
-            Chat.askDecisions = (tasks, state) => ask(tasks, state).finally(() => {
-                if (tasks.includes('sprites_emotion_v1')) emotionFinished++;
-            });
-        }""")
-        self.page.locator('#msgInput').fill('Explain this')
-        self.page.locator('#sendBtn').click()
-        self.page.locator('.msg.assistant:not(.typing)').wait_for()
-        self.page.wait_for_function("() => !Chat.busy")
-
-    def test_tagged_reply_requests_emotion_and_refines_expression(self):
-        self.send_emotion_reply()
-        self.page.wait_for_function("() => emotionCalls.includes('confused')")
-        emotion = [r for r in self.decision_requests if r['body']['tasks'] == ['sprites_emotion_v1']]
-        self.assertEqual(len(emotion), 1)
-        self.assertEqual(emotion[0]['body']['state']['reply'], 'Mock reply received.')
-        self.assertEqual(emotion[0]['body']['state']['user_message'], 'Explain this')
-        chat = next(r for r in self.cloud_requests if r.get('body', {}).get('stream'))
-        for header in ('x-session-id', 'x-visitor-id'):
-            self.assertEqual(emotion[0]['headers'][header], chat['headers'][header])
-        self.assertEqual(self.page.evaluate('emotionCalls'), ['happy', 'confused'])
-        self.assertFalse(self.errors)
-
-    def test_untagged_reply_still_requests_emotion(self):
-        self.reply_text = 'Mock reply received.'
-        self.send_emotion_reply()
-        self.page.wait_for_function("() => emotionCalls.includes('confused')")
-        self.assertEqual(self.page.evaluate('emotionCalls'), ['confused'])
-
-    def test_decision_fallback_preserves_tag(self):
-        for status, answer in [('unavailable', self.emotion_answer),
-                               ('ok', {'choice_id': 'invalid', 'confidence': 0.9}),
-                               ('ok', {'choice_id': 'happy', 'confidence': 0.9})]:
-            with self.subTest(status=status, answer=answer):
-                self.decision_status = status
-                self.emotion_answer = answer
-                self.send_emotion_reply()
-                self.page.wait_for_function('() => emotionFinished === 1')
-                self.assertEqual(self.page.evaluate('emotionCalls'), ['happy'])
-
-
-    def test_low_confidence_emotion_winner_refines_expression(self):
-        for confidence in [0, 0.1]:
-            with self.subTest(confidence=confidence):
-                self.emotion_answer = {'choice_id': 'confused', 'confidence': confidence}
-                self.send_emotion_reply()
-                self.page.wait_for_function('() => emotionFinished === 1')
-                self.assertEqual(self.page.evaluate('emotionCalls'), ['happy', 'confused'])
+    def test_local_reply_sets_emotion_without_decision_requests(self):
+        cases = [('hi', 'happy'), ('Explain this', 'curious'),
+                 ('I love you', 'love'), ('I am sad', 'empathetic')]
+        for text, emotion in cases:
+            with self.subTest(text=text):
+                self.page.goto(APP)
+                self.page.evaluate("""() => {
+                    window.emotionCalls = [];
+                    const original = Sprites.setEmotion;
+                    Sprites.setEmotion = name => { emotionCalls.push(name); return original(name); };
+                }""")
+                expected = self.page.evaluate('(text) => LocalFallbackEngine.getResponse(text).reply', text)
+                self.page.locator('#msgInput').fill(text)
+                self.page.locator('#sendBtn').click()
+                self.page.wait_for_function('() => !Chat.busy')
+                self.assertEqual(self.page.evaluate('emotionCalls'), [emotion])
+                self.assertIn(expected, self.page.locator('.msg.assistant:not(.typing)').last.inner_text())
+                self.assertFalse(self.calls)
+                self.assertFalse(self.retired_requests)
                 self.assertFalse(self.errors, self.errors)
 
-
-    def test_late_decision_does_not_interrupt_typing(self):
-        self.hold_emotion = True
-        self.send_emotion_reply()
-        self.page.wait_for_timeout(100)
-        self.assertIsNotNone(self.pending_emotion)
-        self.page.locator('#msgInput').fill('A new message')
-        self.page.locator('#msgInput').dispatch_event('input')
-        self.fulfill_decision(self.pending_emotion, ['sprites_emotion_v1'])
-        self.page.wait_for_function('() => emotionFinished === 1')
-        self.assertEqual(self.page.evaluate('emotionCalls'), ['happy'])
-        self.assertEqual(self.page.evaluate('Sprites.current.name'), 'listening')
-
-    def test_late_decision_does_not_interrupt_new_conversation(self):
-        self.hold_emotion = True
-        self.send_emotion_reply()
-        self.page.wait_for_timeout(100)
-        self.assertIsNotNone(self.pending_emotion)
-        self.page.locator('#newBtn').click()
-        self.fulfill_decision(self.pending_emotion, ['sprites_emotion_v1'])
-        self.page.wait_for_function('() => emotionFinished === 1')
-        self.assertEqual(self.page.evaluate('emotionCalls'), ['happy'])
-        self.assertEqual(self.page.evaluate('Sprites.current.name'), 'idle')
-
-    def test_late_decision_does_not_override_newer_reply(self):
-        self.hold_emotion = True
-        self.send_emotion_reply()
-        self.page.wait_for_timeout(100)
-        old = self.pending_emotion
-        self.assertIsNotNone(old)
-        self.page.locator('#msgInput').fill('Another turn')
-        self.page.locator('#sendBtn').click()
-        self.page.locator('.msg.assistant:not(.typing)').nth(1).wait_for()
-        self.page.wait_for_function('() => !Chat.busy')
-        self.fulfill_decision(old, ['sprites_emotion_v1'])
-        self.page.wait_for_function('() => emotionFinished === 1')
-        self.assertEqual(self.page.evaluate('emotionCalls'), ['happy', 'happy'])
-        self.fulfill_decision(self.pending_emotion, ['sprites_emotion_v1'])
-        self.page.wait_for_function('() => emotionFinished === 2')
-        self.assertEqual(self.page.evaluate('emotionCalls'), ['happy', 'happy', 'confused'])
+    def test_decision_api_is_a_local_noop(self):
+        self.page.goto(APP)
+        answer = self.page.evaluate("""async () =>
+            await Chat.askDecisions(['sprites_emotion_v1', 'sprites_tts_language_v1'], {})""")
+        self.assertIsNone(answer)
+        self.assertFalse(self.calls, 'Decisions must never create an inference request')
+        self.assertFalse(self.retired_requests, 'Decisions must never call /decisions')
+        self.assertFalse(self.errors, self.errors)
 
     def check_chat(self, sandbox=None, blocked_storage=False):
         if blocked_storage:
@@ -220,21 +126,20 @@ class PlayerCardTests(unittest.TestCase):
             app = self.page.frame_locator('iframe')
         field = app.locator('#msgInput')
         field.wait_for()
-        self.assertEqual(len(self.calls), 0, 'No inference until a user sends a message')
+        replies = app.locator('.msg.assistant:not(.typing)')
+        self.assertEqual(replies.count(), 0, 'No reply until a user sends a message')
         app.locator('#speakToggle').click()
         # A starter button is the known working path reported by the user.
         app.locator('.starters button').first.click()
-        app.locator('.msg.assistant:not(.typing)').filter(has_text='Mock reply received.').wait_for()
-        self.assertEqual(len(self.calls), 1)
+        replies.nth(0).wait_for()
+        self.assertTrue(replies.nth(0).inner_text().strip())
 
         # Physical input and click: do not dispatch submit or call requestSubmit.
         field.click()
         field.press_sequentially('Send with button')
         self.assertEqual(field.input_value(), 'Send with button')
         app.locator('#sendBtn').click()
-        app.locator('.msg.assistant:not(.typing)').nth(1).wait_for()
-        self.assertEqual(len(self.calls), 2)
-        self.assertEqual(self.calls[-1]['messages'][-1]['content'], 'Send with button')
+        replies.nth(1).wait_for()
         self.assertEqual(field.input_value(), '')
 
         # Enter while an IME is composing must not prematurely send the text.
@@ -242,19 +147,26 @@ class PlayerCardTests(unittest.TestCase):
         field.dispatch_event('keydown', {'key': 'Enter', 'isComposing': True})
         field.dispatch_event('keydown', {'key': 'Enter', 'keyCode': 229})
         self.assertEqual(field.input_value(), 'Send with Enter')
-        self.assertEqual(len(self.calls), 2)
+        self.assertEqual(replies.count(), 2)
         field.press('Enter')
-        app.locator('.msg.assistant:not(.typing)').nth(2).wait_for()
-        self.assertEqual(len(self.calls), 3, 'Enter must send exactly once')
-        self.assertEqual(self.calls[-1]['messages'][-1]['content'], 'Send with Enter')
+        replies.nth(2).wait_for()
+        self.assertEqual(replies.count(), 3, 'Enter must send exactly once')
         self.assertEqual(field.input_value(), '')
         app.locator('#sendBtn').click()
         field.press('Enter')
-        self.assertEqual(len(self.calls), 3, 'Empty messages must not send')
-        self.assertFalse(self.errors)
+        self.assertEqual(replies.count(), 3, 'Empty messages must not send')
+
+        # Sandboxed cards must work with the built-in provider alone.
+        self.assertFalse(self.calls, 'Local replies must not create inference requests')
+        self.assertFalse(self.cloud_requests)
+        self.assertFalse(self.retired_requests)
+        self.assertFalse(self.errors, self.errors)
 
     def test_memory_checkpoint_and_archive_survive_reload(self):
         self.page.goto(APP)
+        # Memory compression still works for visitors who opt into a BYO key;
+        # the built-in provider deliberately keeps every message instead.
+        self.seed_byo_provider()
         conversation = self.page.evaluate('''() => {
             Chat.newConversation();
             Chat.messages.push({id: 'long-source', role: 'user', content: '日本語😀\\n'.repeat(12000)},
@@ -275,11 +187,14 @@ class PlayerCardTests(unittest.TestCase):
         self.assertEqual(self.page.evaluate('Chat.messages.length'), 10)
         self.assertEqual(self.page.evaluate('Chat.messages[0].id'), 'long-source')
         self.assertEqual(self.page.evaluate('Chat.unsummarizedStart()'), 6)
-        summaries = [c['body'] for c in self.cloud_requests if c['headers'].get('x-waifu-purpose') == 'summary']
+        summaries = [c['body'] for c in self.cloud_requests
+                     if any('memory compression engine' in m.get('content', '')
+                            for m in c['body']['messages'])]
         self.assertGreater(len(summaries), 1)
         for request in summaries:
             self.assertLessEqual(len(json.dumps(request, ensure_ascii=False, separators=(',', ':')).encode()), 262144)
-            self.assertEqual(request['context_budget_version'], 1)
+            self.assertFalse(request['stream'])
+        self.assertFalse(self.retired_requests)
         self.assertFalse(self.errors, self.errors)
 
     def test_manual_summary_size_feedback_keeps_saved_memory(self):
@@ -308,7 +223,7 @@ class PlayerCardTests(unittest.TestCase):
     def test_iframe_without_forms_or_storage(self):
         self.check_chat('allow-scripts', blocked_storage=True)
 
-    def check_picture_identity(self, sandbox=None):
+    def check_picture_unavailable(self, sandbox=None):
         if sandbox is None:
             self.page.goto(APP)
             app = self.page
@@ -319,110 +234,94 @@ class PlayerCardTests(unittest.TestCase):
         app.locator('#speakToggle').click()
         app.locator('#msgInput').fill('Send me a selfie')
         app.locator('#sendBtn').click()
-        app.locator('.msg.assistant:not(.typing)').filter(has_text='Mock reply received.').wait_for()
-        app.locator('.msg img').wait_for()
-        chat = next(r for r in self.cloud_requests if r.get('body', {}).get('stream'))
-        prompt = next(r for r in self.cloud_requests if r['headers'].get('x-waifu-purpose') == 'image_prompt')
-        image = next(r for r in self.cloud_requests if r['path'] == '/image')
-        for header in ('x-session-id', 'x-visitor-id'):
-            self.assertTrue(chat['headers'].get(header))
-            self.assertEqual(prompt['headers'].get(header), chat['headers'][header])
-            self.assertEqual(image['headers'].get(header), chat['headers'][header])
-        self.assertEqual(prompt['body']['client_settings']['app'], 'waifu-sprites')
-        self.assertFalse(self.errors)
-
-    def test_zero_confidence_picture_actions_honor_choices(self):
-        self.page.goto(APP)
-        self.picture_answer = {'choice_id': 'none', 'confidence': 0}
-        self.assertIsNone(self.page.evaluate("Pictures.decide('Send me a selfie', '')"))
+        app.locator('.msg.assistant:not(.typing)').first.wait_for()
+        self.assertEqual(app.locator('.msg img').count(), 0, 'Picture generation is disabled')
+        self.assertFalse(self.calls)
         self.assertFalse(self.cloud_requests)
-        self.picture_answer = {'choice_id': 'draw', 'confidence': 0}
-        self.assertIn('garden', self.page.evaluate("Pictures.decide('Send me a selfie', '')"))
-        self.assertEqual(len(self.cloud_requests), 1)
-        prompt = self.cloud_requests[0]['body']['messages'][0]['content']
-        self.assertIn('approved picture request', prompt)
-        self.assertNotIn('NONE', prompt)
+        self.assertFalse(self.retired_requests, 'Pictures must not call /decisions or /image')
         self.assertFalse(self.errors, self.errors)
 
-    def test_picture_calls_share_chat_identity(self):
-        self.check_picture_identity()
-
-    def test_embedded_picture_calls_share_chat_identity(self):
-        self.check_picture_identity('allow-scripts allow-same-origin')
-
-
-    def test_tts_uncertain_reply_shares_emotion_request_and_replay_cache(self):
+    def test_picture_api_is_a_local_noop(self):
         self.page.goto(APP)
-        self.reply_text = '[happy] *waves gently* Kimi no koe ga yasashikute kokoro ga atatakai.'
-        self.language_answer = {'choice_id': 'ja-JP', 'confidence': 0}
-        self.page.locator('#msgInput').fill('Please read this')
+        decision = self.page.evaluate("async () => await Pictures.decide('Send me a selfie', '')")
+        self.assertIsNone(decision)
+        outcome = self.page.evaluate("""async () => {
+            try { await Pictures.draw('a prompt', 'square', []); return 'drawn'; }
+            catch (e) { return e.unavailable ? 'unavailable' : 'other'; }
+        }""")
+        self.assertEqual(outcome, 'unavailable')
+        self.assertFalse(self.calls)
+        self.assertFalse(self.retired_requests)
+        self.assertFalse(self.errors, self.errors)
+
+    def test_picture_requests_are_ignored_in_full_app(self):
+        self.check_picture_unavailable()
+
+    def test_picture_requests_are_ignored_in_embedded_card(self):
+        self.check_picture_unavailable('allow-scripts allow-same-origin')
+
+
+    def instrument_browser_speech(self, languages=('en-US',)):
+        self.page.evaluate("""(langs) => {
+            window.spokenLanguages = [];
+            window.SpeechSynthesisUtterance = class { constructor(text) { this.text = text; } };
+            speechSynthesis.getVoices = () => langs.map(lang => ({name: 'Test Female', lang}));
+            speechSynthesis.speak = u => { spokenLanguages.push(u.lang); queueMicrotask(() => u.onend?.()); };
+        }""", list(languages))
+
+    def test_tts_uses_browser_voice_without_cloud_requests(self):
+        self.page.goto(APP)
+        self.instrument_browser_speech()
+        self.page.locator('#msgInput').fill('hello')
         self.page.locator('#sendBtn').click()
-        self.page.wait_for_function('!Chat.busy && !Speech.speaking')
-        self.assertTrue(self.tts_calls)
-        self.assertEqual(self.tts_calls[0]['lang'], 'ja-JP')
-        requests = [r['body'] for r in self.decision_requests if 'sprites_tts_language_v1' in r['body']['tasks']]
-        self.assertEqual(len(requests), 1)
-        self.assertEqual(requests[0]['tasks'], ['sprites_emotion_v1', 'sprites_tts_language_v1'])
-        self.assertFalse(requests[0]['state']['spoken_reply'].startswith('*'))
-        before = len(self.decision_requests)
-        self.page.evaluate('Speech.speak(Chat.lastReply(), {force: true})')
-        self.assertEqual(len(self.decision_requests), before)
-        self.assertEqual(self.tts_calls[-1]['lang'], 'ja-JP')
-        self.assertFalse(self.errors)
+        self.page.wait_for_function('() => !Chat.busy && !Speech.speaking')
+        self.assertEqual(len(self.page.evaluate('spokenLanguages')), 1)
+        self.assertFalse(self.calls)
+        self.assertFalse(self.cloud_requests)
+        self.assertFalse(self.retired_requests, 'Speech must not call /tts or /decisions')
+        self.assertFalse(self.errors, self.errors)
 
     def test_tts_clear_french_and_spanish_use_picked_browser_voice(self):
         self.page.goto(APP)
+        self.seed_byo_provider()
         # With a browser voice explicitly picked, replies stay on the browser
         # path and the cloud speech endpoint is never called.
         self.page.evaluate("() => { Speech.settings.voiceId = 'browser-female'; Speech.save(); }")
-        self.page.evaluate("""() => {
-            window.spokenLanguages = [];
-            window.SpeechSynthesisUtterance = class { constructor(text) { this.text = text; } };
-            speechSynthesis.getVoices = () => [
-                {name:'Amelie Female',lang:'fr-FR'}, {name:'Monica Female',lang:'es-ES'}];
-            speechSynthesis.speak = u => { spokenLanguages.push(u.lang); queueMicrotask(() => u.onend?.()); };
-        }""")
+        self.instrument_browser_speech(('fr-FR', 'es-ES'))
         for text, language in [('Bonjour, je suis contente de te voir.', 'fr-FR'), ('Hola, gracias!', 'es-ES')]:
             self.reply_text = '[happy] ' + text
             self.page.locator('#msgInput').fill('Read this reply')
             self.page.locator('#sendBtn').click()
             self.page.wait_for_function('!Chat.busy && !Speech.speaking')
             self.assertEqual(self.page.evaluate('spokenLanguages.at(-1)'), language)
-        self.assertFalse(self.tts_calls)
-        self.assertFalse(any('sprites_tts_language_v1' in r['body']['tasks'] for r in self.decision_requests))
-        self.assertFalse(self.errors)
+        self.assertFalse(self.retired_requests)
+        self.assertFalse(self.errors, self.errors)
 
-    def test_tts_muted_skips_cloud_and_uncertain_language_asks(self):
+    def test_tts_mute_toggle_suppresses_browser_speech(self):
         self.page.goto(APP)
-        self.language_answer = {'choice_id': 'ja-JP', 'confidence': 0}
+        self.instrument_browser_speech()
         self.page.locator('#speakToggle').click()
-        self.reply_text = '[happy] Kimi no koe ga yasashikute kokoro ga atatakai.'
-        self.page.locator('#msgInput').fill('Read this reply')
+        self.page.locator('#msgInput').fill('hello')
         self.page.locator('#sendBtn').click()
-        self.page.wait_for_function('!Chat.busy')
-        self.assertFalse(self.tts_calls)
+        self.page.wait_for_function('() => !Chat.busy')
+        self.assertEqual(self.page.evaluate('spokenLanguages'), [])
         self.page.locator('#speakToggle').click()
-        self.page.locator('#msgInput').fill('Read it again')
+        self.page.locator('#msgInput').fill('hi again')
         self.page.locator('#sendBtn').click()
-        self.page.wait_for_function('!Chat.busy && !Speech.speaking')
-        self.assertEqual(self.tts_calls[-1]['lang'], 'ja-JP')
-        self.assertTrue(any('sprites_tts_language_v1' in r['body']['tasks'] for r in self.decision_requests))
-        self.assertFalse(self.errors)
+        self.page.wait_for_function('() => !Chat.busy && !Speech.speaking')
+        self.assertEqual(len(self.page.evaluate('spokenLanguages')), 1)
+        self.assertFalse(self.retired_requests)
+        self.assertFalse(self.errors, self.errors)
 
-
-
-    def test_long_reply_preserves_emotional_ending_in_decision_request(self):
-        self.reply_text = '[happy] Opening. ' + 'x' * 5000 + ' I am thrilled!'
+    def test_long_input_never_reaches_a_retired_endpoint(self):
         self.page.goto(APP)
         self.page.locator('#speakToggle').click()
-        self.page.locator('#msgInput').fill('Hello')
-        with self.page.expect_request('**/decisions') as captured:
-            self.page.locator('#sendBtn').click()
-        state = captured.value.post_data_json['state']
-        self.assertLessEqual(len(state['reply']), 4096)
-        self.assertTrue(state['reply'].startswith('Opening. '))
-        self.assertTrue(state['reply'].endswith('I am thrilled!'))
-        self.assertIn('[...]', state['reply'])
+        self.page.locator('#msgInput').fill('x' * 5000)
+        self.page.locator('#sendBtn').click()
+        self.page.wait_for_function('() => !Chat.busy')
+        self.assertTrue(self.page.locator('.msg.assistant:not(.typing)').count() >= 1)
+        self.assertFalse(self.calls)
+        self.assertFalse(self.retired_requests)
         self.assertFalse(self.errors, self.errors)
 
     # ── Interface localization ──

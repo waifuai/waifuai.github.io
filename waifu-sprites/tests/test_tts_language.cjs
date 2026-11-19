@@ -159,42 +159,40 @@ test('Sprites browser playback refuses male-only and unknown inventories',async(
  }
 });
 
-function speechRuntime(failure) {
- const window={};let requests=0,lastUrl='';
- const speechSynthesis={getVoices:()=>[{name:'English Female',lang:'en-US'},{name:'Arabic Female',lang:'ar-SA'}]};
- const c=vm.createContext({window,navigator:{language:'en-US'},localStorage:{getItem:()=>null},setTimeout,clearTimeout,speechSynthesis,
- AbortSignal,URLSearchParams,URL,
- fetch:async url=>{if(String(url).endsWith('/events'))return{ok:true,status:204};requests++;lastUrl=String(url);if(failure==='network')throw new TypeError('Failed to fetch');
-  if(failure==='unavailable')return{ok:true,status:204,headers:new Map()};
-  return{ok:failure!=='http',status:failure==='http'?503:200,headers:new Map(),
-   arrayBuffer:async()=>failure==='empty'?new ArrayBuffer(0):new ArrayBuffer(4)};}});
- window.speechSynthesis=speechSynthesis;
- window.AudioContext=function(){this.decodeAudioData=async()=>{if(failure==='decode')throw new Error('Invalid audio');return{duration:0}}};
+function localSpeechRuntime(voices) {
+ const window={};let requests=0;
+ const c=vm.createContext({window,navigator:{language:'en-US'},localStorage:{getItem:()=>null},setTimeout,clearTimeout,
+  speechSynthesis:{getVoices:()=>voices},
+  fetch:async()=>{requests++;throw Error('speech must not fetch');}});
+ window.speechSynthesis=c.speechSynthesis;
  vm.runInContext(fs.readFileSync(routerPath,'utf8'),c);
  let source=fs.readFileSync(path.join(__dirname,'../speech.js'),'utf8');
- source=source.replace('return { VOICES, settings,','return { resolve, VOICES, settings,');
+ source=source.replace('return { VOICES, settings,','return { resolve, loadVoices, VOICES, settings,');
  vm.runInContext(source+';window.testSpeech=Speech;',c);
- return {speech:window.testSpeech,requests:()=>requests,lastUrl:()=>lastUrl};
+ return {speech:window.testSpeech,requests:()=>requests};
 }
-for(const failure of ['network','http','unavailable','empty','decode'])test(`Sprites cloud ${failure} failure stays silent`,async()=>{
- const r=speechRuntime(failure);assert.equal((await r.speech.resolve('Hello, how are you today?')).kind,'silent');assert.equal(r.requests(),1);
+const browserVoices=[{name:'English Female',lang:'en-US'},{name:'Arabic Female',lang:'ar-SA'}];
+test('Sprites speech resolves entirely through browser voices and never fetches',async()=>{
+ const r=localSpeechRuntime(browserVoices);
+ const en=await r.speech.resolve('Hello, how are you today?');
+ assert.equal(en.kind,'browser');assert.ok(en.lang.toLowerCase().startsWith('en'));
+ const ar=await r.speech.resolve('مرحبا كيف حالك اليوم؟');
+ assert.equal(ar.kind,'browser');assert.ok(ar.lang.toLowerCase().startsWith('ar'));
+ assert.equal(r.requests(),0);
 });
-test('Sprites cloud speech receives the reply language',async()=>{
- const r=speechRuntime();
- assert.equal((await r.speech.resolve('Hello, how are you today?')).kind,'buffer');
- assert.ok(r.lastUrl().includes('lang=en-US'));
- assert.equal((await r.speech.resolve('مرحبا كيف حالك اليوم؟')).kind,'buffer');
- assert.ok(r.lastUrl().includes('lang=ar-SA'));
+test('Sprites speech stays silent when no browser voice matches',async()=>{
+ const r=localSpeechRuntime([]);
+ assert.equal((await r.speech.resolve('Hello')).kind,'silent');assert.equal(r.requests(),0);
 });
-test('Sprites successful primary and explicit browser selection remain available',async()=>{
- const r=speechRuntime();assert.equal((await r.speech.resolve('Hello, how are you today?')).kind,'buffer');
- r.speech.settings.voiceId='browser-female';assert.equal((await r.speech.resolve('Hello')).kind,'browser');assert.equal(r.requests(),1);
+test('a saved cloud voice id falls back to the browser default',async()=>{
+ const r=localSpeechRuntime(browserVoices);
+ r.speech.settings.voiceId='cloud:tt-jp-001';
+ const result=await r.speech.resolve('Hello, how are you today?',null,true);
+ assert.equal(result.kind,'browser');assert.equal(r.requests(),0);
 });
-
-test('explicit cloud voice is sent independently of reply language and preview stays marked',async()=>{
-  const r=speechRuntime();r.speech.settings.voiceId='cloud:tt-jp-001';
-  const result=await r.speech.resolve('Hello, how are you today?',null,true);
-  assert.equal(result.kind,'buffer');assert.ok(r.lastUrl().includes('voice=tt-jp-001'));
-  assert.ok(r.lastUrl().includes('lang=en-US'));assert.ok(r.lastUrl().includes('preview=1'));
-  assert.equal(r.speech.settings.voiceId,'cloud:tt-jp-001');
+test('loading voices returns the local browser catalog without a request',async()=>{
+ const r=localSpeechRuntime(browserVoices);
+ const voices=await r.speech.loadVoices();
+ assert.deepEqual(Array.from(voices,v=>v.id).sort(),['browser-female','browser-male']);
+ assert.equal(r.requests(),0);
 });

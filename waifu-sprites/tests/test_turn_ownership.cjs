@@ -14,6 +14,12 @@ function client(embed=false, store=new Map()) {
     localStorage:{getItem:k=>store.get(k)??null,setItem:(k,v)=>store.set(k,v),removeItem:k=>store.delete(k)} });
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../context_budget.js'),'utf8'),ctx);
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../chat.js'),'utf8')+';this.chat=Chat;',ctx);
+  // Stream/ownership transport is still supported for bring-your-own-key
+  // providers; opt this harness into one so those tests keep their coverage.
+  ctx.chat.settings.provider='custom';
+  ctx.chat.settings.customBaseUrl='https://provider.test/v1';
+  ctx.chat.settings.keys.custom='test-key';
+  ctx.chat.settings.models.custom='test-model';
   return {chat:ctx.chat,ctx,store,timers};
 }
 const json = text => ({ok:true,json:async()=>({choices:[{message:{content:text}}]})});
@@ -111,62 +117,47 @@ test('request deadline is a failed attempt, while explicit Stop is stopped',asyn
   assert.equal(chat.messages[1].status,'failed');assert.ok(chat.canRetry(chat.messages[1].id));
 });
 
-test('canceled picture decision never falls through to a writer; canceled blob storage is discarded',async()=>{
-  const {chat,ctx}=client();
+test('picture decisions are local no-ops and cannot reach a writer',async()=>{
+  const {ctx}=client();let calls=0;
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../pictures.js'),'utf8')+';this.pictures=Pictures;',ctx);
-  const picture=ctx.pictures;
-  const decision=deferred();let calls=0;
-  chat.askDecisions=()=>decision.promise;
   ctx.fetch=async()=>{calls++;return json('DRAW: Stale picture prompt');};
-  const owner=chat.beginTurn('send me a selfie');
-  const work=picture.decide(owner.text,'',{}, {owner,signal:owner.signal,valid:()=>chat.isCurrent(owner)});
-  chat.newConversation();decision.resolve({picture_action_v1:{choice_id:'draw'}});
-  assert.equal(await work,null);assert.equal(calls,0);
-
-  const storage=deferred();let forgotten=0;
-  // Expose only the existing IndexedDB adapter for a deterministic commit boundary.
-  const ctx2=client().ctx;
-  vm.runInContext(fs.readFileSync(path.join(__dirname,'../pictures.js'),'utf8').replace('return { decide, draw,','return { Store, decide, draw,')+';this.pictures=Pictures;',ctx2);
-  ctx2.URLSearchParams=URLSearchParams;
-  ctx2.pictures.Store.put=()=>storage.promise;
-  ctx2.pictures.Store.del=()=>{forgotten++;};
-  const controller=new AbortController();
-  ctx2.fetch=async()=>({ok:true,headers:new Headers({'X-Image-Id':'one'}),blob:async()=>new Blob(['bytes'])});
-  const drawing=ctx2.pictures.draw('garden','1:1',{}, {signal:controller.signal});await tick();
-  controller.abort();storage.resolve();await assert.rejects(drawing,{name:'AbortError'});assert.equal(forgotten,1);
+  const picture=ctx.pictures;
+  const owner={signal:new AbortController().signal};
+  assert.equal(await picture.decide('send me a selfie','',{}, {owner,signal:owner.signal,valid:()=>true}),null);
+  await assert.rejects(picture.draw('garden','1:1',{}, {signal:owner.signal}),error=>error.unavailable===true);
+  assert.equal(calls,0);
 });
 
-test('delayed transcription and audio decoding cannot submit or play after cancellation',async()=>{
-  const body=deferred();let captureOptions, submitted=0, canceled=0, signal;
-  const window={MediaRecorder:function(){},MicCapture:{create:options=>{captureOptions=options;return {start(){},cancel(){canceled++;}};}}};
-  const context=vm.createContext({window,navigator:{mediaDevices:{getUserMedia(){}},language:'en'},
-    AbortController,FormData,setTimeout,clearTimeout,fetch:async(_url,options)=>{signal=options.signal;return {ok:true,json:()=>body.promise};}});
+test('cancelling local speech recognition discards late transcripts',async()=>{
+  let handlers={},aborted=0;
+  const rec={continuous:false,interimResults:false,maxAlternatives:1,
+    start(){},stop(){},abort(){aborted++;},
+    onstart:null,onresult:null,onerror:null,onend:null};
+  const window={SpeechRecognition:function(){return rec;}};
+  const context=vm.createContext({window,navigator:{language:'en'},AbortController,setTimeout,clearTimeout,
+    fetch:async()=>{throw Error('voice must not fetch');}});
   vm.runInContext(fs.readFileSync(path.join(__dirname,'../voice.js'),'utf8')+';this.voice=Voice;',context);
-  const handlers={};context.voice.init({addEventListener:(name,fn)=>handlers[name]=fn}, {onText:()=>submitted++,onError:()=>{throw Error('stale error');}});
-  handlers.click({detail:0});const transcribing=captureOptions.onAudio(new Blob(['audio'],{type:'audio/webm'}));await tick();
-  context.voice.cancel();body.resolve({text:'stale transcript'});await transcribing;
-  assert.equal(submitted,0);assert.equal(canceled,1);assert.equal(signal.aborted,true);
-
-  const decoding=deferred();let plays=0, valid=true;
-  class AudioContext { constructor(){this.state='running';} decodeAudioData(){return decoding.promise;} createBufferSource(){plays++;throw Error('stale playback');} }
-  const audioWindow={AudioContext};
-  const audio=vm.createContext({window:audioWindow,navigator:{language:'en'},localStorage:{getItem:()=>null},setTimeout,clearTimeout,
-    atob,fetch:async()=>({ok:true,json:async()=>({data:'YQ=='})})});
-  vm.runInContext(fs.readFileSync(path.join(__dirname,'../tts_language_router.js'),'utf8'),audio);
-  vm.runInContext(fs.readFileSync(path.join(__dirname,'../speech.js'),'utf8')+';this.speech=Speech;',audio);
-  const speaking=audio.speech.speak('Hello there.',{valid:()=>valid});await tick();valid=false;audio.speech.stop();decoding.resolve({duration:1});
-  await speaking;assert.equal(plays,0);assert.ok(!audio.speech.speaking);
+  let submitted=0;
+  context.voice.init({addEventListener:(name,fn)=>handlers[name]=fn,hidden:false},
+    {onText:()=>submitted++,onError:()=>{},onState:()=>{}});
+  handlers.pointerdown({button:0,pointerId:1,preventDefault(){}});
+  assert.equal(rec.onstart!==null,true);
+  rec.onstart();rec.onresult({resultIndex:0,results:[{isFinal:false,0:{transcript:'stale'}}]});
+  context.voice.cancel();assert.equal(aborted,1);
+  rec.onend();assert.equal(submitted,0);
 });
 
-test('per-chat interface locale reaches Cloud settings in full and embedded apps',async()=>{
+test('per-chat interface locale and reply language reach a BYO provider',async()=>{
  for(const embed of [false,true]){
   const {chat,ctx}=client(embed);let body;
-  const snapshot={interface_locale:'ja',interface_locale_preference:'auto',interface_locale_status:'ready',interface_locale_version:1};
-  ctx.window.WaifuI18n={snapshot:()=>snapshot};
-  chat.settings.stream=false;
-  ctx.fetch=async(url,options)=>{body=JSON.parse(options.body);return json('Invented reply');};
+  chat.settings.language='French';
+  ctx.window.WaifuI18n={locale:'ja'};
+  ctx.fetch=async(url,options)=>{body=JSON.parse(options.body);return {ok:true,json:async()=>({choices:[{message:{content:'[happy] Invented reply'}}]})};};
   await chat.send('Invented',{onDone(){}});
   assert.ok(body);
-  for(const [key,value] of Object.entries(snapshot))assert.equal(body.client_settings[key],value);
+  assert.equal(body.model,'test-model');
+  const system=body.messages.find(m=>m.role==='system');
+  assert.ok(system);
+  assert.match(system.content,/French/);
  }
 });

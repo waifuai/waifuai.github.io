@@ -179,8 +179,8 @@
       </div>
       <p class="note" id="providerNote"></p>
 
-      <h3 data-i18n="settings.pictures">Pictures</h3>
-      <p class="note" data-i18n-html="settings.picturesNote">Ask for a selfie or a drawing, or type <code dir="ltr">/image</code> and a description. Pictures are drawn by WaifuAI Cloud.</p>
+      <h3 data-i18n="settings.pictures" hidden>Pictures</h3>
+      <p class="note" data-i18n-html="settings.picturesNote" hidden>Picture generation is unavailable while the built-in local replies are in use.</p>
       <div class="options aspects" id="aspectList"></div>
 
       <h3 data-i18n="settings.voice">Voice</h3>
@@ -216,15 +216,16 @@
 
 <script>WaifuI18n.apply(document);</script>
 <script src="sprites.js?v=20261017-i18n"></script>
-<script src="pictures.js?v=20261103-character-context"></script>
+<script src="pictures.js?v=20261119-local-only"></script>
 <script src="mic_capture.js?v=20261017-i18n"></script>
-<script src="voice.js?v=20261017-i18n"></script>
+<script src="voice.js?v=20261119-local-only"></script>
 <script src="tts_language_router.js"></script>
-<script src="speech.js?v=20261103-local-voices"></script>
+<script src="speech.js?v=20261119-local-only"></script>
 <script src="context_budget.js?v=20261103-memory"></script>
-<script src="../i18n/chat_prompts.js?v=20261027-locales33"></script>
-<script src="prompt_translations.js?v=20261027-locales33"></script>
-<script src="chat.js?v=20261103-character-context"></script>
-<script src="app.js?v=20261103-language-order"></script>
+<script src="../i18n/chat_prompts.js?v=20261119-local-fallback"></script>
+<script src="prompt_translations.js?v=20261119-local-fallback"></script>
+<script src="local_fallback_engine.js?v=20261119-local-fallback"></script>
+<script src="chat.js?v=20261119-local-only"></script>
+<script src="app.js?v=20261119-local-only"></script>
 </body>
 </html>

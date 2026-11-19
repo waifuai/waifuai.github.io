@@ -15,7 +15,6 @@ APP = fixtures.APP
 class LifecycleTests(unittest.TestCase):
     setUpClass = classmethod(fixtures.PlayerCardTests.setUpClass.__func__)
     tearDownClass = classmethod(fixtures.PlayerCardTests.tearDownClass.__func__)
-    fulfill_decision = fixtures.PlayerCardTests.fulfill_decision
 
     def setUp(self):
         fixtures.PlayerCardTests.setUp(self)
@@ -52,6 +51,9 @@ class LifecycleTests(unittest.TestCase):
     def open(self, width=1100, embed=False):
         self.page.set_viewport_size({'width':width,'height':760 if not embed else 600})
         self.page.goto(APP + ('?embed=x' if embed else ''))
+        # Turn transport and error handling are still exercised through a BYO
+        # provider; the default built-in provider makes no network request.
+        self.page.evaluate("Object.assign(Chat.settings, {provider:'custom', customBaseUrl:'https://provider.test/v1', models:{custom:'test-model'}});")
 
     def delayed(self):
         self.page.evaluate("""() => {
@@ -160,40 +162,29 @@ class LifecycleTests(unittest.TestCase):
         self.assertEqual(self.page.locator('#sendBtn').get_attribute('aria-label'),'Send')
         self.assertFalse(self.errors,self.errors)
 
-    def test_image_outcomes_manual_recovery_and_no_automatic_generation_on_reload(self):
+    def test_image_command_is_ordinary_local_chat_with_no_generation_request(self):
         self.open(390)
         self.image_mode='failed'
         self.page.locator('#msgInput').fill('/image a garden square')
         self.page.locator('#msgInput').press('Enter')
-        self.page.locator('.picture-status').filter(has_text='Generation failed').wait_for()
-        first=self.page.evaluate("Chat.messages.find(Chat.isPicture).id")
-        self.assertEqual(self.image_count,1)
+        self.page.wait_for_function('!Chat.busy && Chat.messages.some(m => m.role === "assistant" && m.content)')
+        self.assertEqual(self.image_count,0)
+        self.assertEqual(self.page.evaluate("Chat.messages.some(Chat.isPicture)"),False)
+        self.assertEqual(self.page.evaluate("Chat.messages.at(-1).status"),'completed')
         self.page.reload()
-        self.assertEqual(self.image_count,1)
-        self.image_mode='success'; self.display_fails=True
-        self.page.get_by_role('button',name='Generate again',exact=True).click()
-        self.page.locator('.picture-status').filter(has_text='Display failed').wait_for()
-        self.assertEqual(self.page.evaluate("Chat.messages.find(Chat.isPicture).id"),first)
-        self.assertEqual(self.image_count,2)
-        self.display_fails=False
-        self.page.get_by_role('button',name='Reload image',exact=True).click()
-        self.page.locator('.picture-status').filter(has_text='Loaded in this browser').wait_for()
-        self.assertEqual(self.image_count,2)
-        self.assertIn('not proof the user saw it',self.page.evaluate('Chat.messageText(Chat.messages.find(Chat.isPicture))'))
-        self.page.reload()
-        self.page.locator('.picture-status').filter(has_text='Loaded in this browser').wait_for()
-        self.assertEqual(self.image_count,2)
+        self.assertEqual(self.image_count,0)
+        self.assertEqual(self.page.evaluate("Chat.messages.some(Chat.isPicture)"),False)
         self.assertFalse(self.errors,self.errors)
 
-    def test_block_auth_and_rate_limit_have_no_generate_again_control(self):
-        for mode in ['blocked','auth','rate']:
-            self.open(); self.image_mode=mode
+    def test_image_prompt_hints_never_offer_a_generate_again_control(self):
+        for text in ['/image a garden', 'draw yourself at the beach']:
+            self.open(); self.image_mode='success'
             self.page.locator('#newBtn').click()
-            self.page.locator('#msgInput').fill('/image a garden')
+            self.page.locator('#msgInput').fill(text)
             self.page.locator('#msgInput').press('Enter')
-            self.page.wait_for_function("Chat.messages.some(m=>m.generation==='blocked'||m.generation==='failed')")
+            self.page.wait_for_function('!Chat.busy && Chat.messages.some(m => m.role === "assistant" && m.content)')
             self.assertEqual(self.page.get_by_role('button',name='Generate again',exact=True).count(),0)
-        self.assertEqual(self.image_count,3)
+            self.assertEqual(self.image_count,0)
         self.assertFalse(self.errors,self.errors)
 
     def test_missing_corrupt_blobs_and_rejected_resolution_only_offer_reload(self):

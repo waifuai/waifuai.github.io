@@ -634,7 +634,10 @@
   }
 
   async function runTurn({ text, source, ambient = false, retryId }) {
-    const command = !ambient && /^\/(image|img)\b/i.test(text) ? parseImageCommand(text) : null;
+    // Picture generation was removed with the public endpoints. /image is no
+    // longer a command: treat it as ordinary chat text so the local reply
+    // engine answers it instead of starting an endpoint-dependent picture turn.
+    const command = null;
     if (command && !command.prompt) { bubble('info', tr('chat.imageHelp')); return; }
     const previous = Chat.lastReply();
     const owner = Chat.beginTurn(ambient ? Chat.ambientPrompt() : text,
@@ -772,7 +775,7 @@
       }
     },
     onText(text) {
-      track('voice_input_used', { engine: 'proxy' });
+      track('voice_input_used', { engine: 'local-webspeech' });
       const combined = (input.value.trim() + ' ' + text).trim();
       if (display.voiceAutoSend && (!Chat.busy || Chat.settings.queue)) {
         send(combined, 'voice');
