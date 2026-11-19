@@ -160,8 +160,8 @@ const Chat = (() => {
   const sessionId = randomId('s-');
   function ids() { return { session: sessionId, visitor: visitorId() }; }
 
-  // Decisions used to go to the Cloudflare /decisions endpoint. With that
-  // endpoint retired there is no fixed-choice service: return null so every
+  // Decisions used to call a public fixed-choice service. With that service
+  // retired there is no fixed-choice provider: return null so every
   // caller keeps its own local behavior (the reply's emotion tag, the local
   // language router, and the picture-free picture gate). Never throws, and
   // resolves immediately rather than waiting on a network timeout.

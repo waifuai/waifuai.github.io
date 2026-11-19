@@ -197,8 +197,8 @@ const Speech = (() => {
   }
 
   function showStatus(message){const el=typeof document!=='undefined'?document.getElementById('voiceChoiceStatus'):null;if(el)el.textContent=message;}
-  // Telemetry used to POST to the retired Cloudflare TTS endpoint. Local
-  // speech has no service to report to; events are now page-local only.
+  // Telemetry used to POST to a public speech service. Local speech has no
+  // service to report to; events are now page-local only.
   function reportEvent(event,info={}){
     if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function' && typeof window.CustomEvent === 'function') {
       try { window.dispatchEvent(new window.CustomEvent('waifu-speech', { detail: { event, ...info } })); } catch (e) {}

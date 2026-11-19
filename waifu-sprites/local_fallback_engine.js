@@ -1,9 +1,8 @@
 // Per-turn local chat replies for Waifu Sprites.
 //
 // Every turn is answered locally: there is no offline mode, timer, toggle or
-// persisted flag. The rule-based reply is the default chat path while the
-// Cloudflare inference endpoint is being retired, not a last-resort error
-// message. Visitors with their own OpenRouter / Groq / custom key still use
+// persisted flag. The rule-based reply is the default chat path now that the
+// public inference endpoint is retired, not a last-resort error message. Visitors with their own OpenRouter / Groq / custom key still use
 // that provider normally.
 //
 // The engine covers every id in Sprites.EMOTIONS and gives each built-in

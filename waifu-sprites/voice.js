@@ -2,8 +2,8 @@
  * voice.js: voice input for the mic button.
  *
  * Speech recognition runs in the browser through the Web Speech API
- * (SpeechRecognition / webkitSpeechRecognition). The Cloudflare /transcribe
- * endpoint was retired and no request leaves this page for audio. When the
+ * (SpeechRecognition / webkitSpeechRecognition). The public transcription
+ * service was retired and no request leaves this page for audio. When the
  * browser has no Web Speech support the mic button is hidden and typing
  * remains the only input.
  *
