@@ -114,6 +114,42 @@ class PlayerCardTests(unittest.TestCase):
         self.assertFalse(self.retired_requests, 'Decisions must never call /decisions')
         self.assertFalse(self.errors, self.errors)
 
+    def test_local_fallback_sends_ga4_insights(self):
+        self.page.goto(APP)
+        self.page.evaluate("""() => {
+            window.gtagCalls = [];
+            window.gtag = (...args) => { gtagCalls.push(args); };
+        }""")
+        self.page.locator('#msgInput').fill('hello')
+        self.page.locator('#sendBtn').click()
+        self.page.wait_for_function('() => !Chat.busy')
+        events = self.page.evaluate("() => gtagCalls.filter(call => call[0] === 'event')")
+        names = [event[1] for event in events]
+        self.assertIn('chat_message_sent', names)
+        self.assertIn('llm_stream_completed', names)
+        fallback = next(event for event in events if event[1] == 'offline_fallback_reply')
+        params = fallback[2]
+        self.assertEqual(params['app_source'], 'waifu-sprites')
+        self.assertEqual(params['engine'], 'local-template-v2')
+        self.assertEqual(params['persona'], 'aurora')
+        self.assertEqual(params['emotion'], 'happy')
+        self.assertEqual(params['pattern'], 'offline.greeting')
+        self.assertFalse(self.retired_requests)
+        self.assertFalse(self.errors, self.errors)
+
+    def test_persona_change_changes_local_reply(self):
+        self.page.goto(APP)
+        self.page.evaluate("() => { Chat.settings.persona = 'tsundere'; Chat.saveSettings(); }")
+        self.page.locator('#msgInput').fill('hello')
+        self.page.locator('#sendBtn').click()
+        self.page.wait_for_function('() => !Chat.busy')
+        reply = self.page.locator('.msg.assistant:not(.typing)').last.inner_text()
+        self.assertTrue(reply.startswith('Hmph—'), reply)
+        self.assertIn('Not that I care or anything.', reply)
+        self.assertFalse(self.calls)
+        self.assertFalse(self.retired_requests)
+        self.assertFalse(self.errors, self.errors)
+
     def check_chat(self, sandbox=None, blocked_storage=False):
         if blocked_storage:
             self.context.add_init_script("Object.defineProperty(window, 'localStorage', {get() {throw new DOMException('Blocked', 'SecurityError')}})")

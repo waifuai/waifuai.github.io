@@ -701,6 +701,18 @@
         }).catch(() => {});
         speechRouting = speechPlan ? Speech.finishRouting(speechPlan, decision, () => valid() && Speech.settings.enabled) : null;
         track('llm_stream_completed', { provider, model, success: true, total_time_ms: Date.now() - startedAt, reply_chars: message.content.length, emotion: message.emotion || '(none)' });
+        // Fallback turns already ride the shared chat/stream events above; this
+        // extra event makes local-engine use, persona and emotion visible in
+        // GA4 without sending any message text or touching a Cloudflare route.
+        if (message.fallback) track('offline_fallback_reply', {
+          engine: message.fallback.engine,
+          persona: message.fallback.persona,
+          pattern: message.fallback.pattern,
+          emotion: message.emotion || '(none)',
+          reply_chars: message.content.length,
+          language: Chat.settings.language || 'auto',
+          interface_locale: window.WaifuI18n && window.WaifuI18n.locale || '',
+        });
         later(() => { if (valid()) Sprites.setState('idle'); }, RETURN_TO_IDLE_MS);
       },
       onError(msg, message) {

@@ -964,11 +964,16 @@ const Chat = (() => {
           throw new Error(tr('error.connection', 'Replies are unavailable right now. Please try again.'));
         }
         checkOwner(owner);
-        const local = window.LocalFallbackEngine.getResponse(owner.text, settings.language);
+        const local = window.LocalFallbackEngine.getResponse(owner.text, settings.language, settings.persona);
         emotion = Sprites.EMOTIONS.includes(local.emotion) ? local.emotion : null;
         cb.onEmotion?.(emotion);
         owner.replyMessage.content = local.reply;
         owner.replyMessage.emotion = emotion;
+        owner.replyMessage.fallback = {
+          engine: local.engine,
+          persona: local.persona,
+          pattern: local.pattern,
+        };
         saveConversation();
         cb.onText?.(local.reply);
         checkOwner(owner);

@@ -12,11 +12,11 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="How Waifu Sprites works: 12 activity states and 12 emotions chosen from each reply, pictures, TikTok voices, memory and personality, AI privacy, and the Hermes Agent plugin.">
+<meta name="description" content="How Waifu Sprites works: 12 activity states and 12 emotions chosen from each reply, browser voices, memory and personality, AI privacy, and the Hermes Agent plugin.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://waifuai.github.io/waifu-sprites/docs/">
 <meta property="og:title" content="Waifu Sprites Documentation | WaifuAI">
-<meta property="og:description" content="How Waifu Sprites works: video sprites with 12 states and 12 emotions, pictures, voices, memory and privacy.">
+<meta property="og:description" content="How Waifu Sprites works: video sprites with 12 states and 12 emotions, browser voices, memory and privacy.">
 <meta property="og:image" content="https://waifuai.github.io/waifu-sprites/og.png?v=522e138e82">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -50,11 +50,11 @@
 <ul class="docs-hub">
 <li><a href="#what">What it is<span class="desc">— video sprites with 12 activity states and 12 emotions</span></a></li>
 <li><a href="#pictures">Pictures<span class="desc">— selfies and drawings painted into the chat</span></a></li>
-<li><a href="#talk">Talk to her<span class="desc">— TikTok voices, microphone input</span></a></li>
+<li><a href="#talk">Talk to her<span class="desc">— browser voices, microphone input</span></a></li>
 <li><a href="#memory">Memory and personality<span class="desc">— about you, summaries, personalities, radio</span></a></li>
 <li><a href="#states">States and emotions<span class="desc">— when each clip plays</span></a></li>
 <li><a href="#nonrepeat">Why she never repeats herself<span class="desc">— RANSOC emotion weighting</span></a></li>
-<li><a href="#privacy">AI and privacy<span class="desc">— cloud, your own key, what is stored</span></a></li>
+<li><a href="#privacy">AI and privacy<span class="desc">— local replies, your own key, what is stored</span></a></li>
 <li><a href="#hermes">Use it with Hermes Agent<span class="desc">— dashboard plugin</span></a></li>
 </ul>
 
@@ -66,12 +66,12 @@
 
 <section id="pictures">
 <h2>Pictures</h2>
-<p>Picture generation is unavailable in this build: the public image endpoint was retired. Chat replies are generated locally in the browser; visitors who add their own model key can use that provider for replies. Voice input and speech output use the browser's own speech engines.</p>
+<p>Picture generation is unavailable in this build: the public image endpoint was retired. Chat replies are generated locally in the browser, can express any of the twelve sprite emotions, and are written in the voice of the persona you select. Visitors who add their own model key can use that provider instead. Voice input and speech output use the browser's own speech engines. Anonymous usage events — including the persona, emotion and reply pattern used by a local turn — still go to Google Analytics so the fallback's activity can be measured; message text is never sent.</p>
 </section>
 
 <section id="talk">
 <h2>Talk to her</h2>
-<p>She reads her replies aloud with TikTok voices: pick from soft female voices, Japanese and Korean voices, characters like Stitch and Ghost Face, or singing voices. When she answers in another language, a voice for that language reads it. The speaker button at the top mutes her.</p>
+<p>She reads her replies aloud with your browser's built-in speech voices. Pick a female or male voice in Settings, and replies in another language are read with a matching installed voice when available. The speaker button at the top mutes her. Voice input uses your browser's speech recognition.</p>
 <p>Hold the mic button and speak, or tap it once to start and again to stop. She listens while you talk, and your words are transcribed and sent, in whatever language you speak. Turn off "Send right after speaking" in Settings to check the text before it goes.</p>
 </section>
 
@@ -117,9 +117,10 @@
 <section id="privacy">
 <h2>AI and privacy</h2>
 <ul>
-<li><strong>WaifuAI Cloud</strong> (default): free, no key. Messages are sent to WaifuAI Cloud to generate replies.</li>
-<li><strong>Your own key</strong>: OpenRouter, Groq or any OpenAI-compatible endpoint. The key stays in your browser, and requests go straight to that provider. Pictures and voice transcription still go through WaifuAI Cloud.</li>
-<li>Spoken replies: the text of each reply is sent to a free TikTok voice service, or read by your browser's built-in voice when you pick one. Mute her to send nothing.</li>
+<li><strong>Built-in local replies</strong> (default): free, no key. Messages stay in the browser. Replies are assembled locally, can use any of the twelve sprite emotions, and follow the selected persona's voice.</li>
+<li><strong>Your own key</strong>: OpenRouter, Groq or any OpenAI-compatible endpoint. The key stays in your browser, and requests go straight to that provider. Pictures are unavailable, and voice transcription uses your browser's speech engine.</li>
+<li>Spoken replies are read by your browser's built-in voice only. Mute her to send nothing.</li>
+<li>Google Analytics still receives page views and anonymous interaction events, including each local turn's persona, emotion and pattern. Message text, API keys and chat history are never sent.</li>
 <li>Chat history is stored in your browser's local storage and never uploaded. Delete it any time in Settings.</li>
 </ul>
 </section>

@@ -12,7 +12,7 @@ function client(locale = 'en') {
   const ctx = vm.createContext({
     window: {}, navigator: {}, crypto: require('node:crypto').webcrypto,
     AbortController, TextEncoder, TextDecoder, TypeError,
-    Sprites: { EMOTIONS: ['happy', 'curious', 'love', 'empathetic'], detectEmotion: () => null },
+    Sprites: { EMOTIONS: ['happy', 'funny', 'empathetic', 'curious', 'confused', 'amazed', 'sorry', 'found_it', 'annoyed', 'overwhelmed', 'planning', 'love'], detectEmotion: () => null },
     Pictures: { CHAT_RULE: '', forget() {} },
     setTimeout, clearTimeout,
     localStorage: { getItem: k => store.get(k) ?? null, setItem: (k, v) => store.set(k, v), removeItem: k => store.delete(k) },
@@ -76,6 +76,52 @@ test('no local network calls for summary, titles or transliteration', async () =
   assert.equal(await chat.generateTitle(chat.convId), null);
   assert.equal(chat.settings.provider, 'cloud');
   assert.equal(requests, 0);
+});
+
+test('the local engine can reach every sprite emotion', () => {
+  const { ctx } = client();
+  const engine = ctx.window.LocalFallbackEngine;
+  assert.deepEqual(engine.EMOTIONS.length, 12);
+  const samples = {
+    happy: 'hello there', funny: 'that joke is hilarious', empathetic: 'I am sad',
+    curious: 'how are you?', confused: 'I am confused', amazed: 'that is amazing',
+    sorry: 'I am sorry', found_it: 'I finally did it', annoyed: 'this is annoying',
+    overwhelmed: 'I feel overwhelmed', planning: 'let us plan tomorrow', love: 'I love you',
+  };
+  const seen = new Set(Object.entries(samples).map(([emotion, text]) => {
+    const result = engine.getResponse(text, 'English', 'aurora');
+    assert.equal(result.emotion, emotion, text);
+    assert.ok(result.reply.length > 0);
+    assert.equal(result.isFallback, true);
+    return result.emotion;
+  }));
+  assert.deepEqual([...seen].sort(), [...engine.EMOTIONS].sort());
+});
+
+test('each built-in persona gives the same intent a distinct voice', () => {
+  const { ctx } = client();
+  const engine = ctx.window.LocalFallbackEngine;
+  const replies = Object.fromEntries(engine.PERSONAS.map(p =>
+    [p, engine.getResponse('hello', 'English', p)]));
+  assert.match(replies.aurora.reply, /glad you're here/);
+  assert.match(replies.tsundere.reply, /^Hmph—/);
+  assert.match(replies.tsundere.reply, /Not that I care or anything\.$/);
+  assert.match(replies.study.reply, /^Okay, let's break it down\./);
+  assert.ok(replies.assistant.reply.length < replies.aurora.reply.length);
+  assert.equal(replies.assistant.reply, "Hey! I'm really glad you're here.");
+  assert.equal(replies.custom.reply, replies.aurora.reply);
+  for (const result of Object.values(replies)) assert.equal(result.engine, 'local-template-v2');
+  const identity = engine.getResponse('who are you', 'English', 'study').reply;
+  assert.match(identity, /Study buddy/);
+  assert.doesNotMatch(identity, /Haru/);
+});
+
+test('local replies use the reply language bundle, including persona flair', () => {
+  const { ctx } = client('fr');
+  const engine = ctx.window.LocalFallbackEngine;
+  assert.match(engine.getResponse('bonjour', 'French', 'aurora').reply, /^Salut !/);
+  assert.match(engine.getResponse('bonjour', 'French', 'tsundere').reply, /^Hum ! Ce n'est pas que/);
+  assert.match(engine.getResponse('bonjour', 'French', 'study').reply, /^D'accord, procédons étape par étape\./);
 });
 
 test('locale strings no longer promise cloud inference or pictures', () => {
