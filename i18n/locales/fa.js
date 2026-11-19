@@ -170,7 +170,7 @@
     'settings.herVoice': 'صدای او',
     'settings.matchLanguage': 'هماهنگ با زبان پاسخ',
     'settings.voiceVolume': 'بلندی صدای گوینده',
-    'settings.voiceNote': 'پاسخ‌ها به زبان همان پاسخ بلند خوانده می‌شوند. همچنین می‌توانی صدای خود مرورگرت را انتخاب کنی. Choosing a TikTok voice is optional and sends reply text to an external speech service.',
+    'settings.voiceNote': 'The default TikTok voice sends reply text to an external speech service. Choose a browser voice to keep speech local.',
     'settings.micNote': "برای حرف زدن دکمه میکروفون را نگه دار، یا بزن تا شروع شود و دوباره بزن تا بایستد. گفتار توسط مرورگرتان تشخیص داده میشود.",
     'settings.voiceAutoSend': 'بلافاصله پس از حرف زدن بفرست',
     'settings.radio': 'رادیو',

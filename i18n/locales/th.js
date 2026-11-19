@@ -144,7 +144,7 @@
     "settings.herVoice": "เสียงของเธอ",
     "settings.matchLanguage": "ใช้ภาษาเดียวกับคำตอบ",
     "settings.voiceVolume": "ระดับเสียงพูด",
-    "settings.voiceNote": "อ่านคำตอบออกเสียงในภาษาของคำตอบ คุณเลือกเสียงของเบราว์เซอร์แทนได้เช่นกัน Choosing a TikTok voice is optional and sends reply text to an external speech service.",
+    "settings.voiceNote": "The default TikTok voice sends reply text to an external speech service. Choose a browser voice to keep speech local.",
     'settings.micNote': "กดค้างที่ปุ่มไมโครโฟนเพื่อพูด หรือแตะเพื่อเริ่มแล้วแตะอีกครั้งเพื่อหยุด การรู้จำเสียงทำงานโดยเบราว์เซอร์ของคุณ",
     "settings.voiceAutoSend": "ส่งทันทีหลังพูด",
     "settings.radio": "วิทยุ",

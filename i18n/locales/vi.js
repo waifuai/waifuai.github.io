@@ -144,7 +144,7 @@
     "settings.herVoice": "Giọng của cô ấy",
     "settings.matchLanguage": "Khớp ngôn ngữ câu trả lời",
     "settings.voiceVolume": "Âm lượng giọng nói",
-    "settings.voiceNote": "Câu trả lời được đọc bằng ngôn ngữ của nó. Bạn cũng có thể chọn giọng có sẵn trong trình duyệt. Choosing a TikTok voice is optional and sends reply text to an external speech service.",
+    "settings.voiceNote": "The default TikTok voice sends reply text to an external speech service. Choose a browser voice to keep speech local.",
     'settings.micNote': "Giữ nút mic để nói, hoặc chạm để bắt đầu và chạm lại để dừng. Giọng nói được trình duyệt của bạn nhận diện.",
     "settings.voiceAutoSend": "Gửi ngay sau khi nói",
     "settings.radio": "Radio",

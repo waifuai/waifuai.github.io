@@ -145,7 +145,7 @@
       "settings.herVoice": "Hänen äänensä",
       "settings.matchLanguage": "Vastauksen kielen mukaan",
       "settings.voiceVolume": "Puheen äänenvoimakkuus",
-      "settings.voiceNote": "Vastaukset luetaan ääneen vastauksen kielellä. Voit valita myös selaimesi oman äänen. Choosing a TikTok voice is optional and sends reply text to an external speech service.",
+      "settings.voiceNote": "The default TikTok voice sends reply text to an external speech service. Choose a browser voice to keep speech local.",
       'settings.micNote': "Puhu pitämällä mikrofonipainiketta painettuna tai aloita napauttamalla ja lopeta napauttamalla uudelleen. Selain tunnistaa puheen.",
       "settings.voiceAutoSend": "Lähetä heti puheen jälkeen",
       "settings.radio": "Radio",

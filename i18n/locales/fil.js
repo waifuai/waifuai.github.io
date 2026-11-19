@@ -144,7 +144,7 @@
   "settings.herVoice": "Ang boses niya",
   "settings.matchLanguage": "Itugma ang wika ng tugon",
   "settings.voiceVolume": "Dami ng boses",
-  "settings.voiceNote": "Binabasa nang malakas ang mga tugon sa wika ng tugon. Maaari mo ring piliin ang sariling boses ng iyong browser sa halip. Choosing a TikTok voice is optional and sends reply text to an external speech service.",
+  "settings.voiceNote": "The default TikTok voice sends reply text to an external speech service. Choose a browser voice to keep speech local.",
   'settings.micNote': "Pindutin ang pindutan ng mikropono upang makipag-usap, o i-tap ito upang magsimula at i-tap muli upang huminto. Ang pananalita ay kinikilala ng browser mo.",
   "settings.voiceAutoSend": "Ipadala kaagad pagkatapos magsalita",
   "settings.radio": "Radyo",

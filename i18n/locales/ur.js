@@ -144,7 +144,7 @@
   "settings.herVoice": "اس کی آواز",
   "settings.matchLanguage": "جواب کی زبان سے ملائیں۔",
   "settings.voiceVolume": "آواز کا حجم",
-  "settings.voiceNote": "جوابات کو جواب کی زبان میں بلند آواز سے پڑھا جاتا ہے۔ اس کے بجائے آپ اپنے براؤزر کی اپنی آواز بھی چن سکتے ہیں۔ Choosing a TikTok voice is optional and sends reply text to an external speech service.",
+  "settings.voiceNote": "The default TikTok voice sends reply text to an external speech service. Choose a browser voice to keep speech local.",
   'settings.micNote': "بات کرنے کے لیے مائیکروفون بٹن دبائے رکھیں، یا شروع کرنے کے لیے ٹیپ کریں اور روکنے کے لیے دوبارہ ٹیپ کریں۔ تقریر آپ کے براؤزر میں پہچانی جاتی ہے۔",
   "settings.voiceAutoSend": "بولنے کے فوراً بعد بھیجیں۔",
   "settings.radio": "ریڈیو",

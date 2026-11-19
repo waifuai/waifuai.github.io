@@ -170,7 +170,7 @@
     'settings.herVoice': 'Suaranya',
     'settings.matchLanguage': 'Sesuaikan dengan bahasa balasan',
     'settings.voiceVolume': 'Volume suara',
-    'settings.voiceNote': 'Balasan dibacakan dalam bahasa balasannya. Kamu juga bisa memilih suara browser kamu sendiri. Choosing a TikTok voice is optional and sends reply text to an external speech service.',
+    'settings.voiceNote': 'The default TikTok voice sends reply text to an external speech service. Choose a browser voice to keep speech local.',
     'settings.micNote': "Tahan tombol mikrofon untuk bicara, atau ketuk untuk mulai dan ketuk lagi untuk berhenti. Ucapan dikenali oleh browser Anda.",
     'settings.voiceAutoSend': 'Kirim langsung setelah bicara',
     'settings.radio': 'Radio',

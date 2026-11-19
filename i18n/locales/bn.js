@@ -145,7 +145,7 @@
     "settings.herVoice": "তার কণ্ঠ",
     "settings.matchLanguage": "উত্তরের ভাষার সঙ্গে মিলিয়ে নিন",
     "settings.voiceVolume": "কণ্ঠের আওয়াজ",
-    "settings.voiceNote": "উত্তরগুলো উত্তরের ভাষাতেই পড়ে শোনানো হয়। চাইলে ব্রাউজারের নিজের কণ্ঠও বেছে নিতে পারেন। Choosing a TikTok voice is optional and sends reply text to an external speech service.",
+    "settings.voiceNote": "The default TikTok voice sends reply text to an external speech service. Choose a browser voice to keep speech local.",
     'settings.micNote': "কথা বলতে মাইক্রোফোনের বোতাম চেপে ধরুন, অথবা শুরু করতে একবার ও থামাতে আবার ট্যাপ করুন। কথা আপনার ব্রাউজার চিনে নেয়।",
     "settings.voiceAutoSend": "কথা বলার পরই পাঠান",
     "settings.radio": "রেডিও",

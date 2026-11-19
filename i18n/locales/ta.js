@@ -144,7 +144,7 @@
   "settings.herVoice": "அவள் குரல்",
   "settings.matchLanguage": "பதிலின் மொழியைப் பொருத்தவும்",
   "settings.voiceVolume": "குரல் அளவு",
-  "settings.voiceNote": "பதில்கள் பதிலின் மொழியில் சத்தமாக வாசிக்கப்படுகின்றன. அதற்குப் பதிலாக உங்கள் உலாவியின் சொந்தக் குரலையும் தேர்ந்தெடுக்கலாம். Choosing a TikTok voice is optional and sends reply text to an external speech service.",
+  "settings.voiceNote": "The default TikTok voice sends reply text to an external speech service. Choose a browser voice to keep speech local.",
   'settings.micNote': "பேசுவதற்கு மைக்ரோஃபோன் பொத்தானை அமுக்கிப் பிடிக்கவும், அல்லது தொடங்க ஒரு தட்டும் நிறுத்த மீண்டும் ஒரு தட்டும் செய்யவும். பேச்சை உங்கள் உலாவி அடையாளம் காண்கிறது.",
   "settings.voiceAutoSend": "பேசி முடித்தவுடன் அனுப்புங்கள்",
   "settings.radio": "வானொலி",

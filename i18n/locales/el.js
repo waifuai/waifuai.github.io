@@ -145,7 +145,7 @@
     "settings.herVoice": "Η φωνή της",
     "settings.matchLanguage": "Αντιστοίχιση με τη γλώσσα της απάντησης",
     "settings.voiceVolume": "Ένταση φωνής",
-    "settings.voiceNote": "Οι απαντήσεις εκφωνούνται στη γλώσσα τους. Μπορείς επίσης να επιλέξεις τη φωνή του προγράμματος περιήγησης. Choosing a TikTok voice is optional and sends reply text to an external speech service.",
+    "settings.voiceNote": "The default TikTok voice sends reply text to an external speech service. Choose a browser voice to keep speech local.",
     'settings.micNote': "Κράτησε πατημένο το μικρόφωνο για να μιλήσεις ή πάτησε για έναρξη και ξανά για διακοπή. Η ομιλία αναγνωρίζεται από τον browser σου.",
     "settings.voiceAutoSend": "Αποστολή αμέσως μετά την ομιλία",
     "settings.radio": "Ραδιόφωνο",

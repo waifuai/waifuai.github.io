@@ -177,7 +177,7 @@
     'settings.herVoice': 'صوتها',
     'settings.matchLanguage': 'مطابقة لغة الرد',
     'settings.voiceVolume': 'مستوى الصوت',
-    'settings.voiceNote': 'تُقرأ الردود بصوت يطابق لغة الرد. يمكنك أيضًا اختيار صوت متصفحك بدلًا من ذلك. Choosing a TikTok voice is optional and sends reply text to an external speech service.',
+    'settings.voiceNote': 'The default TikTok voice sends reply text to an external speech service. Choose a browser voice to keep speech local.',
     'settings.micNote': "اضغط زر الميكروفون مطوّلًا للتحدث، أو انقر للبدء ثم انقر مرة أخرى للإيقاف. يتعرف المتصفح على الكلام.",
     'settings.voiceAutoSend': 'الإرسال فور انتهاء الكلام',
     'settings.radio': 'الراديو',

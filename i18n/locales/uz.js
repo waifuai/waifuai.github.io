@@ -144,7 +144,7 @@
   "settings.herVoice": "Uning ovozi",
   "settings.matchLanguage": "Javob tilini moslang",
   "settings.voiceVolume": "Ovoz balandligi",
-  "settings.voiceNote": "Javoblar javob tilida ovoz chiqarib o‘qiladi. Buning o'rniga brauzeringizning ovozini ham tanlashingiz mumkin. Choosing a TikTok voice is optional and sends reply text to an external speech service.",
+  "settings.voiceNote": "The default TikTok voice sends reply text to an external speech service. Choose a browser voice to keep speech local.",
   'settings.micNote': "Gapirish uchun mikrofon tugmasini bosib turing, yoki boshlash uchun bir marta, to‘xtatish uchun yana bir marta bosing. Nutq brauzeringiz tomonidan tanib olinadi.",
   "settings.voiceAutoSend": "Gapirgandan so'ng darhol yuboring",
   "settings.radio": "radiosi",

@@ -170,7 +170,7 @@
     'settings.herVoice': '她的声音',
     'settings.matchLanguage': '匹配回复的语言',
     'settings.voiceVolume': '语音音量',
-    'settings.voiceNote': '回复会以回复的语言朗读；你也可以改用浏览器自带的声音。 Choosing a TikTok voice is optional and sends reply text to an external speech service.',
+    'settings.voiceNote': 'The default TikTok voice sends reply text to an external speech service. Choose a browser voice to keep speech local.',
     'settings.micNote': "按住麦克风按钮说话，或点一下开始、再点一下停止。语音由你的浏览器识别。",
     'settings.voiceAutoSend': '说完后立即发送',
     'settings.radio': '电台',

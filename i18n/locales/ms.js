@@ -166,7 +166,7 @@
     'settings.herVoice': 'Suaranya',
     'settings.matchLanguage': 'Padankan bahasa balasan',
     'settings.voiceVolume': 'Kelantangan suara',
-    'settings.voiceNote': 'Balasan dibacakan dalam bahasa balasan itu. Anda juga boleh memilih suara pelayar anda sendiri. Choosing a TikTok voice is optional and sends reply text to an external speech service.',
+    'settings.voiceNote': 'The default TikTok voice sends reply text to an external speech service. Choose a browser voice to keep speech local.',
     'settings.micNote': "Tahan butang mikrofon untuk bercakap, atau tekan untuk mula dan tekan sekali lagi untuk berhenti. Pertuturan dikenali oleh pelayar anda.",
     'settings.voiceAutoSend': 'Hantar terus selepas bercakap',
     'settings.radio': 'Radio',
