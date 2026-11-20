@@ -162,7 +162,7 @@ details.fact[open] summary::after{content:"−"}
   </header>
   <main class="wrap">
     <h1>AI token usage</h1>
-    <div class="hero-chips"><span class="chip">rendered Nov 20, 2026 at 13:23 UTC+8</span><span class="chip">data through 2026-11-20</span><span class="chip">16 tools · 77 models</span></div>
+    <div class="hero-chips"><span class="chip">rendered Nov 20, 2026 at 13:27 UTC+8</span><span class="chip">data through 2026-11-20</span><span class="chip">16 tools · 77 models</span></div>
 <section id="totals">
   <h2 id="headline">Lifetime totals</h2>
   <div class="kpis"><div class="kpi"><strong>14.4B</strong><span>Tokens</span><small>14,402,994,944 total</small></div><div class="kpi"><strong>$3,661.54</strong><span>Estimated cost</span><small>API-rate estimate</small></div><div class="kpi"><strong>235</strong><span>Active days</span><small>2024-06-27 → 2026-11-20</small></div><div class="kpi"><strong>1,410 h</strong><span>Recorded active time</span><small>editor time observed</small></div></div>
@@ -185,8 +185,8 @@ details.fact[open] summary::after{content:"−"}
       </div>
       <label class="usage-select">Display 
         <select id="usage-average" aria-label="Display">
+          <option value="7" selected>7d average</option>
           <option value="30">30d average</option>
-          <option value="7">7d average</option>
           <option value="1">Daily</option>
         </select>
       </label>
@@ -341,7 +341,7 @@ details.fact[open] summary::after{content:"−"}
   if(!svg||!tip||!data.series){return;}
   var providers=data.providers||[],dayCount=Math.max(1,data.days||1);
   var start=Date.parse((data.start||'2026-09-01')+'T00:00:00Z');
-  var metric='tokens',windowDays=30,provider='',reverse=false;
+  var metric='tokens',windowDays=7,provider='',reverse=false;
   var currentOrder=[],currentTotals=[],currentX=null,currentY=null;
   var palette=['#e64980','#5b5bd6','#0ea5e9','#2f9e44','#f59e0b','#8b5cf6','#14b8a6','#ef4444'];
   function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){
