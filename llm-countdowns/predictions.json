@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-19",
+  "lastUpdated": "2026-11-23",
   "researchBaselines": {
     "openai": {
       "name": "GPT-6.2 Astra (Max)",
@@ -60,9 +60,8 @@
       "speed": 110.6
     },
     "zai": {
-      "name": "GLM-5.3",
-      "intel": 31.7,
-      "releaseDate": "2026-08-18"
+      "name": "GLM-5.4",
+      "releaseDate": "2026-11-23"
     },
     "tencent": {
       "name": "HY4",
@@ -82,7 +81,7 @@
     "kimi": 99,
     "xiaomi": 40,
     "minimax": 45,
-    "zai": 63,
+    "zai": 97,
     "tencent": 120
   },
   "defaultIntel": {
@@ -925,19 +924,23 @@
       ],
       "models": {
         "frontier": {
-          "id": "glm-5-4",
-          "slug": "glm-5-4",
-          "shortName": "GLM-5.4",
-          "predictedName": "GLM-5.4",
+          "id": "glm-5-5",
+          "slug": "glm-5-5",
+          "shortName": "GLM-5.5",
+          "predictedName": "GLM-5.5 (speculative successor)",
+          "previewDetail": "The 5.5 label is a speculative placeholder; the next GLM version could carry a different name.",
           "category": "frontier",
           "icon": "🔷",
           "stageColor": "#2d5bff",
-          "status": "No GLM-5.4 launch or date found in the sources checked Nov 12; the Dec 10 target is an owner-requested buffer with GLM-5.3 still the newest release",
+          "status": "GLM-5.4 released Nov 23 to all GLM Coding Plan users; no GLM-5.5 name or date is announced, and the Feb 28 target is a single-interval estimate",
           "hypeScore": 85,
           "expectedGain": 4.2,
-          "explicitTargetDate": "2026-12-10T17:00:00.000Z",
-          "explicitWindowLabel": "Early Dec 2026 (revised estimate; low confidence)",
-          "cadenceDays": 63,
+          "explicitTargetDate": "2027-02-28T09:00:00.000Z",
+          "explicitWindowLabel": "Late Feb 2027 (single-interval estimate; low confidence)",
+          "cadenceDays": 97,
+          "previousSlugs": [
+            "glm-5-4"
+          ],
           "baseline": {
             "name": "GLM-5.3",
             "intel": 31.7,
@@ -945,13 +948,14 @@
             "speed": 77.0
           },
           "features": [
-            "Official release notes checked Nov 12 still list GLM-5.3 (Aug 18) and GLM-5.3-Flash (Aug 26); the model guide calls GLM-5.3 the latest flagship, and no newer Z.ai release has appeared since",
-            "The Oct 20 and Nov 12 cadence estimates passed without a matching launch; the Dec 10 target is an owner-requested ~4-week buffer (Nov 12) with no release evidence in the checked sources, a low-confidence judgment forecast.",
-            "The historical roughly two-month cadence is a weak prior, not a deadline; the date is a low-confidence judgment forecast",
-            "GLM-5.3 reads 31.7 on the v5 index (44.8 on the older revision). GLM-5.2/5.1/5 have no v5 score in the Nov 12 AA API catalog, so no same-index v5 delta exists. Launch coverage reports the post-training refresh GLM-5.3 at 60 vs GLM-5.2 at 53 on v4.1.1 (+7, +13.2%); scaling that onto the retained 31.7 anchor gives +4.2, projecting about 35.9 (scaled from v4.1.1 - scenario, not a v5 benchmark). A new-base-architecture step (GLM-5.2 +11 over GLM-5.1, 40->51 on v4.1, +27.5%) would scale to about +8.7, but no GLM-5.4 architecture change is evidenced, so the conservative refresh floor is retained."
+            "Z.ai released GLM-5.4 on Nov 23, 2026: Z.ai lead Zixuan Li announced it is available to all GLM Coding Plan users, with new vision capabilities, stronger all-round coding performance and 50% more weekly quota than GLM-5.3; the model id is glm-5.4 (glm-5.4[1m] for the 1M-context setting in Claude Code). The announcement carried no benchmarks",
+            "The docs.z.ai release notes and model guide still list GLM-5.3 (Aug 18) as the newest at the Nov 23 check (changelog lag), and the AA Data API free catalog fetched Nov 23 (index v5, 765 rows) has no GLM-5.4 row yet, so the measured anchor stays GLM-5.3 (31.7) until 5.4 is scored",
+            "GLM-5.5 is a speculative successor label, not an announced model; an unconfirmed community rumor says it could arrive next month at around 3T total parameters — that rumor is not used for the date",
+            "Repeating the 97-day interval from GLM-5.3 (Aug 18) to GLM-5.4 (Nov 23) gives Feb 28, 2027; one interval is a weak forecasting basis, not an announced schedule. The 09:00 UTC / 17:00 SGT target aligns the displayed date, not a verified launch hour.",
+            "GLM-5.3 reads 31.7 on the v5 index. GLM-5.4 has no v5 score yet and GLM-5.2/5.1/5 have none in the Nov 23 AA API catalog, so no same-index v5 delta exists. The +4.2 keeps the owner-approved labeled scenario scaled from the old-index post-training refresh GLM-5.2->5.3 (+7, 53->60 on v4.1.1, +13.2%) onto the retained 31.7 anchor, projecting about 35.9 (scaled from v4.1.1 - scenario, not a v5 benchmark). Third-party reports describe GLM-5.4 as a Loop Transformer architecture step; the old-index architecture scenario (GLM-5.2 +11 over GLM-5.1, 40->51 on v4.1, +27.5%, about +8.7 scaled) is not applied because that architecture claim is unverified and concerns 5.4, not 5.5."
           ],
-          "source": "https://docs.z.ai/release-notes/new-released; https://docs.z.ai/guides/llm/glm-5.3 (re-checked Nov 12, 2026: GLM-5.3 still the newest release); historical benchmark baseline retained; Nov 12 gain review: AA Data API free catalog (v5.0.1); old-index launch delta (owner deep-research, Nov 12): GLM-5.2->5.3 +7 (53->60) on v4.1.1, https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index and https://inferencex.semianalysis.com/model/glm-5-3",
-          "lastVerified": "2026-11-12"
+          "source": "Primary source checked Nov 23, 2026: Z.ai lead Zixuan Li announcement, https://x.com/ZixuanLi_/status/2124719275864670681 (Nov 23, 2026 04:18 UTC: GLM-5.4 available to all GLM Coding Plan users; new vision capabilities, stronger all-round coding, 50% more weekly quota than GLM-5.3; same-thread follow-up gives model ids glm-5.4 / glm-5.4[1m]); https://docs.z.ai/release-notes/new-released and https://docs.z.ai/guides/llm/glm-5.3 (re-checked Nov 23, 2026: GLM-5.3 still listed newest - changelog lag); AA Data API free catalog fetched Nov 23, 2026 (index v5, 765 rows): no glm-5-4 row, glm-5-3 Max 31.7. The GLM-5.5 name and Feb 28 target are speculative extrapolations, not Z.ai announcements. Nov 12 gain review: AA Data API free catalog (v5.0.1); old-index launch delta (owner deep-research, Nov 12): GLM-5.2->5.3 +7 (53->60) on v4.1.1, https://artificialanalysis.ai/articles/glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index and https://inferencex.semianalysis.com/model/glm-5-3",
+          "lastVerified": "2026-11-23"
         }
       }
     }
